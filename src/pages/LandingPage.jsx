@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Tooltip } from "antd";
 import { useTranslation } from "react-i18next";
 import {
-  NotificationOutlined,
   MailOutlined,
   LinkOutlined,
   DoubleLeftOutlined,
@@ -11,14 +10,13 @@ import {
 import SpielbetriebLogo from "../img/logos/spielbetriebLogo.png";
 import MerrierLogo from "../img/logos/merrierLogo.png";
 import { Phone } from "../components/Phone/Phone";
-import { Newsletter } from "../components/Newsletter/Newsletter";
+import { NewsletterForm } from "../components/NewsletterForm/NewsletterForm";
 
 import "./LandingPage.less";
 import "./Merrier.less";
 
 export const LandingPage = () => {
   const { t } = useTranslation();
-  const [showNewsletterForm, setShowNewsletterForm] = useState(false);
 
   const arrowClickHandler = () => {
     const elementPhone = document.getElementById("phone");
@@ -34,9 +32,6 @@ export const LandingPage = () => {
 
   return (
     <>
-      {showNewsletterForm && (
-        <Newsletter setShowNewsletterForm={setShowNewsletterForm} />
-      )}
       <div className="background invertColorTheme" id="background"></div>
       <div className="landingPage__doublearrow invertColorTheme" id="arrow">
         <DoubleLeftOutlined onClick={arrowClickHandler} />
@@ -59,13 +54,7 @@ export const LandingPage = () => {
             </div>
             <div className="spielbetrieb__links">
               <div className="spielbetrieb__link">
-                <Tooltip title="Newsletter" placement="bottom">
-                  <NotificationOutlined
-                    onClick={() => {
-                      setShowNewsletterForm(true);
-                    }}
-                  />
-                </Tooltip>
+                <NewsletterForm />
               </div>
               <div className="spielbetrieb__link">
                 <Tooltip title="eMail" placement="bottom">
