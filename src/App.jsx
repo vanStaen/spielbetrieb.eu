@@ -2,12 +2,12 @@ import React, { useLayoutEffect, useEffect } from "react";
 import { observer } from "mobx-react";
 import { BrowserRouter } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Button, notification } from "antd";
 
 import { LanguageDropDown } from "./components/LanguageDropDown/LanguageDropDown";
 import { DarkModeDropDown } from "./components/DarkModeDropDown/DarkModeDropDown";
 import { consoleGreetings } from "./helpers/consoleGreetings";
-import { LandingPage } from './pages/LandingPage';
-import { AcceptCookie } from "./components/AcceptCookie/AcceptCookie";
+import { LandingPage } from "./pages/LandingPage";
 import { pageStore } from "./store/pageStore";
 
 import "./lib/i18n";
@@ -21,7 +21,7 @@ const defineVariableHeight = () => {
 window.addEventListener("resize", defineVariableHeight);
 
 const App = observer(() => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useLayoutEffect(() => {
     // Define variable height
@@ -39,26 +39,52 @@ const App = observer(() => {
       const browserlanguage = navigator.language || navigator.userLanguage;
       if (browserlanguage === "de-DE") {
         i18n.changeLanguage("de-DE");
-        pageStore.setSelectedLanguage('de');
+        pageStore.setSelectedLanguage("de");
       } else {
         i18n.changeLanguage("en-US");
-        pageStore.setSelectedLanguage('en');
+        pageStore.setSelectedLanguage("en");
       }
     }
   }, [i18n]);
 
+  const handleAcceptCookie = (value) => {
+    if (value) {
+      pageStore.setAllowCookie(true);
+    }
+  };
+
+  const openAcceptCookie = () => {
+    notification.open({
+      message: <>🍪 {t("legal.cookiesTitle")}</>,
+      description: (
+        <>
+          {t("legal.cookiesDesc")}
+          <Button className="cookie__button" onClick={handleAcceptCookie}>
+            {t("legal.accept")}
+          </Button>
+        </>
+      ),
+      duration: 0,
+      placement: "bottomRight",
+      className: "customNotification customNotificationBlack",
+    });
+  };
+
   useEffect(() => {
     consoleGreetings();
+    {
+      (!pageStore.allowCookie || process.env.NODE_ENV === "development") &&
+        openAcceptCookie();
+    }
   });
 
   return (
     <BrowserRouter>
-      <div className="App" id='app'>
+      <div className="App" id="app">
         <div className="main">
           <LanguageDropDown />
           <DarkModeDropDown />
           <LandingPage />
-          {(!pageStore.allowCookie || process.env.NODE_ENV === "development") && <AcceptCookie />}
         </div>
       </div>
     </BrowserRouter>

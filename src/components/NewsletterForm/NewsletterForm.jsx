@@ -5,20 +5,14 @@ import { NotificationOutlined } from "@ant-design/icons";
 
 export const NewsletterForm = () => {
   const { t } = useTranslation();
-  const [email, setEmail] = useState(null);
+  const [email, setEmail] = useState("info@merrier.app");
 
   const openNotification = () => {
     notification.open({
-      message: (
-        <div className="newsletter__title">
-          📣 &nbsp;{t("newsletter.subscribe")}
-        </div>
-      ),
+      message: <> 📣 &nbsp;{t("newsletter.subscribe")}</>,
       description: (
         <>
-          <div className="newsletter__subtitle">
-            Sign up to be first to know about Spielbetrieb & Merrier latest news
-          </div>
+          Sign up to be first to know about Spielbetrieb & Merrier latest news
           {email}
         </>
       ),

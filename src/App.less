@@ -50,6 +50,17 @@ body {
   font-weight: 300;
 }
 
+.cookie__button {
+  width: 100%;
+  margin-top: 16px;
+  border-radius: 2px;
+  &:hover {
+      border-color: #999 !important;
+      color: white !important;
+      background-color: #CCC !important;
+  }
+}
+
 /* notification custom */
 .customNotification {
   box-shadow: 0 2px 6px 0px rgba(0, 0, 0, 0.3);
@@ -58,14 +69,11 @@ body {
  
 .ant-notification .ant-notification-notice-wrapper {
   margin-bottom: 0 !important;
-}
-
-.customNotificationBlack .ant-notification .ant-notification-notice-wrapper {
   background-color: transparent;
 }
-
-.customNotificationBlack .ant-notification .ant-notification-notice-wrapper .ant-notification-notice {
+.ant-notification .ant-notification-notice-wrapper .ant-notification-notice {
   background-color: rgba(0,0,0,.7);
+  border-radius: 7px;
 }
 
 .customNotification .ant-notification-notice-message {
@@ -75,21 +83,14 @@ body {
 .customNotification .ant-notification-notice-message,
 .customNotification .ant-notification-notice-description {
   font-family: "Roboto", Sans-serif !important;
-}
-
-.customNotificationBlack .ant-notification-notice-message,
-.customNotificationBlack .ant-notification-notice-description {
   color: rgba(255, 255, 255, .95) !important;
 }
 
 .customNotification .ant-notification-notice-close {
  top: 12px !important;
  right: 12px !important;
+ color: rgba(255, 255, 255, .75) !important;
 }
-
-.customNotificationBlack .ant-notification-notice-close {
-  color: rgba(255, 255, 255, .75) !important;
- }
 
 /* Tooltip custom */
 .ant-tooltip {
@@ -105,7 +106,8 @@ body {
   }
 }
 
-// Invert filter for dark vs light theme
+/* Invert filter for dark vs light theme */
 .invertColorTheme {
   filter: invert(0);
 }
+
