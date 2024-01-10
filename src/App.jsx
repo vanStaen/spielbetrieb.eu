@@ -47,19 +47,21 @@ const App = observer(() => {
     }
   }, [i18n]);
 
-  const handleAcceptCookie = (value) => {
-    if (value) {
-      pageStore.setAllowCookie(true);
-    }
-  };
-
   const openAcceptCookie = () => {
+    const handleAcceptCookie = (key) => {
+      pageStore.setAllowCookie(true);
+      notification.destroy(key);
+    };
+    const key = `cookieform${Date.now()}`;
     notification.open({
       message: <>🍪 {t("legal.cookiesTitle")}</>,
       description: (
         <>
           {t("legal.cookiesDesc")}
-          <Button className="cookie__button" onClick={handleAcceptCookie}>
+          <Button
+            className="cookie__button"
+            onClick={() => handleAcceptCookie(key)}
+          >
             {t("legal.accept")}
           </Button>
         </>
@@ -67,6 +69,7 @@ const App = observer(() => {
       duration: 0,
       placement: "bottomRight",
       className: "customNotification customNotificationBlack",
+      key: key,
     });
   };
 
