@@ -54,10 +54,19 @@ body {
   width: 100%;
   margin-top: 16px;
   border-radius: 2px;
+  letter-spacing: 3px;
+  text-transform: uppercase; 
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  transition: 
+    background-color .3s, 
+    color .3s, 
+    letter-spacing 1s,
+    border-color .3s;
   &:hover {
-      border-color: #999 !important;
+      border-color: rgba(100, 100, 100, 0.3) !important;
+      background-color:  rgba(200, 200, 200, 0.3) !important;
       color: white !important;
-      background-color: #CCC !important;
+      letter-spacing: 10px;
   }
 }
 
