@@ -37,10 +37,12 @@ app.use(function (req, res, next) {
   } else {
     corsOptions = {
       origin: [
+        "https://www.spielbetrieb.online",
+        "https://.spielbetrieb.online",
         "https://www.merrier.app",
         "https://merrier.app",
-        "http://merrier-cvs.herokuapp.com",
-        "https://merrier-cvs.herokuapp.com",
+        "http://spielbetrieb-a7e78c82af5a.herokuapp.com",
+        "http://spielbetrieb-a7e78c82af5a.herokuapp.com",
       ],
       credentials: true,
       optionsSuccessStatus: 200,
