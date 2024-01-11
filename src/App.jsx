@@ -69,7 +69,7 @@ const App = observer(() => {
       ),
       duration: 0,
       placement: "bottomRight",
-      className: "customNotification customNotificationBlack",
+      className: "customNotification",
       key: key,
     });
   };

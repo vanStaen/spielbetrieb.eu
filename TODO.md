@@ -18,9 +18,10 @@
       - [x] If Cookie allowed
       - [x] Last theme used
       - [x] Last Language used
-- [ ] Boilerplate up backend on Heroku
+- [x] Boilerplate up backend on Heroku
+  - [x] Based on merrier Backend
 - [ ] Newsletter 
   - [ ] UI form
   - [ ] PostGres Database
-  - [ ] API endpoint
+  - [ ] API endpoint (graphql)
 - [x] Use Antd notification

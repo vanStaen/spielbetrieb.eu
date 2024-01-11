@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { notification, Tooltip } from "antd";
+import { notification, Tooltip, Button, Input } from "antd";
 import { NotificationOutlined } from "@ant-design/icons";
+
+import "./NewsletterForm.less";
 
 export const NewsletterForm = () => {
   const { t } = useTranslation();
@@ -12,8 +14,9 @@ export const NewsletterForm = () => {
       message: <> 📣 &nbsp;{t("newsletter.subscribe")}</>,
       description: (
         <>
-          Sign up to be first to know about Spielbetrieb & Merrier latest news
-          {email}
+          Sign up to be first to know about Spielbetrieb & Merrier latest news:
+          <Input className="newsletter__input" placeholder={"email"} />
+          <Button className="newsletter__button">Sign up</Button>
         </>
       ),
       duration: 0,
@@ -23,8 +26,10 @@ export const NewsletterForm = () => {
   };
 
   return (
-    <Tooltip title="Newsletter" placement="bottom">
-      <NotificationOutlined onClick={openNotification} />
-    </Tooltip>
+    <div>
+      <Tooltip title="Newsletter" placement="bottom">
+        <NotificationOutlined onClick={openNotification} />
+      </Tooltip>
+    </div>
   );
 };
