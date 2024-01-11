@@ -1,13 +1,13 @@
-import React, { useLayoutEffect, useEffect, useState } from "react";
+import React, { useLayoutEffect, useEffect } from "react";
 import { observer } from "mobx-react";
 import { BrowserRouter } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Button, notification } from "antd";
 
 import { LanguageDropDown } from "./components/LanguageDropDown/LanguageDropDown";
 import { DarkModeDropDown } from "./components/DarkModeDropDown/DarkModeDropDown";
 import { LandingPage } from "./pages/LandingPage";
 import { pageStore } from "./store/pageStore";
+import { AcceptCookies } from "./components/AcceptCookies/AcceptCookies";
 
 import "./lib/i18n";
 import "./App.less";
@@ -21,7 +21,6 @@ window.addEventListener("resize", defineVariableHeight);
 
 const App = observer(() => {
   const { t, i18n } = useTranslation();
-  const [hasRenderedOnce, setHasRenderedOnce] = useState(false);
 
   useLayoutEffect(() => {
     // Define variable height
@@ -47,32 +46,11 @@ const App = observer(() => {
     }
   }, [i18n]);
 
-  const openAcceptCookie = () => {
-    const key = `cookieform${Date.now()}`;
-    notification.destroy();
-    notification.open({
-      message: <AcceptCookieTitle />,
-      description: <AcceptCookieDesc key={key} />,
-      duration: 0,
-      placement: "bottomRight",
-      className: "customNotification",
-      key: key,
-    });
-  };
-
-  useEffect(() => {
-    if (hasRenderedOnce === false) {
-      if (!pageStore.allowCookie || process.env.NODE_ENV === "development") {
-        openAcceptCookie();
-      }
-    }
-    setHasRenderedOnce(true);
-  });
-
   return (
     <BrowserRouter>
       <div className="App" id="app">
         <div className="main">
+          <AcceptCookies />
           <LanguageDropDown />
           <DarkModeDropDown />
           <LandingPage />
@@ -83,26 +61,3 @@ const App = observer(() => {
 });
 
 export default App;
-
-const AcceptCookieTitle = () => {
-  const { t } = useTranslation();
-  return <>🍪 {t("legal.cookiesTitle")}</>;
-};
-
-const AcceptCookieDesc = (props) => {
-  const { t } = useTranslation();
-
-  const handleAcceptCookie = () => {
-    pageStore.setAllowCookie(true);
-    notification.destroy(props.key);
-  };
-
-  return (
-    <>
-      {t("legal.cookiesDesc")}
-      <Button className="cookie__button" onClick={() => handleAcceptCookie()}>
-        {t("legal.accept")}
-      </Button>
-    </>
-  );
-};
