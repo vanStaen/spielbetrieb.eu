@@ -48,25 +48,11 @@ const App = observer(() => {
   }, [i18n]);
 
   const openAcceptCookie = () => {
-    const handleAcceptCookie = (key) => {
-      pageStore.setAllowCookie(true);
-      notification.destroy(key);
-    };
     const key = `cookieform${Date.now()}`;
     notification.destroy();
     notification.open({
-      message: <>🍪 {t("legal.cookiesTitle")}</>,
-      description: (
-        <>
-          {t("legal.cookiesDesc")}
-          <Button
-            className="cookie__button"
-            onClick={() => handleAcceptCookie(key)}
-          >
-            {t("legal.accept")}
-          </Button>
-        </>
-      ),
+      message: <AcceptCookieTitle />,
+      description: <AcceptCookieDesc key={key} />,
       duration: 0,
       placement: "bottomRight",
       className: "customNotification",
@@ -97,3 +83,26 @@ const App = observer(() => {
 });
 
 export default App;
+
+const AcceptCookieTitle = () => {
+  const { t } = useTranslation();
+  return <>🍪 {t("legal.cookiesTitle")}</>;
+};
+
+const AcceptCookieDesc = (props) => {
+  const { t } = useTranslation();
+
+  const handleAcceptCookie = () => {
+    pageStore.setAllowCookie(true);
+    notification.destroy(props.key);
+  };
+
+  return (
+    <>
+      {t("legal.cookiesDesc")}
+      <Button className="cookie__button" onClick={() => handleAcceptCookie()}>
+        {t("legal.accept")}
+      </Button>
+    </>
+  );
+};

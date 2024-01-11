@@ -86,6 +86,10 @@
     "accept" : "Accept"
   },
   "newsletter": {
-    "subscribe": "Subscribe to the newsletter"
+    "subscribe": "Subscribe to the newsletter",
+    "subscribeDesc" : "Sign up to be first to know about Spielbetrieb & Merrier latest news.",
+    "Signup" : "Signup",
+    "emailNotValid" : "This email is not valid, please check it.",
+    "thanksAndConfirm" : "Thank you! Please confirm your email and you are in."
   } 
 }

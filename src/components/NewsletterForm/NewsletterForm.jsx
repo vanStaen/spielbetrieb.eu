@@ -13,8 +13,8 @@ export const NewsletterForm = () => {
 
   const openNotification = () => {
     notification.open({
-      message: <> 📣 &nbsp;{t("newsletter.subscribe")}</>,
-      description: <Form />,
+      message: <FormTitle />,
+      description: <FormDesc />,
       duration: 0,
       placement: "bottomRight",
       className: "customNotification",
@@ -42,7 +42,13 @@ export const NewsletterForm = () => {
   );
 };
 
-export const Form = () => {
+const FormTitle = () => {
+  const { t } = useTranslation();
+  return <>📣 &nbsp;{t("newsletter.subscribe")}</>;
+};
+
+const FormDesc = () => {
+  const { t } = useTranslation();
   const email = useRef(null);
   const [emailNotValid, setEmailNotValid] = useState(false);
   const [emailAdded, setEmailAdded] = useState(false);
@@ -63,10 +69,10 @@ export const Form = () => {
   return (
     <>
       {emailAdded ? (
-        <div>Thank you! Please confirm your email and you are in.</div>
+        <div>{t("newsletter.thanksAndConfirm")}</div>
       ) : (
         <>
-          Sign up to be first to know about Spielbetrieb & Merrier latest news:
+          {t("newsletter.subscribeDesc")}
           <Space.Compact style={{ width: "100%" }}>
             <Input
               className="newsletter__input"
@@ -83,7 +89,7 @@ export const Form = () => {
           </Space.Compact>
           {emailNotValid && (
             <div className="newsletter__emailNotValid">
-              This email is not valid, please check it.
+              {t("newsletter.emailNotValid")}
             </div>
           )}
         </>
