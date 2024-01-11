@@ -32,10 +32,12 @@ export const NewsletterForm = () => {
   };
 
   return (
-    <div>
-      <Tooltip title="Newsletter" placement="bottom">
-        <NotificationOutlined onClick={handleNewsletterClick} />
-      </Tooltip>
+    <div className="spielbetrieb__link" onClick={handleNewsletterClick}>
+      <div>
+        <Tooltip title="Newsletter" placement="bottom">
+          <NotificationOutlined />
+        </Tooltip>
+      </div>
     </div>
   );
 };

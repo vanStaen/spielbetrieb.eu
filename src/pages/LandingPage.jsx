@@ -53,9 +53,7 @@ export const LandingPage = () => {
               {t("general.commingsoon")}{" "}
             </div>
             <div className="spielbetrieb__links">
-              <div className="spielbetrieb__link">
-                <NewsletterForm />
-              </div>
+              <NewsletterForm />
               <div className="spielbetrieb__link">
                 <Tooltip title="eMail" placement="bottom">
                   <a href="mailto:info@spielbetrieb.online" target="_blank">
