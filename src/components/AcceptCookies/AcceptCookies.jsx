@@ -49,7 +49,7 @@ const AcceptCookieDesc = (props) => {
 
   return (
     <>
-      {t("legal.cookiesDesc")}
+      <div className="cookie__desc">{t("legal.cookiesDesc")}</div>
       <Button className="cookie__button" onClick={() => handleAcceptCookie()}>
         {t("legal.accept")}
       </Button>
