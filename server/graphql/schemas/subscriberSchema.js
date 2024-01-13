@@ -21,11 +21,11 @@ input SubscriberInputData {
 }`;
 
 exports.SubscriberQueries = `
-    getSubscriber: Subscriber
+    getSubscribers: [Subscriber]
 `;
 
 exports.SubscriberMutations = `
     addSubscriber(subscriberInput: SubscriberInputData!): Subscriber!
-    updateSubscriber(subscriberInput: SubscriberInputData!): Subscriber!
-    deleteSubscriber: Boolean!
+    updateSubscriber(subscriberId: ID!, subscriberInput: SubscriberInputData!): Subscriber!
+    deleteSubscriber(subscriberId: ID!): Boolean!
 `;

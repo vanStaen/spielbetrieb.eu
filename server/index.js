@@ -41,8 +41,7 @@ app.use(function (req, res, next) {
         "https://.spielbetrieb.online",
         "https://www.merrier.app",
         "https://merrier.app",
-        "http://spielbetrieb-a7e78c82af5a.herokuapp.com",
-        "http://spielbetrieb-a7e78c82af5a.herokuapp.com",
+        "https://spielbetrieb-5c012944af85.herokuapp.com",
       ],
       credentials: true,
       optionsSuccessStatus: 200,
@@ -61,6 +60,8 @@ app.use(isAuth);
 app.use("/auth", require("./api/controller/authController"));
 app.use("/user", require("./api/controller/userController"));
 app.use("/mail", require("./api/controller/mailController"));
+app.use("/upload", require("./api/controller/uploadController"));
+app.use("/newsletter", require("./api/controller/newsletterController"));
 
 // Start DB
 db.sequelize.sync().then((req) => {

@@ -23,7 +23,7 @@ const emailDisclaimer = `
   Be especially wary of .zip or other compressed or executable file types. 
   Do not provide sensitive personal information (like usernames and passwords) over email. 
   Watch for email senders that use suspicious or misleading domain names. 
-  If you can’t tell if an email is legitimate or not, please transfer it to us at <u>info@merrier.app</u>. 
+  If you can’t tell if an email is legitimate or not, please transfer it to us at <u>info@spielbetrieb.online</u>. 
   Be especially cautious when opening attachments or clicking links if you receive an email 
   containing a warning banner indicating that it originated from an external source.<br/><br/>
   <b>Virus transmission</b><br/>
@@ -35,7 +35,7 @@ const emailDisclaimer = `
   of the author and do not represent those of the company. No liability can be held 
   for any damages, however, caused, to any recipients of this message. <br/><br/>
   <b>GDPR</b><br/>
-  Merrier is compliant with the General Data Protection Regulation (GDPR) (EU) 2016/679. 
+  Spielbetrieb is compliant with the General Data Protection Regulation (GDPR) (EU) 2016/679. 
   We are committed to guaranteeing the security and protection of the private information 
   that we process. To understand more about how we collect, store, and process your personal 
   information in compliance with GDPR, please take a look at our privacy policy
@@ -47,7 +47,7 @@ exports.mailService = {
 
   async mail(sendto, subject, body) {
     const requestBody = {
-      "from": "Merrier <info@merrier.app>",
+      "from": "Spielbetrieb <info@spielbetrieb.online>",
       "to": sendto,
       "subject": subject,
       "body": `${body}<br/> ${emailDisclaimer}`,
@@ -86,17 +86,17 @@ exports.mailService = {
                   <b>If you did not request this, ignore this email</b> and nothing else will happen.<br/>
                   <br/>
                   This link will only be active for 10 minutes. <br/>
-                  https://merrier.app/recoverpwd/${recoveryToken}<br/>
+                  https://spielbetrieb.online/recoverpwd/${recoveryToken}<br/>
                   <br/>
-                  Merrier App<br/>
-                  <i>The more, the merrier</i>
+                  Spielbetrieb<br/>
+                  <i>Love to love</i>
                   <br/>
                   ${emailDisclaimer}`;
 
     const requestBody = {
-      "from": "Merrier <info@merrier.app>",
+      "from": "Spielbetrieb <info@spielbetrieb.online>",
       "to": sendto,
-      "subject": "Merrier.app | Reset your password with this link",
+      "subject": "Spielbetrieb.online | Reset your password with this link",
       "body": body,
       "key": process.env.MAILMAN_KEY
     };
@@ -136,17 +136,65 @@ exports.mailService = {
                   Feel free anytime to respond to this mail in order to contact us.<br/>
                   <br/>
                   This link will only be active for 24 hours. <br/>
-                  https://merrier.app/emailverify/${emailVerifyToken}<br/>
+                  https://spielbetrieb.online/emailverify/${emailVerifyToken}<br/>
                   <br/>
-                  Merrier App<br/>
-                  <i>The more, the merrier</i>
+                  Spielbetrieb<br/>
+                  <i>Love to love</i>
                   <br/>
                   ${emailDisclaimer}`;
 
     const requestBody = {
-      "from": "Merrier <info@merrier.app>",
+      "from": "Spielbetrieb <info@spielbetrieb.online>",
       "to": sendto,
-      "subject": "Merrier.app | Confirm your email address with this link",
+      "subject": "Spielbetrieb.online | Confirm your email address with this link",
+      "body": body,
+      "key": process.env.MAILMAN_KEY
+    };
+    try {
+      const response = await axios({
+        url: process.env.MAILMAN_URL,
+        method: "POST",
+        data: requestBody,
+      });
+      if ((response.status !== 200) & (response.status !== 201)) {
+        if (response.status === 401) {
+          throw new Error(`Error! Unauthorized(401)`);
+        } else {
+          throw new Error(`Error! Status ${response.status}`);
+        }
+      }
+      //Return true on success
+      return true
+    } catch (err) {
+      console.log(err);
+      return false
+    }
+  },
+
+  async subscriberVerify(sendto, language) {
+    const subscriberVerifyToken = await jsonwebtoken.sign(
+      { email: sendto },
+      process.env.AUTH_SECRET_KEY_EMAILVERIFY,
+      { expiresIn: "24h" }
+    );
+    const body = `Hello,<br/><br/>
+                  Thank you for subscribing to our Newsletter: By following the link 
+                  underneath you will help us verify the email you gave us.<br/><br/>
+                  <b>If you did not created an account with us, please ignore this email</b> and nothing else will happen.<br/>
+                  Feel free anytime to respond to this mail in order to contact us.<br/>
+                  <br/>
+                  This link will only be active for 24 hours. <br/>
+                  https://spielbetrieb.online/subscriberverify/${subscriberVerifyToken}<br/>
+                  <br/>
+                  Spiebetriebp<br/>
+                  <i>Love to love</i>
+                  <br/>
+                  ${emailDisclaimer}`;
+
+    const requestBody = {
+      "from": "Spielbetrieb <info@spielbetrieb.online>",
+      "to": sendto,
+      "subject": "Spielbetrieb.online | Confirm your registration to our newsletter",
       "body": body,
       "key": process.env.MAILMAN_KEY
     };
