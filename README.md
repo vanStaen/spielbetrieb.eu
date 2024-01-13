@@ -2,6 +2,12 @@
 
 spielbetrieb.online | Portal
 
+## Hosting
+
+### URL setup
+merrier.app : experimental-diplodocus-albup3d9s6q3f940idnqmrp9.herokudns.com
+www.merrier.app : glacial-refuge-ipv2cgp66730mrsv17j4b4i0.herokudns.com
+
 ## Graphic chart
 
 Logo color (dark blue)
