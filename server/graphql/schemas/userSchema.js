@@ -30,6 +30,7 @@ type User {
     friends: [User]
     followers: [User]
     followed: [User]
+    verifiedEmail: Boolean!
 }`;
 
 exports.UserInputData = `

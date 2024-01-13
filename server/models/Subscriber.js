@@ -35,7 +35,7 @@ const Subscriber = sequelize.define("subscriber", {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
-  verified: {
+  verifiedEmail: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },

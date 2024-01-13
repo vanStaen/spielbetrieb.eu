@@ -8,6 +8,7 @@ const notificationSchema = require("./schemas/notificationSchema");
 const photoSchema = require("./schemas/photoSchema");
 const userSchema = require("./schemas/userSchema");
 const visitorSchema = require("./schemas/visitorSchema");
+const subscriberSchema = require("./schemas/subscriberSchema");
 
 module.exports = buildSchema(`
 
@@ -19,6 +20,7 @@ module.exports = buildSchema(`
     ${photoSchema.Photo}
     ${userSchema.User}
     ${visitorSchema.Visitor}
+    ${subscriberSchema.Subscriber}
 
     ${chatSchema.ChatInputData}
     ${commentSchema.CommentInputData}
@@ -27,6 +29,7 @@ module.exports = buildSchema(`
     ${notificationSchema.NotificationInputData}
     ${photoSchema.PhotoInputData}
     ${userSchema.UserInputData}
+    ${subscriberSchema.SubscriberInputData}
 
     type RootQuery {
         ${chatSchema.ChatQueries}
@@ -37,6 +40,7 @@ module.exports = buildSchema(`
         ${photoSchema.PhotoQueries}
         ${userSchema.UserQueries}
         ${visitorSchema.VisitorQueries}
+        ${subscriberSchema.SubscriberQueries}
     }
 
     type RootMutations {
@@ -48,6 +52,7 @@ module.exports = buildSchema(`
         ${photoSchema.PhotoMutations}
         ${userSchema.UserMutations}
         ${visitorSchema.VisitorMutations}
+        ${subscriberSchema.SubscriberMutations}
     }
 
     schema {
