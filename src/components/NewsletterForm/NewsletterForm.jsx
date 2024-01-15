@@ -27,17 +27,20 @@ export const NewsletterForm = () => {
     setOpen(true);
   };
 
-  const handleOk = () => {
+  const onCancel = () => {
+    setOpen(false);
+  };
+
+  const onFinish = (values) => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
       setOpen(false);
     }, 3000);
+    console.log(values);
   };
 
-  const handleCancel = () => {
-    setOpen(false);
-  };  const handleNewsletterClick = () => {
+  const handleNewsletterClick = () => {
     /* if (!formAlreadyOpen) {
       openNotification();
       setFormAlreadyOpen(true);
@@ -62,118 +65,140 @@ export const NewsletterForm = () => {
 
   return (
     <>
-    <div className="spielbetrieb__link" onClick={showModal}>
-      <div>
-        <Tooltip title="Newsletter" placement="bottom">
-          <NotificationOutlined />
-        </Tooltip>
-      </div>
+      <div className="spielbetrieb__link" onClick={showModal}>
+        <div>
+          <Tooltip title="Newsletter" placement="bottom">
+            <NotificationOutlined />
+          </Tooltip>
+        </div>
       </div>
       <Modal
         open={open}
         centered
         title={`📣 ${t("newsletter.subscribe")}`}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={[
-          <Button key="back" onClick={handleCancel}>
-            Cancel
-          </Button>,
-          <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
-            Sign up
-          </Button>,
-        ]}
+        onOk={onFinish}
+        onCancel={onCancel}
+        footer={null}
       >
-        <br/>
-          <Form form={form} layout="horizontal" size="small">
-            <Form.Item
-              label="Name"
-              name="name"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your name!",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label="Email"
-              name="email"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your email!",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label="Mainlig List(s)"
-              name="lists"
-              rules={[
-                {
-                  required: true,
-                  message: "Pick at least one mailing list!",
-                },
-              ]}
-            >
-              <Radio.Group>
-                <Radio.Button value="parties">Parties/Events</Radio.Button>
-                <Radio.Button value="deals">Specials Deals</Radio.Button>
-                <Radio.Button value="extravaganzas">Extravaganzas</Radio.Button>
-              </Radio.Group>
-            </Form.Item>
-            <Form.Item
-              label="Language"
-              name="language"
-              rules={[
-                {
-                  required: true,
-                },
-              ]}
-            >
-              <Radio.Group>
-                <Radio.Button value="de">German</Radio.Button>
-                <Radio.Button value="en">English</Radio.Button>
-              </Radio.Group>
-            </Form.Item>
-            <Form.Item
-              label="Interest(s)"
-              name="Interests"
-              rules={[
-                {
-                  required: false,
-                },
-              ]}
-            >
-              <Radio.Group>
-                <Radio.Button value="BDSM">BDSM</Radio.Button>
-                <Radio.Button value="Fetish">Fetish</Radio.Button>
-                <Radio.Button value="Hedonistic Love">
-                  Hedonistic Love
-                </Radio.Button>
-                <Radio.Button value="Queer">Queer</Radio.Button>
-              </Radio.Group>
-            </Form.Item>
-            <Form.Item
-              label="Tell us something about yourself. What is your thing?"
-              name="about"
-              labelCol={{ span: 24 }}
-              rules={[
-                {
-                  required: false,
-                },
-              ]}
-            >
-              <TextArea />
-            </Form.Item>
-          </Form>
+        <br />
+        <Form
+          form={form}
+          layout="horizontal"
+          size="small"
+          onFinish={onFinish}
+          name="mewsletter-form"
+        >
+          <Form.Item
+            label="Name"
+            name="name"
+            rules={[
+              {
+                required: true,
+                message: "Please input your name!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[
+              {
+                required: true,
+                message: "Please input your email!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Mailing List(s)"
+            name="lists"
+            rules={[
+              {
+                required: true,
+                message: "Pick at least one mailing list!",
+              },
+            ]}
+          >
+            <Radio.Group>
+              <Radio.Button value="parties">Parties/Events</Radio.Button>
+              <Radio.Button value="deals">Specials Deals</Radio.Button>
+              <Radio.Button value="extravaganzas">Extravaganzas</Radio.Button>
+            </Radio.Group>
+          </Form.Item>
+          <Form.Item
+            label="Language"
+            name="language"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Radio.Group>
+              <Radio.Button value="de">German</Radio.Button>
+              <Radio.Button value="en">English</Radio.Button>
+            </Radio.Group>
+          </Form.Item>
+          <Form.Item
+            label={<div className="newsletter__whiteText">Interest(s)</div>}
+            name="Interests"
+            rules={[
+              {
+                required: false,
+              },
+            ]}
+          >
+            <Radio.Group>
+              <Radio.Button value="BDSM">BDSM</Radio.Button>
+              <Radio.Button value="Fetish">Fetish</Radio.Button>
+              <Radio.Button value="Hedonistic Love">
+                Hedonistic Love
+              </Radio.Button>
+              <Radio.Button value="Queer">Queer</Radio.Button>
+            </Radio.Group>
+          </Form.Item>
+          <Form.Item
+            label={
+              <div className="newsletter__whiteText">
+                Tell us something about yourself. What is your thing?
+              </div>
+            }
+            name="about"
+            labelCol={{ span: 24 }}
+            rules={[
+              {
+                required: false,
+              },
+            ]}
+          >
+            <TextArea />
+          </Form.Item>
+
+          <Form.Item>
+            <div className="newsletter__buttonContainer">
+              <Button
+                className="newsletter__cancelButton"
+                htmlType="button"
+                onClick={onCancel}
+              >
+                Cancel
+              </Button>
+              <Button
+                className="newsletter__submitButton"
+                htmlType="submit"
+                loading={loading}
+              >
+                Sign up
+              </Button>
+            </div>
+          </Form.Item>
+        </Form>
       </Modal>
     </>
-    );
+  );
 };
 
 const FormDesc = () => {
