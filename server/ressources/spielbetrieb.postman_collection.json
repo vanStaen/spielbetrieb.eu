@@ -1461,6 +1461,82 @@
 				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
 			},
 			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: updateSubscriber",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  updateSubscriber (\n      subscriberId: 1,\n      subscriberInput: { \n        name: \"name\",\n        }\n      ) {\n    _id,\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: deleteSubscriber",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  deleteSubscriber (\n      subscriberId: 1,\n      ) \n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
 		}
 	]
 }
