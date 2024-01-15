@@ -92,10 +92,6 @@ const User = sequelize.define("user", {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  verifiedEmail: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  },
 });
 
 User.belongsToMany(User, {
