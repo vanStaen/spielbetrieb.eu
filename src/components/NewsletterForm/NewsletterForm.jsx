@@ -63,7 +63,7 @@ export const NewsletterForm = observer(() => {
       <Modal
         open={open}
         centered
-        title={`📣 ${t("newsletter.subscribe")}`}
+        title={t("newsletter.subscribe")}
         onOk={onFinish}
         onCancel={onCancel}
         footer={null}

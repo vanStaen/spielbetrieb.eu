@@ -8,7 +8,6 @@ import {
 } from "@ant-design/icons";
 
 import SpielbetriebLogo from "../img/logos/spielbetriebLogo.png";
-import MerrierLogo from "../img/logos/merrierLogo.png";
 import { Phone } from "../components/Phone/Phone";
 import { NewsletterForm } from "../components/NewsletterForm/NewsletterForm";
 
@@ -34,7 +33,10 @@ export const LandingPage = () => {
     <>
       <div className="background invertColorTheme" id="background"></div>
       <div className="landingPage__doublearrow invertColorTheme" id="arrow">
-        <DoubleLeftOutlined onClick={arrowClickHandler} />
+        <DoubleLeftOutlined
+          onClick={arrowClickHandler}
+          style={{ cursor: "pointer" }}
+        />
       </div>
       <div className="landingPage__container">
         <div className="spielbetrieb__container">
@@ -47,7 +49,6 @@ export const LandingPage = () => {
               id="spielbetriebLogo"
               className="spielbetrieb__logo"
             />
-            {/* <img src={MerrierLogo} id="spielbetriebLogo" className='spielbetrieb__logo' /> */}
             <div className="spielbetrieb__text">Spielbetrieb </div>
             <div className="spielbetrieb__subtext">
               {t("general.commingsoon")}{" "}
@@ -78,7 +79,7 @@ export const LandingPage = () => {
               content={
                 <div className="merrier__container invertColorTheme">
                   <div className="merrier__background"></div>
-                  <img src={MerrierLogo} className="merrier__biglogo" />
+                  <img src={SpielbetriebLogo} className="merrier__biglogo" />
                   <div className="merrier__title">Merrier</div>
                   <div className="merrier__subtitle">by Spielbetrieb</div>
                 </div>
@@ -92,7 +93,7 @@ export const LandingPage = () => {
             content={
               <div className="merrier__container invertColorTheme">
                 <div className="merrier__background"></div>
-                <img src={MerrierLogo} className="merrier__biglogo" />
+                <img src={SpielbetriebLogo} className="merrier__biglogo" />
                 <div className="merrier__title">Merrier</div>
                 <div className="merrier__subtitle">by Spielbetrieb</div>
               </div>
