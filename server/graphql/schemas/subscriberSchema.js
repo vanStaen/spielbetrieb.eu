@@ -12,12 +12,12 @@ type Subscriber {
 
 exports.SubscriberInputData = `
 input SubscriberInputData {
-    name: String!
-    email: String!
+    name: String
+    email: String
     about: String
     language: String
     interests: [String]
-    lists: [String]!
+    lists: [String]
 }`;
 
 exports.SubscriberQueries = `
