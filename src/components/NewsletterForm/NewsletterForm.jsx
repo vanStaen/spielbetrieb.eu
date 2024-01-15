@@ -19,14 +19,30 @@ import "./NewsletterForm.less";
 export const NewsletterForm = () => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const { TextArea } = Input;
 
-  const handleNewsletterClick = () => {
+  const showModal = () => {
+    setOpen(true);
+  };
+
+  const handleOk = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setOpen(false);
+    }, 3000);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+  };  const handleNewsletterClick = () => {
     /* if (!formAlreadyOpen) {
       openNotification();
       setFormAlreadyOpen(true);
     } */
-    setIsModalOpen(true);
+    hideModal();
   };
 
   const handleValidateForm = () => {
@@ -45,27 +61,31 @@ export const NewsletterForm = () => {
   };
 
   return (
-    <div className="spielbetrieb__link" onClick={handleNewsletterClick}>
+    <>
+    <div className="spielbetrieb__link" onClick={showModal}>
       <div>
         <Tooltip title="Newsletter" placement="bottom">
           <NotificationOutlined />
         </Tooltip>
       </div>
-      {isModalOpen && (
-        <Modal
-          title={`📣 ${t("newsletter.subscribe")}`}
-          open={isModalOpen}
-          footer={[
-            <Button key="back" onClick={() => setIsModalOpen(false)}>
-              Cancel
-            </Button>,
-            <Button key="Submit" onClick={() => setIsModalOpen(false)}>
-              Sign up
-            </Button>,
-          ]}
-        >
-          <br />
-          <Form form={form} layout="vertical" size="small">
+      </div>
+      <Modal
+        open={open}
+        centered
+        title={`📣 ${t("newsletter.subscribe")}`}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={[
+          <Button key="back" onClick={handleCancel}>
+            Cancel
+          </Button>,
+          <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
+            Sign up
+          </Button>,
+        ]}
+      >
+        <br/>
+          <Form form={form} layout="horizontal" size="small">
             <Form.Item
               label="Name"
               name="name"
@@ -147,13 +167,12 @@ export const NewsletterForm = () => {
                 },
               ]}
             >
-              <Input />
+              <TextArea style={{minWidth: "100% !important"}} />
             </Form.Item>
           </Form>
-        </Modal>
-      )}
-    </div>
-  );
+      </Modal>
+    </>
+    );
 };
 
 const FormDesc = () => {
