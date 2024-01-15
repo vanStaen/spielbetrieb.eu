@@ -161,13 +161,14 @@ export const NewsletterForm = () => {
             <Form.Item
               label="Tell us something about yourself. What is your thing?"
               name="about"
+              labelCol={{ span: 24 }}
               rules={[
                 {
                   required: false,
                 },
               ]}
             >
-              <TextArea style={{minWidth: "100% !important"}} />
+              <TextArea />
             </Form.Item>
           </Form>
       </Modal>
