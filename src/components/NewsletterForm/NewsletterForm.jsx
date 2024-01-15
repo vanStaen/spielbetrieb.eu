@@ -114,33 +114,8 @@ export const NewsletterForm = observer(() => {
             <Input />
           </Form.Item>
           <Form.Item
-            label="Language"
-            name="language"
-            onChange={changeLanguageHandler}
-            rules={[
-              {
-                required: true,
-                message: "Please select a language",
-              },
-            ]}
-          >
-            <Radio.Group
-              buttonStyle="solid"
-              defaultValue={pageStore.selectedLanguage}
-            >
-              <Radio.Button value="de">German</Radio.Button>
-              <Radio.Button value="en">English</Radio.Button>
-            </Radio.Group>
-          </Form.Item>
-          <Form.Item
-            label="Mailing List(s)"
+            label={<div className="newsletter__whiteText">Mailing List(s)</div>}
             name="lists"
-            rules={[
-              {
-                required: true,
-                message: "Pick at least one mailing list!",
-              },
-            ]}
           >
             <Select
               mode="multiple"
@@ -173,6 +148,19 @@ export const NewsletterForm = observer(() => {
                 { value: "queer", label: "Queer" },
               ]}
             />
+          </Form.Item>
+          <Form.Item
+            label={<div className="newsletter__whiteText">Language</div>}
+            name="language"
+            onChange={changeLanguageHandler}
+          >
+            <Radio.Group
+              buttonStyle="solid"
+              defaultValue={pageStore.selectedLanguage}
+            >
+              <Radio.Button value="de">German</Radio.Button>
+              <Radio.Button value="en">English</Radio.Button>
+            </Radio.Group>
           </Form.Item>
           <Form.Item
             label={
