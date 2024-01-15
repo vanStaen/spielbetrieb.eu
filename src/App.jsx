@@ -44,7 +44,7 @@ const App = observer(() => {
         pageStore.setSelectedLanguage("en");
       }
     }
-  }, [i18n]);
+  }, [i18n, pageStore.selectedLanguage]);
 
   return (
     <BrowserRouter>

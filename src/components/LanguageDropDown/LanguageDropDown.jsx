@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import { Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
@@ -21,6 +21,10 @@ export const LanguageDropDown = observer(() => {
       setLanguage("de");
     }
   };
+
+  useEffect(() => {
+    setLanguage(pageStore.selectedLanguage);
+  }, [pageStore.selectedLanguage]);
 
   const menu = (
     <Menu>

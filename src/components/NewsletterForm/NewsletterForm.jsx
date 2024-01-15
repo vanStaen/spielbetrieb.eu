@@ -9,14 +9,17 @@ import {
   Space,
   Form,
   Radio,
+  Select,
 } from "antd";
 import { NotificationOutlined } from "@ant-design/icons";
+import { observer } from "mobx-react";
 
 import { validateEmail } from "../../helpers/validateEmail";
+import { pageStore } from "../../store/pageStore";
 
 import "./NewsletterForm.less";
 
-export const NewsletterForm = () => {
+export const NewsletterForm = observer(() => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
@@ -28,6 +31,7 @@ export const NewsletterForm = () => {
   };
 
   const onCancel = () => {
+    form.resetFields();
     setOpen(false);
   };
 
@@ -40,12 +44,8 @@ export const NewsletterForm = () => {
     console.log(values);
   };
 
-  const handleNewsletterClick = () => {
-    /* if (!formAlreadyOpen) {
-      openNotification();
-      setFormAlreadyOpen(true);
-    } */
-    hideModal();
+  const changeLanguageHandler = (e) => {
+    pageStore.setSelectedLanguage(e.target.value);
   };
 
   const handleValidateForm = () => {
@@ -105,12 +105,32 @@ export const NewsletterForm = () => {
             name="email"
             rules={[
               {
+                type: "email",
                 required: true,
-                message: "Please input your email!",
+                message: "Please input a valid email!",
               },
             ]}
           >
             <Input />
+          </Form.Item>
+          <Form.Item
+            label="Language"
+            name="language"
+            onChange={changeLanguageHandler}
+            rules={[
+              {
+                required: true,
+                message: "Please select a language",
+              },
+            ]}
+          >
+            <Radio.Group
+              buttonStyle="solid"
+              defaultValue={pageStore.selectedLanguage}
+            >
+              <Radio.Button value="de">German</Radio.Button>
+              <Radio.Button value="en">English</Radio.Button>
+            </Radio.Group>
           </Form.Item>
           <Form.Item
             label="Mailing List(s)"
@@ -122,25 +142,16 @@ export const NewsletterForm = () => {
               },
             ]}
           >
-            <Radio.Group>
-              <Radio.Button value="parties">Parties/Events</Radio.Button>
-              <Radio.Button value="deals">Specials Deals</Radio.Button>
-              <Radio.Button value="extravaganzas">Extravaganzas</Radio.Button>
-            </Radio.Group>
-          </Form.Item>
-          <Form.Item
-            label="Language"
-            name="language"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Radio.Group>
-              <Radio.Button value="de">German</Radio.Button>
-              <Radio.Button value="en">English</Radio.Button>
-            </Radio.Group>
+            <Select
+              mode="multiple"
+              allowClear
+              defaultValue={["parties", "deals", "extravaganzas"]}
+              options={[
+                { value: "parties", label: "Parties/Events" },
+                { value: "deals", label: "Deals" },
+                { value: "extravaganzas", label: "Extravaganzas" },
+              ]}
+            />
           </Form.Item>
           <Form.Item
             label={<div className="newsletter__whiteText">Interest(s)</div>}
@@ -151,14 +162,17 @@ export const NewsletterForm = () => {
               },
             ]}
           >
-            <Radio.Group>
-              <Radio.Button value="BDSM">BDSM</Radio.Button>
-              <Radio.Button value="Fetish">Fetish</Radio.Button>
-              <Radio.Button value="Hedonistic Love">
-                Hedonistic Love
-              </Radio.Button>
-              <Radio.Button value="Queer">Queer</Radio.Button>
-            </Radio.Group>
+            <Select
+              mode="multiple"
+              allowClear
+              defaultValue={["BDSM", "Fetish", "Hedonistic Love", "Queer"]}
+              options={[
+                { value: "BDSM", label: "BDSM" },
+                { value: "fetish", label: "Fetish" },
+                { value: "hedonisticlove", label: "Hedonistic Love" },
+                { value: "queer", label: "Queer" },
+              ]}
+            />
           </Form.Item>
           <Form.Item
             label={
@@ -199,7 +213,7 @@ export const NewsletterForm = () => {
       </Modal>
     </>
   );
-};
+});
 
 const FormDesc = () => {
   const { t } = useTranslation();
@@ -221,32 +235,6 @@ const FormDesc = () => {
   };
 
   return (
-    <>
-      {emailAdded ? (
-        <div>{t("newsletter.thanksAndConfirm")}</div>
-      ) : (
-        <>
-          <Space.Compact style={{ width: "100%" }}>
-            <Input
-              className="newsletter__input"
-              defaultValue="email"
-              onChange={handleEmailChange}
-            />
-            <Button
-              className="newsletter__button"
-              type="primary"
-              onClick={handleSignUpClick}
-            >
-              Sign up
-            </Button>
-          </Space.Compact>
-          {emailNotValid && (
-            <div className="newsletter__emailNotValid">
-              {t("newsletter.emailNotValid")}
-            </div>
-          )}
-        </>
-      )}
-    </>
+    <>{emailAdded ? <div>{t("newsletter.thanksAndConfirm")}</div> : <> </>}</>
   );
 };

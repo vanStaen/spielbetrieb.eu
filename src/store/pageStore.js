@@ -27,7 +27,6 @@ export class PageStore {
     };
 
     setSelectedLanguage = (selectedLanguage) => {
-        console.log('selectedLanguage', selectedLanguage)
         this.selectedLanguage = selectedLanguage;
         if (this.allowCookie) {
             cookies.set('selectedLanguage', selectedLanguage, { path: '/' });
