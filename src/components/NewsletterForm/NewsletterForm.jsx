@@ -14,7 +14,6 @@ import {
 import { NotificationOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react";
 
-import { validateEmail } from "../../helpers/validateEmail";
 import { pageStore } from "../../store/pageStore";
 
 import "./NewsletterForm.less";
@@ -37,30 +36,19 @@ export const NewsletterForm = observer(() => {
 
   const onFinish = (values) => {
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setOpen(false);
-    }, 3000);
+    notification.open({
+      message: <SuccesNotifTitle />,
+      description: <SuccesNotifDesc />,
+      duration: 0,
+      placement: "bottomRight",
+      className: "customNotification",
+    });
     console.log(values);
+    setOpen(false);
   };
 
   const changeLanguageHandler = (e) => {
     pageStore.setSelectedLanguage(e.target.value);
-  };
-
-  const handleValidateForm = () => {
-    /* const openNotification = () => {
-      notification.open({
-        message: <FormTitle />,
-        description: <FormDesc />,
-        duration: 0,
-        placement: "bottomRight",
-        className: "customNotification",
-        onClose: () => {
-          setFormAlreadyOpen(false);
-        },
-      });
-    }; */
   };
 
   return (
@@ -87,6 +75,10 @@ export const NewsletterForm = observer(() => {
           size="small"
           onFinish={onFinish}
           name="mewsletter-form"
+          initialValues={{
+            language: pageStore.selectedLanguage,
+            lists: ["parties", "deals", "extravaganzas"],
+          }}
         >
           <Form.Item
             label="Name"
@@ -116,11 +108,16 @@ export const NewsletterForm = observer(() => {
           <Form.Item
             label={<div className="newsletter__whiteText">Mailing List(s)</div>}
             name="lists"
+            rules={[
+              {
+                required: true,
+                message: "Please select at least one mailing list!",
+              },
+            ]}
           >
             <Select
               mode="multiple"
               allowClear
-              defaultValue={["parties", "deals", "extravaganzas"]}
               options={[
                 { value: "parties", label: "Parties/Events" },
                 { value: "deals", label: "Deals" },
@@ -130,12 +127,7 @@ export const NewsletterForm = observer(() => {
           </Form.Item>
           <Form.Item
             label={<div className="newsletter__whiteText">Interest(s)</div>}
-            name="Interests"
-            rules={[
-              {
-                required: false,
-              },
-            ]}
+            name="interests"
           >
             <Select
               mode="multiple"
@@ -154,10 +146,7 @@ export const NewsletterForm = observer(() => {
             name="language"
             onChange={changeLanguageHandler}
           >
-            <Radio.Group
-              buttonStyle="solid"
-              defaultValue={pageStore.selectedLanguage}
-            >
+            <Radio.Group buttonStyle="solid">
               <Radio.Button value="de">German</Radio.Button>
               <Radio.Button value="en">English</Radio.Button>
             </Radio.Group>
@@ -203,26 +192,12 @@ export const NewsletterForm = observer(() => {
   );
 });
 
-const FormDesc = () => {
+const SuccesNotifTitle = () => {
   const { t } = useTranslation();
-  const email = useRef(null);
-  const [emailNotValid, setEmailNotValid] = useState(false);
-  const [emailAdded, setEmailAdded] = useState(false);
-  const handleEmailChange = (e) => {
-    email.current = e.target.value;
-    setEmailNotValid(false);
-  };
+  return <div>{`📣 ${t("newsletter.subscribe")}`}</div>;
+};
 
-  const handleSignUpClick = () => {
-    const isEmailValid = validateEmail(email.current);
-    if (!isEmailValid) {
-      setEmailNotValid(true);
-    } else {
-      setEmailAdded(true);
-    }
-  };
-
-  return (
-    <>{emailAdded ? <div>{t("newsletter.thanksAndConfirm")}</div> : <> </>}</>
-  );
+const SuccesNotifDesc = () => {
+  const { t } = useTranslation();
+  return <div>{t("newsletter.thanksAndConfirm")}</div>;
 };
