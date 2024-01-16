@@ -178,15 +178,15 @@ exports.mailService = {
       { expiresIn: "24h" }
     );
     const body = `Hello,<br/><br/>
-                  Thank you for subscribing to our Newsletter: By following the link 
-                  underneath you will help us verify the email you gave us.<br/><br/>
-                  <b>If you did not created an account with us, please ignore this email</b> and nothing else will happen.<br/>
+                  Thank you for subscribing to our newsletter: By following the link 
+                  underneath you will help us verify the email you gave us.<br/>
+                  <b>If you did not wish to be added to our mailings lists, please simply ignore this email</b> and nothing else will happen.<br/>
                   Feel free anytime to respond to this mail in order to contact us.<br/>
                   <br/>
                   This link will only be active for 24 hours. <br/>
                   https://spielbetrieb.online/subscriberverify/${subscriberVerifyToken}<br/>
                   <br/>
-                  Spiebetriebp<br/>
+                  Spiebetrieb<br/>
                   <i>Love to love</i>
                   <br/>
                   ${emailDisclaimer}`;

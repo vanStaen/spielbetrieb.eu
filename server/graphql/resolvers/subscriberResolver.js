@@ -1,5 +1,4 @@
-const mailService = require("../../api/service/mailService");
-
+const { mailService } = require("../../api/service/mailService");
 const { Subscriber } = require("../../models/Subscriber");;
 
 exports.subscriberResolver = {
@@ -24,14 +23,22 @@ exports.subscriberResolver = {
     }
     try {
       const email = args.subscriberInput.email.toLowerCase();
-      const subscriber = new Subscriber({
-        name: args.subscriberInput.name,
-        email: email,
-        about: args.subscriberInput.about,
-        interests: args.userInput.interests,
-        interests: args.userInput.lists,
-        language: args.userInput.language,
+      const language = args.subscriberInput.language.toLowerCase();
+      const inputFields = [];
+      const inputableFields = [
+        "about",
+        "name",
+        "language",
+        "interests",
+        "lists",
+      ];
+      inputableFields.forEach((field) => {
+        if (field in args.subscriberInput) {
+          inputFields[field] = args.subscriberInput[field];
+        }
       });
+      inputFields.email = email;
+      const subscriber = new Subscriber(inputFields);
       await mailService.subscriberVerify(email, language);
       return await subscriber.save();
     } catch (err) {

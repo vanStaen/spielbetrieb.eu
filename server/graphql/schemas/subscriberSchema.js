@@ -1,10 +1,10 @@
 exports.Subscriber = `
 type Subscriber {
     _id: ID! 
-    name: String!
+    name: String
     email: String!
     about: String
-    language: String
+    language: String!
     interests: [String]
     lists: [String]!
     verifiedEmail: Boolean!
