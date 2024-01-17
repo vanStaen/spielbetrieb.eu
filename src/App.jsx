@@ -59,6 +59,10 @@ const App = observer(() => {
               path="subscriberverify/:token"
               element={<SubscriberEmailVerify />}
             />
+            <Route
+              path="subscriberverify/"
+              element={<SubscriberEmailVerify />}
+            />
             <Route path="/" element={<LandingPage />} />
           </Routes>
         </div>
