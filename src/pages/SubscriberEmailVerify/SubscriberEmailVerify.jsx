@@ -16,7 +16,7 @@ export const SubscriberEmailVerify = () => {
   const [isVerified, setIsVerified] = useState(false);
 
   const emailIsVerified = useCallback(async () => {
-    const success = await postSubscriberVerified(params.verifyCode);
+    const success = await postSubscriberVerified(params.token);
     if (success) {
       setIsVerified(true);
       setTimeout(() => {
@@ -27,8 +27,8 @@ export const SubscriberEmailVerify = () => {
   }, [params.verifyCode]);
 
   useEffect(() => {
-    console.log("params.verifyCode", params.key);
-    //emailIsVerified();
+    console.log("params.token", params.token);
+    emailIsVerified();
   }, [emailIsVerified]);
 
   return (
@@ -36,7 +36,7 @@ export const SubscriberEmailVerify = () => {
       <div className="background invertColorTheme" id="background"></div>
       <div className="subscriberVerifyEmail__container invertColorTheme">
         {isLoading ? (
-          <CustomSpinner size="large" text="validating" />
+          <CustomSpinner size="large" text="Validating" />
         ) : (
           <>
             <div className="subscriberVerifyEmail__text">

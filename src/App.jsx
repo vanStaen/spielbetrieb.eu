@@ -56,7 +56,7 @@ const App = observer(() => {
         <div className="main">
           <Routes>
             <Route
-              path="subscriberverify/:key"
+              path="subscriberverify/:token"
               element={<SubscriberEmailVerify />}
             />
             <Route path="/" element={<LandingPage />} />

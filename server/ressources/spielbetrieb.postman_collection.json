@@ -220,6 +220,36 @@
 			"response": []
 		},
 		{
+			"name": "REST API Endpoint: newsletter/subscriberverified",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjI4NjExNDI0LCJleHAiOjE2Mjg2OTc4MjR9.Lq3paHX3vWgV7FroiYbzXS2tVIG7mrf96EuvTE0FiGY\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5017/newsletter/subscriberverified",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"newsletter",
+						"subscriberverified"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "REST API Endpoint: mail",
 			"request": {
 				"method": "POST",
@@ -1406,7 +1436,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getSubscribers {\n    _id,\n    name,\n    email,\n  }\n}",
+						"query": "query {\n  getSubscribers {\n    _id,\n    username,\n    email,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1443,7 +1473,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addSubscriber (\n    subscriberInput: { \n        name: \"test\", \n        email: \"test.test@test.com\", \n        lists: [\"parties\", \"deals\", \"extravaganzas\"]\n        }\n  ) {\n    _id\n    name\n  }\n}",
+						"query": "mutation {\n  addSubscriber (\n    subscriberInput: { \n        username: \"test\", \n        email: \"test.test@test.com\", \n        lists: [\"parties\", \"deals\", \"extravaganzas\"],\n        language: \"en\",\n        }\n\n  ) {\n    _id\n    name\n  }\n}",
 						"variables": ""
 					}
 				},
