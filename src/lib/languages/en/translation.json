@@ -92,6 +92,7 @@
     "Signup" : "Signup",
     "emailNotValid" : "This email is not valid, please check it.",
     "thanksAndConfirm" : "Thank you! Please confirm your email and you are in.",
-    "emailVerified" : "Thanks for confirming your email address and joining our mailing lists!"
+    "emailVerified" : "Thanks for confirming your email address and joining our mailing lists!",
+    "verificationError" : "An error happened! Please restart the process from the main page."
   } 
 }

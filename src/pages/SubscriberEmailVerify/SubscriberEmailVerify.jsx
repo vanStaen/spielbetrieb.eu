@@ -36,11 +36,13 @@ export const SubscriberEmailVerify = () => {
       <div className="background invertColorTheme" id="background"></div>
       <div className="subscriberVerifyEmail__container invertColorTheme">
         {isLoading ? (
-          <CustomSpinner text="validating" />
+          <CustomSpinner size="large" text="validating" />
         ) : (
           <>
             <div className="subscriberVerifyEmail__text">
-              {t("newsletter.emailVerified")}
+              {isVerified
+                ? t("newsletter.emailVerified")
+                : t("newsletter.verificationError")}
             </div>
             <Tooltip title={t("general.backTomainScreen")} placement="bottom">
               <Link to="../../" relative="path">
