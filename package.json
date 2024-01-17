@@ -57,7 +57,7 @@
     "react-router-dom": "^6.13.0",
     "regenerator-runtime": "^0.13.11",
     "sequelize": "^6.32.1",
-    "sharp": "^0.33.2",
+    "sharp": "^0.32",
     "universal-cookie": "^4.0.4",
     "uuid": "^9.0.0"
   },
