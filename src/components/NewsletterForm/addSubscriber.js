@@ -18,8 +18,8 @@ export async function addSubscriber(values) {
                 $email: String, 
                 $language: String, 
                 $about: String,
-                lists: [String],
-                interests: [String],
+                $lists: [String],
+                $interests: [String],
               ) {
               addSubscriber(
                 subscriberInput: { 

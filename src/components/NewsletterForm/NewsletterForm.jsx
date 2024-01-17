@@ -80,17 +80,12 @@ export const NewsletterForm = observer(() => {
           initialValues={{
             language: pageStore.selectedLanguage,
             lists: ["parties", "deals", "extravaganzas"],
+            interests: ["BDSM", "Fetish", "Hedonistic Love", "Queer"],
           }}
         >
           <Form.Item
-            label="Name"
+            label={<div className="newsletter__whiteText">Name</div>}
             name="username"
-            rules={[
-              {
-                required: true,
-                message: "Please input your name!",
-              },
-            ]}
           >
             <Input />
           </Form.Item>
@@ -134,7 +129,6 @@ export const NewsletterForm = observer(() => {
             <Select
               mode="multiple"
               allowClear
-              defaultValue={["BDSM", "Fetish", "Hedonistic Love", "Queer"]}
               options={[
                 { value: "BDSM", label: "BDSM" },
                 { value: "fetish", label: "Fetish" },
