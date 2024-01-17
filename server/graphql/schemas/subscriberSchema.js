@@ -1,7 +1,7 @@
 exports.Subscriber = `
 type Subscriber {
     _id: ID! 
-    name: String
+    username: String
     email: String!
     about: String
     language: String!
@@ -12,7 +12,7 @@ type Subscriber {
 
 exports.SubscriberInputData = `
 input SubscriberInputData {
-    name: String
+    username: String
     email: String
     about: String
     language: String

@@ -1,13 +1,14 @@
 import React, { useLayoutEffect, useEffect } from "react";
 import { observer } from "mobx-react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { LanguageDropDown } from "./components/LanguageDropDown/LanguageDropDown";
 import { DarkModeDropDown } from "./components/DarkModeDropDown/DarkModeDropDown";
-import { LandingPage } from "./pages/LandingPage";
+import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { pageStore } from "./store/pageStore";
 import { AcceptCookies } from "./components/AcceptCookies/AcceptCookies";
+import { SubscriberEmailVerify } from "./pages/SubscriberEmailVerify/SubscriberEmailVerify";
 
 import "./lib/i18n";
 import "./App.less";
@@ -17,6 +18,7 @@ const defineVariableHeight = () => {
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 };
 
+console.log("hostname", window.location.hostname);
 window.addEventListener("resize", defineVariableHeight);
 
 const App = observer(() => {
@@ -49,11 +51,19 @@ const App = observer(() => {
   return (
     <BrowserRouter>
       <div className="App" id="app">
+        <AcceptCookies />
+        <LanguageDropDown />
+        <DarkModeDropDown />
         <div className="main">
-          <AcceptCookies />
-          <LanguageDropDown />
-          <DarkModeDropDown />
-          <LandingPage />
+          <Routes>
+            <Route
+              path="subscriberverify/:token"
+              element={<SubscriberEmailVerify />}
+            />
+            <Route path="/" element={<LandingPage />} />
+            {/* default redirect to LandingPage */}
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
         </div>
       </div>
     </BrowserRouter>

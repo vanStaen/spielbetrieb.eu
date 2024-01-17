@@ -78,7 +78,8 @@
     "emailUs": "Email us",
     "commingsoon": "comming soon",
     "dark": "Dark",
-    "light": "Light"
+    "light": "Light",
+    "backTomainScreen": "Back to main screen"
   },
   "legal": {
     "cookiesTitle" : "This website uses cookies.",
@@ -90,6 +91,8 @@
     "subscribeDesc" : "Sign up to be first to know about Spielbetrieb & Merrier latest news.",
     "Signup" : "Signup",
     "emailNotValid" : "This email is not valid, please check it.",
-    "thanksAndConfirm" : "Thank you! Please confirm your email and you are in."
+    "thanksAndConfirm" : "Thank you! Please confirm your email and you are in.",
+    "emailVerified" : "Thanks for confirming your email address and joining our mailing lists!",
+    "verificationError" : "An error happened! Please restart the process from the main page."
   } 
 }

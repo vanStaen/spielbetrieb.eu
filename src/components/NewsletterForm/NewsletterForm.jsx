@@ -17,6 +17,7 @@ import { observer } from "mobx-react";
 import { pageStore } from "../../store/pageStore";
 
 import "./NewsletterForm.less";
+import { addSubscriber } from "./addSubscriber";
 
 export const NewsletterForm = observer(() => {
   const { t } = useTranslation();
@@ -34,8 +35,10 @@ export const NewsletterForm = observer(() => {
     setOpen(false);
   };
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     setLoading(true);
+    console.log(values);
+    await addSubscriber(values);
     notification.open({
       message: <SuccesNotifTitle />,
       description: <SuccesNotifDesc />,
@@ -43,7 +46,6 @@ export const NewsletterForm = observer(() => {
       placement: "bottomRight",
       className: "customNotification",
     });
-    console.log(values);
     setOpen(false);
   };
 
@@ -78,17 +80,12 @@ export const NewsletterForm = observer(() => {
           initialValues={{
             language: pageStore.selectedLanguage,
             lists: ["parties", "deals", "extravaganzas"],
+            interests: ["BDSM", "Fetish", "Hedonistic Love", "Queer"],
           }}
         >
           <Form.Item
-            label="Name"
-            name="name"
-            rules={[
-              {
-                required: true,
-                message: "Please input your name!",
-              },
-            ]}
+            label={<div className="newsletter__whiteText">Name</div>}
+            name="username"
           >
             <Input />
           </Form.Item>
@@ -132,7 +129,6 @@ export const NewsletterForm = observer(() => {
             <Select
               mode="multiple"
               allowClear
-              defaultValue={["BDSM", "Fetish", "Hedonistic Love", "Queer"]}
               options={[
                 { value: "BDSM", label: "BDSM" },
                 { value: "fetish", label: "Fetish" },

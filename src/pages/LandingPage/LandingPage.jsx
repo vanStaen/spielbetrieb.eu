@@ -7,9 +7,9 @@ import {
   DoubleLeftOutlined,
 } from "@ant-design/icons";
 
-import SpielbetriebLogo from "../img/logos/spielbetriebLogo.png";
-import { Phone } from "../components/Phone/Phone";
-import { NewsletterForm } from "../components/NewsletterForm/NewsletterForm";
+import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
+import { Phone } from "../../components/Phone/Phone";
+import { NewsletterForm } from "../../components/NewsletterForm/NewsletterForm";
 
 import "./LandingPage.less";
 import "./Merrier.less";

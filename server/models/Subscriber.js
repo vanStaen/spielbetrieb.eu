@@ -7,7 +7,7 @@ const Subscriber = sequelize.define("subscriber", {
     autoIncrement: true,
     primaryKey: true,
   },
-  name: {
+  username: {
     type: DataTypes.STRING,
     allowNull: false,
   },

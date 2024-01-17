@@ -12,7 +12,7 @@ module.exports = {
   mode: "production",
   output: {
     path: path.resolve(__dirname, "build"),
-    publicPath: "./",
+    publicPath: "/",
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -78,7 +78,8 @@
     "emailUs": "Schreib uns",
     "commingsoon": "demnächst",
     "dark": "Dunkel",
-    "light": "Hell"
+    "light": "Hell",
+    "backTomainScreen": "Zurück zur Startseite"
   },
   "legal": {    
     "cookiesTitle" : "Diese Website verwendet Cookies.",
@@ -90,6 +91,8 @@
     "subscribeDesc" : "Melden Sie sich an, um über die Entwicklungen von Spielbetrieb & Merrier informiert zu werden.",
     "Signup" : "Signup",
     "emailNotValid" : "Diese E-Mail ist ungültig, bitte überprüfen Sie es.",
-    "thanksAndConfirm" : "Danke schön! Bitte bestätigen Sie noch Ihre E-Mail."
+    "thanksAndConfirm" : "Danke schön! Bitte bestätigen Sie noch Ihre E-Mail.",
+    "emailVerified" : "Vielen Dank für die Bestätigung Ihrer E-Mail-Adresse und die Aufnahme in unsere Mailinglisten!",
+    "verificationError" : "Es ist ein Fehler aufgetreten! Bitte starten Sie den Vorgang von der Startseite aus neu."
   } 
 }

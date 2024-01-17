@@ -22,7 +22,7 @@ module.exports = {
       template: "./public/index.html",
     }),
     new webpack.DefinePlugin({
-      "process.env.API_URL": JSON.stringify("http://localhost:5000")
+      "process.env.API_URL": JSON.stringify("http://localhost:5017")
     }),
     new CopyPlugin({
       patterns: [

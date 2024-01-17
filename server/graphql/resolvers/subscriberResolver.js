@@ -27,7 +27,7 @@ exports.subscriberResolver = {
       const inputFields = [];
       const inputableFields = [
         "about",
-        "name",
+        "username",
         "language",
         "interests",
         "lists",
@@ -51,7 +51,7 @@ exports.subscriberResolver = {
     const updateFields = [];
     const updatableFields = [
       "about",
-      "name",
+      "username",
       "language",
       "interests",
       "lists",
