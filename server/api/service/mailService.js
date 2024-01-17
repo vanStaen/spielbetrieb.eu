@@ -175,7 +175,7 @@ exports.mailService = {
     const subscriberVerifyToken = await jsonwebtoken.sign(
       { email: sendto },
       process.env.AUTH_SECRET_KEY_EMAILVERIFY,
-      { expiresIn: "24h" }
+      { expiresIn: "7d" }
     );
     const body = `Hello,<br/><br/>
                   Thank you for subscribing to our newsletter: By following the link 
@@ -183,7 +183,7 @@ exports.mailService = {
                   <b>If you did not wish to be added to our mailings lists, please simply ignore this email</b> and nothing else will happen.<br/>
                   Feel free anytime to respond to this mail in order to contact us.<br/>
                   <br/>
-                  This link will only be active for 24 hours. <br/>
+                  This link will only be active for 48 hours. <br/>
                   https://spielbetrieb.online/subscriberverify/${subscriberVerifyToken}<br/>
                   <br/>
                   Spiebetrieb<br/>
