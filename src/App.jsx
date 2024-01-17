@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { LanguageDropDown } from "./components/LanguageDropDown/LanguageDropDown";
 import { DarkModeDropDown } from "./components/DarkModeDropDown/DarkModeDropDown";
-import { LandingPage } from "./pages/LandingPage";
+import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { pageStore } from "./store/pageStore";
 import { AcceptCookies } from "./components/AcceptCookies/AcceptCookies";
 

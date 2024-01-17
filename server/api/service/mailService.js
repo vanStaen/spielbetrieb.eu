@@ -136,7 +136,7 @@ exports.mailService = {
                   Feel free anytime to respond to this mail in order to contact us.<br/>
                   <br/>
                   This link will only be active for 24 hours. <br/>
-                  https://spielbetrieb.online/emailverify/${emailVerifyToken}<br/>
+                  https://spielbetrieb.online/subscriberverify/${emailVerifyToken}<br/>
                   <br/>
                   Spielbetrieb<br/>
                   <i>Love to love</i>
