@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useEffect } from "react";
 import { observer } from "mobx-react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { LanguageDropDown } from "./components/LanguageDropDown/LanguageDropDown";
@@ -60,6 +60,8 @@ const App = observer(() => {
               element={<SubscriberEmailVerify />}
             />
             <Route path="/" element={<LandingPage />} />
+            {/* default redirect to LandingPage */}
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
       </div>
