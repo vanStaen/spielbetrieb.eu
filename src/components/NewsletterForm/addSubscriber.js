@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export async function addSubscriber(values) {
 
   const {
@@ -11,7 +9,7 @@ export async function addSubscriber(values) {
     interests
   } = values;
 
-  const requestBody = {
+  const graphqlQuery = {
     query: `
             mutation (
                 $username: String, 
@@ -45,11 +43,21 @@ export async function addSubscriber(values) {
     },
   };
 
-  const response = await axios({
-    url: process.env.API_URL + `/graphql`,
-    method: "POST",
-    data: requestBody,
-  });
+  const headers = {
+    "content-type": "application/json",
+  };
 
-  return response;
+  const endpoint = process.env.API_URL + `/graphql`;
+
+  const options = {
+    "method": "POST",
+    "headers": headers,
+    "body": JSON.stringify(graphqlQuery)
+};
+
+  const response = await fetch(endpoint, options);
+  const data = await response.json();
+
+  if (data.errors)  {return data.errors[0]};
+  return data.data;
 }

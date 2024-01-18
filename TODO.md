@@ -25,6 +25,11 @@
   - [x] PostGres Database
   - [x] API endpoint (graphql)
   - [x] Validate email
-  - [ ] Handle errors
+  - [x] Handle errors
+  - [ ] Add old subscribers to db
 - [x] Use Antd notification
 - [ ] Fix cors erros between domains
+- [ ] Fix db_backup script
+
+## Refactoring:
+- [ ] Get rid of Axios, and use fetch();

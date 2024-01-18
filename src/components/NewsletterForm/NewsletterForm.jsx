@@ -37,15 +37,26 @@ export const NewsletterForm = observer(() => {
 
   const onFinish = async (values) => {
     setLoading(true);
-    console.log(values);
-    await addSubscriber(values);
-    notification.open({
-      message: <SuccesNotifTitle />,
-      description: <SuccesNotifDesc />,
-      duration: 0,
-      placement: "bottomRight",
-      className: "customNotification",
-    });
+    const result = await addSubscriber(values);
+    console.log("result", result);
+    if (result.status === 500) {
+      notification.open({
+        message: <ErrorNotifTitle />,
+        description: <ErrorNotifDesc errorMessage={result.message} />,
+        duration: 0,
+        placement: "bottomRight",
+        className: "customNotification",
+      });
+    } else {
+      notification.open({
+        message: <SuccesNotifTitle />,
+        description: <SuccesNotifDesc />,
+        duration: 0,
+        placement: "bottomRight",
+        className: "customNotification",
+      });
+    }
+    setLoading(false);
     setOpen(false);
   };
 
@@ -193,7 +204,26 @@ const SuccesNotifTitle = () => {
   return <div>{`📣 ${t("newsletter.subscribe")}`}</div>;
 };
 
+const ErrorNotifTitle = () => {
+  const { t } = useTranslation();
+  return <div>{`❌ ${t("newsletter.error")}`}</div>;
+};
+
 const SuccesNotifDesc = () => {
   const { t } = useTranslation();
   return <div>{t("newsletter.thanksAndConfirm")}</div>;
+};
+
+const ErrorNotifDesc = (props) => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <div>
+        <i>
+          <b>{props.errorMessage}</b>
+        </i>
+      </div>
+      <div>{t("newsletter.verificationError")}</div>
+    </>
+  );
 };
