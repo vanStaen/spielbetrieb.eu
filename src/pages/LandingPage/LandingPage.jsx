@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Tooltip } from "antd";
 import { useTranslation } from "react-i18next";
 import {
@@ -16,6 +16,14 @@ import "./Merrier.less";
 
 export const LandingPage = () => {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    if (window.location.hostname === "merrier.app") {
+      setTimeout(() => {
+        arrowClickHandler();
+      }, "1000");
+    }
+  });
 
   const arrowClickHandler = () => {
     const elementPhone = document.getElementById("phone");

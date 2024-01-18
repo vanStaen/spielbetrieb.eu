@@ -18,7 +18,6 @@ const defineVariableHeight = () => {
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 };
 
-console.log("hostname", window.location.hostname);
 window.addEventListener("resize", defineVariableHeight);
 
 const App = observer(() => {
