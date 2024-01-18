@@ -7,7 +7,7 @@ export const postSubscriberVerified = async (token) => {
     };
 
     const response = await axios({
-        url: process.env.API_URL + `/newsletter/subscriberverified/`,
+        url: process.env.API_URL + `/newsletter/subscriberverified`,
         method: "POST",
         data: requestBody,
     });
