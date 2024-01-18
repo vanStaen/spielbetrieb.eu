@@ -94,6 +94,6 @@
     "thanksAndConfirm" : "Danke schön! Bitte bestätigen Sie noch Ihre E-Mail.",
     "emailVerified" : "Vielen Dank für die Bestätigung Ihrer E-Mail-Adresse und die Aufnahme in unsere Mailinglisten!",
     "verificationError" : "Es ist ein Fehler aufgetreten! Bitte starten Sie den Vorgang von der Startseite aus neu.",
-    "error": "Du bist nicht abonniert!"
+    "error": "Fehler bei Abonnieren!"
   } 
 }

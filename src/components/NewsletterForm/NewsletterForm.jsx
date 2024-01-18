@@ -37,20 +37,29 @@ export const NewsletterForm = observer(() => {
 
   const onFinish = async (values) => {
     setLoading(true);
-    const result = await addSubscriber(values);
-    console.log("result", result);
-    if (result.status === 500) {
+    try {
+      const result = await addSubscriber(values);
+      if (result.status === 500) {
+        notification.open({
+          message: <ErrorNotifTitle />,
+          description: <ErrorNotifDesc errorMessage={result.message} />,
+          duration: 0,
+          placement: "bottomRight",
+          className: "customNotification",
+        });
+      } else {
+        notification.open({
+          message: <SuccesNotifTitle />,
+          description: <SuccesNotifDesc />,
+          duration: 0,
+          placement: "bottomRight",
+          className: "customNotification",
+        });
+      }
+    } catch (e) {
       notification.open({
         message: <ErrorNotifTitle />,
-        description: <ErrorNotifDesc errorMessage={result.message} />,
-        duration: 0,
-        placement: "bottomRight",
-        className: "customNotification",
-      });
-    } else {
-      notification.open({
-        message: <SuccesNotifTitle />,
-        description: <SuccesNotifDesc />,
+        description: <ErrorNotifDesc errorMessage={e.toString()} />,
         duration: 0,
         placement: "bottomRight",
         className: "customNotification",
