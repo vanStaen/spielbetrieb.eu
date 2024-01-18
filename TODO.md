@@ -21,7 +21,10 @@
 - [x] Boilerplate up backend on Heroku
   - [x] Based on merrier Backend
 - [ ] Newsletter 
-  - [ ] UI form
-  - [ ] PostGres Database
-  - [ ] API endpoint (graphql)
+  - [x] UI form
+  - [x] PostGres Database
+  - [x] API endpoint (graphql)
+  - [x] Validate email
+  - [ ] Handle errors
 - [x] Use Antd notification
+- [ ] Fix cors erros between domains
