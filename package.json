@@ -1,11 +1,11 @@
 {
   "name": "spielbetrieb",
   "version": "1.0",
-  "description": "spielbetrieb.online webpage",
+  "description": "spielbetrieb.eu webpage",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vanStaen/spielbetrieb.online.git"
+    "url": "git+https://github.com/vanStaen/spielbetrieb.eu.git"
   },
   "scripts": {
     "start": "node server/index.js",
@@ -20,7 +20,7 @@
     "version": "heroku --version; git --version",
     "kill": "killall -9 node",
     "backup": "cd server/lib/; node createDatabaseBackUpFile.js; npm run pushbackup; cd ../../",
-    "pushbackup": "cd ../database-backups; git pull; git add -A; git commit -m 'Spielbetrieb - database backup files'; git push; cd ../spielbetrieb.online"
+    "pushbackup": "cd ../database-backups; git pull; git add -A; git commit -m 'Spielbetrieb - database backup files'; git push; cd ../spielbetrieb.eus"
   },
   "eslintConfig": {
     "extends": [

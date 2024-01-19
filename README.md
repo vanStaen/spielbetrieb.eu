@@ -1,6 +1,6 @@
-# spielbetrieb.online
+# spielbetrieb.eu
 
-spielbetrieb.online | Portal
+spielbetrieb.eu | Portal
 
 ## Hosting
 
