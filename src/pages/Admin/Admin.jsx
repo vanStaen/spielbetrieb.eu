@@ -9,17 +9,12 @@ import { PinInput } from './PinInput/PinInput';
 
 import './Admin.less';
 
-
-const subdomain = 'admin';
-const domain = window.location.host.slice(subdomain.length + 1);
-const baseUrl = domain.slice(0, 9) === 'localhost' ? 'http://' + domain : 'https://' + domain;
-
 export const Admin = observer(() => {
     return (
         <>
             <div className='background'></div>
             <div className='admin__container'>
-                <Link to={baseUrl}>
+                <Link to="../" relative="path">
                     <Tooltip title="Back to main page" placement="left">
                         <img
                             src={SpielbetriebLogo}

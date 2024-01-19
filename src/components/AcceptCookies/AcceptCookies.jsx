@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { notification, Button } from "antd";
+import { observer } from "mobx-react";
 
 import { pageStore } from "../../store/pageStore";
 
 import "./AcceptCookies.less";
 
-export const AcceptCookies = () => {
+export const AcceptCookies = observer(() => {
   const [hasRenderedOnce, setHasRenderedOnce] = useState(false);
 
   const openAcceptCookie = () => {
@@ -32,7 +33,7 @@ export const AcceptCookies = () => {
   });
 
   return;
-};
+});
 
 const AcceptCookieTitle = () => {
   const { t } = useTranslation();
