@@ -39,6 +39,8 @@ app.use(function (req, res, next) {
       origin: [
         "https://www.merrier.app",
         "https://merrier.app",
+        "https://www.spielbetrieb.eu",
+        "https://spielbetrieb.eu",
         "http://spielbetrieb-5c012944af85.herokuapp.com",
         "https://spielbetrieb-5c012944af85.herokuapp.com",
       ],
