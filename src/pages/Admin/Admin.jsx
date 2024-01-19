@@ -30,7 +30,7 @@ export const Admin = observer(() => {
                 </Link>
 
                 {adminStore.hasAdminAccess ?
-                    <div onClick={() => adminStore.setHasAdminAccess(false)}>welcome in mah boy </div>
+                    <div className='admin__title'>Welcome into the inner circle</div>
                     :
                     <>
                         <div className='admin__title'>
