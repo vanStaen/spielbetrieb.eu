@@ -1,0 +1,30 @@
+.PinInput__input {
+  width: 20px;
+  font-size: 28px;
+  letter-spacing: 17px;
+  color: white;
+  background-color: transparent;
+  border: 0px solid transparent;
+  margin-top: 20px;
+}
+
+.PinInput__input:focus {
+  border: 0px solid transparent;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
+.PinInput__mobileInput .ant-input {
+  color: #000 !important;
+}
+
+.PinInput__container {
+  /* 
+  padding: 10px 0;
+  border-radius: 7px;
+  background-color: rgba(0,0,0,.3); 
+  */
+  border: 0px solid transparent;
+}

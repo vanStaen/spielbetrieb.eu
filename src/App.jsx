@@ -9,9 +9,12 @@ import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { pageStore } from "./store/pageStore";
 import { AcceptCookies } from "./components/AcceptCookies/AcceptCookies";
 import { SubscriberEmailVerify } from "./pages/SubscriberEmailVerify/SubscriberEmailVerify";
+import { Admin } from "./pages/Admin/Admin";
 
 import "./lib/i18n";
 import "./App.less";
+
+const subdomain = window.location.host.split(".")[0];
 
 const defineVariableHeight = () => {
   let vh = window.innerHeight * 0.01;
@@ -50,19 +53,27 @@ const App = observer(() => {
   return (
     <BrowserRouter>
       <div className="App" id="app">
-        <AcceptCookies />
-        <LanguageDropDown />
-        <DarkModeDropDown />
         <div className="main">
-          <Routes>
-            <Route
-              path="subscriberverify/:token"
-              element={<SubscriberEmailVerify />}
-            />
-            <Route path="/" element={<LandingPage />} />
-            {/* default redirect to LandingPage */}
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
+          {subdomain === 'admin' ? (
+            <Admin />
+          ) : (
+            <>
+              <AcceptCookies />
+              <LanguageDropDown />
+              <DarkModeDropDown />
+              <Routes>
+                <Route
+                  path="subscriberverify/:token"
+                  element={<SubscriberEmailVerify />}
+                />
+                <Route path="/" element={<LandingPage />} />
+                {/* default redirect to LandingPage */}
+                <Route path="*" element={<Navigate to="/" />} />
+              </Routes>
+            </>
+          )
+          }
+
         </div>
       </div>
     </BrowserRouter>

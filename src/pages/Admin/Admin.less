@@ -1,0 +1,40 @@
+@widthPhonePanel: 40vw;
+
+.background {
+   position: absolute;
+   width: 100vw;
+   height: 101vh;
+   background-image: url('../../img/background.jpg');
+   background-size: cover;
+   filter: grayscale(1) contrast(1.25);
+}
+@media only screen and (max-width: 675px) {
+   .background {
+      height: 201vh;
+      background-size: cover;
+      background-position: center;
+   }  
+}
+
+.admin__container {
+   position: relative;
+   height: 100vh;
+   z-index: 2;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   .admin__logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      cursor: pointer;
+      filter: grayscale(1) invert(1);
+   }
+   .admin__title {
+      font-size: 15px;
+      letter-spacing: 10px;
+      font-weight: 400;
+   }
+}
