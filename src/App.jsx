@@ -3,8 +3,6 @@ import { observer } from "mobx-react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { LanguageDropDown } from "./components/LanguageDropDown/LanguageDropDown";
-import { DarkModeDropDown } from "./components/DarkModeDropDown/DarkModeDropDown";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { pageStore } from "./store/pageStore";
 import { AcceptCookies } from "./components/AcceptCookies/AcceptCookies";
@@ -52,8 +50,6 @@ const App = observer(() => {
     <BrowserRouter>
       <div className="App" id="app">
         <AcceptCookies />
-        <LanguageDropDown />
-        <DarkModeDropDown />
         <div className="main">
           <Routes>
             <Route

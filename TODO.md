@@ -42,6 +42,7 @@
 - [ ] Spielplan
 - [ ] Tracking/Analytics
 - [ ] Admin page
+  - [ ] Newsletter management
   - [ ] Add/Manage events
   - [ ] Add/Manage products
   - [ ] Add 'aktuell' articles

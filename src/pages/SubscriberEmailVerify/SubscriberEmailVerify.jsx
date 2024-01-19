@@ -6,6 +6,8 @@ import { Tooltip } from "antd";
 import { postSubscriberVerified } from "./postSubscriberVerified";
 import { CustomSpinner } from "../../components/CustomSpinner/CustomSpinnner";
 import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
+import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
+import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 
 import "./SubscriberEmailVerify.less";
 
@@ -33,6 +35,8 @@ export const SubscriberEmailVerify = () => {
 
   return (
     <>
+      <LanguageDropDown />
+      <DarkModeDropDown />
       <div className="background invertColorTheme" id="background"></div>
       <div className="subscriberVerifyEmail__container invertColorTheme">
         {isLoading ? (
