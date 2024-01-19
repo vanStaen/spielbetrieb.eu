@@ -9,7 +9,7 @@ const Subscriber = sequelize.define("subscriber", {
   },
   username: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   email: {
     type: DataTypes.STRING,
