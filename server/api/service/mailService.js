@@ -2,6 +2,8 @@ const axios = require('axios');
 const jsonwebtoken = require("jsonwebtoken");
 require("dotenv/config");
 
+const domain = "spielbetrieb.eu";
+
 const emailDisclaimer = `
   <br/>
   <hr size="1px" width="100%" color="#CCC">  
@@ -23,7 +25,7 @@ const emailDisclaimer = `
   Be especially wary of .zip or other compressed or executable file types. 
   Do not provide sensitive personal information (like usernames and passwords) over email. 
   Watch for email senders that use suspicious or misleading domain names. 
-  If you can’t tell if an email is legitimate or not, please transfer it to us at <u>info@spielbetrieb.online</u>. 
+  If you can’t tell if an email is legitimate or not, please transfer it to us at <u>info@spielbetrieb.eu</u>. 
   Be especially cautious when opening attachments or clicking links if you receive an email 
   containing a warning banner indicating that it originated from an external source.<br/><br/>
   <b>Virus transmission</b><br/>
@@ -47,7 +49,7 @@ exports.mailService = {
 
   async mail(sendto, subject, body) {
     const requestBody = {
-      "from": "Spielbetrieb <info@spielbetrieb.online>",
+      "from": "Spielbetrieb <info@spielbetrieb.eu>",
       "to": sendto,
       "subject": subject,
       "body": `${body}<br/> ${emailDisclaimer}`,
@@ -86,7 +88,7 @@ exports.mailService = {
                   <b>If you did not request this, ignore this email</b> and nothing else will happen.<br/>
                   <br/>
                   This link will only be active for 10 minutes. <br/>
-                  https://spielbetrieb.online/recoverpwd/${recoveryToken}<br/>
+                  https://${domain}/recoverpwd/${recoveryToken}<br/>
                   <br/>
                   Spielbetrieb<br/>
                   <i>Love to love</i>
@@ -94,9 +96,9 @@ exports.mailService = {
                   ${emailDisclaimer}`;
 
     const requestBody = {
-      "from": "Spielbetrieb <info@spielbetrieb.online>",
+      "from": "Spielbetrieb <info@spielbetrieb.eu>",
       "to": sendto,
-      "subject": "Spielbetrieb.online | Reset your password with this link",
+      "subject": "Spielbetrieb.eu | Reset your password with this link",
       "body": body,
       "key": process.env.MAILMAN_KEY
     };
@@ -136,7 +138,7 @@ exports.mailService = {
                   Feel free anytime to respond to this mail in order to contact us.<br/>
                   <br/>
                   This link will only be active for 24 hours. <br/>
-                  https://spielbetrieb.online/subscriberverify/${emailVerifyToken}<br/>
+                  https://${mainDomain}/subscriberverify/${emailVerifyToken}<br/>
                   <br/>
                   Spielbetrieb<br/>
                   <i>Love to love</i>
@@ -144,9 +146,9 @@ exports.mailService = {
                   ${emailDisclaimer}`;
 
     const requestBody = {
-      "from": "Spielbetrieb <info@spielbetrieb.online>",
+      "from": "Spielbetrieb <info@spielbetrieb.eu>",
       "to": sendto,
-      "subject": "Spielbetrieb.online | Confirm your email address with this link",
+      "subject": "Spielbetrieb.eu | Confirm your email address with this link",
       "body": body,
       "key": process.env.MAILMAN_KEY
     };
@@ -184,7 +186,7 @@ exports.mailService = {
                   Feel free anytime to respond to this mail in order to contact us.<br/>
                   <br/>
                   This link will only be active for 48 hours. <br/>
-                  https://spielbetrieb.online/subscriberverify/${subscriberVerifyToken}<br/>
+                  https://${mainDomain}/subscriberverify/${subscriberVerifyToken}<br/>
                   <br/>
                   Spiebetrieb<br/>
                   <i>Love to love</i>
@@ -192,9 +194,9 @@ exports.mailService = {
                   ${emailDisclaimer}`;
 
     const requestBody = {
-      "from": "Spielbetrieb <info@spielbetrieb.online>",
+      "from": "Spielbetrieb <info@spielbetrieb.eu>",
       "to": sendto,
-      "subject": "Spielbetrieb.online | Confirm your registration to our newsletter",
+      "subject": "Spielbetrieb.eu | Confirm your registration to our newsletter",
       "body": body,
       "key": process.env.MAILMAN_KEY
     };

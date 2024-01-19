@@ -19,7 +19,7 @@ module.exports = {
       template: "./public/index.html",
     }),
     new webpack.DefinePlugin({
-      "process.env.API_URL": JSON.stringify("https://www.merrier.app")
+      "process.env.API_URL": JSON.stringify("https://spielbetrieb.eu")
     }),
     new CopyPlugin({
       patterns: [
