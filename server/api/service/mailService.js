@@ -2,7 +2,7 @@ const axios = require('axios');
 const jsonwebtoken = require("jsonwebtoken");
 require("dotenv/config");
 
-const domain = "spielbetrieb.eu";
+const mainDomain = "spielbetrieb.eu";
 
 const emailDisclaimer = `
   <br/>
@@ -88,7 +88,7 @@ exports.mailService = {
                   <b>If you did not request this, ignore this email</b> and nothing else will happen.<br/>
                   <br/>
                   This link will only be active for 10 minutes. <br/>
-                  https://${domain}/recoverpwd/${recoveryToken}<br/>
+                  https://${mainDomain}/recoverpwd/${recoveryToken}<br/>
                   <br/>
                   Spielbetrieb<br/>
                   <i>Love to love</i>
