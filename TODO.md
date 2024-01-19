@@ -28,8 +28,25 @@
   - [x] Handle errors
   - [ ] Add old subscribers to db
 - [x] Use Antd notification
-- [ ] Fix cors erros between domains
+- [x] Fix cors erros between domains
 - [ ] Fix db_backup script
+- [ ] Menu
+  - [ ] Spielbetrieb (main page)
+  - [ ] Partner
+  - [ ] Dark Magazin
+  - [ ] Shop
+  - [ ] Spielplan
+- [ ] Home page
+  - [ ] Link to spielplan / shop 
+  - [ ] Spielbwetrieb Aktuell
+- [ ] Spielplan
+- [ ] Tracking/Analytics
+- [ ] Admin page
+  - [ ] Add events
+  - [ ] Add products
+  - [ ] Add 'aktuell' articles
+- [ ] Shop
+- [ ] Dark Magazin
 
 ## Refactoring:
 - [ ] Get rid of Axios, and use fetch();
