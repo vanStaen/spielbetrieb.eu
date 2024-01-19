@@ -20,13 +20,13 @@
       - [x] Last Language used
 - [x] Boilerplate up backend on Heroku
   - [x] Based on merrier Backend
-- [ ] Newsletter 
+- [ ] Newsletter
   - [x] UI form
   - [x] PostGres Database
   - [x] API endpoint (graphql)
   - [x] Validate email
   - [x] Handle errors
-  - [ ] Add old subscribers to db
+  - [ ] ~Add old subscribers to db~
 - [x] Use Antd notification
 - [x] Fix cors erros between domains
 - [ ] Fix db_backup script
@@ -37,16 +37,18 @@
   - [ ] Shop
   - [ ] Spielplan
 - [ ] Home page
-  - [ ] Link to spielplan / shop 
+  - [ ] Link to spielplan / shop
   - [ ] Spielbwetrieb Aktuell
 - [ ] Spielplan
 - [ ] Tracking/Analytics
 - [ ] Admin page
-  - [ ] Add events
-  - [ ] Add products
+  - [ ] Add/Manage events
+  - [ ] Add/Manage products
   - [ ] Add 'aktuell' articles
 - [ ] Shop
 - [ ] Dark Magazin
 
 ## Refactoring:
+
+- [ ] Create deploymenet pipeline with test env
 - [ ] Get rid of Axios, and use fetch();
