@@ -99,8 +99,8 @@ export const NewsletterForm = observer(() => {
           name="mewsletter-form"
           initialValues={{
             language: pageStore.selectedLanguage,
-            lists: ["parties", "deals", "extravaganzas"],
-            interests: ["BDSM", "Fetish", "Hedonistic Love", "Queer"],
+            //lists: ["parties", "deals", "extravaganzas"],
+            //interests: ["BDSM", "Fetish", "Hedonistic Love", "Queer"],
           }}
         >
           <Form.Item
@@ -116,7 +116,7 @@ export const NewsletterForm = observer(() => {
               {
                 type: "email",
                 required: true,
-                message: "Please input a valid email!",
+                message: t('newsletter.pleaseInputEmail'),
               },
             ]}
           >
@@ -128,7 +128,7 @@ export const NewsletterForm = observer(() => {
             rules={[
               {
                 required: true,
-                message: "Please select at least one mailing list!",
+                message: t('newsletter.pleaseSelectList'),
               },
             ]}
           >
@@ -167,6 +167,7 @@ export const NewsletterForm = observer(() => {
               <Radio.Button value="en">English</Radio.Button>
             </Radio.Group>
           </Form.Item>
+          {/* 
           <Form.Item
             label={
               <div className="newsletter__whiteText">
@@ -183,6 +184,7 @@ export const NewsletterForm = observer(() => {
           >
             <TextArea />
           </Form.Item>
+          */}
 
           <Form.Item>
             <div className="newsletter__buttonContainer">

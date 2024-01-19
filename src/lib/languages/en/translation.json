@@ -94,6 +94,8 @@
     "thanksAndConfirm" : "Thank you! Please confirm your email and you are in.",
     "emailVerified" : "Thanks for confirming your email address and joining our mailing lists!",
     "verificationError" : "An error happened! Please restart the process from the main page.",
-    "error": "Error while subscribing!"
+    "error": "Error while subscribing!",
+    "pleaseSelectList": "Please select at least one mailing list!",
+    "pleaseInputEmail": "Please input a valid email!"
   } 
 }
