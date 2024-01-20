@@ -15,6 +15,7 @@ import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { AdminNewsletter } from "./AdminNewsletter/AdminNewsletter";
 import { adminStore } from "../../store/adminStore";
 import { PinInput } from './PinInput/PinInput';
+import { isMobileCheck } from '../../helpers/checkMobileTablet';
 
 import './Admin.less';
 
@@ -24,7 +25,7 @@ export const Admin = observer(() => {
         adminStore.setSelectedPage(e);
     }
 
-    const isMobile = true;
+    const isMobile = isMobileCheck();
 
     const renderSwitch = (adminPage) => {
         switch (adminPage) {
@@ -62,6 +63,7 @@ export const Admin = observer(() => {
                 {adminStore.hasAdminAccess ?
                     <div className='admin__sectionContainer'>
                         <Segmented
+                            size={isMobile && 'large'}
                             style={{ position: 'relative', zIndex: '10' }}
                             onChange={segmentedChangeHandler}
                             options={
@@ -105,7 +107,6 @@ export const Admin = observer(() => {
                                 ]
                             }
                         />
-                        { }
                         <div className='admin__title'>{renderSwitch(adminStore.selectedPage)}</div>
                     </div>
                     :
