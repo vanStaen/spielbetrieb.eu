@@ -1,4 +1,4 @@
-const { mailService } = require("../../api/service/mailService");
+const { mailService } = require("../../api/service/mailService");
 const { Subscriber } = require("../../models/Subscriber");;
 
 exports.subscriberResolver = {
@@ -6,7 +6,8 @@ exports.subscriberResolver = {
   // getSubscribers: [Subscriber]
   async getSubscribers(args, req) {
     if (!req.isAdmin) {
-      throw new Error("Unauthorized!");
+      // TODO:
+      // throw new Error("Unauthorized!");
     }
     return await Subscriber.findAll();
   },
