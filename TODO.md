@@ -43,6 +43,10 @@
 - [ ] Tracking/Analytics
 - [ ] Admin page
   - [ ] Newsletter management
+    - [ ] Sort and filter
+      - [ ] per language
+      - [ ] per lists
+    - [ ] Select and export as a email list
   - [ ] Add/Manage events
   - [ ] Add/Manage products
   - [ ] Add 'aktuell' articles
