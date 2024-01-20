@@ -5,12 +5,15 @@ const cookies = new Cookies();
 
 export class AdminStore {
     hasAdminAccess = cookies.get('hasAdminAccess');
+    selectedPage = cookies.get('selectedPage') || 'newsletter';
 
     constructor() {
         makeObservable(this, {
             hasAdminAccess: observable,
             setHasAdminAccess: action,
             pinLogin: action,
+            selectedPage: observable,
+            setSelectedPage: action,
         });
     }
 
@@ -24,6 +27,11 @@ export class AdminStore {
             this.setHasAdminAccess(true);
         }
     }
+
+    setSelectedPage = (selectedPage) => {
+        this.selectedPage = selectedPage;
+        cookies.set('selectedPage', selectedPage, { path: '/' });
+    };
 }
 
 export const adminStore = new AdminStore();

@@ -7,8 +7,8 @@ export const CustomSpinner = (props) => {
   const size = !props.size
     ? "customSpinner__sizeMedium"
     : props.size === "large"
-    ? "customSpinner__sizeLarge"
-    : "customSpinner__sizeSmall";
+      ? "customSpinner__sizeLarge"
+      : "customSpinner__sizeSmall";
   return (
     <>
       <img
