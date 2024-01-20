@@ -19,20 +19,15 @@ export const AdminNewsletter = () => {
 
     const columns = [
         {
-            title: 'Username',
-            dataIndex: 'username',
-            key: 'username',
+            title: 'Email',
+            dataIndex: 'email',
+            key: 'email',
         },
         {
             title: 'Language',
             dataIndex: 'language',
             key: 'language',
             render: (_, { language }) => language.toUpperCase(),
-        },
-        {
-            title: 'Email',
-            dataIndex: 'email',
-            key: 'email',
         },
         {
             title: 'Verified',
@@ -48,7 +43,7 @@ export const AdminNewsletter = () => {
                 <>
                     {lists.map((list) => {
                         return (
-                            <Tag color='red' key={list}>
+                            <Tag key={list} bordered={false}>
                                 {list.toUpperCase()}
                             </Tag>
                         );
@@ -64,7 +59,7 @@ export const AdminNewsletter = () => {
                 <>
                     {interests.map((interest) => {
                         return (
-                            <Tag color={'green'} key={interest}>
+                            <Tag key={interest} bordered={false}>
                                 {interest.toUpperCase()}
                             </Tag>
                         );
@@ -84,7 +79,7 @@ export const AdminNewsletter = () => {
                 className='admin__table'
                 dataSource={subscribers}
                 columns={columns}
-                scroll={true}
+                pagination={false}
             />
         }
     </div >
