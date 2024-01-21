@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Tag } from "antd";
 
-import { getSubscribers } from '../getSubscribers';
+import { getSubscribers } from './getSubscribers';
 import { CustomSpinner } from '../../../components/CustomSpinner/CustomSpinnner';
 
 export const AdminNewsletter = () => {
@@ -10,7 +10,6 @@ export const AdminNewsletter = () => {
     const fetchNewsletterSubscriber = async () => {
         const results = await getSubscribers();
         setSubscribers(results);
-        console.log(results)
     }
 
     useEffect(() => {
