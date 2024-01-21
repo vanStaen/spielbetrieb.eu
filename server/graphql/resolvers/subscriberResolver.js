@@ -6,8 +6,7 @@ exports.subscriberResolver = {
   // getSubscribers: [Subscriber]
   async getSubscribers(args, req) {
     if (!req.isAdmin) {
-      // TODO:
-      // throw new Error("Unauthorized!");
+      throw new Error("Unauthorized!");
     }
     return await Subscriber.findAll();
   },

@@ -24,52 +24,6 @@
     "emailDoesNotExist": "This email does not exist!",
     "sendResetPasswordEmail": "Send password reset email"
   },
-  "welcome" : {
-    "about" : "Initially created in 2011, Schwerelos is a collective of young city dwellers who are dedicated to getting involved in Berlin nightlife. Relaunched after the pandemic, our mission and values stays the same: share our Love for Techno music through club events, public open airs and various individual projects.",
-    "upcomingEvent" : "Upcoming events",
-    "channel": "channel"
-  },
-  "events" : {
-    "upcoming" : "Upcoming",
-    "past": "Past",
-    "ourNext": "our next",
-    "shows": "shows"
-  },
-  "charityRave" : {
-    "subTitle": "All profit of this event will be donated to the ",
-    "writeUsTo": "Write us to",
-    "toGetTikets" : "to get tickets",
-    "oClock": "00",
-    "location": "Secret nature location",
-    "getATicket": "Click here to reserve your ticket",
-    "left": "ticket left",
-    "email": "Email",
-    "name": "Name",
-    "pleaseInputName": "Please input your Name!",
-    "pleaseInputEmail": "Please input your Email!",
-    "reserveTicket": "Reserve a ticket",    
-    "of": "of",    
-    "ticketReservationSuccess": "Your ticket was sucessfully reserved! You will soon get an email from us.",
-    "ticketAlreadyReserved": "You already reserved a Ticket. Use another email to reserve a new ticket",
-    "15": "15",
-    "notMandatory": "reservation does not oblige to purchase"
-  },
-  "artist" : {
-    "is": "is",
-    "randomSpin" : "Random spin | take a chance"
-  },
-  "menu" : {
-    "about": "About"
-  },
-  "merch" : {
-    "merch": "merch",
-    "comeGetSome": "come get some"
-  },
-  "admin": {
-    "ticketReservation" : "Ticket Reservation",
-    "logout": "Logout",
-    "goBack": "Back to the main page"
-  },
   "404": {
     "endOfInternet" : "You reach the end of the internet!"
   },
@@ -79,7 +33,8 @@
     "commingsoon": "comming soon",
     "dark": "Dark",
     "light": "Light",
-    "backTomainScreen": "Back to main screen"
+    "backTomainScreen": "Back to main screen",
+    "logout": "Logout"
   },
   "legal": {
     "cookiesTitle" : "This website uses cookies.",

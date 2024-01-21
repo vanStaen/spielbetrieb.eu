@@ -15,9 +15,11 @@ import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { AdminNewsletter } from "./AdminNewsletter/AdminNewsletter";
 import { adminStore } from "../../store/adminStore";
 import { PinInput } from './PinInput/PinInput';
+import { LoginForm } from '../../components/LoginForm/LoginForm';
 import { isMobileCheck } from '../../helpers/checkMobileTablet';
 
 import './Admin.less';
+import { authStore } from '../../store/authStore/authStore';
 
 export const Admin = observer(() => {
 
@@ -60,7 +62,7 @@ export const Admin = observer(() => {
                     </Tooltip>
                 </Link>
 
-                {adminStore.hasAdminAccess ?
+                {authStore.hasAccess ?
                     <div className='admin__sectionContainer'>
                         <Segmented
                             size={isMobile && 'large'}
@@ -111,10 +113,7 @@ export const Admin = observer(() => {
                     </div>
                     :
                     <div className='admin__centered'>
-                        <div className='admin__title'>
-                            Admin page
-                        </div>
-                        <PinInput login={adminStore.pinLogin} />
+                        <LoginForm />
                     </div>
                 }
             </div>
