@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { Tooltip } from "antd";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
   MailOutlined,
   LinkOutlined,
   DoubleLeftOutlined,
+  LockOutlined,
 } from "@ant-design/icons";
 
 import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
@@ -43,6 +45,13 @@ export const LandingPage = () => {
     <>
       <LanguageDropDown />
       <DarkModeDropDown />
+
+      <div className="landingPage__adminLink">
+        <Link to="./admin" relative="path">
+          <LockOutlined className="landingPage__adminLinkIcon invertColorTheme" />
+        </Link>
+      </div>
+
       <div className="background invertColorTheme" id="background"></div>
       <div className="landingPage__doublearrow invertColorTheme" id="arrow">
         <DoubleLeftOutlined
