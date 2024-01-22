@@ -1,12 +1,12 @@
-export function getYesterdayDate(toYear, toMonth, toDay) {
-    const today = new Date(toYear, toMonth - 1, toDay, 0, 0, 0, 0);
-    const tomorrow = new Date(today.valueOf() - 1000 * 60 * 60 * 24);
+export function getYesterdayDate (toYear, toMonth, toDay) {
+  const today = new Date(toYear, toMonth - 1, toDay, 0, 0, 0, 0)
+  const tomorrow = new Date(today.valueOf() - 1000 * 60 * 60 * 24)
 
-    const yesterYear = tomorrow.getFullYear();
-    const yesterMonth = tomorrow.getMonth() + 1;
-    const yesterDay = tomorrow.getDate();
+  const yesterYear = tomorrow.getFullYear()
+  const yesterMonth = tomorrow.getMonth() + 1
+  const yesterDay = tomorrow.getDate()
 
-    return [yesterYear, yesterMonth, yesterDay];
+  return [yesterYear, yesterMonth, yesterDay]
 }
 
 /*

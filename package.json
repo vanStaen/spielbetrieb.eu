@@ -14,18 +14,14 @@
     "prebuild": "rm -rf ./build",
     "build": "webpack --config webpack.config.prod.js --mode production",
     "predeploy": "npm run build",
-    "deploy": "npm i; heroku git:remote -a spielbetrieb; git push heroku master; npm run backup;",
+    "deploy": "npm i; heroku git:remote -a spielbetrieb; git push heroku master;",
     "postdeploy": "rm -rf ./build",
     "log": "heroku logs --tail",
     "version": "heroku --version; git --version",
     "kill": "killall -9 node",
     "backup": "cd server/lib/; node createDatabaseBackUpFile.js; npm run pushbackup; cd ../../",
-    "pushbackup": "cd ../database-backups; git pull; git add -A; git commit -m 'Spielbetrieb - database backup files'; git push; cd ../spielbetrieb.eus"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
+    "pushbackup": "cd ../database-backups; git pull; git add -A; git commit -m 'Spielbetrieb - database backup files'; git push; cd ../spielbetrieb.eus",
+    "lint": "eslint src/**/*.js src/**/*.jsx"
   },
   "dependencies": {
     "@babel/core": "^7.22.5",
@@ -66,7 +62,12 @@
     "copy-webpack-plugin": "^11.0.0",
     "core-js": "^3.31.0",
     "css-loader": "^6.8.1",
-    "eslint": "^8.42.0",
+    "eslint": "^8.56.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.33.2",
     "forever": "^4.0.3",
     "html-webpack-plugin": "^5.5.3",
     "less": "^4.1.3",
