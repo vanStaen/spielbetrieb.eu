@@ -61,10 +61,10 @@ const App = observer(() => {
               element={<SubscriberVerify />}
             />
             <Route
-              path="/SubscriberVerify/:token"
+              path="emailverify/:token"
               element={<EmailVerified />}
             />
-            <Route path="/recoverpwd/:token" element={<NewPassword />} />
+            <Route path="recoverpwd/:token" element={<NewPassword />} />
             <Route path="admin/" element={<Admin />} />
             <Route path="/" element={<LandingPage />} />
             <Route path="*" element={<>404</>} />

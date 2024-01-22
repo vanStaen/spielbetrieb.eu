@@ -82,7 +82,7 @@ exports.mailService = {
       process.env.AUTH_SECRET_KEY_RECOVERY,
       { expiresIn: "10m" }
     );
-    const body = `Hello beautiful,<br/>
+    const body = `Hello,<br/><br/>
                   <br/>A recover-link has been requested for this email address.
                   By following this link you'll be able to generate a new password for your account.<br/>
                   <b>If you did not request this, ignore this email</b> and nothing else will happen.<br/>
@@ -129,7 +129,7 @@ exports.mailService = {
       process.env.AUTH_SECRET_KEY_EMAILVERIFY,
       { expiresIn: "24h" }
     );
-    const body = `Hello georgeous,<br/><br/>
+    const body = `Hello,<br/><br/>
                   Thank you for joining us, and welcome to your next aventure.
                   Protecting our community is the upmost important: By following the link 
                   underneath you will help us verify the email now linked to your account. 
@@ -138,7 +138,7 @@ exports.mailService = {
                   Feel free anytime to respond to this mail in order to contact us.<br/>
                   <br/>
                   This link will only be active for 24 hours. <br/>
-                  https://${mainDomain}/subscriberverify/${emailVerifyToken}<br/>
+                  https://${mainDomain}/emailverify/${emailVerifyToken}<br/>
                   <br/>
                   Spielbetrieb<br/>
                   <i>Love to love</i>
