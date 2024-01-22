@@ -59,11 +59,6 @@
   display: none;
 }
 
-.login__verifyEmailLink {
-  padding-top: 15px;
-  color: rgba(0, 0, 0, .75);
-}
-
 @media (max-width: 800px) {
   .login__full .login__header {
     font-size: 14px;

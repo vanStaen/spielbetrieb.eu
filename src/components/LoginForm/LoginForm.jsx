@@ -50,47 +50,20 @@ export const LoginForm = () => {
       }
       if (error) {
         if (error === "Error: Email is not verified!") {
-          const errorMessage = (
-            <>
-              <strong>{t("login.emailNotVerifyYet")}!</strong>{" "}
-              {t("login.checkPostBoxForVerificationLink")}.
-              <div
-                className="login__verifyEmailLink"
-                onClick={() => {
-                  postVerifyEmailLink(isEmail.current);
-                  notification.success({
-                    duration: 0,
-                    message: t("login.recoverEmailSent"),
-                    placement: "bottomRight",
-                    className: "customNotification",
-                  });
-                }}
-              >
-                <LinkOutlined /> {t("login.clickToGetNewVerificationLink")}
-                <span className="link"> {t("login.verifyYourEmail")}</span>.
-              </div>
-            </>
-          );
-          notification.error({
+          notification.open({
             duration: 0,
-            message: errorMessage,
+            message: <ErrorTitleNotVerified />,
+            description: <ErrorDescNotVerified />,
             placement: "bottomRight",
             className: "customNotification",
           });
         } else if (error === "Error: Password is incorrect!") {
-          const errorMessage = (
-            <>
-              <strong>{t("login.passwordIsIncorrect")}!</strong> <br />
-              {t("login.pleaseCheckPasswordOrUse")}
-              <span className="link" onClick={() => setIsRecovery(!isRecovery)}>
-                {" "}
-                {t("login.recoverPassword")}{" "}
-              </span>{" "}
-              {t("login.feature")}.
-            </>
-          );
-          notification.error({
-            message: errorMessage,
+          notification.open({
+            duration: 0,
+            message: <ErrorTitlePwdIncorrect />,
+            description: (
+              <ErrorDescPwdIncorrect setIsRecovery={setIsRecovery} />
+            ),
             placement: "bottomRight",
             className: "customNotification",
           });
@@ -192,6 +165,55 @@ export const LoginForm = () => {
           </div>
         </Form.Item>
       </Form>
+    </div>
+  );
+};
+
+const ErrorTitleNotVerified = () => {
+  const { t } = useTranslation();
+  return <>❌ {t("login.emailNotVerifyYet")}!</>;
+};
+
+const ErrorDescNotVerified = () => {
+  const { t } = useTranslation();
+  return (
+    <div
+      className="justify"
+      onClick={() => {
+        postVerifyEmailLink(isEmail.current);
+        notification.success({
+          duration: 0,
+          message: t("login.recoverEmailSent"),
+          placement: "bottomRight",
+          className: "customNotification",
+        });
+      }}
+    >
+      {t("login.checkPostBoxForVerificationLink")}
+      {": "}
+      <span className="link">
+        <LinkOutlined /> {t("login.clickToGetNewVerificationLink")}{" "}
+        {t("login.verifyYourEmail")}
+      </span>
+      .
+    </div>
+  );
+};
+
+const ErrorTitlePwdIncorrect = () => {
+  const { t } = useTranslation();
+  return <>❌ {t("login.passwordIsIncorrect")}!</>;
+};
+
+const ErrorDescPwdIncorrect = (props) => {
+  const { t } = useTranslation();
+  return (
+    <div className="justify">
+      {t("login.pleaseCheckPasswordOrUse")}{" "}
+      <span className="link" onClick={() => props.setIsRecovery(true)}>
+        {t("login.recoverPassword")}
+      </span>{" "}
+      {t("login.feature")}.
     </div>
   );
 };

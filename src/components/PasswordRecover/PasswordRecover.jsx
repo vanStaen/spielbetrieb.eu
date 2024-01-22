@@ -32,13 +32,15 @@ export const PasswordRecover = (props) => {
         await postSendRecoverLink(email);
         notification.success({
           message: t("login.recoverEmailSent"),
-          placement: "topLeft",
+          placement: "bottomRight",
+          className: "customNotification",
         });
         props.setIsRecovery(false);
       } catch (error) {
         notification.warn({
           message: error.message,
-          placement: "topLeft",
+          placement: "bottomRight",
+          className: "customNotification",
         });
       }
     }
