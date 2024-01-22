@@ -7,6 +7,8 @@ import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { pageStore } from "./store/pageStore";
 import { AcceptCookies } from "./components/AcceptCookies/AcceptCookies";
 import { LanguageDropDown } from "./components/LanguageDropDown/LanguageDropDown";
+import { NewPassword } from "./pages/NewPassword/NewPassword";
+import { EmailVerified } from "./pages/EmailVerified/EmailVerified";
 import { SubscriberEmailVerify } from "./pages/SubscriberEmailVerify/SubscriberEmailVerify";
 import { Admin } from "./pages/Admin/Admin";
 
@@ -58,6 +60,8 @@ const App = observer(() => {
               path="subscriberverify/:token"
               element={<SubscriberEmailVerify />}
             />
+            <Route path="/emailverify/:token" element={<EmailVerified />} />
+            <Route path="/recoverpwd/:token" element={<NewPassword />} />
             <Route path="admin/" element={<Admin />} />
             <Route path="/" element={<LandingPage />} />
             {/* default redirect to LandingPage */}
