@@ -28,8 +28,8 @@
 
 .login__full .ant-btn-primary:hover, 
 .login__full .ant-btn-primary:focus {
-  background:  rgba(192, 57, 43, .75);
-  border-color: rgba(192, 57, 43, .8);
+  background:  rgba(192, 57, 43, .75) !important;
+  border-color: rgba(192, 57, 43, .8) !important;
 }
 
 .login__full .ant-checkbox-checked .ant-checkbox-inner {

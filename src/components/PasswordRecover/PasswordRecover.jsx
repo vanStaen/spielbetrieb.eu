@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Input, Button, notification } from "antd";
 import { MailOutlined, ArrowLeftOutlined } from "@ant-design/icons";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 import { postEmailExist } from "./postEmailExist";
 import { postSendRecoverLink } from "./postSendRecoverLink";
@@ -21,12 +21,17 @@ export const PasswordRecover = (props) => {
     const emailExist = await postEmailExist(email);
     if (emailExist === false) {
       setEmailDoNotExist("error");
+      notification.error({
+        message: t("login.emailDoesNotExist"),
+        placement: "bottomRight",
+        className: "customNotification",
+      });
     } else {
       setEmailDoNotExist("success");
       try {
         await postSendRecoverLink(email);
         notification.success({
-          message: t('login.recoverEmailSent'),
+          message: t("login.recoverEmailSent"),
           placement: "topLeft",
         });
         props.setIsRecovery(false);
@@ -41,7 +46,7 @@ export const PasswordRecover = (props) => {
 
   return (
     <div className="recover__full">
-      <div className="recover__header">{t('login.recoverYourPassword')}</div>
+      <div className="recover__header">{t("login.recoverYourPassword")}</div>
 
       <Form
         name="form_recover"
@@ -58,7 +63,7 @@ export const PasswordRecover = (props) => {
             {
               type: "email",
               required: true,
-              message: t('login.pleaseInputEmail'),
+              message: t("login.pleaseInputEmail"),
             },
           ]}
         >
@@ -76,8 +81,8 @@ export const PasswordRecover = (props) => {
             disabled={emailDoNotExist === "error" ? true : false}
           >
             {emailDoNotExist === "error"
-              ? t('login.emailDoesNotExist')
-              : t('login.sendPasswortResetEmail')}
+              ? t("login.emailDoesNotExist")
+              : t("login.sendPasswortResetEmail")}
           </Button>
 
           <div
@@ -87,7 +92,7 @@ export const PasswordRecover = (props) => {
             }}
           >
             <ArrowLeftOutlined />{" "}
-            <span className="link">{t('login.iRememberNow')}</span>
+            <span className="link">{t("login.iRememberNow")}</span>
           </div>
         </Form.Item>
       </Form>

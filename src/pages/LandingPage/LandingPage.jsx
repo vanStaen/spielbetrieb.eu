@@ -12,7 +12,6 @@ import {
 import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { Phone } from "../../components/Phone/Phone";
 import { NewsletterForm } from "../../components/NewsletterForm/NewsletterForm";
-import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
 import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 
 import "./LandingPage.less";
@@ -43,9 +42,7 @@ export const LandingPage = () => {
 
   return (
     <>
-      <LanguageDropDown />
       <DarkModeDropDown />
-
       <div className="landingPage__adminLink">
         <Link to="./admin" relative="path">
           <LockOutlined className="landingPage__adminLinkIcon invertColorTheme" />
