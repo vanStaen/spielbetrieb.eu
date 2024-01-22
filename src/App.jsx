@@ -60,12 +60,18 @@ const App = observer(() => {
               path="subscriberverify/:token"
               element={<SubscriberVerify />}
             />
-            <Route path="/emailverify/:token" element={<EmailVerified />} />
+            <Route
+              path="/SubscriberVerify/:token"
+              element={<EmailVerified />}
+            />
             <Route path="/recoverpwd/:token" element={<NewPassword />} />
             <Route path="admin/" element={<Admin />} />
             <Route path="/" element={<LandingPage />} />
             {/* default redirect to LandingPage */}
-            <Route path="*" element={<Navigate to="/" />} />
+            {/* 
+              <Route path="*" element={<Navigate to="/" />} /> 
+            */}
+            <Route path="*" element={<>404</>} />
           </Routes>
         </div>
       </div>
