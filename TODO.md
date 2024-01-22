@@ -52,8 +52,11 @@
   - [ ] Add 'aktuell' articles
 - [ ] Shop
 - [ ] Dark Magazin
+- [ ] Create 404
 
-## Refactoring:
+## Tech debt:
 
-- [ ] Create deploymenet pipeline with test env
+- [ ] Create deployment pipeline with test env
 - [ ] Get rid of Axios, and use fetch();
+- [ ] BackEnd : Migrate AWS SDK for JavaScript (v3) 
+- [ ] FrontEnd : Update all packages
