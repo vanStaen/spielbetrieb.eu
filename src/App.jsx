@@ -9,7 +9,7 @@ import { AcceptCookies } from "./components/AcceptCookies/AcceptCookies";
 import { LanguageDropDown } from "./components/LanguageDropDown/LanguageDropDown";
 import { NewPassword } from "./pages/NewPassword/NewPassword";
 import { EmailVerified } from "./pages/EmailVerified/EmailVerified";
-import { SubscriberEmailVerify } from "./pages/SubscriberEmailVerify/SubscriberEmailVerify";
+import { SubscriberVerify } from "./pages/SubscriberVerify/SubscriberVerify";
 import { Admin } from "./pages/Admin/Admin";
 
 import "./lib/i18n";
@@ -58,7 +58,7 @@ const App = observer(() => {
           <Routes>
             <Route
               path="subscriberverify/:token"
-              element={<SubscriberEmailVerify />}
+              element={<SubscriberVerify />}
             />
             <Route path="/emailverify/:token" element={<EmailVerified />} />
             <Route path="/recoverpwd/:token" element={<NewPassword />} />
