@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next'
 import { LandingPage } from './pages/LandingPage/LandingPage'
 import { pageStore } from './store/pageStore'
 import { AcceptCookies } from './components/AcceptCookies/AcceptCookies'
-import { LanguageDropDown } from './components/LanguageDropDown/LanguageDropDown'
 import { NewPassword } from './pages/NewPassword/NewPassword'
 import { EmailVerified } from './pages/EmailVerified/EmailVerified'
 import { SubscriberVerify } from './pages/SubscriberVerify/SubscriberVerify'
@@ -53,7 +52,6 @@ const App = observer(() => {
     <BrowserRouter>
       <div className="App" id="app">
         <AcceptCookies />
-        <LanguageDropDown />
         <div className="main">
           <Routes>
             <Route
