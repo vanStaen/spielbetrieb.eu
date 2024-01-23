@@ -9,7 +9,7 @@ export const AdminNewsletter = () => {
 
   const fetchNewsletterSubscriber = async () => {
     const results = await getSubscribers()
-    setSubscribers(results)
+    //setSubscribers(results)
   }
 
   useEffect(() => {
