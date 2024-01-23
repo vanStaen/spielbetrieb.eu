@@ -9,6 +9,7 @@ export const AdminNewsletter = () => {
 
   const fetchNewsletterSubscriber = async () => {
     const results = await getSubscribers()
+    console.log('results', results)
     setSubscribers(results)
   }
 
