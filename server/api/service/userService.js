@@ -1,87 +1,88 @@
-const { User } = require("../../models/User");
-const jsonwebtoken = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const { User } = require('../../models/User')
+const jsonwebtoken = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
 
 exports.userService = {
-  async taken(username) {
-    foundUser = await User.findOne({
-      where: { userName: username },
-    });
+  async taken (username) {
+    const foundUser = await User.findOne({
+      where: { userName: username }
+    })
     if (!foundUser) {
-      return false;
+      return false
     } else {
-      return true;
+      return true
     }
   },
 
-  async email(email) {
-    foundUser = await User.findOne({
-      where: { email: email },
-    });
+  async email (email) {
+    const foundUser = await User.findOne({
+      where: { email }
+    })
     if (!foundUser) {
-      return false;
+      return false
     } else {
-      return true;
+      return true
     }
   },
 
-  async validtoken(token) {
+  async validtoken (token) {
     try {
-      decodedToken = jsonwebtoken.verify(
+      jsonwebtoken.verify(
         token,
         process.env.AUTH_SECRET_KEY_RECOVERY
-      );
+      )
     } catch (err) {
-      return false;
+      return false
     }
-    return true;
+    return true
   },
 
-  async changepassword(token, password) {
+  async changepassword (token, password) {
     try {
-      decodedToken = jsonwebtoken.verify(
+      const decodedToken = jsonwebtoken.verify(
         token,
         process.env.AUTH_SECRET_KEY_RECOVERY
-      );
-      const email = decodedToken.email;
-      const hashedPassword = await bcrypt.hash(password, 12);
+      )
+      const email = decodedToken.email
+      const hashedPassword = await bcrypt.hash(password, 12)
       await User.update(
         { password: hashedPassword },
         {
           where: {
-            email: email,
+            email
           },
           returning: true,
-          plain: true,
+          plain: true
         }
-      );
-      return true;
+      )
+      return true
     } catch (err) {
-      return false;
+      return false
     }
   },
 
-  async emailverified(token) {
+  async emailverified (token) {
     try {
-      decodedToken = jsonwebtoken.verify(
+      const decodedToken = jsonwebtoken.verify(
         token,
         process.env.AUTH_SECRET_KEY_EMAILVERIFY
-      );
-      const email = decodedToken.email;
+      )
+      const email = decodedToken.email
       await User.update(
         { verifiedEmail: true },
         {
           where: {
-            email: email,
+            email
           },
           returning: true,
-          plain: true,
+          plain: true
         }
-      );
-      return true;
+      )
+      return true
     } catch (err) {
-      return false;
+      console.log('emailverified err', err)
+      return false
     }
-  },
+  }
 
-};
+}

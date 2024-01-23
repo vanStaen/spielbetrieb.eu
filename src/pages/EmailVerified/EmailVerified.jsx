@@ -14,7 +14,7 @@ import './EmailVerified.less'
 
 export const EmailVerified = () => {
   const [isLoading, setIsLoading] = useState(true)
-  const [isVerified, setIsVerified] = useState(true)
+  const [isVerified, setIsVerified] = useState(false)
   const { t } = useTranslation()
   const params = useParams()
 
