@@ -19,7 +19,7 @@ export const EmailVerified = () => {
   const params = useParams()
 
   const emailIsVerified = useCallback(async () => {
-    const success = await postEmailVerified(params.verifyCode)
+    const success = await postEmailVerified(params.token)
     if (success) {
       setIsVerified(true)
       setTimeout(() => {

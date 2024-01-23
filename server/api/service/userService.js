@@ -80,7 +80,6 @@ exports.userService = {
       )
       return true
     } catch (err) {
-      console.log('emailverified err', err)
       return false
     }
   }

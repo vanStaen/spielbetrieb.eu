@@ -81,7 +81,6 @@ router.post('/changepassword', async (req, res) => {
 router.post('/emailverified', async (req, res) => {
   try {
     const token = req.body.token
-    console.log('emailverified token', token)
     const emailIsVerified = await userService.emailverified(token)
     if (emailIsVerified) {
       res.status(200).json({
