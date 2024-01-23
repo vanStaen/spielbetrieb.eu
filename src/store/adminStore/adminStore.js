@@ -1,12 +1,12 @@
 import { action, makeObservable, observable } from 'mobx'
 import Cookies from 'universal-cookie'
 
-import { getHasAdminAccess } from "./getHasAdminAccess";
+import { getHasAdminAccess } from './getHasAdminAccess'
 
 const cookies = new Cookies()
 
 export class AdminStore {
-  hasAdminAccess = false;
+  hasAdminAccess = false
   selectedPage = cookies.get('selectedPage') || 'newsletter'
 
   constructor () {
@@ -20,13 +20,13 @@ export class AdminStore {
   }
 
   setHasAdminAccess = (hasAdminAccess) => {
-    this.hasAdminAccess = hasAdminAccess;
+    this.hasAdminAccess = hasAdminAccess
   }
 
   checkAdminAccess = async () => {
-    const hasAdminAccess = await getHasAdminAccess();   
-    this.setHasAdminAccess(hasAdminAccess);
-   }
+    const hasAdminAccess = await getHasAdminAccess()
+    this.setHasAdminAccess(hasAdminAccess)
+  }
 
   pinLogin = (pin) => {
     if (pin === '555666') {
