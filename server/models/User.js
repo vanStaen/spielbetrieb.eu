@@ -1,26 +1,26 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
-const { UsersFriends } = require("./UsersFriends");
-const { UsersFollowers } = require("./UsersFollowers");
+const { sequelize, DataTypes } = require('../lib/sequelizedb')
+const { UsersFriends } = require('./UsersFriends')
+const { UsersFollowers } = require('./UsersFollowers')
 
-const User = sequelize.define("user", {
+const User = sequelize.define('user', {
   _id: {
     type: DataTypes.INTEGER,
-    field: "_id",
+    field: '_id',
     autoIncrement: true,
-    primaryKey: true,
+    primaryKey: true
   },
   firstName: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: false
   },
   lastName: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: false
   },
   userName: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
+    unique: true
   },
   email: {
     type: DataTypes.STRING,
@@ -28,97 +28,100 @@ const User = sequelize.define("user", {
     unique: true,
     validate: {
       isEmail: true
-    },
+    }
   },
   password: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: false
   },
   description: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: true
   },
   avatar: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: true
   },
   emailSettings: {
     type: DataTypes.STRING,
     allowNull: true,
-    defaultValue: null,
+    defaultValue: null
   },
   profilSettings: {
     type: DataTypes.STRING,
     allowNull: true,
-    defaultValue: null,
+    defaultValue: null
   },
   verifiedEmail: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false,
+    defaultValue: false
   },
   verifiedIdentity: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false,
+    defaultValue: false
   },
   gender: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: true
   },
   birthday: {
     type: DataTypes.DATE,
-    allowNull: true,
+    allowNull: true
   },
   orientation: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: true
   },
   wishes: {
     type: DataTypes.ARRAY(DataTypes.STRING),
-    defaultValue: [],
+    defaultValue: []
   },
   interests: {
     type: DataTypes.ARRAY(DataTypes.STRING),
-    defaultValue: [],
+    defaultValue: []
   },
   archived: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false,
+    defaultValue: false
   },
   usernameChange: {
     type: DataTypes.INTEGER,
-    defaultValue: 0,
+    defaultValue: 0
   },
   lastActive: {
     type: DataTypes.DATE,
-    allowNull: false,
+    allowNull: false
   },
-});
+  isAdmin: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
+  }
+})
 
 User.belongsToMany(User, {
   as: 'friends',
   foreignKey: 'user_id',
   through: UsersFriends
-});
+})
 
 User.belongsToMany(User, {
   as: 'userFriends',
   foreignKey: 'friend_id',
   through: UsersFriends
-});
+})
 
 User.belongsToMany(User, {
   as: 'followers',
   foreignKey: 'follower_id',
   through: UsersFollowers
-});
+})
 
 User.belongsToMany(User, {
   as: 'followed',
   foreignKey: 'followed_id',
   through: UsersFollowers
-});
-
+})
 
 module.exports = {
   User
-};
+}

@@ -24,7 +24,7 @@ exports.authService = {
 
       // Set token in session cookie
       const accessToken = await jsonwebtoken.sign(
-        { userId: foundUser._id },
+        { userId: foundUser._id, isAdmin: foundUser.isAdmin },
         process.env.AUTH_SECRET_KEY,
         { expiresIn: '15m' }
       )
