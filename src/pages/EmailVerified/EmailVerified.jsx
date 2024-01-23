@@ -1,89 +1,106 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { LoadingOutlined } from "@ant-design/icons";
-import { useTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
+/* eslint-disable no-lone-blocks */
+import React, { useEffect, useState, useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useParams, Link } from 'react-router-dom'
+import { Tooltip } from 'antd'
 
-import { postEmailVerified } from "./postEmailVerified";
-import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
+import { postEmailVerified } from './postEmailVerified'
+import { LanguageDropDown } from '../../components/LanguageDropDown/LanguageDropDown'
+import { DarkModeDropDown } from '../../components/DarkModeDropDown/DarkModeDropDown'
+import { CustomSpinner } from '../../components/CustomSpinner/CustomSpinnner'
+import SpielbetriebLogo from '../../img/logos/spielbetriebLogo.png'
 
-import "./EmailVerified.less";
+import './EmailVerified.less'
 
 export const EmailVerified = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isVerified, setIsVerified] = useState(false);
-  const { t } = useTranslation();
-  const params = useParams();
+  const [isLoading, setIsLoading] = useState(true)
+  const [isVerified, setIsVerified] = useState(true)
+  const { t } = useTranslation()
+  const params = useParams()
 
   const emailIsVerified = useCallback(async () => {
-    const success = await postEmailVerified(params.verifyCode);
+    const success = await postEmailVerified(params.verifyCode)
     if (success) {
-      setIsVerified(true);
+      setIsVerified(true)
       setTimeout(() => {
-        document.location.href = "/";
-      }, 10000);
+        document.location.href = '/'
+      }, 5000)
     }
-    setIsLoading(false);
-  }, [params.verifyCode]);
+    setIsLoading(false)
+  }, [params.verifyCode])
 
   useEffect(() => {
-    emailIsVerified();
-  }, [emailIsVerified]);
+    emailIsVerified()
+  }, [emailIsVerified])
 
   return (
-    <div>
-      <div className="emailVerified__leftPanel">
-        <LanguageDropDown />
-      </div>
-      <div className="emailVerified__rightPanel">
-        <div className="emailVerified__container">
-          {isLoading ? (
-            <LoadingOutlined className="emailVerified__loader" />
-          ) : isVerified ? (
-            <div className="emailVerified__text">
-              <strong>{t("login.emailVerified")}</strong> <br />
-              {t("login.welcomeInOurCommunity")}!<br />
-              {t("login.goAheadAndLogin")}.
+    <>
+    <LanguageDropDown />
+    <DarkModeDropDown />
+    <div className="background invertColorTheme" id="background"></div>
+    <div className="verifyEmail__container invertColorTheme">
+      {isLoading
+        ? (
+        <CustomSpinner size="large" text="Validating" />
+          )
+        : (
+        <>
+          <div className="subscriberVerifyEmail__text">
+            {isVerified
+              ? (<div className="verifyEmail__text">
+              <strong>{t('login.emailVerified')}</strong> <br />
+              {t('login.welcomeInOurCommunity')}!<br />
+              {t('login.goAheadAndLogin')}.
               <br />
               <br />
-              <div className="emailVerified__link">
-                {t("login.redirectedToThe")}{" "}
+              <div>
+                {t('login.redirectedToThe')}{' '}
                 <span
                   className="link"
                   onClick={() => {
-                    document.location.href = "/";
+                    document.location.href = '/'
                   }}
                 >
-                  {" "}
-                  {t("login.loginPage")}.
+                  {' '}
+                  {t('login.loginPage')}
                 </span>
                 .
               </div>
-            </div>
-          ) : (
-            <div className="emailVerified__text">
-              <strong>{t("login.emailNotVerified")}!</strong>
+            </div>)
+              : (<div className="verifyEmail__text">
+              <strong>{t('login.emailNotVerified')}!</strong>
               <br />
               <br />
-              {t("login.somethingWrongEmail")}!
+              {t('login.somethingWrongEmail')}!
               <br />
-              <div className="emailVerified__link">
-                {t("login.whatCanYouDo")}
+              <div>
+                {t('login.whatCanYouDo')}
+                  {' '}
                 <span
                   className="link"
                   onClick={() => {
-                    document.location.href = "/";
+                    document.location.href = '/'
                   }}
                 >
-                  {" "}
-                  {t("login.loginPage")}
+                  {t('login.loginPage')}
                 </span>
-                {", "}
-                {t("login.requestNewLink")}.
+                {', '}
+                {t('login.requestNewLink')}.
               </div>
-            </div>
+            </div>)}
+          </div>
+          <Tooltip title={t('general.backTomainScreen')} placement="bottom">
+            <Link to="../../" relative="path">
+              <img
+                src={SpielbetriebLogo}
+                id="spielbetriebLogo"
+                className="verifyEmail__logo"
+              />
+            </Link>
+          </Tooltip>
+        </>
           )}
-        </div>
-      </div>
     </div>
-  );
-};
+    </>
+  )
+}
