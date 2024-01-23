@@ -4,7 +4,6 @@ import { deleteLogout } from "./deleteLogout";
 import { postLogin } from "./postLogin";
 import { getHasAccess } from "./getHasAccess";
 
-
 export class AuthStore {
 
   hasAccess = false;
@@ -46,7 +45,6 @@ export class AuthStore {
 
   checkAccess = async () => {
     const hasAccess = await getHasAccess();   
-    console.log("hasAccess", hasAccess);
     this.hasAccess = hasAccess;
    }
 }
