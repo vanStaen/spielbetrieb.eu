@@ -66,4 +66,24 @@ router.get('/access', async (req, res) => {
   }
 })
 
+// Has admin access?
+router.get('/adminaccess', async (req, res) => {
+  try {
+    const hasAdminAccess = await authService.adminaccess(req)
+    if (hasAdminAccess) {
+      res.status(200).json({
+        adminaccess: hasAdminAccess
+      })
+    } else {
+      res.status(200).json({
+        adminaccess: false
+      })
+    }
+  } catch (err) {
+    res.status(400).json({
+      error: `${err}`
+    })
+  }
+})
+
 module.exports = router

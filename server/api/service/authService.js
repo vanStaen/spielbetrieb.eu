@@ -70,5 +70,14 @@ exports.authService = {
     } else {
       return false
     }
+  },
+
+  async adminaccess (req) {
+    if (req.isAdmin === true) {
+      // Return true if has admin access
+      return true
+    } else {
+      return false
+    }
   }
 }
