@@ -33,7 +33,7 @@ exports.authService = {
       // Set refreshtoken in session cookie
       if (remindMe) {
         const refreshToken = await jsonwebtoken.sign(
-          { userId: foundUser._id },
+          { userId: foundUser._id, isAdmin: foundUser.isAdmin },
           process.env.AUTH_SECRET_KEY_REFRESH,
           { expiresIn: '7d' }
         )
