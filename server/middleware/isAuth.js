@@ -21,9 +21,6 @@ module.exports = async (req, res, next) => {
   const token = req.session.token
   const refreshToken = req.session.refreshToken
 
-  console.log('token', token)
-  console.log('refreshToken', refreshToken)
-
   // Check tokens are valid:
   if (!token || token === 'undefined' || token === '') {
     req.isAuth = false
@@ -51,8 +48,6 @@ module.exports = async (req, res, next) => {
   req.isAuth = true
   req.isAdmin = decodedToken.isAdmin
   req.userId = decodedToken.userId
-
-  console.log('decodedToken', decodedToken)
 
   // Update token in session cookie
   const accessToken = await jsonwebtoken.sign(
