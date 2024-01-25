@@ -21,7 +21,7 @@
     "kill": "killall -9 node",
     "backup": "cd server/lib/; node createDatabaseBackUpFile.js; npm run pushbackup; cd ../../",
     "pushbackup": "cd ../database-backups; git pull; git add -A; git commit -m 'Spielbetrieb - database backup files'; git push; cd ../spielbetrieb.eus",
-    "lint": "eslint src/**/*.js src/**/*.jsx"
+    "lint": "eslint src/**/*.js src/**/*.jsx --fix"
   },
   "dependencies": {
     "@babel/core": "^7.22.5",

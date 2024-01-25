@@ -60,3 +60,4 @@
 - [ ] Get rid of Axios, and use fetch();
 - [ ] BackEnd : Migrate AWS SDK for JavaScript (v3) 
 - [ ] FrontEnd : Update all packages
+- [ ] Check all z-Index
