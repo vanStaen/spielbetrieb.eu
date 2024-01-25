@@ -13,10 +13,11 @@ import {
 
 import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { AdminNewsletter } from "./AdminNewsletter/AdminNewsletter";
-import { userStore } from "../../store/userStore/userStore";
 import { LoginForm } from "../../components/LoginForm/LoginForm";
 import { isMobileCheck } from "../../helpers/checkMobileTablet";
 import { authStore } from "../../store/authStore/authStore";
+import { userStore } from "../../store/userStore/userStore";
+import { adminStore } from "../../store/adminStore/adminStore";
 
 import "./Admin.less";
 
@@ -24,10 +25,6 @@ export const Admin = observer(() => {
   const segmentedChangeHandler = (e) => {
     adminStore.setSelectedPage(e);
   };
-
-  useEffect(() => {
-    userStore.checkAdminAccess();
-  });
 
   const isMobile = isMobileCheck();
 

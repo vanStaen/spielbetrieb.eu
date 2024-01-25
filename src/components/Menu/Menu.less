@@ -1,4 +1,4 @@
-.menu__container {
+.menu__containerAvatar {
    position: absolute;
    right: 0;
    top: 0;
@@ -7,18 +7,66 @@
    margin: 20px 20px; 
    .menu__icon {
       font-size: 22px;
+   }
+   .menu__avatar { 
+      cursor: pointer;
+      position: relative;
       color: rgba(225, 207, 187, .6);
+      background-color: rgba(225, 207, 187, .1);
       &:hover {
+         background: rgba(225, 207, 187, .3);
          color: rgba(225, 207, 187, 1);
       }
    }
-    .menu__avatar { 
-        position: relative;
-        background-color: rgba(225, 207, 187, .1);
-        &:hover {
-           color: rgba(225, 207, 187, .3);
-        }
-    }
+}
+
+.menu__container {
+   position: absolute;
+   right: 20px;
+   top: 70px;
+   z-index: 10; 
+   margin-top: 10px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   width: 150px;
+   height: auto;
+   //background-color: rgba( 0,0,0,.9);
+   border: 1px solid rgba(255,255,255,.2);
+   opacity: 0;
+   transition: opacity .3s;
+   .menu__element {
+      padding: 2px 10px 2px 17px;
+      text-align: left;
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      &:hover {
+         color: black;
+         background-color: rgba( 255, 255, 255,.5);
+         font-weight: 400;
+         text-decoration: none !important;
+      }
+      .menu__link {
+         &:hover {
+            text-decoration: none !important;
+            color: black !important;
+         }
+      }
+   }
+   .menu__elementDisabled {
+      width: 100%;
+      padding: 2px 10px 2px 17px;
+      text-align: left;
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,.25)
+   }
+   .menu__whiteline {
+      width: 130px;
+      border-bottom: 1px solid rgba(255,255,255, .25);
+      margin: 10px 10px;
+  }
 }
 
 .menu__silentBackground { 
@@ -27,7 +75,7 @@
    position: fixed;
    top: 0;
    left: 0px;
-   z-index: 2;
+   z-index: 9;
    background-color: transparent;
    backdrop-filter: blur(0px) grayscale(0%);
    transition: backdrop-filter .3s;

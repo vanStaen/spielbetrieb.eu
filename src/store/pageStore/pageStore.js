@@ -7,7 +7,7 @@ export class PageStore {
   selectedTheme = cookies.get('selectedTheme')
   selectedLanguage = cookies.get('selectedLanguage') || 'en'
   allowCookie = cookies.get('allowCookie')
-  showMenu = true
+  showMenu = false
 
   constructor () {
     makeObservable(this, {

@@ -4,7 +4,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { LandingPage } from "./pages/LandingPage/LandingPage";
+import { authStore } from "./store/authStore/authStore";
 import { pageStore } from "./store/pageStore/pageStore";
+import { userStore } from "./store/userStore/userStore";
 import { AcceptCookies } from "./components/AcceptCookies/AcceptCookies";
 import { NewPassword } from "./pages/NewPassword/NewPassword";
 import { EmailVerified } from "./pages/EmailVerified/EmailVerified";
@@ -13,7 +15,6 @@ import { Admin } from "./pages/Admin/Admin";
 
 import "./lib/i18n";
 import "./App.less";
-import { authStore } from "./store/authStore/authStore";
 
 const defineVariableHeight = () => {
   const vh = window.innerHeight * 0.01;
@@ -32,6 +33,7 @@ const App = observer(() => {
 
   useEffect(() => {
     authStore.checkAccess();
+    userStore.checkAdminAccess();
   });
 
   useEffect(() => {
