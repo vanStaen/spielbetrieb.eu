@@ -17,5 +17,10 @@
     "rules": {
         "react/prop-types": "off",
         "semi": [2, "always"]
-      }
+      },
+      "settings": {
+        "react": {
+          "version": "detect"
+        }
+    }
 }
