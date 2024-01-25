@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { notification, Button } from "antd";
 import { observer } from "mobx-react";
 
-import { pageStore } from "../../store/pageStore";
+import { pageStore } from "../../store/pageStore/pageStore";
 
 import "./AcceptCookies.less";
 

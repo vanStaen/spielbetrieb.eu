@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import { Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import { pageStore } from "../../store/pageStore";
+import { pageStore } from "../../store/pageStore/pageStore";
 
 import "./LanguageDropDown.less";
 

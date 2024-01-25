@@ -14,7 +14,7 @@ import {
 import { NotificationOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react";
 
-import { pageStore } from "../../store/pageStore";
+import { pageStore } from "../../store/pageStore/pageStore";
 
 import "./NewsletterForm.less";
 import { addSubscriber } from "./addSubscriber";
@@ -116,7 +116,7 @@ export const NewsletterForm = observer(() => {
               {
                 type: "email",
                 required: true,
-                message: t('newsletter.pleaseInputEmail'),
+                message: t("newsletter.pleaseInputEmail"),
               },
             ]}
           >
@@ -128,7 +128,7 @@ export const NewsletterForm = observer(() => {
             rules={[
               {
                 required: true,
-                message: t('newsletter.pleaseSelectList'),
+                message: t("newsletter.pleaseSelectList"),
               },
             ]}
           >

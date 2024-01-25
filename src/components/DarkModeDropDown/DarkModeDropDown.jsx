@@ -4,7 +4,7 @@ import { Menu, Dropdown } from "antd";
 import { useTranslation } from "react-i18next";
 import { DownOutlined } from "@ant-design/icons";
 
-import { pageStore } from "../../store/pageStore";
+import { pageStore } from "../../store/pageStore/pageStore";
 
 import "./DarkModeDropDown.less";
 
@@ -34,28 +34,31 @@ export const DarkModeDropDown = observer(() => {
     for (var i = 0, il = selectedClasses.length; i < il; i++) {
       selectedClasses[i].style.filter = `invert(${theme})`;
     }
-
   }, [theme]);
 
   const handleThemeChange = (value) => {
-    console.log('theme', value);
+    console.log("theme", value);
     pageStore.setSelectedTheme(value);
     setTheme(value);
-  }
+  };
 
   const menu = (
     <Menu>
       <Menu.Item
-        key='dark'
-        onClick={() => { handleThemeChange(0) }}
+        key="dark"
+        onClick={() => {
+          handleThemeChange(0);
+        }}
       >
-        <div className="darkmodeDropdown__item">{t('general.dark')}</div>
+        <div className="darkmodeDropdown__item">{t("general.dark")}</div>
       </Menu.Item>
       <Menu.Item
-        key='light'
-        onClick={() => { handleThemeChange(1) }}
+        key="light"
+        onClick={() => {
+          handleThemeChange(1);
+        }}
       >
-        <div className="darkmodeDropdown__item">{t('general.light')}</div>
+        <div className="darkmodeDropdown__item">{t("general.light")}</div>
       </Menu.Item>
     </Menu>
   );
@@ -69,7 +72,7 @@ export const DarkModeDropDown = observer(() => {
             e.preventDefault();
           }}
         >
-          {theme == 0 ? t('general.dark') : t('general.light')}
+          {theme == 0 ? t("general.dark") : t("general.light")}
           <DownOutlined />
         </a>
       </Dropdown>

@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { LandingPage } from "./pages/LandingPage/LandingPage";
-import { pageStore } from "./store/pageStore";
+import { pageStore } from "./store/pageStore/pageStore";
 import { AcceptCookies } from "./components/AcceptCookies/AcceptCookies";
 import { NewPassword } from "./pages/NewPassword/NewPassword";
 import { EmailVerified } from "./pages/EmailVerified/EmailVerified";
