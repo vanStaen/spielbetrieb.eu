@@ -7,6 +7,7 @@ export class PageStore {
   selectedTheme = cookies.get('selectedTheme')
   selectedLanguage = cookies.get('selectedLanguage') || 'en'
   allowCookie = cookies.get('allowCookie')
+  showMenu = true
 
   constructor () {
     makeObservable(this, {
@@ -15,7 +16,9 @@ export class PageStore {
       selectedLanguage: observable,
       setSelectedLanguage: action,
       allowCookie: observable,
-      setAllowCookie: action
+      setAllowCookie: action,
+      showMenu: observable,
+      setShowMenu: action
     })
   }
 
@@ -38,6 +41,10 @@ export class PageStore {
     if (allowCookie) {
       cookies.set('allowCookie', true, { path: '/' })
     }
+  }
+
+  setShowMenu = (showMenu) => {
+    this.showMenu = showMenu
   }
 }
 
