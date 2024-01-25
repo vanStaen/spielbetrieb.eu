@@ -6,17 +6,23 @@ import { getHasAdminAccess } from './getHasAdminAccess'
 const cookies = new Cookies()
 
 export class AdminStore {
+  isLoading = false
   hasAdminAccess = false
   selectedPage = cookies.get('selectedPage') || 'newsletter'
 
   constructor () {
     makeObservable(this, {
+      isLoading: observable,
+      setIsLoading: action,
       hasAdminAccess: observable,
       setHasAdminAccess: action,
-      pinLogin: action,
       selectedPage: observable,
       setSelectedPage: action
     })
+  }
+
+  setIsLoading = (isLoading) => {
+    this.isLoading = isLoading
   }
 
   setHasAdminAccess = (hasAdminAccess) => {
@@ -24,14 +30,10 @@ export class AdminStore {
   }
 
   checkAdminAccess = async () => {
+    this.setIsLoading(true)
     const hasAdminAccess = await getHasAdminAccess()
     this.setHasAdminAccess(hasAdminAccess)
-  }
-
-  pinLogin = (pin) => {
-    if (pin === '555666') {
-      this.setHasAdminAccess(true)
-    }
+    this.setIsLoading(false)
   }
 
   setSelectedPage = (selectedPage) => {

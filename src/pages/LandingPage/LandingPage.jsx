@@ -1,61 +1,57 @@
-import React, { useEffect } from 'react'
-import { Tooltip } from 'antd'
-import { Link } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
+import React, { useEffect } from "react";
+import { Tooltip, Avatar } from "antd";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   MailOutlined,
   LinkOutlined,
   DoubleLeftOutlined,
-  LockOutlined
-} from '@ant-design/icons'
+  UserOutlined,
+} from "@ant-design/icons";
 
-import SpielbetriebLogo from '../../img/logos/spielbetriebLogo.png'
-import { Phone } from '../../components/Phone/Phone'
-import { NewsletterForm } from '../../components/NewsletterForm/NewsletterForm'
-import { DarkModeDropDown } from '../../components/DarkModeDropDown/DarkModeDropDown'
-import { LanguageDropDown } from '../../components/LanguageDropDown/LanguageDropDown'
+import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
+import { Phone } from "../../components/Phone/Phone";
+import { NewsletterForm } from "../../components/NewsletterForm/NewsletterForm";
+import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
+import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
+import { Menu } from "../../components/Menu/Menu";
 
-import './LandingPage.less'
-import './Merrier.less'
+import "./Merrier.less";
+import "./LandingPage.less";
 
 export const LandingPage = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   useEffect(() => {
-    if (window.location.hostname === 'merrier.app') {
+    if (window.location.hostname === "merrier.app") {
       setTimeout(() => {
-        arrowClickHandler()
-      }, '1000')
+        arrowClickHandler();
+      }, "1000");
     }
-  })
+  });
 
   const arrowClickHandler = () => {
-    const elementPhone = document.getElementById('phone')
-    const elementSpielbetrieb = document.getElementById('spielbetrieb')
-    const elementArrow = document.getElementById('arrow')
-    const windowInnerWidth = window.innerWidth
+    const elementPhone = document.getElementById("phone");
+    const elementSpielbetrieb = document.getElementById("spielbetrieb");
+    const elementArrow = document.getElementById("arrow");
+    const windowInnerWidth = window.innerWidth;
     if (windowInnerWidth > 675) {
-      elementPhone.style.transform = 'translate3d(-33vw, -3%, 0)'
-      elementSpielbetrieb.style.transform = 'translate3d(-15vw, 0%, 0)'
-      elementArrow.style.display = 'none'
+      elementPhone.style.transform = "translate3d(-33vw, -3%, 0)";
+      elementSpielbetrieb.style.transform = "translate3d(-15vw, 0%, 0)";
+      elementArrow.style.display = "none";
     }
-  }
+  };
 
   return (
     <>
       <LanguageDropDown />
       <DarkModeDropDown />
-      <div className="landingPage__adminLink">
-        <Link to="./admin" relative="path">
-          <LockOutlined className="landingPage__adminLinkIcon invertColorTheme" />
-        </Link>
-      </div>
-
+      <Menu />
       <div className="background invertColorTheme" id="background"></div>
       <div className="landingPage__doublearrow invertColorTheme" id="arrow">
         <DoubleLeftOutlined
           onClick={arrowClickHandler}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: "pointer" }}
         />
       </div>
       <div className="landingPage__container">
@@ -71,20 +67,28 @@ export const LandingPage = () => {
             />
             <div className="spielbetrieb__text">Spielbetrieb </div>
             <div className="spielbetrieb__subtext">
-              {t('general.commingsoon')}{' '}
+              {t("general.commingsoon")}{" "}
             </div>
             <div className="spielbetrieb__links">
               <NewsletterForm />
               <div className="spielbetrieb__link">
                 <Tooltip title="eMail" placement="bottom">
-                  <a href="mailto:info@spielbetrieb.online" target="_blank" rel="noreferrer">
+                  <a
+                    href="mailto:info@spielbetrieb.online"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <MailOutlined />
                   </a>
                 </Tooltip>
               </div>
               <div className="spielbetrieb__link">
                 <Tooltip title="Linktree" placement="bottom">
-                  <a href="https://linktr.ee/spielbetrieb" target="_blank" rel="noreferrer">
+                  <a
+                    href="https://linktr.ee/spielbetrieb"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <LinkOutlined />
                   </a>
                 </Tooltip>
@@ -122,5 +126,5 @@ export const LandingPage = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
