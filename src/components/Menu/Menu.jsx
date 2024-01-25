@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { observer } from 'mobx-react'
-import { Avatar, Spin } from 'antd'
-import { Link } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
+import React, { useEffect, useState } from 'react';
+import { observer } from 'mobx-react';
+import { Avatar, Spin } from 'antd';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   LockOutlined,
   UnlockOutlined,
@@ -11,50 +11,50 @@ import {
   ReconciliationOutlined,
   LoadingOutlined,
   ShoppingCartOutlined
-} from '@ant-design/icons'
+} from '@ant-design/icons';
 
-import { userStore } from '../../store/userStore/userStore'
-import { pageStore } from '../../store/pageStore/pageStore'
-import { authStore } from '../../store/authStore/authStore'
+import { userStore } from '../../store/userStore/userStore';
+import { pageStore } from '../../store/pageStore/pageStore';
+import { authStore } from '../../store/authStore/authStore';
 
-import './Menu.less'
+import './Menu.less';
 
 export const Menu = observer(() => {
-  const { t } = useTranslation()
-  const [showOpenLock, setShowOpenLock] = useState(false)
+  const { t } = useTranslation();
+  const [showOpenLock, setShowOpenLock] = useState(false);
 
   useEffect(() => {
     if (pageStore.showMenu && authStore.hasAccess) {
-      const elementBackground = document.getElementById('silentBackground')
-      const elementContainer = document.getElementById('menuContainer')
-      elementBackground.style.backdropFilter = 'blur(7px) grayscale(25%)'
-      elementContainer.style.opacity = 1
+      const elementBackground = document.getElementById('silentBackground');
+      const elementContainer = document.getElementById('menuContainer');
+      elementBackground.style.backdropFilter = 'blur(7px) grayscale(25%)';
+      elementContainer.style.opacity = 1;
     }
-  })
+  });
 
   const spinIcon = (
     <LoadingOutlined
       style={{ fontSize: 24, color: 'goldenrod', top: '-4px' }}
       spin
     />
-  )
+  );
 
   const handleClickLogOut = () => {
-    authStore.logout()
+    authStore.logout();
     setTimeout(function () {
-      window.location.reload()
-    }, 500)
-  }
+      window.location.reload();
+    }, 500);
+  };
 
   const handleHideMenu = () => {
-    const elementBackground = document.getElementById('silentBackground')
-    const elementContainer = document.getElementById('menuContainer')
-    elementBackground.style.backdropFilter = 'blur(0px) grayscale(0%)'
-    elementContainer.style.opacity = 0
+    const elementBackground = document.getElementById('silentBackground');
+    const elementContainer = document.getElementById('menuContainer');
+    elementBackground.style.backdropFilter = 'blur(0px) grayscale(0%)';
+    elementContainer.style.opacity = 0;
     setTimeout(function () {
-      pageStore.setShowMenu(false)
-    }, 300)
-  }
+      pageStore.setShowMenu(false);
+    }, 300);
+  };
 
   return (
 <>
@@ -130,5 +130,5 @@ export const Menu = observer(() => {
         </>
         }
     </>
-  )
-})
+  );
+});

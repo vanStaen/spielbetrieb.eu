@@ -1,25 +1,25 @@
-const { User } = require('../../models/User')
-const bcrypt = require('bcryptjs')
-const jsonwebtoken = require('jsonwebtoken')
+const { User } = require('../../models/User');
+const bcrypt = require('bcryptjs');
+const jsonwebtoken = require('jsonwebtoken');
 
 exports.authService = {
   async login (req, email, username, password, remindMe) {
-    let foundUser
+    let foundUser;
     if (username) {
       foundUser = await User.findOne({
         where: { userName: username }
-      })
+      });
     } else {
       foundUser = await User.findOne({
         where: { email }
-      })
+      });
     }
     if (!foundUser) {
-      throw new Error('User does not exist!')
+      throw new Error('User does not exist!');
     } else {
-      const isValid = await bcrypt.compare(password, foundUser.password)
+      const isValid = await bcrypt.compare(password, foundUser.password);
       if (!isValid) {
-        throw new Error('Password is incorrect!')
+        throw new Error('Password is incorrect!');
       }
 
       // Set token in session cookie
@@ -27,8 +27,8 @@ exports.authService = {
         { userId: foundUser._id, isAdmin: foundUser.isAdmin },
         process.env.AUTH_SECRET_KEY,
         { expiresIn: '15m' }
-      )
-      req.session.token = accessToken
+      );
+      req.session.token = accessToken;
 
       // Set refreshtoken in session cookie
       if (remindMe) {
@@ -36,48 +36,48 @@ exports.authService = {
           { userId: foundUser._id, isAdmin: foundUser.isAdmin },
           process.env.AUTH_SECRET_KEY_REFRESH,
           { expiresIn: '7d' }
-        )
-        req.session.refreshToken = refreshToken
+        );
+        req.session.refreshToken = refreshToken;
       }
 
       // Update lastLogin in user table
       await User.update(
         { lastActive: Date.now() },
         { where: { _id: foundUser._id } }
-      )
+      );
 
       // check if user has validated his email
       if (foundUser.verifiedEmail === false) {
-        throw new Error('Email is not verified!')
+        throw new Error('Email is not verified!');
       }
 
       // Return true if success
-      return true
+      return true;
     }
   },
 
   async logout (req) {
     // delete all session cookie
-    req.session = null
+    req.session = null;
     // Return true if success
-    return true
+    return true;
   },
 
   async access (req) {
     if (req.isAuth === true) {
       // Return true if has access
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
   },
 
   async adminaccess (req) {
     if (req.isAdmin === true) {
       // Return true if has admin access
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
   }
-}
+};

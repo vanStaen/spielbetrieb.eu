@@ -1,44 +1,44 @@
-import React, { useEffect } from 'react'
-import { Tooltip } from 'antd'
-import { useTranslation } from 'react-i18next'
+import React, { useEffect } from 'react';
+import { Tooltip } from 'antd';
+import { useTranslation } from 'react-i18next';
 import {
   MailOutlined,
   LinkOutlined,
   DoubleLeftOutlined
-} from '@ant-design/icons'
+} from '@ant-design/icons';
 
-import SpielbetriebLogo from '../../img/logos/spielbetriebLogo.png'
-import { Phone } from '../../components/Phone/Phone'
-import { NewsletterForm } from '../../components/NewsletterForm/NewsletterForm'
-import { DarkModeDropDown } from '../../components/DarkModeDropDown/DarkModeDropDown'
-import { LanguageDropDown } from '../../components/LanguageDropDown/LanguageDropDown'
-import { Menu } from '../../components/Menu/Menu'
+import SpielbetriebLogo from '../../img/logos/spielbetriebLogo.png';
+import { Phone } from '../../components/Phone/Phone';
+import { NewsletterForm } from '../../components/NewsletterForm/NewsletterForm';
+import { DarkModeDropDown } from '../../components/DarkModeDropDown/DarkModeDropDown';
+import { LanguageDropDown } from '../../components/LanguageDropDown/LanguageDropDown';
+import { Menu } from '../../components/Menu/Menu';
 
-import './Merrier.less'
-import './LandingPage.less'
+import './Merrier.less';
+import './LandingPage.less';
 
 export const LandingPage = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (window.location.hostname === 'merrier.app') {
       setTimeout(() => {
-        arrowClickHandler()
-      }, '1000')
+        arrowClickHandler();
+      }, '1000');
     }
-  })
+  });
 
   const arrowClickHandler = () => {
-    const elementPhone = document.getElementById('phone')
-    const elementSpielbetrieb = document.getElementById('spielbetrieb')
-    const elementArrow = document.getElementById('arrow')
-    const windowInnerWidth = window.innerWidth
+    const elementPhone = document.getElementById('phone');
+    const elementSpielbetrieb = document.getElementById('spielbetrieb');
+    const elementArrow = document.getElementById('arrow');
+    const windowInnerWidth = window.innerWidth;
     if (windowInnerWidth > 675) {
-      elementPhone.style.transform = 'translate3d(-33vw, -3%, 0)'
-      elementSpielbetrieb.style.transform = 'translate3d(-15vw, 0%, 0)'
-      elementArrow.style.display = 'none'
+      elementPhone.style.transform = 'translate3d(-33vw, -3%, 0)';
+      elementSpielbetrieb.style.transform = 'translate3d(-15vw, 0%, 0)';
+      elementArrow.style.display = 'none';
     }
-  }
+  };
 
   return (
     <>
@@ -124,5 +124,5 @@ export const LandingPage = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
