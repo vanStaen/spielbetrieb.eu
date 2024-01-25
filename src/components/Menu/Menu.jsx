@@ -69,58 +69,64 @@ export const Menu = observer(() => {
           size={50}
         />
       </div>
-      <div
-        className="menu__silentBackground"
-        id="silentBackground"
-        onClick={handleHideMenu}
-      ></div>
       {pageStore.showMenu && (
-        <div className="menu__container" id="menuContainer">
+        <>
           <div
-            className="link menu__element"
-            onClick={() => pageStore.setShowMenu(true)}
-          >
-            <HeartOutlined style={{ position: "relative", bottom: "-2px" }} />
-            &nbsp; Favorites
-          </div>
-          <div className="menu__elementDisabled">
-            <UserOutlined style={{ position: "relative", bottom: "-2px" }} />
-            &nbsp; Profile
-          </div>
-          <div className="menu__elementDisabled">
-            <SettingOutlined style={{ position: "relative", bottom: "-2px" }} />
-            &nbsp; Settings
-          </div>
-          <div className="menu__whiteline"></div>
-          <div
-            className="link menu__element"
-            onMouseEnter={() => setShowOpenLock(true)}
-            onMouseLeave={() => setShowOpenLock(false)}
-            onClick={handleClickLogOut}
-          >
-            {showOpenLock ? (
-              <UnlockOutlined
+            className="menu__silentBackground"
+            id="silentBackground"
+            onClick={handleHideMenu}
+          ></div>
+          <div className="menu__container invertColorTheme" id="menuContainer">
+            <div
+              className="link menu__element"
+              onClick={() => pageStore.setShowMenu(true)}
+            >
+              <HeartOutlined style={{ position: "relative", bottom: "-2px" }} />
+              &nbsp; Favorites
+            </div>
+            <div className="menu__elementDisabled">
+              <UserOutlined style={{ position: "relative", bottom: "-2px" }} />
+              &nbsp; Profile
+            </div>
+            <div className="menu__elementDisabled">
+              <SettingOutlined
                 style={{ position: "relative", bottom: "-2px" }}
               />
-            ) : (
-              <LockOutlined style={{ position: "relative", bottom: "-2px" }} />
+              &nbsp; Settings
+            </div>
+            <div className="menu__whiteline"></div>
+            <div
+              className="link menu__element"
+              onMouseEnter={() => setShowOpenLock(true)}
+              onMouseLeave={() => setShowOpenLock(false)}
+              onClick={handleClickLogOut}
+            >
+              {showOpenLock ? (
+                <UnlockOutlined
+                  style={{ position: "relative", bottom: "-2px" }}
+                />
+              ) : (
+                <LockOutlined
+                  style={{ position: "relative", bottom: "-2px" }}
+                />
+              )}
+              &nbsp; Logout
+            </div>
+            {userStore.hasAdminAccess && (
+              <>
+                <div className="menu__whiteline"></div>
+                <div className="link menu__element">
+                  <Link className="link menu__link" to="/admin/">
+                    <ReconciliationOutlined
+                      style={{ position: "relative", bottom: "-2px" }}
+                    />
+                    &nbsp; Admin
+                  </Link>
+                </div>
+              </>
             )}
-            &nbsp; Logout
           </div>
-          {userStore.hasAdminAccess && (
-            <>
-              <div className="menu__whiteline"></div>
-              <div className="link menu__element">
-                <Link className="link menu__link" to="/admin/">
-                  <ReconciliationOutlined
-                    style={{ position: "relative", bottom: "-2px" }}
-                  />
-                  &nbsp; Admin
-                </Link>
-              </div>
-            </>
-          )}
-        </div>
+        </>
       )}
     </>
   );
