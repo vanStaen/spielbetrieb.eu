@@ -11,7 +11,8 @@ import { AcceptCookies } from './components/AcceptCookies/AcceptCookies';
 import { NewPassword } from './pages/NewPassword/NewPassword';
 import { EmailVerified } from './pages/EmailVerified/EmailVerified';
 import { SubscriberVerify } from './pages/SubscriberVerify/SubscriberVerify';
-import { FourOfour } from "./pages/FourOfour/FourOfour";
+import { FourOfour } from './pages/FourOfour/FourOfour';
+import { LoginPage } from './pages/LoginPage/LoginPage';
 import { Admin } from './pages/Admin/Admin';
 
 import './lib/i18n';
@@ -69,6 +70,7 @@ const App = observer(() => {
             <Route path="emailverify/:token" element={<EmailVerified />} />
             <Route path="recoverpwd/:token" element={<NewPassword />} />
             <Route path="admin/" element={<Admin />} />
+            <Route path="login/" element={<LoginPage />} />
             <Route path="/" element={<LandingPage />} />
             <Route path="*" element={<FourOfour/>} />
           </Routes>

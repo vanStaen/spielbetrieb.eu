@@ -20,7 +20,7 @@
       - [x] Last Language used
 - [x] Boilerplate up backend on Heroku
   - [x] Based on merrier Backend
-- [ ] Newsletter
+- [x] Newsletter
   - [x] UI form
   - [x] PostGres Database
   - [x] API endpoint (graphql)
@@ -35,6 +35,12 @@
   - [ ] Settings
   - [ ] Admin
   - [x] Logout
+- [ ] Login / Sign Up
+  - [ ] Login Page
+    - [x] Login Form
+    - [ ] SignUp Form
+      - [ ] Small Ad for spielbetrieb? 
+  - [ ] Login Journey (incl. validation)
 - [ ] Header
   - [ ] Spielbetrieb (main page)
   - [ ] Partner
