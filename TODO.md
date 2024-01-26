@@ -29,6 +29,7 @@
   - [ ] ~Add old subscribers to db~
 - [x] Use Antd notification
 - [x] Fix cors erros between domains
+- [x] Create 404
 - [ ] Fix db_backup script
 - [ ] Menu
   - [ ] Settings
@@ -56,7 +57,6 @@
   - [ ] Add 'aktuell' articles
 - [ ] Shop
 - [ ] Dark Magazin
-- [ ] Create 404
 
 ## Tech debt:
 
@@ -66,8 +66,8 @@
 - [ ] FrontEnd : Update all packages
 - [ ] Check all z-Index
 
-
 ## Todo Team
+
   - [ ] Legals
     - [ ] Datenschutz
       - [ ] DE
