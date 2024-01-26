@@ -1,0 +1,53 @@
+.return__logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  z-index: 10;
+  cursor: pointer;
+  filter: invert(1);
+  transition: opacity .3s linear;
+  &:hover {
+     opacity: .75;
+  }
+}
+  
+  .fourofour {    
+    position: relative;
+    background-image: url('../../img/background.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    .spinner {
+      position: absolute;
+      z-index: 3;
+      top: 20px;
+      right: 20px;
+    }
+    
+    &_inner {
+      background-image: url('../../img/background.jpg');
+      background-size: cover;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      font-size: 30vh;
+      font-weight: 900;
+      font-family: 'Anton', sans-serif;
+      text-align: center;
+      color: rgba(#fff, 0);    
+      background-repeat: repeat;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; 
+      -moz-background-clip: text;
+      -moz-text-fill-color: transparent;
+      filter: invert(1);
+    }
+  }

@@ -31,6 +31,10 @@
 - [x] Fix cors erros between domains
 - [ ] Fix db_backup script
 - [ ] Menu
+  - [ ] Settings
+  - [ ] Admin
+  - [x] Logout
+- [ ] Header
   - [ ] Spielbetrieb (main page)
   - [ ] Partner
   - [ ] Dark Magazin
@@ -41,7 +45,7 @@
   - [ ] Spielbwetrieb Aktuell
 - [ ] Spielplan
 - [ ] Tracking/Analytics
-- [ ] Admin page
+- [ ] Admin page (not for partner)
   - [ ] Newsletter management
     - [ ] Sort and filter
       - [ ] per language
@@ -61,3 +65,16 @@
 - [ ] BackEnd : Migrate AWS SDK for JavaScript (v3) 
 - [ ] FrontEnd : Update all packages
 - [ ] Check all z-Index
+
+
+## Todo Team
+  - [ ] Legals
+    - [ ] Datenschutz
+      - [ ] DE
+      - [ ] EN
+    - [ ] Impressum
+      - [ ] DE
+      - [ ] EN
+  - [ ] Graphics Ideen
+    - [ ] Pictures with rights
+  - [ ] Cool design zu copiern

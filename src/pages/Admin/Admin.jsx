@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Tooltip, Segmented } from "antd";
 import { observer } from "mobx-react";

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
 import { Avatar, Spin } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
   LockOutlined,
@@ -21,10 +21,11 @@ import './Menu.less';
 
 export const Menu = observer(() => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const [showOpenLock, setShowOpenLock] = useState(false);
 
   useEffect(() => {
-    if (pageStore.showMenu && authStore.hasAccess) {
+    if (pageStore.showMenu) {
       const elementBackground = document.getElementById('silentBackground');
       const elementContainer = document.getElementById('menuContainer');
       elementBackground.style.backdropFilter = 'blur(7px) grayscale(25%)';
@@ -56,11 +57,19 @@ export const Menu = observer(() => {
     }, 300);
   };
 
+  const avatarClickhandle = () => {
+    if (authStore.hasAccess) {
+      pageStore.setShowMenu(true);
+    } else {
+      navigate('/login');
+    }
+  };
+
   return (
 <>
       <div
         className="menu__containerAvatar invertColorTheme"
-        onClick={() => pageStore.setShowMenu(!pageStore.showMenu)}
+        onClick={avatarClickhandle}
       >
         <Avatar
           src={!userStore.isLoading && <UserOutlined className="menu__icon" />}
@@ -69,7 +78,7 @@ export const Menu = observer(() => {
           size={50}
         />
       </div>
-      {pageStore.showMenu && authStore.hasAccess &&
+      {pageStore.showMenu &&
         <>
           <div
             className="menu__silentBackground"

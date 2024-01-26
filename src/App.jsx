@@ -11,6 +11,7 @@ import { AcceptCookies } from './components/AcceptCookies/AcceptCookies';
 import { NewPassword } from './pages/NewPassword/NewPassword';
 import { EmailVerified } from './pages/EmailVerified/EmailVerified';
 import { SubscriberVerify } from './pages/SubscriberVerify/SubscriberVerify';
+import { FourOfour } from "./pages/FourOfour/FourOfour";
 import { Admin } from './pages/Admin/Admin';
 
 import './lib/i18n';
@@ -69,7 +70,7 @@ const App = observer(() => {
             <Route path="recoverpwd/:token" element={<NewPassword />} />
             <Route path="admin/" element={<Admin />} />
             <Route path="/" element={<LandingPage />} />
-            <Route path="*" element={<>404</>} />
+            <Route path="*" element={<FourOfour/>} />
           </Routes>
         </div>
       </div>
