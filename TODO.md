@@ -41,17 +41,6 @@
     - [ ] SignUp Form
       - [ ] Small Ad for spielbetrieb? 
   - [ ] Login Journey (incl. validation)
-- [ ] Header
-  - [ ] Spielbetrieb (main page)
-  - [ ] Partner
-  - [ ] Dark Magazin
-  - [ ] Shop
-  - [ ] Spielplan
-- [ ] Home page
-  - [ ] Link to spielplan / shop
-  - [ ] Spielbwetrieb Aktuell
-- [ ] Spielplan
-- [ ] Tracking/Analytics
 - [ ] Admin page (not for partner)
   - [ ] Newsletter management
     - [ ] Sort and filter
@@ -63,6 +52,18 @@
   - [ ] Add 'aktuell' articles
   - [ ] Admin can update user to partner
       - [ ]Create resolver 
+  - [ ] Management of the translations from the admin
+- [ ] Header
+  - [ ] Spielbetrieb (main page)
+  - [ ] Partner
+  - [ ] Dark Magazin
+  - [ ] Shop
+  - [ ] Spielplan
+- [ ] Home page
+  - [ ] Link to spielplan / shop
+  - [ ] Spielbwetrieb Aktuell
+- [ ] Spielplan
+- [ ] Tracking/Analytics
 - [ ] Shop
 - [ ] Dark Magazin
 

@@ -46,7 +46,7 @@ SQL update script exemple:
 `isPartner` is a flag set to identify a Partner and `partnerRoles` is an Array listing what feature a partner can access from their partner page.
 
 Possible partner roles are:
-1. `events`: overview/management of events for the splieplan
+1. `events`: overview/management of events for the spielplan
 1. `sales`: overview/management of tickets for their events
 3. `analytics`: special access to some more data regarding their page/events/tickets sale.
 
