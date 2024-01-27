@@ -99,6 +99,14 @@ const User = sequelize.define('user', {
   adminRoles: {
     type: DataTypes.ARRAY(DataTypes.STRING),
     defaultValue: []
+  },
+  isPartner: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
+  },
+  partnerRoles: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    defaultValue: []
   }
 });
 

@@ -9,6 +9,8 @@ export class UserStore {
   isLoading = false;
   isAdmin = false;
   adminRoles = [];
+  isPartner = false;
+  partnerRoles = [];
   email = null;
   firstName = null;
   lastName = null;
@@ -43,6 +45,10 @@ export class UserStore {
       setIsAdmin: action,
       adminRoles: observable,
       setAdminRoles: action,
+      isPartner: observable,
+      setIsPartner: action,
+      partnerRoles: observable,
+      setPartnerRoles: action,
       email: observable,
       setEmail: action,
       firstName: observable,
@@ -110,6 +116,14 @@ export class UserStore {
 
   setAdminRoles = (adminRoles) => {
     this.adminRoles = adminRoles;
+  };
+
+  setIsPartner = (isPartner) => {
+    this.isPartner = isPartner;
+  };
+
+  setPartnerRoles = (partnerRoles) => {
+    this.partnerRoles = partnerRoles;
   };
 
   setEmail = (email) => {
@@ -248,6 +262,9 @@ export class UserStore {
         this.setArchived(userData.archived);
         if (userData.isAdmin) {
           this.setAdminRoles(userData.adminRoles);
+        }
+        if (userData.isPartner) {
+          this.setPartnerRoles(userData.partnerRoles);
         }
         if (userData.profilSettings === '{}' || userData.emailSettings === '{}') {
           this.setEmailSettings(defaultEmailSettings);

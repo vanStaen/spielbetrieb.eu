@@ -8,7 +8,7 @@ import {
   UnlockOutlined,
   SettingOutlined,
   UserOutlined,
-  ReconciliationOutlined,
+  PieChartOutlined,
   LoadingOutlined,
   ShoppingCartOutlined
 } from '@ant-design/icons';
@@ -127,7 +127,7 @@ export const Menu = observer(() => {
                 <div className="menu__whiteline"></div>
                 <div className="link menu__element">
                   <Link className="link menu__link" to="/admin/">
-                    <ReconciliationOutlined
+                    <PieChartOutlined
                       style={{ position: 'relative', bottom: '-2px' }}
                     />
                     &nbsp; Admin

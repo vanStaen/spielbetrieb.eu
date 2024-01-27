@@ -61,6 +61,8 @@
   - [ ] Add/Manage events
   - [ ] Add/Manage products
   - [ ] Add 'aktuell' articles
+  - [ ] Admin can update user to partner
+      - [ ]Create resolver 
 - [ ] Shop
 - [ ] Dark Magazin
 

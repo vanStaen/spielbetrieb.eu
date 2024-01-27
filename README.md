@@ -27,7 +27,7 @@ https://fonts.google.com/specimen/DM+Serif+Display
 
 ### Table user | Admins
 
-`isAdmin` is a flag set for admin roles and `adminRoles` is an Array listing what role an admin can access in the administration interface.Both values have to be set up manually directly in the database. 
+`isAdmin` is a flag set to identify an admin and `adminRoles` is an Array listing what sections an admin can access in the administration interface. Both values have to be set up manually directly in the database. 
 
 Possible admin roles are:
 1. `newsletter`: manage the list of subscribers to our lists
@@ -40,6 +40,15 @@ Possible admin roles are:
 
 SQL update script exemple: 
 ``` UPDATE public.users SET "isAdmin"=true, "adminRoles"='{newsletter,events,users,shops,blog,analytics,translation}' WHERE _id=1; ```
+
+### Table user | Partner
+
+`isPartner` is a flag set to identify a Partner and `partnerRoles` is an Array listing what feature a partner can access from their partner page.
+
+Possible partner roles are:
+1. `events`: overview/management of events for the splieplan
+1. `sales`: overview/management of tickets for their events
+3. `analytics`: special access to some more data regarding their page/events/tickets sale.
 
 ## Ressources
 

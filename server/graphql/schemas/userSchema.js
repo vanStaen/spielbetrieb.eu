@@ -3,6 +3,8 @@ type User {
     _id: ID! 
     isAdmin: Boolean!
     adminRoles: [String]
+    isPartner: Boolean!
+    partnerRoles: [String]
     firstName: String!
     lastName: String!
     userName: String!

@@ -8,6 +8,8 @@ export const getUserInfo = async () => {
                 _id,
                 isAdmin,
                 adminRoles,
+                isPartner,
+                partnerRoles,
                 firstName,
                 lastName,
                 userName,
