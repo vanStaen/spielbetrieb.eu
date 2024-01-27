@@ -2,6 +2,7 @@ exports.User = `
 type User {
     _id: ID! 
     isAdmin: Boolean!
+    adminRoles: [String]
     firstName: String!
     lastName: String!
     userName: String!

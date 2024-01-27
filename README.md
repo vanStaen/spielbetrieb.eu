@@ -23,6 +23,24 @@ Logo Inverted (pale beige)
 Merrier font: 'DMSerifDisplay' (google font api)
 https://fonts.google.com/specimen/DM+Serif+Display
 
+## Data Structure
+
+### Table user | Admins
+
+`isAdmin` is a flag set for admin roles and `adminRoles` is an Array listing what role an admin can access in the administration interface.Both values have to be set up manually directly in the database. 
+
+Possible admin roles are:
+1. `newsletter`: manage the list of subscribers to our lists
+2. `events`: overview/management of all events for the splieplan
+3. `users`: overview of registered users
+4. `shops`: overview of all partners
+5. `blog`: management of article for the blog
+6. `analytics`: access to the portal's data
+7. `translation`: translation of the portal's texts
+
+SQL update script exemple: 
+``` UPDATE public.users SET "isAdmin"=true, "adminRoles"='{newsletter,events,users,shops,blog,analytics,translation}' WHERE _id=1; ```
+
 ## Ressources
 
 Landing page based on this codePen: https://codepen.io/nelsonleite/pen/WwZNVN.

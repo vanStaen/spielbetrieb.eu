@@ -7,6 +7,7 @@ export const getUserInfo = async () => {
               getUser {
                 _id,
                 isAdmin,
+                adminRoles,
                 firstName,
                 lastName,
                 userName,

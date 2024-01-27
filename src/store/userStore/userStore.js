@@ -8,6 +8,7 @@ import defaultProfilSettings from './defaultProfilSettings.json';
 export class UserStore {
   isLoading = false;
   isAdmin = false;
+  adminRoles = [];
   email = null;
   firstName = null;
   lastName = null;
@@ -40,6 +41,8 @@ export class UserStore {
       setIsLoading: action,
       isAdmin: observable,
       setIsAdmin: action,
+      adminRoles: observable,
+      setAdminRoles: action,
       email: observable,
       setEmail: action,
       firstName: observable,
@@ -103,6 +106,10 @@ export class UserStore {
 
   setIsAdmin = (isAdmin) => {
     this.isAdmin = isAdmin;
+  };
+
+  setAdminRoles = (adminRoles) => {
+    this.adminRoles = adminRoles;
   };
 
   setEmail = (email) => {
@@ -239,7 +246,9 @@ export class UserStore {
         this.setInterests(userData.interests);
         this.setUsernameChange(userData.usernameChange);
         this.setArchived(userData.archived);
-
+        if (userData.isAdmin) {
+          this.setAdminRoles(userData.adminRoles);
+        }
         if (userData.profilSettings === '{}' || userData.emailSettings === '{}') {
           this.setEmailSettings(defaultEmailSettings);
           this.setProfilSettings(defaultProfilSettings);

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Table, Tag } from "antd";
+import React, { useState, useEffect } from 'react';
+import { Table, Tag } from 'antd';
 
-import { getSubscribers } from "./getSubscribers";
-import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinnner";
+import { getSubscribers } from './getSubscribers';
+import { CustomSpinner } from '../../../components/CustomSpinner/CustomSpinnner';
 
 export const AdminNewsletter = () => {
   const [subscribers, setSubscribers] = useState([]);
@@ -18,26 +18,26 @@ export const AdminNewsletter = () => {
 
   const columns = [
     {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email'
     },
     {
-      title: "Language",
-      dataIndex: "language",
-      key: "language",
-      render: (_, { language }) => language.toUpperCase(),
+      title: 'Language',
+      dataIndex: 'language',
+      key: 'language',
+      render: (_, { language }) => language.toUpperCase()
     },
     {
-      title: "Verified",
-      dataIndex: "verifiedEmail",
-      key: "verified",
-      render: (_, { verifiedEmail }) => (verifiedEmail ? "Yes" : ""),
+      title: 'Verified',
+      dataIndex: 'verifiedEmail',
+      key: 'verified',
+      render: (_, { verifiedEmail }) => (verifiedEmail ? 'Yes' : '')
     },
     {
-      title: "Lists",
-      dataIndex: "lists",
-      key: "lists",
+      title: 'Lists',
+      dataIndex: 'lists',
+      key: 'lists',
       render: (_, { lists }) => (
         <>
           {lists.map((list) => {
@@ -48,12 +48,12 @@ export const AdminNewsletter = () => {
             );
           })}
         </>
-      ),
+      )
     },
     {
-      title: "Interests",
-      key: "interests",
-      dataIndex: "interests",
+      title: 'Interests',
+      key: 'interests',
+      dataIndex: 'interests',
       render: (_, { interests }) => (
         <>
           {interests.map((interest) => {
@@ -64,24 +64,26 @@ export const AdminNewsletter = () => {
             );
           })}
         </>
-      ),
-    },
+      )
+    }
   ];
 
   return (
     <div>
-      {subscribers.length === 0 ? (
+      {subscribers.length === 0
+        ? (
         <div className="admin__centered">
           <CustomSpinner text="Loading subscribers" />
         </div>
-      ) : (
+          )
+        : (
         <Table
           className="admin__table"
           dataSource={subscribers}
           columns={columns}
           pagination={false}
         />
-      )}
+          )}
     </div>
   );
 };

@@ -4,7 +4,7 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
 export class AdminStore {
-  selectedPage = cookies.get('selectedPage') || 'newsletter';
+  selectedPage = cookies.get('selectedPage') || null;
 
   constructor () {
     makeObservable(this, {
