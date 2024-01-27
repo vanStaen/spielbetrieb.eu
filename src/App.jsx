@@ -35,8 +35,12 @@ const App = observer(() => {
 
   useEffect(() => {
     authStore.checkAccess();
-    userStore.checkAdminAccess();
-  });
+    userStore.fetchUserData();
+  }, []);
+
+  useEffect(() => {
+    userStore.fetchUserData();
+  }, [authStore.hasAccess]);
 
   useEffect(() => {
     if (pageStore.selectedLanguage) {

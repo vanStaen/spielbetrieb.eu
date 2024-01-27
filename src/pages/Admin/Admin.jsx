@@ -1,25 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Tooltip, Segmented } from "antd";
-import { observer } from "mobx-react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Tooltip, Segmented } from 'antd';
+import { observer } from 'mobx-react';
 import {
   PieChartOutlined,
   ReadOutlined,
   ShopOutlined,
   UserOutlined,
   CalendarOutlined,
-  PicLeftOutlined,
-} from "@ant-design/icons";
+  PicLeftOutlined
+} from '@ant-design/icons';
 
-import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
-import { AdminNewsletter } from "./AdminNewsletter/AdminNewsletter";
-import { LoginForm } from "../../components/LoginForm/LoginForm";
-import { isMobileCheck } from "../../helpers/checkMobileTablet";
-import { authStore } from "../../store/authStore/authStore";
-import { userStore } from "../../store/userStore/userStore";
-import { adminStore } from "../../store/adminStore/adminStore";
+import SpielbetriebLogo from '../../img/logos/spielbetriebLogo.png';
+import { AdminNewsletter } from './AdminNewsletter/AdminNewsletter';
+import { LoginForm } from '../../components/LoginForm/LoginForm';
+import { isMobileCheck } from '../../helpers/checkMobileTablet';
+import { authStore } from '../../store/authStore/authStore';
+import { userStore } from '../../store/userStore/userStore';
+import { adminStore } from '../../store/adminStore/adminStore';
 
-import "./Admin.less";
+import './Admin.less';
 
 export const Admin = observer(() => {
   const segmentedChangeHandler = (e) => {
@@ -30,20 +30,20 @@ export const Admin = observer(() => {
 
   const renderSwitch = (adminPage) => {
     switch (adminPage) {
-      case "newsletter":
+      case 'newsletter':
         return <AdminNewsletter />;
-      case "events":
-        return "events";
-      case "users":
-        return "users";
-      case "shops":
-        return "shops";
-      case "blog":
-        return "blog";
-      case "analytics":
-        return "analytics";
+      case 'events':
+        return 'events';
+      case 'users':
+        return 'users';
+      case 'shops':
+        return 'shops';
+      case 'blog':
+        return 'blog';
+      case 'analytics':
+        return 'analytics';
       default:
-        return "Error";
+        return 'Error';
     }
   };
 
@@ -60,64 +60,68 @@ export const Admin = observer(() => {
             />
           </Tooltip>
         </Link>
-        {userStore.hasAdminAccess ? (
+        {userStore.isAdmin
+          ? (
           <div className="admin__sectionContainer">
             <Segmented
-              size={isMobile && "large"}
-              style={{ position: "relative", zIndex: "10" }}
+              size={isMobile && 'large'}
+              style={{ position: 'relative', zIndex: '10' }}
               onChange={segmentedChangeHandler}
               options={[
                 {
-                  label: !isMobile && "Newsletter",
-                  value: "newsletter",
+                  label: !isMobile && 'Newsletter',
+                  value: 'newsletter',
                   disabled: false,
-                  icon: <PicLeftOutlined />,
+                  icon: <PicLeftOutlined />
                 },
                 {
-                  label: !isMobile && "Events",
-                  value: "events",
+                  label: !isMobile && 'Events',
+                  value: 'events',
                   disabled: true,
-                  icon: <CalendarOutlined />,
+                  icon: <CalendarOutlined />
                 },
                 {
-                  label: !isMobile && "Users",
-                  value: "users",
+                  label: !isMobile && 'Users',
+                  value: 'users',
                   disabled: true,
-                  icon: <UserOutlined />,
+                  icon: <UserOutlined />
                 },
                 {
-                  label: !isMobile && "Shops",
-                  value: "shop",
+                  label: !isMobile && 'Shops',
+                  value: 'shop',
                   disabled: true,
-                  icon: <ShopOutlined />,
+                  icon: <ShopOutlined />
                 },
                 {
-                  label: !isMobile && "Blog",
-                  value: "blog",
+                  label: !isMobile && 'Blog',
+                  value: 'blog',
                   disabled: true,
-                  icon: <ReadOutlined />,
+                  icon: <ReadOutlined />
                 },
                 {
-                  label: !isMobile && "Analytics",
-                  value: "analytics",
+                  label: !isMobile && 'Analytics',
+                  value: 'analytics',
                   disabled: true,
-                  icon: <PieChartOutlined />,
-                },
+                  icon: <PieChartOutlined />
+                }
               ]}
             />
             <div className="admin__title">
               {renderSwitch(adminStore.selectedPage)}
             </div>
           </div>
-        ) : (
+            )
+          : (
           <div className="admin__centered">
-            {authStore.hasAccess ? (
+            {authStore.hasAccess
+              ? (
               <div className="admin__title">You dont have admin rights</div>
-            ) : (
+                )
+              : (
               <LoginForm />
-            )}
+                )}
           </div>
-        )}
+            )}
       </div>
     </>
   );

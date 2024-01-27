@@ -122,7 +122,7 @@ export const Menu = observer(() => {
                   )}
               &nbsp; Logout
             </div>
-            {userStore.hasAdminAccess && (
+            {userStore.isAdmin && (
               <>
                 <div className="menu__whiteline"></div>
                 <div className="link menu__element">

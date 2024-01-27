@@ -24,7 +24,7 @@ exports.authService = {
 
       // Set token in session cookie
       const accessToken = await jsonwebtoken.sign(
-        { userId: foundUser._id, isAdmin: foundUser.isAdmin },
+        { userId: foundUser._id },
         process.env.AUTH_SECRET_KEY,
         { expiresIn: '15m' }
       );
@@ -33,7 +33,7 @@ exports.authService = {
       // Set refreshtoken in session cookie
       if (remindMe) {
         const refreshToken = await jsonwebtoken.sign(
-          { userId: foundUser._id, isAdmin: foundUser.isAdmin },
+          { userId: foundUser._id },
           process.env.AUTH_SECRET_KEY_REFRESH,
           { expiresIn: '7d' }
         );
@@ -66,15 +66,6 @@ exports.authService = {
   async access (req) {
     if (req.isAuth === true) {
       // Return true if has access
-      return true;
-    } else {
-      return false;
-    }
-  },
-
-  async adminaccess (req) {
-    if (req.isAdmin === true) {
-      // Return true if has admin access
       return true;
     } else {
       return false;

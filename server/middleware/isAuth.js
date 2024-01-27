@@ -10,7 +10,6 @@ module.exports = async (req, res, next) => {
     if (req.get('host') === 'localhost:5017') {
       console.log('>>>> Developement Mode <<<<<');
       req.isAuth = true;
-      req.isAdmin = true;
       req.userId = '1';
       req.email = 'clement.vanstaen@gmail.com';
       return next();
@@ -24,7 +23,6 @@ module.exports = async (req, res, next) => {
   // Check tokens are valid:
   if (!token || token === 'undefined' || token === '') {
     req.isAuth = false;
-    req.isAdmin = false;
     return next();
   }
   let decodedToken;
@@ -39,19 +37,17 @@ module.exports = async (req, res, next) => {
       );
     } catch (err) {
       req.isAuth = false;
-      req.isAdmin = false;
       return next();
     }
   }
 
   // Set Auth variable
   req.isAuth = true;
-  req.isAdmin = decodedToken.isAdmin;
   req.userId = decodedToken.userId;
 
   // Update token in session cookie
   const accessToken = await jsonwebtoken.sign(
-    { userId: decodedToken.userId, isAdmin: decodedToken.isAdmin },
+    { userId: decodedToken.userId },
     process.env.AUTH_SECRET_KEY,
     { expiresIn: '15m' }
   );
@@ -61,7 +57,7 @@ module.exports = async (req, res, next) => {
   // Update refrehstoken in session cookie
   if (refreshToken) {
     const refreshToken = await jsonwebtoken.sign(
-      { userId: decodedToken.userId, isAdmin: decodedToken.isAdmin },
+      { userId: decodedToken.userId },
       process.env.AUTH_SECRET_KEY_REFRESH,
       { expiresIn: '7d' }
     );
