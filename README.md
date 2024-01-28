@@ -1,12 +1,14 @@
-# spielbetrieb.eu
+# Spielbetrieb.eu
 
 spielbetrieb.eu | Portal
 
 ## Hosting
 
 ### URL setup
-merrier.app : experimental-diplodocus-albup3d9s6q3f940idnqmrp9.herokudns.com
-www.merrier.app : glacial-refuge-ipv2cgp66730mrsv17j4b4i0.herokudns.com
+- merrier.app: experimental-diplodocus-albup3d9s6q3f940idnqmrp9.herokudns.com
+- spielbetrieb.eu: closed-escarpment-0h9y6ilhkbyw9yolc6j7ei9f.herokudns.com
+- www.merrier.app: glacial-refuge-ipv2cgp66730mrsv17j4b4i0.herokudns.com
+- www.spielbetrieb.eu: octagonal-falls-d7e6dabqmser7ns14l3k8z93.herokudns.com
 
 ## Graphic chart
 
