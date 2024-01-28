@@ -10,18 +10,21 @@ www.merrier.app : glacial-refuge-ipv2cgp66730mrsv17j4b4i0.herokudns.com
 
 ## Graphic chart
 
-Logo color (dark blue)
+### Light Theme
+Logo dark blue, background Beige/Salmon
+Main color : Dark Blue (hex: #142436, rgb: 20,36,54)
+Secondary color : Green (hex: #104955)
 
-- hex: #142436
-- rgb: 20 36 54
+### Dark Theme
+Logo (inverted) pale beige, background DarkBlue/Green
+Main color : PaleBeige (hex: #e1cfbb, rgb: 225,207,187)
+Secondary color : Salmon (#f8b1a7)
 
-Logo Inverted (pale beige)
+### Fonts
 
-- hex: #e1cfbb
-- rgb: 225 207 187
-
-Merrier font: 'DMSerifDisplay' (google font api)
-https://fonts.google.com/specimen/DM+Serif+Display
+- Spielbetrieb font: Roboto. Never in Italic.
+- Merrier font: 'DMSerifDisplay' (google font api)
+http
 
 ## Data Structure
 
