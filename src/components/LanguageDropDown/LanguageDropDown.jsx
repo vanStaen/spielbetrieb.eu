@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import { Menu, Dropdown } from "antd";
-import { DownOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { pageStore } from "../../store/pageStore/pageStore";
 
@@ -55,7 +54,6 @@ export const LanguageDropDown = observer(() => {
           }}
         >
           {language}
-          <DownOutlined />
         </a>
       </Dropdown>
     </div>
