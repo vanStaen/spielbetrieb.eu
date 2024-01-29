@@ -14,13 +14,13 @@ spielbetrieb.eu | Portal
 
 ### Light Theme
 Logo dark blue, background Beige/Salmon
-Main color : Dark Blue (hex: #142436, rgb: 20,36,54)
-Secondary color : Green (hex: #104955)
+Main color : Dark Blue (hex: #142436, rgb: 20, 36, 54)
+Secondary color : Green (hex: #104955, rgb: 16, 73, 85)
 
 ### Dark Theme
 Logo (inverted) pale beige, background DarkBlue/Green
-Main color : PaleBeige (hex: #e1cfbb, rgb: 225,207,187)
-Secondary color : Salmon (#f8b1a7)
+Main color : Pale Beige (hex: #e1cfbb, rgb: 225, 207, 187)
+Secondary color : Salmon (#f8b1a7, rgb: 248, 177, 167)
 
 ### Fonts
 

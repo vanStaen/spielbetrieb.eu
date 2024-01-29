@@ -75,6 +75,9 @@ const App = observer(() => {
             <Route path="recoverpwd/:token" element={<NewPassword />} />
             <Route path="admin/" element={<Admin />} />
             <Route path="login/" element={<LoginPage />} />
+            {/* <Route path="service/" element={< />} /> */}
+            {/* <Route path="privacy/" element={< />} /> */}
+            {/* <Route path="settings/" element={< />} /> */}
             <Route path="/" element={<LandingPage />} />
             <Route path="*" element={<FourOfour/>} />
           </Routes>

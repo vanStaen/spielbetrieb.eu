@@ -28,8 +28,8 @@
 
 .login__full .ant-btn-primary:hover, 
 .login__full .ant-btn-primary:focus {
-  background:  rgba(192, 57, 43, .75) !important;
-  border-color: rgba(192, 57, 43, .8) !important;
+  background:  rgba(246, 157, 146, 0.9) !important;
+  border-color: rgba(246, 157, 146, 0.9) !important;
 }
 
 .login__full .ant-checkbox-checked .ant-checkbox-inner {
@@ -56,7 +56,7 @@
 }
 
 .login__showAlreadyMember{
-  display: none;
+  display: block;
 }
 
 @media (max-width: 800px) {
