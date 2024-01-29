@@ -18,18 +18,9 @@
 
 .signup__full .signup__terms {
   text-align: left;
-  color: #43464D;
-}
-
-.signup__full .ant-btn-primary {
-  background: #43464D;
-  border-color: #43464D;
-}
-
-.signup__full .ant-btn-primary:hover, 
-.signup__full .ant-btn-primary:focus {
-  background:  rgba(192, 57, 43, .75);
-  border-color: rgba(192, 57, 43, .8);
+  font-size: 12px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .signup__full .ant-checkbox-checked .ant-checkbox-inner {
@@ -45,7 +36,7 @@
 .signup__full .signup__header {
   width: 400px;
   font-weight: 200;
-  font-size: .75em;
+  font-size: 14px;
   text-align: left;
   margin-bottom: 2vh;
 }
@@ -57,14 +48,9 @@
 @media (max-width: 800px) {
   .signup__full .signup__header {
     font-size: 14px;
-    margin-left: 2vh;
-    width: 330px;
+    width: 85%;
   }
   .signup__full .signup__form {
-    width: 330px;
-    max-width: 85%;
-  }
-  .signup__full .signup__terms {
-    font-size: 12px;
+    width: 85%;
   }
 }

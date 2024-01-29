@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { observer } from 'mobx-react';
+import { useTranslation } from 'react-i18next';
 import {
   Form,
   Input,
@@ -14,18 +16,17 @@ import {
   MailOutlined,
   LockOutlined,
   SyncOutlined,
-  SmileOutlined,
   HourglassOutlined
 } from '@ant-design/icons';
-import { useTranslation } from 'react-i18next';
 
 import { postUsernameTaken } from './postUsernameTaken';
 import { postVerifyEmailLink } from '../LoginForm/postVerifyEmailLink';
 import { postAddUser } from './postAddUser';
+import { pageStore } from '../../store/pageStore/pageStore';
 
 import './SignUpForm.css';
 
-export const SignUpForm = (props) => {
+export const SignUpForm = observer((props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isValidUsername, setIsValidUsername] = useState(undefined); // validateStatus: validate status of form components which could be 'success', 'warning', 'error', 'validating'.
   const [errorMsgUsername, setErrorMsgUsername] = useState(undefined); // validateStatus: validate status of form components which could be 'success', 'warning', 'error', 'validating'.
@@ -105,7 +106,7 @@ export const SignUpForm = (props) => {
 
   return (
     <div className="signup__full">
-      <div className="signup__header">
+      <div className={`signup__header ${pageStore.selectedTheme ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
         {t('login.signinto')} <b>merrier</b>
         .app {t('login.signintoAfter')}
       </div>
@@ -151,7 +152,6 @@ export const SignUpForm = (props) => {
           ]}
         >
           <Input
-            prefix={<UserOutlined className="site-form-item-icon" />}
             placeholder={t('login.firstName')}
           />
         </Form.Item>
@@ -174,7 +174,6 @@ export const SignUpForm = (props) => {
           ]}
         >
           <Input
-            prefix={<SmileOutlined className="site-form-item-icon" />}
             placeholder={t('login.lastName')}
           />
         </Form.Item>
@@ -320,12 +319,12 @@ export const SignUpForm = (props) => {
             }
           ]}
         >
-          <Checkbox className="signup__terms">
+          <Checkbox className={`signup__terms ${pageStore.selectedTheme ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`}>
             {t('login.creatingAccountMeans')}{' '}
-            <a href="/service">{t('login.termsService')}</a>,{' '}
-            <a href="/privacy">{t('login.privacyPolicy')}</a>
+            <a className="link" href="/service">{t('login.termsService')}</a>,{' '}
+            <a className="link" href="/privacy">{t('login.privacyPolicy')}</a>
             {t('login.andDefault')}{' '}
-            <a href="/settings">{t('login.notificationSettings')}</a>
+            <a className="link" href="/settings">{t('login.notificationSettings')}</a>
             {t('login.creatingAccountMeansAfter')}
           </Checkbox>
         </Form.Item>
@@ -334,7 +333,7 @@ export const SignUpForm = (props) => {
           <Button
             type="primary"
             htmlType="submit"
-            className="signup__formbutton"
+            className={`signup__formbutton ${pageStore.selectedTheme ? 'lightColorTheme__Button' : 'darkColorTheme__Button'}`}
           >
             {isLoading ? <SyncOutlined spin /> : t('login.createAccount')}
           </Button>
@@ -342,4 +341,4 @@ export const SignUpForm = (props) => {
       </Form>
     </div>
   );
-};
+});

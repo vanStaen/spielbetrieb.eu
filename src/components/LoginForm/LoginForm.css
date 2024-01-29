@@ -18,28 +18,6 @@
 
 .login__full .login__remember {
   text-align: left;
-  color: white;
-}
-
-.login__full .ant-btn-primary {
-  background: #43464D;
-  border-color: #43464D;
-}
-
-.login__full .ant-btn-primary:hover, 
-.login__full .ant-btn-primary:focus {
-  background:  rgba(246, 157, 146, 0.9) !important;
-  border-color: rgba(246, 157, 146, 0.9) !important;
-}
-
-.login__full .ant-checkbox-checked .ant-checkbox-inner {
-  border-color: #43464D;
-  background: #43464D;
-}
-
-.login__full .ant-checkbox-input:hover {
-  border-color: #43464D;
-  background: #43464D;
 }
 
 .login__full .login__header {
@@ -65,12 +43,10 @@
     width: 85%;
   }
   .login__checkBoxRemember span {
-    background-color: rgba(255,255,255,.75);
     padding: 1px 0 1px 0;
     font-size: 11px;
   }
   .login__passwordRecover span {
-    background-color: rgba(255,255,255,.75);
     padding: 3px 7px 3px 7px;
     font-size: 11px;
   }

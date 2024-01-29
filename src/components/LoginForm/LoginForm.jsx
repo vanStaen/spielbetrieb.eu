@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Form, Input, Button, Checkbox, notification } from 'antd';
 import { useTranslation } from 'react-i18next';
+import { observer } from 'mobx-react';
 import { useNavigate } from 'react-router-dom';
 import {
   MailOutlined,
@@ -11,12 +12,13 @@ import {
 
 import { PasswordRecover } from '../PasswordRecover/PasswordRecover';
 import { authStore } from '../../store/authStore/authStore';
+import { pageStore } from '../../store/pageStore/pageStore';
 import { postVerifyEmailLink } from './postVerifyEmailLink';
 import { validateEmail } from '../../helpers/validateEmail';
 
 import './LoginForm.css';
 
-export const LoginForm = () => {
+export const LoginForm = observer(() => {
   const [isLoading, setIsLoading] = useState(false);
   const [isRecovery, setIsRecovery] = useState(false);
   const isEmail = useRef(undefined);
@@ -91,7 +93,7 @@ export const LoginForm = () => {
       )
     : (
       <div className="login__full">
-        <div className="login__header">
+        <div className={`login__header ${pageStore.selectedTheme ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
           {t('login.loginto')} <b>Spielbetrieb</b>
           .eu {t('login.logintoAfter')}
         </div>
@@ -139,7 +141,7 @@ export const LoginForm = () => {
             style={{ display: 'inline-block', width: 'calc(50%)' }}
             defaultChecked={false}
           >
-            <Checkbox className="login__remember">
+            <Checkbox className={`login__remember ${pageStore.selectedTheme ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
               {t('login.rememberMe')}
             </Checkbox>
           </Form.Item>
@@ -152,7 +154,7 @@ export const LoginForm = () => {
               textAlign: 'right'
             }}
           >
-            <span className="link" onClick={() => setIsRecovery(!isRecovery)}>
+            <span className={`link ${pageStore.selectedTheme ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`} onClick={() => setIsRecovery(!isRecovery)}>
               {t('login.recoverPassword').replace(/^\w/, (c) => c.toUpperCase())}
             </span>
           </Form.Item>
@@ -161,7 +163,7 @@ export const LoginForm = () => {
             <Button
               type="primary"
               htmlType="submit"
-              className="login__formbutton"
+              className={`login__formbutton ${pageStore.selectedTheme ? 'lightColorTheme__Button' : 'darkColorTheme__Button'}`}
             >
               {isLoading ? <SyncOutlined spin /> : t('login.logMeIn')}
             </Button>
@@ -169,7 +171,7 @@ export const LoginForm = () => {
         </Form>
       </div>
       );
-};
+});
 
 const ErrorTitleNotVerified = () => {
   const { t } = useTranslation();

@@ -1,13 +1,13 @@
-import { action, makeObservable, observable } from 'mobx'
-import Cookies from 'universal-cookie'
+import { action, makeObservable, observable } from 'mobx';
+import Cookies from 'universal-cookie';
 
-const cookies = new Cookies()
+const cookies = new Cookies();
 
 export class PageStore {
-  selectedTheme = cookies.get('selectedTheme')
-  selectedLanguage = cookies.get('selectedLanguage') || 'en'
-  allowCookie = cookies.get('allowCookie')
-  showMenu = false
+  selectedTheme = cookies.get('selectedTheme') || 0;
+  selectedLanguage = cookies.get('selectedLanguage') || 'en';
+  allowCookie = cookies.get('allowCookie');
+  showMenu = false;
 
   constructor () {
     makeObservable(this, {
@@ -19,33 +19,33 @@ export class PageStore {
       setAllowCookie: action,
       showMenu: observable,
       setShowMenu: action
-    })
+    });
   }
 
   setSelectedTheme = (selectedTheme) => {
-    this.selectedTheme = selectedTheme
+    this.selectedTheme = selectedTheme;
     if (this.allowCookie) {
-      cookies.set('selectedTheme', selectedTheme, { path: '/' })
+      cookies.set('selectedTheme', selectedTheme, { path: '/' });
     }
-  }
+  };
 
   setSelectedLanguage = (selectedLanguage) => {
-    this.selectedLanguage = selectedLanguage
+    this.selectedLanguage = selectedLanguage;
     if (this.allowCookie) {
-      cookies.set('selectedLanguage', selectedLanguage, { path: '/' })
+      cookies.set('selectedLanguage', selectedLanguage, { path: '/' });
     }
-  }
+  };
 
   setAllowCookie = (allowCookie) => {
-    this.allowCookie = allowCookie
+    this.allowCookie = allowCookie;
     if (allowCookie) {
-      cookies.set('allowCookie', true, { path: '/' })
+      cookies.set('allowCookie', true, { path: '/' });
     }
-  }
+  };
 
   setShowMenu = (showMenu) => {
-    this.showMenu = showMenu
-  }
+    this.showMenu = showMenu;
+  };
 }
 
-export const pageStore = new PageStore()
+export const pageStore = new PageStore();
