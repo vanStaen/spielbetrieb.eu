@@ -1,12 +1,13 @@
 import React, { useState, useRef } from 'react'
 import { Form, Input, Button, Checkbox, notification } from 'antd'
+import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom';
 import {
   MailOutlined,
   LockOutlined,
   SyncOutlined,
   LinkOutlined
 } from '@ant-design/icons'
-import { useTranslation } from 'react-i18next'
 
 import { AlreadyMember } from '../SignUpForm/AlreadyMember'
 import { PasswordRecover } from '../PasswordRecover/PasswordRecover'
@@ -20,7 +21,8 @@ export const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [isRecovery, setIsRecovery] = useState(false)
   const isEmail = useRef(undefined)
-  const { t } = useTranslation()
+  const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const submitHandler = async (values) => {
     setIsLoading(true)
@@ -74,6 +76,9 @@ export const LoginForm = () => {
             className: 'customNotification'
           })
         }
+      } else {
+        // Go back to main page
+        navigate('/');
       }
     } catch (error) {
       console.log(error)
