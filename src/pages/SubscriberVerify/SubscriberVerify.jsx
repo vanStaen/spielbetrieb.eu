@@ -23,7 +23,7 @@ export const SubscriberVerify = () => {
       setIsVerified(true);
       setTimeout(() => {
         document.location.href = "/";
-      }, 10000);
+      }, 5000);
     }
     setIsLoading(false);
   }, [params.verifyCode]);

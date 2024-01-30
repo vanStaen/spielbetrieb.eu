@@ -4,7 +4,7 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
 export class PageStore {
-  selectedTheme = cookies.get('selectedTheme') || 0;
+  selectedTheme = cookies.get('selectedTheme') || "dark";
   selectedLanguage = cookies.get('selectedLanguage') || 'en';
   allowCookie = cookies.get('allowCookie');
   showMenu = false;

@@ -93,7 +93,7 @@ export const LoginForm = observer(() => {
       )
     : (
       <div className="login__full">
-        <div className={`login__header ${pageStore.selectedTheme ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
+        <div className={`login__header ${pageStore.selectedTheme === "light" ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
           {t('login.loginto')} <b>Spielbetrieb</b>
           .eu {t('login.logintoAfter')}
         </div>
@@ -141,7 +141,7 @@ export const LoginForm = observer(() => {
             style={{ display: 'inline-block', width: 'calc(50%)' }}
             defaultChecked={false}
           >
-            <Checkbox className={`login__remember ${pageStore.selectedTheme ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
+            <Checkbox className={`login__remember ${pageStore.selectedTheme === "light" ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
               {t('login.rememberMe')}
             </Checkbox>
           </Form.Item>
@@ -154,7 +154,7 @@ export const LoginForm = observer(() => {
               textAlign: 'right'
             }}
           >
-            <span className={`link ${pageStore.selectedTheme ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`} onClick={() => setIsRecovery(!isRecovery)}>
+            <span className={`link ${pageStore.selectedTheme === "light" ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`} onClick={() => setIsRecovery(!isRecovery)}>
               {t('login.recoverPassword').replace(/^\w/, (c) => c.toUpperCase())}
             </span>
           </Form.Item>
@@ -163,7 +163,7 @@ export const LoginForm = observer(() => {
             <Button
               type="primary"
               htmlType="submit"
-              className={`login__formbutton ${pageStore.selectedTheme ? 'lightColorTheme__Button' : 'darkColorTheme__Button'}`}
+              className={`login__formbutton ${pageStore.selectedTheme === "light" ?  'lightColorTheme__Button' : 'darkColorTheme__Button'}`}
             >
               {isLoading ? <SyncOutlined spin /> : t('login.logMeIn')}
             </Button>

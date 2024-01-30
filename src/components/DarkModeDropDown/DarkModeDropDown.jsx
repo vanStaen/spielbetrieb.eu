@@ -29,7 +29,7 @@ export const DarkModeDropDown = observer(() => {
       <Menu.Item
         key="dark"
         onClick={() => {
-          handleThemeChange(0);
+          handleThemeChange("dark");
         }}
       >
         <div className="darkmodeDropdown__item">{t('general.dark')}</div>
@@ -37,7 +37,7 @@ export const DarkModeDropDown = observer(() => {
       <Menu.Item
         key="light"
         onClick={() => {
-          handleThemeChange(1);
+          handleThemeChange("light");
         }}
       >
         <div className="darkmodeDropdown__item">{t('general.light')}</div>
@@ -54,7 +54,7 @@ export const DarkModeDropDown = observer(() => {
             e.preventDefault();
           }}
         >
-          {theme == 0 ? t('general.dark') : t('general.light')}
+          {theme === "dark" ? t('general.dark') : t('general.light')}
         </a>
       </Dropdown>
     </div>
