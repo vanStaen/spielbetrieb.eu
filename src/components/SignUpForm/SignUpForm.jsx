@@ -87,14 +87,14 @@ export const SignUpForm = observer((props) => {
           description: <ErrorDescNotVerified />,
           placement: 'bottomRight',
           className: 'customNotification',
-          duration: 0,
+          duration: 0
         });
         props.setShowLogin(true);
       } else {
         notification.open({
           message: <>❌ {response.errors[0].message}</>,
           placement: 'bottomRight',
-          className: 'customNotification',
+          className: 'customNotification'
         });
       }
     } catch (error) {
@@ -110,7 +110,7 @@ export const SignUpForm = observer((props) => {
 
   return (
     <div className="signup__full">
-      <div className={`signup__header ${pageStore.selectedTheme === "light" ?  'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
+      <div className={`signup__header ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
         {t('login.signinto')} <b>merrier</b>
         .app {t('login.signintoAfter')}
       </div>
@@ -303,7 +303,7 @@ export const SignUpForm = observer((props) => {
             }
           ]}
         >
-          <Checkbox className={`signup__terms ${pageStore.selectedTheme === "light" ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`}>
+          <Checkbox className={`signup__terms ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`}>
             {t('login.creatingAccountMeans')}{' '}
             <a className="link" href="/service">{t('login.termsService')}</a>,{' '}
             <a className="link" href="/privacy">{t('login.privacyPolicy')}</a>
@@ -317,7 +317,7 @@ export const SignUpForm = observer((props) => {
           <Button
             type="primary"
             htmlType="submit"
-            className={`signup__formbutton ${pageStore.selectedTheme === "light" ? 'lightColorTheme__Button' : 'darkColorTheme__Button'}`}
+            className={`signup__formbutton ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Button' : 'darkColorTheme__Button'}`}
           >
             {isLoading ? <SyncOutlined spin /> : t('login.createAccount')}
           </Button>

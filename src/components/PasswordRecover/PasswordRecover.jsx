@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Form, Input, Button, notification } from "antd";
-import { MailOutlined, ArrowLeftOutlined } from "@ant-design/icons";
-import { useTranslation } from "react-i18next";
+import React, { useState } from 'react';
+import { Form, Input, Button, notification } from 'antd';
+import { MailOutlined, ArrowLeftOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
 
-import { postEmailExist } from "./postEmailExist";
-import { postSendRecoverLink } from "./postSendRecoverLink";
+import { postEmailExist } from './postEmailExist';
+import { postSendRecoverLink } from './postSendRecoverLink';
 
-import "./PasswordRecover.css";
+import './PasswordRecover.css';
 
 export const PasswordRecover = (props) => {
   const [emailDoNotExist, setEmailDoNotExist] = useState(undefined);
@@ -20,27 +20,27 @@ export const PasswordRecover = (props) => {
     const email = values.email;
     const emailExist = await postEmailExist(email);
     if (emailExist === false) {
-      setEmailDoNotExist("error");
+      setEmailDoNotExist('error');
       notification.error({
-        message: t("login.emailDoesNotExist"),
-        placement: "bottomRight",
-        className: "customNotification",
+        message: t('login.emailDoesNotExist'),
+        placement: 'bottomRight',
+        className: 'customNotification'
       });
     } else {
-      setEmailDoNotExist("success");
+      setEmailDoNotExist('success');
       try {
         await postSendRecoverLink(email);
         notification.success({
-          message: t("login.recoverEmailSent"),
-          placement: "bottomRight",
-          className: "customNotification",
+          message: t('login.recoverEmailSent'),
+          placement: 'bottomRight',
+          className: 'customNotification'
         });
         props.setIsRecovery(false);
       } catch (error) {
         notification.warn({
           message: error.message,
-          placement: "bottomRight",
-          className: "customNotification",
+          placement: 'bottomRight',
+          className: 'customNotification'
         });
       }
     }
@@ -48,13 +48,13 @@ export const PasswordRecover = (props) => {
 
   return (
     <div className="recover__full">
-      <div className="recover__header">{t("login.recoverYourPassword")}</div>
+      <div className="recover__header">{t('login.recoverYourPassword')}</div>
 
       <Form
         name="form_recover"
         className="recover__form"
         initialValues={{
-          email: props.email,
+          email: props.email
         }}
         onFinish={submitHandler}
       >
@@ -63,10 +63,10 @@ export const PasswordRecover = (props) => {
           onChange={changeEmailHandler}
           rules={[
             {
-              type: "email",
+              type: 'email',
               required: true,
-              message: t("login.pleaseInputEmail"),
-            },
+              message: t('login.pleaseInputEmail')
+            }
           ]}
         >
           <Input
@@ -80,11 +80,11 @@ export const PasswordRecover = (props) => {
             type="primary"
             htmlType="submit"
             className="recover__formbutton"
-            disabled={emailDoNotExist === "error" ? true : false}
+            disabled={emailDoNotExist === 'error'}
           >
-            {emailDoNotExist === "error"
-              ? t("login.emailDoesNotExist")
-              : t("login.sendPasswortResetEmail")}
+            {emailDoNotExist === 'error'
+              ? t('login.emailDoesNotExist')
+              : t('login.sendPasswortResetEmail')}
           </Button>
 
           <div
@@ -93,8 +93,8 @@ export const PasswordRecover = (props) => {
               props.setIsRecovery(false);
             }}
           >
-            <ArrowLeftOutlined />{" "}
-            <span className="link">{t("login.iRememberNow")}</span>
+            <ArrowLeftOutlined />{' '}
+            <span className="link">{t('login.iRememberNow')}</span>
           </div>
         </Form.Item>
       </Form>

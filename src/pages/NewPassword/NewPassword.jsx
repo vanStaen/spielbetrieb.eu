@@ -1,31 +1,31 @@
-import React, { useEffect, useState, useCallback } from 'react'
-import { Form, Input, Button, notification } from 'antd'
-import { useParams } from 'react-router-dom'
-import { LockOutlined, SyncOutlined } from '@ant-design/icons'
-import { useTranslation } from 'react-i18next'
+import React, { useEffect, useState, useCallback } from 'react';
+import { Form, Input, Button, notification } from 'antd';
+import { useParams } from 'react-router-dom';
+import { LockOutlined, SyncOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
 
-import { postTokenVerify } from './postTokenVerify'
-import { postChangePassword } from './postChangePassword'
-import { CustomSpinner } from '../../components/CustomSpinner/CustomSpinnner'
-import { LanguageDropDown } from '../../components/LanguageDropDown/LanguageDropDown'
-import { DarkModeDropDown } from '../../components/DarkModeDropDown/DarkModeDropDown'
+import { postTokenVerify } from './postTokenVerify';
+import { postChangePassword } from './postChangePassword';
+import { CustomSpinner } from '../../components/CustomSpinner/CustomSpinnner';
+import { LanguageDropDown } from '../../components/LanguageDropDown/LanguageDropDown';
+import { DarkModeDropDown } from '../../components/DarkModeDropDown/DarkModeDropDown';
 
-import './NewPassword.less'
+import './NewPassword.less';
 
 export const NewPassword = () => {
-  const [wrongTokenNotifWasShown, setWrongTokenNotifWasShown] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [isValid, setIsValid] = useState(true)
-  const { t } = useTranslation()
-  const params = useParams()
+  const [wrongTokenNotifWasShown, setWrongTokenNotifWasShown] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isValid, setIsValid] = useState(true);
+  const { t } = useTranslation();
+  const params = useParams();
 
-  const token = params.token
+  const token = params.token;
 
   const submitHandler = async (value) => {
-    setIsLoading(true)
-    const password = value.password
+    setIsLoading(true);
+    const password = value.password;
     try {
-      const success = await postChangePassword(token, password)
+      const success = await postChangePassword(token, password);
       if (success === true) {
         notification.open({
           duration: 3,
@@ -33,10 +33,10 @@ export const NewPassword = () => {
           description: <ErrorDescPwdReseted />,
           placement: 'bottomRight',
           className: 'customNotification'
-        })
+        });
         setTimeout(() => {
-          document.location.href = '/'
-        }, 3000)
+          document.location.href = '/login';
+        }, 3000);
       } else {
         notification.open({
           duration: 10,
@@ -44,7 +44,7 @@ export const NewPassword = () => {
           description: <ErrorDescPwdNotChanged />,
           placement: 'bottomRight',
           className: 'customNotification'
-        })
+        });
       }
     } catch (error) {
       notification.error({
@@ -52,37 +52,37 @@ export const NewPassword = () => {
         message: error.message,
         placement: 'bottomRight',
         className: 'customNotification'
-      })
-      console.log(error)
+      });
+      console.log(error);
     }
-    setIsLoading(false)
-  }
+    setIsLoading(false);
+  };
 
   const verifyToken = useCallback(async () => {
-    setIsLoading(true)
-    const tokenValid = await postTokenVerify(token)
+    setIsLoading(true);
+    const tokenValid = await postTokenVerify(token);
     if (!tokenValid) {
       if (wrongTokenNotifWasShown) {
-        return
+        return;
       }
-      setIsValid(false)
+      setIsValid(false);
       notification.open({
         duration: 0,
         message: <ErrorTitleLinkNotValid />,
         description: <ErrorDescLinkNotValid />,
         placement: 'bottomRight',
         className: 'customNotification'
-      })
-      setWrongTokenNotifWasShown(true)
+      });
+      setWrongTokenNotifWasShown(true);
     }
-    setIsLoading(false)
-  }, [token, t])
+    setIsLoading(false);
+  }, [token, t]);
 
   useEffect(() => {
     if (!wrongTokenNotifWasShown) {
-      verifyToken()
+      verifyToken();
     }
-  }, [wrongTokenNotifWasShown])
+  }, [wrongTokenNotifWasShown]);
 
   return (
     <>
@@ -134,11 +134,11 @@ export const NewPassword = () => {
                   ({ getFieldValue }) => ({
                     validator (_, value) {
                       if (!value || getFieldValue('password') === value) {
-                        return Promise.resolve()
+                        return Promise.resolve();
                       }
                       return Promise.reject(
                         new Error(t('login.passwordDoNotMatch'))
-                      )
+                      );
                     }
                   })
                 ]}
@@ -174,35 +174,35 @@ export const NewPassword = () => {
             )}
       </div>
     </>
-  )
-}
+  );
+};
 
 const ErrorTitleLinkNotValid = () => {
-  const { t } = useTranslation()
-  return <>❌ {t('login.linkNotValid')}</>
-}
+  const { t } = useTranslation();
+  return <>❌ {t('login.linkNotValid')}</>;
+};
 
 const ErrorDescLinkNotValid = () => {
-  const { t } = useTranslation()
-  return <>{t('login.linkNotValid2')}</>
-}
+  const { t } = useTranslation();
+  return <>{t('login.linkNotValid2')}</>;
+};
 
 const ErrorTitlePwdNotChanged = () => {
-  const { t } = useTranslation()
-  return <>❌ {t('login.passwordNotChanged')}</>
-}
+  const { t } = useTranslation();
+  return <>❌ {t('login.passwordNotChanged')}</>;
+};
 
 const ErrorDescPwdNotChanged = () => {
-  const { t } = useTranslation()
-  return <>{t('login.passwordNotChanged2')}</>
-}
+  const { t } = useTranslation();
+  return <>{t('login.passwordNotChanged2')}</>;
+};
 
 const ErrorTitlePwdReseted = () => {
-  const { t } = useTranslation()
-  return <>👌 {t('login.passwordReseted')}</>
-}
+  const { t } = useTranslation();
+  return <>👌 {t('login.passwordReseted')}</>;
+};
 
 const ErrorDescPwdReseted = () => {
-  const { t } = useTranslation()
-  return <>{t('login.passwordReseted2')}</>
-}
+  const { t } = useTranslation();
+  return <>{t('login.passwordReseted2')}</>;
+};
