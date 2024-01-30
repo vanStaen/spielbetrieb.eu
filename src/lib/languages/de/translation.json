@@ -92,7 +92,9 @@
     "updatePassword": "Passwort aktualisieren",
     "linkNotValidAnymore": "Link ist nicht mehr gültig",
     "usernameShouldNotBeAnEmail": "Der Benutzername darf kein email sein",
-    "forbiddenUsername": "Der Benutzername is nicht verfügbar"
+    "forbiddenUsername": "Der Benutzername is nicht verfügbar",
+    "birthdayMissing": "Geburtsdatum fehlt",
+    "birthday": "Geburtsdatum"
   },
   "404": {
     "endOfInternet" : "Sie haben das Ende des Internets erreicht!"

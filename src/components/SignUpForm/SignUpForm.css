@@ -41,8 +41,19 @@
   margin-bottom: 2vh;
 }
 
-.signup__showAlreadyMember{
-  display: none;
+.signup__full .signup__code {
+  display: block;
+}
+
+.signup__full .signup__username {
+  display: inline-block;
+  width: 237px;
+}
+
+.signup__full .signup__spacerBirthday {
+  display: inline-block;
+  width: 24px;
+  line-height: 32px;
 }
 
 @media (max-width: 800px) {
@@ -52,5 +63,16 @@
   }
   .signup__full .signup__form {
     width: 85%;
+  } 
+  .signup__full .signup__code {
+    display: none;
   }
+  .signup__full .signup__spacerBirthday {
+    display: none;
+  }
+  .signup__full .signup__username {
+    width: 100%;
+  }
+  
 }
+

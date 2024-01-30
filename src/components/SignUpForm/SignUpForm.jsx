@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import {
   Form,
   Input,
-  InputNumber,
+  DatePicker,
   Button,
   Checkbox,
   notification,
@@ -15,8 +15,7 @@ import {
   UserOutlined,
   MailOutlined,
   LockOutlined,
-  SyncOutlined,
-  HourglassOutlined
+  SyncOutlined
 } from '@ant-design/icons';
 
 import { postUsernameTaken } from './postUsernameTaken';
@@ -126,6 +125,7 @@ export const SignUpForm = observer((props) => {
         >
           <Form.Item
             name="code"
+            className="signup__code"
             rules={[
               {
                 required: true,
@@ -179,36 +179,18 @@ export const SignUpForm = observer((props) => {
         </Form.Item>
 
         <Form.Item
-          name="age"
-          style={{
-            display: 'inline-block'
-          }}
+          name="birthday"
+          style={{ display: 'inline-block' }}
           rules={[
             {
               required: true,
-              message: t('login.ageMissing')
-            },
-            {
-              type: 'number',
-              min: 18,
-              message: t('login.ageMinor')
+              message: t('login.birthdayMissing')
             }
           ]}
         >
-          <InputNumber
-            prefix={<HourglassOutlined />}
-            min={1}
-            max={99}
-            placeholder={t('login.age')}
-          />
+          <DatePicker placeholder={t('login.birthday')}/>
         </Form.Item>
-        <span
-          style={{
-            display: 'inline-block',
-            width: '24px',
-            lineHeight: '32px',
-            textAlign: 'center'
-          }}
+        <span className="signup__spacerBirthday"
         ></span>
         <Tooltip
           trigger={['hover']}
@@ -223,10 +205,7 @@ export const SignUpForm = observer((props) => {
         >
           <Form.Item
             name="username"
-            style={{
-              display: 'inline-block',
-              width: 'calc(100% - 90px - 24px)'
-            }}
+            className="signup__username"
             validateStatus={isValidUsername}
             onChange={changeUserNameHandler}
             hasFeedback

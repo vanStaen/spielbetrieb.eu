@@ -92,7 +92,9 @@
     "updatePassword": "Update password",
     "linkNotValidAnymore": "Link not valid anymore.",
     "usernameShouldNotBeAnEmail": "Your username should not be an email",
-    "forbiddenUsername": "This username is not available"
+    "forbiddenUsername": "This username is not available",
+    "birthdayMissing": "Birthday missing",
+    "birthday": "Birthday"
   },
   "404": {
     "endOfInternet" : "You reach the end of the internet!"

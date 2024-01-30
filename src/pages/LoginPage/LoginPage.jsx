@@ -21,7 +21,7 @@ export const LoginPage = () => {
         <LoginForm />
       </div>
         : <div className="login__container">
-        <SignUpForm />
+        <SignUpForm inviteCode="earlybird2024"/>
       </div>}
 
     </>
