@@ -14,7 +14,7 @@ export const DarkModeDropDown = observer(() => {
   useEffect(() => {
     const selectedClasses = document.getElementsByClassName('invertColorTheme');
     for (let i = 0, il = selectedClasses.length; i < il; i++) {
-      selectedClasses[i].style.filter = `invert(${theme})`;
+      selectedClasses[i].style.filter = `invert(${theme === "dark" ? 0 : 1 })`;
     }
   }, [theme]);
 
