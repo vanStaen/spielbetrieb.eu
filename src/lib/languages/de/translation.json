@@ -58,7 +58,8 @@
     "alreadyTaken": "Schon vergeben!",
     "spacesinUsername": "Ihr Benutzername darf keine Leerzeichen enthalten.",
     "doNotUseSpaces": "Keine Leerzeichen verwenden",
-    "pleaseConfirmEmail": "Wir brauchen Sie noch zur Bestätigung Ihrer E-Mail: Bitte überprüfen Sie Ihr E-Mail-Postfach, dort finden Sie eine E-Mail von uns.",
+    "pleaseConfirmEmail": "Wir brauchen Sie noch zur Bestätigung Ihrer E-Mail.",
+    "pleaseConfirmEmail2": "Bitte überprüfen Sie Ihr E-Mail-Postfach, dort finden Sie eine E-Mail von uns.",
     "signinto": "Sich bei",
     "signintoAfter": "einloggen",
     "yourInvitationCode": "Ihr Einladungscode",
@@ -94,7 +95,8 @@
     "usernameShouldNotBeAnEmail": "Der Benutzername darf kein email sein",
     "forbiddenUsername": "Der Benutzername is nicht verfügbar",
     "birthdayMissing": "Geburtsdatum fehlt",
-    "birthday": "Geburtsdatum"
+    "birthday": "Geburtsdatum",
+    "tryAgainWithEmail" : "Bitte versuchen Sie erneut, sich mit Ihrer E-Mail-Adresse anstelle Ihres Benutzernamens anzumelden."
   },
   "404": {
     "endOfInternet" : "Sie haben das Ende des Internets erreicht!"

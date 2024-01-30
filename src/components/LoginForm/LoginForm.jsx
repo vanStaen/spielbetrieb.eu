@@ -180,6 +180,16 @@ const ErrorTitleNotVerified = () => {
 
 const ErrorDescNotVerified = (props) => {
   const { t } = useTranslation();
+
+  if (!props.isEmail) {
+    return (
+    <div
+      className="justify"
+    >
+      {t('login.tryAgainWithEmail')}
+    </div>
+    )
+  }
   return (
     <div
       className="justify"

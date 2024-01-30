@@ -25,11 +25,12 @@ import { pageStore } from '../../store/pageStore/pageStore';
 
 import './SignUpForm.css';
 
+const dateFormat = 'DD/MM/YYYY';
+
 export const SignUpForm = observer((props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isValidUsername, setIsValidUsername] = useState(undefined); // validateStatus: validate status of form components which could be 'success', 'warning', 'error', 'validating'.
   const [errorMsgUsername, setErrorMsgUsername] = useState(undefined); // validateStatus: validate status of form components which could be 'success', 'warning', 'error', 'validating'.
-  const [errorMsgUserAge, setErrorMsgUserAge] = useState(undefined); // validateStatus: validate status of form components which could be 'success', 'warning', 'error', 'validating'.
   const { t } = useTranslation();
 
   const ageOptions = [];
@@ -81,22 +82,26 @@ export const SignUpForm = observer((props) => {
       );
       if (!response.errors) {
         await postVerifyEmailLink(email);
-        notification.success({
-          message: t('login.pleaseConfirmEmail'),
-          placement: 'topLeft',
-          duration: 0
+        notification.warning({
+          message: <ErrorTitleNotVerified />,
+          description: <ErrorDescNotVerified />,
+          placement: 'bottomRight',
+          className: 'customNotification',
+          duration: 0,
         });
         props.setShowLogin(true);
       } else {
-        notification.error({
-          message: response.errors[0].message,
-          placement: 'topLeft'
+        notification.open({
+          message: <>❌ {response.errors[0].message}</>,
+          placement: 'bottomRight',
+          className: 'customNotification',
         });
       }
     } catch (error) {
-      notification.error({
-        message: error.message,
-        placement: 'topLeft'
+      notification.open({
+        message: <>❌ {error.message}</>,
+        placement: 'bottomRight',
+        className: 'customNotification'
       });
       console.log(error);
     }
@@ -188,7 +193,7 @@ export const SignUpForm = observer((props) => {
             }
           ]}
         >
-          <DatePicker placeholder={t('login.birthday')}/>
+          <DatePicker placeholder={t('login.birthday')} format={dateFormat}/>
         </Form.Item>
         <span className="signup__spacerBirthday"
         ></span>
@@ -321,3 +326,13 @@ export const SignUpForm = observer((props) => {
     </div>
   );
 });
+
+const ErrorTitleNotVerified = () => {
+  const { t } = useTranslation();
+  return <>{t('login.pleaseConfirmEmail')}</>;
+};
+
+const ErrorDescNotVerified = () => {
+  const { t } = useTranslation();
+  return <>{t('login.pleaseConfirmEmail2')}</>;
+};

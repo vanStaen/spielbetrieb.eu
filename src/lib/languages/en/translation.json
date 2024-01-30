@@ -58,7 +58,8 @@
     "alreadyTaken": "Already taken!",
     "spacesinUsername": "You can't have spaces in your username.",
     "doNotUseSpaces": "Do not use spaces",
-    "pleaseConfirmEmail": "We still need you to confirm your email: Please check your email box, there you be an email from us.",
+    "pleaseConfirmEmail": "We still need you to confirm your email.",
+    "pleaseConfirmEmail2": "Please check your email box, there you be an email from us.",
     "signinto": "Sign into",
     "signintoAfter": "",
     "yourInvitationCode": "Your invitation code",
@@ -94,7 +95,8 @@
     "usernameShouldNotBeAnEmail": "Your username should not be an email",
     "forbiddenUsername": "This username is not available",
     "birthdayMissing": "Birthday missing",
-    "birthday": "Birthday"
+    "birthday": "Birthday",
+    "tryAgainWithEmail" : "Please try again to login using your email, instead of your username."
   },
   "404": {
     "endOfInternet" : "You reach the end of the internet!"
