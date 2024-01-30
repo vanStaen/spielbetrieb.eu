@@ -62,7 +62,7 @@ export const LoginForm = observer(() => {
           });
         } else if (error === 'Error: Password is incorrect!') {
           notification.open({
-            duration: 0,
+            duration: 5,
             message: <ErrorTitlePwdIncorrect />,
             description: (
               <ErrorDescPwdIncorrect setIsRecovery={setIsRecovery} />
