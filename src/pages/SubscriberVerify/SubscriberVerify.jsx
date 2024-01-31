@@ -2,16 +2,18 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams, Link } from "react-router-dom";
 import { Tooltip } from "antd";
+import { observer } from 'mobx-react';
 
 import { postSubscriberVerified } from "./postSubscriberVerified";
 import { CustomSpinner } from "../../components/CustomSpinner/CustomSpinnner";
 import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
 import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
+import { pageStore } from '../../store/pageStore/pageStore';
 
 import "./SubscriberVerify.less";
 
-export const SubscriberVerify = () => {
+export const SubscriberVerify = observer(() => {
   const { t } = useTranslation();
   const params = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -37,12 +39,12 @@ export const SubscriberVerify = () => {
       <LanguageDropDown />
       <DarkModeDropDown />
       <div className="background invertColorTheme" id="background"></div>
-      <div className="subscriberVerifyEmail__container invertColorTheme">
+      <div className="subscriberVerifyEmail__container">
         {isLoading ? (
           <CustomSpinner size="large" text="Validating" />
         ) : (
           <>
-            <div className="subscriberVerifyEmail__text">
+            <div className={`subscriberVerifyEmail__text ${pageStore.selectedTheme === "light" ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
               {isVerified
                 ? t("newsletter.emailVerified")
                 : t("newsletter.verificationError")}
@@ -52,7 +54,7 @@ export const SubscriberVerify = () => {
                 <img
                   src={SpielbetriebLogo}
                   id="spielbetriebLogo"
-                  className="subscriberVerifyEmail__logo"
+                  className={`subscriberVerifyEmail__logo ${pageStore.selectedTheme === "dark" && 'theme__logoInvertColor'}`}
                 />
               </Link>
             </Tooltip>
@@ -61,4 +63,4 @@ export const SubscriberVerify = () => {
       </div>
     </>
   );
-};
+});

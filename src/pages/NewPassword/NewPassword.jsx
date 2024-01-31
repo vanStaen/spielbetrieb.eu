@@ -94,7 +94,7 @@ export const NewPassword = observer(() => {
       <div className="verifyEmail__container">
         {isLoading
           ? (
-          <CustomSpinner size="large" text="Validating" />
+          <CustomSpinner size="large" text="Validating"/>
             )
           : (
           <>

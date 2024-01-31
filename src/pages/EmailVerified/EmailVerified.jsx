@@ -3,16 +3,18 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useParams, Link } from 'react-router-dom'
 import { Tooltip } from 'antd'
+import { observer } from 'mobx-react';
 
 import { postEmailVerified } from './postEmailVerified'
 import { LanguageDropDown } from '../../components/LanguageDropDown/LanguageDropDown'
 import { DarkModeDropDown } from '../../components/DarkModeDropDown/DarkModeDropDown'
 import { CustomSpinner } from '../../components/CustomSpinner/CustomSpinnner'
 import SpielbetriebLogo from '../../img/logos/spielbetriebLogo.png'
+import { pageStore } from '../../store/pageStore/pageStore';
 
 import './EmailVerified.less'
 
-export const EmailVerified = () => {
+export const EmailVerified = observer(() => {
   const [isLoading, setIsLoading] = useState(true)
   const [isVerified, setIsVerified] = useState(false)
   const { t } = useTranslation()
@@ -38,16 +40,15 @@ export const EmailVerified = () => {
     <LanguageDropDown />
     <DarkModeDropDown />
     <div className="background invertColorTheme" id="background"></div>
-    <div className="verifyEmail__container invertColorTheme">
+    <div className="verifyEmail__container">
       {isLoading
         ? (
         <CustomSpinner size="large" text="Validating" />
           )
         : (
         <>
-          <div className="subscriberVerifyEmail__text">
             {isVerified
-              ? (<div className="verifyEmail__text">
+              ? (<div className={`verifyEmail__text ${pageStore.selectedTheme === "light" ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
               <strong>{t('login.emailVerified')}</strong> <br />
               {t('login.welcomeInOurCommunity')}!<br />
               {t('login.goAheadAndLogin')}.
@@ -67,7 +68,7 @@ export const EmailVerified = () => {
                 .
               </div>
             </div>)
-              : (<div className="verifyEmail__text">
+              : (<div className={`verifyEmail__text ${pageStore.selectedTheme === "light" ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
               <strong>{t('login.emailNotVerified')}!</strong>
               <br />
               <br />
@@ -88,13 +89,12 @@ export const EmailVerified = () => {
                 {t('login.requestNewLink')}.
               </div>
             </div>)}
-          </div>
           <Tooltip title={t('general.backTomainScreen')} placement="bottom">
             <Link to="../../" relative="path">
               <img
                 src={SpielbetriebLogo}
                 id="spielbetriebLogo"
-                className="verifyEmail__logo"
+                className={`verifyEmail__logo ${pageStore.selectedTheme === "dark" && 'theme__logoInvertColor'}`}
               />
             </Link>
           </Tooltip>
@@ -103,4 +103,4 @@ export const EmailVerified = () => {
     </div>
     </>
   )
-}
+});
