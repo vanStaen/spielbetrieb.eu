@@ -210,3 +210,52 @@ body {
     background-color: rgba(218, 166, 159, 1) !important;
   }
 }
+
+.lightColorTheme__Menu {
+  background-color: rgba(225, 207, 187, .75);
+  border: 1px solid rgba(20, 36, 54, .3);
+  .menu__element {
+    color: rgba(20, 36, 54, 1);
+    &:hover {
+       color: rgba(225, 207, 187, 1);
+       background-color: rgba(20, 36, 54, .5);
+    }
+    .menu__link {
+    color: rgba(20, 36, 54, 1);
+       &:hover {
+          color: rgba(225, 207, 187, 1);
+       }
+    }
+  }
+  .menu__elementDisabled {
+      color: rgba(20, 36, 54, .3);
+  }
+  .menu__whiteline {
+      border-bottom: 1px solid rgba(20, 36, 54, .3);
+  }
+}
+
+
+.darkColorTheme__Menu {
+  background-color: rgba(20, 36, 54, .75);
+  border: 1px solid rgba(225, 207, 187, .3);
+  .menu__element {
+    color: rgba(225, 207, 187, 1);
+    &:hover {
+       color: rgba(20, 36, 54, 1);
+       background-color: rgba(225, 207, 187, .5);
+    }
+    .menu__link {
+    color: rgba(225, 207, 187, 1);
+       &:hover {
+          color: rgba(20, 36, 54, 1);
+       }
+    }
+  }
+  .menu__elementDisabled {
+      color: rgba(225, 207, 187, .3);
+  }
+  .menu__whiteline {
+      border-bottom: 1px solid rgba(225, 207, 187, .3);
+  }
+}

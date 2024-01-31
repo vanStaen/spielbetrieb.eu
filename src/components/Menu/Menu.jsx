@@ -85,7 +85,10 @@ export const Menu = observer(() => {
             id="silentBackground"
             onClick={handleHideMenu}
           ></div>
-          <div className="menu__container invertColorTheme" id="menuContainer">
+          <div
+            className={`menu__container ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Menu' : 'darkColorTheme__Menu'}`}
+            id="menuContainer"
+          >
             <div
               className="menu__elementDisabled"
             >

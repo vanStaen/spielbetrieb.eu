@@ -41,8 +41,9 @@
     - [x] SignUp Form
       - [ ] Small Ad for spielbetrieb? 
   - [x] Login Journey (incl. validation)
-- [ ] Format Theme/Language drop down like menu
-- [ ] Spinner on menu-load should have right color
+- [x] Format Theme/Language drop down like menu
+- [x] Spinner on menu-load should have right color
+- [ ] Translate menu elements
 - [ ] Admin page (not for partner)
   - [ ] Newsletter management
     - [ ] Sort and filter
