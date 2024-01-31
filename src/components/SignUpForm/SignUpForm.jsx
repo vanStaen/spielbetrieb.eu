@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
 import { useTranslation } from 'react-i18next';
+import * as dayjs from "dayjs";
+import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import {
   Form,
   Input,
@@ -25,12 +27,16 @@ import { pageStore } from '../../store/pageStore/pageStore';
 
 import './SignUpForm.css';
 
+dayjs.extend(isSameOrBefore);
 const dateFormat = 'DD/MM/YYYY';
+const dateEighteenYearsAgo = dayjs().subtract(18, 'year') ;
 
 export const SignUpForm = observer((props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isValidUsername, setIsValidUsername] = useState(undefined); // validateStatus: validate status of form components which could be 'success', 'warning', 'error', 'validating'.
-  const [errorMsgUsername, setErrorMsgUsername] = useState(undefined); // validateStatus: validate status of form components which could be 'success', 'warning', 'error', 'validating'.
+  const [isValidBirthday, setIsValidBirthday] = useState(undefined); // validateStatus: validate status of form components which could be 'success', 'warning', 'error', 'validating'.
+  const [errorMsgUsername, setErrorMsgUsername] = useState(undefined); 
+  const [errorMsgBirthday, setErrorMsgBirthday] = useState(undefined);
   const { t } = useTranslation();
 
   const ageOptions = [];
@@ -61,6 +67,28 @@ export const SignUpForm = observer((props) => {
           setIsValidUsername('success');
           setErrorMsgUsername(null);
         }
+      }
+    }
+  };
+
+  const changeBirthdayHandler =  (birthday, dateString) => {
+    if (dateString === '') {
+      setIsValidBirthday('error');
+      setErrorMsgBirthday(t("login.birthdayMissing"));
+    } else {
+      const isOlderThan18 = birthday.isSameOrBefore(dateEighteenYearsAgo);
+      const isOlderThan100 = birthday.isSameOrBefore(dateEighteenYearsAgo);
+      if (isOlderThan18 === false) {
+        setIsValidBirthday('error');
+        setErrorMsgBirthday(t('login.mustBeOfLegalAge'));
+        console.log(t('login.mustBeOfLegalAge'));
+      } else if (isOlderThan100 === true) {
+        setIsValidBirthday('error');
+        setErrorMsgBirthday(t('login.areYouReallyThatOld'));
+        console.log(t('login.areYouReallyThatOld'));
+      } else {
+        setIsValidBirthday('success');
+        setErrorMsgBirthday(null);
       }
     }
   };
@@ -185,15 +213,29 @@ export const SignUpForm = observer((props) => {
 
         <Form.Item
           name="birthday"
+          validateStatus={isValidBirthday}
           style={{ display: 'inline-block' }}
           rules={[
             {
               required: true,
               message: t('login.birthdayMissing')
+            },
+            {
+              validator (_, value) {
+                if (value && isValidBirthday === 'error') {
+                  return Promise.reject(new Error(errorMsgBirthday));
+                }
+                return Promise.resolve();
+              }
             }
           ]}
         >
-          <DatePicker placeholder={t('login.birthday')} format={dateFormat}/>
+          <DatePicker 
+            onChange={changeBirthdayHandler}
+            //defaultValue={dateEighteenYearsAgo}
+            placeholder={t('login.birthday')} 
+            format={dateFormat}
+          />
         </Form.Item>
         <span className="signup__spacerBirthday"
         ></span>

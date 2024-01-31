@@ -95,7 +95,9 @@
     "usernameShouldNotBeAnEmail": "Der Benutzername darf kein email sein",
     "forbiddenUsername": "Der Benutzername is nicht verfügbar",
     "birthdayMissing": "Geburtsdatum fehlt",
-    "birthday": "Geburtsdatum"
+    "birthday": "Geburtsdatum",
+    "mustBeOfLegalAge": "Du must über 18 sein",
+    "areYouReallyThatOld": "Wirklich? Sicher?"
   },
   "404": {
     "endOfInternet" : "Sie haben das Ende des Internets erreicht!"
