@@ -35,6 +35,8 @@ type User {
     followers: [User]
     followed: [User]
     language: String!
+    deleted: Boolean!
+    suspended: Boolean!
 }`;
 
 exports.UserInputData = `

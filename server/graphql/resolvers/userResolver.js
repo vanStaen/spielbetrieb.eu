@@ -27,14 +27,13 @@ exports.userResolver = {
     const foundUser = await User.findOne({
       where: { _id: req.userId }
     });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes('users')) {
       throw new Error('Unauthorized!');
     }
     return await User.findAll({
       order: [['_id', 'ASC']]
     });
   },
-
 
   // addUser(userInput: UserInputData!): User!
   async addUser (args, req) {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Tag } from 'antd';
+import { Table } from 'antd';
 
 import { getUsers } from './getUsers';
 import { CustomSpinner } from '../../../components/CustomSpinner/CustomSpinnner';
@@ -55,7 +55,7 @@ export const AdminUsers = () => {
       dataIndex: 'isPartner',
       key: 'isPartner',
       render: (_, { isPartner }) => (isPartner ? 'Yes' : '')
-    },
+    }
   ];
 
   return (

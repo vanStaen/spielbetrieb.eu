@@ -112,6 +112,14 @@ const User = sequelize.define('user', {
     type: DataTypes.STRING,
     defaultValue: 'en'
   },
+  deleted: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
+  },
+  suspended: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
+  }
 });
 
 User.belongsToMany(User, {
