@@ -30,6 +30,7 @@ import './SignUpForm.css';
 dayjs.extend(isSameOrBefore);
 const dateFormat = 'DD/MM/YYYY';
 const dateEighteenYearsAgo = dayjs().subtract(18, 'year') ;
+const dateHundredYearsAgo = dayjs().subtract(100, 'year') ;
 
 export const SignUpForm = observer((props) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -77,7 +78,7 @@ export const SignUpForm = observer((props) => {
       setErrorMsgBirthday(t("login.birthdayMissing"));
     } else {
       const isOlderThan18 = birthday.isSameOrBefore(dateEighteenYearsAgo);
-      const isOlderThan100 = birthday.isSameOrBefore(dateEighteenYearsAgo);
+      const isOlderThan100 = birthday.isSameOrBefore(dateHundredYearsAgo);
       if (isOlderThan18 === false) {
         setIsValidBirthday('error');
         setErrorMsgBirthday(t('login.mustBeOfLegalAge'));
