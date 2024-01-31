@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
 import { useTranslation } from 'react-i18next';
-import * as dayjs from "dayjs";
+import * as dayjs from 'dayjs';
 import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import {
   Form,
@@ -13,6 +13,7 @@ import {
   Tooltip
 } from 'antd';
 import {
+  // eslint-disable-next-line no-unused-vars
   CheckOutlined,
   UserOutlined,
   MailOutlined,
@@ -29,14 +30,14 @@ import './SignUpForm.css';
 
 dayjs.extend(isSameOrBefore);
 const dateFormat = 'DD/MM/YYYY';
-const dateEighteenYearsAgo = dayjs().subtract(18, 'year') ;
-const dateHundredYearsAgo = dayjs().subtract(100, 'year') ;
+const dateEighteenYearsAgo = dayjs().subtract(18, 'year');
+const dateHundredYearsAgo = dayjs().subtract(100, 'year');
 
 export const SignUpForm = observer((props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isValidUsername, setIsValidUsername] = useState(undefined); // validateStatus: validate status of form components which could be 'success', 'warning', 'error', 'validating'.
   const [isValidBirthday, setIsValidBirthday] = useState(undefined); // validateStatus: validate status of form components which could be 'success', 'warning', 'error', 'validating'.
-  const [errorMsgUsername, setErrorMsgUsername] = useState(undefined); 
+  const [errorMsgUsername, setErrorMsgUsername] = useState(undefined);
   const [errorMsgBirthday, setErrorMsgBirthday] = useState(undefined);
   const { t } = useTranslation();
 
@@ -72,10 +73,10 @@ export const SignUpForm = observer((props) => {
     }
   };
 
-  const changeBirthdayHandler =  (birthday, dateString) => {
+  const changeBirthdayHandler = (birthday, dateString) => {
     if (dateString === '') {
       setIsValidBirthday('error');
-      setErrorMsgBirthday(t("login.birthdayMissing"));
+      setErrorMsgBirthday(t('login.birthdayMissing'));
     } else {
       const isOlderThan18 = birthday.isSameOrBefore(dateEighteenYearsAgo);
       const isOlderThan100 = birthday.isSameOrBefore(dateHundredYearsAgo);
@@ -107,7 +108,8 @@ export const SignUpForm = observer((props) => {
         lastname,
         username,
         email,
-        password
+        password,
+        pageStore.selectedLanguage
       );
       if (!response.errors) {
         await postVerifyEmailLink(email);
@@ -152,7 +154,7 @@ export const SignUpForm = observer((props) => {
         }}
         onFinish={submitHandler}
       >
-        {/* 
+        {/*
         <Tooltip
           trigger={['hover']}
           title={t('login.yourInvitationCode')}
@@ -174,7 +176,7 @@ export const SignUpForm = observer((props) => {
               disabled={props.inviteCode}
             />
           </Form.Item>
-          </Tooltip> 
+          </Tooltip>
         */}
 
         <Form.Item
@@ -233,10 +235,10 @@ export const SignUpForm = observer((props) => {
             }
           ]}
         >
-          <DatePicker 
+          <DatePicker
             onChange={changeBirthdayHandler}
-            //defaultValue={dateEighteenYearsAgo}
-            placeholder={t('login.birthday')} 
+            // defaultValue={dateEighteenYearsAgo}
+            placeholder={t('login.birthday')}
             format={dateFormat}
           />
         </Form.Item>

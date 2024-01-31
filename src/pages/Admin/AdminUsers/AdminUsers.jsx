@@ -69,18 +69,21 @@ export const AdminUsers = () => {
       title: 'Language',
       dataIndex: 'language',
       key: 'language',
+      align: 'center',
       render: (_, { language }) => language.toUpperCase()
     },
     {
       title: 'Verified Email',
       dataIndex: 'verifiedEmail',
       key: 'verifiedEmail',
+      align: 'center',
       render: (_, { verifiedEmail }) => (verifiedEmail ? 'Yes' : '')
     },
     {
       title: 'Verified Identity',
       dataIndex: 'verifiedIdentity',
       key: 'verifiedIdentity',
+      align: 'center',
       render: (_, { verifiedIdentity }) => (verifiedIdentity ? 'Yes' : '')
     },
     {
@@ -96,7 +99,7 @@ export const AdminUsers = () => {
       {users.length === 0
         ? (
         <div className="admin__centered">
-          <AdminCustomSpinner text="Loading subscribers" />
+          <AdminCustomSpinner text="Loading users" />
         </div>
           )
         : (
