@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { Form, Input, Button, notification } from 'antd';
 import { MailOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
+import { observer } from 'mobx-react';
 
 import { postEmailExist } from './postEmailExist';
 import { postSendRecoverLink } from './postSendRecoverLink';
+import { pageStore } from '../../store/pageStore/pageStore';
 
 import './PasswordRecover.css';
 
-export const PasswordRecover = (props) => {
+export const PasswordRecover = observer((props) => {
   const [emailDoNotExist, setEmailDoNotExist] = useState(undefined);
   const { t } = useTranslation();
 
@@ -48,8 +50,9 @@ export const PasswordRecover = (props) => {
 
   return (
     <div className="recover__full">
-      <div className="recover__header">{t('login.recoverYourPassword')}</div>
-
+      <div className={`recover__header ${pageStore.selectedTheme === "light" ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
+        {t('login.recoverYourPassword')}
+      </div>
       <Form
         name="form_recover"
         className="recover__form"
@@ -79,7 +82,7 @@ export const PasswordRecover = (props) => {
           <Button
             type="primary"
             htmlType="submit"
-            className="recover__formbutton"
+            className={`recover__formbutton ${pageStore.selectedTheme === "light" ?  'lightColorTheme__Button' : 'darkColorTheme__Button'}`}
             disabled={emailDoNotExist === 'error'}
           >
             {emailDoNotExist === 'error'
@@ -94,10 +97,10 @@ export const PasswordRecover = (props) => {
             }}
           >
             <ArrowLeftOutlined />{' '}
-            <span className="link">{t('login.iRememberNow')}</span>
+            <span className={`link ${pageStore.selectedTheme === "light" ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>{t('login.iRememberNow')}</span>
           </div>
         </Form.Item>
       </Form>
     </div>
   );
-};
+});

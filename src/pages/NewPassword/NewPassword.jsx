@@ -3,16 +3,18 @@ import { Form, Input, Button, notification } from 'antd';
 import { useParams } from 'react-router-dom';
 import { LockOutlined, SyncOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
+import { observer } from 'mobx-react';
 
 import { postTokenVerify } from './postTokenVerify';
 import { postChangePassword } from './postChangePassword';
 import { CustomSpinner } from '../../components/CustomSpinner/CustomSpinnner';
 import { LanguageDropDown } from '../../components/LanguageDropDown/LanguageDropDown';
 import { DarkModeDropDown } from '../../components/DarkModeDropDown/DarkModeDropDown';
+import { pageStore } from '../../store/pageStore/pageStore';
 
 import './NewPassword.less';
 
-export const NewPassword = () => {
+export const NewPassword = observer(() => {
   const [wrongTokenNotifWasShown, setWrongTokenNotifWasShown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isValid, setIsValid] = useState(true);
@@ -89,14 +91,14 @@ export const NewPassword = () => {
       <LanguageDropDown />
       <DarkModeDropDown />
       <div className="background invertColorTheme" id="background"></div>
-      <div className="verifyEmail__container invertColorTheme">
+      <div className="verifyEmail__container">
         {isLoading
           ? (
           <CustomSpinner size="large" text="Validating" />
             )
           : (
           <>
-            <div className="verifyEmail__header">
+            <div className={`verifyEmail__header ${pageStore.selectedTheme === "light" ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
               {t('login.setNewPassword')}
             </div>
             <Form
@@ -153,7 +155,7 @@ export const NewPassword = () => {
                 <Button
                   type="primary"
                   htmlType="submit"
-                  className="verifyEmail__formbutton"
+                  className={`verifyEmail__formbutton ${pageStore.selectedTheme === "light" ?  'lightColorTheme__Button' : 'darkColorTheme__Button'}`}
                   disabled={!isValid}
                 >
                   {isLoading
@@ -175,7 +177,7 @@ export const NewPassword = () => {
       </div>
     </>
   );
-};
+});
 
 const ErrorTitleLinkNotValid = () => {
   const { t } = useTranslation();
