@@ -9,10 +9,10 @@ import {
   UserOutlined,
   CalendarOutlined,
   PicLeftOutlined,
-  FontSizeOutlined
+  FontSizeOutlined,
+  CloseOutlined
 } from '@ant-design/icons';
 
-import SpielbetriebLogo from '../../img/logos/spielbetriebLogo.png';
 import { AdminNewsletter } from './AdminNewsletter/AdminNewsletter';
 import { AdminUsers } from './AdminUsers/AdminUsers';
 import { LoginForm } from '../../components/LoginForm/LoginForm';
@@ -64,11 +64,7 @@ export const Admin = observer(() => {
         {!isMobile &&
         <Link to="../" relative="path">
           <Tooltip title="Back to main page" placement="left">
-            <img
-              src={SpielbetriebLogo}
-              id="spielbetriebLogo"
-              className="admin__logo"
-            />
+            <CloseOutlined className="admin__closeLogo"/>
           </Tooltip>
         </Link>}
         {userStore.isAdmin

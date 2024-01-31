@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Table, Tag } from 'antd';
 
 import { getSubscribers } from './getSubscribers';
-import { CustomSpinner } from '../../../components/CustomSpinner/CustomSpinnner';
+import { AdminCustomSpinner } from '../AdminCustomSpinner/AdminCustomSpinner';
 
 export const AdminNewsletter = () => {
   const [subscribers, setSubscribers] = useState([]);
@@ -73,7 +73,7 @@ export const AdminNewsletter = () => {
       {subscribers.length === 0
         ? (
         <div className="admin__centered">
-          <CustomSpinner text="Loading subscribers" />
+          <AdminCustomSpinner text="Loading subscribers" />
         </div>
           )
         : (

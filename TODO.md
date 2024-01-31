@@ -33,14 +33,14 @@
 - [ ] Fix db_backup script
 - [ ] Menu
   - [ ] Settings
-  - [ ] Admin
+  - [x] Admin
   - [x] Logout
 - [ ] Login / Sign Up
   - [ ] Login Page
     - [x] Login Form
-    - [ ] SignUp Form
+    - [x] SignUp Form
       - [ ] Small Ad for spielbetrieb? 
-  - [ ] Login Journey (incl. validation)
+  - [x] Login Journey (incl. validation)
 - [ ] Format Theme/Language drop down like menu
 - [ ] Spinner on menu-load should have right color
 - [ ] Admin page (not for partner)

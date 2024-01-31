@@ -10,7 +10,7 @@ export const AlreadyMember = observer((props) => {
   const { t } = useTranslation();
 
   return (
-    <div className={`login__alreadyMember ${pageStore.selectedTheme === "light" ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`}>
+    <div className={`login__alreadyMember ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`}>
       <div style={{ paddingTop: '15px' }}>
         {props.showLogin
           ? (
@@ -36,6 +36,8 @@ export const AlreadyMember = observer((props) => {
           </>
             )}
       </div>
+      -- or --
+      go back
     </div>
   );
 });

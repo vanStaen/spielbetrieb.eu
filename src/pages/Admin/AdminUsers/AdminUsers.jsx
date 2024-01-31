@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Table } from 'antd';
+import { Table, Tag, Tooltip } from 'antd';
 
 import { getUsers } from './getUsers';
-import { CustomSpinner } from '../../../components/CustomSpinner/CustomSpinnner';
+import { AdminCustomSpinner } from '../AdminCustomSpinner/AdminCustomSpinner';
 
 export const AdminUsers = () => {
   const [users, setUsers] = useState([]);
@@ -25,7 +25,40 @@ export const AdminUsers = () => {
     {
       title: 'Username',
       dataIndex: 'userName',
-      key: 'userName'
+      key: 'userName',
+      render: (_, { userName, isAdmin, adminRoles }) => isAdmin
+        ? <>
+        <Tooltip
+          placement="left"
+          overlayStyle={{ maxWidth: '700px' }}
+          title={
+          <>🔥&nbsp;
+            <span style={{ color: '#666' }}>Admin roles:&nbsp;&nbsp;</span>
+            {adminRoles.map((role) => {
+              return (
+                <Tag
+                  color="#333"
+                  key={role}
+                  bordered={false}
+                >
+                  {role}
+                </Tag>
+              );
+            })}
+           </>}>
+            <b>{userName}</b>
+         </Tooltip></>
+        : userName
+    },
+    {
+      title: 'First name',
+      dataIndex: 'firstName',
+      key: 'firstName'
+    },
+    {
+      title: 'Last name',
+      dataIndex: 'lastName',
+      key: 'lastName'
     },
     {
       title: 'Email',
@@ -63,7 +96,7 @@ export const AdminUsers = () => {
       {users.length === 0
         ? (
         <div className="admin__centered">
-          <CustomSpinner text="Loading subscribers" />
+          <AdminCustomSpinner text="Loading subscribers" />
         </div>
           )
         : (

@@ -4,6 +4,8 @@ export async function getUsers () {
             {
               getUsers { 
                 _id,
+                isAdmin,
+                adminRoles,
                 isPartner,
                 partnerRoles,
                 firstName,
