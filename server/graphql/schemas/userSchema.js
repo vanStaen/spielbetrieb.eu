@@ -34,6 +34,7 @@ type User {
     friends: [User]
     followers: [User]
     followed: [User]
+    language: String!
 }`;
 
 exports.UserInputData = `
@@ -54,10 +55,12 @@ input UserInputData {
     interests: [String]
     archived: Boolean
     usernameChange: Int
+    language: String
 }`;
 
 exports.UserQueries = `
     getUser: User
+    getUsers: [User]
     getFriends: [User]
     getFollowers: [User]
     getFollowed: [User]

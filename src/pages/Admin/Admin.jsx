@@ -14,6 +14,7 @@ import {
 
 import SpielbetriebLogo from '../../img/logos/spielbetriebLogo.png';
 import { AdminNewsletter } from './AdminNewsletter/AdminNewsletter';
+import { AdminUsers } from './AdminUsers/AdminUsers';
 import { LoginForm } from '../../components/LoginForm/LoginForm';
 import { isMobileCheck } from '../../helpers/checkMobileTablet';
 import { authStore } from '../../store/authStore/authStore';
@@ -42,7 +43,7 @@ export const Admin = observer(() => {
       case 'events':
         return 'events';
       case 'users':
-        return 'users';
+        return <AdminUsers />;
       case 'shops':
         return 'shops';
       case 'blog':
@@ -88,7 +89,8 @@ export const Admin = observer(() => {
                 {
                   label: !isMobile && 'Events',
                   value: 'events',
-                  disabled: !userStore.adminRoles?.includes('events'),
+                  // disabled: !userStore.adminRoles?.includes('events'),
+                  disabled: true,
                   icon: <CalendarOutlined />
                 },
                 {
@@ -100,25 +102,29 @@ export const Admin = observer(() => {
                 {
                   label: !isMobile && 'Shops',
                   value: 'shops',
-                  disabled: !userStore.adminRoles?.includes('shops'),
+                  // disabled: !userStore.adminRoles?.includes('shops'),
+                  disabled: true,
                   icon: <ShopOutlined />
                 },
                 {
                   label: !isMobile && 'Blog',
                   value: 'blog',
-                  disabled: !userStore.adminRoles?.includes('blog'),
+                  // disabled: !userStore.adminRoles?.includes('blog'),
+                  disabled: true,
                   icon: <ReadOutlined />
                 },
                 {
                   label: !isMobile && 'Analytics',
                   value: 'analytics',
-                  disabled: !userStore.adminRoles?.includes('analytics'),
+                  // disabled: !userStore.adminRoles?.includes('analytics'),
+                  disabled: true,
                   icon: <PieChartOutlined />
                 },
                 {
                   label: !isMobile && 'Translations',
                   value: 'translation',
-                  disabled: !userStore.adminRoles?.includes('translation'),
+                  // disabled: !userStore.adminRoles?.includes('translation'),
+                  disabled: true,
                   icon: <FontSizeOutlined />
                 }
               ]}

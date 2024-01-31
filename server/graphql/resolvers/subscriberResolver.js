@@ -12,7 +12,7 @@ exports.subscriberResolver = {
     const foundUser = await User.findOne({
       where: { _id: req.userId }
     });
-    if (!foundUser.isAdmin) {
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("newsletter")) {
       throw new Error('Unauthorized!');
     }
     return await Subscriber.findAll();

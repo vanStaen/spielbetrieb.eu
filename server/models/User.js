@@ -107,7 +107,11 @@ const User = sequelize.define('user', {
   partnerRoles: {
     type: DataTypes.ARRAY(DataTypes.STRING),
     defaultValue: []
-  }
+  },
+  language: {
+    type: DataTypes.STRING,
+    defaultValue: 'en'
+  },
 });
 
 User.belongsToMany(User, {

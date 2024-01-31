@@ -20,6 +20,22 @@ exports.userResolver = {
     });
   },
 
+  async getUsers (args, req) {
+    if (!req.isAuth) {
+      throw new Error('Unauthorized!');
+    }
+    const foundUser = await User.findOne({
+      where: { _id: req.userId }
+    });
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
+      throw new Error('Unauthorized!');
+    }
+    return await User.findAll({
+      order: [['_id', 'ASC']]
+    });
+  },
+
+
   // addUser(userInput: UserInputData!): User!
   async addUser (args, req) {
     const foundUserEmail = await User.findOne({
@@ -52,6 +68,7 @@ exports.userResolver = {
         orientation: args.userInput.orientation,
         wishes: args.userInput.wishes,
         interests: args.userInput.interests,
+        language: args.userInput.language,
         lastActive: Date.now()
       });
       await mailService.mailService.emailVerify(email);
@@ -79,7 +96,8 @@ exports.userResolver = {
       'interests',
       'wishes',
       'archived',
-      'usernameChange'
+      'usernameChange',
+      'language'
     ];
     updatableFields.forEach((field) => {
       if (field in args.userInput) {
