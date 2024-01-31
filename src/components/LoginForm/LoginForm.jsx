@@ -56,7 +56,7 @@ export const LoginForm = observer(() => {
           notification.open({
             duration: 0,
             message: <ErrorTitleNotVerified />,
-            description: <ErrorDescNotVerified isEmail={isEmail.current} />,
+            description: <ErrorDescNotVerified emailOrUsername={emailOrUsername} />,
             placement: 'bottomRight',
             className: 'customNotification'
           });
@@ -181,20 +181,11 @@ const ErrorTitleNotVerified = () => {
 const ErrorDescNotVerified = (props) => {
   const { t } = useTranslation();
 
-  if (!props.isEmail) {
-    return (
-    <div
-      className="justify"
-    >
-      {t('login.tryAgainWithEmail')}
-    </div>
-    )
-  }
   return (
     <div
       className="justify"
       onClick={() => {
-        postVerifyEmailLink(props.isEmail);
+        postVerifyEmailLink(props.emailOrUsername);
         notification.success({
           duration: 0,
           message: t('login.recoverEmailSent'),

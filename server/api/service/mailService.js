@@ -1,5 +1,7 @@
 const axios = require('axios')
 const jsonwebtoken = require('jsonwebtoken')
+const { User } = require('../../models/User')
+const validateEmail = require('../../lib/validateEmail')
 require('dotenv/config')
 
 const mainDomain = 'spielbetrieb.eu'
@@ -123,6 +125,14 @@ exports.mailService = {
   },
 
   async emailVerify (sendto) {
+    const isValidEmail = validateEmail(sendto);
+    if (!isValidEmail) {
+      const foundUser = await User.findOne({
+        where: { userName: sendto }
+      })
+      sendto = foundUser.email;
+    }
+
     const emailVerifyToken = await jsonwebtoken.sign(
       { email: sendto },
       process.env.AUTH_SECRET_KEY_EMAILVERIFY,

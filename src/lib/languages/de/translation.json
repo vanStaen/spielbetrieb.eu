@@ -95,8 +95,7 @@
     "usernameShouldNotBeAnEmail": "Der Benutzername darf kein email sein",
     "forbiddenUsername": "Der Benutzername is nicht verfügbar",
     "birthdayMissing": "Geburtsdatum fehlt",
-    "birthday": "Geburtsdatum",
-    "tryAgainWithEmail" : "Bitte versuchen Sie erneut, sich mit Ihrer E-Mail-Adresse anstelle Ihres Benutzernamens anzumelden."
+    "birthday": "Geburtsdatum"
   },
   "404": {
     "endOfInternet" : "Sie haben das Ende des Internets erreicht!"

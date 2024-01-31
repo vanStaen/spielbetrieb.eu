@@ -95,8 +95,7 @@
     "usernameShouldNotBeAnEmail": "Your username should not be an email",
     "forbiddenUsername": "This username is not available",
     "birthdayMissing": "Birthday missing",
-    "birthday": "Birthday",
-    "tryAgainWithEmail" : "Please try again to login using your email, instead of your username."
+    "birthday": "Birthday"
   },
   "404": {
     "endOfInternet" : "You reach the end of the internet!"

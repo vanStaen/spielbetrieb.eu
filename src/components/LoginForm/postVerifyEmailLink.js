@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const postVerifyEmailLink = async (email, language = "en") => {
+export const postVerifyEmailLink = async (emailOrUsername, language = "en") => {
 
     const requestBody = {
-        "sendto": email,
+        "sendto": emailOrUsername,
         "language": language,
     };
 
