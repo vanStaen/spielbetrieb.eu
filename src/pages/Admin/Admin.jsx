@@ -15,7 +15,6 @@ import {
 
 import { AdminNewsletter } from './AdminNewsletter/AdminNewsletter';
 import { AdminUsers } from './AdminUsers/AdminUsers';
-import { LoginForm } from '../../components/LoginForm/LoginForm';
 import { isMobileCheck } from '../../helpers/checkMobileTablet';
 import { authStore } from '../../store/authStore/authStore';
 import { userStore } from '../../store/userStore/userStore';
@@ -137,7 +136,7 @@ export const Admin = observer(() => {
               <div className="admin__title">You dont have admin rights</div>
                 )
               : (
-              <LoginForm />
+                <div className="admin__title">You are not logged in</div>
                 )}
           </div>
             )}
