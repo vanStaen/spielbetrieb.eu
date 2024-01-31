@@ -152,6 +152,7 @@ export const SignUpForm = observer((props) => {
         }}
         onFinish={submitHandler}
       >
+        {/* 
         <Tooltip
           trigger={['hover']}
           title={t('login.yourInvitationCode')}
@@ -173,7 +174,8 @@ export const SignUpForm = observer((props) => {
               disabled={props.inviteCode}
             />
           </Form.Item>
-        </Tooltip>
+          </Tooltip> 
+        */}
 
         <Form.Item
           name="firstname"
