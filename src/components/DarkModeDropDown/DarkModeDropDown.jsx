@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
-import { Menu, Dropdown } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 import { pageStore } from '../../store/pageStore/pageStore';
