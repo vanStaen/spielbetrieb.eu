@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 export const sortDates = (array, chrono) => {
   array.sort((a, b) => {

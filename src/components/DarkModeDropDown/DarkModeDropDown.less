@@ -1,24 +1,37 @@
-.darkmodeDropdown {
-  position: absolute;
-  z-index: 1001;
-  bottom: 5px;
-  left: 50px;
-  color: rgba(225, 207, 187, .75);
-  margin: 15px 25px;
-  font-size: 16px;
-  letter-spacing: 2.5px;
-  text-transform: capitalize;
-  cursor: pointer;
-  
-  .darkmodeDropdown__item {
-    font-size: 17px;
+.darkModeDropdown__container {
+  .darkModeDropdown {
+    position: absolute;
+    z-index: 1001;
+    bottom: 5px;
+    left: 40px;
+    margin: 15px 25px;
     font-weight: 300;
-    &:hover {
-      font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 2.5px;
+    text-transform: capitalize;
+    cursor: pointer;
+  }
+  .darkModeDropdown__menu {
+    position: absolute;
+    left: 60px;
+    bottom: 50px;
+    z-index: 10; 
+    width: auto;
+    height: auto;
+    opacity: 1;
+    transition: opacity .3s;
+    .menu__element {
+      padding: 0 2px;
+      text-align: left;
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      padding: 6px 9px;
+      cursor: pointer;
+      &:hover {
+          font-weight: 500;
+          text-decoration: none;
+      }
     }
   }
 }
-
-
-
-

@@ -10,6 +10,7 @@ import './DarkModeDropDown.less';
 export const DarkModeDropDown = observer(() => {
   const { t } = useTranslation();
   const [theme, setTheme] = useState(pageStore.selectedTheme);
+  const [showThemeMenu, setShowThemeMenu] = useState(false);
 
   useEffect(() => {
     const selectedClasses = document.getElementsByClassName('invertColorTheme');
@@ -19,44 +20,43 @@ export const DarkModeDropDown = observer(() => {
   }, [theme]);
 
   const handleThemeChange = (value) => {
-    console.log('theme', value);
     pageStore.setSelectedTheme(value);
     setTheme(value);
+    setShowThemeMenu(false);
   };
 
-  const menu = (
-    <Menu>
-      <Menu.Item
-        key="dark"
-        onClick={() => {
-          handleThemeChange("dark");
-        }}
-      >
-        <div className="darkmodeDropdown__item">{t('general.dark')}</div>
-      </Menu.Item>
-      <Menu.Item
-        key="light"
-        onClick={() => {
-          handleThemeChange("light");
-        }}
-      >
-        <div className="darkmodeDropdown__item">{t('general.light')}</div>
-      </Menu.Item>
-    </Menu>
-  );
-
   return (
-    <div className="darkmodeDropdown invertColorTheme">
-      <Dropdown overlay={menu} trigger={'click'}>
-        <a
-          className="ant-dropdown-link"
-          onClick={(e) => {
-            e.preventDefault();
-          }}
+    <div className='darkModeDropdown__container'>
+      <div 
+        className={`darkModeDropdown ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`}
+        onClick={() => {
+          setShowThemeMenu(!showThemeMenu);
+        }}
+      >
+        {theme === "dark" ? t('general.dark') : t('general.light')}
+      </div>
+      {showThemeMenu &&  
+        <div
+          className={`darkModeDropdown__menu ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Menu' : 'darkColorTheme__Menu'}`}
+          id="darkModeDropdownContainer"
+          onMouseLeave={() => { setShowThemeMenu(false); }}
         >
-          {theme === "dark" ? t('general.dark') : t('general.light')}
-        </a>
-      </Dropdown>
+          <div 
+            className="menu__element"
+            onClick={() => {
+              handleThemeChange('dark');
+            }}>
+            {t('general.dark')}
+          </div>
+          <div 
+            className="menu__element"  
+            onClick={() => {
+              handleThemeChange('light');
+            }}>
+            {t('general.light')}
+          </div>
+        </div>
+      }
     </div>
   );
 });

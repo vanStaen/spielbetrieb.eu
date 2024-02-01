@@ -1,4 +1,4 @@
-export function getYesterdayDate (toYear, toMonth, toDay) {
+export function getYesterdayDate(toYear, toMonth, toDay) {
   const today = new Date(toYear, toMonth - 1, toDay, 0, 0, 0, 0);
   const tomorrow = new Date(today.valueOf() - 1000 * 60 * 60 * 24);
 
