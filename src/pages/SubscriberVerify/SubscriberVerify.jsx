@@ -1,17 +1,17 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { useTranslation } from "react-i18next";
-import { useParams, Link } from "react-router-dom";
-import { Tooltip } from "antd";
+import React, { useEffect, useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useParams, Link } from 'react-router-dom';
+import { Tooltip } from 'antd';
 import { observer } from 'mobx-react';
 
-import { postSubscriberVerified } from "./postSubscriberVerified";
-import { CustomSpinner } from "../../components/CustomSpinner/CustomSpinnner";
-import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
-import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
-import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
+import { postSubscriberVerified } from './postSubscriberVerified';
+import { CustomSpinner } from '../../components/CustomSpinner/CustomSpinnner';
+import SpielbetriebLogo from '../../img/logos/spielbetriebLogo.png';
+import { LanguageDropDown } from '../../components/LanguageDropDown/LanguageDropDown';
+import { DarkModeDropDown } from '../../components/DarkModeDropDown/DarkModeDropDown';
 import { pageStore } from '../../store/pageStore/pageStore';
 
-import "./SubscriberVerify.less";
+import './SubscriberVerify.less';
 
 export const SubscriberVerify = observer(() => {
   const { t } = useTranslation();
@@ -24,7 +24,7 @@ export const SubscriberVerify = observer(() => {
     if (success) {
       setIsVerified(true);
       setTimeout(() => {
-        document.location.href = "/";
+        document.location.href = '/';
       }, 5000);
     }
     setIsLoading(false);
@@ -40,26 +40,28 @@ export const SubscriberVerify = observer(() => {
       <DarkModeDropDown />
       <div className="background invertColorTheme" id="background"></div>
       <div className="subscriberVerifyEmail__container">
-        {isLoading ? (
+        {isLoading
+          ? (
           <CustomSpinner size="large" text="Validating" />
-        ) : (
+            )
+          : (
           <>
-            <div className={`subscriberVerifyEmail__text ${pageStore.selectedTheme === "light" ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
+            <div className={`subscriberVerifyEmail__text ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
               {isVerified
-                ? t("newsletter.emailVerified")
-                : t("newsletter.verificationError")}
+                ? t('newsletter.emailVerified')
+                : t('newsletter.verificationError')}
             </div>
-            <Tooltip title={t("general.backTomainScreen")} placement="bottom">
+            <Tooltip title={t('general.backTomainScreen')} placement="bottom">
               <Link to="../../" relative="path">
                 <img
                   src={SpielbetriebLogo}
                   id="spielbetriebLogo"
-                  className={`subscriberVerifyEmail__logo ${pageStore.selectedTheme === "dark" && 'theme__logoInvertColor'}`}
+                  className={`subscriberVerifyEmail__logo ${pageStore.selectedTheme === 'dark' && 'theme__logoInvertColor'}`}
                 />
               </Link>
             </Tooltip>
           </>
-        )}
+            )}
       </div>
     </>
   );

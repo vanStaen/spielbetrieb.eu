@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { pageStore } from '../../store/pageStore/pageStore';
@@ -36,8 +37,12 @@ export const AlreadyMember = observer((props) => {
           </>
             )}
       </div>
-      -- or --
-      go back
+      {/*
+        - or -
+        <Link to="/" relative="path">
+                  go back
+        </Link>
+      */}
     </div>
   );
 });
