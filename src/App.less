@@ -17,8 +17,6 @@ body {
 
 .App {
   font-size: min(calc(7px + 2vmin), 25px);
-  background-color: #E3E5E8;  
-  color: white;
   min-height: 100vh;
   /* Fallback for browsers that do not support Custom Properties */
   min-height: calc(var(--vh, 1vh) * 100);
@@ -258,4 +256,14 @@ body {
   .menu__whiteline {
       border-bottom: 1px solid rgba(225, 207, 187, .3);
   }
+}
+
+.lightColorTheme__Header {
+  background-color: rgba(225, 207, 187, .75);
+  border-bottom: 1px solid rgba(20, 36, 54, .3);
+}
+
+.darkColorTheme__Header {
+  background-color: rgba(20, 36, 54, .75);
+  border-bottom: 1px solid rgba(225, 207, 187, .3);
 }

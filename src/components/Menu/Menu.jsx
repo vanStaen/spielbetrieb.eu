@@ -28,7 +28,7 @@ export const Menu = observer(() => {
     if (pageStore.showMenu) {
       const elementBackground = document.getElementById('silentBackground');
       const elementContainer = document.getElementById('menuContainer');
-      elementBackground.style.backdropFilter = 'blur(7px) grayscale(25%)';
+      // elementBackground.style.backdropFilter = 'blur(7px) grayscale(25%)';
       elementContainer.style.opacity = 1;
     }
   });

@@ -1,0 +1,68 @@
+@widthPhonePanel: 40vw;
+
+.background {
+   position: absolute;
+   top: 0;
+   width: 100vw;
+   height: 100vh;
+   background-image: url('../../img/background.jpg');
+   background-size: cover;
+}
+
+@media only screen and (max-width: 675px) {
+   .background {
+      height: 201vh; //TODO
+      background-size: cover;
+      background-position: center;
+   }   
+}
+
+.home__container  {
+   .home__subContainer{
+      position: relative;
+      top: 0;
+      height: calc(100vh - 90px);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .home__logoAndText {
+         transition: transform 1s ease;
+         text-align: center;
+         .home__text {
+            font-size: 33px;
+            font-family: "Roboto", Sans-serif;
+            letter-spacing: 5px;
+            color: rgba(225, 207, 187, 1);
+            font-weight: 600;
+         }
+         @media only screen and (max-width: 675px) {
+            .home__text {
+               font-size: 22px;
+            }
+         }
+         .home__subtext {
+            font-size: 13px;
+            font-family: "Roboto", Sans-serif;
+            letter-spacing: 10px;
+            color: rgba(225, 207, 187, 1);
+            font-weight: 300;
+            margin-top: 10px;
+            opacity: .5;
+         }
+         .home__links {
+            .home__link {
+               display: inline-flex;
+               padding: 30px 20px 0 20px;
+               font-size: 16px;
+               cursor: pointer;
+               color: rgba(225, 207, 187, 1);
+               a {
+                  color: rgba(225, 207, 187, 1);
+                  }
+            }
+         }
+      }
+   }
+}

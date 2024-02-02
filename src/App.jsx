@@ -13,6 +13,7 @@ import { EmailVerified } from './pages/EmailVerified/EmailVerified';
 import { SubscriberVerify } from './pages/SubscriberVerify/SubscriberVerify';
 import { FourOfour } from './pages/FourOfour/FourOfour';
 import { LoginPage } from './pages/LoginPage/LoginPage';
+import { Home } from './pages/Home/Home';
 import { Admin } from './pages/Admin/Admin';
 
 import './lib/i18n';
@@ -78,7 +79,12 @@ const App = observer(() => {
             {/* <Route path="service/" element={< />} /> */}
             {/* <Route path="privacy/" element={< />} /> */}
             {/* <Route path="settings/" element={< />} /> */}
-            <Route path="/" element={<LandingPage />} />
+            { 
+              window.location.hostname === 'merrier.app' ? 
+                <Route path="/" element={<LandingPage />} />
+                :
+                <Route path="/" element={<Home />} />
+            }
             <Route path="*" element={<FourOfour/>} />
           </Routes>
         </div>

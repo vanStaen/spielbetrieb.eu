@@ -75,7 +75,7 @@ export const NewsletterForm = observer(() => {
 
   return (
     <>
-      <div className="spielbetrieb__link" onClick={showModal}>
+      <div className="home__link" onClick={showModal}>
         <div>
           <Tooltip title="Newsletter" placement="bottom">
             <NotificationOutlined />
