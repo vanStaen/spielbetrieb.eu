@@ -45,17 +45,6 @@ export const Home = () => {
                   </a>
                 </Tooltip>
               </div>
-              <div className="home__link">
-                <Tooltip title="Linktree" placement="bottom">
-                  <a
-                    href="https://linktr.ee/spielbetrieb"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <LinkOutlined />
-                  </a>
-                </Tooltip>
-              </div>
             </div>
           </div>
         </div>
