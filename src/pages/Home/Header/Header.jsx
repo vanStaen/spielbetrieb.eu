@@ -3,6 +3,7 @@ import { observer } from 'mobx-react';
 
 import { pageStore } from '../../../store/pageStore/pageStore';
 import { Menu } from '../../../components/Menu/Menu';
+import { Socials } from '../../../components/Socials/Socials';
 import SpielbetriebLogo from '../../../img/logos/spielbetriebLogoInverted.png';
 
 
@@ -18,6 +19,10 @@ export const Header = observer(() => {
               className="header__logo invertColorTheme"
             />
             <Menu />
+            <div className='header__socials'>
+              <Socials />
+            </div>
+            
         </div>
     );
 })

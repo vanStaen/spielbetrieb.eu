@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Tooltip } from 'antd';
 import { useTranslation } from 'react-i18next';
 import {
@@ -19,14 +19,6 @@ import './LandingPage.less';
 
 export const LandingPage = () => {
   const { t } = useTranslation();
-
-  useEffect(() => {
-    if (window.location.hostname === 'merrier.app') {
-      setTimeout(() => {
-        arrowClickHandler();
-      }, '1000');
-    }
-  });
 
   const arrowClickHandler = () => {
     const elementPhone = document.getElementById('phone');
@@ -63,12 +55,18 @@ export const LandingPage = () => {
               id="spielbetriebLogo"
               className="spielbetrieb__logo"
             />
-            <div className="spielbetrieb__text">Spielbetrieb </div>
+            <div className='spielbetrieb__titleContainer'>
+              <span className='spielbetrieb__text'>Spielbetrieb</span>
+              {' '}x{' '}
+              <span className='merrier__text'>Merrier</span>
+            </div>
             <div className="spielbetrieb__subtext">
               {t('general.commingsoon')}{' '}
             </div>
             <div className="spielbetrieb__links">
-              <NewsletterForm />
+              <div className="spielbetrieb__link" >
+                <NewsletterForm />
+              </div>
               <div className="spielbetrieb__link">
                 <Tooltip title="eMail" placement="bottom">
                   <a

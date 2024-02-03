@@ -30,10 +30,12 @@ export const Home = () => {
           >
             <div className="home__text">Spielbetrieb </div>
             <div className="home__subtext">
-              {t('general.commingsoon')}{' '}
+              love to love
             </div>
             <div className="home__links">
-              <NewsletterForm />
+              <div className="home__link">
+                <NewsletterForm />
+              </div>
               <div className="home__link">
                 <Tooltip title="eMail" placement="bottom">
                   <a

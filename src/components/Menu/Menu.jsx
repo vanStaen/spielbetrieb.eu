@@ -34,10 +34,7 @@ export const Menu = observer(() => {
   });
 
   const spinIcon = (
-    <LoadingOutlined
-      style={{ fontSize: 24, color: 'goldenrod', top: '-4px' }}
-      spin
-    />
+    <LoadingOutlined style={{ fontSize: 24, color: '#e1cfbb', top: '-4px' }} spin />
   );
 
   const handleClickLogOut = () => {

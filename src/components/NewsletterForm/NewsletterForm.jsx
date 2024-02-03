@@ -75,12 +75,10 @@ export const NewsletterForm = observer(() => {
 
   return (
     <>
-      <div className="home__link" onClick={showModal}>
-        <div>
-          <Tooltip title="Newsletter" placement="bottom">
-            <NotificationOutlined />
-          </Tooltip>
-        </div>
+      <div onClick={showModal}>
+        <Tooltip title="Newsletter" placement="bottom">
+          <NotificationOutlined />
+        </Tooltip>
       </div>
       <Modal
         open={open}
