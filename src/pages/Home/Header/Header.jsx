@@ -21,9 +21,9 @@ export const Header = observer(() => {
             <div className='header__headerElementContainer'>
                 <HeaderElement title='Spielplan' selected /> 
                 <HeaderElement title='Shop' disabled />
+                <HeaderElement title='Dark Magazin' />
                 <HeaderElement title='Partner' disabled />
                 <HeaderElement title='Spielbetrieb' disabled />
-                <HeaderElement title='Dark Magazin' />
             </div>
             <Menu />
             <div className='header__socials'>
