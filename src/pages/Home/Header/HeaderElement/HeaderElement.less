@@ -1,0 +1,22 @@
+.headerElement__container {
+   font-size: 16px;
+   text-align: center;
+   margin: 0 20px;
+   display: inline-block;
+   .headerElement__disabled {
+      opacity: .5;
+   }
+   .headerElement__enabled {
+      cursor: pointer;
+      transition: border-bottom .3s ease;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed transparent;
+      &:hover {
+         border-bottom: 1px dashed;
+      }
+   }
+   .headerElement__selected {
+      font-weight: 600;
+      border-bottom: 1px solid;
+   }
+}
