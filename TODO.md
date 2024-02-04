@@ -44,7 +44,7 @@
   - [x] Login Journey (incl. validation)
 - [x] Format Theme/Language drop down like menu
 - [x] Spinner on menu-load should have right color
-- [ ] Translate menu elements
+- [ ] Translate all menu elements
 - [ ] Admin page (not for partner)
   - [ ] Newsletter management
     - [ ] Sort and filter
@@ -57,12 +57,12 @@
   - [ ] Admin can update user to partner
       - [ ]Create resolver 
   - [ ] Management of the translations from the admin
-- [ ] Header
-  - [ ] Spielbetrieb (main page)
-  - [ ] Partner
-  - [ ] Dark Magazin
-  - [ ] Shop
-  - [ ] Spielplan
+- [x] Header
+  - [ ] ~Spielbetrieb (main page)~
+  - [x] Partner
+  - [x] Dark Magazin
+  - [x] Shop
+  - [x] Spielplan
 - [ ] Home page
   - [ ] Link to spielplan / shop
   - [ ] Spielbwetrieb Aktuell

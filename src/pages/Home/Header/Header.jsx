@@ -6,6 +6,7 @@ import { pageStore } from '../../../store/pageStore/pageStore';
 import { Menu } from '../../../components/Menu/Menu';
 import { Socials } from '../../../components/Socials/Socials';
 import { HeaderElement } from './HeaderElement/HeaderElement';
+import { HeaderMenuMobile } from './HeaderMenuMobile/HeaderMenuMobile';
 import SpielbetriebLogo from '../../../img/logos/spielbetriebLogoInverted.png';
 
 import './Header.less';
@@ -28,16 +29,13 @@ export const Header = observer(() => {
               <MenuOutlined/>
             </div>
             {showMenuMobile && 
-              <>
-               HERE
-              </>
+              <HeaderMenuMobile setShowMenuMobile={setShowMenuMobile}/>
             }
             <div className='header__headerElementContainer'>
                 <HeaderElement title='Spielplan' selected /> 
                 <HeaderElement title='Shop' disabled />
                 <HeaderElement title='Dark Magazin' />
                 <HeaderElement title='Partner' disabled />
-                <HeaderElement title='Spielbetrieb' disabled />
             </div>
             <Menu />
             <div className='header__socials'>
