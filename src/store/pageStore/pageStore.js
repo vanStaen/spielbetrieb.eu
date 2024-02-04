@@ -8,6 +8,7 @@ export class PageStore {
   selectedLanguage = cookies.get('selectedLanguage') || 'en';
   allowCookie = cookies.get('allowCookie');
   showMenu = false;
+  showMenuMobile = false;
 
   constructor () {
     makeObservable(this, {
@@ -18,7 +19,9 @@ export class PageStore {
       allowCookie: observable,
       setAllowCookie: action,
       showMenu: observable,
-      setShowMenu: action
+      setShowMenu: action,
+      showMenuMobile: observable,
+      setShowMenuMobile: action
     });
   }
 
@@ -45,6 +48,10 @@ export class PageStore {
 
   setShowMenu = (showMenu) => {
     this.showMenu = showMenu;
+  };
+
+  setShowMenuMobile = (showMenuMobile) => {
+    this.showMenuMobile = showMenuMobile;
   };
 }
 

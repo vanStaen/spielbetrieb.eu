@@ -56,7 +56,8 @@ export const Menu = observer(() => {
 
   const avatarClickhandle = () => {
     if (authStore.hasAccess) {
-      pageStore.setShowMenu(true);
+      pageStore.setShowMenu(!pageStore.showMenu);
+      pageStore.setShowMenuMobile(false);
     } else {
       navigate('/login');
     }

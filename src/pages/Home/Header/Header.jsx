@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react';
 import { MenuOutlined } from '@ant-design/icons';
 
@@ -13,8 +13,6 @@ import './Header.less';
 
 export const Header = observer(() => {
 
-  const [showMenuMobile, setShowMenuMobile] = useState(false);
-
     return (
         <div className={`header__container ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Header' : 'darkColorTheme__Header'}`}>
             <img
@@ -24,12 +22,16 @@ export const Header = observer(() => {
             />
             <div 
               className='header__menuMobile invertColorTheme'
-              onClick={() => setShowMenuMobile(!showMenuMobile)}
+              onClick={() => {
+                pageStore.setShowMenuMobile(!pageStore.showMenuMobile);
+                pageStore.setShowMenu(false);
+                }
+              }
             >
               <MenuOutlined/>
             </div>
-            {showMenuMobile && 
-              <HeaderMenuMobile setShowMenuMobile={setShowMenuMobile}/>
+            {pageStore.showMenuMobile && 
+              <HeaderMenuMobile/>
             }
             <div className='header__headerElementContainer'>
                 <HeaderElement title='Spielplan' selected /> 

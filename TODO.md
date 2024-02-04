@@ -1,5 +1,45 @@
 # spielbetrieb
 
+- [ ] Fix db_backup script
+
+- [ ] Login / Sign Up
+  - [ ] Login Page
+    - [x] Login Form
+    - [x] SignUp Form
+      - [ ] Small Ad for spielbetrieb? 
+  - [x] Login Journey (incl. validation)
+- [ ] Translate all menu elements
+- [ ] Admin page (not for partner)
+  - [ ] Newsletter management
+    - [ ] Sort and filter
+      - [ ] per language
+      - [ ] per lists
+    - [ ] Select and export as a email list
+  - [ ] Add/Manage events
+  - [ ] Add/Manage products
+  - [ ] Add 'aktuell' articles
+  - [ ] Admin can update user to partner
+      - [ ]Create resolver 
+  - [ ] Management of the translations from the admin
+- [ ] Home page
+  - [ ] Link to spielplan / shop
+  - [ ] Spielbwetrieb Aktuell
+- [ ] Spielplan
+- [ ] Shop
+- [ ] Dark Magazin
+
+## Tech debt:
+
+- [ ] Create deployment pipeline with test env
+- [ ] Get rid of Axios, and use fetch();
+- [ ] BackEnd : Migrate AWS SDK for JavaScript (v3) 
+- [ ] FrontEnd : Update all packages
+- [ ] Check all z-Index
+- [ ] Tracking/Analytics
+
+
+## Done :
+
 - [x] Boilerplate React init
 - [x] Landing page
   - [x] Spielbetrieb logo
@@ -30,64 +70,16 @@
 - [x] Use Antd notification
 - [x] Fix cors erros between domains
 - [x] Create 404
-- [ ] Fix db_backup script
 - [x] Feature flags
-- [ ] Menu
-  - [ ] Settings
+- [x] Menu
+  - [x] Settings
   - [x] Admin
   - [x] Logout
-- [ ] Login / Sign Up
-  - [ ] Login Page
-    - [x] Login Form
-    - [x] SignUp Form
-      - [ ] Small Ad for spielbetrieb? 
-  - [x] Login Journey (incl. validation)
 - [x] Format Theme/Language drop down like menu
 - [x] Spinner on menu-load should have right color
-- [ ] Translate all menu elements
-- [ ] Admin page (not for partner)
-  - [ ] Newsletter management
-    - [ ] Sort and filter
-      - [ ] per language
-      - [ ] per lists
-    - [ ] Select and export as a email list
-  - [ ] Add/Manage events
-  - [ ] Add/Manage products
-  - [ ] Add 'aktuell' articles
-  - [ ] Admin can update user to partner
-      - [ ]Create resolver 
-  - [ ] Management of the translations from the admin
 - [x] Header
   - [ ] ~Spielbetrieb (main page)~
   - [x] Partner
   - [x] Dark Magazin
   - [x] Shop
   - [x] Spielplan
-- [ ] Home page
-  - [ ] Link to spielplan / shop
-  - [ ] Spielbwetrieb Aktuell
-- [ ] Spielplan
-- [ ] Tracking/Analytics
-- [ ] Shop
-- [ ] Dark Magazin
-
-## Tech debt:
-
-- [ ] Create deployment pipeline with test env
-- [ ] Get rid of Axios, and use fetch();
-- [ ] BackEnd : Migrate AWS SDK for JavaScript (v3) 
-- [ ] FrontEnd : Update all packages
-- [ ] Check all z-Index
-
-## Todo Team
-
-  - [ ] Legals
-    - [ ] Datenschutz
-      - [ ] DE
-      - [ ] EN
-    - [ ] Impressum
-      - [ ] DE
-      - [ ] EN
-  - [ ] Graphics Ideen
-    - [ ] Pictures with rights
-  - [ ] Cool design zu copiern

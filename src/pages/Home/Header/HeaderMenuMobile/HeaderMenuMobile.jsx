@@ -20,7 +20,7 @@ export const HeaderMenuMobile = observer((props) => {
         elementBackground.style.backdropFilter = 'blur(0px) grayscale(0%)';
         elementContainer.style.opacity = 0;
         setTimeout(function () {
-            props.setShowMenuMobile(false);
+            pageStore.setShowMenuMobile(false);
         }, 300);
     };
 
@@ -37,8 +37,11 @@ export const HeaderMenuMobile = observer((props) => {
                 id="headerMenuMobile__container"
                 >
                     <div className="menu__element">Spielplan</div>
+                <div className="menu__whiteline"></div>
                     <div className="menu__elementDisabled">Shop</div>
+                <div className="menu__whiteline"></div>
                     <div className="menu__element">Dark Magazin</div>
+                <div className="menu__whiteline"></div>
                     <div className="menu__elementDisabled">Partner</div>
                 </div>
             </>

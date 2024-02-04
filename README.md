@@ -5,12 +5,15 @@ spielbetrieb.eu | Portal
 ## Hosting
 
 ### URL setup
-- merrier.app: experimental-diplodocus-albup3d9s6q3f940idnqmrp9.herokudns.com
-- spielbetrieb.eu: closed-escarpment-0h9y6ilhkbyw9yolc6j7ei9f.herokudns.com
-- www.merrier.app: glacial-refuge-ipv2cgp66730mrsv17j4b4i0.herokudns.com
-- www.spielbetrieb.eu: octagonal-falls-d7e6dabqmser7ns14l3k8z93.herokudns.com
+- merrier.app (production link)
+- spielbetrieb.eu (production link)
+- www.merrier.app (production link, will auto redirect to the url witout `www`)
+- www.spielbetrieb.eu (production link, will auto redirect to the url witout `www`)
+
 
 ## Graphic chart
+
+The file `theme.less` (folder `styles`) contain all relevant style classes for the two themes. Some antd custom classes for some used compoenent are  in the same folder under the file `customAnt.less`.
 
 ### Light Theme
 Logo dark blue, background Beige/Salmon
@@ -23,12 +26,12 @@ Main color : Pale Beige (hex: #e1cfbb, rgb: 225, 207, 187)
 Secondary color : Salmon (#f8b1a7, rgb: 248, 177, 167)
 
 ### Fonts
-
 - Spielbetrieb font: Roboto. Never in Italic.
 - Merrier font: 'DMSerifDisplay' (google font api)
 http
 
-### Feature Flag 
+
+## Feature Flag 
 
 Some feature in devlopment may be hidden under a feature flag.
 In order to see the new feature, you have to add a cookie in your local browser. 
