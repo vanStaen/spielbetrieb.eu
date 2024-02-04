@@ -1,7 +1,5 @@
 # spielbetrieb
 
-- [ ] Fix db_backup script
-
 - [ ] Login / Sign Up
   - [ ] Login Page
     - [x] Login Form
@@ -19,7 +17,7 @@
   - [ ] Add/Manage products
   - [ ] Add 'aktuell' articles
   - [ ] Admin can update user to partner
-      - [ ]Create resolver 
+      - [ ] Create resolver 
   - [ ] Management of the translations from the admin
 - [ ] Home page
   - [ ] Link to spielplan / shop
@@ -36,6 +34,8 @@
 - [ ] FrontEnd : Update all packages
 - [ ] Check all z-Index
 - [ ] Tracking/Analytics
+- [ ] Smooth transition for language and theme menu (opacity on out)
+- [ ] Fix db_backup script
 
 
 ## Done :
