@@ -28,6 +28,19 @@ Secondary color : Salmon (#f8b1a7, rgb: 248, 177, 167)
 - Merrier font: 'DMSerifDisplay' (google font api)
 http
 
+### Feature Flag 
+
+Some feature in devlopment may be hidden under a feature flag.
+In order to see the new feature, you have to add a cookie in your local browser. 
+
+To do so: 
+- Open the code inspector in Chrome
+- Choose the tab 'Application'
+- In the left menu, pick 'Local Storage' > 'http://localhost:3001' (or whatever Url the page is hosted under)
+- In the table on the right side, add a new line with the corresponding key (see file `featureFlag.js`` to know which one), to true (as Value)
+- Refresh the page. You should now see the relevant features
+
+
 ## Data Structure
 
 ### Table user | Admins

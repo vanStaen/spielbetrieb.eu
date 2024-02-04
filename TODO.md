@@ -31,6 +31,7 @@
 - [x] Fix cors erros between domains
 - [x] Create 404
 - [ ] Fix db_backup script
+- [x] Feature flags
 - [ ] Menu
   - [ ] Settings
   - [x] Admin

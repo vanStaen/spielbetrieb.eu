@@ -17,7 +17,10 @@ import { Home } from './pages/Home/Home';
 import { Admin } from './pages/Admin/Admin';
 
 import './lib/i18n';
+
 import './App.less';
+import './styles/theme.less';
+import './styles/customAnt.less';
 
 const defineVariableHeight = () => {
   const vh = window.innerHeight * 0.01;
