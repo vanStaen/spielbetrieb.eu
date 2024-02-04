@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { observer } from 'mobx-react';
+import { MenuOutlined } from '@ant-design/icons';
 
 import { pageStore } from '../../../store/pageStore/pageStore';
 import { Menu } from '../../../components/Menu/Menu';
@@ -10,14 +11,27 @@ import SpielbetriebLogo from '../../../img/logos/spielbetriebLogoInverted.png';
 import './Header.less';
 
 export const Header = observer(() => {
+
+  const [showMenuMobile, setShowMenuMobile] = useState(false);
+
     return (
-        <div className={`header__container ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Header' : 'darkColorTheme__Header'}`}
-        >
+        <div className={`header__container ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Header' : 'darkColorTheme__Header'}`}>
             <img
               src={SpielbetriebLogo}
               id="spielbetriebLogo"
               className="header__logo invertColorTheme"
             />
+            <div 
+              className='header__menuMobile invertColorTheme'
+              onClick={() => setShowMenuMobile(!showMenuMobile)}
+            >
+              <MenuOutlined/>
+            </div>
+            {showMenuMobile && 
+              <>
+               HERE
+              </>
+            }
             <div className='header__headerElementContainer'>
                 <HeaderElement title='Spielplan' selected /> 
                 <HeaderElement title='Shop' disabled />

@@ -6,7 +6,7 @@
    .header__logo {
         width: 40px;
         margin: 15px;
-     }
+   }
 
    .header__socials {
       position: absolute;
@@ -26,12 +26,43 @@
       left: 80px;
    }
 
+   .header__menuMobile {
+      display: none;
+   }
+
    @media only screen and (max-width: 675px) {
       .header__logo {
          width: 40px;
       }
       .header__socials {
          right: 80px;
+      }
+      .header__logo {
+         display: none;
+      }
+      .header__headerElementContainer {
+         display: none;
+      }
+      .header__menuMobile {
+         display: block;
+         position: relative;
+         top: 12px;
+         left: 12px;
+         width: 45px;
+         height: 45px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         font-size: 27px;
+         border-radius: 5px;
+         cursor: pointer;
+         color: rgba(225, 207, 187, .6);
+         background-color: rgba(225, 207, 187, .1);
+         &:hover {
+            background: rgba(225, 207, 187, .3);
+            color: rgba(225, 207, 187, 1);
+         }
       }
    }
 }
