@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
+import { Link } from 'react-router-dom';
 import { LinkOutlined, InstagramOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
 
@@ -32,9 +33,11 @@ export const QuickActions = observer (() => {
                     </a>
                 </Tooltip>
             </div>
-            <div className={`quickActions__linkDisabled ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`} >
-                <ShoppingCartOutlined />
-            </div>
+            <Link className="link" to="/basket/">
+                <div className={`quickActions__link ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`} >
+                    <ShoppingCartOutlined style={{fontSize: '24px'}}/>
+                </div>
+            </Link>
         </div>
     )
 } )

@@ -11,7 +11,8 @@ import SpielbetriebLogo from '../../../img/logos/spielbetriebLogoInverted.png';
 
 import './Header.less';
 
-export const Header = observer(() => {
+export const Header = observer((props) => {
+  const { selected } = props;
 
     return (
         <div className={`header__container ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Header' : 'darkColorTheme__Header'}`}>
@@ -34,10 +35,10 @@ export const Header = observer(() => {
               <HeaderMenuMobile/>
             }
             <div className='header__headerElementContainer'>
-                <HeaderElement title='Spielplan' selected /> 
-                <HeaderElement title='Shop' disabled />
-                <HeaderElement title='Dark Magazin' />
-                <HeaderElement title='Partner' disabled />
+                <HeaderElement title='Spielplan' page='agenda' selected={selected === 'agenda'} /> 
+                <HeaderElement title='Shop' page='shop' selected={selected === 'shop'} />
+                <HeaderElement title='Dark Magazin' page='dark' selected={selected === 'dark'} />
+                <HeaderElement title='Partner' page='partner' selected={selected === 'partner'} />
             </div>
             <Menu />
             <div className='header__actions'>

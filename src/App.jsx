@@ -79,14 +79,20 @@ const App = observer(() => {
             <Route path="recoverpwd/:token" element={<NewPassword />} />
             <Route path="admin/" element={<Admin />} />
             <Route path="login/" element={<LoginPage />} />
+            <Route path="basket/" element={< Home page='basket' />} />
+            <Route path="dark/" element={< Home page='dark' />} />
+            <Route path="partner/" element={< Home page='partner' />} /> 
+            <Route path="profile/" element={< Home page='profile' />} /> 
+            <Route path="settings/" element={< Home page='settings' />} /> 
+            <Route path="shop/" element={< Home page='shop' />} /> 
+            <Route path="agenda/" element={< Home page='agenda' />} /> 
             {/* <Route path="service/" element={< />} /> */}
             {/* <Route path="privacy/" element={< />} /> */}
-            {/* <Route path="settings/" element={< />} /> */}
             { 
               window.location.hostname === 'merrier.app' ? 
                 <Route path="/" element={<LandingPage />} />
                 :
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home page='home' />} />
             }
             <Route path="*" element={<FourOfour/>} />
           </Routes>

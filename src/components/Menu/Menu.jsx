@@ -10,7 +10,6 @@ import {
   UserOutlined,
   PieChartOutlined,
   LoadingOutlined,
-  ShoppingCartOutlined
 } from '@ant-design/icons';
 
 import { userStore } from '../../store/userStore/userStore';

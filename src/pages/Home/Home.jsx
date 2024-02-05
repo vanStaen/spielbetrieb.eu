@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tooltip } from 'antd';
 import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 import { MailOutlined } from '@ant-design/icons';
 import { observer } from 'mobx-react';
 
@@ -9,25 +10,25 @@ import { DarkModeDropDown } from '../../components/DarkModeDropDown/DarkModeDrop
 import { LanguageDropDown } from '../../components/LanguageDropDown/LanguageDropDown';
 import { Header } from './Header/Header';
 import { pageStore } from '../../store/pageStore/pageStore';
+import { Agenda } from './Agenda/Agenda';
+import { Basket } from './Basket/Basket';
+import { Dark } from './Dark/Dark';
+import { Partner } from './Partner/Partner';
+import { Profile } from './Profile/Profile';
+import { Settings } from './Settings/Settings';
+import { Shop } from './Shop/Shop';
 
 import './Home.less';
 
-export const Home = observer(() => {
+export const Home = observer((props) => {
   const { t } = useTranslation();
+  const { page } = props;
 
-  return (
-    <>
-      <LanguageDropDown />
-      <DarkModeDropDown />
-      <Header />
-      <div className="background invertColorTheme" id="background"></div>
-      <div className="home__container">
-        <div className="home__subContainer" style={{
-          backgroundColor: pageStore.selectedTheme === 'dark' 
-          ? 'rgba(20,36,54,.85)' 
-          : 'rgba(225,195,180,.8)'
-        }}>
-          <div
+  const renderSwitch = () => {
+    switch (page) {
+      case 'home':
+        return (<>
+        <div
             className="home__logoAndText invertColorTheme"
             id="spielbetrieb"
           >
@@ -52,6 +53,39 @@ export const Home = observer(() => {
               </div>
             </div>
           </div>
+        </>);
+      case 'agenda':
+        return <Agenda />;
+      case 'basket':
+          return <Basket />;
+      case 'shop':
+        return <Shop />;
+      case 'dark':
+          return <Dark />;
+      case 'partner':
+          return <Partner />;
+      case 'profile':
+          return <Profile />;
+      case 'settings':
+          return <Settings />;
+      default:
+        return 'Error';
+    }
+  };
+
+  return (
+    <>
+      <LanguageDropDown />
+      <DarkModeDropDown />
+      <Header selected={page} />
+      <div className="background invertColorTheme" id="background"></div>
+      <div className="home__container">
+        <div className="home__subContainer" style={{
+          backgroundColor: pageStore.selectedTheme === 'dark' 
+          ? 'rgba(20,36,54,.85)' 
+          : 'rgba(225,195,180,.8)'
+        }}>
+          {renderSwitch()}
         </div>
       </div>
     </>

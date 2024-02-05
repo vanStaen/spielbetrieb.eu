@@ -1,8 +1,8 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import './SpielPlan.less';
+import './Partner.less';
 
-export const Shop = observer(() => {
-    return <>Shop</>
+export const Partner = observer(() => {
+    return <>Partner</>
 })

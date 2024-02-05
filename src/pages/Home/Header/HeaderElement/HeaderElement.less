@@ -3,20 +3,22 @@
    text-align: center;
    margin: 0 20px;
    display: inline-block;
+   font-weight: 300;
    .headerElement__disabled {
       opacity: .2;
    }
    .headerElement__enabled {
       cursor: pointer;
-      transition: border-bottom .7s ease;
-      padding-bottom: 10px;
+      transition: border-bottom .3s ease;
+      padding-bottom: 7px;
       border-bottom: 1px dashed transparent;
       &:hover {
          border-bottom: 1px dashed;
       }
    }
    .headerElement__selected {
-      font-weight: 600;
+      transition: border-bottom .7s ease;
+      font-weight: 500;
       border-bottom: 1px solid;
    }
 }
