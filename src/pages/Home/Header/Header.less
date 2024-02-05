@@ -8,7 +8,7 @@
         margin: 15px;
    }
 
-   .header__socials {
+   .header__actions {
       position: absolute;
       top: 0;
       right: 100px;
@@ -37,7 +37,7 @@
          left: calc(50% - 35px);
          opacity: .1;
       }
-      .header__socials {
+      .header__actions {
          right: 80px;
       }
       .header__headerElementContainer {
@@ -63,6 +63,14 @@
             background: rgba(225, 207, 187, .3);
             color: rgba(225, 207, 187, 1);
          }
+      }
+   }
+
+   @media only screen and (max-width: 400px) {
+      .header__logo {
+         position: absolute;
+         left: calc(50% - 35px);
+         opacity: .05;
       }
    }
 }

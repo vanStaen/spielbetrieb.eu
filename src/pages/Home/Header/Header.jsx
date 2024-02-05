@@ -4,7 +4,7 @@ import { MenuOutlined } from '@ant-design/icons';
 
 import { pageStore } from '../../../store/pageStore/pageStore';
 import { Menu } from '../../../components/Menu/Menu';
-import { Socials } from '../../../components/Socials/Socials';
+import { QuickActions } from '../../../components/QuickActions/QuickActions';
 import { HeaderElement } from './HeaderElement/HeaderElement';
 import { HeaderMenuMobile } from './HeaderMenuMobile/HeaderMenuMobile';
 import SpielbetriebLogo from '../../../img/logos/spielbetriebLogoInverted.png';
@@ -40,8 +40,8 @@ export const Header = observer(() => {
                 <HeaderElement title='Partner' disabled />
             </div>
             <Menu />
-            <div className='header__socials'>
-              <Socials />
+            <div className='header__actions'>
+              <QuickActions />
             </div>
             
         </div>

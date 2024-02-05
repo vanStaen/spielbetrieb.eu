@@ -1,16 +1,16 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { LinkOutlined, InstagramOutlined } from '@ant-design/icons';
+import { LinkOutlined, InstagramOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
 
 import { pageStore } from '../../store/pageStore/pageStore';
 
-import './Socials.less';
+import './QuickActions.less';
 
-export const Socials = observer (() => {
+export const QuickActions = observer (() => {
     return ( 
-        <div className='socials__container'>
-            <div className={`socials__link ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`} >
+        <div className='quickActions__container'>
+            <div className={`quickActions__link ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`} >
                 <Tooltip title="Instagram" placement="bottom">
                     <a
                         href="https://www.instagram.com/spiel_betrieb/"
@@ -21,7 +21,7 @@ export const Socials = observer (() => {
                     </a>
                 </Tooltip>
             </div>
-            <div className={`socials__link ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`} >
+            <div className={`quickActions__link ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`} >
                 <Tooltip title="Linktree" placement="bottom">
                     <a
                         href="https://linktr.ee/spielbetrieb"
@@ -31,6 +31,9 @@ export const Socials = observer (() => {
                         <LinkOutlined />
                     </a>
                 </Tooltip>
+            </div>
+            <div className={`quickActions__linkDisabled ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`} >
+                <ShoppingCartOutlined />
             </div>
         </div>
     )

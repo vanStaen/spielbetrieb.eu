@@ -1,0 +1,28 @@
+.quickActions__container {
+    font-size: 20px;
+    .quickActions__link {
+        display: inline-flex;
+        vertical-align: middle;
+        padding: 0 10px;
+        cursor: pointer;
+        &:hover {
+            opacity: .85;
+        }
+    }
+    .quickActions__linkDisabled { 
+        display: inline-flex;
+        vertical-align: middle;
+        padding: 0 10px;
+        opacity: .5;
+        cursor: default;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .quickActions__container {
+        font-size: 16px;
+        .quickActions__link {
+            padding: 0 7px;
+        }
+    }
+ }

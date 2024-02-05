@@ -87,12 +87,6 @@ export const Menu = observer(() => {
             className={`menu__container ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Menu' : 'darkColorTheme__Menu'}`}
             id="menuContainer"
           >
-            <div
-              className="menu__elementDisabled"
-            >
-              <ShoppingCartOutlined style={{ position: 'relative', bottom: '-2px' }} />
-              &nbsp; Basket
-            </div>
             <div className="menu__elementDisabled">
               <UserOutlined style={{ position: 'relative', bottom: '-2px' }} />
               &nbsp; Profile
