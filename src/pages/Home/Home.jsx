@@ -1,7 +1,6 @@
 import React from 'react';
 import { Tooltip } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
 import { MailOutlined } from '@ant-design/icons';
 import { observer } from 'mobx-react';
 
@@ -12,7 +11,7 @@ import { Header } from './Header/Header';
 import { pageStore } from '../../store/pageStore/pageStore';
 import { Agenda } from './Agenda/Agenda';
 import { Basket } from './Basket/Basket';
-import { Dark } from './Dark/Dark';
+import { Magazin } from './Magazin/Magazin';
 import { Partner } from './Partner/Partner';
 import { Profile } from './Profile/Profile';
 import { Settings } from './Settings/Settings';
@@ -60,8 +59,8 @@ export const Home = observer((props) => {
           return <Basket />;
       case 'shop':
         return <Shop />;
-      case 'dark':
-          return <Dark />;
+      case 'magazin':
+          return <Magazin />;
       case 'partner':
           return <Partner />;
       case 'profile':

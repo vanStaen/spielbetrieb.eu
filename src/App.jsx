@@ -80,7 +80,7 @@ const App = observer(() => {
             <Route path="admin/" element={<Admin />} />
             <Route path="login/" element={<LoginPage />} />
             <Route path="basket/" element={< Home page='basket' />} />
-            <Route path="dark/" element={< Home page='dark' />} />
+            <Route path="magazin/" element={< Home page='magazin' />} />
             <Route path="partner/" element={< Home page='partner' />} /> 
             <Route path="profile/" element={< Home page='profile' />} /> 
             <Route path="settings/" element={< Home page='settings' />} /> 
