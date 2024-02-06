@@ -46,11 +46,11 @@ export const HeaderMenuMobile = observer(() => {
                     
                     <div className="menu__element" onClick={() => menuLinkClickHandle('agenda')}>Spielplan</div>
                     <div className="menu__whiteline"></div>
-                    <div className="menu__elementDisabled" onClick={() => menuLinkClickHandle('shop')}>Shop</div>
+                    <div className="menu__elementDisabled" >Shop</div>
                     <div className="menu__whiteline"></div>
                     <div className="menu__element" onClick={() => menuLinkClickHandle('magazin')}>Dark Magazin</div>
                     <div className="menu__whiteline"></div>
-                    <div className="menu__elementDisabled" onClick={() => menuLinkClickHandle('partner')}>Partner</div>
+                    <div className="menu__elementDisabled">Partner</div>
                 </div>
             </>
         ); 
