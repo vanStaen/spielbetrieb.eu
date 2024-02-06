@@ -25,7 +25,7 @@ const Tag = sequelize.define("tag", {
   },
   validated: {
     type: DataTypes.BOOLEAN,
-    allowNull: false,
+    defaultValue: false,
   },
 });
 
