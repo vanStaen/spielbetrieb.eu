@@ -14,7 +14,7 @@ exports.locationResolver = {
       throw new Error('Unauthorized!');
     }
     return await Location.findOne({
-      where: { _id: req.locationId },
+      where: { _id: args.locationId },
     });
   },
 

@@ -33,11 +33,11 @@ const Location = sequelize.define("location", {
   },
   validated: {
     type: DataTypes.BOOLEAN,
-    allowNull: false,
+    defaultValue: false,
   },
   reviews: {
     type: DataTypes.ARRAY(DataTypes.STRING),
-    allowNull: false,
+    allowNull: true,
   },
 });
 
