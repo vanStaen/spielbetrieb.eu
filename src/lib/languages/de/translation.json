@@ -95,7 +95,7 @@
     "usernameShouldNotBeAnEmail": "Der Benutzername darf kein email sein",
     "forbiddenUsername": "Der Benutzername is nicht verfügbar",
     "birthdayMissing": "Geburtsdatum fehlt",
-    "birthday": "Geburtsdatum",
+    "birthday": "tt/mm/jjjj",
     "mustBeOfLegalAge": "Du must über 18 sein",
     "areYouReallyThatOld": "Wirklich? Sicher?"
   },
