@@ -979,7 +979,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getAllEvents {\n    _id,\n    eventType,\n    title,\n    description,\n    picture,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n    user {\n        _id,\n    }\n  }\n}",
+						"query": "query {\n  getAllEvents {\n    _id,\n    eventType,\n    title,\n    description,\n    pictures,\n    location,\n    locationAdress,\n    locationCoordinates,\n    locationName,\n    fromDate,\n    untilDate,\n    eventTags,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n    user {\n        _id,\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1582,6 +1582,152 @@
 					"mode": "graphql",
 					"graphql": {
 						"query": "mutation {\n  deleteSubscriber (\n      subscriberId: 1,\n      ) \n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Query: getEventTypes",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\n  getEventTypes {\n    _id,\n    name,\n    validated,\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: addEventType",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  addEventType (\n    eventTypeInput: { \n        name: \"delete me\", \n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: updateEventType",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  updateEventType (\n    eventTypeId: \"1\",\n    eventTypeInput: { \n        name: \"{en: 'date', de: 'date'}\",\n        validated: true, \n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: deleteEventType",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  deleteEventType (\n    eventTypeId: \"2\",\n  ) \n}",
 						"variables": ""
 					}
 				},
