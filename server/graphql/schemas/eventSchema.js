@@ -7,7 +7,7 @@ type Event {
     pictures: [String]
     location: Int
     locationName: String
-    locationAdress: String
+    locationAddress: String
     locationCoordinates: String
     fromDate: String
     untilDate: String
@@ -31,7 +31,7 @@ input EventInputData {
     pictures: [String]
     location: Int
     locationName: String
-    locationAdress: String
+    locationAddress: String
     locationCoordinates: String
     fromDate: String
     untilDate: String

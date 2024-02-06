@@ -115,10 +115,10 @@
     "Signup" : "Signup",
     "emailNotValid" : "Diese E-Mail ist ungültig, bitte überprüfen Sie es.",
     "thanksAndConfirm" : "Danke schön! Bitte bestätigen Sie noch Ihre E-Mail.",
-    "emailVerified" : "Vielen Dank für die Bestätigung Ihrer E-Mail-Adresse und die Aufnahme in unsere Mailinglisten!",
+    "emailVerified" : "Vielen Dank für die Bestätigung Ihrer E-Mail-Addresse und die Aufnahme in unsere Mailinglisten!",
     "verificationError" : "Es ist ein Fehler aufgetreten! Bitte starten Sie den Vorgang von der Startseite aus neu.",
     "error": "Fehler bei Abonnieren!",
     "pleaseSelectList": "Bitte wählen Sie mindestens eine Mailingliste aus!",
-    "pleaseInputEmail": "Bitte geben Sie eine gültige Email-Adresse ein!"
+    "pleaseInputEmail": "Bitte geben Sie eine gültige Email-Addresse ein!"
   } 
 }

@@ -9,17 +9,21 @@ const Location = sequelize.define("location", {
   },
   name: {
     type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: false,
   },
   description: {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  links: {
-    type: DataTypes.STRING,
+  pictures: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: true,
   },
-  adress: {
+  links: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: true,
+  },
+  address: {
     type: DataTypes.STRING,
     allowNull: true,
   },
@@ -32,7 +36,7 @@ const Location = sequelize.define("location", {
     allowNull: false,
   },
   reviews: {
-    type: DataTypes.STRING,
+    type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
 });

@@ -13,7 +13,7 @@ const EventType = sequelize.define("eventType", {
   },
   validated: {
     type: DataTypes.BOOLEAN,
-    allowNull: false,
+    defaultValue: false,
   },
 });
 

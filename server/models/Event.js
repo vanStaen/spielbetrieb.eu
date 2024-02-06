@@ -32,7 +32,7 @@ const Event = sequelize.define("event", {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  locationAdress: {
+  locationAddress: {
     type: DataTypes.STRING,
     allowNull: true,
   },
