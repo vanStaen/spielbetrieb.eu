@@ -48,7 +48,7 @@ const Event = sequelize.define("event", {
     type: DataTypes.DATE,
     allowNull: true,
   },
-  tags: {
+  eventTags: {
     type: DataTypes.ARRAY(DataTypes.INTEGER),
     defaultValue: [],
   },

@@ -11,7 +11,7 @@ type Event {
     locationCoordinates: String
     fromDate: String
     untilDate: String
-    tags: [Int]
+    eventTags: [Int]
     attendees: [Int]
     invited: [Int]
     admin: [Int]
@@ -35,7 +35,7 @@ input EventInputData {
     locationCoordinates: String
     fromDate: String
     untilDate: String
-    tags: [Int]
+    eventTags: [Int]
     attendees: [Int]
     invited: [Int]
     admin: [Int]
