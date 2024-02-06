@@ -1,15 +1,10 @@
 import React from 'react';
 import { Tooltip } from 'antd';
 import { useTranslation } from 'react-i18next';
-import {
-  MailOutlined,
-  LinkOutlined,
-  DoubleLeftOutlined
-} from '@ant-design/icons';
+import { DoubleLeftOutlined } from '@ant-design/icons';
 
 import SpielbetriebLogo from '../../img/logos/spielbetriebLogo.png';
 import { Phone } from '../../components/Phone/Phone';
-import { NewsletterForm } from '../../components/NewsletterForm/NewsletterForm';
 import { DarkModeDropDown } from '../../components/DarkModeDropDown/DarkModeDropDown';
 import { LanguageDropDown } from '../../components/LanguageDropDown/LanguageDropDown';
 import { Menu } from '../../components/Menu/Menu';
@@ -50,46 +45,25 @@ export const LandingPage = () => {
             className="spielbetrieb__logoAndText invertColorTheme"
             id="spielbetrieb"
           >
-            <img
-              src={SpielbetriebLogo}
-              id="spielbetriebLogo"
-              className="spielbetrieb__logo"
-            />
+            <a
+              href="https://spielbetrieb.eu"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={SpielbetriebLogo}
+                id="spielbetriebLogo"
+                className="spielbetrieb__logo"
+              />
+            </a>
             <div className='spielbetrieb__titleContainer'>
               <span className='spielbetrieb__text'>Spielbetrieb</span>
-              {' '}x{' '}
+              <span className='spielbetrieb__x'>x</span>
               <span className='merrier__text'>Merrier</span>
             </div>
             <div className="spielbetrieb__subtext">
               {t('general.commingsoon')}{' '}
-            </div>
-            <div className="spielbetrieb__links">
-              <div className="spielbetrieb__link" >
-                <NewsletterForm />
-              </div>
-              <div className="spielbetrieb__link">
-                <Tooltip title="eMail" placement="bottom">
-                  <a
-                    href="mailto:info@spielbetrieb.online"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <MailOutlined />
-                  </a>
-                </Tooltip>
-              </div>
-              <div className="spielbetrieb__link">
-                <Tooltip title="Linktree" placement="bottom">
-                  <a
-                    href="https://linktr.ee/spielbetrieb"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <LinkOutlined />
-                  </a>
-                </Tooltip>
-              </div>
-            </div>
+            </div>            
           </div>
         </div>
         <div className="phone__container">

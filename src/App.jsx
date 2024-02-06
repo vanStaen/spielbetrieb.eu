@@ -14,6 +14,7 @@ import { SubscriberVerify } from './pages/SubscriberVerify/SubscriberVerify';
 import { FourOfour } from './pages/FourOfour/FourOfour';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { Home } from './pages/Home/Home';
+import { Legal } from './pages/Legal/Legal';
 import { Admin } from './pages/Admin/Admin';
 
 import './lib/i18n';
@@ -79,15 +80,17 @@ const App = observer(() => {
             <Route path="recoverpwd/:token" element={<NewPassword />} />
             <Route path="admin/" element={<Admin />} />
             <Route path="login/" element={<LoginPage />} />
-            <Route path="basket/" element={< Home page='basket' />} />
-            <Route path="magazin/" element={< Home page='magazin' />} />
-            <Route path="partner/" element={< Home page='partner' />} /> 
-            <Route path="profile/" element={< Home page='profile' />} /> 
-            <Route path="settings/" element={< Home page='settings' />} /> 
-            <Route path="shop/" element={< Home page='shop' />} /> 
-            <Route path="agenda/" element={< Home page='agenda' />} /> 
-            {/* <Route path="service/" element={< />} /> */}
-            {/* <Route path="privacy/" element={< />} /> */}
+            <Route path="basket/" element={<Home page='basket' />} />
+            <Route path="magazin/" element={<Home page='magazin' />} />
+            <Route path="partner/" element={<Home page='partner' />} /> 
+            <Route path="profile/" element={<Home page='profile' />} /> 
+            <Route path="settings/" element={<Home page='settings' />} /> 
+            <Route path="shop/" element={<Home page='shop' />} /> 
+            <Route path="agenda/" element={<Home page='agenda' />} /> 
+            <Route path="service/" element={<Legal page='service' />} />
+            <Route path="privacy/" element={<Legal page='privacy' />} />
+            <Route path="agb/" element={<Legal page='agb' />} /> 
+            <Route path="impressum/" element={<Legal page='impressum' />} /> 
             { 
               window.location.hostname === 'merrier.app' ? 
                 <Route path="/" element={<LandingPage />} />
