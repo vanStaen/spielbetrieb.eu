@@ -24,6 +24,7 @@ exports.eventTypeResolver = {
     try {
       const eventType = new EventType({
         name: args.eventTypeInput.name,
+        validated: args.eventTypeInput.validated,
       });
       return await eventType.save();
     } catch (err) {
