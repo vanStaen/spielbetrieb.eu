@@ -37,9 +37,7 @@
 - [ ] Smooth transition for language and theme menu (opacity on out)
 - [ ] Fix db_backup script
 - [ ] Get rid of 100vh (for event listner of window.innerHeight)
-- [ ] 404 : 
-  - [ ] Schickt automatisch ein email mit Url
-  - [ ] Deutlicher zurück feile. 
+- [ ] Rerendering (e.g: mnotifications) 
 
 
 ## Done :
