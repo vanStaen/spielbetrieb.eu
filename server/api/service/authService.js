@@ -7,11 +7,11 @@ exports.authService = {
     let foundUser;
     if (username) {
       foundUser = await User.findOne({
-        where: { userName: username }
+        where: { userName: username.toLowerCase() }
       });
     } else {
       foundUser = await User.findOne({
-        where: { email }
+        where: { email: email.toLowerCase() }
       });
     }
     if (!foundUser) {
