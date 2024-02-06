@@ -100,7 +100,9 @@
     "areYouReallyThatOld": "Wirklich? Sicher?"
   },
   "404": {
-    "endOfInternet" : "Sie haben das Ende des Internets erreicht!"
+    "endOfInternet" : "Sie haben das Ende des Internets erreicht!",
+    "pageNotFound" : "Seite nicht gefunden",
+    "doesNotExist" : "existiert nicht"
   },
   "legal": {    
     "cookiesTitle" : "Diese Website verwendet Cookies.",

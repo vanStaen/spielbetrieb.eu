@@ -19,7 +19,7 @@ export const FourOfour = () => {
     notification.open({
       message: <FouroFourNotifTitle />,
       description: <FouroFourNotifDesc />,
-      duration: 0,
+      duration: 5,
       placement: "bottomRight",
       className: "customNotification",
     });
@@ -52,10 +52,10 @@ export const FourOfour = () => {
 
 const FouroFourNotifTitle = () => {
   const { t } = useTranslation();
-  return <div>{`❌ Error 404 - Page not found`}</div>;
+  return <div>{`❌ Error 404 -`} {t("404.pageNotFound")}</div>;
 };
 
 const FouroFourNotifDesc = () => {
   const { t } = useTranslation();
-  return <div>{t("newsletter.thanksAndConfirm")}</div>;
+  return <div>{window.location.href} {t("404.doesNotExist")}!</div>;
 };
