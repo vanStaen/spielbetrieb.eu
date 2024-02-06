@@ -20,6 +20,12 @@ exports.eventResolver = {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
+    const foundUser = await User.findOne({
+      where: { _id: req.userId }
+    });
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes('events')) {
+      throw new Error('Unauthorized!');
+    }
     return await Event.findAll({
       include: User,
     });
@@ -37,7 +43,7 @@ exports.eventResolver = {
         title: args.eventInput.title,
         description: args.eventInput.description,
         eventType: args.eventInput.eventType,
-        picture: args.eventInput.picture,
+        pictures: args.eventInput.pictures,
         location: args.eventInput.location,
         locationName: args.eventInput.locationName,
         locationAdress: args.eventInput.locationAdress,
@@ -66,7 +72,7 @@ exports.eventResolver = {
       "eventType",
       "title",
       "description",
-      "picture",
+      "pictures",
       "location",
       "locationName",
       "locationAdress",

@@ -28,7 +28,7 @@ input EventInputData {
     eventType: Int
     title: String
     description: String
-    picture: [String]
+    pictures: [String]
     location: Int
     locationName: String
     locationAdress: String
