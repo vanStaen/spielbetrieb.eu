@@ -64,12 +64,16 @@ SQL update script exemple:
 
 ### Table user | Partner
 
-`isPartner` is a flag set to identify a Partner and `partnerRoles` is an Array listing what feature a partner can access from their partner page.
+`isPartner` is a flag set to identify a Partner and `partnerRoles` is an Array listing what feature a partner can access from their partner page. Hence only an integer is saved in those column, as an Id to the right data. 
 
 Possible partner roles are:
 1. `events`: overview/management of events for the spielplan
 1. `sales`: overview/management of tickets for their events
 3. `analytics`: special access to some more data regarding their page/events/tickets sale.
+
+### Table Event | Dynamical parameters
+
+Some description parameters (`eventType`, `location` and `tags`) are dynamics, have their own bd_table and can be augmented/managed from the admin page. 
 
 ## Ressources
 

@@ -35,22 +35,12 @@ const writeBackupFile = async () => {
         const year = today.getFullYear();
         const month = today.getMonth() + 1; //Start from 0
         const day = today.getDate();
-        const databaseContentChats = await fetchDatabaseContent("chats");
-        filenameChats = `${day}-${month}-${year}_spielbetrieb_chats.json`;
-        fs.writeFileSync(`../../../database-backups/spielbetrieb/${filenameChats}`, JSON.stringify(databaseContentChats));
+        const databaseContentSubs = await fetchDatabaseContent("subscribers");
+        filenameSubs = `${day}-${month}-${year}_spielbetrieb_subscribers.json`;
+        fs.writeFileSync(`../../../database-backups/spielbetrieb/${filenameSubs}`, JSON.stringify(databaseContentSubs));
         const databaseContentUsers = await fetchDatabaseContent("users");
         filenameUsers = `${day}-${month}-${year}_spielbetrieb_users.json`;
         fs.writeFileSync(`../../../database-backups/spielbetrieb/${filenameUsers}`, JSON.stringify(databaseContentUsers));
-        const databaseContentNotifications = await fetchDatabaseContent("notifications");
-        filenameNotifications = `${day}-${month}-${year}_spielbetrieb_notifications.json`;
-        fs.writeFileSync(`../../../database-backups/spielbetrieb/${filenameNotifications}`, JSON.stringify(databaseContentNotifications));
-        const databaseContentUsersfollower = await fetchDatabaseContent("usersfollowers");
-        filenameUsersfollower = `${day}-${month}-${year}_spielbetrieb_Usersfollower.json`;
-        fs.writeFileSync(`../../../database-backups/spielbetrieb/${filenameUsersfollower}`, JSON.stringify(databaseContentUsersfollower));
-        const databaseContentUsersfriend = await fetchDatabaseContent("usersfriends");
-        filenameUsersfriend = `${day}-${month}-${year}_spielbetrieb_Usersfriend.json`;
-        fs.writeFileSync(`../../../database-backups/spielbetrieb/${filenameUsersfriend}`, JSON.stringify(databaseContentUsersfriend));
-
         console.log("Backup Success!")
     } catch (err) {
         console.log({ error: `${err})`, });

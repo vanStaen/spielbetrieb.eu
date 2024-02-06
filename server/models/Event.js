@@ -9,7 +9,7 @@ const Event = sequelize.define("event", {
     primaryKey: true,
   },
   eventType: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
   title: {
@@ -20,21 +20,37 @@ const Event = sequelize.define("event", {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  picture: {
+  pictures: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    defaultValue: [],
+  },
+  location: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
+  locationName: {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  location: {
+  locationAdress: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  locationCoordinates: {
     type: DataTypes.STRING,
     allowNull: true,
   },
   fromDate: {
-    type: DataTypes.STRING,
+    type: DataTypes.DATE,
     allowNull: true,
   },
   untilDate: {
-    type: DataTypes.STRING,
+    type: DataTypes.DATE,
     allowNull: true,
+  },
+  tags: {
+    type: DataTypes.ARRAY(DataTypes.INTEGER),
+    defaultValue: [],
   },
   attendees: {
     type: DataTypes.ARRAY(DataTypes.INTEGER),

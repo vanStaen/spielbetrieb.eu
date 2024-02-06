@@ -1,13 +1,17 @@
 exports.Event = `
 type Event {
     _id: ID! 
-    eventType: String!
+    eventType: Int!
     title: String!
     description: String
-    picture: String
-    location: String
+    pictures: [String]
+    location: Int
+    locationName: String
+    locationAdress: String
+    locationCoordinates: String
     fromDate: String
     untilDate: String
+    tags: [Int]
     attendees: [Int]
     invited: [Int]
     admin: [Int]
@@ -21,13 +25,17 @@ type Event {
 
 exports.EventInputData = `
 input EventInputData {
-    eventType: String
+    eventType: Int
     title: String
     description: String
-    picture: String
-    location: String
+    picture: [String]
+    location: Int
+    locationName: String
+    locationAdress: String
+    locationCoordinates: String
     fromDate: String
     untilDate: String
+    tags: [Int]
     attendees: [Int]
     invited: [Int]
     admin: [Int]

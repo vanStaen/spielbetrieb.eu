@@ -34,8 +34,7 @@
 - [ ] FrontEnd : Update all packages
 - [ ] Check all z-Index
 - [ ] Tracking/Analytics
-- [ ] Smooth transition for language and theme menu (opacity on out)
-- [ ] Fix db_backup script
+- [ ] Smooth transition for language and theme menu
 - [ ] Get rid of 100vh (for event listner of window.innerHeight)
 - [ ] Rerendering (e.g: mnotifications) 
 
@@ -85,3 +84,4 @@
   - [x] Dark Magazin
   - [x] Shop
   - [x] Spielplan
+- [x] Fix db_backup script

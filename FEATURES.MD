@@ -33,7 +33,7 @@
     - [ ] Create event details
       - [ ] location
       - [ ] date from/until
-      - [ ] add a picture
+      - [ ] add pictures
       - [ ] allow anonymous attendees
       - [ ] make private
       - [ ] make forwardable
