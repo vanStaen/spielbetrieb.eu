@@ -11,12 +11,12 @@ import {
   PicLeftOutlined,
   FontSizeOutlined,
   CloseOutlined,
-  TagsOutlined,
+  DatabaseOutlined,
 } from '@ant-design/icons';
 
 import { AdminNewsletter } from './AdminNewsletter/AdminNewsletter';
 import { AdminUsers } from './AdminUsers/AdminUsers';
-import { AdminTags } from './AdminTags/AdminTags';
+import { AdminTags } from './AdminData/AdminTags';
 import { isMobileCheck } from '../../helpers/checkMobileTablet';
 import { authStore } from '../../store/authStore/authStore';
 import { userStore } from '../../store/userStore/userStore';
@@ -127,10 +127,10 @@ export const Admin = observer(() => {
                   icon: <FontSizeOutlined />
                 },
                 {
-                  label: !isMobile && 'Tags',
-                  value: 'tags',
-                  // disabled: !userStore.adminRoles?.includes('tags'),
-                  icon: <TagsOutlined />
+                  label: !isMobile && 'Data',
+                  value: 'data',
+                  disabled: !userStore.adminRoles?.includes('data'),
+                  icon: <DatabaseOutlined />
                 }
               ]}
             />

@@ -60,7 +60,7 @@ Possible admin roles are:
 7. `translation`: translation of the portal's texts
 
 SQL update script exemple: 
-``` UPDATE public.users SET "isAdmin"=true, "adminRoles"='{newsletter,events,users,shops,blog,analytics,translation,tags}' WHERE _id=1; ```
+``` UPDATE public.users SET "isAdmin"=true, "adminRoles"='{newsletter,events,users,shops,blog,analytics,translation,data}' WHERE _id=1; ```
 
 ### Table user | Partner
 
