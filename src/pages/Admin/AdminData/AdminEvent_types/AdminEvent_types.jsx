@@ -3,10 +3,10 @@ import { Form, Table, Typography, Popconfirm, Tag, Button } from 'antd';
 import { EditOutlined, CloseCircleOutlined, CheckCircleOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import { EditableCell } from '../../EditableCell';
-import { getEventtypes } from './getEventtypes';
-import { deleteEventtype } from './deleteEventtype';
-import { updateEventtype } from './updateEventtype';
-import { addEventtype } from './addEventtype';
+import { getEventtypes } from './getEvent_types';
+import { deleteEventtype } from './deleteEvent_type';
+import { updateEventtype } from './updateEvent_type';
+import { addEventtype } from './addEvent_type';
 import { AdminCustomSpinner } from '../../AdminCustomSpinner/AdminCustomSpinner';
 import { nameParser } from "../../../../helpers/nameParser";
 
