@@ -107,7 +107,8 @@ export const AdminUsers = () => {
           className="admin__table"
           dataSource={users}
           columns={columns}
-          pagination={false}
+          pagination={false} 
+          size="small"
         />
           )}
     </div>

@@ -82,6 +82,7 @@ export const AdminNewsletter = () => {
           dataSource={subscribers}
           columns={columns}
           pagination={false}
+          size="small"
         />
           )}
     </div>

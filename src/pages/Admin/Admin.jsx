@@ -10,11 +10,13 @@ import {
   CalendarOutlined,
   PicLeftOutlined,
   FontSizeOutlined,
-  CloseOutlined
+  CloseOutlined,
+  TagsOutlined,
 } from '@ant-design/icons';
 
 import { AdminNewsletter } from './AdminNewsletter/AdminNewsletter';
 import { AdminUsers } from './AdminUsers/AdminUsers';
+import { AdminTags } from './AdminTags/AdminTags';
 import { isMobileCheck } from '../../helpers/checkMobileTablet';
 import { authStore } from '../../store/authStore/authStore';
 import { userStore } from '../../store/userStore/userStore';
@@ -51,6 +53,8 @@ export const Admin = observer(() => {
         return 'analytics';
       case 'translation':
         return 'translation';
+      case 'tags':
+        return <AdminTags />;
       default:
         return 'Error';
     }
@@ -121,6 +125,12 @@ export const Admin = observer(() => {
                   // disabled: !userStore.adminRoles?.includes('translation'),
                   disabled: true,
                   icon: <FontSizeOutlined />
+                },
+                {
+                  label: !isMobile && 'Tags',
+                  value: 'tags',
+                  // disabled: !userStore.adminRoles?.includes('tags'),
+                  icon: <TagsOutlined />
                 }
               ]}
             />

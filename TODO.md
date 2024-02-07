@@ -37,6 +37,8 @@
 - [ ] Smooth transition for language and theme menu
 - [ ] Get rid of 100vh (for event listner of window.innerHeight)
 - [ ] Rerendering (e.g: mnotifications) 
+- [ ] List of forbidden usernames
+- [ ] List of forbidden words
 
 
 ## Done :
