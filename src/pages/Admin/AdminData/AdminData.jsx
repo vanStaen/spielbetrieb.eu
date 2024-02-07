@@ -9,11 +9,11 @@ export const AdminData = () => {
 
   return (
     <div>
-      <div className='admin__subHeader'><TagsOutlined /> Tags admin</div>
+      <div className='admin__subHeader'><TagsOutlined /> Tags</div>
       <AdminTags />
-      <div className='admin__subHeader'><CarryOutOutlined /> EventTypes admin</div>
+      <div className='admin__subHeader'><CarryOutOutlined /> Event types</div>
       <AdminEventTypes />
-      <div className='admin__subHeader'><HeatMapOutlined /> Locations admin</div>
+      <div className='admin__subHeader'><HeatMapOutlined /> Locations</div>
       <AdminLocations />
     </div>
   );

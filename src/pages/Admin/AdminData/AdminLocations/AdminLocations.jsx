@@ -86,7 +86,7 @@ export const AdminLocations = () => {
       editable: true,
     },
     {
-      title: 'Edit',
+      title: <span style={{opacity: ".1"}}>Edit</span>,
       dataIndex: 'edit',
       width: '80px',   
       align: 'center',

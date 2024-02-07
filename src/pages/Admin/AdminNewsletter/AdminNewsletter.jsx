@@ -18,6 +18,13 @@ export const AdminNewsletter = () => {
 
   const columns = [
     {
+      title: 'id',
+      dataIndex: '_id',
+      key: 'id',    
+      align: 'center',
+      width: '50px',
+    },
+    {
       title: 'Email',
       dataIndex: 'email',
       key: 'email'

@@ -20,7 +20,9 @@ export const AdminUsers = () => {
     {
       title: 'id',
       dataIndex: '_id',
-      key: 'id'
+      key: 'id',    
+      align: 'center',
+      width: '50px',
     },
     {
       title: 'Username',
