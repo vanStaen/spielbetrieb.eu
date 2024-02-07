@@ -1,7 +1,7 @@
 exports.Event = `
 type Event {
     _id: ID! 
-    eventType: Int!
+    eventtype: Int!
     title: String!
     description: String
     pictures: [String]
@@ -25,7 +25,7 @@ type Event {
 
 exports.EventInputData = `
 input EventInputData {
-    eventType: Int
+    eventtype: Int
     title: String
     description: String
     pictures: [String]

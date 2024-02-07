@@ -1,9 +1,9 @@
-export async function getEventTypes() {
+export async function getEventtypes() {
 
   const graphqlQuery = {
     query: `
             {
-              getEventTypes { 
+              getEventtypes { 
                 _id,
                 name,
                 validated,
@@ -28,5 +28,5 @@ export async function getEventTypes() {
   const data = await response.json();
 
   if (data.errors) { return data.errors[0] };
-  return data.data.getEventTypes;
+  return data.data.getEventtypes;
 }

@@ -3,33 +3,33 @@ import { Form, Table, Typography, Popconfirm, Tag, Button } from 'antd';
 import { EditOutlined, CloseCircleOutlined, CheckCircleOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import { EditableCell } from '../../EditableCell';
-import { getEventTypes } from './getEventTypes';
-import { deleteEventType } from './deleteEventType';
-import { updateEventType } from './updateEventType';
-import { addEventType } from './addEventType';
+import { getEventtypes } from './getEventtypes';
+import { deleteEventtype } from './deleteEventtype';
+import { updateEventtype } from './updateEventtype';
+import { addEventtype } from './addEventtype';
 import { AdminCustomSpinner } from '../../AdminCustomSpinner/AdminCustomSpinner';
 import { nameParser } from "../../../../helpers/nameParser";
 
-export const AdminEventTypes = () => {
+export const AdminEventtypes = () => {
   const [form] = Form.useForm();
-  const [eventTypes, setEventTypes] = useState([]);
+  const [eventtypes, setEventtypes] = useState([]);
   const [editingId, setEditingId] = useState('');
   const [isNewRow, setIsNewRow] = useState(false);
 
-  const fetchEventTypes = async () => {
-    const results = await getEventTypes();
-    const eventTypes = results.map(type => {
+  const fetchEventtypes = async () => {
+    const results = await getEventtypes();
+    const eventtypes = results.map(type => {
       return {
       name_en: nameParser(type.name, "en"),
       name_de: nameParser(type.name, "de"),
       ...type
       }
     })  
-    setEventTypes(eventTypes);
+    setEventtypes(eventtypes);
   };
 
   useEffect(() => {
-    fetchEventTypes();
+    fetchEventtypes();
   }, []);
 
   const isEditing = (record) => record._id === editingId;
@@ -45,13 +45,13 @@ export const AdminEventTypes = () => {
 
   const cancel = async () => {
     setEditingId('');
-    isNewRow && fetchEventTypes();
+    isNewRow && fetchEventtypes();
     setIsNewRow(false);
   };
 
   const deleteRow = async (id) => {
-    await deleteEventType(id);
-    await fetchEventTypes();
+    await deleteEventtype(id);
+    await fetchEventtypes();
   };
 
   const save = async (id) => {
@@ -62,11 +62,11 @@ export const AdminEventTypes = () => {
         validated: dataObject.validated,
       }
       if (isNewRow) {
-        await addEventType(dataObjectNew);
+        await addEventtype(dataObjectNew);
       } else {
-        await updateEventType(id, dataObjectNew);
+        await updateEventtype(id, dataObjectNew);
       }
-      await fetchEventTypes();
+      await fetchEventtypes();
       setEditingId('');
       setIsNewRow(false);
     } catch (e) {
@@ -151,7 +151,7 @@ export const AdminEventTypes = () => {
   });
 
   const handleAdd = () => {
-    const newId = parseInt(eventTypes[eventTypes.length-1]._id) + 1;
+    const newId = parseInt(eventtypes[eventtypes.length-1]._id) + 1;
     const newRow = {
       _id: newId,
       name: '{"en": "EVENT_TYPE_EN", "de": "EVENT_TYPE_DE"}',
@@ -160,14 +160,14 @@ export const AdminEventTypes = () => {
     form.setFieldsValue({
       ...newRow,
     });
-    setEventTypes([...eventTypes, newRow]);
+    setEventtypes([...eventtypes, newRow]);
     setIsNewRow(true);
     setEditingId(newId);
   };
 
   return (
     <div>
-      {eventTypes.length === 0
+      {eventtypes.length === 0
         ? (
             <div className="admin__centered">
               <AdminCustomSpinner text="Loading Data" />
@@ -183,7 +183,7 @@ export const AdminEventTypes = () => {
                   },
                 }}
                 className="admin__table"
-                dataSource={eventTypes}
+                dataSource={eventtypes}
                 columns={mergedColumns}
                 pagination={false}
                 size="small"
@@ -191,7 +191,7 @@ export const AdminEventTypes = () => {
             </Form>
               <div className='admin__tableFooter'>
                 <Button onClick={handleAdd}>
-                  Add a EventType
+                  Add a Eventtype
                  </Button>
               </div>
           </>

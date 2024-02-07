@@ -1,21 +1,21 @@
-const { EventType } = require("../../models/EventType");
+const { Eventtype } = require("../../models/Eventtype");
 const { User } = require("../../models/User");
 
-exports.eventTypeResolver = {
-  //getEventTypes
-  async getEventTypes(args, req) {
+exports.eventtypeResolver = {
+  //getEventtypes
+  async getEventtypes(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
-    return await EventType.findAll({
+    return await Eventtype.findAll({
       order: [
         ['_id', 'ASC'],
       ]
     });
   },
 
-  // addEventType(eventTypeInput: EventTypeInputData!): EventType!
-  async addEventType(args, req) {
+  // addEventtype(eventtypeInput: EventtypeInputData!): Eventtype!
+  async addEventtype(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
@@ -26,18 +26,18 @@ exports.eventTypeResolver = {
       throw new Error('Unauthorized!');
     }
     try {
-      const eventType = new EventType({
-        name: args.eventTypeInput.name,
-        validated: args.eventTypeInput.validated,
+      const eventtype = new Eventtype({
+        name: args.eventtypeInput.name,
+        validated: args.eventtypeInput.validated,
       });
-      return await eventType.save();
+      return await eventtype.save();
     } catch (err) {
       console.log(err);
     }
   },
 
-  // updateEventType(eventTypeId: ID!, eventTypeInput: EventTypeInputData!): EventType!
-  async updateEventType(args, req) {
+  // updateEventtype(eventtypeId: ID!, eventtypeInput: EventtypeInputData!): Eventtype!
+  async updateEventtype(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
@@ -53,28 +53,28 @@ exports.eventTypeResolver = {
       "validated",
     ];
     updatableFields.forEach((field) => {
-      if (field in args.eventTypeInput) {
-        updateFields[field] = args.eventTypeInput[field];
+      if (field in args.eventtypeInput) {
+        updateFields[field] = args.eventtypeInput[field];
       }
     });
     try {
-      const updatedEventType = await EventType.update(updateFields, {
+      const updatedEventtype = await Eventtype.update(updateFields, {
         where: {
-          _id: args.eventTypeId,
+          _id: args.eventtypeId,
         },
         returning: true,
         plain: true,
       });
-      // updatedEventType[0]: number or row udpated
-      // updatedEventType[1]: rows updated
-      return updatedEventType[1];
+      // updatedEventtype[0]: number or row udpated
+      // updatedEventtype[1]: rows updated
+      return updatedEventtype[1];
     } catch (err) {
       console.log(err);
     }
   },
 
-  // deleteEventType(eventTypeId: ID!): Boolean!
-  async deleteEventType(args, req) {
+  // deleteEventtype(eventtypeId: ID!): Boolean!
+  async deleteEventtype(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
@@ -84,9 +84,9 @@ exports.eventTypeResolver = {
     if (!foundUser.isAdmin) {
       throw new Error('Unauthorized!');
     }
-    await EventType.destroy({
+    await Eventtype.destroy({
       where: {
-        _id: args.eventTypeId,
+        _id: args.eventtypeId,
       },
     });
     return true;

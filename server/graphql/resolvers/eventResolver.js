@@ -39,10 +39,10 @@ exports.eventResolver = {
     try {
       const event = new Event({
         userId: req.userId,
-        eventType: args.eventInput.eventType,
+        eventtype: args.eventInput.eventtype,
         title: args.eventInput.title,
         description: args.eventInput.description,
-        eventType: args.eventInput.eventType,
+        eventtype: args.eventInput.eventtype,
         pictures: args.eventInput.pictures,
         location: args.eventInput.location,
         locationName: args.eventInput.locationName,
@@ -69,7 +69,7 @@ exports.eventResolver = {
     }
     const updateFields = [];
     const updatableFields = [
-      "eventType",
+      "eventtype",
       "title",
       "description",
       "pictures",

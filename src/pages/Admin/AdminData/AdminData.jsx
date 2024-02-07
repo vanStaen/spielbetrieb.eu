@@ -2,7 +2,7 @@ import React from 'react';
 import { TagsOutlined, CarryOutOutlined, HeatMapOutlined } from '@ant-design/icons';
 
 import { AdminTags } from './AdminTags/AdminTags';
-import { AdminEventTypes } from './AdminEventTypes/AdminEventTypes';
+import { AdminEventtypes } from './AdminEventtypes/AdminEventtypes';
 import { AdminLocations } from './AdminLocations/AdminLocations';
 
 export const AdminData = () => {
@@ -13,7 +13,7 @@ export const AdminData = () => {
         <AdminTags />
       <div className='admin__spacer'></div>
       <div className='admin__subHeader'><CarryOutOutlined /> Event types</div>
-        <AdminEventTypes />
+        <AdminEventtypes />
       <div className='admin__spacer'></div>
       <div className='admin__subHeader'><HeatMapOutlined /> Locations</div>
         <AdminLocations />

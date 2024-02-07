@@ -1,9 +1,9 @@
 
-export async function deleteEventType(id) {
+export async function deleteEventtype(id) {
 
   const graphqlQuery = {
     query: `mutation ( $id: ID! ) {
-                  deleteEventType ( eventTypeId: $id ) 
+                  deleteEventtype ( eventtypeId: $id ) 
                 }`,
     variables: {
       id
@@ -26,5 +26,5 @@ export async function deleteEventType(id) {
   const data = await response.json();
 
   if (data.errors) { return data.errors[0] };
-  return data.deleteEventType;
+  return data.deleteEventtype;
 }

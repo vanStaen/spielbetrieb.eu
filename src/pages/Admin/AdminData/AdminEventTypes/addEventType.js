@@ -1,12 +1,12 @@
 
-export async function addEventType(dataObject) {
+export async function addEventtype(dataObject) {
 
   const graphqlQuery = {
     query: `mutation ( 
-                $dataObject: EventTypeInputData!,
+                $dataObject: EventtypeInputData!,
                 ) {
-                addEventType (
-                  eventTypeInput: $dataObject,
+                addEventtype (
+                  eventtypeInput: $dataObject,
                 ) {
                   _id
                 }
@@ -32,5 +32,5 @@ export async function addEventType(dataObject) {
   const data = await response.json();
 
   if (data.errors) { return data.errors[0] };
-  return data.addEventType;
+  return data.addEventtype;
 }

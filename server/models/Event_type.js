@@ -1,22 +1,23 @@
 const { sequelize, DataTypes } = require('../lib/sequelizedb');
 
-const UsersFollowers = sequelize.define("usersFollowers", {
+const Eventtype = sequelize.define("eventtype", {
   _id: {
     type: DataTypes.INTEGER,
     field: "_id",
     autoIncrement: true,
     primaryKey: true,
   },
-  follower_id: {
-    type: DataTypes.INTEGER,
+  name: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
-  followed_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
+  validated: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
   },
 });
 
 module.exports = {
-  UsersFollowers
+  Eventtype
 };
+

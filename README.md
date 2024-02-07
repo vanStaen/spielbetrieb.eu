@@ -73,7 +73,7 @@ Possible partner roles are:
 
 ### Table Event | Dynamical parameters
 
-Some description parameters (`eventType`, `location` and `tags`) are dynamics, have their own bd_table and can be augmented/managed from the admin page. 
+Some description parameters (`eventtype`, `location` and `tags`) are dynamics, have their own bd_table and can be augmented/managed from the admin page. 
 
 The names of those parameters (save in an extra table) should be an object following this type: `{ "en": "def", "de": "ghj" }`. In case of new languages coming later, default will then be english. 
 

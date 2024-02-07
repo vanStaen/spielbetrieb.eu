@@ -8,7 +8,7 @@ const Event = sequelize.define("event", {
     autoIncrement: true,
     primaryKey: true,
   },
-  eventType: {
+  eventtype: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },

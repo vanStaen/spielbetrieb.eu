@@ -941,7 +941,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getEvent (eventId: 1) {\n    _id,\n    eventType,\n    title,\n    description,\n    picture,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n    user {\n        _id,\n    }\n  }\n}",
+						"query": "query {\n  getEvent (eventId: 1) {\n    _id,\n    eventtype,\n    title,\n    description,\n    picture,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n    user {\n        _id,\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -979,7 +979,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getAllEvents {\n    _id,\n    eventType,\n    title,\n    description,\n    pictures,\n    location,\n    locationAdress,\n    locationCoordinates,\n    locationName,\n    fromDate,\n    untilDate,\n    eventTags,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n    user {\n        _id,\n    }\n  }\n}",
+						"query": "query {\n  getAllEvents {\n    _id,\n    eventtype,\n    title,\n    description,\n    pictures,\n    location,\n    locationAdress,\n    locationCoordinates,\n    locationName,\n    fromDate,\n    untilDate,\n    eventTags,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n    user {\n        _id,\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1017,7 +1017,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addEvent (\n    eventInput: { \n        eventType: \"Party\",\n        title: \"This is a cool party\",\n        description: \"This is a cool party, and I am describing it.\",\n        picture: \"some/url/to/s3\",\n        location: \"berlin\",\n        fromDate: \"12/07/21 21:00\",\n        untilDate:  \"13/07/21 07:00\",\n        admin: [1, 2],\n        private: true,\n        forwardable: false,\n        allowAnonymous: false,\n        }\n  ) {\n    _id,\n    eventType,\n    title,\n    description,\n    picture,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "mutation {\n  addEvent (\n    eventInput: { \n        eventtype: \"Party\",\n        title: \"This is a cool party\",\n        description: \"This is a cool party, and I am describing it.\",\n        picture: \"some/url/to/s3\",\n        location: \"berlin\",\n        fromDate: \"12/07/21 21:00\",\n        untilDate:  \"13/07/21 07:00\",\n        admin: [1, 2],\n        private: true,\n        forwardable: false,\n        allowAnonymous: false,\n        }\n  ) {\n    _id,\n    eventtype,\n    title,\n    description,\n    picture,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1055,7 +1055,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateEvent (\n      eventId: 1,\n      eventInput: { \n        location: \"kreuzberg\",\n        private: false, \n        eventType: \"Data\",\n        title: \"This is now a date \",\n        description: \"This is a cool Date, and I am describing it.\",\n        }\n      ) {\n_id,\n    eventType,\n    title,\n    description,\n    picture,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "mutation {\n  updateEvent (\n      eventId: 1,\n      eventInput: { \n        location: \"kreuzberg\",\n        private: false, \n        eventtype: \"Data\",\n        title: \"This is now a date \",\n        description: \"This is a cool Date, and I am describing it.\",\n        }\n      ) {\n_id,\n    eventtype,\n    title,\n    description,\n    picture,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1601,7 +1601,7 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Query: getEventTypes",
+			"name": "GraphQL Query: getEventtypes",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -1614,7 +1614,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getEventTypes {\n    _id,\n    name,\n    validated,\n  }\n}",
+						"query": "query {\n  getEventtypes {\n    _id,\n    name,\n    validated,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1633,7 +1633,7 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Mutation: addEventType",
+			"name": "GraphQL Mutation: addEventtype",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -1651,7 +1651,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addEventType (\n    eventTypeInput: { \n        name: \"delete me\", \n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
+						"query": "mutation {\n  addEventtype (\n    eventtypeInput: { \n        name: \"delete me\", \n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1671,7 +1671,7 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Mutation: updateEventType",
+			"name": "GraphQL Mutation: updateEventtype",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -1689,7 +1689,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateEventType (\n    eventTypeId: \"1\",\n    eventTypeInput: { \n        name: \"{en: 'date', de: 'date'}\",\n        validated: true, \n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
+						"query": "mutation {\n  updateEventtype (\n    eventtypeId: \"1\",\n    eventtypeInput: { \n        name: \"{en: 'date', de: 'date'}\",\n        validated: true, \n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1709,7 +1709,7 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Mutation: deleteEventType",
+			"name": "GraphQL Mutation: deleteEventtype",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -1727,7 +1727,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  deleteEventType (\n    eventTypeId: \"2\",\n  ) \n}",
+						"query": "mutation {\n  deleteEventtype (\n    eventtypeId: \"2\",\n  ) \n}",
 						"variables": ""
 					}
 				},

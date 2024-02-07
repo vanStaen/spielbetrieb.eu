@@ -52,9 +52,9 @@ const writeBackupFile = async () => {
         const filenameTags = `${day}-${month}-${year}_spielbetrieb_tags.json`;
         fs.writeFileSync(`../../../database-backups/spielbetrieb/${filenameTags}`, JSON.stringify(databaseContentTags));
         
-        const databaseContentEventTypes = await fetchDatabaseContent("eventTypes");
-        const filenameEventTypes = `${day}-${month}-${year}_spielbetrieb_eventTypes.json`;
-        fs.writeFileSync(`../../../database-backups/spielbetrieb/${filenameEventTypes}`, JSON.stringify(databaseContentEventTypes));
+        const databaseContentEventtypes = await fetchDatabaseContent("eventtypes");
+        const filenameEventtypes = `${day}-${month}-${year}_spielbetrieb_eventtypes.json`;
+        fs.writeFileSync(`../../../database-backups/spielbetrieb/${filenameEventtypes}`, JSON.stringify(databaseContentEventtypes));
 
         console.log("Backup Success!")
     } catch (err) {

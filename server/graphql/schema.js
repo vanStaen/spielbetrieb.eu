@@ -3,7 +3,7 @@ const { buildSchema } = require("graphql");
 const chatSchema = require("./schemas/chatSchema");
 const commentSchema = require("./schemas/commentSchema");
 const eventSchema = require("./schemas/eventSchema");
-const eventTypeSchema = require("./schemas/eventTypeSchema");
+const eventtypeSchema = require("./schemas/eventtypeSchema");
 const locationSchema = require("./schemas/locationSchema");
 const messageSchema = require("./schemas/messageSchema");
 const notificationSchema = require("./schemas/notificationSchema");
@@ -18,7 +18,7 @@ module.exports = buildSchema(`
     ${chatSchema.Chat}
     ${commentSchema.Comment}
     ${eventSchema.Event}
-    ${eventTypeSchema.EventType}
+    ${eventtypeSchema.Eventtype}
     ${locationSchema.Location}
     ${messageSchema.Message}
     ${notificationSchema.Notification}
@@ -31,7 +31,7 @@ module.exports = buildSchema(`
     ${chatSchema.ChatInputData}
     ${commentSchema.CommentInputData}
     ${eventSchema.EventInputData}
-    ${eventTypeSchema.EventTypeInputData}
+    ${eventtypeSchema.EventtypeInputData}
     ${locationSchema.LocationInputData}
     ${messageSchema.MessageInputData}
     ${notificationSchema.NotificationInputData}
@@ -44,7 +44,7 @@ module.exports = buildSchema(`
         ${chatSchema.ChatQueries}
         ${commentSchema.CommentQueries}
         ${eventSchema.EventQueries}
-        ${eventTypeSchema.EventTypeQueries}
+        ${eventtypeSchema.EventtypeQueries}
         ${locationSchema.LocationQueries}
         ${messageSchema.MessageQueries}
         ${notificationSchema.NotificationQueries}
@@ -59,7 +59,7 @@ module.exports = buildSchema(`
         ${chatSchema.ChatMutations}
         ${commentSchema.CommentMutations}
         ${eventSchema.EventMutations}
-        ${eventTypeSchema.EventTypeMutations}
+        ${eventtypeSchema.EventtypeMutations}
         ${locationSchema.LocationMutations}
         ${messageSchema.MessageMutations}
         ${notificationSchema.NotificationMutations}

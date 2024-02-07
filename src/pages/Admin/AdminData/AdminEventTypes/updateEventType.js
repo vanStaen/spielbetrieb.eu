@@ -1,14 +1,14 @@
 
-export async function updateEventType(id, dataObject) {
+export async function updateEventtype(id, dataObject) {
 
   const graphqlQuery = {
     query: `mutation ( 
                 $id: ID!,
-                $dataObject: EventTypeInputData!,
+                $dataObject: EventtypeInputData!,
                 ) {
-                  updateEventType (
-                    eventTypeId: $id,
-                    eventTypeInput: $dataObject,
+                  updateEventtype (
+                    eventtypeId: $id,
+                    eventtypeInput: $dataObject,
                 ) {
                   _id
                 }
@@ -35,5 +35,5 @@ export async function updateEventType(id, dataObject) {
   const data = await response.json();
 
   if (data.errors) { return data.errors[0] };
-  return data.updateEventType;
+  return data.updateEventtype;
 }
