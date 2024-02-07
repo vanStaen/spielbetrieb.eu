@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Table } from 'antd';
 
 import { getTags } from './getTags';
+import { deleteTag } from './deleteTag';
+import { updateTag } from './updateTag';
+
 import { nameParser } from "../../../../helpers/nameParser";
 import { AdminCustomSpinner } from '../../AdminCustomSpinner/AdminCustomSpinner';
 

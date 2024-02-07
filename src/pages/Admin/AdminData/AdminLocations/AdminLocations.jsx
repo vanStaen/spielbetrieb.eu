@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Table, Typography, Popconfirm, Tag } from 'antd';
+import { Form, Table, Typography, Popconfirm, Tag, Button } from 'antd';
 import { EditOutlined, CloseCircleOutlined, CheckCircleOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import { EditableCell } from '../../EditableCell';
 import { getLocations } from './getLocations';
 import { deleteLocation } from './deleteLocation';
 import { updateLocation } from './updateLocation';
+import { addLocation } from './addLocation';
 import { AdminCustomSpinner } from '../../AdminCustomSpinner/AdminCustomSpinner';
 
 export const AdminLocations = () => {
   const [form] = Form.useForm();
   const [locations, setLocations] = useState([]);
   const [editingId, setEditingId] = useState('');
+  const [isNewRow, setIsNewRow] = useState(false);
 
   const fetchLocations = async () => {
     const results = await getLocations();
@@ -28,17 +30,19 @@ export const AdminLocations = () => {
     form.setFieldsValue({
       name: '',
       description: '',
-      links: '',
+      links: [],
       address: '',
       coordinates: '',
-      validated: '',
+      validated: false,
       ...record,
     });
     setEditingId(record._id);
   };
 
-  const cancel = () => {
+  const cancel = async () => {
     setEditingId('');
+    isNewRow && fetchLocations();
+    setIsNewRow(false);
   };
 
   const deleteRow = async (id) => {
@@ -49,9 +53,14 @@ export const AdminLocations = () => {
   const save = async (id) => {
     try {
       const dataObject = await form.validateFields();
-      await updateLocation(id, dataObject);
+      if (isNewRow) {
+        await addLocation(dataObject);
+      } else {
+        await updateLocation(id, dataObject);
+      }
       await fetchLocations();
       setEditingId('');
+      setIsNewRow(false);
     } catch (e) {
       console.log('Error while saving:', e);
     }
@@ -163,6 +172,25 @@ export const AdminLocations = () => {
     };
   });
 
+  const handleAdd = () => {
+    const newId = parseInt(locations[locations.length-1]._id) + 1;
+    const newRow = {
+      _id: newId,
+      name: '',
+      description: '',
+      links: [],
+      address: '',
+      coordinates: '',
+      validated: true,
+    };
+    form.setFieldsValue({
+      ...newRow,
+    });
+    setLocations([...locations, newRow]);
+    setIsNewRow(true);
+    setEditingId(newId);
+  };
+
   return (
     <div>
       {locations.length === 0
@@ -172,6 +200,7 @@ export const AdminLocations = () => {
             </div>
           )
         : (
+          <>
             <Form form={form} component={false}>
               <Table
                 components={{
@@ -186,6 +215,12 @@ export const AdminLocations = () => {
                 size="small"
               />
             </Form>
+              <div className='admin__tableFooter'>
+                <Button onClick={handleAdd}>
+                  Add a Location
+                 </Button>
+              </div>
+          </>
           )}
     </div>
   );

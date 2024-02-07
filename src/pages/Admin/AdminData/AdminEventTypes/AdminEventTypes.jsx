@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Table } from 'antd';
 
 import { getEventTypes } from './getEventTypes';
+import { updateEventType } from './updateEventType';
+import { deleteEventType } from './deleteEventType';
 import { nameParser } from "../../../../helpers/nameParser";
 import { AdminCustomSpinner } from '../../AdminCustomSpinner/AdminCustomSpinner';
 

@@ -75,7 +75,7 @@ export const Admin = observer(() => {
           <div className="admin__sectionContainer">
             <Segmented
               size={isMobile && 'large'}
-              style={{ position: 'relative', zIndex: '10' }}
+              style={{ position: 'relative', zIndex: '10', marginBottom: 10 }}
               onChange={segmentedChangeHandler}
               value={adminStore.selectedPage}
               options={[

@@ -35,12 +35,27 @@ const writeBackupFile = async () => {
         const year = today.getFullYear();
         const month = today.getMonth() + 1; //Start from 0
         const day = today.getDate();
+
         const databaseContentSubs = await fetchDatabaseContent("subscribers");
-        filenameSubs = `${day}-${month}-${year}_spielbetrieb_subscribers.json`;
+        const filenameSubs = `${day}-${month}-${year}_spielbetrieb_subscribers.json`;
         fs.writeFileSync(`../../../database-backups/spielbetrieb/${filenameSubs}`, JSON.stringify(databaseContentSubs));
+        
         const databaseContentUsers = await fetchDatabaseContent("users");
-        filenameUsers = `${day}-${month}-${year}_spielbetrieb_users.json`;
+        const filenameUsers = `${day}-${month}-${year}_spielbetrieb_users.json`;
         fs.writeFileSync(`../../../database-backups/spielbetrieb/${filenameUsers}`, JSON.stringify(databaseContentUsers));
+        
+        const databaseContentLocations = await fetchDatabaseContent("locations");
+        const filenameLocations = `${day}-${month}-${year}_spielbetrieb_locations.json`;
+        fs.writeFileSync(`../../../database-backups/spielbetrieb/${filenameLocations}`, JSON.stringify(databaseContentLocations));
+        
+        const databaseContentTags = await fetchDatabaseContent("tags");
+        const filenameTags = `${day}-${month}-${year}_spielbetrieb_tags.json`;
+        fs.writeFileSync(`../../../database-backups/spielbetrieb/${filenameTags}`, JSON.stringify(databaseContentTags));
+        
+        const databaseContentEventTypes = await fetchDatabaseContent("eventTypes");
+        const filenameEventTypes = `${day}-${month}-${year}_spielbetrieb_tags.json`;
+        fs.writeFileSync(`../../../database-backups/spielbetrieb/${filenameEventTypes}`, JSON.stringify(databaseContentEventTypes));
+
         console.log("Backup Success!")
     } catch (err) {
         console.log({ error: `${err})`, });
