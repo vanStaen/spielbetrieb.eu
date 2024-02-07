@@ -103,7 +103,7 @@ export const AdminTags = () => {
       key: 'isUserTag',      
       align: 'center',
       editable: true,
-      render: (_, { isUserTag }) => (isUserTag ? 'Yes' : 'No')
+      render: (_, { isUserTag }) => (isUserTag ? 'Yes' : '')
     },
     {
       title: 'Event tag',
@@ -111,7 +111,7 @@ export const AdminTags = () => {
       key: 'isEventTag',      
       align: 'center',
       editable: true,
-      render: (_, { isEventTag }) => (isEventTag ? 'Yes' : 'No')
+      render: (_, { isEventTag }) => (isEventTag ? 'Yes' : '')
     },
     {
       title: 'Picture tag',
@@ -119,7 +119,7 @@ export const AdminTags = () => {
       key: 'isPictureTag',      
       align: 'center',
       editable: true,
-      render: (_, { isPictureTag }) => (isPictureTag ? 'Yes' : 'No')
+      render: (_, { isPictureTag }) => (isPictureTag ? 'Yes' : '')
     },
     {
       title: 'Validated',
@@ -127,7 +127,7 @@ export const AdminTags = () => {
       key: 'validated',      
       align: 'center',
       editable: true,
-      render: (_, { validated }) => (validated ? 'Yes' : 'No')
+      render: (_, { validated }) => (validated ? 'Yes' : '')
     },
     {
       title: <span style={{opacity: ".1"}}>Edit</span>,
