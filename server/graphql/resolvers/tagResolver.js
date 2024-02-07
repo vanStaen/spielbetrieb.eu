@@ -13,7 +13,11 @@ exports.tagResolver = {
     if (!foundUser.isAdmin) {
       throw new Error('Unauthorized!');
     }
-    return await Tag.findAll({});
+    return await Tag.findAll({
+      order: [
+        ['_id', 'ASC'],
+      ]
+    });
   },
 
   // addTag(tagInput: TagInputData!): Tag!

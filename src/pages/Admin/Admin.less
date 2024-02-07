@@ -1,7 +1,7 @@
 @widthPhonePanel: 40vw;
 
 .background {
-   position: absolute;
+   position: fixed;
    width: 100vw;
    height: 100vh;
    background-image: url('../../img/background.jpg');
@@ -18,7 +18,7 @@
 
 .admin__container {
    position: relative;
-   height: 100vh;
+   min-height: 100vh;
    z-index: 2;
   
    .admin__text {
@@ -58,6 +58,11 @@
       text-align: right;
       margin-top: 10px;
       margin-bottom: 10px;
+   }
+
+   .admin__spacer {
+      width: 100%;
+      margin-top: 20px;
    }
 
    .admin__table {

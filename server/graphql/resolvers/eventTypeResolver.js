@@ -7,7 +7,11 @@ exports.eventTypeResolver = {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
-    return await EventType.findAll({});
+    return await EventType.findAll({
+      order: [
+        ['_id', 'ASC'],
+      ]
+    });
   },
 
   // addEventType(eventTypeInput: EventTypeInputData!): EventType!

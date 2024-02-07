@@ -29,7 +29,11 @@ exports.locationResolver = {
     if (!foundUser.isAdmin) {
       throw new Error('Unauthorized!');
     }
-    return await Location.findAll({});
+    return await Location.findAll({
+      order: [
+        ['_id', 'ASC'],
+      ]
+    });
   },
 
   // addLocation(locationInput: LocationInputData!): Location!

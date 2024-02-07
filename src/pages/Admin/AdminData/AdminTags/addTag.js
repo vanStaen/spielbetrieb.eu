@@ -1,20 +1,17 @@
 
-export async function updateTag(id, dataObject) {
+export async function addTag(dataObject) {
 
   const graphqlQuery = {
     query: `mutation ( 
-                $id: ID!,
                 $dataObject: TagInputData!,
                 ) {
-                updateTag (
-                  tagId: $id,
+                addTag (
                   tagInput: $dataObject,
                 ) {
                   _id
                 }
                 }`,
     variables: {
-      id,
       dataObject,
     }
   };
@@ -35,5 +32,5 @@ export async function updateTag(id, dataObject) {
   const data = await response.json();
 
   if (data.errors) { return data.errors[0] };
-  return data.updateTag;
+  return data.addTag;
 }
