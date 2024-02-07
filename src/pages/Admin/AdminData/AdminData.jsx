@@ -1,4 +1,5 @@
 import React from 'react';
+import { Tabs } from 'antd';
 import { TagsOutlined, CarryOutOutlined, HeatMapOutlined } from '@ant-design/icons';
 
 import { AdminTags } from './AdminTags/AdminTags';
@@ -7,16 +8,31 @@ import { AdminLocations } from './AdminLocations/AdminLocations';
 
 export const AdminData = () => {
 
+  const items = [
+    {
+      key: '1',
+      label: <><TagsOutlined /> Tags</>,
+      children: <AdminTags />,
+    },
+    {
+      key: '2',
+      label: <><CarryOutOutlined /> Event types</>,
+      children: <AdminEventtypes />,
+    },
+    {
+      key: '3',
+      label: <><HeatMapOutlined /> Locations</>,
+      children: <AdminLocations />,
+    },
+  ];
+
   return (
     <div>
-      <div className='admin__subHeader'><TagsOutlined /> Tags</div>
-        <AdminTags />
-      <div className='admin__spacer'></div>
-      <div className='admin__subHeader'><CarryOutOutlined /> Event types</div>
-        <AdminEventtypes />
-      <div className='admin__spacer'></div>
-      <div className='admin__subHeader'><HeatMapOutlined /> Locations</div>
-        <AdminLocations />
+      <Tabs 
+        defaultActiveKey="1" 
+        items={items} 
+        className='admin__tabs'
+      />
     </div>
   );
 };
