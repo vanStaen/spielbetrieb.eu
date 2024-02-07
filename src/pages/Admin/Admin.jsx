@@ -16,7 +16,7 @@ import {
 
 import { AdminNewsletter } from './AdminNewsletter/AdminNewsletter';
 import { AdminUsers } from './AdminUsers/AdminUsers';
-import { AdminTags } from './AdminData/AdminTags';
+import { AdminData } from './AdminData/AdminData';
 import { isMobileCheck } from '../../helpers/checkMobileTablet';
 import { authStore } from '../../store/authStore/authStore';
 import { userStore } from '../../store/userStore/userStore';
@@ -53,8 +53,8 @@ export const Admin = observer(() => {
         return 'analytics';
       case 'translation':
         return 'translation';
-      case 'tags':
-        return <AdminTags />;
+      case 'data':
+        return <AdminData />;
       default:
         return 'Error';
     }

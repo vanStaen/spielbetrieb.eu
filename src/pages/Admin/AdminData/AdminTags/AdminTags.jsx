@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Tag } from 'antd';
+import { Table } from 'antd';
 
 import { getTags } from './getTags';
-import { nameParser } from "../../../helpers/nameParser";
-import { AdminCustomSpinner } from '../AdminCustomSpinner/AdminCustomSpinner';
+import { nameParser } from "../../../../helpers/nameParser";
+import { AdminCustomSpinner } from '../../AdminCustomSpinner/AdminCustomSpinner';
 
 export const AdminTags = () => {
   const [tags, setTags] = useState([]);
@@ -21,7 +21,9 @@ export const AdminTags = () => {
     {
       title: 'id',
       dataIndex: '_id',
-      key: 'id'
+      key: 'id',    
+      align: 'center',
+      width: '50px',
     },
     {
       title: 'Name EN',
@@ -70,7 +72,7 @@ export const AdminTags = () => {
       {tags.length === 0
         ? (
         <div className="admin__centered">
-          <AdminCustomSpinner text="Loading subscribers" />
+          <AdminCustomSpinner text="Loading Data" />
         </div>
           )
         : (
