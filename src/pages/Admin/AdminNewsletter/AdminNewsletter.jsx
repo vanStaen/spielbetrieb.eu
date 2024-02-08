@@ -73,7 +73,7 @@ export const AdminNewsletter = () => {
       key: 'verified',   
       align: 'center',
       width: '80px',
-      render: (_, { verifiedEmail }) => (verifiedEmail ? '✅' : '')
+      render: (_, { verifiedEmail }) => (verifiedEmail ? '✅' : '✖️')
     },
   ];
 

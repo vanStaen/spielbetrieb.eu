@@ -150,7 +150,7 @@ export const AdminEvents = () => {
       key: 'isPrivate',      
       align: 'center',
       width: '80px',
-      render: (_, { isPrivate }) => (isPrivate ? '✅' : ''),
+      render: (_, { isPrivate }) => (isPrivate ? '✅' : '✖️'),
       editable: true,
     },
     {
@@ -159,7 +159,7 @@ export const AdminEvents = () => {
       key: 'forwardable',      
       align: 'center',
       width: '80px',
-      render: (_, { forwardable }) => (forwardable ? '✅' : ''),
+      render: (_, { forwardable }) => (forwardable ? '✅' : '✖️'),
       editable: true,
     },
     {
@@ -168,7 +168,7 @@ export const AdminEvents = () => {
       key: 'allowAnonymous',      
       align: 'center',
       width: '80px',
-      render: (_, { allowAnonymous }) => (allowAnonymous ? '✅' : ''),
+      render: (_, { allowAnonymous }) => (allowAnonymous ? '✅' : '✖️'),
       editable: true,
     },
     {

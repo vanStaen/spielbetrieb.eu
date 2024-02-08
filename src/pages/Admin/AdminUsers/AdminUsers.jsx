@@ -95,7 +95,7 @@ export const AdminUsers = () => {
       key: 'verifiedEmail',
       align: 'center',
       width: '70px',
-      render: (_, { verifiedEmail }) => (verifiedEmail ? '✅' : '')
+      render: (_, { verifiedEmail }) => (verifiedEmail ? '✅' : '✖️')
     },
     {
       title: 'Verified Identity',
@@ -103,7 +103,7 @@ export const AdminUsers = () => {
       key: 'verifiedIdentity', 
       align: 'center',
       width: '70px',
-      render: (_, { verifiedIdentity }) => (verifiedIdentity ? '✅' : '')
+      render: (_, { verifiedIdentity }) => (verifiedIdentity ? '✅' : '✖️')
     },
     {
       title: 'Partner',
@@ -111,7 +111,29 @@ export const AdminUsers = () => {
       key: 'isPartner', 
       align: 'center',
       width: '70px',
-      render: (_, { isPartner }) => (isPartner ? '✅' : '')
+      render: (_, { isPartner, partnerRoles }) => isPartner
+        ? <>
+        <Tooltip
+          placement="left"
+          overlayStyle={{ maxWidth: '700px' }}
+          title={
+          <>🔥&nbsp;
+            <span style={{ color: '#666' }}>Partner roles:&nbsp;&nbsp;</span>
+            {partnerRoles.map((role) => {
+              return (
+                <Tag
+                  color="#333"
+                  key={role}
+                  bordered={false}
+                >
+                  {role}
+                </Tag>
+              );
+            })}
+           </>}>
+           ✅
+         </Tooltip></>
+        : '✖️'
     },
     {
       title: 'Suspended',
@@ -119,7 +141,7 @@ export const AdminUsers = () => {
       key: 'suspended', 
       align: 'center',
       width: '70px',
-      render: (_, { suspended }) => (suspended ? '✅' : '')
+      render: (_, { suspended }) => (suspended ? '✅' : '✖️')
     },
     {
       title: <span style={{opacity: ".2"}}>Edit</span>,
