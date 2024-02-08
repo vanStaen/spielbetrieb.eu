@@ -151,16 +151,20 @@ export const AdminUsers = () => {
       render: (_, record) => {
         return (
           <span>
-            <Typography.Link disabled={record.isAdmin} style={{ marginRight: 8 }} onClick={() => blockUser(record._id)}>
-              <StopOutlined className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`} />
-            </Typography.Link>
+            <Tooltip title="Suspend User">
+              <Typography.Link disabled={record.isAdmin} style={{ marginRight: 8 }} onClick={() => blockUser(record._id)}>
+                <StopOutlined className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`} />
+              </Typography.Link>
+            </Tooltip>
             {" "}
             {record.isAdmin || record.isPartner ? 
                 <DeleteOutlined  className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`}  />
               :
+              <Tooltip title="Delete User">
                 <Popconfirm title="Sure to delete for ever this user?" style={{ marginRight: 8 }} onConfirm={() => deleteUser(record._id)}>
-                    <DeleteOutlined  className="admin__editLogo" />
+                  <DeleteOutlined  className="admin__editLogo" />
                 </Popconfirm>
+              </Tooltip>
             }
           </span>
         )

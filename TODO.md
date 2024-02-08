@@ -26,6 +26,7 @@
 - [ ] Shop
 - [ ] Dark Magazin
 - [ ] Stop suspended user from login
+- [ ] Make column tables in admin dynamic (admin can select which one to display)
 
 ## Tech debt:
 
