@@ -1,5 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { NotificationOutlined } from "@ant-design/icons";
+import { observer } from "mobx-react";
 import {
   notification,
   Modal,
@@ -10,13 +12,11 @@ import {
   Radio,
   Select,
 } from "antd";
-import { NotificationOutlined } from "@ant-design/icons";
-import { observer } from "mobx-react";
 
 import { pageStore } from "../../store/pageStore/pageStore";
+import { addSubscriber } from "./addSubscriber";
 
 import "./NewsletterForm.less";
-import { addSubscriber } from "./addSubscriber";
 
 export const NewsletterForm = observer(() => {
   const { t } = useTranslation();

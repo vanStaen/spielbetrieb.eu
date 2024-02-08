@@ -6,9 +6,11 @@ import { getUsersAsAdmin } from './getUsersAsAdmin';
 import { updateUserAsAdmin } from './updateUserAsAdmin';
 import { deleteUserAsAdmin } from './deleteUserAsAdmin';
 import { AdminCustomSpinner } from '../AdminCustomSpinner/AdminCustomSpinner';
+import { PartnerForm } from './PartnerForm/PartnerForm';
 
 export const AdminUsers = () => {
   const [users, setUsers] = useState([]);
+  const [selectedPartner, setSelectedPartner] = useState(null);
 
   const fetchAllUsers = async () => {
     const results = await getUsersAsAdmin();
@@ -111,15 +113,17 @@ export const AdminUsers = () => {
       key: 'isPartner', 
       align: 'center',
       width: '70px',
-      render: (_, { isPartner, partnerRoles }) => isPartner
+      render: (_, record ) => (
+        <div onClick={() => setSelectedPartner(record)} style={{cursor: 'pointer'}}>
+        {record.isPartner
         ? <>
         <Tooltip
           placement="left"
           overlayStyle={{ maxWidth: '700px' }}
           title={
-          <>🔥&nbsp;
+          <>💼&nbsp;
             <span style={{ color: '#666' }}>Partner roles:&nbsp;&nbsp;</span>
-            {partnerRoles.map((role) => {
+            {record.partnerRoles.map((role) => {
               return (
                 <Tag
                   color="#333"
@@ -134,6 +138,9 @@ export const AdminUsers = () => {
            ✅
          </Tooltip></>
         : '✖️'
+        }
+        </div>
+      )
     },
     {
       title: 'Suspended',
@@ -181,13 +188,20 @@ export const AdminUsers = () => {
         </div>
           )
         : (
-          <Table
-            className="admin__table"
-            dataSource={users}
-            columns={columns}
-            pagination={false} 
-            size="small"
-          />
+          <>
+           {selectedPartner && <PartnerForm 
+                          selectedPartner={selectedPartner} 
+                          setSelectedPartner={setSelectedPartner} 
+                          fetchAllUsers={fetchAllUsers}
+                        /> }
+            <Table
+              className="admin__table"
+              dataSource={users}
+              columns={columns}
+              pagination={false} 
+              size="small"
+            />
+          </>
           )}
     </div>
   );

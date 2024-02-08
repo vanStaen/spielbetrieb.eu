@@ -68,8 +68,9 @@ SQL update script exemple:
 
 Possible partner roles are:
 1. `events`: overview/management of events for the spielplan
-1. `sales`: overview/management of tickets for their events
-3. `analytics`: special access to some more data regarding their page/events/tickets sale.
+2. `tickets`: overview/management of tickets for their events
+3. `sales`: overview/management of shop listings for their store
+4. `analytics`: special access to some more data regarding their page/events/tickets sale.
 
 ### Table Event | Dynamical parameters
 
