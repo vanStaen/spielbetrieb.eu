@@ -17,6 +17,7 @@ import {
 import { AdminNewsletter } from './AdminNewsletter/AdminNewsletter';
 import { AdminUsers } from './AdminUsers/AdminUsers';
 import { AdminData } from './AdminData/AdminData';
+import { AdminEvents } from './AdminEvents/AdminEvents';
 import { isMobileCheck } from '../../helpers/checkMobileTablet';
 import { authStore } from '../../store/authStore/authStore';
 import { userStore } from '../../store/userStore/userStore';
@@ -42,7 +43,7 @@ export const Admin = observer(() => {
       case 'newsletter':
         return <AdminNewsletter />;
       case 'events':
-        return 'events';
+        return <AdminEvents />;
       case 'users':
         return <AdminUsers />;
       case 'shops':
@@ -88,8 +89,7 @@ export const Admin = observer(() => {
                 {
                   label: !isMobile && 'Events',
                   value: 'events',
-                  // disabled: !userStore.adminRoles?.includes('events'),
-                  disabled: true,
+                  disabled: !userStore.adminRoles?.includes('events'),
                   icon: <CalendarOutlined />
                 },
                 {

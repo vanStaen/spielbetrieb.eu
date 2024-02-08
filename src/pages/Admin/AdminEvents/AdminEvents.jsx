@@ -2,26 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { Form, Table, Typography, Popconfirm, Tag, Button } from 'antd';
 import { EditOutlined, CloseCircleOutlined, CheckCircleOutlined, DeleteOutlined } from '@ant-design/icons';
 
-import { EditableCell } from '../../EditableCell';
-import { getLocations } from './getLocations';
-import { deleteLocation } from './deleteLocation';
-import { updateLocation } from './updateLocation';
-import { addLocation } from './addLocation';
-import { AdminCustomSpinner } from '../../AdminCustomSpinner/AdminCustomSpinner';
+import { EditableCell } from '../EditableCell';
+import { AdminCustomSpinner } from '../AdminCustomSpinner/AdminCustomSpinner';
+import { getAllEvents } from './getAllEvents';
+import { deleteEvent } from './deleteEvent';
+import { updateEvent } from './updateEvent';
+import { addEvent } from './addEvent';
 
-export const AdminLocations = () => {
+export const AdminEvents = () => {
   const [form] = Form.useForm();
-  const [locations, setLocations] = useState([]);
+  const [events, setEvents] = useState([]);
   const [editingId, setEditingId] = useState('');
   const [isNewRow, setIsNewRow] = useState(false);
 
-  const fetchLocations = async () => {
-    const results = await getLocations();
-    setLocations(results);
+  const fetchEvents = async () => {
+    const results = await getAllEvents();
+    const events = results.map(event => {
+      return {
+      isPrivate: event.private,
+      ...event
+      }
+    })  
+    setEvents(events);
   };
 
   useEffect(() => {
-    fetchLocations();
+    fetchEvents();
   }, []);
 
   const isEditing = (record) => record._id === editingId;
@@ -41,24 +47,24 @@ export const AdminLocations = () => {
 
   const cancel = async () => {
     setEditingId('');
-    isNewRow && fetchLocations();
+    isNewRow && fetchEvents();
     setIsNewRow(false);
   };
 
   const deleteRow = async (id) => {
-    await deleteLocation(id);
-    await fetchLocations();
+    await deleteEvent(id);
+    await fetchEvents();
   };
 
   const save = async (id) => {
     try {
       const dataObject = await form.validateFields();
       if (isNewRow) {
-        await addLocation(dataObject);
+        await addEvent(dataObject);
       } else {
-        await updateLocation(id, dataObject);
+        await updateEvent(id, dataObject);
       }
-      await fetchLocations();
+      await fetchEvents();
       setEditingId('');
       setIsNewRow(false);
     } catch (e) {
@@ -74,29 +80,32 @@ export const AdminLocations = () => {
       width: '50px',
     },
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
-      editable: true,
+      title: 'Title',
+      dataIndex: 'title',
+      key: 'title',   
     },
     {
       title: 'Description',
       dataIndex: 'description',
-      key: 'description',
-      editable: true,
+      key: 'description',   
     },
     {
-      title: 'Links',
-      dataIndex: 'links',
-      key: 'links',
-      width: '200px',
+      title: 'Location Id',
+      dataIndex: 'location',
+      key: 'location',   
+    }, 
+    {
+      title: 'Admin',
+      dataIndex: 'admin',
+      key: 'admin',
+      width: '150px',
       editable: true,
-      render: (_, { links }) => (
+      render: (_, { admin }) => (
         <>
-          {links.map((link) => {
+          {admin.map((admin) => {
             return (
-              <Tag key={link} bordered={false}>
-                {link}
+              <Tag key={admin} bordered={false}>
+                {admin}
               </Tag>
             );
           })}
@@ -104,23 +113,30 @@ export const AdminLocations = () => {
       ),
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',     
-      editable: true, 
-    },
-    {
-      title: 'Coordinates',
-      dataIndex: 'coordinates',
-      key: 'coordinates',
-      editable: true,   
-    },
-    {
-      title: 'Validated',
-      dataIndex: 'validated',
-      key: 'validated',      
+      title: 'Private',
+      dataIndex: 'isPrivate',
+      key: 'isPrivate',      
       align: 'center',
-      render: (_, { validated }) => (validated ? '✅' : ''),
+      width: '80px',
+      render: (_, { isPrivate }) => (isPrivate ? '✅' : ''),
+      editable: true,
+    },
+    {
+      title: 'Forwardable',
+      dataIndex: 'forwardable',
+      key: 'forwardable',      
+      align: 'center',
+      width: '80px',
+      render: (_, { forwardable }) => (forwardable ? '✅' : ''),
+      editable: true,
+    },
+    {
+      title: 'Allow Anonymous',
+      dataIndex: 'allowAnonymous',
+      key: 'allowAnonymous',      
+      align: 'center',
+      width: '80px',
+      render: (_, { allowAnonymous }) => (allowAnonymous ? '✅' : ''),
       editable: true,
     },
     {
@@ -164,7 +180,9 @@ export const AdminLocations = () => {
       ...col,
       onCell: (record) => ({
         record,
-        inputType: col.dataIndex === 'validated' ? 'boolean' : col.dataIndex === 'links' ? 'stringObject' : 'text',
+        inputType: col.dataIndex === 'isPrivate' 
+                || col.dataIndex === 'forwardable'
+                || col.dataIndex === 'allowAnonymous' ? 'boolean' : col.dataIndex === 'links' ? 'stringObject' : 'text',
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
@@ -173,7 +191,7 @@ export const AdminLocations = () => {
   });
 
   const handleAdd = () => {
-    const newId = parseInt(locations[locations.length-1]._id) + 1;
+    const newId = parseInt(events[events.length-1]._id) + 1;
     const newRow = {
       _id: newId,
       name: '',
@@ -186,14 +204,14 @@ export const AdminLocations = () => {
     form.setFieldsValue({
       ...newRow,
     });
-    setLocations([...locations, newRow]);
+    setEvents([...events, newRow]);
     setIsNewRow(true);
     setEditingId(newId);
   };
 
   return (
     <div>
-      {locations.length === 0
+      {events.length === 0
         ? (
             <div className="admin__centered">
               <AdminCustomSpinner text="Loading Data" />
@@ -209,7 +227,7 @@ export const AdminLocations = () => {
                   },
                 }}
                 className="admin__table"
-                dataSource={locations}
+                dataSource={events}
                 columns={mergedColumns}
                 pagination={false}
                 size="small"
@@ -217,7 +235,7 @@ export const AdminLocations = () => {
             </Form>
               <div className='admin__tableFooter'>
                 <Button onClick={handleAdd}>
-                  Add a Location
+                  Add a Event
                  </Button>
               </div>
           </>

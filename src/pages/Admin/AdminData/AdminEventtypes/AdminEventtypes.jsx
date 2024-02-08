@@ -98,7 +98,7 @@ export const AdminEventtypes = () => {
       dataIndex: 'validated',
       key: 'validated',      
       align: 'center',
-      render: (_, { validated }) => (validated ? 'Yes' : ''),
+      render: (_, { validated }) => (validated ? '✅' : ''),
       editable: true,
     },
     {

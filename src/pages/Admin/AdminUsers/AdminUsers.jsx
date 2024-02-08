@@ -72,6 +72,7 @@ export const AdminUsers = () => {
       dataIndex: 'language',
       key: 'language',
       align: 'center',
+      width: '80px',
       render: (_, { language }) => language.toUpperCase()
     },
     {
@@ -79,20 +80,24 @@ export const AdminUsers = () => {
       dataIndex: 'verifiedEmail',
       key: 'verifiedEmail',
       align: 'center',
-      render: (_, { verifiedEmail }) => (verifiedEmail ? 'Yes' : '')
+      width: '80px',
+      render: (_, { verifiedEmail }) => (verifiedEmail ? '✅' : '')
     },
     {
       title: 'Verified Identity',
       dataIndex: 'verifiedIdentity',
-      key: 'verifiedIdentity',
+      key: 'verifiedIdentity', 
       align: 'center',
-      render: (_, { verifiedIdentity }) => (verifiedIdentity ? 'Yes' : '')
+      width: '80px',
+      render: (_, { verifiedIdentity }) => (verifiedIdentity ? '✅' : '')
     },
     {
       title: 'Partner',
       dataIndex: 'isPartner',
-      key: 'isPartner',
-      render: (_, { isPartner }) => (isPartner ? 'Yes' : '')
+      key: 'isPartner', 
+      align: 'center',
+      width: '80px',
+      render: (_, { isPartner }) => (isPartner ? '✅' : '')
     }
   ];
 

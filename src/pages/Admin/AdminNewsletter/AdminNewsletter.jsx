@@ -36,12 +36,6 @@ export const AdminNewsletter = () => {
       render: (_, { language }) => language.toUpperCase()
     },
     {
-      title: 'Verified',
-      dataIndex: 'verifiedEmail',
-      key: 'verified',
-      render: (_, { verifiedEmail }) => (verifiedEmail ? 'Yes' : '')
-    },
-    {
       title: 'Lists',
       dataIndex: 'lists',
       key: 'lists',
@@ -72,7 +66,15 @@ export const AdminNewsletter = () => {
           })}
         </>
       )
-    }
+    },
+    {
+      title: 'Verified',
+      dataIndex: 'verifiedEmail',
+      key: 'verified',   
+      align: 'center',
+      width: '80px',
+      render: (_, { verifiedEmail }) => (verifiedEmail ? '✅' : '')
+    },
   ];
 
   return (
