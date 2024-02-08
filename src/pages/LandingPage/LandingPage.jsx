@@ -1,5 +1,4 @@
-import React from 'react';
-import { Tooltip } from 'antd';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DoubleLeftOutlined } from '@ant-design/icons';
 
@@ -14,6 +13,12 @@ import './LandingPage.less';
 
 export const LandingPage = () => {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    setTimeout(() => {
+      arrowClickHandler();
+    }, '1000');
+  });
 
   const arrowClickHandler = () => {
     const elementPhone = document.getElementById('phone');
@@ -31,7 +36,6 @@ export const LandingPage = () => {
     <>
       <LanguageDropDown />
       <DarkModeDropDown />
-      <Menu />
       <div className="background invertColorTheme" id="background"></div>
       <div className="landingPage__doublearrow invertColorTheme" id="arrow">
         <DoubleLeftOutlined
