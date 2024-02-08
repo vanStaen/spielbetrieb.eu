@@ -48,7 +48,7 @@ export const HeaderMenuMobile = observer(() => {
                     <div className="menu__whiteline"></div>
                     <div className="menu__elementDisabled" >Shop</div>
                     <div className="menu__whiteline"></div>
-                    <div className="menu__element" onClick={() => menuLinkClickHandle('magazin')}>Dark Magazin</div>
+                    <div className="menu__elementDisabled">Dark Magazin</div>
                     <div className="menu__whiteline"></div>
                     <div className="menu__elementDisabled">Partner</div>
                 </div>

@@ -33,11 +33,16 @@ export const QuickActions = observer (() => {
                     </a>
                 </Tooltip>
             </div>
+            <div className={`quickActions__linkDisabled ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`} >
+                <ShoppingCartOutlined style={{fontSize: '24px'}}/>
+            </div>
+            {/*
             <Link className="link" to="/basket/">
                 <div className={`quickActions__link ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`} >
                     <ShoppingCartOutlined style={{fontSize: '24px'}}/>
                 </div>
             </Link>
+             */}
         </div>
     )
 } )
