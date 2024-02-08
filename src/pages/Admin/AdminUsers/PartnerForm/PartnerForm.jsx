@@ -26,13 +26,9 @@ export const PartnerForm = (props) => {
     console.log('values', values);
     setLoading(true);
     try {
-      await updateUserAsAdmin(selectedPartner._id, { isPartner: values.isPartner, partnerRoles: values.roles });
-      notification.success({
-        message: 'Partner updated',
-        duration: 0,
-        placement: "bottomRight",
-        className: "customNotification",
-      });
+      await updateUserAsAdmin(selectedPartner._id, 
+        { isPartner: values.isPartner, partnerRoles: values.isPartner ? values.roles : null }
+      );
     } catch (e) {
       notification.error({
         message: `Error: ${e.toString()}`,
@@ -64,7 +60,7 @@ export const PartnerForm = (props) => {
           name="mewsletter-form"
           initialValues={{
             isPartner: selectedPartner.isPartner,
-            partnerRoles: selectedPartner.partnerRoles,
+            roles: selectedPartner.partnerRoles,
           }}
         >
           <Form.Item
@@ -79,12 +75,6 @@ export const PartnerForm = (props) => {
           <Form.Item
             label={<div className="partnerForm__whiteText">Role(s)</div>}
             name="roles"
-            rules={[
-              {
-                required: true,
-                message: 'select at least one role',
-              },
-            ]}
           >
             <Select
               mode="multiple"

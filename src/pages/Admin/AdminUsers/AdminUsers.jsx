@@ -158,20 +158,32 @@ export const AdminUsers = () => {
       render: (_, record) => {
         return (
           <span>
-            <Tooltip title="Suspend User">
-              <Typography.Link disabled={record.isAdmin} style={{ marginRight: 8 }} onClick={() => blockUser(record._id)}>
-                <StopOutlined className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`} />
-              </Typography.Link>
-            </Tooltip>
-            {" "}
             {record.isAdmin || record.isPartner ? 
-                <DeleteOutlined  className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`}  />
+              <>
+                <Tooltip title={record.isAdmin ? "You can't suspend Admins" : 'Suspend Partner'}>
+                  <Typography.Link disabled={record.isAdmin} style={{ marginRight: 8 }} onClick={() => blockUser(record._id)}>
+                    <StopOutlined className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`} />
+                  </Typography.Link>
+                </Tooltip>
+                {" "}
+                <Tooltip title={`You can't delete ${record.isAdmin ? 'Admins' : 'Partners'}`}>
+                  <DeleteOutlined  style={{ cursor: 'not-allowed' }} className={`admin__editLogo admin__disabled`} />
+                </Tooltip>
+              </>
               :
-              <Tooltip title="Delete User">
-                <Popconfirm title="Sure to delete for ever this user?" style={{ marginRight: 8 }} onConfirm={() => deleteUser(record._id)}>
-                  <DeleteOutlined  className="admin__editLogo" />
-                </Popconfirm>
-              </Tooltip>
+              <>
+                <Tooltip title={`Suspend User`}>
+                  <Typography.Link disabled={record.isAdmin} style={{ marginRight: 8 }} onClick={() => blockUser(record._id)}>
+                    <StopOutlined className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`} />
+                  </Typography.Link>
+                </Tooltip>
+                {" "}
+                <Tooltip title="Delete User">
+                  <Popconfirm title="Sure to delete for ever this user?" style={{ marginRight: 8 }} onConfirm={() => deleteUser(record._id)}>
+                    <DeleteOutlined  className="admin__editLogo" />
+                  </Popconfirm>
+                </Tooltip>
+              </>
             }
           </span>
         )
