@@ -235,7 +235,7 @@ export const AdminEvents = () => {
           )
         : (
           <>
-           {showEventForm && <EventForm showEventForm={showEventForm} />}
+           {showEventForm && <EventForm showEventForm={showEventForm} setShowEventForm={setShowEventForm}/>}
             <Form form={form} component={false}>
               <Table
                 components={{

@@ -8,15 +8,18 @@ import {
   Switch,
 } from "antd";
 
+import { addEvent } from './addEvent';
+
 import "./EventForm.less";
 
 export const EventForm = (props) => {
-  const { showEventForm } = props;
+  const { showEventForm, setShowEventForm } = props;
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
 
   const onCancel = () => {
     form.resetFields();
+    setShowEventForm(false);
   };
 
   const onFinish = async (values) => {
@@ -34,6 +37,7 @@ export const EventForm = (props) => {
       });
     }
     setLoading(false);
+    setShowEventForm(false);
   };
 
   return (
@@ -56,6 +60,7 @@ export const EventForm = (props) => {
             //roles: selectedPartner.partnerRoles,
           }}
         >
+          <span style={{color: 'gold'}}>TODO - work in progress</span>
           {/* <Form.Item
             label={<div className="partnerForm__whiteText">Make {`${selectedPartner.userName} (${selectedPartner.firstName} ${selectedPartner.lastName})`} into a Partner?</div>}
             name="isPartner"
@@ -94,7 +99,7 @@ export const EventForm = (props) => {
                 htmlType="submit"
                 loading={loading}
               >
-                Update
+                Create Event
               </Button>
             </div>
           </Form.Item>
