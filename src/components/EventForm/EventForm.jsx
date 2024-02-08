@@ -8,26 +8,23 @@ import {
   Switch,
 } from "antd";
 
-import { updateUserAsAdmin } from "../updateUserAsAdmin";
+import "./EventForm.less";
 
-import "./PartnerForm.less";
-
-export const PartnerForm = (props) => {
-  const {selectedPartner, setSelectedPartner, fetchAllUsers } = props;
+export const EventForm = (props) => {
+  const { showEventForm } = props;
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
 
   const onCancel = () => {
     form.resetFields();
-    setSelectedPartner(null);
   };
 
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      await updateUserAsAdmin(selectedPartner._id, 
+      /* await updateUserAsAdmin(selectedPartner._id, 
         { isPartner: values.isPartner, partnerRoles: values.isPartner ? values.roles : null }
-      );
+      ); */
     } catch (e) {
       notification.error({
         message: `Error: ${e.toString()}`,
@@ -37,15 +34,13 @@ export const PartnerForm = (props) => {
       });
     }
     setLoading(false);
-    fetchAllUsers();
-    setSelectedPartner(null);
   };
 
   return (
       <Modal
-        open={selectedPartner}
+        open={showEventForm}
         centered
-        title='Update Partner & Partner roles'
+        title='Create a new event'
         onOk={onFinish}
         onCancel={onCancel}
         footer={null}
@@ -57,11 +52,11 @@ export const PartnerForm = (props) => {
           onFinish={onFinish}
           name="mewsletter-form"
           initialValues={{
-            isPartner: selectedPartner.isPartner,
-            roles: selectedPartner.partnerRoles,
+            //isPartner: selectedPartner.isPartner,
+            //roles: selectedPartner.partnerRoles,
           }}
         >
-          <Form.Item
+          {/* <Form.Item
             label={<div className="partnerForm__whiteText">Make {`${selectedPartner.userName} (${selectedPartner.firstName} ${selectedPartner.lastName})`} into a Partner?</div>}
             name="isPartner"
           >
@@ -84,7 +79,7 @@ export const PartnerForm = (props) => {
                 { value: "analytics", label: "Data/analytics" },
               ]}
             />
-          </Form.Item>
+            </Form.Item> */}
           <Form.Item>
             <div className="partnerForm__buttonContainer">
               <Button

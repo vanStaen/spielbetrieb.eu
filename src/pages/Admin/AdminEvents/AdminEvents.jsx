@@ -7,11 +7,13 @@ import { AdminCustomSpinner } from '../AdminCustomSpinner/AdminCustomSpinner';
 import { getAllEvents } from './getAllEvents';
 import { deleteEvent } from './deleteEvent';
 import { updateEvent } from './updateEvent';
+import { EventForm } from '../../../components/EventForm/EventForm';
 
 export const AdminEvents = () => {
   const [form] = Form.useForm();
   const [events, setEvents] = useState([]);
   const [editingId, setEditingId] = useState('');
+  const [showEventForm, setShowEventForm] = useState(false);
 
   const fetchEvents = async () => {
     const results = await getAllEvents();
@@ -233,6 +235,7 @@ export const AdminEvents = () => {
           )
         : (
           <>
+           {showEventForm && <EventForm showEventForm={showEventForm} />}
             <Form form={form} component={false}>
               <Table
                 components={{
@@ -247,6 +250,11 @@ export const AdminEvents = () => {
                 size="small"
               />
             </Form>
+            <div className='admin__tableFooter'>
+                <Button onClick={() => setShowEventForm(!showEventForm)}>
+                  Add a new Event
+                 </Button>
+              </div>
           </>
           )}
     </div>
