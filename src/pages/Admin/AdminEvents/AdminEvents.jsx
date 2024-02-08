@@ -235,7 +235,7 @@ export const AdminEvents = () => {
             </Form>
               <div className='admin__tableFooter'>
                 <Button onClick={handleAdd}>
-                  Add a Event
+                  Add a new Event
                  </Button>
               </div>
           </>

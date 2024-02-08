@@ -191,7 +191,7 @@ export const AdminEventtypes = () => {
             </Form>
               <div className='admin__tableFooter'>
                 <Button onClick={handleAdd}>
-                  Add a Eventtype
+                  Add a new Event type
                  </Button>
               </div>
           </>

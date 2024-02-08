@@ -217,7 +217,7 @@ export const AdminLocations = () => {
             </Form>
               <div className='admin__tableFooter'>
                 <Button onClick={handleAdd}>
-                  Add a Location
+                  Add a new Location
                  </Button>
               </div>
           </>

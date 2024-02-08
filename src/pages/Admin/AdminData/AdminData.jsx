@@ -1,6 +1,12 @@
 import React from 'react';
 import { Tabs } from 'antd';
-import { TagsOutlined, CarryOutOutlined, HeatMapOutlined } from '@ant-design/icons';
+import { 
+  TagsOutlined, 
+  CarryOutOutlined, 
+  HeatMapOutlined,
+  WomanOutlined,
+  ApiOutlined,
+} from '@ant-design/icons';
 
 import { AdminTags } from './AdminTags/AdminTags';
 import { AdminEventtypes } from './AdminEventtypes/AdminEventtypes';
@@ -23,6 +29,18 @@ export const AdminData = () => {
       key: '3',
       label: <><HeatMapOutlined /> Locations</>,
       children: <AdminLocations />,
+    },
+    {
+      key: '4',
+      label: <><WomanOutlined /> Genders</>,
+      children: '',
+      disabled: true,
+    },
+    {
+      key: '4',
+      label: <><ApiOutlined /> Orientation</>,
+      children: '',
+      disabled: true,
     },
   ];
 

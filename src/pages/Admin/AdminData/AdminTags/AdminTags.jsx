@@ -222,7 +222,7 @@ export const AdminTags = () => {
             </Form>
               <div className='admin__tableFooter'>
                 <Button onClick={handleAdd}>
-                  Add a Tag
+                  Add a new Tag
                  </Button>
               </div>
           </>
