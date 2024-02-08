@@ -48,7 +48,7 @@ export const AdminUsers = () => {
               );
             })}
            </>}>
-           👔 <b>{userName}</b>
+           <b>{userName}</b>
          </Tooltip></>
         : userName
     },
