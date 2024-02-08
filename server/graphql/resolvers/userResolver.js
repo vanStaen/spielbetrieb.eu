@@ -20,7 +20,7 @@ exports.userResolver = {
     });
   },
 
-  async getUsers (args, req) {
+  async getUsersAsAdmin (args, req) {
     if (!req.isAuth) {
       throw new Error('Unauthorized!');
     }
@@ -84,6 +84,9 @@ exports.userResolver = {
     }
     const updateFields = [];
     const updatableFields = [
+      'firstName',
+      'lastName',
+      'email',
       'description',
       'avatar',
       'emailSettings',
@@ -96,7 +99,7 @@ exports.userResolver = {
       'wishes',
       'archived',
       'usernameChange',
-      'language'
+      'language',
     ];
     updatableFields.forEach((field) => {
       if (field in args.userInput) {
@@ -122,6 +125,61 @@ exports.userResolver = {
     }
   },
 
+    // updateUser(_id: ID!, userInput: UserInputData!): User!
+    async updateUserAsAdmin (args, req) {
+      if (!req.isAuth) {
+        throw new Error('Unauthorized!');
+      }
+      const foundUser = await User.findOne({
+        where: { _id: req.userId }
+      });
+      if (!foundUser.isAdmin || !foundUser.adminRoles.includes('users')) {
+        throw new Error('Unauthorized!');
+      }
+      const updateFields = [];
+      const updatableFields = [
+        'firstName',
+        'lastName',
+        'email',
+        'description',
+        'avatar',
+        'emailSettings',
+        'profilSettings',
+        'friends',
+        'birthday',
+        'gender',
+        'orientation',
+        'interests',
+        'wishes',
+        'archived',
+        'usernameChange',
+        'language',
+        'suspended',
+        'isPartner',
+        'partnerRoles',
+        'verifiedIdentity',
+      ];
+      updatableFields.forEach((field) => {
+        if (field in args.userInput) {
+          updateFields[field] = args.userInput[field];
+        }
+      });
+      try {
+        const updatedUser = await User.update(updateFields, {
+          where: {
+            _id: args.userId,
+          },
+          returning: true,
+          plain: true
+        });
+        // updatedUser[0]: number or row udpated
+        // updatedUser[1]: rows updated
+        return updatedUser[1];
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
   async getProfileByName (args, req) {
     return await User.findOne({
       where: { userName: args.userName },
@@ -145,13 +203,19 @@ exports.userResolver = {
   },
 
   // deleteUser(_id: ID!): Boolean!
-  async deleteUser (args, req) {
+  async deleteUserAsAdmin (args, req) {
     if (!req.isAuth) {
+      throw new Error('Unauthorized!');
+    }
+    const foundUser = await User.findOne({
+      where: { _id: req.userId }
+    });
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes('users')) {
       throw new Error('Unauthorized!');
     }
     await User.destroy({
       where: {
-        _id: req.userId
+        _id: args.userId,
       }
     });
     req.session = null;

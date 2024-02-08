@@ -1,8 +1,8 @@
-export async function getUsers () {
+export async function getUsersAsAdmin () {
   const graphqlQuery = {
     query: `
             {
-              getUsers { 
+              getUsersAsAdmin { 
                 _id,
                 isAdmin,
                 adminRoles,
@@ -49,5 +49,5 @@ export async function getUsers () {
   const data = await response.json();
 
   if (data.errors) { return data.errors[0]; };
-  return data.data.getUsers;
+  return data.data.getUsersAsAdmin;
 }

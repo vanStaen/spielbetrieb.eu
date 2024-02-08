@@ -124,9 +124,9 @@ export const AdminLocations = () => {
       editable: true,
     },
     {
-      title: <span style={{opacity: ".1"}}>Edit</span>,
+      title: <span style={{opacity: ".2"}}>Edit</span>,
       dataIndex: 'edit',
-      width: '80px',    
+      width: '90px',    
       align: 'center',
       render: (_, record) => {
         const editable = isEditing(record);

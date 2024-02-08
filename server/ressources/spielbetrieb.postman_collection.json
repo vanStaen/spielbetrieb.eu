@@ -371,7 +371,7 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Query: getUsers",
+			"name": "GraphQL Query: getUsersAsAdmin",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -384,7 +384,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getUsers {\n    _id,\n    isPartner,\n    partnerRoles,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    emailSettings,\n    profilSettings,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    interests,\n    lastActive,\n    archived,\n    usernameChange,\n    language,\n    deleted,\n    suspended,\n  }\n}",
+						"query": "query {\n  getUsersAsAdmin {\n    _id,\n    isPartner,\n    partnerRoles,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    emailSettings,\n    profilSettings,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    interests,\n    lastActive,\n    archived,\n    usernameChange,\n    language,\n    deleted,\n    suspended,\n  }\n}",
 						"variables": ""
 					}
 				},

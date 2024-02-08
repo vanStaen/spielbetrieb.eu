@@ -37,6 +37,7 @@ module.exports = buildSchema(`
     ${notificationSchema.NotificationInputData}
     ${photoSchema.PhotoInputData}
     ${userSchema.UserInputData}
+    ${userSchema.UserInputDataAdmin}
     ${subscriberSchema.SubscriberInputData}
     ${tagSchema.TagInputData}
 

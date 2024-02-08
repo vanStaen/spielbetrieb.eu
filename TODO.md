@@ -25,6 +25,7 @@
 - [ ] Spielplan
 - [ ] Shop
 - [ ] Dark Magazin
+- [ ] Stop suspended user from login
 
 ## Tech debt:
 

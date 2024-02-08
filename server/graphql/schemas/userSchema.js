@@ -60,9 +60,34 @@ input UserInputData {
     language: String
 }`;
 
+exports.UserInputDataAdmin = `
+input UserInputDataAdmin {
+    firstName: String
+    lastName: String
+    userName: String
+    email: String
+    password: String
+    description: String
+    avatar: String
+    emailSettings: String
+    profilSettings: String
+    birthday: String
+    gender: String
+    orientation: String
+    wishes: [String]
+    interests: [String]
+    archived: Boolean
+    usernameChange: Int
+    language: String
+    suspended: Boolean
+    isPartner: Boolean
+    partnerRoles: [String]
+    verifiedIdentity: Boolean
+}`;
+
 exports.UserQueries = `
     getUser: User
-    getUsers: [User]
+    getUsersAsAdmin: [User]
     getFriends: [User]
     getFollowers: [User]
     getFollowed: [User]
@@ -73,5 +98,6 @@ exports.UserQueries = `
 exports.UserMutations = `
     addUser(userInput: UserInputData!): User!
     updateUser(userInput: UserInputData!): User!
-    deleteUser: Boolean!
+    updateUserAsAdmin(userId: ID!, userInput: UserInputDataAdmin!): User!
+    deleteUserAsAdmin(userId: ID!): Boolean!
 `;
