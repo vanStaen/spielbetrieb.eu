@@ -38,7 +38,7 @@ export const AdminData = () => {
     },
     {
       key: '4',
-      label: <><ApiOutlined /> Orientation</>,
+      label: <><ApiOutlined /> Orientations</>,
       children: '',
       disabled: true,
     },

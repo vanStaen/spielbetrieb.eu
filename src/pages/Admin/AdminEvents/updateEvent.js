@@ -4,11 +4,11 @@ export async function updateEvent(id, dataObject) {
   const graphqlQuery = {
     query: `mutation ( 
                 $id: ID!,
-                $dataObject: LocationInputData!,
+                $dataObject: EventInputData!,
                 ) {
-                updateLocation (
-                  locationId: $id,
-                  locationInput: $dataObject,
+                updateEvent (
+                  eventId: $id,
+                  eventInput: $dataObject,
                 ) {
                   _id
                 }
@@ -35,5 +35,5 @@ export async function updateEvent(id, dataObject) {
   const data = await response.json();
 
   if (data.errors) { return data.errors[0] };
-  return data.updateLocation;
+  return data.updateEvent;
 }

@@ -7,13 +7,11 @@ import { AdminCustomSpinner } from '../AdminCustomSpinner/AdminCustomSpinner';
 import { getAllEvents } from './getAllEvents';
 import { deleteEvent } from './deleteEvent';
 import { updateEvent } from './updateEvent';
-import { addEvent } from './addEvent';
 
 export const AdminEvents = () => {
   const [form] = Form.useForm();
   const [events, setEvents] = useState([]);
   const [editingId, setEditingId] = useState('');
-  const [isNewRow, setIsNewRow] = useState(false);
 
   const fetchEvents = async () => {
     const results = await getAllEvents();
@@ -36,10 +34,18 @@ export const AdminEvents = () => {
     form.setFieldsValue({
       name: '',
       description: '',
-      links: [],
-      address: '',
+      location: '',
+      admin: [],
+      pictures: [],
+      locationName: '',
+      locationAddress: '',
+      locationCoordinates: '',
+      fromDate: null,
+      toDate: null,
       coordinates: '',
-      validated: false,
+      isPrivate: false,
+      forwardable: false,
+      allowAnonymous: false,
       ...record,
     });
     setEditingId(record._id);
@@ -47,8 +53,6 @@ export const AdminEvents = () => {
 
   const cancel = async () => {
     setEditingId('');
-    isNewRow && fetchEvents();
-    setIsNewRow(false);
   };
 
   const deleteRow = async (id) => {
@@ -59,14 +63,11 @@ export const AdminEvents = () => {
   const save = async (id) => {
     try {
       const dataObject = await form.validateFields();
-      if (isNewRow) {
-        await addEvent(dataObject);
-      } else {
-        await updateEvent(id, dataObject);
-      }
+      dataObject.private = dataObject.isPrivate;
+      delete dataObject.isPrivate;
+      await updateEvent(id, dataObject);
       await fetchEvents();
       setEditingId('');
-      setIsNewRow(false);
     } catch (e) {
       console.log('Error while saving:', e);
     }
@@ -82,12 +83,14 @@ export const AdminEvents = () => {
     {
       title: 'Title',
       dataIndex: 'title',
-      key: 'title',   
+      key: 'title',  
+      editable: true, 
     },
     {
       title: 'Description',
       dataIndex: 'description',
-      key: 'description',   
+      key: 'description',  
+      editable: true, 
     },
     {
       title: 'Location Id',
@@ -95,11 +98,40 @@ export const AdminEvents = () => {
       key: 'location',   
     }, 
     {
-      title: 'Admin',
+      title: 'Location Name',
+      dataIndex: 'locationName',
+      key: 'locationName', 
+      editable: true,   
+    }, 
+    {
+      title: 'Location Address',
+      dataIndex: 'locationAddress',
+      key: 'locationAddress',   
+      editable: true, 
+    }, 
+    {
+      title: 'Location Coordinates',
+      dataIndex: 'locationCoordinates',
+      key: 'locationCoordinates',   
+      editable: true, 
+    }, 
+    {
+      title: 'From',
+      dataIndex: 'fromDate',
+      key: 'fromDate',   
+      editable: true, 
+    }, 
+    {
+      title: 'Until',
+      dataIndex: 'toDate',
+      key: 'toDate',   
+      editable: true, 
+    }, 
+    {
+      title: 'Admin Id',
       dataIndex: 'admin',
       key: 'admin',
       width: '150px',
-      editable: true,
       render: (_, { admin }) => (
         <>
           {admin.map((admin) => {
@@ -190,24 +222,6 @@ export const AdminEvents = () => {
     };
   });
 
-  const handleAdd = () => {
-    const newId = parseInt(events[events.length-1]._id) + 1;
-    const newRow = {
-      _id: newId,
-      name: '',
-      description: '',
-      links: [],
-      address: '',
-      coordinates: '',
-      validated: true,
-    };
-    form.setFieldsValue({
-      ...newRow,
-    });
-    setEvents([...events, newRow]);
-    setIsNewRow(true);
-    setEditingId(newId);
-  };
 
   return (
     <div>
@@ -233,11 +247,6 @@ export const AdminEvents = () => {
                 size="small"
               />
             </Form>
-              <div className='admin__tableFooter'>
-                <Button onClick={handleAdd}>
-                  Add a new Event
-                 </Button>
-              </div>
           </>
           )}
     </div>
