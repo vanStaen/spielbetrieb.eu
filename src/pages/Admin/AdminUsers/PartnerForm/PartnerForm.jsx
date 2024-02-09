@@ -50,12 +50,13 @@ export const PartnerForm = (props) => {
         onCancel={onCancel}
         footer={null}
       >
+        <div style={{ marginTop: 15 }}></div>
         <Form
           form={form}
           layout="horizontal"
           size="small"
           onFinish={onFinish}
-          name="mewsletter-form"
+          name="partner-form"
           initialValues={{
             isPartner: selectedPartner.isPartner,
             roles: selectedPartner.partnerRoles,
@@ -78,10 +79,10 @@ export const PartnerForm = (props) => {
               mode="multiple"
               allowClear
               options={[
-                { value: "events", label: "Parties/events" },
-                { value: "sales", label: "Tickets" },
+                { value: "events", label: "Parties/Events" },
+                { value: "sales", label: "Tickets-listings" },
                 { value: "tickets", label: "Shop-listings" },
-                { value: "analytics", label: "Data/analytics" },
+                { value: "analytics", label: "Data/Analytics" },
               ]}
             />
           </Form.Item>

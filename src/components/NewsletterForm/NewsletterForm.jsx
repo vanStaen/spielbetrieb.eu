@@ -87,13 +87,13 @@ export const NewsletterForm = observer(() => {
         onCancel={onCancel}
         footer={null}
       >
-        <br />
+        <div style={{ marginTop: 15 }}></div>
         <Form
           form={form}
           layout="horizontal"
           size="small"
           onFinish={onFinish}
-          name="mewsletter-form"
+          name="newsletter-form"
           initialValues={{
             language: pageStore.selectedLanguage,
             //lists: ["parties", "deals", "extravaganzas"],

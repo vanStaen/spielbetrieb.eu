@@ -19,6 +19,7 @@ export const getUserInfo = async () => {
                 emailSettings,
                 profilSettings,
                 verifiedIdentity,
+                language,
                 gender,
                 orientation,
                 wishes,

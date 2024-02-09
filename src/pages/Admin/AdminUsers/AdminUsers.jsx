@@ -148,7 +148,7 @@ export const AdminUsers = () => {
       key: 'suspended', 
       align: 'center',
       width: '70px',
-      render: (_, { suspended }) => (suspended ? '✅' : '✖️')
+      render: (_, { suspended }) => (suspended ? '🚫' : '✖️')
     },
     {
       title: <span style={{opacity: ".2"}}>Edit</span>,

@@ -27,6 +27,7 @@ export class UserStore {
   lastActive = null;
   archived = null;
   usernameChange = null;
+  language = null;
   friends = [];
   followers = [];
   followed = [];
@@ -67,6 +68,8 @@ export class UserStore {
       setProfilSettings: action,
       verifiedIdentity: observable,
       setVerifiedIdentity: action,
+      language: observable,
+      setLanguage: action,
       gender: observable,
       setGender: action,
       orientation: observable,
