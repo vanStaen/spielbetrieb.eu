@@ -74,9 +74,15 @@ Possible partner roles are:
 
 ### Table Event | Dynamical parameters
 
+#### tags and types
+
 Some description parameters (`eventtype`, `location` and `tags`) are dynamics, have their own bd_table and can be augmented/managed from the admin page. 
 
 The names of those parameters (save in an extra table) should be an object following this type: `{ "en": "english", "de": "deutsch" }`. In case of new languages coming later, default will then be english. 
+
+#### Address and Geocoding
+
+We use the Geocoding API from google to get coordinates out of addresses, and vice-versa: https://developers.google.com/maps/documentation/geocoding/overview
 
 ## Ressources
 

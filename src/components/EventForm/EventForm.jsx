@@ -8,11 +8,13 @@ import {
   Switch,
   Row, 
   Col,
+  Input,
 } from "antd";
 
 import { addEvent } from './addEvent';
 import { nameParser } from '../../helpers/nameParser';
 import { getEventtypes } from '../../pages/Admin/AdminData/AdminEventtypes/getEventtypes';
+import { getLocations } from '../../pages/Admin/AdminData/AdminLocations/getLocations';
 import { userStore } from "../../store/userStore/userStore";
 
 import "./EventForm.less";
@@ -21,8 +23,11 @@ export const EventForm = (props) => {
   const { showEventForm, setShowEventForm } = props;
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+  const [eventtypes, setEventtypes] = useState(null);
+  const [locations, setLocations] = useState(null);
+  const [isNewLocation, setIsNewLocation] = useState(false);
   const [isPrivateEvent, setIsPrivateEvent] = useState(false);
-  const [eventtypes, setEventtypes] = useState(false);
+  const { TextArea } = Input;
 
   const fetchEventtypes = async () => {
     const results = await getEventtypes();
@@ -35,12 +40,29 @@ export const EventForm = (props) => {
       label: nameParser(type.name, userStore.language.toLowerCase()),
       }
     })  
-    console.log("eventTypes", eventtypes);
     setEventtypes(eventtypes);
+  };
+
+  const fetchLocations = async () => {
+    const results = await getLocations();
+    const locationOptions = results.map(location => {
+      if (location.validated === false) {
+        return
+      };
+      return {
+      value: location._id,
+      label: location.name,
+      }
+    })  
+    locationOptions.push({
+      value: 0,
+      label: <span style={{opacity: '.5'}}>new location</span>})
+    setLocations(locationOptions);
   };
 
   useEffect(() => {
     fetchEventtypes();
+    fetchLocations();
   }, []);
 
   const onCancel = () => {
@@ -66,14 +88,8 @@ export const EventForm = (props) => {
     setShowEventForm(false);
   };
 
-    /*
-    eventtype: Int!
-    title: String!
-    description: String
+  /*
     pictures: [String]
-    location: Int
-    locationName: String
-    locationAddress: String
     locationCoordinates: String
     fromDate: String
     untilDate: String
@@ -81,7 +97,7 @@ export const EventForm = (props) => {
     attendees: [Int]
     invited: [Int]
     admin: [Int]
-    */
+  */
 
   return (
       <Modal
@@ -100,24 +116,63 @@ export const EventForm = (props) => {
           name="event-form"
         >
         <div style={{ marginTop: 15 }}></div>
-      <Row>
-        <Col className="gutter-row" span={12}>
-          <Form.Item
-              label={<div className="eventForm__whiteText">Event type</div>}
-              name="eventtypes"
-            >
-              <Select
-                options={eventtypes}
-              />
-            </Form.Item>
-        </Col>
-        <Col className="gutter-row" span={12}>
-          {" "}
-        </Col>    
-      </Row>          
+
+        <Row gutter={16}>
+          <Col span={12 }>
+            <Form.Item
+                label={<div className="eventForm__whiteText">Type</div>}
+                name="eventtypes"
+              >
+                <Select
+                  options={eventtypes}
+                />
+              </Form.Item>
+          </Col>
+          <Col span={12}>          
+            <Form.Item
+                label={<div className="eventForm__whiteText">Location</div>}
+                name="eventtypes"
+              >
+                <Select
+                  options={locations}
+                  onChange={(value) => setIsNewLocation(value === 0)}
+                />
+              </Form.Item>
+          </Col>    
+        </Row>        
+
+      {isNewLocation && 
+      <>
+        <Form.Item
+            label={<div className="eventForm__whiteText">Location name</div>}
+            name="locationName"
+          >
+            <Input/>
+        </Form.Item>      
+        <Form.Item
+            label={<div className="eventForm__whiteText">Address</div>}
+            name="locationAddress"
+          >
+            <TextArea autoSize={{ minRows: 2, maxRows: 6 }}/>
+        </Form.Item>
+      </>    
+      }     
+
+      <Form.Item
+          label={<div className="eventForm__whiteText">Event title</div>}
+          name="title"
+        >
+          <Input/>
+      </Form.Item>      
+      <Form.Item
+          label={<div className="eventForm__whiteText">Description</div>}
+          name="description"
+        >
+          <TextArea autoSize={{ minRows: 2, maxRows: 6 }}/>
+      </Form.Item>  
 
       <Row>
-        <Col className="gutter-row" span={9}>
+        <Col span={9}>
           <Form.Item
               label={<div className="eventForm__whiteText">Allow anonym?</div>}
               name="allowAnonymous"
@@ -128,7 +183,7 @@ export const EventForm = (props) => {
               /> 
             </Form.Item>
         </Col>
-        <Col className="gutter-row" span={7}>
+        <Col span={7}>
           <Form.Item
               label={<div className="eventForm__whiteText">Private?</div>}
               name="private"
@@ -140,7 +195,7 @@ export const EventForm = (props) => {
               /> 
           </Form.Item>
         </Col>
-        <Col className="gutter-row" span={8}>
+        <Col span={8}>
           {isPrivateEvent &&
               <Form.Item
                 label={<div className="eventForm__whiteText">Forwardable?</div>}

@@ -31,7 +31,7 @@ exports.locationResolver = {
     }
     return await Location.findAll({
       order: [
-        ['_id', 'ASC'],
+        ['name', 'ASC'],
       ]
     });
   },
