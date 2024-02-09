@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   notification,
   Modal,
@@ -9,24 +9,49 @@ import {
 } from "antd";
 
 import { updateUserAsAdmin } from "../updateUserAsAdmin";
+import { getPartnertypes } from '../../AdminData/AdminPartnertypes/getPartnertypes';
+import { nameParser } from "../../../../helpers/nameParser";
+import { userStore } from '../../../../store/userStore/userStore';
 
 import "./PartnerForm.less";
 
 export const PartnerForm = (props) => {
   const {selectedPartner, setSelectedPartner, fetchAllUsers } = props;
-  const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+  const [partnertypes, setPartnertypes] = useState(false);
+  const [form] = Form.useForm();
 
   const onCancel = () => {
     form.resetFields();
     setSelectedPartner(null);
   };
 
+  const fetchPartnertypes = async () => {
+    const results = await getPartnertypes();
+    const partnertypes = results.map(type => {
+      if (type.validated === false) {
+        return
+      };
+      return {
+      value: parseInt(type._id),
+      label: nameParser(type.name, userStore.language.toLowerCase()),
+      }
+    })  
+    setPartnertypes(partnertypes);
+  };
+
+  useEffect(() => {
+    fetchPartnertypes();
+  }, []);
+
   const onFinish = async (values) => {
     setLoading(true);
     try {
       await updateUserAsAdmin(selectedPartner._id, 
-        { isPartner: values.isPartner, partnerRoles: values.isPartner ? values.roles : null }
+        { isPartner: values.isPartner, 
+          partnerRoles: values.isPartner ? values.roles : null,
+          partnertype: values.isPartner ? values.partnertype : null,
+         }
       );
     } catch (e) {
       notification.error({
@@ -60,6 +85,7 @@ export const PartnerForm = (props) => {
           initialValues={{
             isPartner: selectedPartner.isPartner,
             roles: selectedPartner.partnerRoles,
+            partnertype: selectedPartner.partnertype,
           }}
         >
           <Form.Item
@@ -70,6 +96,14 @@ export const PartnerForm = (props) => {
               checkedChildren='Yes'
               unCheckedChildren='No'
             /> 
+          </Form.Item>
+          <Form.Item
+            label={<div className="partnerForm__whiteText">Partner Type</div>}
+            name="partnertype"
+          >
+            <Select
+              options={partnertypes}
+            />
           </Form.Item>
           <Form.Item
             label={<div className="partnerForm__whiteText">Role(s)</div>}

@@ -157,6 +157,7 @@ exports.userResolver = {
         'suspended',
         'isPartner',
         'partnerRoles',
+        'partnertype',
         'verifiedIdentity',
       ];
       updatableFields.forEach((field) => {

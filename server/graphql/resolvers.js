@@ -2,6 +2,7 @@ const chatResolver = require("./resolvers/chatResolver");
 const commentResolver = require("./resolvers/commentResolver");
 const eventResolver = require("./resolvers/eventResolver");
 const eventtypeResolver = require("./resolvers/eventtypeResolver");
+const partnertypeResolver = require("./resolvers/partnertypeResolver");
 const locationResolver = require("./resolvers/locationResolver");
 const messageResolver = require("./resolvers/messageResolver");
 const notificationResolver = require("./resolvers/notificationResolver");
@@ -16,6 +17,7 @@ module.exports = {
   ...commentResolver.commentResolver,
   ...eventResolver.eventResolver,
   ...eventtypeResolver.eventtypeResolver,
+  ...partnertypeResolver.partnertypeResolver,
   ...locationResolver.locationResolver,
   ...messageResolver.messageResolver,
   ...photoResolver.photoResolver,

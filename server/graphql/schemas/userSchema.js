@@ -5,6 +5,7 @@ type User {
     adminRoles: [String]
     isPartner: Boolean!
     partnerRoles: [String]
+    partnertype: Int
     firstName: String!
     lastName: String!
     userName: String!
@@ -82,6 +83,7 @@ input UserInputDataAdmin {
     suspended: Boolean
     isPartner: Boolean
     partnerRoles: [String]
+    partnertype: Int
     verifiedIdentity: Boolean
 }`;
 

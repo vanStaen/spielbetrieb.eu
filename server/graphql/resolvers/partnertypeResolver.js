@@ -1,21 +1,21 @@
-const { Eventtype } = require("../../models/Eventtype");
+const { Partnertype } = require("../../models/Partnertype");
 const { User } = require("../../models/User");
 
-exports.eventtypeResolver = {
-  //getEventtypes
-  async getEventtypes(args, req) {
+exports.partnertypeResolver = {
+  //getPartnertypes
+  async getPartnertypes(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
-    return await Eventtype.findAll({
+    return await Partnertype.findAll({
       order: [
         ['_id', 'ASC'],
       ]
     });
   },
 
-  // addEventtype(eventtypeInput: EventtypeInputData!): Eventtype!
-  async addEventtype(args, req) {
+  // addPartnertype(partnertypeInput: PartnertypeInputData!): Partnertype!
+  async addPartnertype(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
@@ -26,18 +26,17 @@ exports.eventtypeResolver = {
       throw new Error('Unauthorized!');
     }
     try {
-      const eventtype = new Eventtype({
-        name: args.eventtypeInput.name,
-        validated: args.eventtypeInput.validated,
+      const partnertype = new Partnertype({
+        name: args.partnertypeInput.name,
       });
-      return await eventtype.save();
+      return await partnertype.save();
     } catch (err) {
       console.log(err);
     }
   },
 
-  // updateEventtype(eventtypeId: ID!, eventtypeInput: EventtypeInputData!): Eventtype!
-  async updateEventtype(args, req) {
+  // updatePartnertype(partnertypeId: ID!, partnertypeInput: PartnertypeInputData!): Partnertype!
+  async updatePartnertype(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
@@ -50,31 +49,30 @@ exports.eventtypeResolver = {
     const updateFields = [];
     const updatableFields = [
       "name",
-      "validated",
     ];
     updatableFields.forEach((field) => {
-      if (field in args.eventtypeInput) {
-        updateFields[field] = args.eventtypeInput[field];
+      if (field in args.partnertypeInput) {
+        updateFields[field] = args.partnertypeInput[field];
       }
     });
     try {
-      const updatedEventtype = await Eventtype.update(updateFields, {
+      const updatedPartnertype = await Partnertype.update(updateFields, {
         where: {
-          _id: args.eventtypeId,
+          _id: args.partnertypeId,
         },
         returning: true,
         plain: true,
       });
-      // updatedEventtype[0]: number or row udpated
-      // updatedEventtype[1]: rows updated
-      return updatedEventtype[1];
+      // updatedPartnertype[0]: number or row udpated
+      // updatedPartnertype[1]: rows updated
+      return updatedPartnertype[1];
     } catch (err) {
       console.log(err);
     }
   },
 
-  // deleteEventtype(eventtypeId: ID!): Boolean!
-  async deleteEventtype(args, req) {
+  // deletePartnertype(partnertypeId: ID!): Boolean!
+  async deletePartnertype(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
@@ -84,9 +82,9 @@ exports.eventtypeResolver = {
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes('data')) {
       throw new Error('Unauthorized!');
     }
-    await Eventtype.destroy({
+    await Partnertype.destroy({
       where: {
-        _id: args.eventtypeId,
+        _id: args.partnertypeId,
       },
     });
     return true;

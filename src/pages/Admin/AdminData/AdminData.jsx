@@ -6,11 +6,13 @@ import {
   HeatMapOutlined,
   WomanOutlined,
   ApiOutlined,
+  ShopOutlined,
 } from '@ant-design/icons';
 
 import { AdminTags } from './AdminTags/AdminTags';
 import { AdminEventtypes } from './AdminEventtypes/AdminEventtypes';
 import { AdminLocations } from './AdminLocations/AdminLocations';
+import { AdminPartnertypes } from './AdminPartnertypes/AdminPartnertypes';
 
 export const AdminData = () => {
 
@@ -27,17 +29,22 @@ export const AdminData = () => {
     },
     {
       key: '3',
+      label: <><ShopOutlined /> Partner types</>,
+      children: <AdminPartnertypes />,
+    },
+    {
+      key: '4',
       label: <><HeatMapOutlined /> Locations</>,
       children: <AdminLocations />,
     },
     {
-      key: '4',
+      key: '5',
       label: <><WomanOutlined /> Genders</>,
       children: '',
       disabled: true,
     },
     {
-      key: '4',
+      key: '6',
       label: <><ApiOutlined /> Orientations</>,
       children: '',
       disabled: true,

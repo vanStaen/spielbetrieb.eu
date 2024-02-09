@@ -4,6 +4,7 @@ const chatSchema = require("./schemas/chatSchema");
 const commentSchema = require("./schemas/commentSchema");
 const eventSchema = require("./schemas/eventSchema");
 const eventtypeSchema = require("./schemas/eventtypeSchema");
+const partnertypeSchema = require("./schemas/partnertypeSchema");
 const locationSchema = require("./schemas/locationSchema");
 const messageSchema = require("./schemas/messageSchema");
 const notificationSchema = require("./schemas/notificationSchema");
@@ -19,6 +20,7 @@ module.exports = buildSchema(`
     ${commentSchema.Comment}
     ${eventSchema.Event}
     ${eventtypeSchema.Eventtype}
+    ${partnertypeSchema.Partnertype}
     ${locationSchema.Location}
     ${messageSchema.Message}
     ${notificationSchema.Notification}
@@ -32,6 +34,7 @@ module.exports = buildSchema(`
     ${commentSchema.CommentInputData}
     ${eventSchema.EventInputData}
     ${eventtypeSchema.EventtypeInputData}
+    ${partnertypeSchema.PartnertypeInputData}
     ${locationSchema.LocationInputData}
     ${messageSchema.MessageInputData}
     ${notificationSchema.NotificationInputData}
@@ -46,6 +49,7 @@ module.exports = buildSchema(`
         ${commentSchema.CommentQueries}
         ${eventSchema.EventQueries}
         ${eventtypeSchema.EventtypeQueries}
+        ${partnertypeSchema.PartnertypeQueries}
         ${locationSchema.LocationQueries}
         ${messageSchema.MessageQueries}
         ${notificationSchema.NotificationQueries}
@@ -61,6 +65,7 @@ module.exports = buildSchema(`
         ${commentSchema.CommentMutations}
         ${eventSchema.EventMutations}
         ${eventtypeSchema.EventtypeMutations}
+        ${partnertypeSchema.PartnertypeMutations}
         ${locationSchema.LocationMutations}
         ${messageSchema.MessageMutations}
         ${notificationSchema.NotificationMutations}

@@ -108,6 +108,10 @@ const User = sequelize.define('user', {
     type: DataTypes.ARRAY(DataTypes.STRING),
     defaultValue: []
   },
+  partnertype: {
+    type: DataTypes.INTEGER,
+    allowNull: true
+  },
   language: {
     type: DataTypes.STRING,
     defaultValue: 'en'

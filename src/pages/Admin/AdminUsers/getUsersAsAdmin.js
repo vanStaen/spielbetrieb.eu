@@ -8,6 +8,7 @@ export async function getUsersAsAdmin () {
                 adminRoles,
                 isPartner,
                 partnerRoles,
+                partnertype,
                 firstName,
                 lastName,
                 userName,
