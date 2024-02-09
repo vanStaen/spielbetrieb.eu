@@ -12,9 +12,11 @@ import {
   FontSizeOutlined,
   CloseOutlined,
   DatabaseOutlined,
+  AuditOutlined,
 } from '@ant-design/icons';
 
 import { AdminNewsletter } from './AdminNewsletter/AdminNewsletter';
+import { AdminRessources } from './AdminRessources/AdminRessources';
 import { AdminUsers } from './AdminUsers/AdminUsers';
 import { AdminData } from './AdminData/AdminData';
 import { AdminEvents } from './AdminEvents/AdminEvents';
@@ -56,6 +58,8 @@ export const Admin = observer(() => {
         return 'translation';
       case 'data':
         return <AdminData />;
+      case 'ressources':
+        return <AdminRessources />;
       default:
         return 'Error';
     }
@@ -131,6 +135,13 @@ export const Admin = observer(() => {
                   value: 'data',
                   disabled: !userStore.adminRoles?.includes('data'),
                   icon: <DatabaseOutlined />
+                },
+                {
+                  label: !isMobile && 'Ressources',
+                  value: 'ressources',
+                  // disabled: !userStore.adminRoles?.includes('ressources'),
+                  disabled: true,
+                  icon: <AuditOutlined />
                 }
               ]}
             />

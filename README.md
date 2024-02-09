@@ -60,7 +60,7 @@ Possible admin roles are:
 7. `translation`: translation of the portal's texts
 
 SQL update script exemple: 
-``` UPDATE public.users SET "isAdmin"=true, "adminRoles"='{newsletter,events,users,shops,blog,analytics,translation,data}' WHERE _id=1; ```
+``` UPDATE public.users SET "isAdmin"=true, "adminRoles"='{newsletter,events,users,shops,blog,analytics,translation,data,ressources}' WHERE _id=1; ```
 
 ### Table user | Partner
 
@@ -76,7 +76,7 @@ Possible partner roles are:
 
 Some description parameters (`eventtype`, `location` and `tags`) are dynamics, have their own bd_table and can be augmented/managed from the admin page. 
 
-The names of those parameters (save in an extra table) should be an object following this type: `{ "en": "def", "de": "ghj" }`. In case of new languages coming later, default will then be english. 
+The names of those parameters (save in an extra table) should be an object following this type: `{ "en": "english", "de": "deutsch" }`. In case of new languages coming later, default will then be english. 
 
 ## Ressources
 
