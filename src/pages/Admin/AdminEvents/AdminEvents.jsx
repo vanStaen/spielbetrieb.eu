@@ -12,9 +12,9 @@ import { EventForm } from '../../../components/EventForm/EventForm';
 export const AdminEvents = () => {
   const [form] = Form.useForm();
   const [events, setEvents] = useState([]);
+  const [isEdit, setIsEdit] = useState([]);
   const [showEventForm, setShowEventForm] = useState(false);
   const copyEditData = useRef(null);
-  const isEdit = useRef(false);
 
   const fetchEvents = async () => {
     const results = await getAllEvents();
@@ -38,19 +38,19 @@ export const AdminEvents = () => {
 
   const duplicateClickHandler = (record) => {
     copyEditData.current = record;
-    isEdit.current = false;    
+    setIsEdit(false);     
     setShowEventForm(true);
   } 
 
   const editClickHandler = (record) => {
     copyEditData.current = record;
-    isEdit.current = true;    
+    setIsEdit(true);    
     setShowEventForm(true);
   };
 
   const openNewEventFormHandler = () => {
     copyEditData.current = null;
-    isEdit.current = false;    
+    setIsEdit(false);     
     setShowEventForm(true);
   }
   
