@@ -24,6 +24,7 @@ export async function getAllEvents() {
                 allowAnonymous,
                 createdAt,
                 updatedAt,
+                isDraft,
                 user {
                     _id,
                 }

@@ -9,12 +9,14 @@ import {
   Row, 
   Col,
   Input,
+  DatePicker,
 } from "antd";
 
 import { addEvent } from './addEvent';
 import { nameParser } from '../../helpers/nameParser';
 import { getEventtypes } from '../../pages/Admin/AdminData/AdminEventtypes/getEventtypes';
 import { getLocations } from '../../pages/Admin/AdminData/AdminLocations/getLocations';
+import { getTags } from '../../pages/Admin/AdminData/AdminTags/getTags';
 import { userStore } from "../../store/userStore/userStore";
 
 import "./EventForm.less";
@@ -25,9 +27,11 @@ export const EventForm = (props) => {
   const [loading, setLoading] = useState(false);
   const [eventtypes, setEventtypes] = useState(null);
   const [locations, setLocations] = useState(null);
+  const [tags, setTags] = useState(null);
   const [isNewLocation, setIsNewLocation] = useState(false);
   const [isPrivateEvent, setIsPrivateEvent] = useState(false);
   const { TextArea } = Input;
+  const { RangePicker } = DatePicker;
 
   const fetchEventtypes = async () => {
     const results = await getEventtypes();
@@ -60,9 +64,24 @@ export const EventForm = (props) => {
     setLocations(locationOptions);
   };
 
+  const fetchtags = async () => {
+    const results = await getTags();
+    const tags = results.map(tag => {
+      if (tag.validated === false || tag.eventTag === false) {
+        return
+      };
+      return {
+        value: tag._id,
+        label: nameParser(tag.name, userStore.language.toLowerCase()),
+      }
+    })  
+    setTags(tags);
+  };
+
   useEffect(() => {
     fetchEventtypes();
     fetchLocations();
+    fetchtags();
   }, []);
 
   const onCancel = () => {
@@ -72,9 +91,21 @@ export const EventForm = (props) => {
 
   const onFinish = async (values) => {
     setLoading(true);
+    console.log(values);
     try {
-      /* await updateUserAsAdmin(selectedPartner._id, 
-        { isPartner: values.isPartner, partnerRoles: values.isPartner ? values.roles : null }
+      /* await addEvent( 
+        { 
+          isPartner: values.isPartner, 
+          eventtype:
+          location:
+          locationName:
+          locationAddress:
+          title:
+          description:
+          fromDate: values.eventDate[0],
+          untilDate: values.eventDate[1],
+          eventTags: values.tags
+        }
       ); */
     } catch (e) {
       notification.error({
@@ -91,8 +122,6 @@ export const EventForm = (props) => {
   /*
     pictures: [String]
     locationCoordinates: String
-    fromDate: String
-    untilDate: String
     eventTags: [Int]
     attendees: [Int]
     invited: [Int]
@@ -119,23 +148,19 @@ export const EventForm = (props) => {
 
         <Row gutter={16}>
           <Col span={12 }>
-            <Form.Item
-                label={<div className="eventForm__whiteText">Type</div>}
-                name="eventtypes"
-              >
+            <Form.Item name="eventtypes" >
                 <Select
                   options={eventtypes}
+                  placeholder="Event type"
                 />
               </Form.Item>
           </Col>
           <Col span={12}>          
-            <Form.Item
-                label={<div className="eventForm__whiteText">Location</div>}
-                name="eventtypes"
-              >
+            <Form.Item name="location" >
                 <Select
                   options={locations}
-                  onChange={(value) => setIsNewLocation(value === 0)}
+                  onChange={(value) => setIsNewLocation(value === 0)} 
+                  placeholder="Event location"
                 />
               </Form.Item>
           </Col>    
@@ -143,33 +168,43 @@ export const EventForm = (props) => {
 
       {isNewLocation && 
       <>
-        <Form.Item
-            label={<div className="eventForm__whiteText">Location name</div>}
-            name="locationName"
-          >
-            <Input/>
+        <Form.Item name="locationName">
+            <Input placeholder="Name of the Loxcation"/>
         </Form.Item>      
-        <Form.Item
-            label={<div className="eventForm__whiteText">Address</div>}
-            name="locationAddress"
-          >
-            <TextArea autoSize={{ minRows: 2, maxRows: 6 }}/>
+        <Form.Item name="locationAddress" >
+            <TextArea 
+              autoSize={{ minRows: 2, maxRows: 6 }} 
+              placeholder="Location's address"
+            />
         </Form.Item>
       </>    
       }     
-
-      <Form.Item
-          label={<div className="eventForm__whiteText">Event title</div>}
-          name="title"
-        >
-          <Input/>
+      <Form.Item name="title" >
+          <Input placeholder="Location's title"/>
       </Form.Item>      
-      <Form.Item
-          label={<div className="eventForm__whiteText">Description</div>}
-          name="description"
-        >
-          <TextArea autoSize={{ minRows: 2, maxRows: 6 }}/>
+      <Form.Item name="description">
+          <TextArea 
+            autoSize={{ minRows: 2, maxRows: 6 }}
+            placeholder={"Location's description"}
+          />
       </Form.Item>  
+      <Form.Item name="eventDate">
+        <RangePicker
+          showTime={{ format: 'HH:mm' }}
+          format="DD-MM-YYYY HH:mm"
+          style={{width: '100%'}}
+          placeholder={['Event start-date', 'Event end-date']}
+          />
+      </Form.Item>  
+      <Form.Item name="tags">
+        <Select
+          mode="multiple"
+          allowClear
+          style={{ width: '100%' }}
+          placeholder="Please select some tags"
+          options={tags}
+        />
+      </Form.Item>
 
       <Row>
         <Col span={9}>
@@ -210,12 +245,6 @@ export const EventForm = (props) => {
           </Col>
       </Row>     
 
-
-
-
-
-          
-          
           <Form.Item>
             <div className="eventForm__buttonContainer">
               <Button

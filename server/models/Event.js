@@ -76,6 +76,10 @@ const Event = sequelize.define("event", {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
   },
+  isDraft: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 User.hasMany(Event);

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Table, Typography, Popconfirm, Tag, Button } from 'antd';
-import { EditOutlined, CloseCircleOutlined, CheckCircleOutlined, DeleteOutlined } from '@ant-design/icons';
+import React, { useState, useEffect, useRef } from 'react';
+import { Form, Table, Typography, Popconfirm, Tag, Button, Tooltip } from 'antd';
+import { EditOutlined, CloseCircleOutlined, CheckCircleOutlined, DeleteOutlined, CopyOutlined } from '@ant-design/icons';
 
 import { EditableCell } from '../EditableCell';
 import { AdminCustomSpinner } from '../AdminCustomSpinner/AdminCustomSpinner';
@@ -14,6 +14,7 @@ export const AdminEvents = () => {
   const [events, setEvents] = useState([]);
   const [editingId, setEditingId] = useState('');
   const [showEventForm, setShowEventForm] = useState(false);
+  const copyData = useRef(null);
 
   const fetchEvents = async () => {
     const results = await getAllEvents();
@@ -74,6 +75,17 @@ export const AdminEvents = () => {
       console.log('Error while saving:', e);
     }
   };
+
+  const duplicateClickHandler = (record) => {
+    copyData.current = record;
+    setShowEventForm(false);
+  } 
+
+  const openNewEventFormHandler = () => {
+    copyData.current = null;
+    setShowEventForm(!showEventForm);
+  }
+  
   const columns = [
     {
       title: 'id',
@@ -174,9 +186,18 @@ export const AdminEvents = () => {
       editable: true,
     },
     {
+      title: 'Draft',
+      dataIndex: 'draft',
+      key: 'draft',      
+      align: 'center',
+      width: '80px',
+      render: (_, { draft }) => (draft ? '✅' : '✖️'),
+      editable: true,
+    },
+    {
       title: <span style={{opacity: ".2"}}>Edit</span>,
       dataIndex: 'edit',
-      width: '90px',    
+      width: '100px',    
       align: 'center',
       render: (_, record) => {
         const editable = isEditing(record);
@@ -189,14 +210,17 @@ export const AdminEvents = () => {
             <Typography.Link onClick={cancel} style={{ marginRight: 8 }}>
               <CloseCircleOutlined className='admin__cancelLogo' />           
             </Typography.Link>
-
           </span>
         ) : (
           <span>
+            <Typography.Link disabled={editingId !== ''} style={{ marginRight: 8 }} onClick={() => duplicateClickHandler(record)}>
+              <Tooltip title='Duplicate this event'>
+                  <CopyOutlined  className='admin__editLogo' />
+              </Tooltip>
+            </Typography.Link>
             <Typography.Link disabled={editingId !== ''} style={{ marginRight: 8 }} onClick={() => edit(record)}>
               <EditOutlined className='admin__editLogo' />
             </Typography.Link>
-              {" "}
             <Popconfirm title="Sure to delete?" style={{ marginRight: 8 }} onConfirm={() => deleteRow(record._id)}>
               <DeleteOutlined className='admin__editLogo' />
             </Popconfirm>
@@ -216,7 +240,8 @@ export const AdminEvents = () => {
         record,
         inputType: col.dataIndex === 'isPrivate' 
                 || col.dataIndex === 'forwardable'
-                || col.dataIndex === 'allowAnonymous' ? 'boolean' : col.dataIndex === 'links' ? 'stringObject' : 'text',
+                || col.dataIndex === 'allowAnonymous' 
+                || col.dataIndex === 'isDraft' ? 'boolean' : col.dataIndex === 'links' ? 'stringObject' : 'text',
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
@@ -235,7 +260,7 @@ export const AdminEvents = () => {
           )
         : (
           <>
-           {showEventForm && <EventForm showEventForm={showEventForm} setShowEventForm={setShowEventForm}/>}
+           {showEventForm && <EventForm showEventForm={showEventForm} setShowEventForm={setShowEventForm} data={copyData.current}/>}
             <Form form={form} component={false}>
               <Table
                 components={{
@@ -251,7 +276,7 @@ export const AdminEvents = () => {
               />
             </Form>
             <div className='admin__tableFooter'>
-                <Button onClick={() => setShowEventForm(!showEventForm)}>
+                <Button onClick={openNewEventFormHandler}>
                   Add a new Event
                  </Button>
               </div>

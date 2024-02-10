@@ -55,6 +55,7 @@ exports.eventResolver = {
         private: args.eventInput.private,
         forwardable: args.eventInput.forwardable,
         allowAnonymous: args.eventInput.allowAnonymous,
+        isDraft: args.eventInput.isDraft,
       });
       return await event.save();
     } catch (err) {
@@ -86,6 +87,7 @@ exports.eventResolver = {
       "private",
       "forwardable",
       "allowAnonymous",
+      "isDraft",
     ];
     updatableFields.forEach((field) => {
       if (field in args.eventInput) {

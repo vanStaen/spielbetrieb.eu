@@ -237,9 +237,12 @@ export const SignUpForm = observer((props) => {
         >
           <DatePicker
             onChange={changeBirthdayHandler}
-            // defaultValue={dateEighteenYearsAgo}
+            format={{
+              format: dateFormat,
+              type: 'mask',
+            }}
             placeholder={t('login.birthday')}
-            format={dateFormat}
+          
           />
         </Form.Item>
         <span className="signup__spacerBirthday"
