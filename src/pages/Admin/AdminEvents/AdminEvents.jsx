@@ -62,12 +62,7 @@ export const AdminEvents = () => {
       align: 'center',
       width: '50px',
       fixed: 'left',
-    },
-    {
-      title: 'Event type',
-      dataIndex: 'eventtype',
-      key: 'eventtype',  
-      fixed: 'left',
+      sorter: (a, b) => a._id - b._id,
     },
     {
       title: 'Title',
@@ -79,8 +74,9 @@ export const AdminEvents = () => {
       title: 'From',
       dataIndex: 'fromDate',
       key: 'fromDate',   
-      width: '100px',
-      fixed: 'left',
+      width: '70px',
+      fixed: 'left',   
+      align: 'center',
       render: (_, { fromDate }) => (
         dayjs(fromDate).format('DD-MM HH:mm') 
       ),
@@ -89,15 +85,22 @@ export const AdminEvents = () => {
       title: 'Until',
       dataIndex: 'untilDate',
       key: 'untilDate',  
-      width: '100px',
+      width: '70px',   
+      align: 'center',
       render: (_, { untilDate }) => (
         dayjs(untilDate).format('DD-MM HH:mm') 
       ),
     }, 
     {
+      title: 'Event type',
+      dataIndex: 'eventtype',
+      key: 'eventtype',  
+    },
+    {
       title: 'Description',
       dataIndex: 'description',
       key: 'description',  
+      width: '200px',   
     },
     {
       title: 'Location Id',

@@ -40,6 +40,7 @@ export const AdminUsers = () => {
       align: 'center',
       width: '50px',
       fixed: 'left',
+      sorter: (a, b) => a._id - b._id,
     },
     {
       title: 'Username',
@@ -47,6 +48,7 @@ export const AdminUsers = () => {
       key: 'userName',
       fixed: 'left',
       width: '120px',
+      sorter: (a, b) => a.userName.length - b.userName.length,
       render: (_, { userName, isAdmin, adminRoles }) => isAdmin
         ? <>
         <Tooltip
@@ -76,16 +78,19 @@ export const AdminUsers = () => {
       dataIndex: 'firstName',
       key: 'firstName',
       width: '120px',
+      sorter: (a, b) => a.firstName.length - b.firstName.length,
     },
     {
       title: 'Last name',
       dataIndex: 'lastName',
+      sorter: (a, b) => a.lastName.length - b.lastName.length,
       key: 'lastName',
       width: '120px',
     },
     {
       title: 'Email',
       dataIndex: 'email',
+      sorter: (a, b) => a.email.length - b.email.length,
       key: 'email',
     },
     {
@@ -94,6 +99,7 @@ export const AdminUsers = () => {
       key: 'language',
       align: 'center',
       width: '100px',
+      sorter: (a, b) => a.language.length - b.language.length,
       render: (_, { language }) => language.toUpperCase()
     },
     {
@@ -118,6 +124,7 @@ export const AdminUsers = () => {
       key: 'isPartner', 
       align: 'center',
       width: '70px',
+      sorter: (a, b) => a.isPartner - b.isPartner,
       render: (_, record ) => (
         <div onClick={() => setSelectedPartner(record)} style={{cursor: 'pointer'}}>
         {record.isPartner
@@ -153,6 +160,7 @@ export const AdminUsers = () => {
       key: 'suspended', 
       align: 'center',
       width: '100px',
+      sorter: (a, b) => a.suspended - b.suspended,
       render: (_, { suspended }) => (suspended ? '🚫' : '✖️')
     },
     {
