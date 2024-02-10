@@ -16,7 +16,7 @@ type User {
     profilSettings: String
     verifiedEmail: Boolean!
     verifiedIdentity: Boolean!
-    birthday: String
+    birthday: Float
     gender: String
     orientation: String
     wishes: [String]
@@ -24,8 +24,8 @@ type User {
     archived: Boolean
     usernameChange: Int
     lastActive: String!
-    createdAt: String!
-    updatedAt: String!
+    createdAt: Float!
+    updatedAt: Float!
     comments: [Comment]
     events: [Event]
     messages: [Message]
@@ -51,7 +51,7 @@ input UserInputData {
     avatar: String
     emailSettings: String
     profilSettings: String
-    birthday: String
+    birthday: Float
     gender: String
     orientation: String
     wishes: [String]
@@ -72,7 +72,7 @@ input UserInputDataAdmin {
     avatar: String
     emailSettings: String
     profilSettings: String
-    birthday: String
+    birthday: Float
     gender: String
     orientation: String
     wishes: [String]

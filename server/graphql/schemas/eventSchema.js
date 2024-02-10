@@ -9,8 +9,8 @@ type Event {
     locationName: String
     locationAddress: String
     locationCoordinates: String
-    fromDate: String
-    untilDate: String
+    fromDate: Float
+    untilDate: Float
     eventTags: [Int]
     attendees: [Int]
     invited: [Int]
@@ -19,8 +19,8 @@ type Event {
     forwardable: Boolean!
     allowAnonymous: Boolean!
     isDraft: Boolean!
-    createdAt: String!
-    updatedAt: String!
+    createdAt: Float!
+    updatedAt: Float!
     user: User
 }`;
 
@@ -34,8 +34,8 @@ input EventInputData {
     locationName: String
     locationAddress: String
     locationCoordinates: String
-    fromDate: String
-    untilDate: String
+    fromDate: Float
+    untilDate: Float
     eventTags: [Int]
     attendees: [Int]
     invited: [Int]

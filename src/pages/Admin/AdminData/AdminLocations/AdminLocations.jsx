@@ -113,6 +113,7 @@ export const AdminLocations = () => {
       title: 'Coordinates',
       dataIndex: 'coordinates',
       key: 'coordinates',
+      width: '150px',
       editable: true,   
     },
     {

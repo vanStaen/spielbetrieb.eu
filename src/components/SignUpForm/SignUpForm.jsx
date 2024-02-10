@@ -87,7 +87,6 @@ export const SignUpForm = observer((props) => {
       } else if (isOlderThan100 === true) {
         setIsValidBirthday('error');
         setErrorMsgBirthday(t('login.areYouReallyThatOld'));
-        console.log(t('login.areYouReallyThatOld'));
       } else {
         setIsValidBirthday('success');
         setErrorMsgBirthday(null);
@@ -103,6 +102,7 @@ export const SignUpForm = observer((props) => {
     const email = values.email;
     const password = values.password;
     try {
+      // TODO add birthday
       const response = await postAddUser(
         firstname,
         lastname,

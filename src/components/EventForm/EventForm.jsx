@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import * as dayjs from 'dayjs';
 import {
   notification,
   Modal,
@@ -20,14 +21,16 @@ import { getTags } from '../../pages/Admin/AdminData/AdminTags/getTags';
 import { userStore } from "../../store/userStore/userStore";
 
 import "./EventForm.less";
+import { updateEvent } from "../../pages/Admin/AdminEvents/updateEvent";
 
 export const EventForm = (props) => {
   const { showEventForm, setShowEventForm, data, reload, isEdit } = props;
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  const [eventtypes, setEventtypes] = useState(null);
-  const [locations, setLocations] = useState(null);
+  const [locations, setLocations] = useState(null);  
+  const [locationOptions, setLocationOptions] = useState(null);
   const [tags, setTags] = useState(null);
+  const [eventtypes, setEventtypes] = useState(null);
   const [isNewLocation, setIsNewLocation] = useState(false);
   const [isPrivateEvent, setIsPrivateEvent] = useState(false);
   const { TextArea } = Input;
@@ -40,7 +43,7 @@ export const EventForm = (props) => {
         return
       };
       return {
-      value: type._id,
+      value: parseInt(type._id),
       label: nameParser(type.name, userStore.language.toLowerCase()),
       }
     })  
@@ -48,20 +51,21 @@ export const EventForm = (props) => {
   };
 
   const fetchLocations = async () => {
-    const results = await getLocations();
-    const locationOptions = results.map(location => {
+    const locations = await getLocations();
+    const locationOptions = locations.map(location => {
       if (location.validated === false) {
         return
       };
       return {
-      value: location._id,
+      value: parseInt(location._id),
       label: location.name,
       }
     })  
     locationOptions.push({
       value: 0,
       label: <span style={{opacity: '.5'}}>new location</span>})
-    setLocations(locationOptions);
+    setLocations(locations);
+    setLocationOptions(locationOptions);
   };
 
   const fetchtags = async () => {
@@ -71,7 +75,7 @@ export const EventForm = (props) => {
         return
       };
       return {
-        value: tag._id,
+        value: parseInt(tag._id),
         label: nameParser(tag.name, userStore.language.toLowerCase()),
       }
     })  
@@ -82,7 +86,6 @@ export const EventForm = (props) => {
     fetchEventtypes();
     fetchLocations();
     fetchtags();
-    console.log("data", data);
   }, []);
 
   const onCancel = () => {
@@ -90,28 +93,23 @@ export const EventForm = (props) => {
     setShowEventForm(false);
   };
 
-  const onFinish = async (values) => {
+  const onFinish = async () => {
     setLoading(true);
     const dataObject = await form.validateFields();
     dataObject.private = dataObject.isPrivate;
+    dataObject.fromDate = dataObject.eventDate[0].valueOf();
+    dataObject.untilDate = dataObject.eventDate[1].valueOf();
+    if (dataObject.location) {
+      const selectedLocation = locations.filter(loc => parseInt(loc._id) === dataObject.location)[0];
+      dataObject.locationName = selectedLocation.name;
+      dataObject.locationAddress = selectedLocation.address;
+      dataObject.locationCoordinates = selectedLocation.coordinates;
+    }
     delete dataObject.isPrivate;
-    console.log(dataObject);
+    delete dataObject.eventDate;
     try {
-      /* 
-      await addEvent( 
-        { 
-          isPartner: values.isPartner, 
-          eventtype:
-          location:
-          locationName:
-          locationAddress:
-          title:
-          description:
-          fromDate: values.eventDate[0],
-          untilDate: values.eventDate[1],
-          eventTags: values.tags
-        }
-      ); */
+      if ( isEdit ) { await updateEvent(isEdit, dataObject) }
+      else { await addEvent(dataObject) }
     } catch (e) {
       notification.error({
         message: `Error: ${e.toString()}`,
@@ -122,6 +120,7 @@ export const EventForm = (props) => {
     }
     setLoading(false);
     setShowEventForm(false);
+    reload();
   };
 
   /*
@@ -148,13 +147,13 @@ export const EventForm = (props) => {
           size="small"
           onFinish={onFinish}
           name="event-form"
-          initialValues={data}
+          initialValues={data && {eventDate: [dayjs(data.fromDate), dayjs(data.untilDate)], ...data}}
         >
         <div style={{ marginTop: 15 }}></div>
 
         <Row gutter={16}>
           <Col span={12 }>
-            <Form.Item name="eventtypes" >
+            <Form.Item name="eventtype" >
                 <Select
                   options={eventtypes}
                   placeholder="Event type"
@@ -164,7 +163,7 @@ export const EventForm = (props) => {
           <Col span={12}>          
             <Form.Item name="location" >
                 <Select
-                  options={locations}
+                  options={locationOptions}
                   onChange={(value) => setIsNewLocation(value === 0)} 
                   placeholder="Event location"
                 />
@@ -202,7 +201,7 @@ export const EventForm = (props) => {
           placeholder={['Event start-date', 'Event end-date']}
           />
       </Form.Item>  
-      <Form.Item name="tags">
+      <Form.Item name="eventTags">
         <Select
           mode="multiple"
           allowClear

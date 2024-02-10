@@ -2,17 +2,25 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Form, Table, Typography, Popconfirm, Tag, Button, Tooltip } from 'antd';
 import { EditOutlined, DeleteOutlined, CopyOutlined } from '@ant-design/icons';
 import * as dayjs from 'dayjs';
+import * as utc from 'dayjs/plugin/utc';
 
 import { AdminCustomSpinner } from '../AdminCustomSpinner/AdminCustomSpinner';
 import { getAllEvents } from './getAllEvents';
 import { deleteEvent } from './deleteEvent';
-import { updateEvent } from './updateEvent';
 import { EventForm } from '../../../components/EventForm/EventForm';
+import { getEventtypes } from '../AdminData/AdminEventtypes/getEventtypes';
+import { getTags } from '../AdminData/AdminTags/getTags';
+import { getUserNames } from './getUserNames';
+import { nameParser } from "../../../helpers/nameParser";
+import { userStore } from '../../../store/userStore/userStore';
 
 export const AdminEvents = () => {
   const [form] = Form.useForm();
   const [events, setEvents] = useState([]);
-  const [isEdit, setIsEdit] = useState([]);
+  const [isEdit, setIsEdit] = useState(null);  
+  const [tags, setTags] = useState(null);
+  const [eventtypes, setEventtypes] = useState(null);
+  const [userNames, setUserNames] = useState(null);
   const [showEventForm, setShowEventForm] = useState(false);
   const copyEditData = useRef(null);
 
@@ -27,7 +35,25 @@ export const AdminEvents = () => {
     setEvents(events);
   };
 
+  const fetchEventtypes = async () => {
+    const eventtypes = await getEventtypes();
+    setEventtypes(eventtypes);
+  };
+
+  const fetchTags = async () => {
+    const tags = await getTags();
+    setTags(tags);
+  };
+
+  const fetchUserNames = async () => {
+    const userNames = await getUserNames();
+    setUserNames(userNames);
+  };
+
   useEffect(() => {
+    fetchEventtypes();
+    fetchTags();
+    fetchUserNames();
     fetchEvents();
   }, []);
 
@@ -38,19 +64,19 @@ export const AdminEvents = () => {
 
   const duplicateClickHandler = (record) => {
     copyEditData.current = record;
-    setIsEdit(false);     
+    setIsEdit(null);    
     setShowEventForm(true);
   } 
 
   const editClickHandler = (record) => {
     copyEditData.current = record;
-    setIsEdit(true);    
+    setIsEdit(record._id);    
     setShowEventForm(true);
   };
 
   const openNewEventFormHandler = () => {
     copyEditData.current = null;
-    setIsEdit(false);     
+    setIsEdit(null);     
     setShowEventForm(true);
   }
   
@@ -61,21 +87,18 @@ export const AdminEvents = () => {
       key: 'id',    
       align: 'center',
       width: '50px',
-      fixed: 'left',
       sorter: (a, b) => a._id - b._id,
     },
     {
       title: 'Title',
       dataIndex: 'title',
       key: 'title',  
-      fixed: 'left',
     },
     {
       title: 'From',
       dataIndex: 'fromDate',
       key: 'fromDate',   
-      width: '70px',
-      fixed: 'left',   
+      width: '60px',
       align: 'center',
       render: (_, { fromDate }) => (
         dayjs(fromDate).format('DD-MM HH:mm') 
@@ -85,7 +108,7 @@ export const AdminEvents = () => {
       title: 'Until',
       dataIndex: 'untilDate',
       key: 'untilDate',  
-      width: '70px',   
+      width: '60px',   
       align: 'center',
       render: (_, { untilDate }) => (
         dayjs(untilDate).format('DD-MM HH:mm') 
@@ -95,6 +118,12 @@ export const AdminEvents = () => {
       title: 'Event type',
       dataIndex: 'eventtype',
       key: 'eventtype',  
+      render: (_, { eventtype }) => (
+        nameParser(
+          eventtypes.filter(e => parseInt(e._id) === eventtype)[0].name, 
+          userStore.language.toLowerCase()
+        )
+      ),
     },
     {
       title: 'Description',
@@ -103,9 +132,10 @@ export const AdminEvents = () => {
       width: '200px',   
     },
     {
-      title: 'Location Id',
+      title: 'Loc Id',
       dataIndex: 'location',
-      key: 'location',   
+      key: 'location', 
+      align: 'center',  
     }, 
     {
       title: 'Location Name',
@@ -116,6 +146,7 @@ export const AdminEvents = () => {
       title: 'Location Address',
       dataIndex: 'locationAddress',
       key: 'locationAddress',  
+      width: '150px',
     }, 
     {
       title: 'Location Coordinates',
@@ -133,7 +164,8 @@ export const AdminEvents = () => {
           {admin.map((admin) => {
             return (
               <Tag key={admin} bordered={false}>
-                {admin}
+                { // TODO link to user profile
+                  userNames.filter(user => parseInt(user._id) === admin)[0]?.userName }
               </Tag>
             );
           })}
@@ -148,8 +180,12 @@ export const AdminEvents = () => {
         <>
           {eventTags.map((tag) => {
             return (
-              <Tag key={tag} bordered={false}>
-                {tag}
+              <Tag key={tag} bordered={false}>  
+                {nameParser(
+                  tags.filter(t => parseInt(t._id) === tag)[0]?.name,
+                  userStore.language.toLowerCase()
+                 )
+                }
               </Tag>
             );
           })}

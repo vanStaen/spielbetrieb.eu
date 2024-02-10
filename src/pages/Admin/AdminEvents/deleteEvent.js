@@ -3,7 +3,7 @@ export async function deleteEvent(id) {
 
   const graphqlQuery = {
     query: `mutation ( $id: ID! ) {
-                deleteLocation ( locationId: $id ) 
+                deleteEvent ( eventId: $id ) 
                 }`,
     variables: {
       id
@@ -26,5 +26,5 @@ export async function deleteEvent(id) {
   const data = await response.json();
 
   if (data.errors) { return data.errors[0] };
-  return data.deleteLocation;
+  return data.deleteEvent;
 }
