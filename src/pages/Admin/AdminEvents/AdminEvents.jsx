@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Form, Table, Typography, Popconfirm, Tag, Button, Tooltip } from 'antd';
-import { EditOutlined, CloseCircleOutlined, CheckCircleOutlined, DeleteOutlined, CopyOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, CopyOutlined } from '@ant-design/icons';
+import * as dayjs from 'dayjs';
 
-import { EditableCell } from '../EditableCell';
 import { AdminCustomSpinner } from '../AdminCustomSpinner/AdminCustomSpinner';
 import { getAllEvents } from './getAllEvents';
 import { deleteEvent } from './deleteEvent';
@@ -12,9 +12,9 @@ import { EventForm } from '../../../components/EventForm/EventForm';
 export const AdminEvents = () => {
   const [form] = Form.useForm();
   const [events, setEvents] = useState([]);
-  const [editingId, setEditingId] = useState('');
   const [showEventForm, setShowEventForm] = useState(false);
-  const copyData = useRef(null);
+  const copyEditData = useRef(null);
+  const isEdit = useRef(false);
 
   const fetchEvents = async () => {
     const results = await getAllEvents();
@@ -31,59 +31,27 @@ export const AdminEvents = () => {
     fetchEvents();
   }, []);
 
-  const isEditing = (record) => record._id === editingId;
-
-  const edit = (record) => {
-    form.setFieldsValue({
-      name: '',
-      description: '',
-      location: '',
-      admin: [],
-      pictures: [],
-      locationName: '',
-      locationAddress: '',
-      locationCoordinates: '',
-      fromDate: null,
-      toDate: null,
-      coordinates: '',
-      isPrivate: false,
-      forwardable: false,
-      allowAnonymous: false,
-      ...record,
-    });
-    setEditingId(record._id);
-  };
-
-  const cancel = async () => {
-    setEditingId('');
-  };
-
   const deleteRow = async (id) => {
     await deleteEvent(id);
     await fetchEvents();
   };
 
-  const save = async (id) => {
-    try {
-      const dataObject = await form.validateFields();
-      dataObject.private = dataObject.isPrivate;
-      delete dataObject.isPrivate;
-      await updateEvent(id, dataObject);
-      await fetchEvents();
-      setEditingId('');
-    } catch (e) {
-      console.log('Error while saving:', e);
-    }
-  };
-
   const duplicateClickHandler = (record) => {
-    copyData.current = record;
-    setShowEventForm(false);
+    copyEditData.current = record;
+    isEdit.current = false;    
+    setShowEventForm(true);
   } 
 
+  const editClickHandler = (record) => {
+    copyEditData.current = record;
+    isEdit.current = true;    
+    setShowEventForm(true);
+  };
+
   const openNewEventFormHandler = () => {
-    copyData.current = null;
-    setShowEventForm(!showEventForm);
+    copyEditData.current = null;
+    isEdit.current = false;    
+    setShowEventForm(true);
   }
   
   const columns = [
@@ -93,18 +61,43 @@ export const AdminEvents = () => {
       key: 'id',    
       align: 'center',
       width: '50px',
+      fixed: 'left',
+    },
+    {
+      title: 'Event type',
+      dataIndex: 'eventtype',
+      key: 'eventtype',  
+      fixed: 'left',
     },
     {
       title: 'Title',
       dataIndex: 'title',
       key: 'title',  
-      editable: true, 
+      fixed: 'left',
     },
+    {
+      title: 'From',
+      dataIndex: 'fromDate',
+      key: 'fromDate',   
+      width: '100px',
+      fixed: 'left',
+      render: (_, { fromDate }) => (
+        dayjs(fromDate).format('DD-MM HH:mm') 
+      ),
+    }, 
+    {
+      title: 'Until',
+      dataIndex: 'untilDate',
+      key: 'untilDate',  
+      width: '100px',
+      render: (_, { untilDate }) => (
+        dayjs(untilDate).format('DD-MM HH:mm') 
+      ),
+    }, 
     {
       title: 'Description',
       dataIndex: 'description',
       key: 'description',  
-      editable: true, 
     },
     {
       title: 'Location Id',
@@ -115,31 +108,17 @@ export const AdminEvents = () => {
       title: 'Location Name',
       dataIndex: 'locationName',
       key: 'locationName', 
-      editable: true,   
     }, 
     {
       title: 'Location Address',
       dataIndex: 'locationAddress',
-      key: 'locationAddress',   
-      editable: true, 
+      key: 'locationAddress',  
     }, 
     {
       title: 'Location Coordinates',
       dataIndex: 'locationCoordinates',
-      key: 'locationCoordinates',   
-      editable: true, 
-    }, 
-    {
-      title: 'From',
-      dataIndex: 'fromDate',
-      key: 'fromDate',   
-      editable: true, 
-    }, 
-    {
-      title: 'Until',
-      dataIndex: 'toDate',
-      key: 'toDate',   
-      editable: true, 
+      key: 'locationCoordinates',  
+      width: '150px',
     }, 
     {
       title: 'Admin Id',
@@ -159,13 +138,28 @@ export const AdminEvents = () => {
       ),
     },
     {
+      title: 'Event tags',
+      dataIndex: 'eventTags',
+      key: 'eventTags',
+      render: (_, { eventTags }) => (
+        <>
+          {eventTags.map((tag) => {
+            return (
+              <Tag key={tag} bordered={false}>
+                {tag}
+              </Tag>
+            );
+          })}
+        </>
+      ),
+    },
+    {
       title: 'Private',
       dataIndex: 'isPrivate',
       key: 'isPrivate',      
       align: 'center',
       width: '80px',
       render: (_, { isPrivate }) => (isPrivate ? '✅' : '✖️'),
-      editable: true,
     },
     {
       title: 'Forwardable',
@@ -174,7 +168,6 @@ export const AdminEvents = () => {
       align: 'center',
       width: '80px',
       render: (_, { forwardable }) => (forwardable ? '✅' : '✖️'),
-      editable: true,
     },
     {
       title: 'Allow Anonymous',
@@ -183,72 +176,39 @@ export const AdminEvents = () => {
       align: 'center',
       width: '80px',
       render: (_, { allowAnonymous }) => (allowAnonymous ? '✅' : '✖️'),
-      editable: true,
     },
     {
       title: 'Draft',
-      dataIndex: 'draft',
-      key: 'draft',      
+      dataIndex: 'isDraft',
+      key: 'isDraft',      
       align: 'center',
       width: '80px',
-      render: (_, { draft }) => (draft ? '✅' : '✖️'),
-      editable: true,
+      render: (_, { isDraft }) => (isDraft ? '✅' : '✖️'),
     },
     {
       title: <span style={{opacity: ".2"}}>Edit</span>,
       dataIndex: 'edit',
-      width: '100px',    
+      width: '110px',    
       align: 'center',
       render: (_, record) => {
-        const editable = isEditing(record);
-        return editable ? (
+        return (
           <span>
-            <Typography.Link onClick={() => save(record._id)} style={{ marginRight: 8 }}>
-              <CheckCircleOutlined className='admin__saveLogo' />
-            </Typography.Link>
-            {" "}
-            <Typography.Link onClick={cancel} style={{ marginRight: 8 }}>
-              <CloseCircleOutlined className='admin__cancelLogo' />           
-            </Typography.Link>
-          </span>
-        ) : (
-          <span>
-            <Typography.Link disabled={editingId !== ''} style={{ marginRight: 8 }} onClick={() => duplicateClickHandler(record)}>
-              <Tooltip title='Duplicate this event'>
+            <Typography.Link style={{ marginRight: 8 }} onClick={() => duplicateClickHandler(record)}>
+              <Tooltip title='Copy this event'>
                   <CopyOutlined  className='admin__editLogo' />
               </Tooltip>
             </Typography.Link>
-            <Typography.Link disabled={editingId !== ''} style={{ marginRight: 8 }} onClick={() => edit(record)}>
+            <Typography.Link style={{ marginRight: 8 }} onClick={() => editClickHandler(record)}>
               <EditOutlined className='admin__editLogo' />
             </Typography.Link>
             <Popconfirm title="Sure to delete?" style={{ marginRight: 8 }} onConfirm={() => deleteRow(record._id)}>
               <DeleteOutlined className='admin__editLogo' />
             </Popconfirm>
           </span>
-        );
+        )
       },
     }
   ];
-
-  const mergedColumns = columns.map((col) => {
-    if (!col.editable) {
-      return col;
-    }
-    return {
-      ...col,
-      onCell: (record) => ({
-        record,
-        inputType: col.dataIndex === 'isPrivate' 
-                || col.dataIndex === 'forwardable'
-                || col.dataIndex === 'allowAnonymous' 
-                || col.dataIndex === 'isDraft' ? 'boolean' : col.dataIndex === 'links' ? 'stringObject' : 'text',
-        dataIndex: col.dataIndex,
-        title: col.title,
-        editing: isEditing(record),
-      }),
-    };
-  });
-
 
   return (
     <div>
@@ -260,19 +220,23 @@ export const AdminEvents = () => {
           )
         : (
           <>
-           {showEventForm && <EventForm showEventForm={showEventForm} setShowEventForm={setShowEventForm} data={copyData.current}/>}
+           {showEventForm && <EventForm 
+                                showEventForm={showEventForm} 
+                                setShowEventForm={setShowEventForm} 
+                                data={copyEditData.current}
+                                reload={fetchEvents}
+                                isEdit={isEdit}
+                              />}
             <Form form={form} component={false}>
               <Table
-                components={{
-                  body: {
-                    cell: EditableCell,
-                  },
-                }}
                 className="admin__table"
                 dataSource={events}
-                columns={mergedColumns}
+                columns={columns}
                 pagination={false}
                 size="small"
+                scroll={{
+                  x: 1600,
+                }}
               />
             </Form>
             <div className='admin__tableFooter'>

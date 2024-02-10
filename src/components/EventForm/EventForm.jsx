@@ -22,7 +22,7 @@ import { userStore } from "../../store/userStore/userStore";
 import "./EventForm.less";
 
 export const EventForm = (props) => {
-  const { showEventForm, setShowEventForm } = props;
+  const { showEventForm, setShowEventForm, data, reload, isEdit } = props;
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [eventtypes, setEventtypes] = useState(null);
@@ -82,6 +82,7 @@ export const EventForm = (props) => {
     fetchEventtypes();
     fetchLocations();
     fetchtags();
+    console.log("data", data);
   }, []);
 
   const onCancel = () => {
@@ -91,9 +92,13 @@ export const EventForm = (props) => {
 
   const onFinish = async (values) => {
     setLoading(true);
-    console.log(values);
+    const dataObject = await form.validateFields();
+    dataObject.private = dataObject.isPrivate;
+    delete dataObject.isPrivate;
+    console.log(dataObject);
     try {
-      /* await addEvent( 
+      /* 
+      await addEvent( 
         { 
           isPartner: values.isPartner, 
           eventtype:
@@ -120,9 +125,9 @@ export const EventForm = (props) => {
   };
 
   /*
+    TODO: 
     pictures: [String]
     locationCoordinates: String
-    eventTags: [Int]
     attendees: [Int]
     invited: [Int]
     admin: [Int]
@@ -132,7 +137,7 @@ export const EventForm = (props) => {
       <Modal
         open={showEventForm}
         centered
-        title='Create a new event'
+        title={isEdit ? '🛠️ Edit your event' : '🎉 Create a new event'}
         onOk={onFinish}
         onCancel={onCancel}
         footer={null}
@@ -143,6 +148,7 @@ export const EventForm = (props) => {
           size="small"
           onFinish={onFinish}
           name="event-form"
+          initialValues={data}
         >
         <div style={{ marginTop: 15 }}></div>
 
@@ -221,7 +227,7 @@ export const EventForm = (props) => {
         <Col span={7}>
           <Form.Item
               label={<div className="eventForm__whiteText">Private?</div>}
-              name="private"
+              name="isPrivate"
             >
               <Switch 
                 checkedChildren='Yes'

@@ -39,11 +39,14 @@ export const AdminUsers = () => {
       key: 'id',    
       align: 'center',
       width: '50px',
+      fixed: 'left',
     },
     {
       title: 'Username',
       dataIndex: 'userName',
       key: 'userName',
+      fixed: 'left',
+      width: '120px',
       render: (_, { userName, isAdmin, adminRoles }) => isAdmin
         ? <>
         <Tooltip
@@ -71,24 +74,26 @@ export const AdminUsers = () => {
     {
       title: 'First name',
       dataIndex: 'firstName',
-      key: 'firstName'
+      key: 'firstName',
+      width: '120px',
     },
     {
       title: 'Last name',
       dataIndex: 'lastName',
-      key: 'lastName'
+      key: 'lastName',
+      width: '120px',
     },
     {
       title: 'Email',
       dataIndex: 'email',
-      key: 'email'
+      key: 'email',
     },
     {
       title: 'Language',
       dataIndex: 'language',
       key: 'language',
       align: 'center',
-      width: '70px',
+      width: '100px',
       render: (_, { language }) => language.toUpperCase()
     },
     {
@@ -147,7 +152,7 @@ export const AdminUsers = () => {
       dataIndex: 'suspended',
       key: 'suspended', 
       align: 'center',
-      width: '70px',
+      width: '100px',
       render: (_, { suspended }) => (suspended ? '🚫' : '✖️')
     },
     {
@@ -212,6 +217,9 @@ export const AdminUsers = () => {
               columns={columns}
               pagination={false} 
               size="small"
+              scroll={{
+                x: 1000,
+              }}
             />
           </>
           )}
