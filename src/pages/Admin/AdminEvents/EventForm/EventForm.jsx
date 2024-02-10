@@ -14,14 +14,14 @@ import {
 } from "antd";
 
 import { addEvent } from './addEvent';
-import { nameParser } from '../../helpers/nameParser';
-import { getEventtypes } from '../../pages/Admin/AdminData/AdminEventtypes/getEventtypes';
-import { getLocations } from '../../pages/Admin/AdminData/AdminLocations/getLocations';
-import { getTags } from '../../pages/Admin/AdminData/AdminTags/getTags';
-import { userStore } from "../../store/userStore/userStore";
+import { nameParser } from '../../../../helpers/nameParser';
+import { getEventtypes } from '../../AdminData/AdminEventtypes/getEventtypes';
+import { getLocations } from '../../AdminData/AdminLocations/getLocations';
+import { getTags } from '../../AdminData/AdminTags/getTags';
+import { userStore } from "../../../../store/userStore/userStore";
 
 import "./EventForm.less";
-import { updateEvent } from "../../pages/Admin/AdminEvents/updateEvent";
+import { updateEvent } from "../updateEvent";
 
 export const EventForm = (props) => {
   const { showEventForm, setShowEventForm, data, reload, isEdit } = props;
@@ -153,7 +153,15 @@ export const EventForm = (props) => {
 
         <Row gutter={16}>
           <Col span={12 }>
-            <Form.Item name="eventtype" >
+            <Form.Item 
+              name="eventtype" 
+              rules={[
+                {
+                  required: true,
+                  message: 'Please select an event type!',
+                },
+              ]}
+            >
                 <Select
                   options={eventtypes}
                   placeholder="Event type"
@@ -161,7 +169,15 @@ export const EventForm = (props) => {
               </Form.Item>
           </Col>
           <Col span={12}>          
-            <Form.Item name="location" >
+            <Form.Item 
+              name="location"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please select an event location!',
+                },
+              ]}
+            >
                 <Select
                   options={locationOptions}
                   onChange={(value) => setIsNewLocation(value === 0)} 
@@ -174,7 +190,7 @@ export const EventForm = (props) => {
       {isNewLocation && 
       <>
         <Form.Item name="locationName">
-            <Input placeholder="Name of the Loxcation"/>
+            <Input placeholder="Name of the Location"/>
         </Form.Item>      
         <Form.Item name="locationAddress" >
             <TextArea 
@@ -185,15 +201,23 @@ export const EventForm = (props) => {
       </>    
       }     
       <Form.Item name="title" >
-          <Input placeholder="Location's title"/>
+          <Input placeholder="Name of the event"/>
       </Form.Item>      
       <Form.Item name="description">
           <TextArea 
             autoSize={{ minRows: 2, maxRows: 6 }}
-            placeholder={"Location's description"}
+            placeholder={"Description of the event"}
           />
       </Form.Item>  
-      <Form.Item name="eventDate">
+      <Form.Item 
+        name="eventDate"        
+        rules={[
+          {
+            required: true,
+            message: 'Please input the event date!',
+          },
+        ]}
+      >
         <RangePicker
           showTime={{ format: 'HH:mm' }}
           format="DD-MM-YYYY HH:mm"

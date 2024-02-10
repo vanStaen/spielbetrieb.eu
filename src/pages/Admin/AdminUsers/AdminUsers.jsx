@@ -57,7 +57,7 @@ export const AdminUsers = () => {
           title={
           <>🔥&nbsp;
             <span style={{ color: '#666' }}>Admin roles:&nbsp;&nbsp;</span>
-            {adminRoles.map((role) => {
+            {adminRoles?.map((role) => {
               return (
                 <Tag
                   color="#333"
@@ -135,7 +135,7 @@ export const AdminUsers = () => {
           title={
           <>💼&nbsp;
             <span style={{ color: '#666' }}>Partner roles:&nbsp;&nbsp;</span>
-            {record.partnerRoles.map((role) => {
+            {record.partnerRoles?.map((role) => {
               return (
                 <Tag
                   color="#333"

@@ -7,7 +7,7 @@ import * as utc from 'dayjs/plugin/utc';
 import { AdminCustomSpinner } from '../AdminCustomSpinner/AdminCustomSpinner';
 import { getAllEvents } from './getAllEvents';
 import { deleteEvent } from './deleteEvent';
-import { EventForm } from '../../../components/EventForm/EventForm';
+import { EventForm } from './EventForm/EventForm';
 import { getEventtypes } from '../AdminData/AdminEventtypes/getEventtypes';
 import { getTags } from '../AdminData/AdminTags/getTags';
 import { getUserNames } from './getUserNames';
@@ -120,7 +120,7 @@ export const AdminEvents = () => {
       key: 'eventtype',  
       render: (_, { eventtype }) => (
         nameParser(
-          eventtypes.filter(e => parseInt(e._id) === eventtype)[0].name, 
+          eventtypes?.filter(e => parseInt(e._id) === eventtype)[0].name, 
           userStore.language.toLowerCase()
         )
       ),
@@ -165,7 +165,7 @@ export const AdminEvents = () => {
             return (
               <Tag key={admin} bordered={false}>
                 { // TODO link to user profile
-                  userNames.filter(user => parseInt(user._id) === admin)[0]?.userName }
+                  userNames?.filter(user => parseInt(user._id) === admin)[0]?.userName }
               </Tag>
             );
           })}
@@ -182,7 +182,7 @@ export const AdminEvents = () => {
             return (
               <Tag key={tag} bordered={false}>  
                 {nameParser(
-                  tags.filter(t => parseInt(t._id) === tag)[0]?.name,
+                  tags?.filter(t => parseInt(t._id) === tag)[0]?.name,
                   userStore.language.toLowerCase()
                  )
                 }
