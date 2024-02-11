@@ -10,9 +10,9 @@ export const AdminCustomSpinner = (props) => {
       <img
         src={SpielbetriebLogo}
         id="spielbetriebLogo"
-        className='customSpinner__logo size theme__logoInvertColor'
+        className='adminSpinner__logo size theme__logoInvertColor'
       />
-      {props.text && <div className='customSpinner__text darkColorTheme__Text'>
+      {props.text && <div className='adminSpinner__text darkColorTheme__Text'>
         {props.text}</div>}
     </>
   );

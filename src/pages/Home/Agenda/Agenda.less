@@ -1,14 +1,24 @@
 .agenda__container {
-    width: 100%;    
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;  
+    max-width: 1200px;  
+    text-align: center;
     .agenda__eventContainer {
-        width: 100%;    
-        max-width: 800px;
+        width: calc(100% - 40px - 40px); // - padding - margin
+        margin: 20px;
+        padding: 20px;
+        border-radius: 12px;  
+        border: 1px solid;
+        font-size: 16px;
+        letter-spacing: 3px;
     }
     .color1 {
-        background-color: DarkRed;
+        background-color: #212F3C;
+        border-color: rgba( 255, 255, 255, .5);
+        color: white;
+    }
+    .color2 {
+        background-color: rgba( 233, 186, 169, 1);;
+        border-color: rgba( 255, 255, 255, .5);
         color: white;
     }
 }

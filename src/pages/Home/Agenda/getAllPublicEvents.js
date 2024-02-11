@@ -45,6 +45,6 @@ export async function getAllPublicEvents() {
     const data = await response.json();
   
     if (data.errors) { return data.errors[0] };
-    return data.data.getAllEvents;
+    return data.data.getAllPublicEvents;
   }
   
