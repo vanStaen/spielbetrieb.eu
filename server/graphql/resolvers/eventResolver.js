@@ -31,6 +31,11 @@ exports.eventResolver = {
     });
   },
 
+    //getAllPublicEvents
+    async getAllPublicEvents(args, req) {
+      return await Event.findAll();
+    },
+  
   //addEvent(eventInput: EventInputData!): Event!
   async addEvent(args, req) {
     if (!req.isAuth) {
