@@ -28,6 +28,7 @@ exports.eventtypeResolver = {
     try {
       const eventtype = new Eventtype({
         name: args.eventtypeInput.name,
+        color: args.eventtypeInput.color,
         validated: args.eventtypeInput.validated,
       });
       return await eventtype.save();
@@ -50,6 +51,7 @@ exports.eventtypeResolver = {
     const updateFields = [];
     const updatableFields = [
       "name",
+      "color",
       "validated",
     ];
     updatableFields.forEach((field) => {

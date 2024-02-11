@@ -6,6 +6,7 @@ export async function getEventtypes() {
               getEventtypes { 
                 _id,
                 name,
+                color,
                 validated,
               }
             }

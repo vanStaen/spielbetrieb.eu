@@ -11,6 +11,10 @@ const Eventtype = sequelize.define("eventtype", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  color: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+  },
   validated: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,

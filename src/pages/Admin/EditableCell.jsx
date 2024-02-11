@@ -1,5 +1,5 @@
 import React from 'react';
-import { DatePicker, Form, Input, Switch, Select } from 'antd';
+import { DatePicker, Form, Input, Switch, Select, InputNumber } from 'antd';
 
 export const EditableCell = ({
     editing,
@@ -18,6 +18,8 @@ export const EditableCell = ({
       <Select size='small' mode="tags"/> : 
       inputType === 'dateRange' ? 
       <DatePicker showTime={{ format: 'HH:mm' }} size='small' /> :
+      inputType === 'number' ? 
+      <InputNumber size='small'/>:
       <Input size='small'/>;
 
     return (

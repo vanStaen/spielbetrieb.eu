@@ -59,6 +59,7 @@ export const AdminEventtypes = () => {
       const dataObject = await form.validateFields();
       const dataObjectNew = {
         name: `{\"en\":\"${dataObject.name_en}\", \"de\":\"${dataObject.name_de}\"}`,
+        color: parseInt(dataObject.color),
         validated: dataObject.validated,
       }
       if (isNewRow) {
@@ -92,6 +93,20 @@ export const AdminEventtypes = () => {
       dataIndex: 'name_de',
       key: 'name_de',
       editable: true,
+    },
+    {
+      title: 'Color',
+      dataIndex: 'color',
+      key: 'color',      
+      align: 'center',
+      editable: true,
+      render: (_, { color }) => (
+        color === 1 ? <div style={{color: 'white', backgroundColor: '#477778'}}>1</div> :
+        color === 2 ? <div style={{color: 'white', backgroundColor: '#2F4F4F'}}>2</div> :
+        color === 3 ? <div style={{color: 'white', backgroundColor: '#2C3E50'}}>3</div> :
+        color === 4 ? <div style={{color: 'white', backgroundColor: '#C99A86'}}>4</div> :
+        color === 5 ? <div style={{color: 'white', backgroundColor: '#B1851A'}}>5</div> :
+        color === 6 ? <div style={{color: 'white', backgroundColor: '#922B21'}}>6</div> : 'none'),
     },
     {
       title: 'Validated',
@@ -142,7 +157,7 @@ export const AdminEventtypes = () => {
       ...col,
       onCell: (record) => ({
         record,
-        inputType: col.dataIndex === 'validated' ? 'boolean' : 'text',
+        inputType: col.dataIndex === 'validated' ? 'boolean' : col.dataIndex === 'color' ? 'number' : 'text',
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),

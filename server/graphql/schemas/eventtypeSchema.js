@@ -2,12 +2,14 @@ exports.Eventtype = `
 type Eventtype {
     _id: ID! 
     name: String!
+    color: Int!
     validated: Boolean
 }`;
 
 exports.EventtypeInputData = `
 input EventtypeInputData {
     name: String
+    color: Int
     validated: Boolean
 }`;
 
