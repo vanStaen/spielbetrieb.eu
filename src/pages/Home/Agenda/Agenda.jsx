@@ -28,7 +28,10 @@ export const Agenda = observer(() => {
         <div className='agenda__container'>
             <div className='agenda__eventContainer color1'>{events[0]?.title}</div>
             <div className='agenda__eventContainer color2'>{events[1]?.title}</div>
-            <div className='agenda__eventContainer color1'>{events[2 ]?.title}</div>
+            <div className='agenda__eventContainer color3'>{events[2 ]?.title}</div>
+            <div className='agenda__eventContainer color4'>{events[0]?.title}</div>
+            <div className='agenda__eventContainer color5'>{events[1]?.title}</div>
+            <div className='agenda__eventContainer color6'>{events[2 ]?.title}</div>
         </div>
         }
     </>)
