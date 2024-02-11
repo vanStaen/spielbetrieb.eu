@@ -33,7 +33,9 @@ exports.eventResolver = {
 
     //getAllPublicEvents
     async getAllPublicEvents(args, req) {
-      return await Event.findAll();
+      return await Event.findAll({
+        where: { private: false, isDraft: false }
+      });
     },
   
   //addEvent(eventInput: EventInputData!): Event!
