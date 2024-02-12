@@ -26,7 +26,7 @@ export const Home = observer((props) => {
   const renderSwitch = () => {
     switch (page) {
       case 'home':
-        return (<>
+        return (<div className='home__homePlaceholder'>
         <div
             className="home__logoAndText invertColorTheme"
             id="spielbetrieb"
@@ -52,7 +52,7 @@ export const Home = observer((props) => {
               </div>
             </div>
           </div>
-        </>);
+        </div>);
       case 'agenda':
         return <Agenda />;
       case 'basket':

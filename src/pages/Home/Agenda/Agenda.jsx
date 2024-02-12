@@ -53,7 +53,9 @@ export const Agenda = observer(() => {
 
     return (<>
         { isLoading ?
-            <CustomSpinner text="Loading" />
+            <div className='agenda__spinnerContainer'>
+                <CustomSpinner text="Loading" />
+            </div>
             :
         <div className='agenda__container'>
             {eventsFormatted}
