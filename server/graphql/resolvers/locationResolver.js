@@ -4,31 +4,13 @@ const { User } = require("../../models/User");
 exports.locationResolver = {
   // getLocation(locationId: ID!): Location
   async getLocation(args, req) {
-    if (!req.isAuth) {
-      throw new Error("Unauthorized!");
-    }
-    const foundUser = await User.findOne({
-      where: { _id: req.userId }
-    });
-    if (!foundUser.isAdmin) {
-      throw new Error('Unauthorized!');
-    }
     return await Location.findOne({
       where: { _id: args.locationId },
     });
   },
 
   // getLocations: [Location]
-  async getLocations(args, req) {
-    if (!req.isAuth) {
-      throw new Error("Unauthorized!");
-    }
-    const foundUser = await User.findOne({
-      where: { _id: req.userId }
-    });
-    if (!foundUser.isAdmin) {
-      throw new Error('Unauthorized!');
-    }
+  async getLocations(args, req) {   
     return await Location.findAll({
       order: [
         ['name', 'ASC'],

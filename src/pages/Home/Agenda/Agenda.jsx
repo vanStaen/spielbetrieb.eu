@@ -40,7 +40,7 @@ export const Agenda = observer(() => {
     }, []);
 
     const eventsFormatted = events?.map(event => {
-        const eventColor =  eventtypes.filter(et => parseInt(et._id) === event.eventtype)[0].color;
+        const eventColor =  eventtypes.filter(et => parseInt(et._id) === event.eventtype)[0]?.color;
         const eventTags =  event.eventTags.map(tagId => {
             return nameParser(
                 tags.filter(tag => parseInt(tag._id) ===  tagId)[0]?.name,

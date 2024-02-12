@@ -4,9 +4,6 @@ const { User } = require("../../models/User");
 exports.eventtypeResolver = {
   //getEventtypes
   async getEventtypes(args, req) {
-    if (!req.isAuth) {
-      throw new Error("Unauthorized!");
-    }
     return await Eventtype.findAll({
       order: [
         ['_id', 'ASC'],

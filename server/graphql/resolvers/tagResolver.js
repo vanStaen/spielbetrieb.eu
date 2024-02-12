@@ -4,15 +4,6 @@ const { User } = require("../../models/User");
 exports.tagResolver = {
   // getTags: [Tag]
   async getTags(args, req) {
-    if (!req.isAuth) {
-      throw new Error("Unauthorized!");
-    }
-    const foundUser = await User.findOne({
-      where: { _id: req.userId }
-    });
-    if (!foundUser.isAdmin) {
-      throw new Error('Unauthorized!');
-    }
     return await Tag.findAll({
       order: [
         ['_id', 'ASC'],
