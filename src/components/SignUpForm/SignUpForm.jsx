@@ -10,7 +10,9 @@ import {
   Button,
   Checkbox,
   notification,
-  Tooltip
+  Tooltip,
+  Row, 
+  Col,
 } from 'antd';
 import {
   // eslint-disable-next-line no-unused-vars
@@ -179,112 +181,112 @@ export const SignUpForm = observer((props) => {
           </Tooltip>
         */}
 
-        <Form.Item
-          name="firstname"
-          style={{ display: 'inline-block', width: 'calc(50% - 12px)' }}
-          rules={[
-            {
-              required: true,
-              message: t('login.firstNameMissing')
-            }
-          ]}
-        >
-          <Input
-            placeholder={t('login.firstName')}
-          />
-        </Form.Item>
-        <span
-          style={{
-            display: 'inline-block',
-            width: '24px',
-            lineHeight: '32px',
-            textAlign: 'center'
-          }}
-        ></span>
-        <Form.Item
-          name="lastname"
-          style={{ display: 'inline-block', width: 'calc(50% - 12px)' }}
-          rules={[
-            {
-              required: true,
-              message: t('login.lastNameMissing')
-            }
-          ]}
-        >
-          <Input
-            placeholder={t('login.lastName')}
-          />
-        </Form.Item>
-
-        <Form.Item
-          name="birthday"
-          validateStatus={isValidBirthday}
-          style={{ display: 'inline-block' }}
-          rules={[
-            {
-              required: true,
-              message: t('login.birthdayMissing')
-            },
-            {
-              validator (_, value) {
-                if (value && isValidBirthday === 'error') {
-                  return Promise.reject(new Error(errorMsgBirthday));
-                }
-                return Promise.resolve();
-              }
-            }
-          ]}
-        >
-          <DatePicker
-            onChange={changeBirthdayHandler}
-            format={{
-              format: dateFormat,
-              type: 'mask',
-            }}
-            placeholder={t('login.birthday')}
-          
-          />
-        </Form.Item>
-        <span className="signup__spacerBirthday"
-        ></span>
-        <Tooltip
-          trigger={['hover']}
-          title={
-            errorMsgUsername
-              ? errorMsgUsername === t('login.usernameIsAlreadyTaken')
-                ? t('login.alreadyTaken')
-                : t('login.doNotUseSpaces')
-              : null
-          }
-          placement="left"
-        >
-          <Form.Item
-            name="username"
-            className="signup__username"
-            validateStatus={isValidUsername}
-            onChange={changeUserNameHandler}
-            hasFeedback
+        <Row gutter={16}>
+          <Col span={12}>
+            <Form.Item
+            name="firstname"
             rules={[
-              {
-                required: true,
-                message: t('login.howShouldWeCallYou')
-              },
-              {
-                validator (_, value) {
-                  if (value && isValidUsername === 'error') {
-                    return Promise.reject(new Error(errorMsgUsername));
-                  }
-                  return Promise.resolve();
+                {
+                  required: true,
+                  message: t('login.firstNameMissing')
                 }
+              ]}
+            >
+              <Input
+                placeholder={t('login.firstName')}
+              />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              name="lastname"
+              rules={[
+                {
+                  required: true,
+                  message: t('login.lastNameMissing')
+                }
+              ]}
+            >
+              <Input
+                placeholder={t('login.lastName')}
+              />
+            </Form.Item>
+          </Col>
+        </Row>        
+
+        <Row gutter={16}>
+          <Col span={12}>
+            <Form.Item
+              name="birthday"
+              validateStatus={isValidBirthday}
+              rules={[
+                {
+                  required: true,
+                  message: t('login.birthdayMissing')
+                },
+                {
+                  validator (_, value) {
+                    if (value && isValidBirthday === 'error') {
+                      return Promise.reject(new Error(errorMsgBirthday));
+                    }
+                    return Promise.resolve();
+                  }
+                }
+              ]}
+            >
+              <DatePicker
+                onChange={changeBirthdayHandler}
+                format={{
+                  format: dateFormat,
+                  type: 'mask',
+                }}
+                placeholder={t('login.birthday')}
+              
+              />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Tooltip
+              trigger={['hover']}
+              title={
+                errorMsgUsername
+                  ? errorMsgUsername === t('login.usernameIsAlreadyTaken')
+                    ? t('login.alreadyTaken')
+                    : t('login.doNotUseSpaces')
+                  : null
               }
-            ]}
-          >
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder={t('login.pickUsername')}
-            />
-          </Form.Item>
-        </Tooltip>
+              placement="left"
+            >
+              <Form.Item
+                name="username"
+                className="signup__username"
+                validateStatus={isValidUsername}
+                onChange={changeUserNameHandler}
+                hasFeedback
+                rules={[
+                  {
+                    required: true,
+                    message: t('login.howShouldWeCallYou')
+                  },
+                  {
+                    validator (_, value) {
+                      if (value && isValidUsername === 'error') {
+                        return Promise.reject(new Error(errorMsgUsername));
+                      }
+                      return Promise.resolve();
+                    }
+                  }
+                ]}
+              >
+                <Input
+                  prefix={<UserOutlined className="site-form-item-icon" />}
+                  placeholder={t('login.pickUsername')}
+                />
+              </Form.Item>
+            </Tooltip>
+          </Col>
+        </Row>
+        
         <Form.Item
           name="email"
           rules={[
