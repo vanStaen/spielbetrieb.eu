@@ -34,6 +34,32 @@
             text-transform: uppercase;
         }
     }
+    @media only screen and (max-width: 675px) {
+        .event__date {
+            width: 100%;
+            display: block;
+            border-bottom: 1px solid white;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            .event__dateYear {
+                display: none;         
+            }
+            .event__dateDayOfWeek{
+                display: inline-block;
+                font-weight: 300;
+                font-size: 33px;
+                margin-right: 10px;
+            }
+            .event__dateDay {
+                display: inline-block;
+                font-size: 40px;
+                margin-right: 10px;
+            }
+            .event__dateMonth {
+                display: inline-block;
+            }
+        }
+     }
     .event__main {
         display: inline-block;
         vertical-align: top;
@@ -50,6 +76,16 @@
                 font-style: italic;
                 font-weight: 300;
                 padding-right: 10px;
+            }
+            @media only screen and (max-width: 675px) {
+                .event__location {
+                    display: inline-block;
+                    font-size: 25px;
+                }
+                .event__title {
+                    display: inline-block;
+                    font-size: 25px;
+                }
             }
         }
         .event__tags {

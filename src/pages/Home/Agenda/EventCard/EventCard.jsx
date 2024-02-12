@@ -3,13 +3,12 @@ import { Tag } from 'antd';
 import { ClockCircleOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import * as dayjs from 'dayjs';
 
-import "./Event.less";
+import "./EventCard.less";
 import "./EventColors.less";
 
-export const Event = (props) => {
+export const EventCard = (props) => {
     const { event, color, tags } = props;
 
-    console.log('event', event);
     /* TODO:
         Mark event
         Action on Tag click

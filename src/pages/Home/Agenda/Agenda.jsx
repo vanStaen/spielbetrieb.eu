@@ -5,7 +5,7 @@ import { getAllPublicEvents } from './getAllPublicEvents';
 import { CustomSpinner } from '../../../components/CustomSpinner/CustomSpinnner';
 import { getEventtypes } from '../../Admin/AdminData/AdminEventtypes/getEventtypes';
 import { getTags } from '../../Admin/AdminData/AdminTags/getTags';
-import { Event } from "./Event/Event";
+import { EventCard } from "./EventCard/EventCard";
 import { nameParser } from '../../../helpers/nameParser';
 import { userStore } from '../../../store/userStore/userStore';
 
@@ -53,7 +53,7 @@ export const Agenda = observer(() => {
                 userStore.language?.toLowerCase()
                 )
             );
-        return <Event event={event} color={eventColor} tags={eventTags}/>
+        return <EventCard event={event} color={eventColor} tags={eventTags}/>
     })
 
     return (<>
