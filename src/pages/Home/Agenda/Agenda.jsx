@@ -8,6 +8,7 @@ import { getTags } from '../../Admin/AdminData/AdminTags/getTags';
 import { EventCard } from "./EventCard/EventCard";
 import { nameParser } from '../../../helpers/nameParser';
 import { pageStore } from '../../../store/pageStore/pageStore';
+import { EventFilters } from './EventFilters/EventFilters';
 
 import './Agenda.less';
 
@@ -63,6 +64,14 @@ export const Agenda = observer(() => {
             </div>
             :
         <div className='agenda__container'>
+            {/*
+            TODO:
+            search per text
+            browse months/weeks
+            filter per day
+            filter per tag
+            */}
+            <EventFilters />
             {eventsFormatted}
         </div>
         }

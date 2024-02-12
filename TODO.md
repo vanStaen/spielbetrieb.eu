@@ -25,7 +25,12 @@
 - [ ] Stop suspended user from login
 - [ ] Forbid "+" in an email address
 - [ ] Make column tables in admin dynamic (admin can select which one to display)
-- [ ] EventCard: Show max 5 Tags, and a "+x" tags to show all 
+- [ ] EVENTS PAGE
+  - [ ] Endpoint giving all publicEvents for the next 4 weeks 
+    - [ ] if no start date, from now
+    - [ ] or from a specific start date
+  - [ ] SearchEvent enpoint
+  - [ ] EventCard: Show max 5 Tags, and a "+x" tags to show all 
 
 ## Tech debt:
 
