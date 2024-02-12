@@ -44,7 +44,6 @@ export const Event = (props) => {
                 <div className='event__titleLocation'>
                     <div className='event__location'>
                         {event.locationName}{" "} 
-                        <span className="event__eventType">Rave{event.eventtype}</span>
                     </div>
                     <div className='event__title'>
                         {event.title}

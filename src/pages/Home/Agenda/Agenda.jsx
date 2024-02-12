@@ -23,7 +23,6 @@ export const Agenda = observer(() => {
         setIsLoading(false);
       };
 
-
     const fetchEventtypes = async () => {
         const eventtypes = await getEventtypes();
         setEventtypes(eventtypes);
@@ -48,6 +47,12 @@ export const Agenda = observer(() => {
                 userStore.language?.toLowerCase()
                 );     
         });        
+        eventTags.splice(0, 0, 
+            nameParser(
+                eventtypes.filter(et => parseInt(et._id) ===  event.eventtype)[0]?.name,
+                userStore.language?.toLowerCase()
+                )
+            );
         return <Event event={event} color={eventColor} tags={eventTags}/>
     })
 
