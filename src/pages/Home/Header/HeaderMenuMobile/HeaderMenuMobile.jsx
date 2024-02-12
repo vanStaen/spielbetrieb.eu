@@ -6,13 +6,14 @@ import { pageStore } from '../../../../store/pageStore/pageStore';
 
 import './HeaderMenuMobile.less';
 
-export const HeaderMenuMobile = observer(() => {
+export const HeaderMenuMobile = observer((props) => {
     const navigate = useNavigate();
+    const { selected } = props;
 
     useEffect(() => {
-          const elementBackground = document.getElementById('headerMenuMobile__silentBackground');
+          // const elementBackground = document.getElementById('headerMenuMobile__silentBackground');
           const elementContainer = document.getElementById('headerMenuMobile__container');
-          //elementBackground.style.backdropFilter = 'blur(7px) grayscale(25%)';
+          // elementBackground.style.backdropFilter = 'blur(7px) grayscale(25%)';
           elementContainer.style.opacity = 1;
       });
 
@@ -22,9 +23,9 @@ export const HeaderMenuMobile = observer(() => {
       };
 
     const handleHideMenu = () => {
-        const elementBackground = document.getElementById('headerMenuMobile__silentBackground');
+        // const elementBackground = document.getElementById('headerMenuMobile__silentBackground');
         const elementContainer = document.getElementById('headerMenuMobile__container');
-        elementBackground.style.backdropFilter = 'blur(0px) grayscale(0%)';
+        // elementBackground.style.backdropFilter = 'blur(0px) grayscale(0%)';
         elementContainer.style.opacity = 0;
         setTimeout(function () {
             pageStore.setShowMenuMobile(false);
@@ -44,7 +45,12 @@ export const HeaderMenuMobile = observer(() => {
                 id="headerMenuMobile__container"
                 >
                     
-                    <div className="menu__element" onClick={() => menuLinkClickHandle('agenda')}>Spielplan</div>
+                    <div 
+                        className={`menu__element ${selected === 'agenda' && 'menu__elementSelected'}`}
+                        onClick={() => menuLinkClickHandle('agenda')}
+                    >
+                        Spielplan
+                        </div>
                     <div className="menu__whiteline"></div>
                     <div className="menu__elementDisabled" >Shop</div>
                     <div className="menu__whiteline"></div>

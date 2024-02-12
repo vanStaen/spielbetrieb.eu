@@ -78,6 +78,8 @@ const App = observer(() => {
             />
             <Route path="emailverify/:token" element={<EmailVerified />} />
             <Route path="recoverpwd/:token" element={<NewPassword />} />
+            {/* <Route path="partner/:username" element={</>} /> */}
+            {/* <Route path="user/:username" element={</>} /> */}
             <Route path="admin/" element={<Admin />} />
             <Route path="login/" element={<LoginPage />} />
             <Route path="basket/" element={<Home page='basket' />} />

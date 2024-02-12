@@ -6,7 +6,7 @@
     - [x] SignUp Form
       - [ ] Small Ad for spielbetrieb? 
   - [x] Login Journey (incl. validation)
-- [ ] Translate all menu elements
+- [x] Translate all menu elements
 - [ ] Admin page (not for partner)
   - [ ] Newsletter management
     - [ ] Sort and filter
@@ -16,17 +16,16 @@
   - [ ] Add/Manage events
   - [ ] Add/Manage products
   - [ ] Add 'aktuell' articles
-  - [ ] Admin can update user to partner
-      - [ ] Create resolver 
+  - [x] Admin can update user to partner
+      - [x] Create resolver 
   - [ ] Management of the translations from the admin
-- [ ] Home page
-  - [ ] Link to spielplan / shop
-  - [ ] Spielbwetrieb Aktuell
 - [ ] Spielplan
 - [ ] Shop
 - [ ] Dark Magazin
 - [ ] Stop suspended user from login
+- [ ] Forbid "+" in an email address
 - [ ] Make column tables in admin dynamic (admin can select which one to display)
+- [ ] EventCard: Show max 5 Tags, and a "+x" tags to show all 
 
 ## Tech debt:
 
