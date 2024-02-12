@@ -140,6 +140,7 @@ export const EventForm = (props) => {
         onOk={onFinish}
         onCancel={onCancel}
         footer={null}
+        maskClosable={false}
       >
         <Form
           form={form}
@@ -222,6 +223,7 @@ export const EventForm = (props) => {
           showTime={{ format: 'HH:mm' }}
           format="DD-MM-YYYY HH:mm"
           style={{width: '100%'}}
+          needConfirm={false}
           placeholder={['Event start-date', 'Event end-date']}
           />
       </Form.Item>  
