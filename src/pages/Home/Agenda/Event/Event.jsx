@@ -1,8 +1,7 @@
 import React from "react";
 import { Tag } from 'antd';
-import { ClockCircleOutlined, EnvironmentOutlined, AimOutlined } from '@ant-design/icons';
+import { ClockCircleOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import * as dayjs from 'dayjs';
-
 
 import "./Event.less";
 import "./EventColors.less";
@@ -12,12 +11,9 @@ export const Event = (props) => {
 
     console.log('event', event);
     /* TODO:
-        Show date
-        Show day of week
-        Show time
-        Show location
         Mark event
-        Action on Tag clik
+        Action on Tag click
+        Get Ticket
     */
 
     const tagsFormatted = tags.map((tag) => {
@@ -45,8 +41,14 @@ export const Event = (props) => {
                 </div>
             </div>
             <div className='event__main'>
-                <div className='event__title'>
-                    {event.title}
+                <div className='event__titleLocation'>
+                    <div className='event__location'>
+                        {event.locationName}{" "} 
+                        <span className="event__eventType">Rave{event.eventtype}</span>
+                    </div>
+                    <div className='event__title'>
+                        {event.title}
+                    </div>
                 </div>
                 <div className='event__timelocation'>
                     <ClockCircleOutlined />{" "}
