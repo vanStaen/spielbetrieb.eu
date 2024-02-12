@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
+import { Link } from 'react-router-dom';
 import { MenuOutlined } from '@ant-design/icons';
 
 import { pageStore } from '../../../store/pageStore/pageStore';
@@ -16,11 +17,13 @@ export const Header = observer((props) => {
 
     return (
         <div className={`header__container ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Header' : 'darkColorTheme__Header'}`}>
-            <img
-              src={SpielbetriebLogo}
-              id="spielbetriebLogo"
-              className="header__logo invertColorTheme"
-            />
+            <Link to="/">
+              <img
+                src={SpielbetriebLogo}
+                id="spielbetriebLogo"
+                className="header__logo invertColorTheme"
+              />
+            </Link>
             <div 
               className='header__menuMobile invertColorTheme'
               onClick={() => {
