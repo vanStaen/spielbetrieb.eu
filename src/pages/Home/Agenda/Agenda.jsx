@@ -7,7 +7,7 @@ import { getEventtypes } from '../../Admin/AdminData/AdminEventtypes/getEventtyp
 import { getTags } from '../../Admin/AdminData/AdminTags/getTags';
 import { EventCard } from "./EventCard/EventCard";
 import { nameParser } from '../../../helpers/nameParser';
-import { userStore } from '../../../store/userStore/userStore';
+import { pageStore } from '../../../store/pageStore/pageStore';
 
 import './Agenda.less';
 
@@ -44,13 +44,13 @@ export const Agenda = observer(() => {
         const eventTags =  event.eventTags.map(tagId => {
             return nameParser(
                 tags.filter(tag => parseInt(tag._id) ===  tagId)[0]?.name,
-                userStore.language?.toLowerCase()
+                pageStore.selectedLanguage?.toLowerCase()
                 );     
         });        
         eventTags.splice(0, 0, 
             nameParser(
                 eventtypes.filter(et => parseInt(et._id) ===  event.eventtype)[0]?.name,
-                userStore.language?.toLowerCase()
+                pageStore.selectedLanguage?.toLowerCase()
                 )
             );
         return <EventCard event={event} color={eventColor} tags={eventTags}/>
