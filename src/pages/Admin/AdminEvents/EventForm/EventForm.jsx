@@ -288,7 +288,7 @@ export const EventForm = (props) => {
                 htmlType="submit"
                 loading={loading}
               >
-                Create Event
+                {isEdit ? "Update event" : "Create event"}
               </Button>
             </div>
           </Form.Item>

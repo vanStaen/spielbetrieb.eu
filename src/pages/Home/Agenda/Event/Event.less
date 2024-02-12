@@ -1,0 +1,69 @@
+.event__Container {
+    width: calc(100% - 40px - 40px); // - padding - margin
+    margin: 20px;
+    padding: 10px 20px;
+    border-radius: 3px;  
+    font-size: 16px;
+    letter-spacing: 3px;
+    box-shadow: rgba(255, 255, 255, 0.05) 0px 30px 60px -12px inset;
+    text-align: left;
+    cursor: pointer;
+    &:hover {
+        filter: contrast(1.3);
+    }
+    .event__date{
+        width: 80px;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: left;
+        font-size: 12px;
+        .event__dateYear {
+            opacity: .5;
+            font-weight: 300;
+        }
+        .event__dateDayOfWeek{
+            text-transform: uppercase;
+        }
+        .event__dateDay {
+            font-weight: 600;
+            font-size: 50px;
+            line-height: 40px;
+        }
+        .event__dateMonth {
+            text-transform: uppercase;
+        }
+    }
+    .event__main {
+        display: inline-block;
+        vertical-align: top;
+        padding: 3px 5px;
+        .event__title {
+            font-size: 27px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .event__tags {
+            width: 100%;
+            padding-top: 10px;
+            .ant-tag-borderless {
+                border-color: transparent;
+                background: rgba(255, 255, 255, .33);
+                &:hover {
+                    background: rgba(255, 255, 255, .75);
+                }
+            }            
+        }
+        .event__timelocation {
+            padding-top: 8px;
+            font-size: 12px;
+        }
+        .event__promoter {
+            padding-top: 10px;
+            font-size: 12px;
+            .event__organizedBy {
+                padding-right: 5px;
+                opacity: .5;
+            }
+        }
+    }
+}

@@ -24,6 +24,9 @@ export async function getAllPublicEvents() {
                   allowAnonymous,
                   createdAt,
                   updatedAt,
+                  user {
+                      userName,
+                  }
                 }
               }
             `

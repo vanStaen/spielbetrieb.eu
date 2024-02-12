@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Form, Table, Typography, Popconfirm, Tag, Button, Tooltip } from 'antd';
 import { EditOutlined, DeleteOutlined, CopyOutlined } from '@ant-design/icons';
 import * as dayjs from 'dayjs';
-import * as utc from 'dayjs/plugin/utc';
 
 import { AdminCustomSpinner } from '../AdminCustomSpinner/AdminCustomSpinner';
 import { getAllEvents } from './getAllEvents';
@@ -100,6 +99,7 @@ export const AdminEvents = () => {
       key: 'fromDate',   
       width: '60px',
       align: 'center',
+      sorter: (a, b) => a.fromDate - b.fromDate,
       render: (_, { fromDate }) => (
         dayjs(fromDate).format('DD-MM HH:mm') 
       ),
@@ -120,7 +120,7 @@ export const AdminEvents = () => {
       key: 'eventtype',  
       render: (_, { eventtype }) => (
         nameParser(
-          eventtypes?.filter(e => parseInt(e._id) === eventtype)[0].name, 
+          eventtypes?.filter(e => parseInt(e._id) === eventtype)[0]?.name, 
           userStore.language.toLowerCase()
         )
       ),

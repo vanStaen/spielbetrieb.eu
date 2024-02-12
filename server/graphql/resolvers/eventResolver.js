@@ -34,7 +34,8 @@ exports.eventResolver = {
     //getAllPublicEvents
     async getAllPublicEvents(args, req) {
       return await Event.findAll({
-        where: { private: false, isDraft: false }
+        where: { private: false, isDraft: false },
+        include: User,
       });
     },
   
@@ -63,6 +64,7 @@ exports.eventResolver = {
         forwardable: args.eventInput.forwardable,
         allowAnonymous: args.eventInput.allowAnonymous,
         isDraft: args.eventInput.isDraft,
+        admin: [req.userId],
       });
       return await event.save();
     } catch (err) {
