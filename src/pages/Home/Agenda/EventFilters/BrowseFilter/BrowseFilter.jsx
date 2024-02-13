@@ -3,6 +3,7 @@ import { observer } from 'mobx-react';
 import { 
     CaretLeftOutlined, 
     CaretRightOutlined,
+    AimOutlined,
 } from '@ant-design/icons';
 import * as dayjs from 'dayjs';
 import * as advancedFormat from 'dayjs/plugin/advancedFormat';
@@ -50,7 +51,7 @@ export const BrowseFilter = observer(() => {
         }
         else if (newfilterFormat === 'day') {
             browseFilterText = newFilterDateFrom.format(DATE_FORMAT_DAY)
-        }
+        } 
         setFilterText(browseFilterText);
     }
 
@@ -61,6 +62,13 @@ export const BrowseFilter = observer(() => {
             setShowFormatMenu(false);
         }, 300);
     };
+
+    const resetHandler = () => {
+        setFilterDateFrom(dayjs());
+        setFilterFormat('day');
+        updateFilterFormatDisplay('day', dayjs());
+        handleHideMenu(true);
+    }
 
     return (
             <div className='browseFilter__container'>
@@ -103,6 +111,13 @@ export const BrowseFilter = observer(() => {
                                 onClick={() => filterFormatChange("day")}
                             >
                                 {dayjs(filterDateFrom).format(DATE_FORMAT_DAY)}
+                            </div>
+                            <div className="menu__whiteline"></div>
+                            <div 
+                                className="browseFilter__menuElement menu__element"
+                                onClick={resetHandler}
+                            >
+                                <AimOutlined /> today
                             </div>
                         </div>
                     </>

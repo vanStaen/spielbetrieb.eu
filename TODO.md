@@ -31,6 +31,7 @@
     - [ ] or from a specific start date
   - [ ] SearchEvent enpoint
   - [ ] EventCard: Show max 5 Tags, and a "+x" tags to show all 
+  - [ ] translate all
 
 ## Tech debt:
 
