@@ -39,14 +39,12 @@ export const AdminUsers = () => {
       key: 'id',    
       align: 'center',
       width: '50px',
-      fixed: 'left',
       sorter: (a, b) => a._id - b._id,
     },
     {
       title: 'Username',
       dataIndex: 'userName',
       key: 'userName',
-      fixed: 'left',
       width: '120px',
       sorter: (a, b) => a.userName.length - b.userName.length,
       render: (_, { userName, isAdmin, adminRoles }) => isAdmin
@@ -56,7 +54,7 @@ export const AdminUsers = () => {
           overlayStyle={{ maxWidth: '700px' }}
           title={
           <>🔥&nbsp;
-            <span style={{ color: '#666' }}>Admin roles:&nbsp;&nbsp;</span>
+            <span style={{ color: '#666' }}>Roles:&nbsp;&nbsp;</span>
             {adminRoles?.map((role) => {
               return (
                 <Tag
