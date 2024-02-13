@@ -17,7 +17,7 @@ export const Agenda = observer(() => {
     const [tags, setTags] = useState([]);
     const [eventtypes, setEventtypes] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
+    
     const fetchEvents = async () => {
         const events = await getAllPublicEvents();  
         setEvents(events);

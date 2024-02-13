@@ -1,5 +1,6 @@
 import React from "react";
 import { Tag } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { ClockCircleOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import * as dayjs from 'dayjs';
 
@@ -7,6 +8,7 @@ import "./EventCard.less";
 import "./EventColors.less";
 
 export const EventCard = (props) => {
+    const { t } = useTranslation();
     const { event, color, tags } = props;
 
     /* TODO:
@@ -58,7 +60,7 @@ export const EventCard = (props) => {
                     {event.locationAddress}
                 </div>
                 <div className='event__promoter'>
-                    <span className='event__organizedBy'>Event organised by</span> 
+                    <span className='event__organizedBy'>{t("agenda.eventOrganisedBy")} </span> 
                     {event.user.userName}
                 </div>
                 <div className='event__tags'>

@@ -120,5 +120,10 @@
     "error": "Fehler bei Abonnieren!",
     "pleaseSelectList": "Bitte wählen Sie mindestens eine Mailingliste aus!",
     "pleaseInputEmail": "Bitte geben Sie eine gültige Email-Addresse ein!"
+  } ,
+  "agenda": {
+    "eventOrganisedBy": "Veranstaltung von",
+    "today": "Heute",
+    "week": "Woche"
   } 
 }

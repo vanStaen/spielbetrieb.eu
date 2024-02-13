@@ -120,5 +120,10 @@
     "error": "Error while subscribing!",
     "pleaseSelectList": "Please select at least one mailing list!",
     "pleaseInputEmail": "Please input a valid email!"
+  },
+  "agenda": {
+    "eventOrganisedBy": "Event organised by",
+    "today": "Today",
+    "week": "Week"
   } 
 }

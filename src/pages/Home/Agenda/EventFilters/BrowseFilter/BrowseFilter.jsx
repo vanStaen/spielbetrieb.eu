@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react';
 import { 
     CaretLeftOutlined, 
@@ -18,6 +19,7 @@ const DATE_FORMAT_CW = 'ww, YYYY';
 const DATE_FORMAT_DAY = 'DD MMM, YYYY';
 
 export const BrowseFilter = observer(() => {
+    const { t } = useTranslation();
     const [showFormatMenu, setShowFormatMenu] = useState(false);
     const [filterFormat, setFilterFormat] = useState('month'); // Day, Week, Month
     const [filterDateFrom, setFilterDateFrom] = useState(dayjs())
@@ -47,7 +49,7 @@ export const BrowseFilter = observer(() => {
             browseFilterText = newFilterDateFrom.format(DATE_FORMAT_MONTH)
         }
         else if (newfilterFormat === 'week') { 
-            browseFilterText = <><span style={{opacity: .5}}>Week </span>{newFilterDateFrom.format(DATE_FORMAT_CW)}</>
+            browseFilterText = <><span style={{opacity: .5}}>{t("agenda.week")} </span>{newFilterDateFrom.format(DATE_FORMAT_CW)}</>
         }
         else if (newfilterFormat === 'day') {
             browseFilterText = newFilterDateFrom.format(DATE_FORMAT_DAY)
@@ -79,7 +81,7 @@ export const BrowseFilter = observer(() => {
                     />{" "}
                     <span onClick={() => setShowFormatMenu(!showFormatMenu)}>{ filterText }</span>{" "}
                     <CaretRightOutlined 
-                        className='browseFilter__logo'
+                        className='browseFilter__logo browseFilter__logoRight'
                         onClick={() => handleChangeZeitRaumClick(true)}
                     />
                 </div>
@@ -104,7 +106,7 @@ export const BrowseFilter = observer(() => {
                                 className={`browseFilter__menuElement menu__element ${filterFormat === 'week' && 'menu__elementSelected'}`}
                                 onClick={() => filterFormatChange("week")}
                             >
-                                Week {dayjs(filterDateFrom).format(DATE_FORMAT_CW)}
+                                {t("agenda.week")} {dayjs(filterDateFrom).format(DATE_FORMAT_CW)}
                             </div>
                             <div 
                                 className={`browseFilter__menuElement menu__element ${filterFormat === 'day' && 'menu__elementSelected'}`}
@@ -117,7 +119,7 @@ export const BrowseFilter = observer(() => {
                                 className="browseFilter__menuElement menu__element"
                                 onClick={resetHandler}
                             >
-                                <CalendarOutlined /> today
+                                <CalendarOutlined /> {t("agenda.today")}
                             </div>
                         </div>
                     </>
