@@ -32,8 +32,8 @@ import './SignUpForm.css';
 
 dayjs.extend(isSameOrBefore);
 const dateFormat = 'DD/MM/YYYY';
-const dateEighteenYearsAgo = dayjs().subtract(18, 'year');
-const dateHundredYearsAgo = dayjs().subtract(100, 'year');
+//const dateEighteenYearsAgo = dayjs().subtract(18, 'year');
+//const dateHundredYearsAgo = dayjs().subtract(100, 'year');
 
 export const SignUpForm = observer((props) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -47,7 +47,7 @@ export const SignUpForm = observer((props) => {
   for (let i = 1; i < 100; i++) {
     ageOptions.push({
       label: i,
-      value: i
+      value: i,
     });
   }
 
@@ -80,6 +80,7 @@ export const SignUpForm = observer((props) => {
       setIsValidBirthday('error');
       setErrorMsgBirthday(t('login.birthdayMissing'));
     } else {
+      /*
       const isOlderThan18 = birthday.isSameOrBefore(dateEighteenYearsAgo);
       const isOlderThan100 = birthday.isSameOrBefore(dateHundredYearsAgo);
       if (isOlderThan18 === false) {
@@ -93,6 +94,9 @@ export const SignUpForm = observer((props) => {
         setIsValidBirthday('success');
         setErrorMsgBirthday(null);
       }
+      */
+      setIsValidBirthday('success');
+      setErrorMsgBirthday(null);
     }
   };
 

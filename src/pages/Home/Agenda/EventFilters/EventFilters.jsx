@@ -19,7 +19,7 @@ export const EventFilters = observer(() => {
                 <CaretRightOutlined className='agenda__browseMonthLogo'/>
             </div>
             <div className='agenda__fitler'>                
-                here will come more filters
+                here come filters & search
             </div>
         </div>
     )
