@@ -70,7 +70,7 @@ export const Menu = observer(() => {
       >
         <Avatar
           src={!userStore.isLoading && <UserOutlined className="menu__icon" />}
-          icon={userStore.isLoading && <Spin indicator={spinIcon} />}
+          icon={userStore.isLoading && <Spin  className="menu__spinner" indicator={spinIcon} />}
           className="menu__avatar"
           size={50}
         />
