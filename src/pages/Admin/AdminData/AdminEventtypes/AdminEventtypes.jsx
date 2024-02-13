@@ -105,7 +105,7 @@ export const AdminEventtypes = () => {
         color === 2 ? <div style={{color: 'white', backgroundColor: '#2F4F4F'}}>2</div> :
         color === 3 ? <div style={{color: 'white', backgroundColor: '#2C3E50'}}>3</div> :
         color === 4 ? <div style={{color: 'white', backgroundColor: '#C99A86'}}>4</div> :
-        color === 5 ? <div style={{color: 'white', backgroundColor: '#B1851A'}}>5</div> :
+        color === 5 ? <div style={{color: 'white', backgroundColor: '#CEA032'}}>5</div> :
         color === 6 ? <div style={{color: 'white', backgroundColor: '#922B21'}}>6</div> : 'none'),
     },
     {

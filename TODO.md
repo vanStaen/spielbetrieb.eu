@@ -22,6 +22,8 @@
     - [ ] or from a specific start date
   - [ ] SearchEvent enpoint
   - [ ] EventCard: Show max 5 Tags, and a "+x" tags to show all
+  - [ ] Show number of attendee
+  - [ ] Show bookmarked
 
 ## Tech debt:
 
