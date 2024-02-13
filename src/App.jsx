@@ -2,6 +2,9 @@ import React, { useLayoutEffect, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import * as dayjs from 'dayjs';
+import 'dayjs/locale/de';
+import 'dayjs/locale/en';
 
 import { LandingPage } from './pages/LandingPage/LandingPage';
 import { authStore } from './store/authStore/authStore';
@@ -51,17 +54,21 @@ const App = observer(() => {
     if (pageStore.selectedLanguage) {
       if (pageStore.selectedLanguage === 'de') {
         i18n.changeLanguage('de-DE');
+        dayjs.locale('de')
       } else {
         i18n.changeLanguage('en-US');
+        dayjs.locale('en')
       }
     } else {
       const browserlanguage = navigator.language || navigator.userLanguage;
       if (browserlanguage === 'de-DE') {
         i18n.changeLanguage('de-DE');
         pageStore.setSelectedLanguage('de');
+        dayjs.locale('de')
       } else {
         i18n.changeLanguage('en-US');
         pageStore.setSelectedLanguage('en');
+        dayjs.locale('en')
       }
     }
   }, [i18n, pageStore.selectedLanguage]);

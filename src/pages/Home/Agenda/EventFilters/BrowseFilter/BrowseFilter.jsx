@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import { 
     CaretLeftOutlined, 
     CaretRightOutlined,
-    AimOutlined,
+    CalendarOutlined,
 } from '@ant-design/icons';
 import * as dayjs from 'dayjs';
 import * as advancedFormat from 'dayjs/plugin/advancedFormat';
@@ -117,7 +117,7 @@ export const BrowseFilter = observer(() => {
                                 className="browseFilter__menuElement menu__element"
                                 onClick={resetHandler}
                             >
-                                <AimOutlined /> today
+                                <CalendarOutlined /> today
                             </div>
                         </div>
                     </>

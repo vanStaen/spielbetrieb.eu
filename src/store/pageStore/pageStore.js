@@ -5,7 +5,7 @@ const cookies = new Cookies();
 
 export class PageStore {
   selectedTheme = cookies.get('selectedTheme') || 'dark';
-  selectedLanguage = cookies.get('selectedLanguage') || 'en';
+  selectedLanguage = cookies.get('selectedLanguage');
   allowCookie = cookies.get('allowCookie');
   showMenu = false;
   showMenuMobile = false;
