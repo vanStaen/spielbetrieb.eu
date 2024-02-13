@@ -13,7 +13,7 @@
       - [ ] per language
       - [ ] per lists
     - [ ] Select and export as a email list
-  - [ ] Add/Manage events
+  - [x] Add/Manage events
   - [ ] Add/Manage products
   - [ ] Add 'aktuell' articles
   - [x] Admin can update user to partner
@@ -46,6 +46,7 @@
 - [ ] Rerendering (e.g: mnotifications) 
 - [ ] List of forbidden usernames
 - [ ] List of forbidden words
+- [ ] Filter event based on city/geolocation
 
 
 ## Done :

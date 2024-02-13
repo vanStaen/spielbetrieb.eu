@@ -28,8 +28,7 @@ export const Home = observer((props) => {
       case 'home':
         return (<div className='home__homePlaceholder'>
         <div
-            className="home__logoAndText invertColorTheme"
-            id="spielbetrieb"
+            className={`home__logoAndText ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`}
           >
             <div className="home__text">Spielbetrieb </div>
             <div className="home__subtext">
