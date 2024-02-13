@@ -1,14 +1,14 @@
 .agenda__filterContainer {
+    position: relative;
     width: calc(100% - 50px);
     padding: 30px 25px 0 25px;
-    .agenda__browseMonth {
-        display: inline-block;
-        width: 50%;
-        text-align: left;
+    text-align: left;
+    .agenda__browseZeitRaum {
+        width: fit-content;
         font-size: 27px;
         font-weight: 600;
         text-transform: uppercase;
-        .agenda__browseMonthLogo {
+        .agenda__browseZeitRaumLogo {
             position: relative;
             top: 1px;
             cursor: pointer;
@@ -17,11 +17,29 @@
             }
         }
     }
-    .agenda__fitler {
-        display: inline-block;
-        width: calc(50% - 10px); //margin right
+    .agenda__fitlerSearch {
+        position: absolute;
+        right: 35px;
+        bottom: 0;
+        width: fit-content;
         font-size: 16px;
-        text-align: right;
-        margin-right: 10px;
+    }
+}
+
+@media only screen and (max-width: 675px) {
+    .agenda__filterContainer {
+        padding: 20px 25px 0 25px;
+        .agenda__browseZeitRaum {
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+        .agenda__fitlerSearch {
+            position: relative;
+            right: 0;
+            width: 100%;
+            margin: 0 0 10px 0;
+            text-align: center;
+        }
     }
 }

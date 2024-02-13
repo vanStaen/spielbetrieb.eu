@@ -67,7 +67,7 @@ export const Agenda = observer(() => {
             {/*
             TODO:
             search per text
-            browse months/weeks
+            browse month/week/day
             filter per day
             filter per tag
             */}
