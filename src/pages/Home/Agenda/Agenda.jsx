@@ -19,7 +19,7 @@ export const Agenda = observer(() => {
     const [isLoading, setIsLoading] = useState(true);
     
     const fetchEvents = async () => {
-        const events = await getAllPublicEvents();  
+        const events = await getAllPublicEvents(0, 100000000);  
         setEvents(events);
         setIsLoading(false);
       };

@@ -140,7 +140,7 @@ export const Admin = observer(() => {
                   label: !isMobile && 'Ressources',
                   value: 'ressources',
                   // disabled: !userStore.adminRoles?.includes('ressources'),
-                  disabled: true,
+                  disabled: false,
                   icon: <AuditOutlined />
                 }
               ]}

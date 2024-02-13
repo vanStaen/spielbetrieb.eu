@@ -35,8 +35,7 @@
 - [ ] Tracking/Analytics
 - [ ] Smooth transition for language and theme menu
 - [ ] Get rid of 100vh (for event listner of window.innerHeight)
-- [ ] Rerendering (e.g: mnotifications) 
+- [ ] Rerendering (e.g: notifications) 
 - [ ] List of forbidden usernames
 - [ ] List of forbidden words
 - [ ] Filter event based on city/geolocation
-- [ ] 
