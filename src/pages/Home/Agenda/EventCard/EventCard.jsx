@@ -25,8 +25,23 @@ export const EventCard = (props) => {
         );
       });
 
+    const isInThePast = event.fromDate < dayjs();
+
+    const handleEventContainerClick = () => {
+        const elementContainer = document.getElementById(`eventContainer${event._id}`);
+        elementContainer.style.maxHeight = '400px';
+        setTimeout(function () {
+            elementContainer.classList.remove("event__ContainerPast");
+        }, 100);
+    }
+
     return (            
-        <div key={event._id} className={`event__Container ${"color" + color}`}>
+        <div 
+            key={event._id} 
+            id={`eventContainer${event._id}`}
+            className={`event__Container ${isInThePast && "event__ContainerPast"} ${"color" + color}`}
+            onClick={handleEventContainerClick}
+        >
             <div className='event__date'>
                 <div className='event__dateYear'>
                     {dayjs(event.fromDate).format('YYYY')}

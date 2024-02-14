@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
-import { MehOutlined } from '@ant-design/icons'; 
+import { useTranslation } from 'react-i18next';
 
 import { CustomSpinner } from '../../../components/CustomSpinner/CustomSpinnner';
 import { EventCard } from "./EventCard/EventCard";
@@ -12,7 +12,8 @@ import { EventFilters } from './EventFilters/EventFilters';
 import './Agenda.less';
 
 export const Agenda = observer(() => {
-   
+    const { t } = useTranslation();
+
     useEffect(() => {
         agendaStore.fetchEventtypes();
         agendaStore.fetchLocations();
@@ -72,10 +73,10 @@ export const Agenda = observer(() => {
                     <div className='agenda__noEventContainer'>
                         <div className={`agenda__noEventText ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`} >
                             <div>
-                                No events found
+                               {t("agenda.noEventsFound")} 
                             </div> 
                             <div className='agenda__noEventSubText'>
-                                Try another filter maybe?
+                               {t("agenda.tryOtherFilter")}                            
                             </div> 
                         </div> 
                     </div> : 

@@ -61,9 +61,6 @@ export class AgendaStore {
     this.setIsLoadingEvent(true);
     const fromUnixDateStartOf = this.filterDateFrom.startOf(this.filterFormat).valueOf()
     const untilUnixDateEndOf = this.filterDateFrom.endOf(this.filterFormat).valueOf();
-    console.log('filterFormat', this.filterFormat)
-    console.log('fromUnixDateStartOf', fromUnixDateStartOf, dayjs(fromUnixDateStartOf).format("DD.MM.YYYY"));
-    console.log('untilUnixDateEndOf', untilUnixDateEndOf, dayjs(untilUnixDateEndOf).format("DD.MM.YYYY"));
     const events = await getAllPublicEvents(fromUnixDateStartOf, untilUnixDateEndOf);  
     this.setEvents(events);
     this.setIsLoadingEvent(false);

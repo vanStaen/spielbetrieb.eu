@@ -124,6 +124,8 @@
   "agenda": {
     "eventOrganisedBy": "Veranstaltung von",
     "today": "Heute",
-    "week": "Woche"
+    "week": "Woche",
+    "noEventsFound": "Keine Veranstaltungen gefunden",
+    "tryOtherFilter": "Versuch es mit einem anderen Filter?"
   } 
 }
