@@ -19,14 +19,14 @@ export const EventCard = (props) => {
 
     const tagsFormatted = tags.map((tag) => {
         return (
-          <Tag key={tag} bordered={false}>  
+          <Tag key={tag._id} bordered={false}>  
             #{tag}
           </Tag>
         );
       });
 
     return (            
-        <div className={`event__Container ${"color" + color}`}>
+        <div key={event._id} className={`event__Container ${"color" + color}`}>
             <div className='event__date'>
                 <div className='event__dateYear'>
                     {dayjs(event.fromDate).format('YYYY')}
