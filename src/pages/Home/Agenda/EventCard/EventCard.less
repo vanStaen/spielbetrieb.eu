@@ -30,6 +30,7 @@
         .event__dateDay {
             font-weight: 600;
             font-size: 50px;
+            transition: font-size .3s !important; 
         }
         .event__dateMonth {
             text-transform: uppercase;
@@ -124,10 +125,16 @@
 }
 
 .event__ContainerPast {
-    max-height: 80px;
+    max-height: 75px;
     overflow: hidden;
+    margin-bottom: 0;
+    opacity: .75;
     -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
-
+    .event__date {
+        .event__dateDay {
+            font-size: 18px;
+        } 
+    }
 }
 @media only screen and (max-width: 675px) {
     .event__ContainerPast {

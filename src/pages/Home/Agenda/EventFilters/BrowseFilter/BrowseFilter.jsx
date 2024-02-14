@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react';
 import { 
@@ -15,6 +15,9 @@ import { agendaStore } from "../../../../../store/agendaStore/agendaStore";
 
 import './BrowseFilter.less';
 
+// the required distance between touchStart and touchEnd to be detected as a swipe
+const MIN_SWIPE_DISTANCE = 20;
+
 const DATE_FORMAT_MONTH = 'MMM, YYYY';
 const DATE_FORMAT_CW = 'ww, YYYY';
 const DATE_FORMAT_DAY = 'DD MMM, YYYY';
@@ -23,6 +26,52 @@ export const BrowseFilter = observer(() => {
     const { t } = useTranslation();
     const [showFormatMenu, setShowFormatMenu] = useState(false);
     const [filterText, setFilterText] = useState(dayjs().format(DATE_FORMAT_MONTH))
+    const [touchStart, setTouchStart] = useState(null);
+    const [touchEnd, setTouchEnd] = useState(null);
+    const throttling = useRef(false);
+
+    const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+
+    const onTouchStart = (e) => {
+        setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const onTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > MIN_SWIPE_DISTANCE;
+        const isRightSwipe = distance < -MIN_SWIPE_DISTANCE;
+        if (throttling.current === false) {
+            throttling.current = true;
+        if (isRightSwipe) {
+            handleChangeZeitRaumClick(false);
+        } else if (isLeftSwipe) {
+            handleChangeZeitRaumClick(true);
+        }
+        setTimeout(() => {
+            throttling.current = false;
+        }, 500);
+        }
+    };
+
+    const keydownEventHandler = (event) => {
+        const keyPressed = event.key.toLowerCase();
+        if (keyPressed === "arrowleft") {
+          event.preventDefault();
+          handleChangeZeitRaumClick(false);
+        } else if (keyPressed === "arrowright") {
+          event.preventDefault();
+          handleChangeZeitRaumClick(true);
+        }
+      };
+
+    useEffect(() => {
+        window.addEventListener("keydown", keydownEventHandler);
+        return () => {
+          window.removeEventListener("keydown", keydownEventHandler);
+        };
+      }, []);
 
     const handleChangeZeitRaumClick = (add) => {
         let newFilterDateFrom;
@@ -74,7 +123,12 @@ export const BrowseFilter = observer(() => {
     }
 
     return (
-            <div className='browseFilter__container'>
+            <div 
+                className='browseFilter__container'
+                onTouchStart={onTouchStart}
+                onTouchMove={onTouchMove}
+                onTouchEnd={() => onTouchEnd()}
+            >
                 <div className="browseFilter__text">
                     <CaretLeftOutlined 
                         className='browseFilter__logo'
