@@ -1,5 +1,5 @@
-exports.Admincontacttype = `
-type Admincontacttype {
+exports.Admincontact = `
+type Admincontact {
     _id: ID! 
     name: String!
     email: String!
@@ -7,20 +7,20 @@ type Admincontacttype {
     archived: Boolean
 }`;
 
-exports.AdmincontacttypeInputData = `
-input AdmincontacttypeInputData {
+exports.AdmincontactInputData = `
+input AdmincontactInputData {
     name: String
     email: String
     details: String
     archived: Boolean
 }`;
 
-exports.AdmincontacttypeQueries = `
-    getAdmincontacttypes: [Admincontacttype]
+exports.AdmincontactQueries = `
+    getAdmincontact: [Admincontact]
     `;
 
-exports.AdmincontacttypeMutations = `
-    addAdmincontacttype(admincontacttypeInput: AdmincontacttypeInputData!): Admincontacttype!
-    updateAdmincontacttype(admincontacttypeId: ID!, admincontacttypeInput: AdmincontacttypeInputData!): Admincontacttype!
-    deleteAdmincontacttype(admincontacttypeId: ID!): Boolean!
+exports.AdmincontactMutations = `
+    addAdmincontact(admincontactInput: AdmincontactInputData!): Admincontact!
+    updateAdmincontact(admincontactId: ID!, admincontactInput: AdmincontactInputData!): Admincontact!
+    deleteAdmincontact(admincontactId: ID!): Boolean!
 `;

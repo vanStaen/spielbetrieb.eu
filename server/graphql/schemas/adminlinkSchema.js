@@ -1,26 +1,26 @@
-exports.Adminlinktype = `
-type Adminlinktype {
+exports.Adminlink = `
+type Adminlink {
     _id: ID! 
     shortDesc: String!
     category: String!
     link: String!
     archived: Boolean
 }`;
-n 
-exports.AdminlinktypeInputData = `
-input AdminlinktypeInputData {
+
+exports.AdminlinkInputData = `
+input AdminlinkInputData {
     shortDesc: String
     category: String
     link: String
     archived: Boolean
 }`;
 
-exports.AdminlinktypeQueries = `
-    getAdminlinktypes: [Adminlinktype]
+exports.AdminlinkQueries = `
+    getAdminlinks: [Adminlink]
     `;
 
-exports.AdminlinktypeMutations = `
-    addAdminlinktype(adminlinktypeInput: AdminlinktypeInputData!): Adminlinktype!
-    updateAdminlinktype(adminlinktypeId: ID!, adminlinktypeInput: AdminlinktypeInputData!): Adminlinktype!
-    deleteAdminlinktype(adminlinktypeId: ID!): Boolean!
+exports.AdminlinkMutations = `
+    addAdminlink(adminlinkInput: AdminlinkInputData!): Adminlink!
+    updateAdminlink(adminlinkId: ID!, adminlinkInput: AdminlinkInputData!): Adminlink!
+    deleteAdminlink(adminlinkId: ID!): Boolean!
 `;

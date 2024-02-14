@@ -1,5 +1,7 @@
 const { buildSchema } = require("graphql");
 
+const admincontactSchema = require("./schemas/admincontactSchema");
+const adminlinkSchema = require("./schemas/adminlinkSchema");
 const chatSchema = require("./schemas/chatSchema");
 const commentSchema = require("./schemas/commentSchema");
 const eventSchema = require("./schemas/eventSchema");
@@ -16,6 +18,8 @@ const tagSchema = require("./schemas/tagSchema");
 
 module.exports = buildSchema(`
 
+    ${admincontactSchema.Admincontact}
+    ${adminlinkSchema.Adminlink}
     ${chatSchema.Chat}
     ${commentSchema.Comment}
     ${eventSchema.Event}
@@ -30,6 +34,8 @@ module.exports = buildSchema(`
     ${subscriberSchema.Subscriber}
     ${tagSchema.Tag}
 
+    ${admincontactSchema.AdmincontactInputData}
+    ${adminlinkSchema.AdminlinkInputData}
     ${chatSchema.ChatInputData}
     ${commentSchema.CommentInputData}
     ${eventSchema.EventInputData}
@@ -45,6 +51,8 @@ module.exports = buildSchema(`
     ${tagSchema.TagInputData}
 
     type RootQuery {
+        ${admincontactSchema.AdmincontactQueries}
+        ${adminlinkSchema.AdminlinkQueries}
         ${chatSchema.ChatQueries}
         ${commentSchema.CommentQueries}
         ${eventSchema.EventQueries}
@@ -61,6 +69,8 @@ module.exports = buildSchema(`
     }
 
     type RootMutations {
+        ${admincontactSchema.AdmincontactMutations}
+        ${adminlinkSchema.AdminlinkMutations}
         ${chatSchema.ChatMutations}
         ${commentSchema.CommentMutations}
         ${eventSchema.EventMutations}
