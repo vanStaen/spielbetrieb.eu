@@ -1,3 +1,5 @@
+const admincontactResolver = require("./resolvers/admincontactResolver");
+const adminlinkResolver = require("./resolvers/adminlinkResolver");
 const chatResolver = require("./resolvers/chatResolver");
 const commentResolver = require("./resolvers/commentResolver");
 const eventResolver = require("./resolvers/eventResolver");
@@ -13,6 +15,8 @@ const visitorResolver = require("./resolvers/visitorResolver");
 const tagResolver = require("./resolvers/tagResolver");
 
 module.exports = {
+  ...admincontactResolver.admincontactResolver,
+  ...adminlinkResolver.adminlinkResolver,
   ...chatResolver.chatResolver,
   ...commentResolver.commentResolver,
   ...eventResolver.eventResolver,

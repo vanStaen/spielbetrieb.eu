@@ -16,7 +16,7 @@ input AdmincontactInputData {
 }`;
 
 exports.AdmincontactQueries = `
-    getAdmincontact: [Admincontact]
+    getAllAdmincontacts: [Admincontact]
     `;
 
 exports.AdmincontactMutations = `

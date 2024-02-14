@@ -16,7 +16,7 @@ input AdminlinkInputData {
 }`;
 
 exports.AdminlinkQueries = `
-    getAdminlinks: [Adminlink]
+    getAllAdminlinks: [Adminlink]
     `;
 
 exports.AdminlinkMutations = `
