@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 import { CustomSpinner } from '../../../components/CustomSpinner/CustomSpinnner';
 import { EventCard } from "./EventCard/EventCard";
 import { nameParser } from '../../../helpers/nameParser';
+import { agendaStore } from '../../../store/agendaStore/agendaStore';
 import { pageStore } from '../../../store/pageStore/pageStore';
 import { EventFilters } from './EventFilters/EventFilters';
 
@@ -12,23 +13,34 @@ import './Agenda.less';
 export const Agenda = observer(() => {
    
     useEffect(() => {
-        pageStore.fetchEventtypes();
-        pageStore.fetchLocations();
-        pageStore.fetchTags();
-        pageStore.fetchEvents();
+        agendaStore.fetchEventtypes();
+        agendaStore.fetchLocations();
+        agendaStore.fetchTags();
+        agendaStore.fetchEvents();
     }, []);
+
+    useEffect(() => {
+        if (
+            agendaStore.eventtypes.length > 0 &&
+            agendaStore.locations.length > 0 &&
+            agendaStore.tags.length > 0
+        ) {
+            agendaStore.setIsLoadingData(false);
+        }
+    }, [agendaStore.eventtypes, agendaStore.locations, agendaStore.tags]);
+
     
-    const eventsFormatted = pageStore.events?.map(event => {
-        const eventColor =  pageStore.eventtypes.filter(et => parseInt(et._id) === event.eventtype)[0]?.color;
+    const eventsFormatted = agendaStore.events?.map(event => {
+        const eventColor =  agendaStore.eventtypes.filter(et => parseInt(et._id) === event.eventtype)[0]?.color;
         const eventTags =  event.eventTags.map(tagId => {
             return nameParser(
-                pageStore.tags.filter(tag => parseInt(tag._id) ===  tagId)[0]?.name,
+                agendaStore.tags.filter(tag => parseInt(tag._id) === tagId)[0]?.name,
                 pageStore.selectedLanguage?.toLowerCase()
                 );     
         });        
         eventTags.splice(0, 0, 
             nameParser(
-                pageStore.eventtypes.filter(et => parseInt(et._id) ===  event.eventtype)[0]?.name,
+                agendaStore.eventtypes.filter(et => parseInt(et._id) ===  event.eventtype)[0]?.name,
                 pageStore.selectedLanguage?.toLowerCase()
                 )
             );
@@ -36,7 +48,7 @@ export const Agenda = observer(() => {
     })
 
     return (<>
-        { pageStore.isLoadingEvent ?
+        { agendaStore.isLoadingData ?
             <div className='agenda__spinnerContainer'>
                 <CustomSpinner text="Loading events" />
             </div>
@@ -50,7 +62,13 @@ export const Agenda = observer(() => {
             filter per tag
             */}
             <EventFilters />
-            {eventsFormatted}
+            {
+            agendaStore.isLoadingEvent ? 
+                <div className='agenda__spinnerSubContainer'>
+                    <CustomSpinner text="Loading events" />
+                </div> : 
+                eventsFormatted
+            }
         </div>
         }
     </>)

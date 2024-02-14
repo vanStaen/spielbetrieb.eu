@@ -1,11 +1,6 @@
 import { action, makeObservable, observable } from 'mobx';
 import Cookies from 'universal-cookie';
 
-import { getAllPublicEvents } from './getAllPublicEvents';
-import { getEventtypes } from './getEventtypes';
-import { getTags } from './getTags';
-import { getLocations } from './getLocations';
-
 const cookies = new Cookies();
 
 export class PageStore {
@@ -32,21 +27,6 @@ export class PageStore {
       setShowMenu: action,
       showMenuMobile: observable,
       setShowMenuMobile: action,
-      setShowMenuMobile: action,
-      fetchEvents: action,
-      setEvents: action,
-      events: observable,
-      setIsLoadingEvent: action,
-      isLoadingEvent: observable,
-      fetchEventtypes: action,
-      setEventtypes: action,
-      eventtypes: observable,
-      fetchTags: action,
-      setTags: action,
-      tags: observable,
-      fetchLocations: action,
-      setLocations: action,
-      locations: observable,
     });
   }
 
@@ -77,47 +57,6 @@ export class PageStore {
 
   setShowMenuMobile = (showMenuMobile) => {
     this.showMenuMobile = showMenuMobile;
-  };
-
-  setEvents = (events) => {
-    this.events = events;
-  };
-
-  setIsLoadingEvent = (isLoadingEvent) => {
-    this.isLoadingEvent = isLoadingEvent;
-  };
-
-  fetchEvents = async () => {
-    const events = await getAllPublicEvents(0, 100000000);  
-    this.setEvents(events);
-    this.setIsLoadingEvent(false);
-  };
-
-  setEventtypes = (eventtypes) => {
-    this.eventtypes = eventtypes;
-  };
-
-  fetchEventtypes = async () => {
-    const eventtypes = await getEventtypes();
-    this.setEventtypes(eventtypes);
-  };
-
-  setTags = (tags) => {
-    this.tags = tags;
-  };
-
-  fetchTags = async () => {
-    const tags = await getTags();
-    this.setTags(tags);
-  };
-
-  setLocations = (locations) => {
-    this.locations = locations;
-  };
-
-  fetchLocations = async () => {
-    const locations = await getLocations();
-    this.setLocations(locations);
   };
 
 }

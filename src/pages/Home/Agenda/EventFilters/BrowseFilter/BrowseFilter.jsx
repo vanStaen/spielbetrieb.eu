@@ -11,6 +11,7 @@ import * as advancedFormat from 'dayjs/plugin/advancedFormat';
 import * as isoWeek from 'dayjs/plugin/isoWeek';
 
 import { pageStore } from "../../../../../store/pageStore/pageStore";
+import { agendaStore } from "../../../../../store/agendaStore/agendaStore";
 
 import './BrowseFilter.less';
 
@@ -21,25 +22,24 @@ const DATE_FORMAT_DAY = 'DD MMM, YYYY';
 export const BrowseFilter = observer(() => {
     const { t } = useTranslation();
     const [showFormatMenu, setShowFormatMenu] = useState(false);
-    const [filterFormat, setFilterFormat] = useState('month'); // Day, Week, Month
-    const [filterDateFrom, setFilterDateFrom] = useState(dayjs())
+
     const [filterText, setFilterText] = useState(dayjs().format(DATE_FORMAT_MONTH))
 
     const handleChangeZeitRaumClick = (add) => {
         let newFilterDateFrom;
         if (add) {
-            newFilterDateFrom = dayjs(filterDateFrom).add(1, filterFormat);
+            newFilterDateFrom = dayjs(agendaStore.filterDateFrom).add(1, agendaStore.filterFormat);
         } else {
-            newFilterDateFrom = dayjs(filterDateFrom).subtract(1, filterFormat);
+            newFilterDateFrom = dayjs(agendaStore.filterDateFrom).subtract(1, agendaStore.filterFormat);
         }            
-        setFilterDateFrom(newFilterDateFrom);
-        updateFilterFormatDisplay(filterFormat, newFilterDateFrom);
+        agendaStore.setFilterDateFrom(newFilterDateFrom);
+        agendaStore.fetchEvents();
+        updateFilterFormatDisplay(agendaStore.filterFormat, newFilterDateFrom);
     }
 
     const filterFormatChange = (newFormat) => {
-        console.log('newFormat', newFormat);
-        setFilterFormat(newFormat);
-        updateFilterFormatDisplay(newFormat, filterDateFrom);
+        agendaStore.setFilterFormat(newFormat);
+        updateFilterFormatDisplay(newFormat, agendaStore.filterDateFrom);
         handleHideMenu();
     }
 
@@ -66,8 +66,9 @@ export const BrowseFilter = observer(() => {
     };
 
     const resetHandler = () => {
-        setFilterDateFrom(dayjs());
-        setFilterFormat('day');
+        agendaStore.setFilterDateFrom(dayjs());
+        agendaStore.setFilterFormat('day');
+        agendaStore.fetchEvents();
         updateFilterFormatDisplay('day', dayjs());
         handleHideMenu(true);
     }
@@ -97,22 +98,22 @@ export const BrowseFilter = observer(() => {
                             id="browseFilter__menuContainer"
                         >
                             <div 
-                                className={`browseFilter__menuElement menu__element ${filterFormat === 'month' && 'menu__elementSelected'}`}
+                                className={`browseFilter__menuElement menu__element ${agendaStore.filterFormat === 'month' && 'menu__elementSelected'}`}
                                 onClick={() => filterFormatChange("month")}
                             >
-                                {dayjs(filterDateFrom).format(DATE_FORMAT_MONTH)}
+                                {dayjs(agendaStore.filterDateFrom).format(DATE_FORMAT_MONTH)}
                             </div>
                             <div 
-                                className={`browseFilter__menuElement menu__element ${filterFormat === 'week' && 'menu__elementSelected'}`}
+                                className={`browseFilter__menuElement menu__element ${agendaStore.filterFormat === 'week' && 'menu__elementSelected'}`}
                                 onClick={() => filterFormatChange("week")}
                             >
-                                {t("agenda.week")} {dayjs(filterDateFrom).format(DATE_FORMAT_CW)}
+                                {t("agenda.week")} {dayjs(agendaStore.filterDateFrom).format(DATE_FORMAT_CW)}
                             </div>
                             <div 
-                                className={`browseFilter__menuElement menu__element ${filterFormat === 'day' && 'menu__elementSelected'}`}
+                                className={`browseFilter__menuElement menu__element ${agendaStore.filterFormat === 'day' && 'menu__elementSelected'}`}
                                 onClick={() => filterFormatChange("day")}
                             >
-                                {dayjs(filterDateFrom).format(DATE_FORMAT_DAY)}
+                                {dayjs(agendaStore.filterDateFrom).format(DATE_FORMAT_DAY)}
                             </div>
                             <div className="menu__whiteline"></div>
                             <div 

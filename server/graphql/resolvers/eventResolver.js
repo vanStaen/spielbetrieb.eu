@@ -1,5 +1,6 @@
 const { Event } = require("../../models/Event");
 const { User } = require("../../models/User");
+const { Op } = require("sequelize");
 
 exports.eventResolver = {
   //getEvent
@@ -35,7 +36,13 @@ exports.eventResolver = {
     async getAllPublicEvents(args, req) {
       console.log("args", args)
       return await Event.findAll({
-        where: { private: false, isDraft: false },
+        where: { 
+          private: false, 
+          isDraft: false, 
+          fromDate: {
+            [Op.between]: [args.fromDate, args.untilDate]
+          } 
+        },
         include: User,
         order: [
           ['fromDate', 'ASC'],

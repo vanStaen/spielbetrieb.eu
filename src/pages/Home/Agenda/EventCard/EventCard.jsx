@@ -19,7 +19,7 @@ export const EventCard = (props) => {
 
     const tagsFormatted = tags.map((tag) => {
         return (
-          <Tag key={tag._id} bordered={false}>  
+          <Tag key={tag?._id} bordered={false}>  
             #{tag}
           </Tag>
         );

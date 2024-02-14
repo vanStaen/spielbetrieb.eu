@@ -3,7 +3,7 @@ import { Form, Table, Typography, Popconfirm, Tag, Button } from 'antd';
 import { EditOutlined, CloseCircleOutlined, CheckCircleOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import { EditableCell } from '../../EditableCell';
-import { getLocations } from '../../../../store/pageStore/getLocations';
+import { getLocations } from '../../../../store/agendaStore/getLocations';
 import { deleteLocation } from './deleteLocation';
 import { updateLocation } from './updateLocation';
 import { addLocation } from './addLocation';
