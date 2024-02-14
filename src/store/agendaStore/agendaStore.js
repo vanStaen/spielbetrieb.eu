@@ -17,7 +17,7 @@ export class AgendaStore {
   eventtypes = [];
   tags = [];
   locations = [];
-  filterFormat = cookies.get('filterFormat') || 'month'; // Day, Week, Month
+  filterFormat = 'month';
   filterDateFrom = dayjs();
 
   constructor () {
@@ -59,9 +59,12 @@ export class AgendaStore {
 
   fetchEvents = async () => {
     this.setIsLoadingEvent(true);
-    const fromUnixDate = this.filterDateFrom.valueOf()
-    const untilUnixDate = this.filterDateFrom.add(1, agendaStore.filterFormat).valueOf();
-    const events = await getAllPublicEvents(fromUnixDate, untilUnixDate);  
+    const fromUnixDateStartOf = this.filterDateFrom.startOf(this.filterFormat).valueOf()
+    const untilUnixDateEndOf = this.filterDateFrom.endOf(this.filterFormat).valueOf();
+    console.log('filterFormat', this.filterFormat)
+    console.log('fromUnixDateStartOf', fromUnixDateStartOf, dayjs(fromUnixDateStartOf).format("DD.MM.YYYY"));
+    console.log('untilUnixDateEndOf', untilUnixDateEndOf, dayjs(untilUnixDateEndOf).format("DD.MM.YYYY"));
+    const events = await getAllPublicEvents(fromUnixDateStartOf, untilUnixDateEndOf);  
     this.setEvents(events);
     this.setIsLoadingEvent(false);
   };
@@ -99,9 +102,6 @@ export class AgendaStore {
 
   setFilterFormat = (filterFormat) => {
     this.filterFormat = filterFormat;
-    if (pageStore.allowCookie) {
-      cookies.set('filterFormat', filterFormat, { path: '/' });
-    }
   };
 
 }

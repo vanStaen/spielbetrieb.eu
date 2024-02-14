@@ -22,7 +22,6 @@ const DATE_FORMAT_DAY = 'DD MMM, YYYY';
 export const BrowseFilter = observer(() => {
     const { t } = useTranslation();
     const [showFormatMenu, setShowFormatMenu] = useState(false);
-
     const [filterText, setFilterText] = useState(dayjs().format(DATE_FORMAT_MONTH))
 
     const handleChangeZeitRaumClick = (add) => {
@@ -39,6 +38,7 @@ export const BrowseFilter = observer(() => {
 
     const filterFormatChange = (newFormat) => {
         agendaStore.setFilterFormat(newFormat);
+        agendaStore.fetchEvents();
         updateFilterFormatDisplay(newFormat, agendaStore.filterDateFrom);
         handleHideMenu();
     }
