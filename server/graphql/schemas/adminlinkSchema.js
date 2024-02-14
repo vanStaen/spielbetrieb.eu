@@ -4,6 +4,7 @@ type Adminlinktype {
     shortDesc: String!
     category: String!
     link: String!
+    archived: Boolean
 }`;
 n 
 exports.AdminlinktypeInputData = `
@@ -11,6 +12,7 @@ input AdminlinktypeInputData {
     shortDesc: String
     category: String
     link: String
+    archived: Boolean
 }`;
 
 exports.AdminlinktypeQueries = `

@@ -20,6 +20,10 @@ const Admincontact = sequelize.define("admincontact", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  archived: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 User.hasMany(Admincontact);

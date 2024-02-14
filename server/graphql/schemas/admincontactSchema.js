@@ -4,6 +4,7 @@ type Admincontacttype {
     name: String!
     email: String!
     details: String
+    archived: Boolean
 }`;
 
 exports.AdmincontacttypeInputData = `
@@ -11,6 +12,7 @@ input AdmincontacttypeInputData {
     name: String
     email: String
     details: String
+    archived: Boolean
 }`;
 
 exports.AdmincontacttypeQueries = `

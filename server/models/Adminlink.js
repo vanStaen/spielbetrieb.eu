@@ -20,6 +20,10 @@ const Adminlink = sequelize.define("adminlink", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  archived: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 User.hasMany(Adminlink);
