@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
+import { MehOutlined } from '@ant-design/icons'; 
 
 import { CustomSpinner } from '../../../components/CustomSpinner/CustomSpinnner';
 import { EventCard } from "./EventCard/EventCard";
@@ -64,10 +65,21 @@ export const Agenda = observer(() => {
             <EventFilters />
             {
             agendaStore.isLoadingEvent ? 
-                <div className='agenda__spinnerSubContainer'>
+                <div className='agenda__noEventContainer'>
                     <CustomSpinner text="Loading events" />
                 </div> : 
-                eventsFormatted
+                eventsFormatted.length === 0 ?
+                    <div className='agenda__noEventContainer'>
+                        <div className={`agenda__noEventText ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`} >
+                            <div>
+                                No events found
+                            </div> 
+                            <div className='agenda__noEventSubText'>
+                                Try another filter maybe?
+                            </div> 
+                        </div> 
+                    </div> : 
+                    eventsFormatted
             }
         </div>
         }
