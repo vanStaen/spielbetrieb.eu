@@ -3,7 +3,7 @@ export async function deleteLink(id) {
 
   const graphqlQuery = {
     query: `mutation ( $id: ID! ) {
-                deleteLink ( linkId: $id ) 
+                deleteAdminlink ( adminlinkId: $id ) 
                 }`,
     variables: {
       id
@@ -26,5 +26,5 @@ export async function deleteLink(id) {
   const data = await response.json();
 
   if (data.errors) { return data.errors[0] };
-  return data.deleteLink;
+  return data.deleteAdminlink;
 }

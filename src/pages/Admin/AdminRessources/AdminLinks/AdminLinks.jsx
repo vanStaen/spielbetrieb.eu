@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Table, Typography, Popconfirm, Tag, Button } from 'antd';
+import { Form, Table, Typography, Popconfirm, Tooltip, Button } from 'antd';
 import { EditOutlined, CloseCircleOutlined, CheckCircleOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import { EditableCell } from '../../EditableCell';
@@ -70,31 +70,40 @@ export const AdminLinks = () => {
       key: 'id',    
       align: 'center',
       width: '50px',
-    },
-    {
-      title: 'Short Description',
-      dataIndex: 'shortDesc',
-      key: 'shortDesc',
-      editable: true,
-    },
-    {
-      title: 'Link',
-      dataIndex: 'link',
-      key: 'link',
-      editable: true,
+      render: (_, { _id, archived }) => (<Typography.Text delete={archived} disabled={archived}>{_id}</Typography.Text>),
     },
     {
       title: 'Category',
       dataIndex: 'category',
       key: 'category',     
       editable: true, 
+      sorter: (a, b) => a.category.length - b.category.length,
+      render: (_, { category, archived }) => (<Typography.Text delete={archived} disabled={archived}>{category}</Typography.Text>),
+    },
+    {
+      title: 'Short Description',
+      dataIndex: 'shortDesc',
+      key: 'shortDesc',     
+      editable: true, 
+      render: (_, { shortDesc, archived }) => (<Typography.Text delete={archived} disabled={archived}>{shortDesc}</Typography.Text>),
+    },
+    {
+      title: 'Link',
+      dataIndex: 'link',
+      key: 'link',
+      render: (_, { link, archived }) => (archived ?
+        <Typography.Text delete disabled>{link}</Typography.Text> :
+        <Typography.Link href={link} target="_blank">{link}</Typography.Link>
+        ),
+      editable: true,
     },
     {
       title: 'Archived',
       dataIndex: 'archived',
       key: 'archived',      
       align: 'center',
-      render: (_, { archived }) => (archived ? '✅' : '✖️'),
+      width: '90px',    
+      render: (_, { archived }) => (archived ? '🗃️' : '✖️'),
       editable: true,
     },
     {
@@ -121,9 +130,15 @@ export const AdminLinks = () => {
               <EditOutlined className='admin__editLogo' />
             </Typography.Link>
               {" "}
+            {!record.archived ? 
+            <Tooltip title={`Archive link first`}>
+                <DeleteOutlined  style={{ cursor: 'not-allowed' }} className={`admin__editLogo admin__disabled`} />
+            </Tooltip>
+            :
             <Popconfirm title="Sure to delete?" style={{ marginRight: 8 }} onConfirm={() => deleteRow(record._id)}>
               <DeleteOutlined className='admin__editLogo' />
             </Popconfirm>
+            }
           </span>
         );
       },
@@ -174,7 +189,7 @@ export const AdminLinks = () => {
 
   return (
     <div>
-      {links.length === "1"
+      {links.length === 0
         ? (
             <div className="admin__centered">
               <AdminCustomSpinner text="Loading Data" />
@@ -194,6 +209,9 @@ export const AdminLinks = () => {
                 columns={mergedColumns}
                 pagination={false}
                 size="small"
+                scroll={{
+                  x: 1000,
+                }}
               />
             </Form>
               <div className='admin__tableFooter'>
