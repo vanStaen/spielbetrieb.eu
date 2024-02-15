@@ -17,7 +17,7 @@ const Admincontact = sequelize.define("admincontact", {
     allowNull: false,
   },
   details: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   archived: {

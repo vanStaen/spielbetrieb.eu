@@ -35,7 +35,7 @@ exports.admincontactResolver = {
       const admincontact = new Admincontact({
         userId: req.userId,
         name: args.admincontactInput.name,
-        email: args.admincontactInput.emal,
+        email: args.admincontactInput.email,
         details: args.admincontactInput.details,
       });
       return await admincontact.save();

@@ -3,34 +3,34 @@ import { Form, Table, Typography, Popconfirm, Tooltip, Button } from 'antd';
 import { EditOutlined, CloseCircleOutlined, CheckCircleOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import { EditableCell } from '../../EditableCell';
-import { getLinks } from './getLinks';
-import { deleteLink } from './deleteLink';
-import { updateLink } from './updateLink';
-import { addLink } from './addLink';
+import { getContacts } from './getContacts';
+import { deleteContact } from './deleteContact';
+import { updateContact } from './updateContact';
+import { addContact } from './addContact';
 import { AdminCustomSpinner } from '../../AdminCustomSpinner/AdminCustomSpinner';
 
-export const AdminLinks = () => {
+export const AdminContacts = () => {
   const [form] = Form.useForm();
-  const [links, setLinks] = useState([]);
+  const [contacts, setContacts] = useState([]);
   const [editingId, setEditingId] = useState('');
   const [isNewRow, setIsNewRow] = useState(false);
 
-  const fetchLinks = async () => {
-    const results = await getLinks();
-    setLinks(results);
+  const fetchContacts = async () => {
+    const results = await getContacts();
+    setContacts(results);
   };
 
   useEffect(() => {
-    fetchLinks();
+    fetchContacts();
   }, []);
 
   const isEditing = (record) => record._id === editingId;
 
   const edit = (record) => {
     form.setFieldsValue({ 
-      shortDesc: '',
-      link: '',
-      category: null,
+      name: '',
+      email: '',
+      details: '',
       archived: false,
       ...record,
     });
@@ -39,24 +39,24 @@ export const AdminLinks = () => {
 
   const cancel = async () => {
     setEditingId('');
-    isNewRow && fetchLinks();
+    isNewRow && fetchContacts();
     setIsNewRow(false);
   };
 
   const deleteRow = async (id) => {
-    await deleteLink(id);
-    await fetchLinks();
+    await deleteContact(id);
+    await fetchContacts();
   };
 
   const save = async (id) => {
     try {
       const dataObject = await form.validateFields();
       if (isNewRow) {
-        await addLink(dataObject);
+        await addContact(dataObject);
       } else {
-        await updateLink(id, dataObject);
+        await updateContact(id, dataObject);
       }
-      await fetchLinks();
+      await fetchContacts();
       setEditingId('');
       setIsNewRow(false);
     } catch (e) {
@@ -73,28 +73,25 @@ export const AdminLinks = () => {
       render: (_, { _id, archived }) => (<Typography.Text delete={archived} disabled={archived}>{_id}</Typography.Text>),
     },
     {
-      title: 'Category',
-      dataIndex: 'category',
-      key: 'category',     
+      title: 'Full name',
+      dataIndex: 'name',
+      key: 'name',     
       editable: true, 
-      sorter: (a, b) => a.category.length - b.category.length,
-      render: (_, { category, archived }) => (<Typography.Text delete={archived} disabled={archived}>{category}</Typography.Text>),
+      sorter: (a, b) => a.name.length - b.name.length,
+      render: (_, { name, archived }) => (<Typography.Text delete={archived} disabled={archived}>{name}</Typography.Text>),
     },
     {
-      title: 'Short Description',
-      dataIndex: 'shortDesc',
-      key: 'shortDesc',     
-      editable: true, 
-      render: (_, { shortDesc, archived }) => (<Typography.Text delete={archived} disabled={archived}>{shortDesc}</Typography.Text>),
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email',
+      render: (_, { email, archived }) => (<Typography.Text delete={archived} disabled={archived}>{email}</Typography.Text>),
+      editable: true,
     },
     {
-      title: 'Link',
-      dataIndex: 'link',
-      key: 'link',
-      render: (_, { link, archived }) => (archived ?
-        <Typography.Text delete disabled>{link}</Typography.Text> :
-        <Typography.Link href={link} target="_blank">{link}</Typography.Link>
-        ),
+      title: 'Details',
+      dataIndex: 'details',
+      key: 'details',
+      render: (_, { details, archived }) => (<Typography.Text delete={archived} disabled={archived}>{details  }</Typography.Text>),
       editable: true,
     },
     {
@@ -145,14 +142,6 @@ export const AdminLinks = () => {
     }
   ];
 
-  const categorySelectOption = [
-    { label: 'Team Organisation', value: 'Team Organisation' },
-    { label: 'Marketing', value: 'Marketing' },
-    { label: 'Finance', value: 'Finance' },
-    { label: 'Legal', value: 'Legal' },
-    { label: 'Other', value: 'Other' },
-  ];
-
   const mergedColumns = columns.map((col) => {
     if (!col.editable) {
       return col;
@@ -161,35 +150,35 @@ export const AdminLinks = () => {
       ...col,
       onCell: (record) => ({
         record,
-        inputType: col.dataIndex === 'archived' ? 'boolean' : col.dataIndex === 'category' ? 'select' : 'text',
+        inputType: col.dataIndex === 'archived' ? 'boolean' : 'text',
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
-        options: col.dataIndex === 'category' && categorySelectOption,
+        options: null,
       }),
     };
   });
 
   const handleAdd = () => {
-    const newId = parseInt(links[links.length-1]._id) + 1;
+    // const newId = parseInt(contacts[contacts.length-1]._id) + 1;
     const newRow = {
-      _id: newId,
-      shortDesc: '',
-      link: '',
-      category: null,
+      _id: 1,
+      name: '',
+      email: '',
+      details: '',
       archived: false,
     };
     form.setFieldsValue({
       ...newRow,
     });
-    setLinks([...links, newRow]);
+    setContacts([...contacts, newRow]);
     setIsNewRow(true);
-    setEditingId(newId);
+    setEditingId(1);
   };
 
   return (
     <div>
-      {links.length === 0
+      {contacts.length === "1"
         ? (
             <div className="admin__centered">
               <AdminCustomSpinner text="Loading Data" />
@@ -205,7 +194,7 @@ export const AdminLinks = () => {
                   },
                 }}
                 className="admin__table"
-                dataSource={links}
+                dataSource={contacts}
                 columns={mergedColumns}
                 pagination={false}
                 size="small"
@@ -216,7 +205,7 @@ export const AdminLinks = () => {
             </Form>
               <div className='admin__tableFooter'>
                 <Button onClick={handleAdd}>
-                  Add a new Link
+                  Add a new Contact
                  </Button>
               </div>
           </>

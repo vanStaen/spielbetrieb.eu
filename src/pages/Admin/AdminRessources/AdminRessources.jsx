@@ -6,6 +6,7 @@ import {
 } from '@ant-design/icons';
 
 import { AdminLinks } from "./AdminLinks/AdminLinks"
+import { AdminContacts } from "./AdminContacts/AdminContacts"
 
 export const AdminRessources = () => {
 
@@ -17,8 +18,8 @@ export const AdminRessources = () => {
     },
     {
       key: '2',
-      label: <><ApartmentOutlined /> Network</>,
-      children: '',
+      label: <><ApartmentOutlined /> Contacts</>,
+      children: <AdminContacts />,
     },
   ];
 
