@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Form, Table, Typography, Popconfirm, Tag, Button, Tooltip } from 'antd';
+import { Form, Table, Typography, Popconfirm, Tag, Button, Tooltip, } from 'antd';
 import { EditOutlined, DeleteOutlined, CopyOutlined } from '@ant-design/icons';
 import * as dayjs from 'dayjs';
 
@@ -130,6 +130,11 @@ export const AdminEvents = () => {
       dataIndex: 'description',
       key: 'description',  
       width: '200px',   
+      render: (_, { description }) => (
+        <Typography.Text style={{ width: 200 }}>
+          {description}
+        </Typography.Text>
+      ),
     },
     {
       title: 'Loc Id',
