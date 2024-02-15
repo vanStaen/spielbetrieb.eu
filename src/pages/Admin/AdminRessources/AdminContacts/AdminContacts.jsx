@@ -91,7 +91,14 @@ export const AdminContacts = () => {
       title: 'Details',
       dataIndex: 'details',
       key: 'details',
-      render: (_, { details, archived }) => (<Typography.Text delete={archived} disabled={archived}>{details  }</Typography.Text>),
+      render: (_, { details, archived }) => (<Typography.Text delete={archived} disabled={archived}>{details}</Typography.Text>),
+      editable: true,
+    },
+    {
+      title: 'Added by',
+      dataIndex: 'user',
+      key: 'user',
+      render: (_, { user, archived }) => (<Typography.Text delete={archived} disabled={archived}>{user.userName}</Typography.Text>),
       editable: true,
     },
     {
@@ -160,9 +167,9 @@ export const AdminContacts = () => {
   });
 
   const handleAdd = () => {
-    // const newId = parseInt(contacts[contacts.length-1]._id) + 1;
+    const newId = parseInt(contacts[contacts.length-1]._id) + 1;
     const newRow = {
-      _id: 1,
+      _id: newId,
       name: '',
       email: '',
       details: '',
@@ -173,12 +180,12 @@ export const AdminContacts = () => {
     });
     setContacts([...contacts, newRow]);
     setIsNewRow(true);
-    setEditingId(1);
+    setEditingId(newId);
   };
 
   return (
     <div>
-      {contacts.length === "1"
+      {contacts.length === 0
         ? (
             <div className="admin__centered">
               <AdminCustomSpinner text="Loading Data" />

@@ -160,7 +160,7 @@ export const AdminEvents = () => {
       width: '150px',
     }, 
     {
-      title: 'Admin Id',
+      title: 'Admin',
       dataIndex: 'admin',
       key: 'admin',
       width: '150px',
@@ -279,7 +279,7 @@ export const AdminEvents = () => {
                 pagination={false}
                 size="small"
                 scroll={{
-                  x: 1600,
+                  x: 1800,
                 }}
               />
             </Form>

@@ -9,6 +9,10 @@ export async function getContacts() {
                 email,
                 details,
                 archived,
+                user {
+                    _id,
+                    userName,
+                }
               }
             }
           `
