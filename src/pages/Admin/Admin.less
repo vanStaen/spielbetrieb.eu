@@ -3,7 +3,8 @@
 .background {
    position: fixed;
    width: 100vw;
-   height: 100vh;
+   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+   height: calc(var(--vh, 1vh) * 100);
    background-image: url('../../img/background.jpg');
    background-size: cover;
    filter: grayscale(1) contrast(1.25);
@@ -18,7 +19,8 @@
 
 .admin__container {
    position: relative;
-   min-height: 100vh;
+   min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+   min-height: calc(var(--vh, 1vh) * 100);
    z-index: 2;
   
    .admin__text {
@@ -106,10 +108,11 @@
    }
 
    .admin__centered {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
-      height: 100vh;
+      height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+      height: calc(var(--vh, 1vh) * 100);
       width: 100vw;
       display: flex;
       flex-direction: column;

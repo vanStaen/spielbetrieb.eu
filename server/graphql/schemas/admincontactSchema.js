@@ -5,6 +5,7 @@ type Admincontact {
     email: String!
     details: String
     archived: Boolean
+    user: User
 }`;
 
 exports.AdmincontactInputData = `

@@ -35,7 +35,7 @@ exports.admincontactResolver = {
       const admincontact = new Admincontact({
         userId: req.userId,
         name: args.admincontactInput.name,
-        email: args.admincontactInput.emal,
+        email: args.admincontactInput.email,
         details: args.admincontactInput.details,
       });
       return await admincontact.save();
@@ -63,8 +63,8 @@ exports.admincontactResolver = {
       "archived",
     ];
     updatableFields.forEach((field) => {
-      if (field in args.admincontactId) {
-        updateFields[field] = args.admincontactId[field];
+      if (field in args.admincontactInput) {
+        updateFields[field] = args.admincontactInput[field];
       }
     });
     try {

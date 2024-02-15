@@ -34,7 +34,7 @@
 - [ ] Check all z-Index
 - [ ] Tracking/Analytics
 - [ ] Smooth transition for language and theme menu
-- [ ] Get rid of 100vh (for event listner of window.innerHeight)
+- [x] Get rid of 100vh (for event listner of window.innerHeight)
 - [ ] Rerendering (e.g: notifications) 
 - [ ] List of forbidden usernames
 - [ ] List of forbidden words

@@ -5,18 +5,21 @@ import {
   ApartmentOutlined, 
 } from '@ant-design/icons';
 
+import { AdminLinks } from "./AdminLinks/AdminLinks"
+import { AdminContacts } from "./AdminContacts/AdminContacts"
+
 export const AdminRessources = () => {
 
   const items = [
     {
       key: '1',
       label: <><LinkOutlined /> Links</>,
-      children: '',
+      children: <AdminLinks />,
     },
     {
       key: '2',
-      label: <><ApartmentOutlined /> Network</>,
-      children: '',
+      label: <><ApartmentOutlined /> Contacts</>,
+      children: <AdminContacts />,
     },
   ];
 

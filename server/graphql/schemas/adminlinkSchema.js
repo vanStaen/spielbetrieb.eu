@@ -5,6 +5,7 @@ type Adminlink {
     category: String!
     link: String!
     archived: Boolean
+    user: User
 }`;
 
 exports.AdminlinkInputData = `

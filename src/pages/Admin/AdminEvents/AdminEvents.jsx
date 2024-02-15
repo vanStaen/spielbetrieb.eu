@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Form, Table, Typography, Popconfirm, Tag, Button, Tooltip } from 'antd';
+import { Form, Table, Typography, Popconfirm, Tag, Button, Tooltip, } from 'antd';
 import { EditOutlined, DeleteOutlined, CopyOutlined } from '@ant-design/icons';
 import * as dayjs from 'dayjs';
 
@@ -130,6 +130,11 @@ export const AdminEvents = () => {
       dataIndex: 'description',
       key: 'description',  
       width: '200px',   
+      render: (_, { description }) => (
+        <Typography.Text style={{ width: 200 }} ellipsis>
+          {description}
+        </Typography.Text>
+      ),
     },
     {
       title: 'Loc Id',
@@ -155,7 +160,7 @@ export const AdminEvents = () => {
       width: '150px',
     }, 
     {
-      title: 'Admin Id',
+      title: 'Admin',
       dataIndex: 'admin',
       key: 'admin',
       width: '150px',
@@ -274,7 +279,7 @@ export const AdminEvents = () => {
                 pagination={false}
                 size="small"
                 scroll={{
-                  x: 1600,
+                  x: 1800,
                 }}
               />
             </Form>

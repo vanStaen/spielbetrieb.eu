@@ -9,11 +9,14 @@ export const EditableCell = ({
     record,
     index,
     children,
+    options,
     ...restProps
-  }) => {
-
+  }) => { 
+    
     const inputNode = inputType === 'boolean' ? 
       <Switch size='small'/> : 
+      inputType === 'select' ? 
+      <Select size='small' options={options} /> : 
       inputType === 'stringObject' ? 
       <Select size='small' mode="tags"/> : 
       inputType === 'dateRange' ? 

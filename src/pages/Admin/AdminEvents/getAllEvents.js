@@ -25,9 +25,6 @@ export async function getAllEvents() {
                 createdAt,
                 updatedAt,
                 isDraft,
-                user {
-                    _id,
-                }
               }
             }
           `
