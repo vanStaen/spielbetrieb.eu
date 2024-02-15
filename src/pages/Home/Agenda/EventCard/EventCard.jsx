@@ -30,9 +30,7 @@ export const EventCard = (props) => {
     const handleEventContainerClick = () => {
         const elementContainer = document.getElementById(`eventContainer${event._id}`);
         elementContainer.style.maxHeight = '400px';
-        setTimeout(function () {
-            elementContainer.classList.remove("event__ContainerPast");
-        }, 100);
+        elementContainer.classList.remove("event__ContainerPast");
     }
 
     return (            

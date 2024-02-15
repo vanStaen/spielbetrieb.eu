@@ -1,7 +1,7 @@
 .event__Container {
     transition: all .3s !important; 
     width: calc(100% - 50px - 40px); // - padding - margin
-    margin: 15px 25px 20px 25px;
+    margin: 10px 25px 20px 25px;
     padding: 10px 20px;
     border-radius: 3px;  
     font-size: 16px;
@@ -125,19 +125,32 @@
 }
 
 .event__ContainerPast {
-    max-height: 75px;
+    max-height: 70px;
     overflow: hidden;
+    padding-top: 5px;
     margin-bottom: 0;
-    opacity: .75;
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    opacity: .25;
+    //-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
     .event__date {
         .event__dateDay {
             font-size: 18px;
         } 
     }
+    .event__main {
+        .event__titleLocation{
+            .event__title {
+                font-size: 22px;
+            } 
+        }
+    }
 }
 @media only screen and (max-width: 675px) {
     .event__ContainerPast {
-        max-height: 60px;
+        max-height: 48px;    
+        .event__date {
+            .event__dateDay {
+                font-size: 40px;
+            } 
+        }
     }
 }
