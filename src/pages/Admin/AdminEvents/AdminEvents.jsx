@@ -131,7 +131,7 @@ export const AdminEvents = () => {
       key: 'description',  
       width: '200px',   
       render: (_, { description }) => (
-        <Typography.Text style={{ width: 200 }}>
+        <Typography.Text style={{ width: 200 }} ellipsis>
           {description}
         </Typography.Text>
       ),
