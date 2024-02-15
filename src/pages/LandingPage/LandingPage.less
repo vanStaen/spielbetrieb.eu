@@ -3,7 +3,8 @@
 .background {
    position: absolute;
    width: 100vw;
-   height: 100vh;
+   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+   height: calc(var(--vh, 1vh) * 100);
    background-image: url('../../img/background.jpg');
    background-size: cover;
 }
@@ -11,7 +12,8 @@
 .landingPage__doublearrow {
    position: absolute;
    right: 0;
-   height: 100vh;
+   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+   height: calc(var(--vh, 1vh) * 100);
    width: 10vw;
    display: flex;
    flex-direction: column;
@@ -27,7 +29,8 @@
 
 @media only screen and (max-width: 675px) {
    .background {
-      height: 201vh;
+      height: 200vh; /* Fallback for browsers that do not support Custom Properties */
+      height: calc(var(--vh, 2vh) * 100);
       background-size: cover;
       background-position: center;
    }   
@@ -39,7 +42,8 @@
 .landingPage__doublearrow {
    position: absolute;
    right: 0;
-   height: 100vh;
+   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+   height: calc(var(--vh, 1vh) * 100);
    width: 10vw;
    display: flex;
    flex-direction: column;
@@ -67,7 +71,8 @@
 .landingPage__container {
    .spielbetrieb__container {
       position: relative;
-      height: 100vh;
+      height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+      height: calc(var(--vh, 1vh) * 100);
       z-index: 2;
       display: flex;
       flex-direction: column;
@@ -136,7 +141,8 @@
    .phone__container {
       position: absolute;
       display: flex;
-      height: 100vh;
+      height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+      height: calc(var(--vh, 1vh) * 100);
       top: 0;
       right: 0;
       width: @widthPhonePanel;
@@ -159,7 +165,8 @@
    }
    .phone__mobileContainer {
       display: none;
-      height: 100vh;
+      height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+      height: calc(var(--vh, 1vh) * 100);
       z-index: 10;
       flex-direction: column;
       align-items: center;
