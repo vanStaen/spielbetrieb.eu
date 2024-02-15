@@ -63,8 +63,8 @@ exports.admincontactResolver = {
       "archived",
     ];
     updatableFields.forEach((field) => {
-      if (field in args.admincontactId) {
-        updateFields[field] = args.admincontactId[field];
+      if (field in args.admincontactInput) {
+        updateFields[field] = args.admincontactInput[field];
       }
     });
     try {

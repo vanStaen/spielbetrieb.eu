@@ -46,6 +46,7 @@ exports.adminlinkResolver = {
 
   // updateAdminlink(adminlinkId: ID!, adminlinkInput: AdminlinkInputData!): Adminlink!
   async updateAdminlink(args, req) {
+    console.log("args", args);
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
@@ -63,10 +64,11 @@ exports.adminlinkResolver = {
       "archived",
     ];
     updatableFields.forEach((field) => {
-      if (field in args.adminlinkId) {
-        updateFields[field] = args.adminlinkId[field];
+      if (field in args.adminlinkInput) {
+        updateFields[field] = args.adminlinkInput[field];
       }
     });
+    console.log("updateFields", updateFields);
     try {
       const updatedAdminlink = await Adminlink.update(updateFields, {
         where: {
