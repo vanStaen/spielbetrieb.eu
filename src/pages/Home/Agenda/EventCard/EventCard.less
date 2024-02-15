@@ -1,7 +1,7 @@
 .event__Container {
     transition: all .3s !important; 
     width: calc(100% - 50px - 40px); // - padding - margin
-    margin: 10px 25px 20px 25px;
+    margin: 10px 25px 0 25px;
     padding: 10px 20px;
     border-radius: 3px;  
     font-size: 16px;
@@ -121,6 +121,13 @@
                 padding-bottom: 8px;
             }
         }
+    }
+}
+
+@media only screen and (max-width: 675px) {
+    .event__Container {
+        width: calc(100% - 30px - 40px); // - padding - margin
+        margin: 10px 15px 0 15px;
     }
 }
 
