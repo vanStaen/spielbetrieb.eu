@@ -1,8 +1,8 @@
 import React from "react";
-import { observer } from 'mobx-react';
+import { observer } from "mobx-react";
 
 import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
-import { pageStore } from '../../store/pageStore/pageStore';
+import { pageStore } from "../../store/pageStore/pageStore";
 
 import "./CustomSpinner.less";
 
@@ -17,10 +17,15 @@ export const CustomSpinner = observer((props) => {
       <img
         src={SpielbetriebLogo}
         id="spielbetriebLogo"
-        className={`customSpinner__logo ${size} ${pageStore.selectedTheme === "dark" && 'theme__logoInvertColor'}`}
+        className={`customSpinner__logo ${size} ${pageStore.selectedTheme === "dark" && "theme__logoInvertColor"}`}
       />
-      {props.text && <div className={`customSpinner__text ${pageStore.selectedTheme === "light" ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
-        {props.text}</div>}
+      {props.text && (
+        <div
+          className={`customSpinner__text ${pageStore.selectedTheme === "light" ? "lightColorTheme__Text" : "darkColorTheme__Text"}`}
+        >
+          {props.text}
+        </div>
+      )}
     </>
   );
 });

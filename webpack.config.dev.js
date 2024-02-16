@@ -15,14 +15,14 @@ module.exports = {
   mode: "development",
   output: {
     path: path.resolve(__dirname, "build"),
-    publicPath: '/',
+    publicPath: "/",
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
     new webpack.DefinePlugin({
-      "process.env.API_URL": JSON.stringify("http://localhost:5017")
+      "process.env.API_URL": JSON.stringify("http://localhost:5017"),
     }),
     new CopyPlugin({
       patterns: [
@@ -55,7 +55,7 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
     ],
   },

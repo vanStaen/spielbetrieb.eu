@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { observer } from 'mobx-react';
-import { useTranslation } from 'react-i18next';
+import React, { useEffect, useState } from "react";
+import { observer } from "mobx-react";
+import { useTranslation } from "react-i18next";
 
-import { pageStore } from '../../store/pageStore/pageStore';
+import { pageStore } from "../../store/pageStore/pageStore";
 
-import './DarkModeDropDown.less';
+import "./DarkModeDropDown.less";
 
 export const DarkModeDropDown = observer(() => {
   const { t } = useTranslation();
@@ -12,9 +12,9 @@ export const DarkModeDropDown = observer(() => {
   const [showThemeMenu, setShowThemeMenu] = useState(false);
 
   useEffect(() => {
-    const selectedClasses = document.getElementsByClassName('invertColorTheme');
+    const selectedClasses = document.getElementsByClassName("invertColorTheme");
     for (let i = 0, il = selectedClasses.length; i < il; i++) {
-      selectedClasses[i].style.filter = `invert(${theme === "dark" ? 0 : 1 })`;
+      selectedClasses[i].style.filter = `invert(${theme === "dark" ? 0 : 1})`;
     }
   }, [theme]);
 
@@ -25,37 +25,41 @@ export const DarkModeDropDown = observer(() => {
   };
 
   return (
-    <div className='darkModeDropdown__container'>
-      <div 
-        className={`darkModeDropdown ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`}
+    <div className="darkModeDropdown__container">
+      <div
+        className={`darkModeDropdown ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
         onClick={() => {
           setShowThemeMenu(!showThemeMenu);
         }}
       >
-        {theme === "dark" ? t('general.dark') : t('general.light')}
+        {theme === "dark" ? t("general.dark") : t("general.light")}
       </div>
-      {showThemeMenu &&  
+      {showThemeMenu && (
         <div
-          className={`darkModeDropdown__menu ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Menu' : 'darkColorTheme__Menu'}`}
+          className={`darkModeDropdown__menu ${pageStore.selectedTheme === "light" ? "lightColorTheme__Menu" : "darkColorTheme__Menu"}`}
           id="darkModeDropdownContainer"
-          onMouseLeave={() => { setShowThemeMenu(false); }}
+          onMouseLeave={() => {
+            setShowThemeMenu(false);
+          }}
         >
-          <div 
+          <div
             className="menu__element"
             onClick={() => {
-              handleThemeChange('dark');
-            }}>
-            {t('general.dark')}
+              handleThemeChange("dark");
+            }}
+          >
+            {t("general.dark")}
           </div>
-          <div 
-            className="menu__element"  
+          <div
+            className="menu__element"
             onClick={() => {
-              handleThemeChange('light');
-            }}>
-            {t('general.light')}
+              handleThemeChange("light");
+            }}
+          >
+            {t("general.light")}
           </div>
         </div>
-      }
+      )}
     </div>
   );
 });

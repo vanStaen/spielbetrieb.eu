@@ -19,7 +19,7 @@ module.exports = {
       template: "./public/index.html",
     }),
     new webpack.DefinePlugin({
-      "process.env.API_URL": JSON.stringify("https://spielbetrieb.eu")
+      "process.env.API_URL": JSON.stringify("https://spielbetrieb.eu"),
     }),
     new CopyPlugin({
       patterns: [
@@ -52,7 +52,7 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
     ],
   },

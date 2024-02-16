@@ -1,18 +1,18 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { Form, Input, Button, notification } from 'antd';
-import { useParams } from 'react-router-dom';
-import { LockOutlined, SyncOutlined } from '@ant-design/icons';
-import { useTranslation } from 'react-i18next';
-import { observer } from 'mobx-react';
+import React, { useEffect, useState, useCallback } from "react";
+import { Form, Input, Button, notification } from "antd";
+import { useParams } from "react-router-dom";
+import { LockOutlined, SyncOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
+import { observer } from "mobx-react";
 
-import { postTokenVerify } from './postTokenVerify';
-import { postChangePassword } from './postChangePassword';
-import { CustomSpinner } from '../../components/CustomSpinner/CustomSpinnner';
-import { LanguageDropDown } from '../../components/LanguageDropDown/LanguageDropDown';
-import { DarkModeDropDown } from '../../components/DarkModeDropDown/DarkModeDropDown';
-import { pageStore } from '../../store/pageStore/pageStore';
+import { postTokenVerify } from "./postTokenVerify";
+import { postChangePassword } from "./postChangePassword";
+import { CustomSpinner } from "../../components/CustomSpinner/CustomSpinnner";
+import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
+import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
+import { pageStore } from "../../store/pageStore/pageStore";
 
-import './NewPassword.less';
+import "./NewPassword.less";
 
 export const NewPassword = observer(() => {
   const [wrongTokenNotifWasShown, setWrongTokenNotifWasShown] = useState(false);
@@ -33,27 +33,27 @@ export const NewPassword = observer(() => {
           duration: 3,
           message: <ErrorTitlePwdReseted />,
           description: <ErrorDescPwdReseted />,
-          placement: 'bottomRight',
-          className: 'customNotification'
+          placement: "bottomRight",
+          className: "customNotification",
         });
         setTimeout(() => {
-          document.location.href = '/login';
+          document.location.href = "/login";
         }, 3000);
       } else {
         notification.open({
           duration: 10,
           message: <ErrorTitlePwdNotChanged />,
           description: <ErrorDescPwdNotChanged />,
-          placement: 'bottomRight',
-          className: 'customNotification'
+          placement: "bottomRight",
+          className: "customNotification",
         });
       }
     } catch (error) {
       notification.error({
         duration: 10,
         message: error.message,
-        placement: 'bottomRight',
-        className: 'customNotification'
+        placement: "bottomRight",
+        className: "customNotification",
       });
       console.log(error);
     }
@@ -72,8 +72,8 @@ export const NewPassword = observer(() => {
         duration: 0,
         message: <ErrorTitleLinkNotValid />,
         description: <ErrorDescLinkNotValid />,
-        placement: 'bottomRight',
-        className: 'customNotification'
+        placement: "bottomRight",
+        className: "customNotification",
       });
       setWrongTokenNotifWasShown(true);
     }
@@ -92,20 +92,20 @@ export const NewPassword = observer(() => {
       <DarkModeDropDown />
       <div className="background invertColorTheme" id="background"></div>
       <div className="verifyEmail__container">
-        {isLoading
-          ? (
-          <CustomSpinner size="large" text="Validating"/>
-            )
-          : (
+        {isLoading ? (
+          <CustomSpinner size="large" text="Validating" />
+        ) : (
           <>
-            <div className={`verifyEmail__header ${pageStore.selectedTheme === "light" ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
-              {t('login.setNewPassword')}
+            <div
+              className={`verifyEmail__header ${pageStore.selectedTheme === "light" ? "lightColorTheme__Text" : "darkColorTheme__Text"}`}
+            >
+              {t("login.setNewPassword")}
             </div>
             <Form
               name="form_signup"
               className="verifyEmail__form"
               initialValues={{
-                remember: true
+                remember: true,
               }}
               onFinish={submitHandler}
             >
@@ -114,40 +114,40 @@ export const NewPassword = observer(() => {
                 rules={[
                   {
                     required: true,
-                    message: t('login.pleaseInputNewPassword')
-                  }
+                    message: t("login.pleaseInputNewPassword"),
+                  },
                 ]}
               >
                 <Input.Password
                   prefix={<LockOutlined />}
-                  placeholder={t('login.chooseNewPassword')}
+                  placeholder={t("login.chooseNewPassword")}
                 />
               </Form.Item>
 
               <Form.Item
                 name="confirm"
-                dependencies={['password']}
+                dependencies={["password"]}
                 hasFeedback
                 rules={[
                   {
                     required: true,
-                    message: t('login.pleaseInputNewPassword')
+                    message: t("login.pleaseInputNewPassword"),
                   },
                   ({ getFieldValue }) => ({
-                    validator (_, value) {
-                      if (!value || getFieldValue('password') === value) {
+                    validator(_, value) {
+                      if (!value || getFieldValue("password") === value) {
                         return Promise.resolve();
                       }
                       return Promise.reject(
-                        new Error(t('login.passwordDoNotMatch'))
+                        new Error(t("login.passwordDoNotMatch")),
                       );
-                    }
-                  })
+                    },
+                  }),
                 ]}
               >
                 <Input.Password
                   prefix={<LockOutlined />}
-                  placeholder={t('login.pleaseConfirmNewPassword')}
+                  placeholder={t("login.pleaseConfirmNewPassword")}
                 />
               </Form.Item>
 
@@ -155,25 +155,21 @@ export const NewPassword = observer(() => {
                 <Button
                   type="primary"
                   htmlType="submit"
-                  className={`verifyEmail__formbutton ${pageStore.selectedTheme === "light" ?  'lightColorTheme__Button' : 'darkColorTheme__Button'}`}
+                  className={`verifyEmail__formbutton ${pageStore.selectedTheme === "light" ? "lightColorTheme__Button" : "darkColorTheme__Button"}`}
                   disabled={!isValid}
                 >
-                  {isLoading
-                    ? (
+                  {isLoading ? (
                     <SyncOutlined spin />
-                      )
-                    : isValid
-                      ? (
-                          t('login.updatePassword')
-                        )
-                      : (
-                          t('login.linkNotValidAnymore')
-                        )}
+                  ) : isValid ? (
+                    t("login.updatePassword")
+                  ) : (
+                    t("login.linkNotValidAnymore")
+                  )}
                 </Button>
               </Form.Item>
             </Form>
           </>
-            )}
+        )}
       </div>
     </>
   );
@@ -181,30 +177,30 @@ export const NewPassword = observer(() => {
 
 const ErrorTitleLinkNotValid = () => {
   const { t } = useTranslation();
-  return <>❌ {t('login.linkNotValid')}</>;
+  return <>❌ {t("login.linkNotValid")}</>;
 };
 
 const ErrorDescLinkNotValid = () => {
   const { t } = useTranslation();
-  return <>{t('login.linkNotValid2')}</>;
+  return <>{t("login.linkNotValid2")}</>;
 };
 
 const ErrorTitlePwdNotChanged = () => {
   const { t } = useTranslation();
-  return <>❌ {t('login.passwordNotChanged')}</>;
+  return <>❌ {t("login.passwordNotChanged")}</>;
 };
 
 const ErrorDescPwdNotChanged = () => {
   const { t } = useTranslation();
-  return <>{t('login.passwordNotChanged2')}</>;
+  return <>{t("login.passwordNotChanged2")}</>;
 };
 
 const ErrorTitlePwdReseted = () => {
   const { t } = useTranslation();
-  return <>👌 {t('login.passwordReseted')}</>;
+  return <>👌 {t("login.passwordReseted")}</>;
 };
 
 const ErrorDescPwdReseted = () => {
   const { t } = useTranslation();
-  return <>{t('login.passwordReseted2')}</>;
+  return <>{t("login.passwordReseted2")}</>;
 };

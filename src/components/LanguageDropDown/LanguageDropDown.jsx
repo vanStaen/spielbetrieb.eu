@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { observer } from 'mobx-react';
-import { useTranslation } from 'react-i18next';
-import { pageStore } from '../../store/pageStore/pageStore';
+import React, { useState, useEffect } from "react";
+import { observer } from "mobx-react";
+import { useTranslation } from "react-i18next";
+import { pageStore } from "../../store/pageStore/pageStore";
 
-import './LanguageDropDown.less';
+import "./LanguageDropDown.less";
 
 export const LanguageDropDown = observer(() => {
   const { i18n } = useTranslation();
@@ -12,12 +12,12 @@ export const LanguageDropDown = observer(() => {
 
   const onLanguageChangeHandler = (value) => {
     pageStore.setSelectedLanguage(value);
-    if (value === 'en') {
-      i18n.changeLanguage('en-US');
-      setLanguage('en');
-    } else if (value === 'de') {
-      i18n.changeLanguage('de-DE');
-      setLanguage('de');
+    if (value === "en") {
+      i18n.changeLanguage("en-US");
+      setLanguage("en");
+    } else if (value === "de") {
+      i18n.changeLanguage("de-DE");
+      setLanguage("de");
     }
   };
 
@@ -26,39 +26,43 @@ export const LanguageDropDown = observer(() => {
   }, [pageStore.selectedLanguage]);
 
   return (
-    <div className='languageDropdown__container'>
-      <div 
-        className={`languageDropdown ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`}
+    <div className="languageDropdown__container">
+      <div
+        className={`languageDropdown ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
         onClick={() => {
           setShowLanguageMenu(!showLanguageMenu);
         }}
       >
         {language}
       </div>
-      {showLanguageMenu &&  
+      {showLanguageMenu && (
         <div
-          className={`languageDropdown__menu ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Menu' : 'darkColorTheme__Menu'}`}
+          className={`languageDropdown__menu ${pageStore.selectedTheme === "light" ? "lightColorTheme__Menu" : "darkColorTheme__Menu"}`}
           id="languageDropdownContainer"
-          onMouseLeave={() => { setShowLanguageMenu(false); }}
+          onMouseLeave={() => {
+            setShowLanguageMenu(false);
+          }}
         >
-          <div 
+          <div
             className="menu__element"
             onClick={() => {
-              onLanguageChangeHandler('en');
+              onLanguageChangeHandler("en");
               setShowLanguageMenu(false);
-            }}>
+            }}
+          >
             🇬🇧
           </div>
-          <div 
-            className="menu__element"  
+          <div
+            className="menu__element"
             onClick={() => {
-              onLanguageChangeHandler('de');
+              onLanguageChangeHandler("de");
               setShowLanguageMenu(false);
-            }}>
+            }}
+          >
             🇩🇪
           </div>
         </div>
-      }
+      )}
     </div>
   );
 });

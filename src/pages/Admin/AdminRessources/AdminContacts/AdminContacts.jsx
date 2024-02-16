@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Table, Typography, Popconfirm, Tooltip, Button } from 'antd';
-import { EditOutlined, CloseCircleOutlined, CheckCircleOutlined, DeleteOutlined } from '@ant-design/icons';
+import React, { useState, useEffect } from "react";
+import { Form, Table, Typography, Popconfirm, Tooltip, Button } from "antd";
+import {
+  EditOutlined,
+  CloseCircleOutlined,
+  CheckCircleOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 
-import { EditableCell } from '../../EditableCell';
-import { getContacts } from './getContacts';
-import { deleteContact } from './deleteContact';
-import { updateContact } from './updateContact';
-import { addContact } from './addContact';
-import { AdminCustomSpinner } from '../../AdminCustomSpinner/AdminCustomSpinner';
+import { EditableCell } from "../../EditableCell";
+import { getContacts } from "./getContacts";
+import { deleteContact } from "./deleteContact";
+import { updateContact } from "./updateContact";
+import { addContact } from "./addContact";
+import { AdminCustomSpinner } from "../../AdminCustomSpinner/AdminCustomSpinner";
 
 export const AdminContacts = () => {
   const [form] = Form.useForm();
   const [contacts, setContacts] = useState([]);
-  const [editingId, setEditingId] = useState('');
+  const [editingId, setEditingId] = useState("");
   const [isNewRow, setIsNewRow] = useState(false);
 
   const fetchContacts = async () => {
@@ -27,10 +32,10 @@ export const AdminContacts = () => {
   const isEditing = (record) => record._id === editingId;
 
   const edit = (record) => {
-    form.setFieldsValue({ 
-      name: '',
-      email: '',
-      details: '',
+    form.setFieldsValue({
+      name: "",
+      email: "",
+      details: "",
       archived: false,
       ...record,
     });
@@ -38,7 +43,7 @@ export const AdminContacts = () => {
   };
 
   const cancel = async () => {
-    setEditingId('');
+    setEditingId("");
     isNewRow && fetchContacts();
     setIsNewRow(false);
   };
@@ -57,96 +62,127 @@ export const AdminContacts = () => {
         await updateContact(id, dataObject);
       }
       await fetchContacts();
-      setEditingId('');
+      setEditingId("");
       setIsNewRow(false);
     } catch (e) {
-      console.log('Error while saving:', e);
+      console.log("Error while saving:", e);
     }
   };
   const columns = [
     {
-      title: 'id',
-      dataIndex: '_id',
-      key: 'id',    
-      align: 'center',
-      width: '50px',
-      render: (_, { _id, archived }) => (<Typography.Text delete={archived} disabled={archived}>{_id}</Typography.Text>),
+      title: "id",
+      dataIndex: "_id",
+      key: "id",
+      align: "center",
+      width: "50px",
+      render: (_, { _id, archived }) => (
+        <Typography.Text delete={archived} disabled={archived}>
+          {_id}
+        </Typography.Text>
+      ),
     },
     {
-      title: 'Full name',
-      dataIndex: 'name',
-      key: 'name',     
-      editable: true, 
+      title: "Full name",
+      dataIndex: "name",
+      key: "name",
+      editable: true,
       sorter: (a, b) => a.name.length - b.name.length,
-      render: (_, { name, archived }) => (<Typography.Text delete={archived} disabled={archived}>{name}</Typography.Text>),
+      render: (_, { name, archived }) => (
+        <Typography.Text delete={archived} disabled={archived}>
+          {name}
+        </Typography.Text>
+      ),
     },
     {
-      title: 'Email',
-      dataIndex: 'email',
-      key: 'email',
-      render: (_, { email, archived }) => (<Typography.Text delete={archived} disabled={archived}>{email}</Typography.Text>),
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+      render: (_, { email, archived }) => (
+        <Typography.Text delete={archived} disabled={archived}>
+          {email}
+        </Typography.Text>
+      ),
       editable: true,
     },
     {
-      title: 'Details',
-      dataIndex: 'details',
-      key: 'details',
-      render: (_, { details, archived }) => (<Typography.Text delete={archived} disabled={archived}>{details}</Typography.Text>),
+      title: "Details",
+      dataIndex: "details",
+      key: "details",
+      render: (_, { details, archived }) => (
+        <Typography.Text delete={archived} disabled={archived}>
+          {details}
+        </Typography.Text>
+      ),
       editable: true,
     },
     {
-      title: 'Added by',
-      dataIndex: 'user',
-      key: 'user',
-      render: (_, { user, archived }) => (<Typography.Text delete={archived} disabled={archived}>{user.userName}</Typography.Text>),
+      title: "Added by",
+      dataIndex: "user",
+      key: "user",
+      render: (_, { user, archived }) => (
+        <Typography.Text delete={archived} disabled={archived}>
+          {user.userName}
+        </Typography.Text>
+      ),
       editable: true,
     },
     {
-      title: 'Archived',
-      dataIndex: 'archived',
-      key: 'archived',      
-      align: 'center',
-      width: '90px',    
-      render: (_, { archived }) => (archived ? '☠️' : ''),
+      title: "Archived",
+      dataIndex: "archived",
+      key: "archived",
+      align: "center",
+      width: "90px",
+      render: (_, { archived }) => (archived ? "☠️" : ""),
       editable: true,
     },
     {
-      title: <span style={{opacity: ".2"}}>Edit</span>,
-      dataIndex: 'edit',
-      width: '90px',    
-      align: 'center',
+      title: <span style={{ opacity: ".2" }}>Edit</span>,
+      dataIndex: "edit",
+      width: "90px",
+      align: "center",
       render: (_, record) => {
         const editable = isEditing(record);
         return editable ? (
           <span>
-            <Typography.Link onClick={() => save(record._id)} style={{ marginRight: 8 }}>
-              <CheckCircleOutlined className='admin__saveLogo' />
-            </Typography.Link>
-            {" "}
+            <Typography.Link
+              onClick={() => save(record._id)}
+              style={{ marginRight: 8 }}
+            >
+              <CheckCircleOutlined className="admin__saveLogo" />
+            </Typography.Link>{" "}
             <Typography.Link onClick={cancel} style={{ marginRight: 8 }}>
-              <CloseCircleOutlined className='admin__cancelLogo' />           
+              <CloseCircleOutlined className="admin__cancelLogo" />
             </Typography.Link>
-
           </span>
         ) : (
           <span>
-            <Typography.Link disabled={editingId !== ''} style={{ marginRight: 8 }} onClick={() => edit(record)}>
-              <EditOutlined className='admin__editLogo' />
-            </Typography.Link>
-              {" "}
-            {!record.archived ? 
-            <Tooltip title={`Archive link first`}>
-                <DeleteOutlined  style={{ cursor: 'not-allowed' }} className={`admin__editLogo admin__disabled`} />
-            </Tooltip>
-            :
-            <Popconfirm title="Sure to delete?" style={{ marginRight: 8 }} onConfirm={() => deleteRow(record._id)}>
-              <DeleteOutlined className='admin__editLogo' />
-            </Popconfirm>
-            }
+            <Typography.Link
+              disabled={editingId !== ""}
+              style={{ marginRight: 8 }}
+              onClick={() => edit(record)}
+            >
+              <EditOutlined className="admin__editLogo" />
+            </Typography.Link>{" "}
+            {!record.archived ? (
+              <Tooltip title={`Archive link first`}>
+                <DeleteOutlined
+                  style={{ cursor: "not-allowed" }}
+                  className={`admin__editLogo admin__disabled`}
+                />
+              </Tooltip>
+            ) : (
+              <Popconfirm
+                title="Sure to delete?"
+                style={{ marginRight: 8 }}
+                onConfirm={() => deleteRow(record._id)}
+              >
+                <DeleteOutlined className="admin__editLogo" />
+              </Popconfirm>
+            )}
           </span>
         );
       },
-    }
+    },
   ];
 
   const mergedColumns = columns.map((col) => {
@@ -157,7 +193,7 @@ export const AdminContacts = () => {
       ...col,
       onCell: (record) => ({
         record,
-        inputType: col.dataIndex === 'archived' ? 'boolean' : 'text',
+        inputType: col.dataIndex === "archived" ? "boolean" : "text",
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
@@ -167,12 +203,12 @@ export const AdminContacts = () => {
   });
 
   const handleAdd = () => {
-    const newId = parseInt(contacts[contacts.length-1]._id) + 1;
+    const newId = parseInt(contacts[contacts.length - 1]._id) + 1;
     const newRow = {
       _id: newId,
-      name: '',
-      email: '',
-      details: '',
+      name: "",
+      email: "",
+      details: "",
       archived: false,
     };
     form.setFieldsValue({
@@ -185,38 +221,34 @@ export const AdminContacts = () => {
 
   return (
     <div>
-      {contacts.length === 0
-        ? (
-            <div className="admin__centered">
-              <AdminCustomSpinner text="Loading Data" />
-            </div>
-          )
-        : (
-          <>
-            <Form form={form} component={false}>
-              <Table
-                components={{
-                  body: {
-                    cell: EditableCell,
-                  },
-                }}
-                className="admin__table"
-                dataSource={contacts}
-                columns={mergedColumns}
-                pagination={false}
-                size="small"
-                scroll={{
-                  x: 1000,
-                }}
-              />
-            </Form>
-              <div className='admin__tableFooter'>
-                <Button onClick={handleAdd}>
-                  Add a new Contact
-                 </Button>
-              </div>
-          </>
-          )}
+      {contacts.length === 0 ? (
+        <div className="admin__centered">
+          <AdminCustomSpinner text="Loading Data" />
+        </div>
+      ) : (
+        <>
+          <Form form={form} component={false}>
+            <Table
+              components={{
+                body: {
+                  cell: EditableCell,
+                },
+              }}
+              className="admin__table"
+              dataSource={contacts}
+              columns={mergedColumns}
+              pagination={false}
+              size="small"
+              scroll={{
+                x: 1000,
+              }}
+            />
+          </Form>
+          <div className="admin__tableFooter">
+            <Button onClick={handleAdd}>Add a new Contact</Button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

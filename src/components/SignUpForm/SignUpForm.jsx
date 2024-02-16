@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { observer } from 'mobx-react';
-import { useTranslation } from 'react-i18next';
+import React, { useState } from "react";
+import { observer } from "mobx-react";
+import { useTranslation } from "react-i18next";
 import {
   Form,
   Input,
@@ -9,31 +9,31 @@ import {
   Checkbox,
   notification,
   Tooltip,
-  Row, 
+  Row,
   Col,
-} from 'antd';
+} from "antd";
 import {
   // eslint-disable-next-line no-unused-vars
   CheckOutlined,
   UserOutlined,
   MailOutlined,
   LockOutlined,
-  SyncOutlined
-} from '@ant-design/icons';
-import * as dayjs from 'dayjs';
-import * as isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
+  SyncOutlined,
+} from "@ant-design/icons";
+import * as dayjs from "dayjs";
+import * as isSameOrBefore from "dayjs/plugin/isSameOrBefore";
 
-import { postUsernameTaken } from './postUsernameTaken';
-import { postVerifyEmailLink } from '../LoginForm/postVerifyEmailLink';
-import { postAddUser } from './postAddUser';
-import { pageStore } from '../../store/pageStore/pageStore';
+import { postUsernameTaken } from "./postUsernameTaken";
+import { postVerifyEmailLink } from "../LoginForm/postVerifyEmailLink";
+import { postAddUser } from "./postAddUser";
+import { pageStore } from "../../store/pageStore/pageStore";
 
-import './SignUpForm.css';
+import "./SignUpForm.css";
 
 dayjs.extend(isSameOrBefore);
-const dateFormat = 'DD/MM/YYYY';
-const dateEighteenYearsAgo = dayjs().subtract(18, 'year');
-const dateHundredYearsAgo = dayjs().subtract(100, 'year');
+const dateFormat = "DD/MM/YYYY";
+const dateEighteenYearsAgo = dayjs().subtract(18, "year");
+const dateHundredYearsAgo = dayjs().subtract(100, "year");
 
 export const SignUpForm = observer((props) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -53,22 +53,22 @@ export const SignUpForm = observer((props) => {
 
   const changeUserNameHandler = async (e) => {
     const username = e.target.value;
-    if (username === '') {
-      setIsValidUsername('error');
+    if (username === "") {
+      setIsValidUsername("error");
       setErrorMsgUsername(null);
     } else {
-      setIsValidUsername('validating');
+      setIsValidUsername("validating");
       setErrorMsgUsername(null);
       const isUsernameTaken = await postUsernameTaken(username);
       if (isUsernameTaken === true) {
-        setIsValidUsername('error');
-        setErrorMsgUsername(t('login.usernameIsAlreadyTaken'));
+        setIsValidUsername("error");
+        setErrorMsgUsername(t("login.usernameIsAlreadyTaken"));
       } else if (isUsernameTaken === false) {
-        if (username.includes(' ')) {
-          setIsValidUsername('error');
-          setErrorMsgUsername(t('login.spacesinUsername'));
+        if (username.includes(" ")) {
+          setIsValidUsername("error");
+          setErrorMsgUsername(t("login.spacesinUsername"));
         } else {
-          setIsValidUsername('success');
+          setIsValidUsername("success");
           setErrorMsgUsername(null);
         }
       }
@@ -76,24 +76,24 @@ export const SignUpForm = observer((props) => {
   };
 
   const changeBirthdayHandler = (birthday, dateString) => {
-    if (dateString === '') {
-      setIsValidBirthday('error');
-      setErrorMsgBirthday(t('login.birthdayMissing'));
+    if (dateString === "") {
+      setIsValidBirthday("error");
+      setErrorMsgBirthday(t("login.birthdayMissing"));
     } else {
       const isOlderThan18 = birthday.isSameOrBefore(dateEighteenYearsAgo);
       const isOlderThan100 = birthday.isSameOrBefore(dateHundredYearsAgo);
       if (isOlderThan18 === false) {
-        setIsValidBirthday('error');
-        setErrorMsgBirthday(t('login.mustBeOfLegalAge'));
-        console.log(t('login.mustBeOfLegalAge'));
+        setIsValidBirthday("error");
+        setErrorMsgBirthday(t("login.mustBeOfLegalAge"));
+        console.log(t("login.mustBeOfLegalAge"));
       } else if (isOlderThan100 === true) {
-        setIsValidBirthday('error');
-        setErrorMsgBirthday(t('login.areYouReallyThatOld'));
+        setIsValidBirthday("error");
+        setErrorMsgBirthday(t("login.areYouReallyThatOld"));
       } else {
-        setIsValidBirthday('success');
+        setIsValidBirthday("success");
         setErrorMsgBirthday(null);
       }
-      setIsValidBirthday('success');
+      setIsValidBirthday("success");
       setErrorMsgBirthday(null);
     }
   };
@@ -113,30 +113,30 @@ export const SignUpForm = observer((props) => {
         username,
         email,
         password,
-        pageStore.selectedLanguage
+        pageStore.selectedLanguage,
       );
       if (!response.errors) {
         await postVerifyEmailLink(email);
         notification.warning({
           message: <ErrorTitleNotVerified />,
           description: <ErrorDescNotVerified />,
-          placement: 'bottomRight',
-          className: 'customNotification',
-          duration: 0
+          placement: "bottomRight",
+          className: "customNotification",
+          duration: 0,
         });
         props.setShowLogin(true);
       } else {
         notification.open({
           message: <>❌ {response.errors[0].message}</>,
-          placement: 'bottomRight',
-          className: 'customNotification'
+          placement: "bottomRight",
+          className: "customNotification",
         });
       }
     } catch (error) {
       notification.open({
         message: <>❌ {error.message}</>,
-        placement: 'bottomRight',
-        className: 'customNotification'
+        placement: "bottomRight",
+        className: "customNotification",
       });
       console.log(error);
     }
@@ -145,16 +145,18 @@ export const SignUpForm = observer((props) => {
 
   return (
     <div className="signup__full">
-      <div className={`signup__header ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
-        {t('login.signinto')} <b>merrier</b>
-        .app {t('login.signintoAfter')}
+      <div
+        className={`signup__header ${pageStore.selectedTheme === "light" ? "lightColorTheme__Text" : "darkColorTheme__Text"}`}
+      >
+        {t("login.signinto")} <b>merrier</b>
+        .app {t("login.signintoAfter")}
       </div>
 
       <Form
         name="form_signup"
         className="signup__form"
         initialValues={{
-          code: props.inviteCode
+          code: props.inviteCode,
         }}
         onFinish={submitHandler}
       >
@@ -186,17 +188,15 @@ export const SignUpForm = observer((props) => {
         <Row gutter={16}>
           <Col span={12}>
             <Form.Item
-            name="firstname"
-            rules={[
+              name="firstname"
+              rules={[
                 {
                   required: true,
-                  message: t('login.firstNameMissing')
-                }
+                  message: t("login.firstNameMissing"),
+                },
               ]}
             >
-              <Input
-                placeholder={t('login.firstName')}
-              />
+              <Input placeholder={t("login.firstName")} />
             </Form.Item>
           </Col>
           <Col span={12}>
@@ -205,16 +205,14 @@ export const SignUpForm = observer((props) => {
               rules={[
                 {
                   required: true,
-                  message: t('login.lastNameMissing')
-                }
+                  message: t("login.lastNameMissing"),
+                },
               ]}
             >
-              <Input
-                placeholder={t('login.lastName')}
-              />
+              <Input placeholder={t("login.lastName")} />
             </Form.Item>
           </Col>
-        </Row>        
+        </Row>
 
         <Row gutter={16}>
           <Col span={12}>
@@ -224,37 +222,36 @@ export const SignUpForm = observer((props) => {
               rules={[
                 {
                   required: true,
-                  message: t('login.birthdayMissing')
+                  message: t("login.birthdayMissing"),
                 },
                 {
-                  validator (_, value) {
-                    if (value && isValidBirthday === 'error') {
+                  validator(_, value) {
+                    if (value && isValidBirthday === "error") {
                       return Promise.reject(new Error(errorMsgBirthday));
                     }
                     return Promise.resolve();
-                  }
-                }
+                  },
+                },
               ]}
             >
               <DatePicker
                 onChange={changeBirthdayHandler}
                 format={{
                   format: dateFormat,
-                  type: 'mask',
+                  type: "mask",
                 }}
-                placeholder={t('login.birthday')}
-              
+                placeholder={t("login.birthday")}
               />
             </Form.Item>
           </Col>
           <Col span={12}>
             <Tooltip
-              trigger={['hover']}
+              trigger={["hover"]}
               title={
                 errorMsgUsername
-                  ? errorMsgUsername === t('login.usernameIsAlreadyTaken')
-                    ? t('login.alreadyTaken')
-                    : t('login.doNotUseSpaces')
+                  ? errorMsgUsername === t("login.usernameIsAlreadyTaken")
+                    ? t("login.alreadyTaken")
+                    : t("login.doNotUseSpaces")
                   : null
               }
               placement="left"
@@ -268,35 +265,35 @@ export const SignUpForm = observer((props) => {
                 rules={[
                   {
                     required: true,
-                    message: t('login.howShouldWeCallYou')
+                    message: t("login.howShouldWeCallYou"),
                   },
                   {
-                    validator (_, value) {
-                      if (value && isValidUsername === 'error') {
+                    validator(_, value) {
+                      if (value && isValidUsername === "error") {
                         return Promise.reject(new Error(errorMsgUsername));
                       }
                       return Promise.resolve();
-                    }
-                  }
+                    },
+                  },
                 ]}
               >
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
-                  placeholder={t('login.pickUsername')}
+                  placeholder={t("login.pickUsername")}
                 />
               </Form.Item>
             </Tooltip>
           </Col>
         </Row>
-        
+
         <Form.Item
           name="email"
           rules={[
             {
-              type: 'email',
+              type: "email",
               required: true,
-              message: t('login.pleaseInputEmail')
-            }
+              message: t("login.pleaseInputEmail"),
+            },
           ]}
         >
           <Input
@@ -310,40 +307,40 @@ export const SignUpForm = observer((props) => {
           rules={[
             {
               required: true,
-              message: t('login.pleaseInputYourPassword')
-            }
+              message: t("login.pleaseInputYourPassword"),
+            },
           ]}
         >
           <Input.Password
             prefix={<LockOutlined className="site-form-item-icon" />}
-            placeholder={t('login.choosePassword')}
+            placeholder={t("login.choosePassword")}
           />
         </Form.Item>
 
         <Form.Item
           name="confirm"
-          dependencies={['password']}
+          dependencies={["password"]}
           hasFeedback
           rules={[
             {
               required: true,
-              message: t('login.pleaseConfirmYourPassword')
+              message: t("login.pleaseConfirmYourPassword"),
             },
             ({ getFieldValue }) => ({
-              validator (_, value) {
-                if (!value || getFieldValue('password') === value) {
+              validator(_, value) {
+                if (!value || getFieldValue("password") === value) {
                   return Promise.resolve();
                 }
                 return Promise.reject(
-                  new Error(t('login.passwordsDoNotMatch'))
+                  new Error(t("login.passwordsDoNotMatch")),
                 );
-              }
-            })
+              },
+            }),
           ]}
         >
           <Input.Password
             prefix={<LockOutlined className="site-form-item-icon" />}
-            placeholder={t('login.confirmYourPassword')}
+            placeholder={t("login.confirmYourPassword")}
           />
         </Form.Item>
 
@@ -353,17 +350,26 @@ export const SignUpForm = observer((props) => {
           rules={[
             {
               required: true,
-              message: t('login.pleaseAcceptTerms')
-            }
+              message: t("login.pleaseAcceptTerms"),
+            },
           ]}
         >
-          <Checkbox className={`signup__terms ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`}>
-            {t('login.creatingAccountMeans')}{' '}
-            <a className="link" href="/service">{t('login.termsService')}</a>,{' '}
-            <a className="link" href="/privacy">{t('login.privacyPolicy')}</a>
-            {t('login.andDefault')}{' '}
-            <a className="link" href="/settings">{t('login.notificationSettings')}</a>
-            {t('login.creatingAccountMeansAfter')}
+          <Checkbox
+            className={`signup__terms ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
+          >
+            {t("login.creatingAccountMeans")}{" "}
+            <a className="link" href="/service">
+              {t("login.termsService")}
+            </a>
+            ,{" "}
+            <a className="link" href="/privacy">
+              {t("login.privacyPolicy")}
+            </a>
+            {t("login.andDefault")}{" "}
+            <a className="link" href="/settings">
+              {t("login.notificationSettings")}
+            </a>
+            {t("login.creatingAccountMeansAfter")}
           </Checkbox>
         </Form.Item>
 
@@ -371,9 +377,9 @@ export const SignUpForm = observer((props) => {
           <Button
             type="primary"
             htmlType="submit"
-            className={`signup__formbutton ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Button' : 'darkColorTheme__Button'}`}
+            className={`signup__formbutton ${pageStore.selectedTheme === "light" ? "lightColorTheme__Button" : "darkColorTheme__Button"}`}
           >
-            {isLoading ? <SyncOutlined spin /> : t('login.createAccount')}
+            {isLoading ? <SyncOutlined spin /> : t("login.createAccount")}
           </Button>
         </Form.Item>
       </Form>
@@ -383,10 +389,10 @@ export const SignUpForm = observer((props) => {
 
 const ErrorTitleNotVerified = () => {
   const { t } = useTranslation();
-  return <>{t('login.pleaseConfirmEmail')}</>;
+  return <>{t("login.pleaseConfirmEmail")}</>;
 };
 
 const ErrorDescNotVerified = () => {
   const { t } = useTranslation();
-  return <>{t('login.pleaseConfirmEmail2')}</>;
+  return <>{t("login.pleaseConfirmEmail2")}</>;
 };

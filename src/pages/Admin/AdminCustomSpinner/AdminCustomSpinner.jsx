@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import SpielbetriebLogo from '../../../img/logos/spielbetriebLogo.png';
+import SpielbetriebLogo from "../../../img/logos/spielbetriebLogo.png";
 
-import './AdminCustomSpinner.less';
+import "./AdminCustomSpinner.less";
 
 export const AdminCustomSpinner = (props) => {
   return (
@@ -10,10 +10,13 @@ export const AdminCustomSpinner = (props) => {
       <img
         src={SpielbetriebLogo}
         id="spielbetriebLogo"
-        className='adminSpinner__logo size theme__logoInvertColor'
+        className="adminSpinner__logo size theme__logoInvertColor"
       />
-      {props.text && <div className='adminSpinner__text darkColorTheme__Text'>
-        {props.text}</div>}
+      {props.text && (
+        <div className="adminSpinner__text darkColorTheme__Text">
+          {props.text}
+        </div>
+      )}
     </>
   );
 };

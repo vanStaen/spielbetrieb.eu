@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Table, Typography, Popconfirm, Tooltip, Button } from 'antd';
-import { EditOutlined, CloseCircleOutlined, CheckCircleOutlined, DeleteOutlined } from '@ant-design/icons';
+import React, { useState, useEffect } from "react";
+import { Form, Table, Typography, Popconfirm, Tooltip, Button } from "antd";
+import {
+  EditOutlined,
+  CloseCircleOutlined,
+  CheckCircleOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 
-import { EditableCell } from '../../EditableCell';
-import { getLinks } from './getLinks';
-import { deleteLink } from './deleteLink';
-import { updateLink } from './updateLink';
-import { addLink } from './addLink';
-import { AdminCustomSpinner } from '../../AdminCustomSpinner/AdminCustomSpinner';
+import { EditableCell } from "../../EditableCell";
+import { getLinks } from "./getLinks";
+import { deleteLink } from "./deleteLink";
+import { updateLink } from "./updateLink";
+import { addLink } from "./addLink";
+import { AdminCustomSpinner } from "../../AdminCustomSpinner/AdminCustomSpinner";
 
 export const AdminLinks = () => {
   const [form] = Form.useForm();
   const [links, setLinks] = useState([]);
-  const [editingId, setEditingId] = useState('');
+  const [editingId, setEditingId] = useState("");
   const [isNewRow, setIsNewRow] = useState(false);
 
   const fetchLinks = async () => {
@@ -27,9 +32,9 @@ export const AdminLinks = () => {
   const isEditing = (record) => record._id === editingId;
 
   const edit = (record) => {
-    form.setFieldsValue({ 
-      shortDesc: '',
-      link: '',
+    form.setFieldsValue({
+      shortDesc: "",
+      link: "",
       category: null,
       archived: false,
       ...record,
@@ -38,7 +43,7 @@ export const AdminLinks = () => {
   };
 
   const cancel = async () => {
-    setEditingId('');
+    setEditingId("");
     isNewRow && fetchLinks();
     setIsNewRow(false);
   };
@@ -57,100 +62,129 @@ export const AdminLinks = () => {
         await updateLink(id, dataObject);
       }
       await fetchLinks();
-      setEditingId('');
+      setEditingId("");
       setIsNewRow(false);
     } catch (e) {
-      console.log('Error while saving:', e);
+      console.log("Error while saving:", e);
     }
   };
   const columns = [
     {
-      title: 'id',
-      dataIndex: '_id',
-      key: 'id',    
-      align: 'center',
-      width: '50px',
-      render: (_, { _id, archived }) => (<Typography.Text delete={archived} disabled={archived}>{_id}</Typography.Text>),
+      title: "id",
+      dataIndex: "_id",
+      key: "id",
+      align: "center",
+      width: "50px",
+      render: (_, { _id, archived }) => (
+        <Typography.Text delete={archived} disabled={archived}>
+          {_id}
+        </Typography.Text>
+      ),
     },
     {
-      title: 'Category',
-      dataIndex: 'category',
-      key: 'category',     
-      editable: true, 
+      title: "Category",
+      dataIndex: "category",
+      key: "category",
+      editable: true,
       sorter: (a, b) => a.category.length - b.category.length,
-      render: (_, { category, archived }) => (<Typography.Text delete={archived} disabled={archived}>{category}</Typography.Text>),
+      render: (_, { category, archived }) => (
+        <Typography.Text delete={archived} disabled={archived}>
+          {category}
+        </Typography.Text>
+      ),
     },
     {
-      title: 'Short Description',
-      dataIndex: 'shortDesc',
-      key: 'shortDesc',     
-      editable: true, 
-      render: (_, { shortDesc, archived }) => (<Typography.Text delete={archived} disabled={archived}>{shortDesc}</Typography.Text>),
+      title: "Short Description",
+      dataIndex: "shortDesc",
+      key: "shortDesc",
+      editable: true,
+      render: (_, { shortDesc, archived }) => (
+        <Typography.Text delete={archived} disabled={archived}>
+          {shortDesc}
+        </Typography.Text>
+      ),
     },
     {
-      title: 'Link',
-      dataIndex: 'link',
-      key: 'link',
-      render: (_, { link, archived }) => (archived ?
-        <Typography.Text delete disabled>{link}</Typography.Text> :
-        <Typography.Link href={link} target="_blank">{link}</Typography.Link>
+      title: "Link",
+      dataIndex: "link",
+      key: "link",
+      render: (_, { link, archived }) =>
+        archived ? (
+          <Typography.Text delete disabled>
+            {link}
+          </Typography.Text>
+        ) : (
+          <Typography.Link href={link} target="_blank">
+            {link}
+          </Typography.Link>
         ),
       editable: true,
     },
     {
-      title: 'Archived',
-      dataIndex: 'archived',
-      key: 'archived',      
-      align: 'center',
-      width: '90px',    
-      render: (_, { archived }) => (archived ? '☠️' : ''),
+      title: "Archived",
+      dataIndex: "archived",
+      key: "archived",
+      align: "center",
+      width: "90px",
+      render: (_, { archived }) => (archived ? "☠️" : ""),
       editable: true,
     },
     {
-      title: <span style={{opacity: ".2"}}>Edit</span>,
-      dataIndex: 'edit',
-      width: '90px',    
-      align: 'center',
+      title: <span style={{ opacity: ".2" }}>Edit</span>,
+      dataIndex: "edit",
+      width: "90px",
+      align: "center",
       render: (_, record) => {
         const editable = isEditing(record);
         return editable ? (
           <span>
-            <Typography.Link onClick={() => save(record._id)} style={{ marginRight: 8 }}>
-              <CheckCircleOutlined className='admin__saveLogo' />
-            </Typography.Link>
-            {" "}
+            <Typography.Link
+              onClick={() => save(record._id)}
+              style={{ marginRight: 8 }}
+            >
+              <CheckCircleOutlined className="admin__saveLogo" />
+            </Typography.Link>{" "}
             <Typography.Link onClick={cancel} style={{ marginRight: 8 }}>
-              <CloseCircleOutlined className='admin__cancelLogo' />           
+              <CloseCircleOutlined className="admin__cancelLogo" />
             </Typography.Link>
-
           </span>
         ) : (
           <span>
-            <Typography.Link disabled={editingId !== ''} style={{ marginRight: 8 }} onClick={() => edit(record)}>
-              <EditOutlined className='admin__editLogo' />
-            </Typography.Link>
-              {" "}
-            {!record.archived ? 
-            <Tooltip title={`Archive link first`}>
-                <DeleteOutlined  style={{ cursor: 'not-allowed' }} className={`admin__editLogo admin__disabled`} />
-            </Tooltip>
-            :
-            <Popconfirm title="Sure to delete?" style={{ marginRight: 8 }} onConfirm={() => deleteRow(record._id)}>
-              <DeleteOutlined className='admin__editLogo' />
-            </Popconfirm>
-            }
+            <Typography.Link
+              disabled={editingId !== ""}
+              style={{ marginRight: 8 }}
+              onClick={() => edit(record)}
+            >
+              <EditOutlined className="admin__editLogo" />
+            </Typography.Link>{" "}
+            {!record.archived ? (
+              <Tooltip title={`Archive link first`}>
+                <DeleteOutlined
+                  style={{ cursor: "not-allowed" }}
+                  className={`admin__editLogo admin__disabled`}
+                />
+              </Tooltip>
+            ) : (
+              <Popconfirm
+                title="Sure to delete?"
+                style={{ marginRight: 8 }}
+                onConfirm={() => deleteRow(record._id)}
+              >
+                <DeleteOutlined className="admin__editLogo" />
+              </Popconfirm>
+            )}
           </span>
         );
       },
-    }
+    },
   ];
 
   const categorySelectOption = [
-    { label: 'Team Organisation', value: 'Team Organisation' },
-    { label: 'Marketing', value: 'Marketing' },
-    { label: 'Finance', value: 'Finance' },
-    { label: 'Legal', value: 'Legal' },
-    { label: 'Other', value: 'Other' },
+    { label: "Team Organisation", value: "Team Organisation" },
+    { label: "Marketing", value: "Marketing" },
+    { label: "Finance", value: "Finance" },
+    { label: "Legal", value: "Legal" },
+    { label: "Other", value: "Other" },
   ];
 
   const mergedColumns = columns.map((col) => {
@@ -161,21 +195,26 @@ export const AdminLinks = () => {
       ...col,
       onCell: (record) => ({
         record,
-        inputType: col.dataIndex === 'archived' ? 'boolean' : col.dataIndex === 'category' ? 'select' : 'text',
+        inputType:
+          col.dataIndex === "archived"
+            ? "boolean"
+            : col.dataIndex === "category"
+              ? "select"
+              : "text",
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
-        options: col.dataIndex === 'category' && categorySelectOption,
+        options: col.dataIndex === "category" && categorySelectOption,
       }),
     };
   });
 
   const handleAdd = () => {
-    const newId = parseInt(links[links.length-1]._id) + 1;
+    const newId = parseInt(links[links.length - 1]._id) + 1;
     const newRow = {
       _id: newId,
-      shortDesc: '',
-      link: '',
+      shortDesc: "",
+      link: "",
       category: null,
       archived: false,
     };
@@ -189,38 +228,34 @@ export const AdminLinks = () => {
 
   return (
     <div>
-      {links.length === 0
-        ? (
-            <div className="admin__centered">
-              <AdminCustomSpinner text="Loading Data" />
-            </div>
-          )
-        : (
-          <>
-            <Form form={form} component={false}>
-              <Table
-                components={{
-                  body: {
-                    cell: EditableCell,
-                  },
-                }}
-                className="admin__table"
-                dataSource={links}
-                columns={mergedColumns}
-                pagination={false}
-                size="small"
-                scroll={{
-                  x: 1000,
-                }}
-              />
-            </Form>
-              <div className='admin__tableFooter'>
-                <Button onClick={handleAdd}>
-                  Add a new Link
-                 </Button>
-              </div>
-          </>
-          )}
+      {links.length === 0 ? (
+        <div className="admin__centered">
+          <AdminCustomSpinner text="Loading Data" />
+        </div>
+      ) : (
+        <>
+          <Form form={form} component={false}>
+            <Table
+              components={{
+                body: {
+                  cell: EditableCell,
+                },
+              }}
+              className="admin__table"
+              dataSource={links}
+              columns={mergedColumns}
+              pagination={false}
+              size="small"
+              scroll={{
+                x: 1000,
+              }}
+            />
+          </Form>
+          <div className="admin__tableFooter">
+            <Button onClick={handleAdd}>Add a new Link</Button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

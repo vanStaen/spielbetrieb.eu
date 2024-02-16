@@ -1,8 +1,8 @@
-import React from 'react';
-import { observer } from 'mobx-react';
+import React from "react";
+import { observer } from "mobx-react";
 
-import './Basket.less';
+import "./Basket.less";
 
 export const Basket = observer(() => {
-    return <>Basket</>
-})
+  return <>Basket</>;
+});

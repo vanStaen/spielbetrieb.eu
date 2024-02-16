@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Form, Input, Button, notification } from 'antd';
-import { MailOutlined, ArrowLeftOutlined } from '@ant-design/icons';
-import { useTranslation } from 'react-i18next';
-import { observer } from 'mobx-react';
+import React, { useState } from "react";
+import { Form, Input, Button, notification } from "antd";
+import { MailOutlined, ArrowLeftOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
+import { observer } from "mobx-react";
 
-import { postEmailExist } from './postEmailExist';
-import { postSendRecoverLink } from './postSendRecoverLink';
-import { pageStore } from '../../store/pageStore/pageStore';
+import { postEmailExist } from "./postEmailExist";
+import { postSendRecoverLink } from "./postSendRecoverLink";
+import { pageStore } from "../../store/pageStore/pageStore";
 
-import './PasswordRecover.css';
+import "./PasswordRecover.css";
 
 export const PasswordRecover = observer((props) => {
   const [emailDoNotExist, setEmailDoNotExist] = useState(undefined);
@@ -22,27 +22,27 @@ export const PasswordRecover = observer((props) => {
     const email = values.email;
     const emailExist = await postEmailExist(email);
     if (emailExist === false) {
-      setEmailDoNotExist('error');
+      setEmailDoNotExist("error");
       notification.error({
-        message: t('login.emailDoesNotExist'),
-        placement: 'bottomRight',
-        className: 'customNotification'
+        message: t("login.emailDoesNotExist"),
+        placement: "bottomRight",
+        className: "customNotification",
       });
     } else {
-      setEmailDoNotExist('success');
+      setEmailDoNotExist("success");
       try {
         await postSendRecoverLink(email);
         notification.success({
-          message: t('login.recoverEmailSent'),
-          placement: 'bottomRight',
-          className: 'customNotification'
+          message: t("login.recoverEmailSent"),
+          placement: "bottomRight",
+          className: "customNotification",
         });
         props.setIsRecovery(false);
       } catch (error) {
         notification.warn({
           message: error.message,
-          placement: 'bottomRight',
-          className: 'customNotification'
+          placement: "bottomRight",
+          className: "customNotification",
         });
       }
     }
@@ -50,14 +50,16 @@ export const PasswordRecover = observer((props) => {
 
   return (
     <div className="recover__full">
-      <div className={`recover__header ${pageStore.selectedTheme === "light" ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>
-        {t('login.recoverYourPassword')}
+      <div
+        className={`recover__header ${pageStore.selectedTheme === "light" ? "lightColorTheme__Text" : "darkColorTheme__Text"}`}
+      >
+        {t("login.recoverYourPassword")}
       </div>
       <Form
         name="form_recover"
         className="recover__form"
         initialValues={{
-          email: props.email
+          email: props.email,
         }}
         onFinish={submitHandler}
       >
@@ -66,10 +68,10 @@ export const PasswordRecover = observer((props) => {
           onChange={changeEmailHandler}
           rules={[
             {
-              type: 'email',
+              type: "email",
               required: true,
-              message: t('login.pleaseInputEmail')
-            }
+              message: t("login.pleaseInputEmail"),
+            },
           ]}
         >
           <Input
@@ -82,12 +84,12 @@ export const PasswordRecover = observer((props) => {
           <Button
             type="primary"
             htmlType="submit"
-            className={`recover__formbutton ${pageStore.selectedTheme === "light" ?  'lightColorTheme__Button' : 'darkColorTheme__Button'}`}
-            disabled={emailDoNotExist === 'error'}
+            className={`recover__formbutton ${pageStore.selectedTheme === "light" ? "lightColorTheme__Button" : "darkColorTheme__Button"}`}
+            disabled={emailDoNotExist === "error"}
           >
-            {emailDoNotExist === 'error'
-              ? t('login.emailDoesNotExist')
-              : t('login.sendPasswortResetEmail')}
+            {emailDoNotExist === "error"
+              ? t("login.emailDoesNotExist")
+              : t("login.sendPasswortResetEmail")}
           </Button>
 
           <div
@@ -96,8 +98,12 @@ export const PasswordRecover = observer((props) => {
               props.setIsRecovery(false);
             }}
           >
-            <ArrowLeftOutlined />{' '}
-            <span className={`link ${pageStore.selectedTheme === "light" ? 'lightColorTheme__Text' : 'darkColorTheme__Text'}`}>{t('login.iRememberNow')}</span>
+            <ArrowLeftOutlined />{" "}
+            <span
+              className={`link ${pageStore.selectedTheme === "light" ? "lightColorTheme__Text" : "darkColorTheme__Text"}`}
+            >
+              {t("login.iRememberNow")}
+            </span>
           </div>
         </Form.Item>
       </Form>

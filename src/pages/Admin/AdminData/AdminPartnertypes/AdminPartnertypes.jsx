@@ -1,30 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Table, Typography, Popconfirm, Tag, Button } from 'antd';
-import { EditOutlined, CloseCircleOutlined, CheckCircleOutlined, DeleteOutlined } from '@ant-design/icons';
+import React, { useState, useEffect } from "react";
+import { Form, Table, Typography, Popconfirm, Tag, Button } from "antd";
+import {
+  EditOutlined,
+  CloseCircleOutlined,
+  CheckCircleOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 
-import { EditableCell } from '../../EditableCell';
-import { getPartnertypes } from './getPartnertypes';
-import { deletePartnertype } from './deletePartnertype';
-import { updatePartnertype } from './updatePartnertype';
-import { addPartnertype } from './addPartnertype';
-import { AdminCustomSpinner } from '../../AdminCustomSpinner/AdminCustomSpinner';
+import { EditableCell } from "../../EditableCell";
+import { getPartnertypes } from "./getPartnertypes";
+import { deletePartnertype } from "./deletePartnertype";
+import { updatePartnertype } from "./updatePartnertype";
+import { addPartnertype } from "./addPartnertype";
+import { AdminCustomSpinner } from "../../AdminCustomSpinner/AdminCustomSpinner";
 import { nameParser } from "../../../../helpers/nameParser";
 
 export const AdminPartnertypes = () => {
   const [form] = Form.useForm();
   const [partnertypes, setPartnertypes] = useState([]);
-  const [editingId, setEditingId] = useState('');
+  const [editingId, setEditingId] = useState("");
   const [isNewRow, setIsNewRow] = useState(false);
 
   const fetchPartnertypes = async () => {
     const results = await getPartnertypes();
-    const partnertypes = results.map(type => {
+    const partnertypes = results.map((type) => {
       return {
-      name_en: nameParser(type.name, "en"),
-      name_de: nameParser(type.name, "de"),
-      ...type
-      }
-    })  
+        name_en: nameParser(type.name, "en"),
+        name_de: nameParser(type.name, "de"),
+        ...type,
+      };
+    });
     setPartnertypes(partnertypes);
   };
 
@@ -36,14 +41,14 @@ export const AdminPartnertypes = () => {
 
   const edit = (record) => {
     form.setFieldsValue({
-      name: '',
+      name: "",
       ...record,
     });
     setEditingId(record._id);
   };
 
   const cancel = async () => {
-    setEditingId('');
+    setEditingId("");
     isNewRow && fetchPartnertypes();
     setIsNewRow(false);
   };
@@ -58,70 +63,78 @@ export const AdminPartnertypes = () => {
       const dataObject = await form.validateFields();
       const dataObjectNew = {
         name: `{\"en\":\"${dataObject.name_en}\", \"de\":\"${dataObject.name_de}\"}`,
-      }
+      };
       if (isNewRow) {
         await addPartnertype(dataObjectNew);
       } else {
         await updatePartnertype(id, dataObjectNew);
       }
       await fetchPartnertypes();
-      setEditingId('');
+      setEditingId("");
       setIsNewRow(false);
     } catch (e) {
-      console.log('Error while saving:', e);
+      console.log("Error while saving:", e);
     }
   };
   const columns = [
     {
-      title: 'id',
-      dataIndex: '_id',
-      key: 'id',    
-      align: 'center',
-      width: '50px',
+      title: "id",
+      dataIndex: "_id",
+      key: "id",
+      align: "center",
+      width: "50px",
     },
     {
-      title: 'Name EN',
-      dataIndex: 'name_en',
-      key: 'name_en',
+      title: "Name EN",
+      dataIndex: "name_en",
+      key: "name_en",
       editable: true,
     },
     {
-      title: 'Name DE',
-      dataIndex: 'name_de',
-      key: 'name_de',
+      title: "Name DE",
+      dataIndex: "name_de",
+      key: "name_de",
       editable: true,
     },
     {
-      title: <span style={{opacity: ".2"}}>Edit</span>,
-      dataIndex: 'edit',
-      width: '90px',    
-      align: 'center',
+      title: <span style={{ opacity: ".2" }}>Edit</span>,
+      dataIndex: "edit",
+      width: "90px",
+      align: "center",
       render: (_, record) => {
         const editable = isEditing(record);
         return editable ? (
           <span>
-            <Typography.Link onClick={() => save(record._id)} style={{ marginRight: 8 }}>
-              <CheckCircleOutlined className='admin__saveLogo' />
-            </Typography.Link>
-            {" "}
+            <Typography.Link
+              onClick={() => save(record._id)}
+              style={{ marginRight: 8 }}
+            >
+              <CheckCircleOutlined className="admin__saveLogo" />
+            </Typography.Link>{" "}
             <Typography.Link onClick={cancel} style={{ marginRight: 8 }}>
-              <CloseCircleOutlined className='admin__cancelLogo' />           
+              <CloseCircleOutlined className="admin__cancelLogo" />
             </Typography.Link>
-
           </span>
         ) : (
           <span>
-            <Typography.Link disabled={editingId !== ''} style={{ marginRight: 8 }} onClick={() => edit(record)}>
-              <EditOutlined className='admin__editLogo' />
-            </Typography.Link>
-              {" "}
-            <Popconfirm title="Sure to delete?" style={{ marginRight: 8 }} onConfirm={() => deleteRow(record._id)}>
-              <DeleteOutlined className='admin__editLogo' />
+            <Typography.Link
+              disabled={editingId !== ""}
+              style={{ marginRight: 8 }}
+              onClick={() => edit(record)}
+            >
+              <EditOutlined className="admin__editLogo" />
+            </Typography.Link>{" "}
+            <Popconfirm
+              title="Sure to delete?"
+              style={{ marginRight: 8 }}
+              onConfirm={() => deleteRow(record._id)}
+            >
+              <DeleteOutlined className="admin__editLogo" />
             </Popconfirm>
           </span>
         );
       },
-    }
+    },
   ];
 
   const mergedColumns = columns.map((col) => {
@@ -132,7 +145,7 @@ export const AdminPartnertypes = () => {
       ...col,
       onCell: (record) => ({
         record,
-        inputType: 'text',
+        inputType: "text",
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
@@ -141,7 +154,7 @@ export const AdminPartnertypes = () => {
   });
 
   const handleAdd = () => {
-    const newId = parseInt(partnertypes[partnertypes.length-1]._id) + 1;
+    const newId = parseInt(partnertypes[partnertypes.length - 1]._id) + 1;
     const newRow = {
       _id: newId,
       name: '{"en": "EVENT_TYPE_EN", "de": "EVENT_TYPE_DE"}',
@@ -156,35 +169,31 @@ export const AdminPartnertypes = () => {
 
   return (
     <div>
-      {partnertypes.length === 0
-        ? (
-            <div className="admin__centered">
-              <AdminCustomSpinner text="Loading Data" />
-            </div>
-          )
-        : (
-          <>
-            <Form form={form} component={false}>
-              <Table
-                components={{
-                  body: {
-                    cell: EditableCell,
-                  },
-                }}
-                className="admin__table"
-                dataSource={partnertypes}
-                columns={mergedColumns}
-                pagination={false}
-                size="small"
-              />
-            </Form>
-              <div className='admin__tableFooter'>
-                <Button onClick={handleAdd}>
-                  Add a new Event type
-                 </Button>
-              </div>
-          </>
-          )}
+      {partnertypes.length === 0 ? (
+        <div className="admin__centered">
+          <AdminCustomSpinner text="Loading Data" />
+        </div>
+      ) : (
+        <>
+          <Form form={form} component={false}>
+            <Table
+              components={{
+                body: {
+                  cell: EditableCell,
+                },
+              }}
+              className="admin__table"
+              dataSource={partnertypes}
+              columns={mergedColumns}
+              pagination={false}
+              size="small"
+            />
+          </Form>
+          <div className="admin__tableFooter">
+            <Button onClick={handleAdd}>Add a new Event type</Button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

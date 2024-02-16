@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { observer } from 'mobx-react';
-import { Avatar, Spin } from 'antd';
-import { Link, useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import React, { useEffect, useState } from "react";
+import { observer } from "mobx-react";
+import { Avatar, Spin } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   LockOutlined,
   UnlockOutlined,
@@ -10,13 +10,13 @@ import {
   UserOutlined,
   PieChartOutlined,
   LoadingOutlined,
-} from '@ant-design/icons';
+} from "@ant-design/icons";
 
-import { userStore } from '../../store/userStore/userStore';
-import { pageStore } from '../../store/pageStore/pageStore';
-import { authStore } from '../../store/authStore/authStore';
+import { userStore } from "../../store/userStore/userStore";
+import { pageStore } from "../../store/pageStore/pageStore";
+import { authStore } from "../../store/authStore/authStore";
 
-import './Menu.less';
+import "./Menu.less";
 
 export const Menu = observer(() => {
   const { t } = useTranslation();
@@ -25,15 +25,18 @@ export const Menu = observer(() => {
 
   useEffect(() => {
     if (pageStore.showMenu) {
-      const elementBackground = document.getElementById('silentBackground');
-      const elementContainer = document.getElementById('menuContainer');
+      const elementBackground = document.getElementById("silentBackground");
+      const elementContainer = document.getElementById("menuContainer");
       // elementBackground.style.backdropFilter = 'blur(7px) grayscale(25%)';
       elementContainer.style.opacity = 1;
     }
   });
 
   const spinIcon = (
-    <LoadingOutlined style={{ fontSize: 24, color: '#e1cfbb', top: '-4px' }} spin />
+    <LoadingOutlined
+      style={{ fontSize: 24, color: "#e1cfbb", top: "-4px" }}
+      spin
+    />
   );
 
   const handleClickLogOut = () => {
@@ -44,9 +47,9 @@ export const Menu = observer(() => {
   };
 
   const handleHideMenu = () => {
-    const elementBackground = document.getElementById('silentBackground');
-    const elementContainer = document.getElementById('menuContainer');
-    elementBackground.style.backdropFilter = 'blur(0px) grayscale(0%)';
+    const elementBackground = document.getElementById("silentBackground");
+    const elementContainer = document.getElementById("menuContainer");
+    elementBackground.style.backdropFilter = "blur(0px) grayscale(0%)";
     elementContainer.style.opacity = 0;
     setTimeout(function () {
       pageStore.setShowMenu(false);
@@ -58,24 +61,28 @@ export const Menu = observer(() => {
       pageStore.setShowMenu(!pageStore.showMenu);
       pageStore.setShowMenuMobile(false);
     } else {
-      navigate('/login');
+      navigate("/login");
     }
   };
 
   return (
-<>
+    <>
       <div
         className="menu__containerAvatar invertColorTheme"
         onClick={avatarClickhandle}
       >
         <Avatar
           src={!userStore.isLoading && <UserOutlined className="menu__icon" />}
-          icon={userStore.isLoading && <Spin  className="menu__spinner" indicator={spinIcon} />}
+          icon={
+            userStore.isLoading && (
+              <Spin className="menu__spinner" indicator={spinIcon} />
+            )
+          }
           className="menu__avatar"
           size={50}
         />
       </div>
-      {pageStore.showMenu &&
+      {pageStore.showMenu && (
         <>
           <div
             className="menu__silentBackground"
@@ -83,16 +90,16 @@ export const Menu = observer(() => {
             onClick={handleHideMenu}
           ></div>
           <div
-            className={`menu__container ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__Menu' : 'darkColorTheme__Menu'}`}
+            className={`menu__container ${pageStore.selectedTheme === "light" ? "lightColorTheme__Menu" : "darkColorTheme__Menu"}`}
             id="menuContainer"
           >
             <div className="menu__elementDisabled">
-              <UserOutlined style={{ position: 'relative', bottom: '-2px' }} />
+              <UserOutlined style={{ position: "relative", bottom: "-2px" }} />
               &nbsp; Profile
             </div>
             <div className="menu__elementDisabled">
               <SettingOutlined
-                style={{ position: 'relative', bottom: '-2px' }}
+                style={{ position: "relative", bottom: "-2px" }}
               />
               &nbsp; Settings
             </div>
@@ -103,17 +110,15 @@ export const Menu = observer(() => {
               onMouseLeave={() => setShowOpenLock(false)}
               onClick={handleClickLogOut}
             >
-              {showOpenLock
-                ? (
+              {showOpenLock ? (
                 <UnlockOutlined
-                  style={{ position: 'relative', bottom: '-2px' }}
+                  style={{ position: "relative", bottom: "-2px" }}
                 />
-                  )
-                : (
+              ) : (
                 <LockOutlined
-                  style={{ position: 'relative', bottom: '-2px' }}
+                  style={{ position: "relative", bottom: "-2px" }}
                 />
-                  )}
+              )}
               &nbsp; Logout
             </div>
             {userStore.isAdmin && (
@@ -122,7 +127,7 @@ export const Menu = observer(() => {
                 <div className="link menu__element">
                   <Link className="link menu__link" to="/admin/">
                     <PieChartOutlined
-                      style={{ position: 'relative', bottom: '-2px' }}
+                      style={{ position: "relative", bottom: "-2px" }}
                     />
                     &nbsp; Admin
                   </Link>
@@ -131,7 +136,7 @@ export const Menu = observer(() => {
             )}
           </div>
         </>
-        }
+      )}
     </>
   );
 });

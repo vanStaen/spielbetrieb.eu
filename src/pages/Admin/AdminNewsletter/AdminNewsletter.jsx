@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Table, Tag } from 'antd';
+import React, { useState, useEffect } from "react";
+import { Table, Tag } from "antd";
 
-import { getSubscribers } from './getSubscribers';
-import { AdminCustomSpinner } from '../AdminCustomSpinner/AdminCustomSpinner';
+import { getSubscribers } from "./getSubscribers";
+import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
 
 export const AdminNewsletter = () => {
   const [subscribers, setSubscribers] = useState([]);
@@ -18,27 +18,27 @@ export const AdminNewsletter = () => {
 
   const columns = [
     {
-      title: 'id',
-      dataIndex: '_id',
-      key: 'id',    
-      align: 'center',
-      width: '50px',
+      title: "id",
+      dataIndex: "_id",
+      key: "id",
+      align: "center",
+      width: "50px",
     },
     {
-      title: 'Email',
-      dataIndex: 'email',
-      key: 'email'
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
     },
     {
-      title: 'Language',
-      dataIndex: 'language',
-      key: 'language',
-      render: (_, { language }) => language.toUpperCase()
+      title: "Language",
+      dataIndex: "language",
+      key: "language",
+      render: (_, { language }) => language.toUpperCase(),
     },
     {
-      title: 'Lists',
-      dataIndex: 'lists',
-      key: 'lists',
+      title: "Lists",
+      dataIndex: "lists",
+      key: "lists",
       render: (_, { lists }) => (
         <>
           {lists.map((list) => {
@@ -49,12 +49,12 @@ export const AdminNewsletter = () => {
             );
           })}
         </>
-      )
+      ),
     },
     {
-      title: 'Interests',
-      key: 'interests',
-      dataIndex: 'interests',
+      title: "Interests",
+      key: "interests",
+      dataIndex: "interests",
       render: (_, { interests }) => (
         <>
           {interests.map((interest) => {
@@ -65,27 +65,25 @@ export const AdminNewsletter = () => {
             );
           })}
         </>
-      )
+      ),
     },
     {
-      title: 'Verified',
-      dataIndex: 'verifiedEmail',
-      key: 'verified',   
-      align: 'center',
-      width: '80px',
-      render: (_, { verifiedEmail }) => (verifiedEmail ? '✅' : '✖️')
+      title: "Verified",
+      dataIndex: "verifiedEmail",
+      key: "verified",
+      align: "center",
+      width: "80px",
+      render: (_, { verifiedEmail }) => (verifiedEmail ? "✅" : "✖️"),
     },
   ];
 
   return (
     <div>
-      {subscribers.length === 0
-        ? (
+      {subscribers.length === 0 ? (
         <div className="admin__centered">
           <AdminCustomSpinner text="Loading subscribers" />
         </div>
-          )
-        : (
+      ) : (
         <Table
           className="admin__table"
           dataSource={subscribers}
@@ -93,7 +91,7 @@ export const AdminNewsletter = () => {
           pagination={false}
           size="small"
         />
-          )}
+      )}
     </div>
   );
 };
