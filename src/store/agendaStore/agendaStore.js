@@ -6,7 +6,6 @@ import { getAllPublicEvents } from './getAllPublicEvents';
 import { getEventtypes } from './getEventtypes';
 import { getTags } from './getTags';
 import { getLocations } from './getLocations';
-import { pageStore } from '../pageStore/pageStore';
 
 const cookies = new Cookies();
 
@@ -17,7 +16,7 @@ export class AgendaStore {
   eventtypes = [];
   tags = [];
   locations = [];
-  filterFormat = 'month';
+  timeSpan = 'month';
   filterDateFrom = dayjs();
 
   constructor () {
@@ -40,8 +39,8 @@ export class AgendaStore {
       locations: observable,
       setFilterDateFrom: action,
       filterDateFrom: observable,
-      setFilterFormat: action,
-      filterFormat: observable,
+      setTimeSpan: action,
+      timeSpan: observable,
     });
   }
 
@@ -97,8 +96,8 @@ export class AgendaStore {
     this.filterDateFrom = filterDateFrom;
   };
 
-  setFilterFormat = (filterFormat) => {
-    this.filterFormat = filterFormat;
+  setTimeSpan = (timeSpan) => {
+    this.timeSpan = timeSpan;
   };
 
 }
