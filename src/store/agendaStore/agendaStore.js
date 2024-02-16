@@ -58,8 +58,8 @@ export class AgendaStore {
 
   fetchEvents = async () => {
     this.setIsLoadingEvent(true);
-    const fromUnixDateStartOf = this.filterDateFrom.startOf(this.filterFormat).valueOf()
-    const untilUnixDateEndOf = this.filterDateFrom.endOf(this.filterFormat).valueOf();
+    const fromUnixDateStartOf = this.filterDateFrom.startOf(this.timeSpan).valueOf()
+    const untilUnixDateEndOf = this.filterDateFrom.endOf(this.timeSpan).valueOf();
     const events = await getAllPublicEvents(fromUnixDateStartOf, untilUnixDateEndOf);  
     this.setEvents(events);
     this.setIsLoadingEvent(false);
