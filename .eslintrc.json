@@ -1,10 +1,11 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "node": true
     },
     "extends": [
-        "standard",
+        "eslint:recommended",
         "plugin:react/recommended",
         "plugin:prettier/recommended"
     ],
@@ -18,10 +19,5 @@
     "rules": {
         "react/prop-types": "off",
         "semi": [2, "always"]
-      },
-      "settings": {
-        "react": {
-          "version": "detect"
-        }
     }
 }

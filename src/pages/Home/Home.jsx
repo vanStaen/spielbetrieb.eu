@@ -27,7 +27,7 @@ export const Home = observer((props) => {
     switch (page) {
       case 'home':
         return (<div className='home__homePlaceholder'>
-        <div
+          <div
             className={`home__logoAndText ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`}
           >
             <div className="home__text">Spielbetrieb </div>
@@ -55,17 +55,17 @@ export const Home = observer((props) => {
       case 'agenda':
         return <Agenda />;
       case 'basket':
-          return <Basket />;
+        return <Basket />;
       case 'shop':
         return <Shop />;
       case 'magazin':
-          return <Magazin />;
+        return <Magazin />;
       case 'partner':
-          return <Partner />;
+        return <Partner />;
       case 'profile':
-          return <Profile />;
+        return <Profile />;
       case 'settings':
-          return <Settings />;
+        return <Settings />;
       default:
         return 'Error';
     }
@@ -79,9 +79,9 @@ export const Home = observer((props) => {
       <div className="background invertColorTheme" id="background"></div>
       <div className="home__container">
         <div className="home__subContainer" style={{
-          backgroundColor: pageStore.selectedTheme === 'dark' 
-          ? 'rgba(20,36,54,.85)' 
-          : 'rgba(225,195,180,.8)'
+          backgroundColor: pageStore.selectedTheme === 'dark'
+            ? 'rgba(20,36,54,.85)'
+            : 'rgba(225,195,180,.8)'
         }}>
           {renderSwitch()}
         </div>

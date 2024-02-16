@@ -31,58 +31,58 @@ export const Agenda = observer(() => {
         }
     }, [agendaStore.eventtypes, agendaStore.locations, agendaStore.tags]);
 
-    
+
     const eventsFormatted = agendaStore.events?.map(event => {
-        const eventColor =  agendaStore.eventtypes.filter(et => parseInt(et._id) === event.eventtype)[0]?.color;
-        const eventTags =  event.eventTags.map(tagId => {
+        const eventColor = agendaStore.eventtypes.filter(et => parseInt(et._id) === event.eventtype)[0]?.color;
+        const eventTags = event.eventTags.map(tagId => {
             return nameParser(
                 agendaStore.tags.filter(tag => parseInt(tag._id) === tagId)[0]?.name,
                 pageStore.selectedLanguage?.toLowerCase()
-                );     
-        });        
-        eventTags.splice(0, 0, 
-            nameParser(
-                agendaStore.eventtypes.filter(et => parseInt(et._id) ===  event.eventtype)[0]?.name,
-                pageStore.selectedLanguage?.toLowerCase()
-                )
             );
-        return <EventCard event={event} color={eventColor} tags={eventTags}/>
+        });
+        eventTags.splice(0, 0,
+            nameParser(
+                agendaStore.eventtypes.filter(et => parseInt(et._id) === event.eventtype)[0]?.name,
+                pageStore.selectedLanguage?.toLowerCase()
+            )
+        );
+        return <EventCard event={event} color={eventColor} tags={eventTags} />
     })
 
     return (<>
-        { agendaStore.isLoadingData ?
+        {agendaStore.isLoadingData ?
             <div className='agenda__spinnerContainer'>
                 <CustomSpinner text="Loading events" />
             </div>
             :
-        <div className='agenda__container'>
-            {/*
+            <div className='agenda__container'>
+                {/*
             TODO:
             search per text
             browse month/week/day
             filter per day
             filter per tag
             */}
-            <EventFilters />
-            {
-            agendaStore.isLoadingEvent ? 
-                <div className='agenda__noEventContainer'>
-                    <CustomSpinner text="Loading events" />
-                </div> : 
-                eventsFormatted.length === 0 ?
-                    <div className='agenda__noEventContainer'>
-                        <div className={`agenda__noEventText ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`} >
-                            <div>
-                               {t("agenda.noEventsFound")} 
-                            </div> 
-                            <div className='agenda__noEventSubText'>
-                               {t("agenda.tryOtherFilter")}                            
-                            </div> 
-                        </div> 
-                    </div> : 
-                    eventsFormatted
-            }
-        </div>
+                <EventFilters />
+                {
+                    agendaStore.isLoadingEvent ?
+                        <div className='agenda__noEventContainer'>
+                            <CustomSpinner text="Loading events" />
+                        </div> :
+                        eventsFormatted.length === 0 ?
+                            <div className='agenda__noEventContainer'>
+                                <div className={`agenda__noEventText ${pageStore.selectedTheme === 'light' ? 'lightColorTheme__SubText' : 'darkColorTheme__SubText'}`} >
+                                    <div>
+                                        {t("agenda.noEventsFound")}
+                                    </div>
+                                    <div className='agenda__noEventSubText'>
+                                        {t("agenda.tryOtherFilter")}
+                                    </div>
+                                </div>
+                            </div> :
+                            eventsFormatted
+                }
+            </div>
         }
     </>)
 })

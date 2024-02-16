@@ -3,30 +3,36 @@
     font-weight: 600;
     text-transform: uppercase;
     cursor: pointer;
+
     .browseFilter__silentBackground {
         width: 100vw;
-        height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+        height: 100vh;
+        /* Fallback for browsers that do not support Custom Properties */
         height: calc(var(--vh, 1vh) * 100);
         position: fixed;
         top: 0;
         left: 0px;
         z-index: 9;
         background-color: transparent;
-        }
+    }
+
     .browseFilter__logo {
         position: relative;
         top: 1px;
         cursor: pointer;
+
         &:hover {
             opacity: .75;
         }
     }
+
     .browseFilter__logoRight {
         padding-right: 10px;
     }
+
     .browseFilter__menuContainer {
         position: absolute;
-        z-index: 10; 
+        z-index: 10;
         margin-left: 30px;
         padding-top: 10px;
         padding-bottom: 10px;
@@ -34,20 +40,24 @@
         height: auto;
         transition: opacity .3s;
         display: block;
+
         .browseFilter__menuElement {
-        padding: 5px 17px 5px 17px;
-        text-align: left;
-        font-size: 16px;
-        font-weight: 300;
-        letter-spacing: 2px;
-        cursor: pointer;
-        &:hover {
-            text-decoration: none;
+            padding: 5px 17px 5px 17px;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: none;
+            }
         }
-        }
+
         .menu__elementSelected {
-        font-weight: 600;
+            font-weight: 600;
         }
+
         .menu__whiteline {
             width: 140px;
             margin: 10px 10px;
@@ -61,11 +71,13 @@
         flex-direction: column;
         align-items: center;
         margin-bottom: 20px;
+
         .browseFilter__menuContainer {
             position: absolute;
             top: 80px;
             width: fit-content;
             margin-left: 0;
+
             .browseFilter__menuElement {
                 font-size: 20px;
             }
