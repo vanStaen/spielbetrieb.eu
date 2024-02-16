@@ -11,13 +11,26 @@
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
     },
     "plugins": [
         "react"
     ],
     "rules": {
         "react/prop-types": "off",
-        "semi": [2, "always"]
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "semi": [
+            2,
+            "always"
+        ]
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
 }
