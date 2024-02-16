@@ -25,7 +25,7 @@ export const Menu = observer(() => {
 
   useEffect(() => {
     if (pageStore.showMenu) {
-      const elementBackground = document.getElementById("silentBackground");
+      // const elementBackground = document.getElementById("silentBackground");
       const elementContainer = document.getElementById("menuContainer");
       // elementBackground.style.backdropFilter = 'blur(7px) grayscale(25%)';
       elementContainer.style.opacity = 1;
@@ -119,7 +119,7 @@ export const Menu = observer(() => {
                   style={{ position: "relative", bottom: "-2px" }}
                 />
               )}
-              &nbsp; Logout
+              &nbsp; {t("general.logout")}
             </div>
             {userStore.isAdmin && (
               <>
