@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Table, Typography, Popconfirm, Tag, Button } from "antd";
+import { Form, Table, Typography, Popconfirm, Button } from "antd";
 import {
   EditOutlined,
   CloseCircleOutlined,
@@ -63,7 +63,7 @@ export const AdminTags = () => {
     try {
       const dataObject = await form.validateFields();
       const dataObjectNew = {
-        name: `{\"en\":\"${dataObject.name_en}\", \"de\":\"${dataObject.name_de}\"}`,
+        name: `{"en":"${dataObject.name_en}", "de":"${dataObject.name_de}"}`,
         isUserTag: dataObject.isUserTag,
         isEventTag: dataObject.isEventTag,
         isPictureTag: dataObject.isPictureTag,

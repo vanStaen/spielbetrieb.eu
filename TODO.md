@@ -38,3 +38,4 @@
 - [ ] List of forbidden usernames
 - [ ] List of forbidden words
 - [ ] Filter event based on city/geolocation
+- [ ] Valid some form with enter, cancel with esc

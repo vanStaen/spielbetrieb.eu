@@ -1,6 +1,5 @@
 import React from "react";
 import { Tooltip } from "antd";
-import { useTranslation } from "react-i18next";
 import { MailOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react";
 
@@ -20,7 +19,6 @@ import { Shop } from "./Shop/Shop";
 import "./Home.less";
 
 export const Home = observer((props) => {
-  const { t } = useTranslation();
   const { page } = props;
 
   const renderSwitch = () => {

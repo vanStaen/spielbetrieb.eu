@@ -6,7 +6,6 @@ import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { Phone } from "../../components/Phone/Phone";
 import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
-import { Menu } from "../../components/Menu/Menu";
 
 import "./Merrier.less";
 import "./LandingPage.less";

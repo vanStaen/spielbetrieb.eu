@@ -51,7 +51,14 @@ export const Agenda = observer(() => {
         pageStore.selectedLanguage?.toLowerCase(),
       ),
     );
-    return <EventCard event={event} color={eventColor} tags={eventTags} />;
+    return (
+      <EventCard
+        key={`eventCard${event._id}`}
+        event={event}
+        color={eventColor}
+        tags={eventTags}
+      />
+    );
   });
 
   return (

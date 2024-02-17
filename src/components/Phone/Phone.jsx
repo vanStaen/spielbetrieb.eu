@@ -3,7 +3,7 @@ import React from "react";
 import "./Phone.less";
 
 export const Phone = (props) => {
-  const { color, content } = props;
+  const { content } = props;
 
   return (
     <div className="phone">

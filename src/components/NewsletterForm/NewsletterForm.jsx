@@ -23,7 +23,7 @@ export const NewsletterForm = observer(() => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  const { TextArea } = Input;
+  //const { TextArea } = Input;
 
   const showModal = () => {
     setOpen(true);

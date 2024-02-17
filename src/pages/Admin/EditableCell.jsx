@@ -4,10 +4,7 @@ import { DatePicker, Form, Input, Switch, Select, InputNumber } from "antd";
 export const EditableCell = ({
   editing,
   dataIndex,
-  title,
   inputType,
-  record,
-  index,
   children,
   options,
   ...restProps

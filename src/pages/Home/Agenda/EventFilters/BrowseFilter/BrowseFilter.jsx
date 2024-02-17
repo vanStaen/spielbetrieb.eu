@@ -7,8 +7,8 @@ import {
   CalendarOutlined,
 } from "@ant-design/icons";
 import * as dayjs from "dayjs";
-import * as advancedFormat from "dayjs/plugin/advancedFormat";
-import * as isoWeek from "dayjs/plugin/isoWeek";
+//import * as advancedFormat from "dayjs/plugin/advancedFormat";
+//import * as isoWeek from "dayjs/plugin/isoWeek";
 
 import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { agendaStore } from "../../../../../store/agendaStore/agendaStore";
