@@ -1,4 +1,4 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
+const { sequelize, DataTypes } = require("../lib/sequelizedb");
 
 const Tag = sequelize.define("tag", {
   _id: {
@@ -27,9 +27,12 @@ const Tag = sequelize.define("tag", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
+  showInfilter: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
+  },
 });
 
 module.exports = {
-  Tag
+  Tag,
 };
-

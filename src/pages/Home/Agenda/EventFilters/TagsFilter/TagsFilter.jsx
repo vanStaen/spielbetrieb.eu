@@ -1,14 +1,16 @@
 import React from "react";
 import { Select } from "antd";
 import { observer } from "mobx-react";
+import { TagsOutlined } from "@ant-design/icons";
 
 import { nameParser } from "../../../../../helpers/nameParser";
 import { pageStore } from "../../../../../store/pageStore/pageStore";
+import { agendaStore } from "../../../../../store/agendaStore/agendaStore";
 
 import "./TagsFilter.less";
 
 export const TagsFilter = observer(() => {
-  const tagOptions = pageStore.tags.map((tag) => {
+  const tagOptions = agendaStore.tags.map((tag) => {
     return {
       value: tag._id,
       label: nameParser(tag.name, pageStore.selectedLanguage),
@@ -18,9 +20,16 @@ export const TagsFilter = observer(() => {
   return (
     <Select
       showSearch
+      mode="multiple"
+      allowClear
+      optionFilterProp="label"
       className="tagfilter__Select"
-      style={{ width: 200 }}
-      placeholder="tags"
+      style={{ minWidth: 120 }}
+      placeholder={
+        <>
+          <TagsOutlined /> Tags
+        </>
+      }
       options={tagOptions}
     />
   );

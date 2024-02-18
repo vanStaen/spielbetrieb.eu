@@ -3,11 +3,9 @@ const { User } = require("../../models/User");
 
 exports.tagResolver = {
   // getTags: [Tag]
-  async getTags(args, req) {
+  async getTags() {
     return await Tag.findAll({
-      order: [
-        ['_id', 'ASC'],
-      ]
+      order: [["name", "ASC"]],
     });
   },
 
@@ -17,10 +15,10 @@ exports.tagResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
     if (!foundUser.isAdmin) {
-      throw new Error('Unauthorized!');
+      throw new Error("Unauthorized!");
     }
     try {
       const tag = new Tag({
@@ -42,10 +40,10 @@ exports.tagResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
     if (!foundUser.isAdmin) {
-      throw new Error('Unauthorized!');
+      throw new Error("Unauthorized!");
     }
     const updateFields = [];
     const updatableFields = [
@@ -82,10 +80,10 @@ exports.tagResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
     if (!foundUser.isAdmin) {
-      throw new Error('Unauthorized!');
+      throw new Error("Unauthorized!");
     }
     await Tag.destroy({
       where: {

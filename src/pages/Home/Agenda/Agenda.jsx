@@ -32,7 +32,7 @@ export const Agenda = observer(() => {
   }, [agendaStore.eventtypes, agendaStore.locations, agendaStore.tags]);
 
   const eventsFormatted = agendaStore.events?.map((event) => {
-    const eventColor = agendaStore.eventtypes.filter(
+    const eventColor = agendaStore.eventtypes?.filter(
       (et) => parseInt(et._id) === event.eventtype,
     )[0]?.color;
     const eventTags = event.eventTags.map((tagId) => {

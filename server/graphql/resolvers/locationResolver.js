@@ -3,18 +3,16 @@ const { User } = require("../../models/User");
 
 exports.locationResolver = {
   // getLocation(locationId: ID!): Location
-  async getLocation(args, req) {
+  async getLocation(args) {
     return await Location.findOne({
       where: { _id: args.locationId },
     });
   },
 
   // getLocations: [Location]
-  async getLocations(args, req) {   
+  async getLocations() {
     return await Location.findAll({
-      order: [
-        ['name', 'ASC'],
-      ]
+      order: [["name", "ASC"]],
     });
   },
 
@@ -24,10 +22,10 @@ exports.locationResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
     if (!foundUser.isAdmin) {
-      throw new Error('Unauthorized!');
+      throw new Error("Unauthorized!");
     }
     try {
       const location = new Location({
@@ -52,10 +50,10 @@ exports.locationResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
     if (!foundUser.isAdmin) {
-      throw new Error('Unauthorized!');
+      throw new Error("Unauthorized!");
     }
     const updateFields = [];
     const updatableFields = [
@@ -95,10 +93,10 @@ exports.locationResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
     if (!foundUser.isAdmin) {
-      throw new Error('Unauthorized!');
+      throw new Error("Unauthorized!");
     }
     await Location.destroy({
       where: {

@@ -230,6 +230,9 @@ export const AdminLocations = () => {
               columns={mergedColumns}
               pagination={false}
               size="small"
+              scroll={{
+                x: 1800,
+              }}
             />
           </Form>
           <div className="admin__tableFooter">

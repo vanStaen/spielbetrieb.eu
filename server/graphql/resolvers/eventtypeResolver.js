@@ -3,11 +3,9 @@ const { User } = require("../../models/User");
 
 exports.eventtypeResolver = {
   //getEventtypes
-  async getEventtypes(args, req) {
+  async getEventtypes() {
     return await Eventtype.findAll({
-      order: [
-        ['_id', 'ASC'],
-      ]
+      order: [["name", "ASC"]],
     });
   },
 
@@ -17,10 +15,10 @@ exports.eventtypeResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes('data')) {
-      throw new Error('Unauthorized!');
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("data")) {
+      throw new Error("Unauthorized!");
     }
     try {
       const eventtype = new Eventtype({
@@ -40,17 +38,13 @@ exports.eventtypeResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes('data')) {
-      throw new Error('Unauthorized!');
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("data")) {
+      throw new Error("Unauthorized!");
     }
     const updateFields = [];
-    const updatableFields = [
-      "name",
-      "color",
-      "validated",
-    ];
+    const updatableFields = ["name", "color", "validated"];
     updatableFields.forEach((field) => {
       if (field in args.eventtypeInput) {
         updateFields[field] = args.eventtypeInput[field];
@@ -78,10 +72,10 @@ exports.eventtypeResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes('data')) {
-      throw new Error('Unauthorized!');
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("data")) {
+      throw new Error("Unauthorized!");
     }
     await Eventtype.destroy({
       where: {

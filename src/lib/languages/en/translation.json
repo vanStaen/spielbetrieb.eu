@@ -122,7 +122,7 @@
     "pleaseInputEmail": "Please input a valid email!"
   },
   "agenda": {
-    "eventOrganisedBy": "Event organised by",
+    "eventOrganisedBy": "Event added by",
     "today": "Today",
     "week": "Week",
     "noEventsFound": "No events found",

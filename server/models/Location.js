@@ -1,4 +1,4 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
+const { sequelize, DataTypes } = require("../lib/sequelizedb");
 
 const Location = sequelize.define("location", {
   _id: {
@@ -35,6 +35,10 @@ const Location = sequelize.define("location", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
+  showInfilter: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
+  },
   reviews: {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: true,
@@ -42,6 +46,5 @@ const Location = sequelize.define("location", {
 });
 
 module.exports = {
-  Location
+  Location,
 };
-

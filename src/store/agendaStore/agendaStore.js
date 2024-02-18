@@ -1,25 +1,22 @@
-import { action, makeObservable, observable } from 'mobx';
-import Cookies from 'universal-cookie';
-import * as dayjs from 'dayjs';
+import { action, makeObservable, observable } from "mobx";
+import * as dayjs from "dayjs";
 
-import { getAllPublicEvents } from './getAllPublicEvents';
-import { getEventtypes } from './getEventtypes';
-import { getTags } from './getTags';
-import { getLocations } from './getLocations';
-
-const cookies = new Cookies();
+import { getAllPublicEvents } from "./getAllPublicEvents";
+import { getEventtypes } from "./getEventtypes";
+import { getTags } from "./getTags";
+import { getLocations } from "./getLocations";
 
 export class AgendaStore {
-  isLoadingEvent = true; 
+  isLoadingEvent = true;
   isLoadingData = true;
   events = [];
   eventtypes = [];
   tags = [];
   locations = [];
-  timeSpan = 'month';
+  timeSpan = "month";
   filterDateFrom = dayjs();
 
-  constructor () {
+  constructor() {
     makeObservable(this, {
       fetchEvents: action,
       setEvents: action,
@@ -58,9 +55,16 @@ export class AgendaStore {
 
   fetchEvents = async () => {
     this.setIsLoadingEvent(true);
-    const fromUnixDateStartOf = this.filterDateFrom.startOf(this.timeSpan).valueOf()
-    const untilUnixDateEndOf = this.filterDateFrom.endOf(this.timeSpan).valueOf();
-    const events = await getAllPublicEvents(fromUnixDateStartOf, untilUnixDateEndOf);  
+    const fromUnixDateStartOf = this.filterDateFrom
+      .startOf(this.timeSpan)
+      .valueOf();
+    const untilUnixDateEndOf = this.filterDateFrom
+      .endOf(this.timeSpan)
+      .valueOf();
+    const events = await getAllPublicEvents(
+      fromUnixDateStartOf,
+      untilUnixDateEndOf,
+    );
     this.setEvents(events);
     this.setIsLoadingEvent(false);
   };
@@ -99,7 +103,6 @@ export class AgendaStore {
   setTimeSpan = (timeSpan) => {
     this.timeSpan = timeSpan;
   };
-
 }
 
 export const agendaStore = new AgendaStore();

@@ -1,4 +1,4 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
+const { sequelize, DataTypes } = require("../lib/sequelizedb");
 
 const Eventtype = sequelize.define("eventtype", {
   _id: {
@@ -19,9 +19,12 @@ const Eventtype = sequelize.define("eventtype", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
+  showInfilter: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
+  },
 });
 
 module.exports = {
-  Eventtype
+  Eventtype,
 };
-

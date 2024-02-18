@@ -1,14 +1,16 @@
 import React from "react";
 import { Select } from "antd";
 import { observer } from "mobx-react";
+import { CalendarOutlined } from "@ant-design/icons";
 
 import { nameParser } from "../../../../../helpers/nameParser";
 import { pageStore } from "../../../../../store/pageStore/pageStore";
+import { agendaStore } from "../../../../../store/agendaStore/agendaStore";
 
 import "./EventtypesFilter.less";
 
 export const EventtypesFilter = observer(() => {
-  const eventTypesOptions = pageStore.eventtypes.map((eventtype) => {
+  const eventTypesOptions = agendaStore.eventtypes.map((eventtype) => {
     return {
       value: eventtype._id,
       label: nameParser(eventtype.name, pageStore.selectedLanguage),
@@ -18,9 +20,16 @@ export const EventtypesFilter = observer(() => {
   return (
     <Select
       showSearch
+      mode="multiple"
+      allowClear
+      optionFilterProp="label"
       className="eventtypefilter__Select"
-      style={{ width: 200 }}
-      placeholder="event types"
+      style={{ minWidth: 120 }}
+      placeholder={
+        <>
+          <CalendarOutlined /> Event
+        </>
+      }
       options={eventTypesOptions}
     />
   );
