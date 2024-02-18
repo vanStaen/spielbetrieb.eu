@@ -69,13 +69,6 @@ export const Agenda = observer(() => {
         </div>
       ) : (
         <div className="agenda__container">
-          {/*
-            TODO:
-            search per text
-            browse month/week/day
-            filter per day
-            filter per tag
-            */}
           <EventFilters />
           {agendaStore.isLoadingEvent ? (
             <div className="agenda__noEventContainer">

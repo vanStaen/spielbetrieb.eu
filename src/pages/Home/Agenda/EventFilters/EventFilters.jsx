@@ -14,9 +14,16 @@ export const EventFilters = observer(() => {
       className={`agenda__filterContainer ${pageStore.selectedTheme === "light" ? "lightColorTheme__Text" : "darkColorTheme__Text"}`}
     >
       <div className="agenda__fitlerSearch">
-            <EventtypesFilter />
-            <LocationsFilter />
-            <TagsFilter />
+      {/*
+        TODO:
+        search per text
+        filter per day
+        filter per location
+        filter per tag
+      */}
+        <EventtypesFilter />
+        <LocationsFilter />
+        <TagsFilter />
       </div>
       <div className="agenda__browseZeitRaum">
         <BrowseFilter />
