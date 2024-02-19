@@ -1,4 +1,4 @@
-export async function getAllPublicEvents(fromDate, untilDate) {
+export async function getAllPublicEvents(fromDate, untilDate, locations, eventtypes, tags) {
 
     const graphqlQuery = {
       query: `
@@ -6,6 +6,9 @@ export async function getAllPublicEvents(fromDate, untilDate) {
                 getAllPublicEvents (
                     fromDate: ${fromDate}, 
                     untilDate: ${untilDate},
+                    locations: [${locations}],
+                    eventtypes: [${eventtypes}],
+                    tags: [${tags}],
                   ) { 
                   _id,
                   eventtype,

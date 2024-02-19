@@ -15,6 +15,9 @@ export class AgendaStore {
   locations = [];
   timeSpan = "month";
   filterDateFrom = dayjs();
+  filterLocations = [];
+  filterEventtypes = [];
+  filterTags = [];
 
   constructor() {
     makeObservable(this, {
@@ -38,6 +41,12 @@ export class AgendaStore {
       filterDateFrom: observable,
       setTimeSpan: action,
       timeSpan: observable,
+      setFilterLocations: action,
+      filterLocations: observable,
+      setFilterEventtypes: action,
+      filterEventtypes: observable,
+      setFilterTags: action,
+      filterTags: observable,
     });
   }
 
@@ -64,6 +73,9 @@ export class AgendaStore {
     const events = await getAllPublicEvents(
       fromUnixDateStartOf,
       untilUnixDateEndOf,
+      this.filterLocations,
+      this.filterEventtypes,
+      this.filterTags,
     );
     this.setEvents(events);
     this.setIsLoadingEvent(false);
@@ -103,6 +115,22 @@ export class AgendaStore {
   setTimeSpan = (timeSpan) => {
     this.timeSpan = timeSpan;
   };
+
+  setFilterLocations = (filterLocations) => {
+    this.filterLocations = filterLocations;
+    this.fetchEvents();
+  };
+
+  setFilterEventtypes = (filterEventtypes) => {
+    this.filterEventtypes = filterEventtypes;
+    this.fetchEvents();
+  };
+
+  setFilterTags = (filterTags) => {
+    this.filterTags = filterTags;
+    this.fetchEvents();
+  };
+
 }
 
 export const agendaStore = new AgendaStore();

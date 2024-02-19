@@ -19,6 +19,10 @@ export const LocationsFilter = observer(() => {
     },
   ];
 
+  const selectChangehandler = (e) => {
+    agendaStore.setFilterLocations(e);
+  }
+
   return (
     <Select
       showSearch
@@ -28,6 +32,7 @@ export const LocationsFilter = observer(() => {
       className="locationsfilter__Select"
       style={{ minWidth: 120 }}
       options={locationOptionsInclCity}
+      onChange={selectChangehandler}
       placeholder={
         <>
           <BankOutlined /> Location

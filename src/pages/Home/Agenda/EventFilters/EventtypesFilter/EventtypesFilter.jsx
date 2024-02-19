@@ -17,6 +17,10 @@ export const EventtypesFilter = observer(() => {
     };
   });
 
+  const selectChangehandler = (e) => {
+    agendaStore.setFilterEventtypes(e);
+  }
+
   return (
     <Select
       showSearch
@@ -25,6 +29,7 @@ export const EventtypesFilter = observer(() => {
       optionFilterProp="label"
       className="eventtypefilter__Select"
       style={{ minWidth: 120 }}
+      onChange={selectChangehandler}
       placeholder={
         <>
           <CalendarOutlined /> Event

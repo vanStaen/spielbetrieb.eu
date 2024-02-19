@@ -49,7 +49,7 @@ input EventInputData {
 exports.EventQueries = `
     getEvent(eventId: Int): Event
     getAllEvents: [Event]
-    getAllPublicEvents(fromDate: Float, untilDate: Float): [Event]
+    getAllPublicEvents(fromDate: Float!, untilDate: Float!, locations: [Int], eventtypes: [Int], tags: [Int]): [Event]
     `;
 
 exports.EventMutations = `

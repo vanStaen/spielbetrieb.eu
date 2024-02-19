@@ -34,6 +34,7 @@ exports.eventResolver = {
 
     //getAllPublicEvents
     async getAllPublicEvents(args, req) {
+      console.log("args", args);
       return await Event.findAll({
         where: { 
           private: false, 
