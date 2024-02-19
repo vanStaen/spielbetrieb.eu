@@ -28,7 +28,6 @@ export const LocationsFilter = observer(() => {
       className="locationsfilter__Select"
       style={{ minWidth: 120 }}
       options={locationOptionsInclCity}
-      defaultOpen={true}
       placeholder={
         <>
           <BankOutlined /> Location
