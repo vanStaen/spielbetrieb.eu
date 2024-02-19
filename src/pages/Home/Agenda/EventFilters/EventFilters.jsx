@@ -18,9 +18,9 @@ export const EventFilters = observer(() => {
           TODO:
           search per text
         */}
-        <TagsFilter />
-        <EventtypesFilter />
         <LocationsFilter />
+        <EventtypesFilter />
+        <TagsFilter />
       </div>
       <div className="agenda__browseZeitRaum">
         <BrowseFilter />
