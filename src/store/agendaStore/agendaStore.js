@@ -108,7 +108,7 @@ export class AgendaStore {
   };
 
   setFilterDateFrom = (filterDateFrom) => {
-    this.filterDateFrom = filterDateFrom;
+    this.filterDateFrom = dayjs(filterDateFrom);
   };
 
   setTimeSpan = (timeSpan) => {

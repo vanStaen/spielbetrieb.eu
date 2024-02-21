@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react";
 import {
@@ -7,6 +8,7 @@ import {
   CalendarOutlined,
 } from "@ant-design/icons";
 import * as dayjs from "dayjs";
+import * as customParseFormat from "dayjs/plugin/customParseFormat";
 
 import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { agendaStore } from "../../../../../store/agendaStore/agendaStore";
@@ -15,8 +17,33 @@ import { DATE_FORMAT_MONTH, DATE_FORMAT_CW, DATE_FORMAT_DAY } from "../../../../
 import "./BrowseFilter.less";
 
 export const BrowseFilter = observer(() => {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const params = useParams();
+
   const [filterText, setFilterText] = useState(dayjs().format(DATE_FORMAT_MONTH));
   const [showFormatMenu, setShowFormatMenu] = useState(false);
+
+  const week = params.week;
+  const year = params.year;
+  const month = params.month;
+  const day = params.day;
+
+  {/*
+  if (week) {
+    agendaStore.setTimeSpan("week");
+    const newDate = dayjs(`${year}-${month}`).format("YYYY-ww");
+    //agendaStore.setFilterDateFrom()
+  } else if (day) {
+    agendaStore.setTimeSpan("day"); 
+    const newDate = dayjs(`${year}-${month}-${day}`).format("YYYY-MM-DD");   
+    //agendaStore.setFilterDateFrom();
+  } else if (month) {
+    agendaStore.setTimeSpan("month");
+    const newDate = dayjs(`${year}-${month}`).format("YYYY-MM");   
+    //agendaStore.setFilterDateFrom();
+  };
+  */}
 
   const keydownEventHandler = (event) => {
     const keyPressed = event.key.toLowerCase();
@@ -48,6 +75,19 @@ export const BrowseFilter = observer(() => {
 
   useEffect(() => {
     setTimeSpanDisplay(agendaStore.timeSpan, agendaStore.filterDateFrom);
+    const year = dayjs(agendaStore.filterDateFrom).format("YYYY");
+    if (agendaStore.timeSpan === "week") {
+      const week = dayjs(agendaStore.filterDateFrom).format("ww");
+      navigate(`../agenda/week/${week}/`);
+    } else {
+      const month = dayjs(agendaStore.filterDateFrom).format("MM");
+      if (agendaStore.timeSpan === "month") {
+        navigate(`../agenda/${year}/${month}/`);
+      } else if (agendaStore.timeSpan === "day") {
+        const day = dayjs(agendaStore.filterDateFrom).format("DD");
+        navigate(`../agenda/${year}/${month}/${day}/`);
+      };
+    } 
   }, [agendaStore.timeSpan, agendaStore.filterDateFrom]);
 
   useEffect(() => {
