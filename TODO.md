@@ -10,7 +10,6 @@
   - [ ] Add/Manage products
   - [ ] Add 'aktuell' articles
   - [ ] Management of the translations from the admin
-- [ ] Spielplan
 - [ ] Shop
 - [ ] Dark Magazin
 - [ ] Stop suspended user from login

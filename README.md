@@ -67,7 +67,7 @@ SQL update script exemple:
 `isPartner` is a flag set to identify a Partner and `partnerRoles` is an Array listing what feature a partner can access from their partner page. Hence only an integer is saved in those column, as an Id to the right data. 
 
 Possible partner roles are:
-1. `events`: overview/management of events for the spielplan
+1. `events`: overview/management of events for the agenda
 2. `tickets`: overview/management of tickets for their events
 3. `sales`: overview/management of shop listings for their store
 4. `analytics`: special access to some more data regarding their page/events/tickets sale.

@@ -40,7 +40,7 @@
     - [ ] Invite User
     - [ ] Add more admin
     - [ ] Differenciate between Event/Date
-  - [ ] Consult all public event (SpielPlan)
+  - [ ] Consult all public event
   - [ ] Filter event
     - [ ] Events
       - [ ] All
