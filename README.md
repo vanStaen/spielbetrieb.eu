@@ -7,8 +7,10 @@ spielbetrieb.eu | Portal
 ### URL setup
 - merrier.app (production link)
 - spielbetrieb.eu (production link)
-- www.merrier.app (production link, will auto redirect to the url witout `www`)
-- www.spielbetrieb.eu (production link, will auto redirect to the url witout `www`)
+- spielbetrieb.info (production link to b2b portal)
+- www.merrier.app (will auto redirect to the url witout `www`)
+- www.spielbetrieb.eu (will auto redirect to the url witout `www`)
+- www.spielbetrieb.info (will auto redirect to the url witout `www`)
 
 
 ## Graphic chart
