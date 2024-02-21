@@ -120,12 +120,18 @@
     "error": "Fehler bei Abonnieren!",
     "pleaseSelectList": "Bitte wählen Sie mindestens eine Mailingliste aus!",
     "pleaseInputEmail": "Bitte geben Sie eine gültige Email-Addresse ein!"
-  } ,
+  },
   "agenda": {
     "eventOrganisedBy": "Hinzugefügt von",
     "today": "Heute",
     "week": "Woche",
     "noEventsFound": "Kein Ergebnisse",
-    "tryOtherFilter": "Versuch es mit einem anderen Filter?"
+    "tryOtherFilter": "Versuch es mit einem anderen Filter?",
+    "yourEventIsMissing": "Dein Veranstalltung fehlt?"
+  },
+  "help": {
+    "helpNeeded": "Hilfe?",
+    "yourEventIsMissing": "Eine Veranstalltung fehlt?",
+    "reportBug": "Problem melden?"
   } 
 }

@@ -6,6 +6,7 @@ import { observer } from "mobx-react";
 import { NewsletterForm } from "../../components/NewsletterForm/NewsletterForm";
 import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
+import { HelpButtons } from "../../components/HelpButtons/HelpButtons";
 import { Header } from "./Header/Header";
 import { pageStore } from "../../store/pageStore/pageStore";
 import { Agenda } from "./Agenda/Agenda";
@@ -32,6 +33,7 @@ export const Home = observer((props) => {
             >
               <div className="home__text">Spielbetrieb </div>
               <div className="home__subtext">love to love</div>
+              <HelpButtons />
               <div className="home__links">
                 <div className="home__link">
                   <NewsletterForm />

@@ -127,5 +127,10 @@
     "week": "Week",
     "noEventsFound": "No events found",
     "tryOtherFilter": "Try another filter maybe?"
+  } ,
+  "help": {
+    "helpNeeded": "Need help?",
+    "yourEventIsMissing": "An event is missing?",
+    "reportBug": "Want to report a Bug?"
   } 
 }

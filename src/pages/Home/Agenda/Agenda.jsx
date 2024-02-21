@@ -8,6 +8,7 @@ import { nameParser } from "../../../helpers/nameParser";
 import { agendaStore } from "../../../store/agendaStore/agendaStore";
 import { pageStore } from "../../../store/pageStore/pageStore";
 import { EventFilters } from "./EventFilters/EventFilters";
+import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
 
 import "./Agenda.less";
 
@@ -130,6 +131,7 @@ export const Agenda = observer(() => {
           onTouchMove={onTouchMove}
           onTouchEnd={() => onTouchEnd()}
         >
+          <HelpButtons page={"agenda"} />
           <EventFilters />
           {agendaStore.isLoadingEvent ? (
             <div className="agenda__noEventContainer">
