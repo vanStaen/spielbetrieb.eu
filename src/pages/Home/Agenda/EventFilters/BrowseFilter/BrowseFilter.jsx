@@ -40,7 +40,6 @@ export const BrowseFilter = observer(() => {
       const newDate = dayjs(`${year}.${month}.${day}`).format("YYYY.MM.DD");   
       agendaStore.setFilterDateFrom(newDate);
     } else if (month) {
-      debugger;
       agendaStore.setTimeSpan("month");
       const newDate = dayjs(`${year}.${month}`).format("YYYY.MM");   
       agendaStore.setFilterDateFrom(newDate);
