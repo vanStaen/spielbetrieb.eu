@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react";
 import {
@@ -13,7 +13,11 @@ import * as weekOfYear from "dayjs/plugin/weekOfYear";
 
 import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { agendaStore } from "../../../../../store/agendaStore/agendaStore";
-import { DATE_FORMAT_MONTH, DATE_FORMAT_CW, DATE_FORMAT_DAY } from "../../../../../lib/data/dateFormat";
+import {
+  DATE_FORMAT_MONTH,
+  DATE_FORMAT_CW,
+  DATE_FORMAT_DAY,
+} from "../../../../../lib/data/dateFormat";
 
 import "./BrowseFilter.less";
 
@@ -21,7 +25,9 @@ export const BrowseFilter = observer(() => {
   const { t } = useTranslation();
   const params = useParams();
 
-  const [filterText, setFilterText] = useState(dayjs().format(DATE_FORMAT_MONTH));
+  const [filterText, setFilterText] = useState(
+    dayjs().format(DATE_FORMAT_MONTH),
+  );
   const [showFormatMenu, setShowFormatMenu] = useState(false);
 
   const week = params.week;
@@ -33,18 +39,18 @@ export const BrowseFilter = observer(() => {
     if (week) {
       agendaStore.setTimeSpan("week");
       const newDate = dayjs(`${year}-01-01`).week(week);
-      console.log("year, week, new date", year, week, newDate)
-      agendaStore.setFilterDateFrom(newDate)
+      console.log("year, week, new date", year, week, newDate);
+      agendaStore.setFilterDateFrom(newDate);
     } else if (day) {
-      agendaStore.setTimeSpan("day"); 
-      const newDate = dayjs(`${year}.${month}.${day}`).format("YYYY.MM.DD");   
+      agendaStore.setTimeSpan("day");
+      const newDate = dayjs(`${year}.${month}.${day}`).format("YYYY.MM.DD");
       agendaStore.setFilterDateFrom(newDate);
     } else if (month) {
       agendaStore.setTimeSpan("month");
-      const newDate = dayjs(`${year}.${month}`).format("YYYY.MM");   
+      const newDate = dayjs(`${year}.${month}`).format("YYYY.MM");
       agendaStore.setFilterDateFrom(newDate);
-    };
-  },[])
+    }
+  }, []);
 
   const keydownEventHandler = (event) => {
     const keyPressed = event.key.toLowerCase();
@@ -96,8 +102,8 @@ export const BrowseFilter = observer(() => {
         const nextState = { day: day, month: month, year: year };
         window.history.pushState(nextState, "", nextURL);
         window.history.replaceState(nextState, "", nextURL);
-      };
-    } 
+      }
+    }
   }, [agendaStore.timeSpan, agendaStore.filterDateFrom]);
 
   useEffect(() => {
@@ -131,9 +137,7 @@ export const BrowseFilter = observer(() => {
   };
 
   return (
-    <div
-      className="browseFilter__container"
-    >
+    <div className="browseFilter__container">
       <div className="browseFilter__text">
         <CaretLeftOutlined
           className="browseFilter__logo"

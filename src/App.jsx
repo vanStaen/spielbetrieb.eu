@@ -96,9 +96,18 @@ const App = observer(() => {
             <Route path="settings/" element={<Home page="settings" />} />
             <Route path="shop/" element={<Home page="shop" />} />
             <Route path="agenda/" element={<Home page="agenda" />} />
-            <Route path="agenda/week/:year/:week" element={<Home page="agenda" />} />
-            <Route path="agenda/:year/:month" element={<Home page="agenda" />} />
-            <Route path="agenda/:year/:month/:day" element={<Home page="agenda" />} />
+            <Route
+              path="agenda/week/:year/:week"
+              element={<Home page="agenda" />}
+            />
+            <Route
+              path="agenda/:year/:month"
+              element={<Home page="agenda" />}
+            />
+            <Route
+              path="agenda/:year/:month/:day"
+              element={<Home page="agenda" />}
+            />
             <Route path="service/" element={<Legal page="service" />} />
             <Route path="privacy/" element={<Legal page="privacy" />} />
             <Route path="agb/" element={<Legal page="agb" />} />

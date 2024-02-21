@@ -19,7 +19,7 @@ export const EventtypesFilter = observer(() => {
 
   const selectChangehandler = (e) => {
     agendaStore.setFilterEventtypes(e);
-  }
+  };
 
   return (
     <Select

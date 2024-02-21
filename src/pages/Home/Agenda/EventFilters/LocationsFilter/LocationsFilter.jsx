@@ -21,7 +21,7 @@ export const LocationsFilter = observer(() => {
 
   const selectChangehandler = (e) => {
     agendaStore.setFilterLocations(e);
-  }
+  };
 
   return (
     <Select

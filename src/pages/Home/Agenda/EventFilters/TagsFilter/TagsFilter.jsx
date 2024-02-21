@@ -19,7 +19,7 @@ export const TagsFilter = observer(() => {
 
   const selectChangehandler = (e) => {
     agendaStore.setFilterTags(e);
-  }
+  };
 
   return (
     <Select

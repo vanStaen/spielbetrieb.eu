@@ -83,20 +83,24 @@ export const Agenda = observer(() => {
       ),
     );
 
-    if (agendaStore.filterLocations.length){
-      if (!agendaStore.filterLocations.includes(String(event.location))){
+    if (agendaStore.filterLocations.length) {
+      if (!agendaStore.filterLocations.includes(String(event.location))) {
         return null;
       }
     }
 
-    if (agendaStore.filterEventtypes.length){
-      if (!agendaStore.filterEventtypes.includes(String(event.eventtype))){
+    if (agendaStore.filterEventtypes.length) {
+      if (!agendaStore.filterEventtypes.includes(String(event.eventtype))) {
         return null;
       }
     }
 
-    if (agendaStore.filterTags.length){
-      if (!agendaStore.filterTags.some(tag => event.eventTags.includes(parseInt(tag)))) {
+    if (agendaStore.filterTags.length) {
+      if (
+        !agendaStore.filterTags.some((tag) =>
+          event.eventTags.includes(parseInt(tag)),
+        )
+      ) {
         return null;
       }
     }
@@ -111,7 +115,7 @@ export const Agenda = observer(() => {
     );
   });
 
-  const eventsFormattedAndCleaned = eventsFormatted.filter(events => events);
+  const eventsFormattedAndCleaned = eventsFormatted.filter((events) => events);
 
   return (
     <>
@@ -120,7 +124,8 @@ export const Agenda = observer(() => {
           <CustomSpinner text="Loading events" />
         </div>
       ) : (
-        <div className="agenda__container" 
+        <div
+          className="agenda__container"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={() => onTouchEnd()}
