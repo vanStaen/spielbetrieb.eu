@@ -20,6 +20,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       "process.env.API_URL": JSON.stringify("https://spielbetrieb.eu"),
+      "process.env.HOST_URL": JSON.stringify("https://spielbetrieb.eu"),
     }),
     new CopyPlugin({
       patterns: [

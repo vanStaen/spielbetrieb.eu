@@ -9,6 +9,7 @@ import {
 } from "@ant-design/icons";
 import * as dayjs from "dayjs";
 import * as customParseFormat from "dayjs/plugin/customParseFormat";
+import * as weekOfYear from "dayjs/plugin/weekOfYear";
 
 import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { agendaStore } from "../../../../../store/agendaStore/agendaStore";
@@ -29,21 +30,23 @@ export const BrowseFilter = observer(() => {
   const month = params.month;
   const day = params.day;
 
-  {/*
-  if (week) {
-    agendaStore.setTimeSpan("week");
-    const newDate = dayjs(`${year}-${month}`).format("YYYY-ww");
-    //agendaStore.setFilterDateFrom()
-  } else if (day) {
-    agendaStore.setTimeSpan("day"); 
-    const newDate = dayjs(`${year}-${month}-${day}`).format("YYYY-MM-DD");   
-    //agendaStore.setFilterDateFrom();
-  } else if (month) {
-    agendaStore.setTimeSpan("month");
-    const newDate = dayjs(`${year}-${month}`).format("YYYY-MM");   
-    //agendaStore.setFilterDateFrom();
-  };
-  */}
+  useEffect(() => {
+    if (week) {
+      agendaStore.setTimeSpan("week");
+      const newDate = dayjs(`${year}-01-01`).week(week);
+      console.log("year, week, new date", year, week, newDate)
+      agendaStore.setFilterDateFrom(newDate)
+    } else if (day) {
+      agendaStore.setTimeSpan("day"); 
+      const newDate = dayjs(`${year}.${month}.${day}`).format("YYYY.MM.DD");   
+      agendaStore.setFilterDateFrom(newDate);
+    } else if (month) {
+      debugger;
+      agendaStore.setTimeSpan("month");
+      const newDate = dayjs(`${year}.${month}`).format("YYYY.MM");   
+      agendaStore.setFilterDateFrom(newDate);
+    };
+  },[])
 
   const keydownEventHandler = (event) => {
     const keyPressed = event.key.toLowerCase();
@@ -78,14 +81,23 @@ export const BrowseFilter = observer(() => {
     const year = dayjs(agendaStore.filterDateFrom).format("YYYY");
     if (agendaStore.timeSpan === "week") {
       const week = dayjs(agendaStore.filterDateFrom).format("ww");
-      navigate(`../agenda/week/${week}/`);
+      const nextURL = `${process.env.HOST_URL}/agenda/week/${year}/${week}/`;
+      const nextState = { calendarWeek: week, year: year };
+      window.history.pushState(nextState, "", nextURL);
+      window.history.replaceState(nextState, "", nextURL);
     } else {
       const month = dayjs(agendaStore.filterDateFrom).format("MM");
       if (agendaStore.timeSpan === "month") {
-        navigate(`../agenda/${year}/${month}/`);
+        const nextURL = `${process.env.HOST_URL}/agenda/${year}/${month}/`;
+        const nextState = { month: month, year: year };
+        window.history.pushState(nextState, "", nextURL);
+        window.history.replaceState(nextState, "", nextURL);
       } else if (agendaStore.timeSpan === "day") {
         const day = dayjs(agendaStore.filterDateFrom).format("DD");
-        navigate(`../agenda/${year}/${month}/${day}/`);
+        const nextURL = `${process.env.HOST_URL}/agenda/${year}/${month}/${day}/`;
+        const nextState = { day: day, month: month, year: year };
+        window.history.pushState(nextState, "", nextURL);
+        window.history.replaceState(nextState, "", nextURL);
       };
     } 
   }, [agendaStore.timeSpan, agendaStore.filterDateFrom]);
