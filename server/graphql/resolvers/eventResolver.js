@@ -34,14 +34,13 @@ exports.eventResolver = {
 
     //getAllPublicEvents
     async getAllPublicEvents(args, req) {
-      console.log("args", args);
       return await Event.findAll({
         where: { 
           private: false, 
           isDraft: false, 
           fromDate: {
             [Op.between]: [args.fromDate, args.untilDate]
-          } 
+          },
         },
         include: User,
         order: [

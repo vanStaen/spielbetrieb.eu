@@ -51,6 +51,25 @@ export const Agenda = observer(() => {
         pageStore.selectedLanguage?.toLowerCase(),
       ),
     );
+
+    if (agendaStore.filterLocations.length){
+      if (!agendaStore.filterLocations.includes(String(event.location))){
+        return null;
+      }
+    }
+
+    if (agendaStore.filterEventtypes.length){
+      if (!agendaStore.filterEventtypes.includes(String(event.eventtype))){
+        return null;
+      }
+    }
+
+    if (agendaStore.filterTags.length){
+      if (!agendaStore.filterTags.some(tag => event.eventTags.includes(parseInt(tag)))) {
+        return null;
+      }
+    }
+
     return (
       <EventCard
         key={`eventCard${event._id}`}
@@ -60,6 +79,8 @@ export const Agenda = observer(() => {
       />
     );
   });
+
+  const eventsFormattedAndCleaned = eventsFormatted.filter(events => events);
 
   return (
     <>
@@ -74,7 +95,7 @@ export const Agenda = observer(() => {
             <div className="agenda__noEventContainer">
               <CustomSpinner text="Loading events" />
             </div>
-          ) : eventsFormatted.length === 0 ? (
+          ) : eventsFormattedAndCleaned.length === 0 ? (
             <div className="agenda__noEventContainer">
               <div
                 className={`agenda__noEventText ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
@@ -86,7 +107,7 @@ export const Agenda = observer(() => {
               </div>
             </div>
           ) : (
-            eventsFormatted
+            eventsFormattedAndCleaned
           )}
         </div>
       )}

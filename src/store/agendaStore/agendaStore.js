@@ -73,9 +73,6 @@ export class AgendaStore {
     const events = await getAllPublicEvents(
       fromUnixDateStartOf,
       untilUnixDateEndOf,
-      this.filterLocations,
-      this.filterEventtypes,
-      this.filterTags,
     );
     this.setEvents(events);
     this.setIsLoadingEvent(false);
@@ -118,17 +115,14 @@ export class AgendaStore {
 
   setFilterLocations = (filterLocations) => {
     this.filterLocations = filterLocations;
-    this.fetchEvents();
   };
 
   setFilterEventtypes = (filterEventtypes) => {
     this.filterEventtypes = filterEventtypes;
-    this.fetchEvents();
   };
 
   setFilterTags = (filterTags) => {
     this.filterTags = filterTags;
-    this.fetchEvents();
   };
 
 }
