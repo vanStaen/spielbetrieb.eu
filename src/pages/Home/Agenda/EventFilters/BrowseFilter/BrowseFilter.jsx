@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react";
 import {
@@ -7,100 +7,29 @@ import {
   CalendarOutlined,
 } from "@ant-design/icons";
 import * as dayjs from "dayjs";
-//import * as advancedFormat from "dayjs/plugin/advancedFormat";
-//import * as isoWeek from "dayjs/plugin/isoWeek";
 
 import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { agendaStore } from "../../../../../store/agendaStore/agendaStore";
+import { DATE_FORMAT_MONTH, DATE_FORMAT_CW, DATE_FORMAT_DAY } from "../../../../../lib/data/dateFormat";
 
 import "./BrowseFilter.less";
 
-// the required distance between touchStart and touchEnd to be detected as a swipe
-const MIN_SWIPE_DISTANCE = 20;
-
-const DATE_FORMAT_MONTH = "MMM, YYYY";
-const DATE_FORMAT_CW = "ww, YYYY";
-const DATE_FORMAT_DAY = "DD MMM, YYYY";
-
 export const BrowseFilter = observer(() => {
-  const { t } = useTranslation();
+  const [filterText, setFilterText] = useState(dayjs().format(DATE_FORMAT_MONTH));
   const [showFormatMenu, setShowFormatMenu] = useState(false);
-  const [filterText, setFilterText] = useState(
-    dayjs().format(DATE_FORMAT_MONTH),
-  );
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
-  const throttling = useRef(false);
-
-  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
-
-  const onTouchStart = (e) => {
-    setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > MIN_SWIPE_DISTANCE;
-    const isRightSwipe = distance < -MIN_SWIPE_DISTANCE;
-    if (throttling.current === false) {
-      throttling.current = true;
-      if (isRightSwipe) {
-        handleChangeZeitRaumClick(false);
-      } else if (isLeftSwipe) {
-        handleChangeZeitRaumClick(true);
-      }
-      setTimeout(() => {
-        throttling.current = false;
-      }, 500);
-    }
-  };
 
   const keydownEventHandler = (event) => {
     const keyPressed = event.key.toLowerCase();
     if (keyPressed === "arrowleft") {
       event.preventDefault();
-      handleChangeZeitRaumClick(false);
+      agendaStore.calculateFilterDateFrom(false);
     } else if (keyPressed === "arrowright") {
       event.preventDefault();
-      handleChangeZeitRaumClick(true);
+      agendaStore.calculateFilterDateFrom(true);
     }
   };
 
-  useEffect(() => {
-    window.addEventListener("keydown", keydownEventHandler);
-    return () => {
-      window.removeEventListener("keydown", keydownEventHandler);
-    };
-  }, []);
-
-  const handleChangeZeitRaumClick = (add) => {
-    let newFilterDateFrom;
-    if (add) {
-      newFilterDateFrom = dayjs(agendaStore.filterDateFrom).add(
-        1,
-        agendaStore.timeSpan,
-      );
-    } else {
-      newFilterDateFrom = dayjs(agendaStore.filterDateFrom).subtract(
-        1,
-        agendaStore.timeSpan,
-      );
-    }
-    agendaStore.setFilterDateFrom(newFilterDateFrom);
-    agendaStore.fetchEvents();
-    updateTimeSpanDisplay(agendaStore.timeSpan, newFilterDateFrom);
-  };
-
-  const timeSpanChange = (newFormat) => {
-    agendaStore.setTimeSpan(newFormat);
-    agendaStore.fetchEvents();
-    updateTimeSpanDisplay(newFormat, agendaStore.filterDateFrom);
-    handleHideMenu();
-  };
-
-  const updateTimeSpanDisplay = (newtimeSpan, newFilterDateFrom) => {
+  const setTimeSpanDisplay = (newtimeSpan, newFilterDateFrom) => {
     let browseFilterText;
     if (newtimeSpan === "month") {
       browseFilterText = newFilterDateFrom.format(DATE_FORMAT_MONTH);
@@ -117,6 +46,23 @@ export const BrowseFilter = observer(() => {
     setFilterText(browseFilterText);
   };
 
+  useEffect(() => {
+    setTimeSpanDisplay(agendaStore.timeSpan, agendaStore.filterDateFrom);
+  }, [agendaStore.timeSpan, agendaStore.filterDateFrom]);
+
+  useEffect(() => {
+    window.addEventListener("keydown", keydownEventHandler);
+    return () => {
+      window.removeEventListener("keydown", keydownEventHandler);
+    };
+  }, []);
+
+  const timeSpanChange = (newFormat) => {
+    agendaStore.setTimeSpan(newFormat);
+    agendaStore.fetchEvents();
+    handleHideMenu();
+  };
+
   const handleHideMenu = () => {
     const elementContainer = document.getElementById(
       "browseFilter__menuContainer",
@@ -131,28 +77,24 @@ export const BrowseFilter = observer(() => {
     agendaStore.setFilterDateFrom(dayjs());
     agendaStore.setTimeSpan("day");
     agendaStore.fetchEvents();
-    updateTimeSpanDisplay("day", dayjs());
     handleHideMenu(true);
   };
 
   return (
     <div
       className="browseFilter__container"
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={() => onTouchEnd()}
     >
       <div className="browseFilter__text">
         <CaretLeftOutlined
           className="browseFilter__logo"
-          onClick={() => handleChangeZeitRaumClick(false)}
+          onClick={() => agendaStore.calculateFilterDateFrom(false)}
         />{" "}
         <span onClick={() => setShowFormatMenu(!showFormatMenu)}>
           {filterText}
         </span>{" "}
         <CaretRightOutlined
           className="browseFilter__logo browseFilter__logoRight"
-          onClick={() => handleChangeZeitRaumClick(true)}
+          onClick={() => agendaStore.calculateFilterDateFrom(true)}
         />
       </div>
       {showFormatMenu && (
