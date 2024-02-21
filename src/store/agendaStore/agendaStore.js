@@ -5,6 +5,7 @@ import { getAllPublicEvents } from "./getAllPublicEvents";
 import { getEventtypes } from "./getEventtypes";
 import { getTags } from "./getTags";
 import { getLocations } from "./getLocations";
+import { DATE_FORMAT_MONTH, DATE_FORMAT_CW, DATE_FORMAT_DAY } from "../../lib/data/dateFormat";
 
 export class AgendaStore {
   isLoadingEvent = true;
@@ -15,6 +16,9 @@ export class AgendaStore {
   locations = [];
   timeSpan = "month";
   filterDateFrom = dayjs();
+  filterLocations = [];
+  filterEventtypes = [];
+  filterTags = [];
 
   constructor() {
     makeObservable(this, {
@@ -38,6 +42,13 @@ export class AgendaStore {
       filterDateFrom: observable,
       setTimeSpan: action,
       timeSpan: observable,
+      setFilterLocations: action,
+      filterLocations: observable,
+      setFilterEventtypes: action,
+      filterEventtypes: observable,
+      setFilterTags: action,
+      filterTags: observable,
+      calculateFilterDateFrom: action,
     });
   }
 
@@ -97,11 +108,40 @@ export class AgendaStore {
   };
 
   setFilterDateFrom = (filterDateFrom) => {
-    this.filterDateFrom = filterDateFrom;
+    this.filterDateFrom = dayjs(filterDateFrom);
   };
 
   setTimeSpan = (timeSpan) => {
     this.timeSpan = timeSpan;
+  };
+
+  setFilterLocations = (filterLocations) => {
+    this.filterLocations = filterLocations;
+  };
+
+  setFilterEventtypes = (filterEventtypes) => {
+    this.filterEventtypes = filterEventtypes;
+  };
+
+  setFilterTags = (filterTags) => {
+    this.filterTags = filterTags;
+  };
+  
+  calculateFilterDateFrom = (add) => {
+    let newFilterDateFrom;
+    if (add) {
+      newFilterDateFrom = dayjs(this.filterDateFrom).add(
+        1,
+        this.timeSpan,
+      );
+    } else {
+      newFilterDateFrom = dayjs(this.filterDateFrom).subtract(
+        1,
+        this.timeSpan,
+      );
+    }
+    this.setFilterDateFrom(newFilterDateFrom);
+    this.fetchEvents();
   };
 }
 

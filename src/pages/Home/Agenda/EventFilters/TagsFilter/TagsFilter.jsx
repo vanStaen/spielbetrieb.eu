@@ -17,6 +17,10 @@ export const TagsFilter = observer(() => {
     };
   });
 
+  const selectChangehandler = (e) => {
+    agendaStore.setFilterTags(e);
+  };
+
   return (
     <Select
       showSearch
@@ -25,6 +29,7 @@ export const TagsFilter = observer(() => {
       optionFilterProp="label"
       className="tagfilter__Select"
       style={{ minWidth: 120 }}
+      onChange={selectChangehandler}
       placeholder={
         <>
           <TagsOutlined /> Tags

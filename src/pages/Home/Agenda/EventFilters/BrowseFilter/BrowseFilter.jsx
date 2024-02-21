@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react";
 import {
@@ -7,100 +8,62 @@ import {
   CalendarOutlined,
 } from "@ant-design/icons";
 import * as dayjs from "dayjs";
-//import * as advancedFormat from "dayjs/plugin/advancedFormat";
-//import * as isoWeek from "dayjs/plugin/isoWeek";
+import * as customParseFormat from "dayjs/plugin/customParseFormat";
+import * as weekOfYear from "dayjs/plugin/weekOfYear";
 
 import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { agendaStore } from "../../../../../store/agendaStore/agendaStore";
+import {
+  DATE_FORMAT_MONTH,
+  DATE_FORMAT_CW,
+  DATE_FORMAT_DAY,
+} from "../../../../../lib/data/dateFormat";
 
 import "./BrowseFilter.less";
 
-// the required distance between touchStart and touchEnd to be detected as a swipe
-const MIN_SWIPE_DISTANCE = 20;
-
-const DATE_FORMAT_MONTH = "MMM, YYYY";
-const DATE_FORMAT_CW = "ww, YYYY";
-const DATE_FORMAT_DAY = "DD MMM, YYYY";
-
 export const BrowseFilter = observer(() => {
   const { t } = useTranslation();
-  const [showFormatMenu, setShowFormatMenu] = useState(false);
+  const params = useParams();
+
   const [filterText, setFilterText] = useState(
     dayjs().format(DATE_FORMAT_MONTH),
   );
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
-  const throttling = useRef(false);
+  const [showFormatMenu, setShowFormatMenu] = useState(false);
 
-  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+  const week = params.week;
+  const year = params.year;
+  const month = params.month;
+  const day = params.day;
 
-  const onTouchStart = (e) => {
-    setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > MIN_SWIPE_DISTANCE;
-    const isRightSwipe = distance < -MIN_SWIPE_DISTANCE;
-    if (throttling.current === false) {
-      throttling.current = true;
-      if (isRightSwipe) {
-        handleChangeZeitRaumClick(false);
-      } else if (isLeftSwipe) {
-        handleChangeZeitRaumClick(true);
-      }
-      setTimeout(() => {
-        throttling.current = false;
-      }, 500);
+  useEffect(() => {
+    if (week) {
+      agendaStore.setTimeSpan("week");
+      const newDate = dayjs(`${year}-01-01`).week(week);
+      console.log("year, week, new date", year, week, newDate);
+      agendaStore.setFilterDateFrom(newDate);
+    } else if (day) {
+      agendaStore.setTimeSpan("day");
+      const newDate = dayjs(`${year}.${month}.${day}`).format("YYYY.MM.DD");
+      agendaStore.setFilterDateFrom(newDate);
+    } else if (month) {
+      agendaStore.setTimeSpan("month");
+      const newDate = dayjs(`${year}.${month}`).format("YYYY.MM");
+      agendaStore.setFilterDateFrom(newDate);
     }
-  };
+  }, []);
 
   const keydownEventHandler = (event) => {
     const keyPressed = event.key.toLowerCase();
     if (keyPressed === "arrowleft") {
       event.preventDefault();
-      handleChangeZeitRaumClick(false);
+      agendaStore.calculateFilterDateFrom(false);
     } else if (keyPressed === "arrowright") {
       event.preventDefault();
-      handleChangeZeitRaumClick(true);
+      agendaStore.calculateFilterDateFrom(true);
     }
   };
 
-  useEffect(() => {
-    window.addEventListener("keydown", keydownEventHandler);
-    return () => {
-      window.removeEventListener("keydown", keydownEventHandler);
-    };
-  }, []);
-
-  const handleChangeZeitRaumClick = (add) => {
-    let newFilterDateFrom;
-    if (add) {
-      newFilterDateFrom = dayjs(agendaStore.filterDateFrom).add(
-        1,
-        agendaStore.timeSpan,
-      );
-    } else {
-      newFilterDateFrom = dayjs(agendaStore.filterDateFrom).subtract(
-        1,
-        agendaStore.timeSpan,
-      );
-    }
-    agendaStore.setFilterDateFrom(newFilterDateFrom);
-    agendaStore.fetchEvents();
-    updateTimeSpanDisplay(agendaStore.timeSpan, newFilterDateFrom);
-  };
-
-  const timeSpanChange = (newFormat) => {
-    agendaStore.setTimeSpan(newFormat);
-    agendaStore.fetchEvents();
-    updateTimeSpanDisplay(newFormat, agendaStore.filterDateFrom);
-    handleHideMenu();
-  };
-
-  const updateTimeSpanDisplay = (newtimeSpan, newFilterDateFrom) => {
+  const setTimeSpanDisplay = (newtimeSpan, newFilterDateFrom) => {
     let browseFilterText;
     if (newtimeSpan === "month") {
       browseFilterText = newFilterDateFrom.format(DATE_FORMAT_MONTH);
@@ -117,6 +80,45 @@ export const BrowseFilter = observer(() => {
     setFilterText(browseFilterText);
   };
 
+  useEffect(() => {
+    setTimeSpanDisplay(agendaStore.timeSpan, agendaStore.filterDateFrom);
+    const year = dayjs(agendaStore.filterDateFrom).format("YYYY");
+    if (agendaStore.timeSpan === "week") {
+      const week = dayjs(agendaStore.filterDateFrom).format("ww");
+      const nextURL = `${process.env.HOST_URL}/agenda/week/${year}/${week}/`;
+      const nextState = { calendarWeek: week, year: year };
+      window.history.pushState(nextState, "", nextURL);
+      window.history.replaceState(nextState, "", nextURL);
+    } else {
+      const month = dayjs(agendaStore.filterDateFrom).format("MM");
+      if (agendaStore.timeSpan === "month") {
+        const nextURL = `${process.env.HOST_URL}/agenda/${year}/${month}/`;
+        const nextState = { month: month, year: year };
+        window.history.pushState(nextState, "", nextURL);
+        window.history.replaceState(nextState, "", nextURL);
+      } else if (agendaStore.timeSpan === "day") {
+        const day = dayjs(agendaStore.filterDateFrom).format("DD");
+        const nextURL = `${process.env.HOST_URL}/agenda/${year}/${month}/${day}/`;
+        const nextState = { day: day, month: month, year: year };
+        window.history.pushState(nextState, "", nextURL);
+        window.history.replaceState(nextState, "", nextURL);
+      }
+    }
+  }, [agendaStore.timeSpan, agendaStore.filterDateFrom]);
+
+  useEffect(() => {
+    window.addEventListener("keydown", keydownEventHandler);
+    return () => {
+      window.removeEventListener("keydown", keydownEventHandler);
+    };
+  }, []);
+
+  const timeSpanChange = (newFormat) => {
+    agendaStore.setTimeSpan(newFormat);
+    agendaStore.fetchEvents();
+    handleHideMenu();
+  };
+
   const handleHideMenu = () => {
     const elementContainer = document.getElementById(
       "browseFilter__menuContainer",
@@ -131,28 +133,22 @@ export const BrowseFilter = observer(() => {
     agendaStore.setFilterDateFrom(dayjs());
     agendaStore.setTimeSpan("day");
     agendaStore.fetchEvents();
-    updateTimeSpanDisplay("day", dayjs());
     handleHideMenu(true);
   };
 
   return (
-    <div
-      className="browseFilter__container"
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={() => onTouchEnd()}
-    >
+    <div className="browseFilter__container">
       <div className="browseFilter__text">
         <CaretLeftOutlined
           className="browseFilter__logo"
-          onClick={() => handleChangeZeitRaumClick(false)}
+          onClick={() => agendaStore.calculateFilterDateFrom(false)}
         />{" "}
         <span onClick={() => setShowFormatMenu(!showFormatMenu)}>
           {filterText}
         </span>{" "}
         <CaretRightOutlined
           className="browseFilter__logo browseFilter__logoRight"
-          onClick={() => handleChangeZeitRaumClick(true)}
+          onClick={() => agendaStore.calculateFilterDateFrom(true)}
         />
       </div>
       {showFormatMenu && (

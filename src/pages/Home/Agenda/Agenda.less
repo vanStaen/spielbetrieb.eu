@@ -36,3 +36,11 @@
         }
     }
 }
+
+@media only screen and (max-width: 675px) {
+    .agenda__noEventContainer {
+        height: calc(100vh - 70px - 65px - 105px);
+        /* Fallback for browsers that do not support Custom Properties */
+        height: calc(var(--vh, 1vh) * 100 - 70px - 65px - 105px); // footer & filter div
+    }
+}

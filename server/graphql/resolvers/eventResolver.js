@@ -40,7 +40,7 @@ exports.eventResolver = {
           isDraft: false, 
           fromDate: {
             [Op.between]: [args.fromDate, args.untilDate]
-          } 
+          },
         },
         include: User,
         order: [
