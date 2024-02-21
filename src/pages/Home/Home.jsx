@@ -10,6 +10,7 @@ import { Header } from "./Header/Header";
 import { pageStore } from "../../store/pageStore/pageStore";
 import { Agenda } from "./Agenda/Agenda";
 import { Basket } from "./Basket/Basket";
+import { Event } from "./Event/Event";
 import { Magazin } from "./Magazin/Magazin";
 import { Partner } from "./Partner/Partner";
 import { Profile } from "./Profile/Profile";
@@ -54,6 +55,8 @@ export const Home = observer((props) => {
         return <Agenda />;
       case "basket":
         return <Basket />;
+      case "event":
+        return <Event />;
       case "shop":
         return <Shop />;
       case "magazin":
