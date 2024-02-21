@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react";
 import {
@@ -19,7 +19,6 @@ import "./BrowseFilter.less";
 
 export const BrowseFilter = observer(() => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const params = useParams();
 
   const [filterText, setFilterText] = useState(dayjs().format(DATE_FORMAT_MONTH));
