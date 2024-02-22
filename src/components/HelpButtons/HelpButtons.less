@@ -3,13 +3,14 @@
 }
 
 .missingEventButtonContainer .ant-float-btn-body {
-    background-color: rgba(DarkRed, 1) !important;
+    background-color: rgba(DarkRed, .25) !important;
     &:hover {
         background-color: rgba(DarkRed, .75) !important;
+        color: rgba(225,207,187, .75) !important;
     }
     .ant-float-btn-icon {
         position: relative;
-        color: rgba(225,207,187,1) !important;
+        color: rgba(var(--themeFontColorInvert), 1) !important;
     }
 }
 

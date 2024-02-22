@@ -20,6 +20,11 @@ export const HelpButtons = observer((props) => {
       icon={<QuestionOutlined />}
       className="missingEventButtonContainer"
     >
+      <FloatButton
+        className="missingEventButton"
+        icon={<BugOutlined />}
+        tooltip={t("help.reportBug")}
+      />
       {props.page === "agenda" && (
         <FloatButton
           className="missingEventButton"
@@ -27,11 +32,6 @@ export const HelpButtons = observer((props) => {
           tooltip={t("help.yourEventIsMissing")}
         />
       )}
-      <FloatButton
-        className="missingEventButton"
-        icon={<BugOutlined />}
-        tooltip={t("help.reportBug")}
-      />
     </FloatButton.Group>
   );
 });

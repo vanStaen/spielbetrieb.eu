@@ -7,7 +7,7 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
-import { pageStore } from "../../store/pageStore/pageStore";
+import { HelpButtons } from "../../components/HelpButtons/HelpButtons";
 
 import "./FourOfour.less";
 
@@ -19,16 +19,17 @@ export const FourOfour = () => {
     <>
       <LanguageDropDown />
       <DarkModeDropDown />
-      <Link to="../" relative="path">
-        <Tooltip title="Back to main page" placement="left">
-          <img
-            src={SpielbetriebLogo}
-            id="spielbetriebLogo"
-            className="return__logo"
-          />
-        </Tooltip>
-      </Link>
+      <HelpButtons />
       <div className="fourofour invertColorTheme">
+        <Link to="../" relative="path">
+          <Tooltip title="Back to main page" placement="left">
+            <img
+              src={SpielbetriebLogo}
+              id="spielbetriebLogo"
+              className="return__logo"
+            />
+          </Tooltip>
+        </Link>
         <div className="fourofour__inner">
           <div className="fourofour__innerContainer">
             <div>404</div>
@@ -38,7 +39,7 @@ export const FourOfour = () => {
           </div>
         </div>
         <div
-          className={`fourofour__backArrow ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
+          className={`fourofour__backArrow`}
           onClick={() => navigate(-1)}
         >
           <ArrowLeftOutlined />
