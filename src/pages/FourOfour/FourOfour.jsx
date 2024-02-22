@@ -38,10 +38,7 @@ export const FourOfour = () => {
             </div>
           </div>
         </div>
-        <div
-          className={`fourofour__backArrow`}
-          onClick={() => navigate(-1)}
-        >
+        <div className={`fourofour__backArrow`} onClick={() => navigate(-1)}>
           <ArrowLeftOutlined />
         </div>
       </div>
