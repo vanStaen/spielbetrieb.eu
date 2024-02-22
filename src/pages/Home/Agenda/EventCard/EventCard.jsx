@@ -4,23 +4,40 @@ import { useTranslation } from "react-i18next";
 import { ClockCircleOutlined, EnvironmentOutlined } from "@ant-design/icons";
 import * as dayjs from "dayjs";
 
+import { agendaStore } from "../../../../store/agendaStore/agendaStore";
+
 import "./EventCard.less";
 import "./EventColors.less";
+import { observer } from "mobx-react";
 
-export const EventCard = (props) => {
+export const EventCard = observer((props) => {
   const { t } = useTranslation();
   const { event, color, tags } = props;
 
   /* TODO:
-        Mark event
-        Action on Tag click
-        Get Ticket
+        show number of attending
+        Mark attending event 
+        buy a ticket Ticket
     */
 
-  const tagsFormatted = tags?.map((tag) => {
+  const handleTagClick = (index, id) => {
+    if (index === 0) {
+      agendaStore.addFilterEventtypes(id);
+    } else {
+      agendaStore.addFilterTags(id);
+    }
+  };
+
+  const tagsFormatted = tags?.map((tag, index) => {
     return (
-      <Tag key={tag._id} bordered={false}>
-        #{tag}
+      <Tag
+        key={tag.id}
+        bordered={false}
+        onClick={() => {
+          handleTagClick(index, tag.id);
+        }}
+      >
+        #{tag.name}
       </Tag>
     );
   });
@@ -78,4 +95,4 @@ export const EventCard = (props) => {
       </div>
     </div>
   );
-};
+});

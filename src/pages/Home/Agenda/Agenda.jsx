@@ -68,21 +68,25 @@ export const Agenda = observer(() => {
       (et) => parseInt(et._id) === event.eventtype,
     )[0]?.color;
     const eventTags = event.eventTags.map((tagId) => {
-      return nameParser(
-        agendaStore.tags.filter((tag) => parseInt(tag._id) === tagId)[0]?.name,
-        pageStore.selectedLanguage?.toLowerCase(),
-      );
+      return {
+        name: nameParser(
+          agendaStore.tags.filter((tag) => parseInt(tag._id) === tagId)[0]
+            ?.name,
+          pageStore.selectedLanguage?.toLowerCase(),
+        ),
+        id: tagId,
+      };
     });
-    eventTags.splice(
-      0,
-      0,
-      nameParser(
-        agendaStore.eventtypes.filter(
-          (et) => parseInt(et._id) === event.eventtype,
-        )[0]?.name,
+    const eventType = agendaStore.eventtypes.filter(
+      (et) => parseInt(et._id) === event.eventtype,
+    )[0];
+    eventTags.splice(0, 0, {
+      name: nameParser(
+        eventType.name,
         pageStore.selectedLanguage?.toLowerCase(),
       ),
-    );
+      id: eventType._id,
+    });
 
     if (agendaStore.filterLocations.length) {
       if (!agendaStore.filterLocations.includes(String(event.location))) {

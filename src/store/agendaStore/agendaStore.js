@@ -22,31 +22,33 @@ export class AgendaStore {
 
   constructor() {
     makeObservable(this, {
+      events: observable,
+      isLoadingEvent: observable,
+      tags: observable,
+      isLoadingData: observable,
+      eventtypes: observable,
+      locations: observable,
+      filterDateFrom: observable,
+      timeSpan: observable,
+      filterLocations: observable,
+      filterEventtypes: observable,
       fetchEvents: action,
       setEvents: action,
-      events: observable,
       setIsLoadingEvent: action,
-      isLoadingEvent: observable,
       setIsLoadingData: action,
-      isLoadingData: observable,
       fetchEventtypes: action,
       setEventtypes: action,
-      eventtypes: observable,
       fetchTags: action,
       setTags: action,
-      tags: observable,
       fetchLocations: action,
       setLocations: action,
-      locations: observable,
       setFilterDateFrom: action,
-      filterDateFrom: observable,
       setTimeSpan: action,
-      timeSpan: observable,
       setFilterLocations: action,
-      filterLocations: observable,
       setFilterEventtypes: action,
-      filterEventtypes: observable,
+      addFilterEventtypes: action,
       setFilterTags: action,
+      addFilterTags: action,
       filterTags: observable,
       calculateFilterDateFrom: action,
     });
@@ -66,12 +68,17 @@ export class AgendaStore {
 
   fetchEvents = async () => {
     this.setIsLoadingEvent(true);
+    console.log('filterDateFrom', this.filterDateFrom)
     const fromUnixDateStartOf = this.filterDateFrom
       .startOf(this.timeSpan)
       .valueOf();
+    console.log('from', this.filterDateFrom
+      .startOf(this.timeSpan))
     const untilUnixDateEndOf = this.filterDateFrom
       .endOf(this.timeSpan)
       .valueOf();
+    console.log('to', this.filterDateFrom
+      .endOf(this.timeSpan))
     const events = await getAllPublicEvents(
       fromUnixDateStartOf,
       untilUnixDateEndOf,
@@ -108,6 +115,7 @@ export class AgendaStore {
   };
 
   setFilterDateFrom = (filterDateFrom) => {
+    console.log('filterDateFrom', dayjs(filterDateFrom));
     this.filterDateFrom = dayjs(filterDateFrom);
   };
 
@@ -123,10 +131,26 @@ export class AgendaStore {
     this.filterEventtypes = filterEventtypes;
   };
 
+  addFilterEventtypes = (newFilterEventtype) => {
+    if (!this.filterEventtypes.includes(String(newFilterEventtype))) {
+      const newArrayFilterEventtypes = this.filterEventtypes;
+      newArrayFilterEventtypes.push(newFilterEventtype);
+      this.filterEventtypes = newArrayFilterEventtypes;
+    }
+  };
+
   setFilterTags = (filterTags) => {
     this.filterTags = filterTags;
   };
-  
+
+  addFilterTags = (newFilterTag) => {
+    if (!this.filterTags.includes(String(newFilterTag))) {
+      const newArrayFilterTags = this.filterTags;
+      newArrayFilterTags.push(newFilterTag);
+      this.filterTags = newArrayFilterTags;
+    }
+  };
+
   calculateFilterDateFrom = (add) => {
     let newFilterDateFrom;
     if (add) {
