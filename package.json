@@ -20,7 +20,7 @@
     "version": "heroku --version; git --version",
     "kill": "killall -9 node",
     "backup": "cd server/lib/; node createDatabaseBackUpFile.js; npm run pushbackup; cd ../../",
-    "pushbackup": "cd ../database-backups; git pull origin master; git add -A; git commit -m 'Spielbetrieb - database backup files'; git push; cd ../spielbetrieb",
+    "pushbackup": "cd ../database-backups; git pull origin master; git add -A; git commit -m 'Spielbetrieb - database backup files'; git push;",
     "lint": "eslint ../**/*.js ../**/*.jsx --fix"
   },
   "dependencies": {
