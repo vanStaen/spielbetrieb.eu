@@ -17,9 +17,9 @@ export const EventCard = (props) => {
         Get Ticket
     */
 
-  const tagsFormatted = tags.map((tag) => {
+  const tagsFormatted = tags?.map((tag) => {
     return (
-      <Tag key={tag?._id} bordered={false}>
+      <Tag key={tag._id} bordered={false}>
         #{tag}
       </Tag>
     );
