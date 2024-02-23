@@ -25,7 +25,7 @@ export const AcceptCookies = observer(() => {
 
   useEffect(() => {
     if (hasRenderedOnce === false) {
-      if (!pageStore.allowCookie || process.env.NODE_ENV === "development") {
+      if (!pageStore.allowCookie) {
         openAcceptCookie();
       }
     }

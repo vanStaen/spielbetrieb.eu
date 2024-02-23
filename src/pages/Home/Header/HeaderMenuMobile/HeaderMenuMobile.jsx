@@ -51,7 +51,7 @@ export const HeaderMenuMobile = observer((props) => {
           className={`menu__element ${selected === "agenda" && "menu__elementSelected"}`}
           onClick={() => menuLinkClickHandle("agenda")}
         >
-          Agenda
+          Spielplan
         </div>
         <div className="menu__whiteline"></div>
         <div className="menu__elementDisabled">Shop</div>

@@ -38,7 +38,7 @@ export const Header = observer((props) => {
       {pageStore.showMenuMobile && <HeaderMenuMobile selected={selected} />}
       <div className="header__headerElementContainer">
         <HeaderElement
-          title="Agenda"
+          title="Spielplan"
           page="agenda"
           selected={selected === "agenda"}
         />
