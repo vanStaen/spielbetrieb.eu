@@ -68,17 +68,12 @@ export class AgendaStore {
 
   fetchEvents = async () => {
     this.setIsLoadingEvent(true);
-    console.log('filterDateFrom', this.filterDateFrom)
     const fromUnixDateStartOf = this.filterDateFrom
       .startOf(this.timeSpan)
       .valueOf();
-    console.log('from', this.filterDateFrom
-      .startOf(this.timeSpan))
     const untilUnixDateEndOf = this.filterDateFrom
       .endOf(this.timeSpan)
       .valueOf();
-    console.log('to', this.filterDateFrom
-      .endOf(this.timeSpan))
     const events = await getAllPublicEvents(
       fromUnixDateStartOf,
       untilUnixDateEndOf,
@@ -115,7 +110,6 @@ export class AgendaStore {
   };
 
   setFilterDateFrom = (filterDateFrom) => {
-    console.log('filterDateFrom', dayjs(filterDateFrom));
     this.filterDateFrom = dayjs(filterDateFrom);
   };
 

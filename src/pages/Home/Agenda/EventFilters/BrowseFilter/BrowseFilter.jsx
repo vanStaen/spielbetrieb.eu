@@ -41,16 +41,18 @@ export const BrowseFilter = observer(() => {
     if (week) {
       agendaStore.setTimeSpan("week");
       const newDate = dayjs(`${year}-01-01`).week(week);
-      console.log("year, week, new date", year, week, newDate);
       agendaStore.setFilterDateFrom(newDate);
+      agendaStore.fetchEvents();
     } else if (day) {
       agendaStore.setTimeSpan("day");
       const newDate = dayjs(`${year}.${month}.${day}`).format("YYYY.MM.DD");
       agendaStore.setFilterDateFrom(newDate);
+      agendaStore.fetchEvents();
     } else if (month) {
       agendaStore.setTimeSpan("month");
       const newDate = dayjs(`${year}.${month}.01`).format("YYYY.MM.DD");
       agendaStore.setFilterDateFrom(newDate);
+      agendaStore.fetchEvents();
     }
   }, []);
 
