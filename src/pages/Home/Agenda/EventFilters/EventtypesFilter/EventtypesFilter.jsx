@@ -30,6 +30,7 @@ export const EventtypesFilter = observer(() => {
       className="eventtypefilter__Select"
       style={{ minWidth: 120 }}
       onChange={selectChangehandler}
+      value={agendaStore.filterEventtypes}
       placeholder={
         <>
           <CalendarOutlined /> Event

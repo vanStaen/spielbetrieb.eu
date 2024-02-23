@@ -22,9 +22,17 @@ export const EventCard = observer((props) => {
 
   const handleTagClick = (index, id) => {
     if (index === 0) {
-      agendaStore.addFilterEventtypes(id);
+      if (!agendaStore.filterEventtypes.includes(String(id))) {
+        const newArrayFilterEventtypes = agendaStore.filterEventtypes.slice();
+        newArrayFilterEventtypes.push(String(id));
+        agendaStore.setFilterEventtypes(newArrayFilterEventtypes);
+      }
     } else {
-      agendaStore.addFilterTags(id);
+      if (!agendaStore.filterTags.includes(String(id))) {
+        const newArrayFilterTags = agendaStore.filterTags.slice();
+        newArrayFilterTags.push(String(id));
+        agendaStore.setFilterTags(newArrayFilterTags);
+      }
     }
   };
 

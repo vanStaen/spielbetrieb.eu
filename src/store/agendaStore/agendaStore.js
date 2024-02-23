@@ -46,9 +46,7 @@ export class AgendaStore {
       setTimeSpan: action,
       setFilterLocations: action,
       setFilterEventtypes: action,
-      addFilterEventtypes: action,
       setFilterTags: action,
-      addFilterTags: action,
       filterTags: observable,
       calculateFilterDateFrom: action,
     });
@@ -125,24 +123,8 @@ export class AgendaStore {
     this.filterEventtypes = filterEventtypes;
   };
 
-  addFilterEventtypes = (newFilterEventtype) => {
-    if (!this.filterEventtypes.includes(String(newFilterEventtype))) {
-      const newArrayFilterEventtypes = this.filterEventtypes;
-      newArrayFilterEventtypes.push(newFilterEventtype);
-      this.filterEventtypes = newArrayFilterEventtypes;
-    }
-  };
-
   setFilterTags = (filterTags) => {
     this.filterTags = filterTags;
-  };
-
-  addFilterTags = (newFilterTag) => {
-    if (!this.filterTags.includes(String(newFilterTag))) {
-      const newArrayFilterTags = this.filterTags;
-      newArrayFilterTags.push(newFilterTag);
-      this.filterTags = newArrayFilterTags;
-    }
   };
 
   calculateFilterDateFrom = (add) => {

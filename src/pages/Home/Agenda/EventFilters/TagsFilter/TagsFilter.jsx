@@ -10,7 +10,6 @@ import { agendaStore } from "../../../../../store/agendaStore/agendaStore";
 import "./TagsFilter.less";
 
 export const TagsFilter = observer(() => {
-  const [selectedValues, setSelectedValues] = useState([]);
   const tagOptions = agendaStore.tags.map((tag) => {
     return {
       value: tag._id,
@@ -23,11 +22,6 @@ export const TagsFilter = observer(() => {
     setSelectedValues(e);
   };
 
-  useEffect(() => {
-    console.log("filterTags updated", agendaStore.filterTags);
-    setSelectedValues(agendaStore.filterTags);
-  }, [agendaStore.filterTags]);
-
   return (
     <Select
       showSearch
@@ -37,7 +31,7 @@ export const TagsFilter = observer(() => {
       className="tagfilter__Select"
       style={{ minWidth: 120 }}
       onChange={selectChangehandler}
-      value={selectedValues}
+      value={agendaStore.filterTags}
       placeholder={
         <>
           <TagsOutlined /> Tags
