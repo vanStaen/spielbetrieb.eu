@@ -1,5 +1,5 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
-const { User } = require('./User');
+const { sequelize, DataTypes } = require("../lib/sequelizedb");
+const { User } = require("./User");
 
 const Photo = sequelize.define("photo", {
   _id: {
@@ -46,5 +46,5 @@ User.hasMany(Photo);
 Photo.belongsTo(User);
 
 module.exports = {
-  Photo
+  Photo,
 };

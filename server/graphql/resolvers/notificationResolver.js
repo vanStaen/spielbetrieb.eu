@@ -2,7 +2,7 @@ const { Notification } = require("../../models/Notification");
 const { User } = require("../../models/User");
 
 exports.notificationResolver = {
-  //getNotification
+  // getNotification
   async getNotifications(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
@@ -15,7 +15,7 @@ exports.notificationResolver = {
     });
   },
 
-  //addNotification(notificationInput: NotificationInputData!): Notification!
+  // addNotification(notificationInput: NotificationInputData!): Notification!
   async addNotification(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
@@ -49,7 +49,7 @@ exports.notificationResolver = {
           },
           returning: true,
           plain: true,
-        }
+        },
       );
       // updatedNotification[0]: number or row udpated
       // updatedNotification[1]: rows updated
@@ -58,5 +58,4 @@ exports.notificationResolver = {
       console.log(err);
     }
   },
-
 };

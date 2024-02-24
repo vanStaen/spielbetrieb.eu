@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {mailService} = require("../service/mailService");
+const { mailService } = require("../service/mailService");
 
 // Mail
 router.post("/", async (req, res) => {
@@ -62,6 +62,5 @@ router.post("/emailverify", async (req, res) => {
     });
   }
 });
-
 
 module.exports = router;

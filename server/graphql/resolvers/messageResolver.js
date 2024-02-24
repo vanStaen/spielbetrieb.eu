@@ -3,7 +3,7 @@ const { User } = require("../../models/User");
 const { Chat } = require("../../models/Chat");
 
 exports.messageResolver = {
-  //getMessage
+  // getMessage
   async getMessages(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
@@ -16,7 +16,7 @@ exports.messageResolver = {
     });
   },
 
-  //addMessage(messageInput: MessageInputData!): Message!
+  // addMessage(messageInput: MessageInputData!): Message!
   async addMessage(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");

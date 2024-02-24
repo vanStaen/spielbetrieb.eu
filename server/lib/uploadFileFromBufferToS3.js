@@ -1,5 +1,4 @@
 const AWS = require("aws-sdk");
-const fs = require("fs");
 
 const uploadFileFromUrlToS3 = async (fileBufferLocal, key) => {
   // Define S3 bucket login info
@@ -8,7 +7,6 @@ const uploadFileFromUrlToS3 = async (fileBufferLocal, key) => {
     secretAccessKey: process.env.AWS_IAM_SECRET_KEY,
     Bucket: process.env.S3_BUCKET_ID,
   });
-
 
   const params = {
     Bucket: process.env.S3_BUCKET_ID,
@@ -23,7 +21,7 @@ const uploadFileFromUrlToS3 = async (fileBufferLocal, key) => {
       if (err) {
         reject(err);
       } else {
-        //console.log(`File uploaded successfully. ${data.Location}`);
+        // console.log(`File uploaded successfully. ${data.Location}`);
         resolve(data.Location);
       }
     });

@@ -1,5 +1,4 @@
 export async function getSubscribers() {
-
   const graphqlQuery = {
     query: `
             {
@@ -14,7 +13,7 @@ export async function getSubscribers() {
                 verifiedEmail
               }
             }
-          `
+          `,
   };
 
   const headers = {
@@ -24,14 +23,16 @@ export async function getSubscribers() {
   const endpoint = process.env.API_URL + `/graphql`;
 
   const options = {
-    "method": "POST",
-    "headers": headers,
-    "body": JSON.stringify(graphqlQuery)
+    method: "POST",
+    headers,
+    body: JSON.stringify(graphqlQuery),
   };
 
   const response = await fetch(endpoint, options);
   const data = await response.json();
 
-  if (data.errors) { return data.errors[0] };
+  if (data.errors) {
+    return data.errors[0];
+  }
   return data.data.getSubscribers;
 }

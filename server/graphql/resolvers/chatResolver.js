@@ -2,7 +2,7 @@ const { Op } = require("sequelize");
 const { Chat } = require("../../models/Chat");
 
 exports.chatResolver = {
-  //getChat
+  // getChat
   async getChats(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
@@ -11,12 +11,12 @@ exports.chatResolver = {
       where: {
         userlist: {
           [Op.overlap]: [args.userId],
-        }
-      }
+        },
+      },
     });
   },
 
-  //createChat(chatId: ID!, chatInput: ChatInputData!): Chat!
+  // createChat(chatId: ID!, chatInput: ChatInputData!): Chat!
   async createChat(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
@@ -45,7 +45,7 @@ exports.chatResolver = {
           },
           returning: true,
           plain: true,
-        }
+        },
       );
       // updatedChat[0]: number or row udpated
       // updatedChat[1]: rows updated

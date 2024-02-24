@@ -90,25 +90,24 @@ export const BrowseFilter = observer(() => {
     if (agendaStore.timeSpan === "week") {
       const week = dayjs(agendaStore.filterDateFrom).format("ww");
       const nextURL = `${process.env.HOST_URL}/spielplan/week/${year}/${week}/`;
-      const nextState = { calendarWeek: week, year: year };
+      const nextState = { calendarWeek: week, year };
       window.history.pushState(nextState, "", nextURL);
       window.history.replaceState(nextState, "", nextURL);
     } else {
       const month = dayjs(agendaStore.filterDateFrom).format("MM");
       if (agendaStore.timeSpan === "month") {
         const nextURL = `${process.env.HOST_URL}/spielplan/${year}/${month}/`;
-        const nextState = { month: month, year: year };
+        const nextState = { month, year };
         window.history.pushState(nextState, "", nextURL);
         window.history.replaceState(nextState, "", nextURL);
       } else if (agendaStore.timeSpan === "day") {
         const day = dayjs(agendaStore.filterDateFrom).format("DD");
         const nextURL = `${process.env.HOST_URL}/spielplan/${year}/${month}/${day}/`;
-        const nextState = { day: day, month: month, year: year };
+        const nextState = { day, month, year };
         window.history.pushState(nextState, "", nextURL);
         window.history.replaceState(nextState, "", nextURL);
       }
     }
-
   }, [agendaStore.timeSpan, agendaStore.filterDateFrom]);
 
   useEffect(() => {

@@ -2,15 +2,13 @@ const { Partnertype } = require("../../models/Partnertype");
 const { User } = require("../../models/User");
 
 exports.partnertypeResolver = {
-  //getPartnertypes
+  // getPartnertypes
   async getPartnertypes(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
     return await Partnertype.findAll({
-      order: [
-        ['_id', 'ASC'],
-      ]
+      order: [["_id", "ASC"]],
     });
   },
 
@@ -20,10 +18,10 @@ exports.partnertypeResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes('data')) {
-      throw new Error('Unauthorized!');
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("data")) {
+      throw new Error("Unauthorized!");
     }
     try {
       const partnertype = new Partnertype({
@@ -41,15 +39,13 @@ exports.partnertypeResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes('data')) {
-      throw new Error('Unauthorized!');
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("data")) {
+      throw new Error("Unauthorized!");
     }
     const updateFields = [];
-    const updatableFields = [
-      "name",
-    ];
+    const updatableFields = ["name"];
     updatableFields.forEach((field) => {
       if (field in args.partnertypeInput) {
         updateFields[field] = args.partnertypeInput[field];
@@ -77,10 +73,10 @@ exports.partnertypeResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes('data')) {
-      throw new Error('Unauthorized!');
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("data")) {
+      throw new Error("Unauthorized!");
     }
     await Partnertype.destroy({
       where: {

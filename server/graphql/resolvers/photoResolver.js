@@ -3,7 +3,7 @@ const { User } = require("../../models/User");
 const { Comment } = require("../../models/Comment");
 
 exports.photoResolver = {
-  //getPhoto
+  // getPhoto
   async getPhotos(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
@@ -16,9 +16,9 @@ exports.photoResolver = {
     });
   },
 
-  //addPhoto(photoInput: PhotoInputData!): Photo!
+  // addPhoto(photoInput: PhotoInputData!): Photo!
   async addPhoto(args, req) {
-        if (!req.isAuth) {
+    if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
     try {
@@ -31,7 +31,7 @@ exports.photoResolver = {
         tags: args.photoInput.tags,
         private: args.photoInput.private,
       });
-      return await photo.save();;
+      return await photo.save();
     } catch (err) {
       console.log(err);
     }

@@ -23,7 +23,7 @@ export const NewsletterForm = observer(() => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  //const { TextArea } = Input;
+  // const { TextArea } = Input;
 
   const showModal = () => {
     setOpen(true);
@@ -96,8 +96,8 @@ export const NewsletterForm = observer(() => {
           name="newsletter-form"
           initialValues={{
             language: pageStore.selectedLanguage,
-            //lists: ["parties", "deals", "extravaganzas"],
-            //interests: ["BDSM", "Fetish", "Hedonistic Love", "Queer"],
+            // lists: ["parties", "deals", "extravaganzas"],
+            // interests: ["BDSM", "Fetish", "Hedonistic Love", "Queer"],
           }}
         >
           <Form.Item

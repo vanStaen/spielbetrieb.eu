@@ -1,57 +1,57 @@
-const bcrypt = require('bcryptjs');
-const mailService = require('../../api/service/mailService');
+const bcrypt = require("bcryptjs");
+const mailService = require("../../api/service/mailService");
 
-const { User } = require('../../models/User');
-const { Comment } = require('../../models/Comment');
-const { Event } = require('../../models/Event');
-const { Message } = require('../../models/Message');
-const { Notification } = require('../../models/Notification');
-const { Photo } = require('../../models/Photo');
-const { Visitor } = require('../../models/Visitor');
+const { User } = require("../../models/User");
+const { Comment } = require("../../models/Comment");
+const { Event } = require("../../models/Event");
+const { Message } = require("../../models/Message");
+const { Notification } = require("../../models/Notification");
+const { Photo } = require("../../models/Photo");
+const { Visitor } = require("../../models/Visitor");
 
 exports.userResolver = {
-  async getUser (args, req) {
+  async getUser(args, req) {
     if (!req.isAuth) {
-      throw new Error('Unauthorized!');
+      throw new Error("Unauthorized!");
     }
     return await User.findOne({
       where: { _id: req.userId },
-      include: [Comment, Event, Message, Notification, Photo, Visitor]
+      include: [Comment, Event, Message, Notification, Photo, Visitor],
     });
   },
 
-  async getUsersAsAdmin (args, req) {
+  async getUsersAsAdmin(args, req) {
     if (!req.isAuth) {
-      throw new Error('Unauthorized!');
+      throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes('users')) {
-      throw new Error('Unauthorized!');
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
+      throw new Error("Unauthorized!");
     }
     return await User.findAll({
-      order: [['_id', 'ASC']]
+      order: [["_id", "ASC"]],
     });
   },
 
   // addUser(userInput: UserInputData!): User!
-  async addUser (args, req) {
+  async addUser(args, req) {
     const foundUserEmail = await User.findOne({
       where: {
-        email: args.userInput.email.toLowerCase()
-      }
+        email: args.userInput.email.toLowerCase(),
+      },
     });
     if (foundUserEmail) {
-      throw new Error('This email is already associated with an account.');
+      throw new Error("This email is already associated with an account.");
     }
     const foundUserUserName = await User.findOne({
       where: {
-        userName: args.userInput.userName.toLowerCase()
-      }
+        userName: args.userInput.userName.toLowerCase(),
+      },
     });
     if (foundUserUserName) {
-      throw new Error('This username is already associated with an account.');
+      throw new Error("This username is already associated with an account.");
     }
     try {
       const hashedPassword = await bcrypt.hash(args.userInput.password, 12);
@@ -68,7 +68,7 @@ exports.userResolver = {
         wishes: args.userInput.wishes,
         interests: args.userInput.interests,
         language: args.userInput.language,
-        lastActive: Date.now()
+        lastActive: Date.now(),
       });
       await mailService.mailService.emailVerify(email);
       return await user.save();
@@ -78,28 +78,28 @@ exports.userResolver = {
   },
 
   // updateUser(_id: ID!, userInput: UserInputData!): User!
-  async updateUser (args, req) {
+  async updateUser(args, req) {
     if (!req.isAuth) {
-      throw new Error('Unauthorized!');
+      throw new Error("Unauthorized!");
     }
     const updateFields = [];
     const updatableFields = [
-      'firstName',
-      'lastName',
-      'email',
-      'description',
-      'avatar',
-      'emailSettings',
-      'profilSettings',
-      'friends',
-      'birthday',
-      'gender',
-      'orientation',
-      'interests',
-      'wishes',
-      'archived',
-      'usernameChange',
-      'language',
+      "firstName",
+      "lastName",
+      "email",
+      "description",
+      "avatar",
+      "emailSettings",
+      "profilSettings",
+      "friends",
+      "birthday",
+      "gender",
+      "orientation",
+      "interests",
+      "wishes",
+      "archived",
+      "usernameChange",
+      "language",
     ];
     updatableFields.forEach((field) => {
       if (field in args.userInput) {
@@ -112,10 +112,10 @@ exports.userResolver = {
     try {
       const updatedUser = await User.update(updateFields, {
         where: {
-          _id: req.userId
+          _id: req.userId,
         },
         returning: true,
-        plain: true
+        plain: true,
       });
       // updatedUser[0]: number or row udpated
       // updatedUser[1]: rows updated
@@ -125,101 +125,93 @@ exports.userResolver = {
     }
   },
 
-    // updateUser(_id: ID!, userInput: UserInputData!): User!
-    async updateUserAsAdmin (args, req) {
-      if (!req.isAuth) {
-        throw new Error('Unauthorized!');
+  // updateUser(_id: ID!, userInput: UserInputData!): User!
+  async updateUserAsAdmin(args, req) {
+    if (!req.isAuth) {
+      throw new Error("Unauthorized!");
+    }
+    const foundUser = await User.findOne({
+      where: { _id: req.userId },
+    });
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
+      throw new Error("Unauthorized!");
+    }
+    const updateFields = [];
+    const updatableFields = [
+      "firstName",
+      "lastName",
+      "email",
+      "description",
+      "avatar",
+      "emailSettings",
+      "profilSettings",
+      "friends",
+      "birthday",
+      "gender",
+      "orientation",
+      "interests",
+      "wishes",
+      "archived",
+      "usernameChange",
+      "language",
+      "suspended",
+      "isPartner",
+      "partnerRoles",
+      "partnertype",
+      "verifiedIdentity",
+    ];
+    updatableFields.forEach((field) => {
+      if (field in args.userInput) {
+        updateFields[field] = args.userInput[field];
       }
-      const foundUser = await User.findOne({
-        where: { _id: req.userId }
+    });
+    try {
+      const updatedUser = await User.update(updateFields, {
+        where: {
+          _id: args.userId,
+        },
+        returning: true,
+        plain: true,
       });
-      if (!foundUser.isAdmin || !foundUser.adminRoles.includes('users')) {
-        throw new Error('Unauthorized!');
-      }
-      const updateFields = [];
-      const updatableFields = [
-        'firstName',
-        'lastName',
-        'email',
-        'description',
-        'avatar',
-        'emailSettings',
-        'profilSettings',
-        'friends',
-        'birthday',
-        'gender',
-        'orientation',
-        'interests',
-        'wishes',
-        'archived',
-        'usernameChange',
-        'language',
-        'suspended',
-        'isPartner',
-        'partnerRoles',
-        'partnertype',
-        'verifiedIdentity',
-      ];
-      updatableFields.forEach((field) => {
-        if (field in args.userInput) {
-          updateFields[field] = args.userInput[field];
-        }
-      });
-      try {
-        const updatedUser = await User.update(updateFields, {
-          where: {
-            _id: args.userId,
-          },
-          returning: true,
-          plain: true
-        });
-        // updatedUser[0]: number or row udpated
-        // updatedUser[1]: rows updated
-        return updatedUser[1];
-      } catch (err) {
-        console.log(err);
-      }
-    },
+      // updatedUser[0]: number or row udpated
+      // updatedUser[1]: rows updated
+      return updatedUser[1];
+    } catch (err) {
+      console.log(err);
+    }
+  },
 
-  async getProfileByName (args, req) {
+  async getProfileByName(args, req) {
     return await User.findOne({
       where: { userName: args.userName },
-      include: [
-        'friends',
-        'followers',
-        'followed'
-      ]
+      include: ["friends", "followers", "followed"],
     });
   },
 
-  async getProfileById (args, req) {
+  async getProfileById(args, req) {
     return await User.findOne({
       where: { _id: args._id },
-      include: [
-        'friends',
-        'followers',
-        'followed'
-      ]
+      include: ["friends", "followers", "followed"],
     });
   },
 
   // deleteUser(_id: ID!): Boolean!
-  async deleteUserAsAdmin (args, req) {
+  async deleteUserAsAdmin(args, req) {
     if (!req.isAuth) {
-      throw new Error('Unauthorized!');
+      throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes('users')) {
-      throw new Error('Unauthorized!');
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
+      throw new Error("Unauthorized!");
     }
     await User.destroy({
       where: {
         _id: args.userId,
-      }
+      },
     });
     req.session = null;
     return true;
-  }
+  },
 };

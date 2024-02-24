@@ -1,4 +1,4 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
+const { sequelize, DataTypes } = require("../lib/sequelizedb");
 
 const Usersfriends = sequelize.define("usersfriends", {
   _id: {
@@ -26,5 +26,5 @@ const Usersfriends = sequelize.define("usersfriends", {
 });
 
 module.exports = {
-  Usersfriends
+  Usersfriends,
 };

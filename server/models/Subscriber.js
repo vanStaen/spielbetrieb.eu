@@ -1,4 +1,4 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
+const { sequelize, DataTypes } = require("../lib/sequelizedb");
 
 const Subscriber = sequelize.define("subscriber", {
   _id: {
@@ -16,7 +16,7 @@ const Subscriber = sequelize.define("subscriber", {
     allowNull: false,
     unique: true,
     validate: {
-      isEmail: true
+      isEmail: true,
     },
   },
   language: {
@@ -42,5 +42,5 @@ const Subscriber = sequelize.define("subscriber", {
 });
 
 module.exports = {
-  Subscriber
+  Subscriber,
 };

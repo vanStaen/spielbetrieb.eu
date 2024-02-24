@@ -1,4 +1,4 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
+const { sequelize, DataTypes } = require("../lib/sequelizedb");
 
 const Partnertype = sequelize.define("partnertype", {
   _id: {
@@ -10,10 +10,9 @@ const Partnertype = sequelize.define("partnertype", {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
-  }
+  },
 });
 
 module.exports = {
-  Partnertype
+  Partnertype,
 };
-

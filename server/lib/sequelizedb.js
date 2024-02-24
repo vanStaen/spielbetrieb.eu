@@ -6,7 +6,7 @@ const DATABASE_USER = DATABASE_URL2.split(":")[0];
 const DATABASE_URL3 = DATABASE_URL2.split(":")[1];
 const DATABASE_PWD = DATABASE_URL3.split("@")[0];
 const DATABASE_HOST = DATABASE_URL3.split("@")[1];
-const DATABASE_PORT = DATABASE_URL2.split(":")[2]
+const DATABASE_PORT = DATABASE_URL2.split(":")[2];
 
 module.exports = {
   DataTypes: Sequelize.DataTypes,
@@ -24,5 +24,5 @@ module.exports = {
         rejectUnauthorized: false,
       },
     },
-  })
+  }),
 };

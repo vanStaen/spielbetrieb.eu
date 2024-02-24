@@ -1,3 +1,3 @@
 export const showFeatureX = () => {
-  return localStorage.getItem('showFeatureX') === 'true';
+  return localStorage.getItem("showFeatureX") === "true";
 };

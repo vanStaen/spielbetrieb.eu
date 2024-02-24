@@ -1,5 +1,5 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
-const { User } = require('./User');
+const { sequelize, DataTypes } = require("../lib/sequelizedb");
+const { User } = require("./User");
 
 const Admincontact = sequelize.define("admincontact", {
   _id: {
@@ -30,6 +30,5 @@ User.hasMany(Admincontact);
 Admincontact.belongsTo(User);
 
 module.exports = {
-  Admincontact
+  Admincontact,
 };
-

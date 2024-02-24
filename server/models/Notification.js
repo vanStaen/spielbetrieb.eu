@@ -1,5 +1,5 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
-const { User } = require('./User');
+const { sequelize, DataTypes } = require("../lib/sequelizedb");
+const { User } = require("./User");
 
 const Notification = sequelize.define("notification", {
   _id: {
@@ -38,6 +38,5 @@ User.hasMany(Notification);
 Notification.belongsTo(User);
 
 module.exports = {
-  Notification
+  Notification,
 };
-

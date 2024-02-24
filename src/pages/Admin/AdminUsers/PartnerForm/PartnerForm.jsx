@@ -23,7 +23,7 @@ export const PartnerForm = (props) => {
     const results = await getPartnertypes();
     const partnertypes = results.map((type) => {
       if (type.validated === false) {
-        return;
+        return null;
       }
       return {
         value: parseInt(type._id),

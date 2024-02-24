@@ -1,6 +1,6 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
-const { User } = require('./User');
-const { Photo } = require('./Photo');
+const { sequelize, DataTypes } = require("../lib/sequelizedb");
+const { User } = require("./User");
+const { Photo } = require("./Photo");
 
 const Comment = sequelize.define("comment", {
   _id: {
@@ -30,6 +30,5 @@ Photo.hasMany(Comment);
 Comment.belongsTo(Photo);
 
 module.exports = {
-  Comment
+  Comment,
 };
-

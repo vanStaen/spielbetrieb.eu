@@ -2,8 +2,8 @@ import axios from "axios";
 
 export const postChangePassword = async (token, password) => {
   const requestBody = {
-    token: token,
-    password: password,
+    token,
+    password,
   };
 
   const response = await axios({

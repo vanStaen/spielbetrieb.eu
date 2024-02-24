@@ -5,7 +5,6 @@ import { getAllPublicEvents } from "./getAllPublicEvents";
 import { getEventtypes } from "./getEventtypes";
 import { getTags } from "./getTags";
 import { getLocations } from "./getLocations";
-import { DATE_FORMAT_MONTH, DATE_FORMAT_CW, DATE_FORMAT_DAY } from "../../lib/data/dateFormat";
 
 export class AgendaStore {
   isLoadingEvent = true;
@@ -137,15 +136,9 @@ export class AgendaStore {
   calculateFilterDateFrom = (add) => {
     let newFilterDateFrom;
     if (add) {
-      newFilterDateFrom = dayjs(this.filterDateFrom).add(
-        1,
-        this.timeSpan,
-      );
+      newFilterDateFrom = dayjs(this.filterDateFrom).add(1, this.timeSpan);
     } else {
-      newFilterDateFrom = dayjs(this.filterDateFrom).subtract(
-        1,
-        this.timeSpan,
-      );
+      newFilterDateFrom = dayjs(this.filterDateFrom).subtract(1, this.timeSpan);
     }
     this.setFilterDateFrom(newFilterDateFrom);
     this.fetchEvents();

@@ -6,7 +6,7 @@ const db = {};
 
 require("dotenv/config");
 
-const { sequelize } = require('../lib/sequelizedb');
+const { sequelize } = require("../lib/sequelizedb");
 
 fs.readdirSync(__dirname)
   .filter((file) => {

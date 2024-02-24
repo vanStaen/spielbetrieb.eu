@@ -1,21 +1,21 @@
-import { action, makeObservable, observable } from 'mobx';
-import Cookies from 'universal-cookie';
+import { action, makeObservable, observable } from "mobx";
+import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
 
 export class AdminStore {
-  selectedPage = cookies.get('selectedPage') || null;
+  selectedPage = cookies.get("selectedPage") || null;
 
-  constructor () {
+  constructor() {
     makeObservable(this, {
       selectedPage: observable,
-      setSelectedPage: action
+      setSelectedPage: action,
     });
   }
 
   setSelectedPage = (selectedPage) => {
     this.selectedPage = selectedPage;
-    cookies.set('selectedPage', selectedPage, { path: '/' });
+    cookies.set("selectedPage", selectedPage, { path: "/" });
   };
 }
 

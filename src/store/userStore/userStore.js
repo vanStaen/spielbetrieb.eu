@@ -1,9 +1,9 @@
-import { action, makeObservable, observable } from 'mobx';
+import { action, makeObservable, observable } from "mobx";
 
-import { getUserInfo } from './getUserInfo';
-import { updateSettings } from './updateSettings';
-import defaultEmailSettings from './defaultEmailSettings.json';
-import defaultProfilSettings from './defaultProfilSettings.json';
+import { getUserInfo } from "./getUserInfo";
+import { updateSettings } from "./updateSettings";
+import defaultEmailSettings from "./defaultEmailSettings.json";
+import defaultProfilSettings from "./defaultProfilSettings.json";
 
 export class UserStore {
   isLoading = false;
@@ -38,7 +38,7 @@ export class UserStore {
   photos = [];
   visitors = [];
 
-  constructor () {
+  constructor() {
     makeObservable(this, {
       isLoading: observable,
       setIsLoading: action,
@@ -101,7 +101,7 @@ export class UserStore {
       followers: observable,
       setFollowers: action,
       followed: observable,
-      setFollowed: action
+      setFollowed: action,
     });
   }
 
@@ -241,7 +241,7 @@ export class UserStore {
     try {
       if (loader) {
         this.setIsLoading(true);
-      };
+      }
       const userData = await getUserInfo();
       if (userData) {
         this.set_id(parseInt(userData._id));
@@ -269,7 +269,10 @@ export class UserStore {
         if (userData.isPartner) {
           this.setPartnerRoles(userData.partnerRoles);
         }
-        if (userData.profilSettings === '{}' || userData.emailSettings === '{}') {
+        if (
+          userData.profilSettings === "{}" ||
+          userData.emailSettings === "{}"
+        ) {
           this.setEmailSettings(defaultEmailSettings);
           this.setProfilSettings(defaultProfilSettings);
           updateSettings(defaultEmailSettings, defaultProfilSettings);
@@ -280,7 +283,7 @@ export class UserStore {
       }
       this.setIsLoading(false);
     } catch (error) {
-      console.log('error', error);
+      console.log("error", error);
     }
   };
 }

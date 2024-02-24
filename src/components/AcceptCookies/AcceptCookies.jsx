@@ -19,7 +19,7 @@ export const AcceptCookies = observer(() => {
       duration: 0,
       placement: "bottomRight",
       className: "customNotification",
-      key: key,
+      key,
     });
   };
 
@@ -31,8 +31,6 @@ export const AcceptCookies = observer(() => {
     }
     setHasRenderedOnce(true);
   });
-
-  return;
 });
 
 const AcceptCookieTitle = () => {

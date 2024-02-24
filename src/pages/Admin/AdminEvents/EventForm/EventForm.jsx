@@ -40,7 +40,7 @@ export const EventForm = (props) => {
     const results = await getEventtypes();
     const eventtypes = results.map((type) => {
       if (type.validated === false) {
-        return;
+        return null;
       }
       return {
         value: parseInt(type._id),
@@ -54,7 +54,7 @@ export const EventForm = (props) => {
     const locations = await getLocations();
     const locationOptions = locations.map((location) => {
       if (location.validated === false) {
-        return;
+        return null;
       }
       return {
         value: parseInt(location._id),
@@ -73,7 +73,7 @@ export const EventForm = (props) => {
     const results = await getTags();
     const tags = results.map((tag) => {
       if (tag.validated === false || tag.eventTag === false) {
-        return;
+        return null;
       }
       return {
         value: parseInt(tag._id),

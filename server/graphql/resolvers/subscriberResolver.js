@@ -1,43 +1,42 @@
-const { mailService } = require('../../api/service/mailService');
-const { Subscriber } = require('../../models/Subscriber'); ;
-const { User } = require('../../models/User');
+const { mailService } = require("../../api/service/mailService");
+const { Subscriber } = require("../../models/Subscriber");
+const { User } = require("../../models/User");
 
 exports.subscriberResolver = {
-
   // getSubscribers: [Subscriber]
-  async getSubscribers (args, req) {
+  async getSubscribers(args, req) {
     if (!req.isAuth) {
-      throw new Error('Unauthorized!');
+      throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("newsletter")) {
-      throw new Error('Unauthorized!');
+      throw new Error("Unauthorized!");
     }
     return await Subscriber.findAll();
   },
 
   // addSubscriber(subscriberInput: SubscriberInputData!): Subscriber!
-  async addSubscriber (args, req) {
+  async addSubscriber(args, req) {
     const foundSubscriberEmail = await Subscriber.findOne({
       where: {
-        email: args.subscriberInput.email.toLowerCase()
-      }
+        email: args.subscriberInput.email.toLowerCase(),
+      },
     });
     if (foundSubscriberEmail) {
-      throw new Error('This email is already subscribed to the newsletter.');
+      throw new Error("This email is already subscribed to the newsletter.");
     }
     try {
       const email = args.subscriberInput.email.toLowerCase();
       const language = args.subscriberInput.language.toLowerCase();
       const inputFields = [];
       const inputableFields = [
-        'about',
-        'username',
-        'language',
-        'interests',
-        'lists'
+        "about",
+        "username",
+        "language",
+        "interests",
+        "lists",
       ];
       inputableFields.forEach((field) => {
         if (field in args.subscriberInput) {
@@ -54,14 +53,14 @@ exports.subscriberResolver = {
   },
 
   // updateSubscriber(subscriberInput: SubscriberInputData!): Subscriber!
-  async updateSubscriber (args, req) {
+  async updateSubscriber(args, req) {
     const updateFields = [];
     const updatableFields = [
-      'about',
-      'username',
-      'language',
-      'interests',
-      'lists'
+      "about",
+      "username",
+      "language",
+      "interests",
+      "lists",
     ];
     updatableFields.forEach((field) => {
       if (field in args.subscriberInput) {
@@ -71,10 +70,10 @@ exports.subscriberResolver = {
     try {
       const updatedSubscriber = await Subscriber.update(updateFields, {
         where: {
-          _id: args.subscriberId
+          _id: args.subscriberId,
         },
         returning: true,
-        plain: true
+        plain: true,
       });
       // updatedSubscriber[0]: number or row udpated
       // updatedSubscriber[1]: rows updated
@@ -85,13 +84,13 @@ exports.subscriberResolver = {
   },
 
   // deleteSubscriber(_id: ID!): Boolean!
-  async deleteSubscriber (args, req) {
+  async deleteSubscriber(args, req) {
     await Subscriber.destroy({
       where: {
-        _id: args.subscriberId
-      }
+        _id: args.subscriberId,
+      },
     });
     req.session = null;
     return true;
-  }
+  },
 };

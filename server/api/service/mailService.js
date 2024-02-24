@@ -1,10 +1,10 @@
-const axios = require('axios')
-const jsonwebtoken = require('jsonwebtoken')
-const { User } = require('../../models/User')
-const validateEmail = require('../../lib/validateEmail')
-require('dotenv/config')
+const axios = require("axios");
+const jsonwebtoken = require("jsonwebtoken");
+const { User } = require("../../models/User");
+const validateEmail = require("../../lib/validateEmail");
+require("dotenv/config");
 
-const mainDomain = 'spielbetrieb.eu'
+const mainDomain = "spielbetrieb.eu";
 
 const emailDisclaimer = `
   <br/>
@@ -44,45 +44,44 @@ const emailDisclaimer = `
   that we process. To understand more about how we collect, store, and process your personal 
   information in compliance with GDPR, please take a look at our privacy policy
   </span>
-  `
+  `;
 
 exports.mailService = {
-
-  async mail (sendto, subject, body) {
+  async mail(sendto, subject, body) {
     const requestBody = {
-      from: 'Spielbetrieb <info@spielbetrieb.eu>',
+      from: "Spielbetrieb <info@spielbetrieb.eu>",
       to: sendto,
       subject,
       body: `${body}<br/> ${emailDisclaimer}`,
-      key: process.env.MAILMAN_KEY
-    }
+      key: process.env.MAILMAN_KEY,
+    };
     try {
       const response = await axios({
         url: process.env.MAILMAN_URL,
-        method: 'POST',
-        data: requestBody
-      })
+        method: "POST",
+        data: requestBody,
+      });
       if ((response.status !== 200) & (response.status !== 201)) {
         if (response.status === 401) {
-          throw new Error('Error! Unauthorized(401)')
+          throw new Error("Error! Unauthorized(401)");
         } else {
-          throw new Error(`Error! Status ${response.status}`)
+          throw new Error(`Error! Status ${response.status}`);
         }
       }
       // Return true on success
-      return true
+      return true;
     } catch (err) {
-      console.log(err)
-      return false
+      console.log(err);
+      return false;
     }
   },
 
-  async recover (sendto) {
+  async recover(sendto) {
     const recoveryToken = await jsonwebtoken.sign(
       { email: sendto },
       process.env.AUTH_SECRET_KEY_RECOVERY,
-      { expiresIn: '10m' }
-    )
+      { expiresIn: "10m" },
+    );
     const body = `Hello,<br/><br/>
                   <br/>A recover-link has been requested for this email address.
                   By following this link you'll be able to generate a new password for your account.<br/>
@@ -94,50 +93,50 @@ exports.mailService = {
                   Spielbetrieb<br/>
                   <i>Love to love</i>
                   <br/>
-                  ${emailDisclaimer}`
+                  ${emailDisclaimer}`;
 
     const requestBody = {
-      from: 'Spielbetrieb <info@spielbetrieb.eu>',
+      from: "Spielbetrieb <info@spielbetrieb.eu>",
       to: sendto,
-      subject: 'Spielbetrieb.eu | Reset your password with this link',
+      subject: "Spielbetrieb.eu | Reset your password with this link",
       body,
-      key: process.env.MAILMAN_KEY
-    }
+      key: process.env.MAILMAN_KEY,
+    };
     try {
       const response = await axios({
         url: process.env.MAILMAN_URL,
-        method: 'POST',
-        data: requestBody
-      })
+        method: "POST",
+        data: requestBody,
+      });
       if ((response.status !== 200) & (response.status !== 201)) {
         if (response.status === 401) {
-          throw new Error('Error! Unauthorized(401)')
+          throw new Error("Error! Unauthorized(401)");
         } else {
-          throw new Error(`Error! Status ${response.status}`)
+          throw new Error(`Error! Status ${response.status}`);
         }
       }
       // Return true on success
-      return true
+      return true;
     } catch (err) {
-      console.log(err)
-      return false
+      console.log(err);
+      return false;
     }
   },
 
-  async emailVerify (sendto) {
+  async emailVerify(sendto) {
     const isValidEmail = validateEmail(sendto);
     if (!isValidEmail) {
       const foundUser = await User.findOne({
-        where: { userName: sendto }
-      })
+        where: { userName: sendto },
+      });
       sendto = foundUser.email;
     }
 
     const emailVerifyToken = await jsonwebtoken.sign(
       { email: sendto },
       process.env.AUTH_SECRET_KEY_EMAILVERIFY,
-      { expiresIn: '24h' }
-    )
+      { expiresIn: "24h" },
+    );
     const body = `Hello,<br/><br/>
                   Thank you for joining us, and welcome to your next aventure.
                   Protecting our community is the upmost important: By following the link 
@@ -152,42 +151,42 @@ exports.mailService = {
                   Spielbetrieb<br/>
                   <i>Love to love</i>
                   <br/>
-                  ${emailDisclaimer}`
+                  ${emailDisclaimer}`;
 
     const requestBody = {
-      from: 'Spielbetrieb <info@spielbetrieb.eu>',
+      from: "Spielbetrieb <info@spielbetrieb.eu>",
       to: sendto,
-      subject: 'Spielbetrieb.eu | Confirm your email address with this link',
+      subject: "Spielbetrieb.eu | Confirm your email address with this link",
       body,
-      key: process.env.MAILMAN_KEY
-    }
+      key: process.env.MAILMAN_KEY,
+    };
     try {
       const response = await axios({
         url: process.env.MAILMAN_URL,
-        method: 'POST',
-        data: requestBody
-      })
+        method: "POST",
+        data: requestBody,
+      });
       if ((response.status !== 200) & (response.status !== 201)) {
         if (response.status === 401) {
-          throw new Error('Error! Unauthorized(401)')
+          throw new Error("Error! Unauthorized(401)");
         } else {
-          throw new Error(`Error! Status ${response.status}`)
+          throw new Error(`Error! Status ${response.status}`);
         }
       }
       // Return true on success
-      return true
+      return true;
     } catch (err) {
-      console.log(err)
-      return false
+      console.log(err);
+      return false;
     }
   },
 
-  async subscriberVerify (sendto, language) {
+  async subscriberVerify(sendto, language) {
     const subscriberVerifyToken = await jsonwebtoken.sign(
       { email: sendto },
       process.env.AUTH_SECRET_KEY_EMAILVERIFY,
-      { expiresIn: '7d' }
-    )
+      { expiresIn: "7d" },
+    );
     const body = `Hello,<br/><br/>
                   Thank you for subscribing to our newsletter: By following the link 
                   underneath you will help us verify the email you gave us.<br/>
@@ -200,34 +199,33 @@ exports.mailService = {
                   Spiebetrieb<br/>
                   <i>Love to love</i>
                   <br/>
-                  ${emailDisclaimer}`
+                  ${emailDisclaimer}`;
 
     const requestBody = {
-      from: 'Spielbetrieb <info@spielbetrieb.eu>',
+      from: "Spielbetrieb <info@spielbetrieb.eu>",
       to: sendto,
-      subject: 'Spielbetrieb.eu | Confirm your registration to our newsletter',
+      subject: "Spielbetrieb.eu | Confirm your registration to our newsletter",
       body,
-      key: process.env.MAILMAN_KEY
-    }
+      key: process.env.MAILMAN_KEY,
+    };
     try {
       const response = await axios({
         url: process.env.MAILMAN_URL,
-        method: 'POST',
-        data: requestBody
-      })
+        method: "POST",
+        data: requestBody,
+      });
       if ((response.status !== 200) & (response.status !== 201)) {
         if (response.status === 401) {
-          throw new Error('Error! Unauthorized(401)')
+          throw new Error("Error! Unauthorized(401)");
         } else {
-          throw new Error(`Error! Status ${response.status}`)
+          throw new Error(`Error! Status ${response.status}`);
         }
       }
       // Return true on success
-      return true
+      return true;
     } catch (err) {
-      console.log(err)
-      return false
+      console.log(err);
+      return false;
     }
-  }
-
-}
+  },
+};

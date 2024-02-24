@@ -2,7 +2,7 @@ const { Eventtype } = require("../../models/Eventtype");
 const { User } = require("../../models/User");
 
 exports.eventtypeResolver = {
-  //getEventtypes
+  // getEventtypes
   async getEventtypes() {
     return await Eventtype.findAll({
       order: [["name", "ASC"]],

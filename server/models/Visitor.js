@@ -1,5 +1,5 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
-const { User } = require('./User');
+const { sequelize, DataTypes } = require("../lib/sequelizedb");
+const { User } = require("./User");
 
 const Visitor = sequelize.define("visitor", {
   _id: {
@@ -22,6 +22,5 @@ User.hasMany(Visitor);
 Visitor.belongsTo(User);
 
 module.exports = {
-  Visitor
+  Visitor,
 };
-

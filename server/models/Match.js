@@ -1,4 +1,4 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
+const { sequelize, DataTypes } = require("../lib/sequelizedb");
 
 const Match = sequelize.define("match", {
   _id: {
@@ -10,10 +10,9 @@ const Match = sequelize.define("match", {
   matchedUser: {
     type: DataTypes.ARRAY(DataTypes.INTEGER),
     allowNull: false,
-  }
+  },
 });
 
 module.exports = {
-  Match
+  Match,
 };
-

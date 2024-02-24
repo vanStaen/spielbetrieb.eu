@@ -1,13 +1,11 @@
-
 export async function deleteEvent(id) {
-
   const graphqlQuery = {
     query: `mutation ( $id: ID! ) {
                 deleteEvent ( eventId: $id ) 
                 }`,
     variables: {
-      id
-    }
+      id,
+    },
   };
 
   const headers = {
@@ -17,14 +15,16 @@ export async function deleteEvent(id) {
   const endpoint = process.env.API_URL + `/graphql`;
 
   const options = {
-    "method": "POST",
-    "headers": headers,
-    "body": JSON.stringify(graphqlQuery)
+    method: "POST",
+    headers,
+    body: JSON.stringify(graphqlQuery),
   };
 
   const response = await fetch(endpoint, options);
   const data = await response.json();
 
-  if (data.errors) { return data.errors[0] };
+  if (data.errors) {
+    return data.errors[0];
+  }
   return data.deleteEvent;
 }

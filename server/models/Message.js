@@ -1,6 +1,6 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
-const { User } = require('./User');
-const { Chat } = require('./Chat');
+const { sequelize, DataTypes } = require("../lib/sequelizedb");
+const { User } = require("./User");
+const { Chat } = require("./Chat");
 
 const Message = sequelize.define("message", {
   _id: {
@@ -26,6 +26,5 @@ Chat.hasMany(Message);
 Message.belongsTo(Chat);
 
 module.exports = {
-  Message
+  Message,
 };
-

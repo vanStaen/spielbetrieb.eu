@@ -80,9 +80,9 @@ db.sequelize.sync().then((req) => {
         const data = err.originalError.data;
         const message = err.message || "An error occured with GraphQl";
         const code = err.originalError.code || 500;
-        return { message: message, status: code, data: data };
+        return { message, status: code, data };
       },
-    })
+    }),
   );
 });
 

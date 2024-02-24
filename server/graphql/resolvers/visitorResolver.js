@@ -1,7 +1,7 @@
 const { Visitor } = require("../../models/Visitor");
 
 exports.visitorResolver = {
-  //getVisitor
+  // getVisitor
   async getVisitor(args, req) {
     return await Visitor.findAll({
       where: {
@@ -10,7 +10,7 @@ exports.visitorResolver = {
     });
   },
 
-  //addVisitor(visitorInput: VisitorInputData!): Visitor!
+  // addVisitor(visitorInput: VisitorInputData!): Visitor!
   async addVisitor(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
@@ -22,5 +22,4 @@ exports.visitorResolver = {
     });
     return visitor.save();
   },
-
 };

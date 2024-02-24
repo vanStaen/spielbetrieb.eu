@@ -1,5 +1,4 @@
 export async function getPartnertypes() {
-
   const graphqlQuery = {
     query: `
             {
@@ -8,7 +7,7 @@ export async function getPartnertypes() {
                 name,
               }
             }
-          `
+          `,
   };
 
   const headers = {
@@ -18,14 +17,16 @@ export async function getPartnertypes() {
   const endpoint = process.env.API_URL + `/graphql`;
 
   const options = {
-    "method": "POST",
-    "headers": headers,
-    "body": JSON.stringify(graphqlQuery)
+    method: "POST",
+    headers,
+    body: JSON.stringify(graphqlQuery),
   };
 
   const response = await fetch(endpoint, options);
   const data = await response.json();
 
-  if (data.errors) { return data.errors[0] };
+  if (data.errors) {
+    return data.errors[0];
+  }
   return data.data.getPartnertypes;
 }

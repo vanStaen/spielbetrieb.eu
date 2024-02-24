@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Select } from "antd";
 import { observer } from "mobx-react";
 import { TagsOutlined } from "@ant-design/icons";
@@ -19,7 +19,6 @@ export const TagsFilter = observer(() => {
 
   const selectChangehandler = (e) => {
     agendaStore.setFilterTags(e);
-    setSelectedValues(e);
   };
 
   return (

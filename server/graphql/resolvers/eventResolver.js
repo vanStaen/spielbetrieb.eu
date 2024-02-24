@@ -3,7 +3,7 @@ const { User } = require("../../models/User");
 const { Op } = require("sequelize");
 
 exports.eventResolver = {
-  //getEvent
+  // getEvent
   async getEvent(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
@@ -16,40 +16,38 @@ exports.eventResolver = {
     });
   },
 
-  //getAllEvents
+  // getAllEvents
   async getAllEvents(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes('events')) {
-      throw new Error('Unauthorized!');
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("events")) {
+      throw new Error("Unauthorized!");
     }
     return await Event.findAll({
       include: User,
     });
   },
 
-    //getAllPublicEvents
-    async getAllPublicEvents(args, req) {
-      return await Event.findAll({
-        where: { 
-          private: false, 
-          isDraft: false, 
-          fromDate: {
-            [Op.between]: [args.fromDate, args.untilDate]
-          },
+  // getAllPublicEvents
+  async getAllPublicEvents(args, req) {
+    return await Event.findAll({
+      where: {
+        private: false,
+        isDraft: false,
+        fromDate: {
+          [Op.between]: [args.fromDate, args.untilDate],
         },
-        include: User,
-        order: [
-          ['fromDate', 'ASC'],
-        ]
-      });
-    },
-  
-  //addEvent(eventInput: EventInputData!): Event!
+      },
+      include: User,
+      order: [["fromDate", "ASC"]],
+    });
+  },
+
+  // addEvent(eventInput: EventInputData!): Event!
   async addEvent(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
@@ -57,7 +55,6 @@ exports.eventResolver = {
     try {
       const event = new Event({
         userId: req.userId,
-        eventtype: args.eventInput.eventtype,
         title: args.eventInput.title,
         description: args.eventInput.description,
         eventtype: args.eventInput.eventtype,
@@ -69,7 +66,6 @@ exports.eventResolver = {
         fromDate: args.eventInput.fromDate,
         untilDate: args.eventInput.untilDate,
         eventTags: args.eventInput.eventTags,
-        admin: args.eventInput.admin,
         private: args.eventInput.private,
         forwardable: args.eventInput.forwardable,
         allowAnonymous: args.eventInput.allowAnonymous,

@@ -20,8 +20,6 @@ router.post("/subscriberverified", async (req, res) => {
       error: `${err}`,
     });
   }
-  4;
 });
-
 
 module.exports = router;

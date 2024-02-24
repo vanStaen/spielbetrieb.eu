@@ -3,17 +3,17 @@ const { User } = require("../../models/User");
 const { Photo } = require("../../models/Photo");
 
 exports.commentResolver = {
-  //getComment
+  // getComment
   async getComments(args, req) {
     return await Comment.findAll({
       where: {
         photoId: args.photoId,
       },
-      include: [User, Photo]
+      include: [User, Photo],
     });
   },
 
-  //addComment(commentInput: CommentInputData!): Comment!
+  // addComment(commentInput: CommentInputData!): Comment!
   async addComment(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
@@ -32,11 +32,7 @@ exports.commentResolver = {
       throw new Error("Unauthorized!");
     }
     const updateFields = [];
-    const updatableFields = [
-      "likes",
-      "dislikes",
-      "comment",
-    ];
+    const updatableFields = ["likes", "dislikes", "comment"];
     updatableFields.forEach((field) => {
       if (field in args.commentInput) {
         updateFields[field] = args.commentInput[field];
@@ -58,7 +54,7 @@ exports.commentResolver = {
     }
   },
 
-  //deleteComment(_id: ID!): Boolean!
+  // deleteComment(_id: ID!): Boolean!
   async deleteComment(args, req) {
     await Comment.destroy({
       where: {

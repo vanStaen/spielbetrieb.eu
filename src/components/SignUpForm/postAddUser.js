@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const postAddUser = async (
   firstName,
@@ -6,7 +6,7 @@ export const postAddUser = async (
   userName,
   email,
   password,
-  language
+  language,
 ) => {
   const requestBody = {
     query: `mutation ( $firstName: String, 
@@ -35,29 +35,29 @@ export const postAddUser = async (
       userName,
       email,
       password,
-      language
-    }
+      language,
+    },
   };
 
   const headers = {
-    'Content-Type': 'application/json'
+    "Content-Type": "application/json",
   };
 
   try {
     const response = await axios(
       {
-        url: process.env.API_URL + '/graphql',
-        method: 'POST',
-        data: requestBody
+        url: process.env.API_URL + "/graphql",
+        method: "POST",
+        data: requestBody,
       },
       {
-        headers
-      }
+        headers,
+      },
     );
     return response.data;
   } catch (err) {
     if (err.response.status === 401) {
-      throw new Error('Error! Unauthorized(401)');
+      throw new Error("Error! Unauthorized(401)");
     }
     return err.response.data;
   }

@@ -1,17 +1,17 @@
-const jsonwebtoken = require('jsonwebtoken');
-const { User } = require('../models/User');
-require('dotenv/config');
+const jsonwebtoken = require("jsonwebtoken");
+const { User } = require("../models/User");
+require("dotenv/config");
 
 const devMode = true;
 
 module.exports = async (req, res, next) => {
   // if in development mode
   if (devMode) {
-    if (req.get('host') === 'localhost:5017') {
-      console.log('>>>> Developement Mode <<<<<');
+    if (req.get("host") === "localhost:5017") {
+      console.log(">>>> Developement Mode <<<<<");
       req.isAuth = true;
-      req.userId = '1';
-      req.email = 'clement.vanstaen@gmail.com';
+      req.userId = "1";
+      req.email = "clement.vanstaen@gmail.com";
       return next();
     }
   }
@@ -21,7 +21,7 @@ module.exports = async (req, res, next) => {
   const refreshToken = req.session.refreshToken;
 
   // Check tokens are valid:
-  if (!token || token === 'undefined' || token === '') {
+  if (!token || token === "undefined" || token === "") {
     req.isAuth = false;
     return next();
   }
@@ -33,7 +33,7 @@ module.exports = async (req, res, next) => {
       // if refreshToken exist = user checked remind me
       decodedToken = jsonwebtoken.verify(
         refreshToken,
-        process.env.AUTH_SECRET_KEY_REFRESH
+        process.env.AUTH_SECRET_KEY_REFRESH,
       );
     } catch (err) {
       req.isAuth = false;
@@ -49,7 +49,7 @@ module.exports = async (req, res, next) => {
   const accessToken = await jsonwebtoken.sign(
     { userId: decodedToken.userId },
     process.env.AUTH_SECRET_KEY,
-    { expiresIn: '15m' }
+    { expiresIn: "15m" },
   );
   // console.log("accessToken updated!");
   req.session.token = accessToken;
@@ -59,7 +59,7 @@ module.exports = async (req, res, next) => {
     const refreshToken = await jsonwebtoken.sign(
       { userId: decodedToken.userId },
       process.env.AUTH_SECRET_KEY_REFRESH,
-      { expiresIn: '7d' }
+      { expiresIn: "7d" },
     );
     // console.log("refreshToken updated!");
     req.session.refreshToken = refreshToken;
@@ -68,7 +68,7 @@ module.exports = async (req, res, next) => {
   // Update lastLogin in user table
   await User.update(
     { lastActive: Date.now() },
-    { where: { _id: decodedToken.userId } }
+    { where: { _id: decodedToken.userId } },
   );
 
   next();

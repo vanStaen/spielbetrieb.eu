@@ -1,8 +1,8 @@
-const router = require('express').Router();
-const { authService } = require('../service/authService');
+const router = require("express").Router();
+const { authService } = require("../service/authService");
 
 // Login
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     if (!req.body.email && !req.body.username) {
       throw new Error("Please provide at least an 'Email' or a 'Username'");
@@ -15,53 +15,53 @@ router.post('/login', async (req, res) => {
       req.body.email,
       req.body.username,
       req.body.password,
-      req.body.remind
+      req.body.remind,
     );
     res.status(200).json({
-      success: loginSuccess
+      success: loginSuccess,
     });
   } catch (err) {
     res.status(403).json({
       success: false,
-      error: `${err}`
+      error: `${err}`,
     });
   }
 });
 
 // Logout
-router.delete('/logout', async (req, res) => {
+router.delete("/logout", async (req, res) => {
   try {
     const logoutSuccess = await authService.logout(req);
     if (logoutSuccess) {
       res.status(200).json({
-        success: logoutSuccess
+        success: logoutSuccess,
       });
     } else {
-      throw new Error('Error during Logout!');
+      throw new Error("Error during Logout!");
     }
   } catch (err) {
     res.status(400).json({
-      error: `${err}`
+      error: `${err}`,
     });
   }
 });
 
 // Has access?
-router.get('/access', async (req, res) => {
+router.get("/access", async (req, res) => {
   try {
     const hasAccess = await authService.access(req);
     if (hasAccess) {
       res.status(200).json({
-        access: hasAccess
+        access: hasAccess,
       });
     } else {
       res.status(200).json({
-        access: false
+        access: false,
       });
     }
   } catch (err) {
     res.status(400).json({
-      error: `${err}`
+      error: `${err}`,
     });
   }
 });

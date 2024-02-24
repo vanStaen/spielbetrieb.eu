@@ -1,35 +1,33 @@
 const { Admincontact } = require("../../models/Admincontact");
 const { User } = require("../../models/User");
-const { Op } = require("sequelize");
 
 exports.admincontactResolver = {
-
   // getAllAdmincontacts
   async getAllAdmincontacts(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes('ressources')) {
-      throw new Error('Unauthorized!');
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("ressources")) {
+      throw new Error("Unauthorized!");
     }
     return await Admincontact.findAll({
       include: User,
     });
   },
-  
+
   // addAdmincontact(admincontactInput: AdmincontactInputData!): Admincontact!
   async addAdmincontact(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes('ressources')) {
-      throw new Error('Unauthorized!');
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("ressources")) {
+      throw new Error("Unauthorized!");
     }
     try {
       const admincontact = new Admincontact({
@@ -50,18 +48,13 @@ exports.admincontactResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId }
+      where: { _id: req.userId },
     });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes('ressources')) {
-      throw new Error('Unauthorized!');
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("ressources")) {
+      throw new Error("Unauthorized!");
     }
     const updateFields = [];
-    const updatableFields = [
-      "name",
-      "email",
-      "details",
-      "archived",
-    ];
+    const updatableFields = ["name", "email", "details", "archived"];
     updatableFields.forEach((field) => {
       if (field in args.admincontactInput) {
         updateFields[field] = args.admincontactInput[field];

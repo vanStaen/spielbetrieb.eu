@@ -1,155 +1,155 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
-const { Usersfriends } = require('./Usersfriends');
-const { Usersfollowers } = require('./Usersfollowers');
+const { sequelize, DataTypes } = require("../lib/sequelizedb");
+const { Usersfriends } = require("./Usersfriends");
+const { Usersfollowers } = require("./Usersfollowers");
 
-const User = sequelize.define('user', {
+const User = sequelize.define("user", {
   _id: {
     type: DataTypes.INTEGER,
-    field: '_id',
+    field: "_id",
     autoIncrement: true,
-    primaryKey: true
+    primaryKey: true,
   },
   firstName: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   lastName: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   userName: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true
+    unique: true,
   },
   email: {
     type: DataTypes.STRING,
     allowNull: false,
     unique: true,
     validate: {
-      isEmail: true
-    }
+      isEmail: true,
+    },
   },
   password: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   },
   description: {
     type: DataTypes.STRING,
-    allowNull: true
+    allowNull: true,
   },
   avatar: {
     type: DataTypes.STRING,
-    allowNull: true
+    allowNull: true,
   },
   emailSettings: {
     type: DataTypes.STRING,
     allowNull: true,
-    defaultValue: null
+    defaultValue: null,
   },
   profilSettings: {
     type: DataTypes.STRING,
     allowNull: true,
-    defaultValue: null
+    defaultValue: null,
   },
   verifiedEmail: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
+    defaultValue: false,
   },
   verifiedIdentity: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
+    defaultValue: false,
   },
   gender: {
     type: DataTypes.STRING,
-    allowNull: true
+    allowNull: true,
   },
   birthday: {
     type: DataTypes.DATE,
-    allowNull: true
+    allowNull: true,
   },
   orientation: {
     type: DataTypes.STRING,
-    allowNull: true
+    allowNull: true,
   },
   wishes: {
     type: DataTypes.ARRAY(DataTypes.STRING),
-    defaultValue: []
+    defaultValue: [],
   },
   interests: {
     type: DataTypes.ARRAY(DataTypes.STRING),
-    defaultValue: []
+    defaultValue: [],
   },
   archived: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
+    defaultValue: false,
   },
   usernameChange: {
     type: DataTypes.INTEGER,
-    defaultValue: 0
+    defaultValue: 0,
   },
   lastActive: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
   },
   isAdmin: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
+    defaultValue: false,
   },
   adminRoles: {
     type: DataTypes.ARRAY(DataTypes.STRING),
-    defaultValue: []
+    defaultValue: [],
   },
   isPartner: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
+    defaultValue: false,
   },
   partnerRoles: {
     type: DataTypes.ARRAY(DataTypes.STRING),
-    defaultValue: []
+    defaultValue: [],
   },
   partnertype: {
     type: DataTypes.INTEGER,
-    allowNull: true
+    allowNull: true,
   },
   language: {
     type: DataTypes.STRING,
-    defaultValue: 'en'
+    defaultValue: "en",
   },
   deleted: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
+    defaultValue: false,
   },
   suspended: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false
-  }
+    defaultValue: false,
+  },
 });
 
 User.belongsToMany(User, {
-  as: 'friends',
-  foreignKey: 'user_id',
-  through: Usersfriends
+  as: "friends",
+  foreignKey: "user_id",
+  through: Usersfriends,
 });
 
 User.belongsToMany(User, {
-  as: 'userFriends',
-  foreignKey: 'friend_id',
-  through: Usersfriends
+  as: "userFriends",
+  foreignKey: "friend_id",
+  through: Usersfriends,
 });
 
 User.belongsToMany(User, {
-  as: 'followers',
-  foreignKey: 'follower_id',
-  through: Usersfollowers
+  as: "followers",
+  foreignKey: "follower_id",
+  through: Usersfollowers,
 });
 
 User.belongsToMany(User, {
-  as: 'followed',
-  foreignKey: 'followed_id',
-  through: Usersfollowers
+  as: "followed",
+  foreignKey: "followed_id",
+  through: Usersfollowers,
 });
 
 module.exports = {
-  User
+  User,
 };

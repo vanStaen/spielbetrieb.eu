@@ -1,4 +1,4 @@
-const { sequelize, DataTypes } = require('../lib/sequelizedb');
+const { sequelize, DataTypes } = require("../lib/sequelizedb");
 
 const Chat = sequelize.define("chat", {
   _id: {
@@ -7,7 +7,7 @@ const Chat = sequelize.define("chat", {
     autoIncrement: true,
     primaryKey: true,
   },
-  userlist: { 
+  userlist: {
     type: DataTypes.ARRAY(DataTypes.INTEGER),
     allowNull: false,
   },
@@ -18,6 +18,5 @@ const Chat = sequelize.define("chat", {
 });
 
 module.exports = {
-  Chat
+  Chat,
 };
-

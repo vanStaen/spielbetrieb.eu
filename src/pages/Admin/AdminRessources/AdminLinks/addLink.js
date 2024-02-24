@@ -1,5 +1,4 @@
 export async function addLink(dataObject) {
-
   const graphqlQuery = {
     query: `mutation ( 
                 $dataObject: AdminlinkInputData!,
@@ -12,7 +11,7 @@ export async function addLink(dataObject) {
                 }`,
     variables: {
       dataObject,
-    }
+    },
   };
 
   const headers = {
@@ -22,14 +21,16 @@ export async function addLink(dataObject) {
   const endpoint = process.env.API_URL + `/graphql`;
 
   const options = {
-    "method": "POST",
-    "headers": headers,
-    "body": JSON.stringify(graphqlQuery)
+    method: "POST",
+    headers,
+    body: JSON.stringify(graphqlQuery),
   };
 
   const response = await fetch(endpoint, options);
   const data = await response.json();
 
-  if (data.errors) { return data.errors[0] };
+  if (data.errors) {
+    return data.errors[0];
+  }
   return data.addAdminlink;
 }

@@ -1,4 +1,4 @@
-export async function getUserNames () {
+export async function getUserNames() {
   const graphqlQuery = {
     query: `
             {
@@ -7,24 +7,26 @@ export async function getUserNames () {
                 userName,
               }
             }
-          `
+          `,
   };
 
   const headers = {
-    'content-type': 'application/json'
+    "content-type": "application/json",
   };
 
-  const endpoint = process.env.API_URL + '/graphql';
+  const endpoint = process.env.API_URL + "/graphql";
 
   const options = {
-    method: 'POST',
+    method: "POST",
     headers,
-    body: JSON.stringify(graphqlQuery)
+    body: JSON.stringify(graphqlQuery),
   };
 
   const response = await fetch(endpoint, options);
   const data = await response.json();
 
-  if (data.errors) { return data.errors[0]; };
+  if (data.errors) {
+    return data.errors[0];
+  }
   return data.data.getUsersAsAdmin;
 }
