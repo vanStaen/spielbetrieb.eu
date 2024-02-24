@@ -95,17 +95,17 @@ const App = observer(() => {
             <Route path="profile/" element={<Home page="profile" />} />
             <Route path="settings/" element={<Home page="settings" />} />
             <Route path="shop/" element={<Home page="shop" />} />
-            <Route path="agenda/" element={<Home page="agenda" />} />
+            <Route path="spielplan/" element={<Home page="spielplan" />} />
             <Route
-              path="agenda/week/:year/:week"
+              path="spielplan/week/:year/:week"
               element={<Home page="agenda" />}
             />
             <Route
-              path="agenda/:year/:month"
+              path="spielplan/:year/:month"
               element={<Home page="agenda" />}
             />
             <Route
-              path="agenda/:year/:month/:day"
+              path="spielplan/:year/:month/:day"
               element={<Home page="agenda" />}
             />
             <Route path="event/:id" element={<Home page="event" />} />

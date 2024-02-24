@@ -89,20 +89,20 @@ export const BrowseFilter = observer(() => {
     const year = dayjs(agendaStore.filterDateFrom).format("YYYY");
     if (agendaStore.timeSpan === "week") {
       const week = dayjs(agendaStore.filterDateFrom).format("ww");
-      const nextURL = `${process.env.HOST_URL}/agenda/week/${year}/${week}/`;
+      const nextURL = `${process.env.HOST_URL}/spielplan/week/${year}/${week}/`;
       const nextState = { calendarWeek: week, year: year };
       window.history.pushState(nextState, "", nextURL);
       window.history.replaceState(nextState, "", nextURL);
     } else {
       const month = dayjs(agendaStore.filterDateFrom).format("MM");
       if (agendaStore.timeSpan === "month") {
-        const nextURL = `${process.env.HOST_URL}/agenda/${year}/${month}/`;
+        const nextURL = `${process.env.HOST_URL}/spielplan/${year}/${month}/`;
         const nextState = { month: month, year: year };
         window.history.pushState(nextState, "", nextURL);
         window.history.replaceState(nextState, "", nextURL);
       } else if (agendaStore.timeSpan === "day") {
         const day = dayjs(agendaStore.filterDateFrom).format("DD");
-        const nextURL = `${process.env.HOST_URL}/agenda/${year}/${month}/${day}/`;
+        const nextURL = `${process.env.HOST_URL}/spielplan/${year}/${month}/${day}/`;
         const nextState = { day: day, month: month, year: year };
         window.history.pushState(nextState, "", nextURL);
         window.history.replaceState(nextState, "", nextURL);

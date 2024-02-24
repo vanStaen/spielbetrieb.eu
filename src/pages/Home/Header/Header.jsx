@@ -39,8 +39,8 @@ export const Header = observer((props) => {
       <div className="header__headerElementContainer">
         <HeaderElement
           title="Spielplan"
-          page="agenda"
-          selected={selected === "agenda"}
+          page="spielplan"
+          selected={selected === "spielplan"}
         />
         <HeaderElement
           title="Shop"

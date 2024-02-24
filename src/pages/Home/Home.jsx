@@ -53,7 +53,7 @@ export const Home = observer((props) => {
             </div>
           </div>
         );
-      case "agenda":
+      case "spielplan":
         return <Agenda />;
       case "basket":
         return <Basket />;
