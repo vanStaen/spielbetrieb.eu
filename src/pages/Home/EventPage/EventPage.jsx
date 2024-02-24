@@ -6,7 +6,7 @@ import { observer } from "mobx-react";
 import { ClockCircleOutlined, EnvironmentOutlined } from "@ant-design/icons";
 import * as dayjs from "dayjs";
 
-import { agendaStore } from "../../../../store/agendaStore/agendaStore";
+import { agendaStore } from "../../../store/agendaStore/agendaStore";
 
 import "./EventPage.less";
 

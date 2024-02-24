@@ -9,7 +9,6 @@ import { agendaStore } from "../../../store/agendaStore/agendaStore";
 import { pageStore } from "../../../store/pageStore/pageStore";
 import { EventFilters } from "./EventFilters/EventFilters";
 import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
-import { EventPage } from './EventPage/EventPage';
 
 import "./Agenda.less";
 
@@ -142,24 +141,20 @@ export const Agenda = observer(() => {
             <div className="agenda__noEventContainer">
               <CustomSpinner text="Loading events" />
             </div>
-          ) :
-            agendaStore.selectedEvent ?
-              <EventPage />
-              :
-              eventsFormattedAndCleaned.length === 0 ? (
-                <div className="agenda__noEventContainer">
-                  <div
-                    className={`agenda__noEventText ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
-                  >
-                    <div>{t("agenda.noEventsFound")}</div>
-                    <div className="agenda__noEventSubText">
-                      {t("agenda.tryOtherFilter")}
-                    </div>
-                  </div>
+          ) : eventsFormattedAndCleaned.length === 0 ? (
+            <div className="agenda__noEventContainer">
+              <div
+                className={`agenda__noEventText ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
+              >
+                <div>{t("agenda.noEventsFound")}</div>
+                <div className="agenda__noEventSubText">
+                  {t("agenda.tryOtherFilter")}
                 </div>
-              ) : (
-                eventsFormattedAndCleaned
-              )}
+              </div>
+            </div>
+          ) : (
+            eventsFormattedAndCleaned
+          )}
         </div>
       )}
     </>
