@@ -41,20 +41,6 @@ const App = observer(() => {
     defineVariableHeight();
   }, []);
 
-  const browserBackHandler = (e) => {
-    // e.preventDefault();
-    // e.stopImmediatePropagation();
-    // Refresh the page by replacing the URL with itself
-    location.replace(location.href);
-  };
-
-  useEffect(() => {
-    window.addEventListener("popstate", browserBackHandler);
-    return () => {
-      window.removeEventListener("popstate", browserBackHandler);
-    };
-  }, []);
-
   useEffect(() => {
     authStore.checkAccess();
     userStore.fetchUserData();

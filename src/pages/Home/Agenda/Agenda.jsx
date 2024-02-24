@@ -46,6 +46,7 @@ export const Agenda = observer(() => {
     }
   };
 
+
   useEffect(() => {
     agendaStore.fetchEventtypes();
     agendaStore.fetchLocations();

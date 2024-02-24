@@ -1,41 +1,48 @@
 .event__Container {
-    transition: all .3s !important; 
+    transition: all .3s !important;
     width: calc(100% - 50px - 40px); // - padding - margin
     margin: 10px 25px 0 25px;
     padding: 10px 20px;
-    border-radius: 3px;  
+    border-radius: 3px;
     font-size: 16px;
     letter-spacing: 3px;
     box-shadow: rgba(255, 255, 255, 0.05) 0px 30px 60px -12px inset;
     text-align: left;
     cursor: pointer;
+
     &:hover {
         filter: contrast(1.3);
     }
-    .event__date{
+
+    .event__date {
         width: 100px;
         display: inline-block;
         vertical-align: middle;
         text-align: left;
         font-size: 12px;
         padding-top: 5px;
+
         .event__dateYear {
             opacity: .33;
             font-weight: 300;
         }
-        .event__dateDayOfWeek{
+
+        .event__dateDayOfWeek {
             padding-top: 3px;
             text-transform: uppercase;
         }
+
         .event__dateDay {
             font-weight: 600;
             font-size: 50px;
-            transition: font-size .3s !important; 
+            transition: font-size .3s !important;
         }
+
         .event__dateMonth {
             text-transform: uppercase;
         }
     }
+
     @media only screen and (max-width: 675px) {
         .event__date {
             width: 100%;
@@ -43,30 +50,36 @@
             border-bottom: 1px solid rgba(255, 255, 255, .33);
             padding-bottom: 5px;
             margin-bottom: 5px;
+
             .event__dateYear {
-                display: none;         
+                display: none;
             }
-            .event__dateDayOfWeek{
+
+            .event__dateDayOfWeek {
                 display: inline-block;
                 font-weight: 300;
                 font-size: 33px;
                 margin-right: 10px;
             }
+
             .event__dateDay {
                 display: inline-block;
                 font-size: 40px;
                 margin-right: 10px;
             }
+
             .event__dateMonth {
                 display: inline-block;
             }
         }
-     }
+    }
+
     .event__main {
         display: inline-block;
         vertical-align: top;
         padding: 3px 5px;
         width: calc(100% - 115px);
+
         .event__titleLocation {
             .event__title {
                 padding-top: 3px;
@@ -74,51 +87,62 @@
                 font-weight: 600;
                 text-transform: uppercase;
             }
+
             .event__location {
                 font-size: 17px;
                 font-style: italic;
                 font-weight: 300;
                 padding-right: 10px;
             }
+
             @media only screen and (max-width: 675px) {
                 .event__location {
                     display: inline-block;
                     font-size: 25px;
                 }
+
                 .event__title {
                     display: inline-block;
                     font-size: 25px;
                 }
             }
         }
+
         .event__tags {
             width: 100%;
             padding-top: 10px;
+
             .ant-tag-borderless {
                 border-color: transparent;
                 background: rgba(255, 255, 255, .33);
                 margin: 3px;
+
                 &:hover {
                     background: rgba(255, 255, 255, .75);
                 }
-            }            
+            }
         }
+
         .event__timelocation {
             padding-top: 8px;
             font-size: 12px;
         }
+
         .event__promoter {
             padding-top: 10px;
             font-size: 12px;
+
             .event__organizedBy {
                 opacity: .5;
             }
         }
     }
+
     @media only screen and (max-width: 675px) {
         .event__main {
             padding: 0;
             width: 100%;
+
             .event__tags {
                 padding-bottom: 8px;
             }
@@ -139,27 +163,35 @@
     padding-top: 5px;
     margin-bottom: 0;
     opacity: .25;
+
     //-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
     .event__date {
         .event__dateDay {
             font-size: 18px;
-        } 
-    }
-    .event__main {
-        .event__titleLocation{
-            .event__title {
-                font-size: 22px;
-            } 
         }
     }
+
+    .event__main {
+        .event__titleLocation {
+            .event__title {
+                font-size: 22px;
+            }
+        }
+    }
+
+    &:hover {
+        opacity: .5;
+    }
 }
+
 @media only screen and (max-width: 675px) {
     .event__ContainerPast {
-        max-height: 48px;    
+        max-height: 48px;
+
         .event__date {
             .event__dateDay {
                 font-size: 40px;
-            } 
+            }
         }
     }
 }
