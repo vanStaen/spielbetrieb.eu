@@ -7,7 +7,9 @@ import { ClockCircleOutlined, EnvironmentOutlined } from "@ant-design/icons";
 import * as dayjs from "dayjs";
 
 import { agendaStore } from "../../../store/agendaStore/agendaStore";
+import { pageStore } from "../../../store/pageStore/pageStore";
 import { getSingleEvents } from "./getSingleEvents";
+import { nameParser } from "../../../helpers/nameParser";
 
 import "./EventPage.less";
 
@@ -35,13 +37,13 @@ export const EventPage = observer(() => {
 
   const fetchEventData = async (id) => {
     const eventFound = await getSingleEvents(id);
-    console.log("eventFound", eventFound);
     agendaStore.setSelectedEvent(eventFound);
   };
 
   useEffect(() => {
     if (agendaStore.selectedEvent === null) {
-      console.log("params.id", params.id);
+      agendaStore.fetchTags();
+      agendaStore.fetchEventtypes();
       fetchEventData(params.id);
     }
   }, []);
@@ -52,15 +54,37 @@ export const EventPage = observer(() => {
       buy a ticket Ticket
   */
 
-  const tagsFormatted = agendaStore.selectedEvent?.eventTags?.map(
-    (tag, index) => {
-      return (
-        <Tag key={tag.id} bordered={false}>
-          #{tag.name}
-        </Tag>
-      );
-    },
-  );
+  const eventTags = () => {
+    const eventTags = event?.eventTags?.map((tagId) => {
+      return {
+        name: nameParser(
+          agendaStore.tags.filter((tag) => parseInt(tag._id) === tagId)[0]
+            ?.name,
+          pageStore.selectedLanguage?.toLowerCase(),
+        ),
+        id: tagId,
+      };
+    });
+    eventTags?.splice(0, 0, {
+      name: nameParser(
+        agendaStore.eventtypes.filter((eventtype) => parseInt(eventtype._id) === event?.eventtype)[0]
+          ?.name,
+        pageStore.selectedLanguage?.toLowerCase(),
+      ),
+      id: event?.eventtype,
+    });
+    const tagsFormatted = eventTags?.map(
+      (tag) => {
+        return (
+          <Tag key={tag.id} bordered={false}>
+            #{tag.name}
+          </Tag>
+        );
+      },
+    );
+    return tagsFormatted;
+  }
+
 
   const isInThePast = event?.fromDate < dayjs();
 
@@ -114,7 +138,7 @@ export const EventPage = observer(() => {
               </span>
               {event.user.userName}
             </div>
-            <div className="eventpage__tags">{tagsFormatted}</div>
+            <div className="eventpage__tags">{eventTags()}</div>
           </div>
         </div>
       )}

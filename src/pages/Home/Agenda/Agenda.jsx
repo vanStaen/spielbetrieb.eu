@@ -82,10 +82,10 @@ export const Agenda = observer(() => {
     )[0];
     eventTags.splice(0, 0, {
       name: nameParser(
-        eventType.name,
+        eventType?.name,
         pageStore.selectedLanguage?.toLowerCase(),
       ),
-      id: eventType._id,
+      id: eventType?._id,
     });
 
     if (agendaStore.filterLocations.length) {
