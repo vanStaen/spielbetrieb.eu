@@ -108,6 +108,7 @@ export const BrowseFilter = observer(() => {
         window.history.replaceState(nextState, "", nextURL);
       }
     }
+
   }, [agendaStore.timeSpan, agendaStore.filterDateFrom]);
 
   useEffect(() => {

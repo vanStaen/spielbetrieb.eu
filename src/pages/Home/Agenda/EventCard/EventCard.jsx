@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Tag } from "antd";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { ClockCircleOutlined, EnvironmentOutlined } from "@ant-design/icons";
 import * as dayjs from "dayjs";
 
@@ -12,7 +13,10 @@ import { observer } from "mobx-react";
 
 export const EventCard = observer((props) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const { event, color, tags } = props;
+  const isInThePast = event.fromDate < dayjs();
+  const isShownHidden = useRef(isInThePast);
 
   /* TODO:
         show number of attending
@@ -50,14 +54,18 @@ export const EventCard = observer((props) => {
     );
   });
 
-  const isInThePast = event.fromDate < dayjs();
-
   const handleEventContainerClick = () => {
-    const elementContainer = document.getElementById(
-      `eventContainer${event._id}`,
-    );
-    elementContainer.style.maxHeight = "400px";
-    elementContainer.classList.remove("event__ContainerPast");
+    if (isShownHidden.current === true) {
+      const elementContainer = document.getElementById(
+        `eventContainer${event._id}`,
+      );
+      elementContainer.style.maxHeight = "400px";
+      elementContainer.classList.remove("event__ContainerPast");
+      isShownHidden.current = false;
+    } else {
+      navigate(`/event/${event._id}`, { relative: "path" });
+      agendaStore.setSelectedEvent(event);
+    }
   };
 
   return (

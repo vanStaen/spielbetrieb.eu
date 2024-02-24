@@ -36,3 +36,4 @@
 - [ ] List of forbidden words
 - [ ] Filter event based on city/geolocation
 - [ ] Valid some form with enter, cancel with esc
+- [ ] Rename Agenda to Spileplan in the code

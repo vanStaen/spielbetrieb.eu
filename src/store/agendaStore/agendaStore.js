@@ -19,6 +19,7 @@ export class AgendaStore {
   filterLocations = [];
   filterEventtypes = [];
   filterTags = [];
+  selectedEvent = null;
 
   constructor() {
     makeObservable(this, {
@@ -49,11 +50,17 @@ export class AgendaStore {
       setFilterTags: action,
       filterTags: observable,
       calculateFilterDateFrom: action,
+      selectedEvent: observable,
+      setSelectedEvent: action,
     });
   }
 
   setEvents = (events) => {
     this.events = events;
+  };
+
+  setSelectedEvent = (selectedEvent) => {
+    this.selectedEvent = selectedEvent;
   };
 
   setIsLoadingEvent = (isLoadingEvent) => {

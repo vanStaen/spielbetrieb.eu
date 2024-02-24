@@ -41,6 +41,20 @@ const App = observer(() => {
     defineVariableHeight();
   }, []);
 
+  const browserBackHandler = (e) => {
+    // e.preventDefault();
+    // e.stopImmediatePropagation();
+    // Refresh the page by replacing the URL with itself
+    location.replace(location.href);
+  };
+
+  useEffect(() => {
+    window.addEventListener("popstate", browserBackHandler);
+    return () => {
+      window.removeEventListener("popstate", browserBackHandler);
+    };
+  }, []);
+
   useEffect(() => {
     authStore.checkAccess();
     userStore.fetchUserData();
@@ -98,17 +112,17 @@ const App = observer(() => {
             <Route path="spielplan/" element={<Home page="spielplan" />} />
             <Route
               path="spielplan/week/:year/:week"
-              element={<Home page="agenda" />}
+              element={<Home page="spielplan" />}
             />
             <Route
               path="spielplan/:year/:month"
-              element={<Home page="agenda" />}
+              element={<Home page="spielplan" />}
             />
             <Route
               path="spielplan/:year/:month/:day"
-              element={<Home page="agenda" />}
+              element={<Home page="spielplan" />}
             />
-            <Route path="event/:id" element={<Home page="event" />} />
+            <Route path="event/:id" element={<Home page="spielplan" />} />
             <Route path="service/" element={<Legal page="service" />} />
             <Route path="privacy/" element={<Legal page="privacy" />} />
             <Route path="agb/" element={<Legal page="agb" />} />
