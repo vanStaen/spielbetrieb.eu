@@ -15,6 +15,7 @@ export async function getAllPublicEvents(fromDate, untilDate) {
                   location,
                   locationAddress,
                   locationName,
+                  locationCoordinates,
                   fromDate,
                   untilDate,
                   eventTags,

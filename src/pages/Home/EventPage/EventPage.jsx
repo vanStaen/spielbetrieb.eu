@@ -99,23 +99,39 @@ export const EventPage = observer(() => {
           className={`eventpage__container ${isInThePast && "eventpage__ContainerPast"}`}
           onClick={handleEventContainerClick}
         >
-          <div className="">
-            {dayjs(event.fromDate).format("DD MMMM YYYY")}
+          <div className="eventpage__date">
+            <span className="eventpage__weekday">
+              {dayjs(event.fromDate).format("dddd")}
+            </span>
+            {' '}
+            <span className="eventpage__daymonth">
+              {dayjs(event.fromDate).format("DD MMMM")}
+            </span>
+            {' '}
+            <span className="eventpage__year">
+              {dayjs(event.fromDate).format("YYYY")}
+            </span>
           </div>
-          <div className="">
+          <div className="eventpage__time">
             <ClockCircleOutlined />{' '}
             {dayjs(event.fromDate).format("dddd") === dayjs(event.untilDate).format("dddd") ?
               <>
-                {dayjs(event.fromDate).format("HH:mm")} until{' '}
+                {dayjs(event.fromDate).format("HH:mm")}{' '}{t('agenda.until')}{' '}
                 {dayjs(event.untilDate).format("HH:mm")}
               </>
               : <>
-                {dayjs(event.fromDate).format("dddd HH:mm")} until{' '}
+                {dayjs(event.fromDate).format("dddd HH:mm")}{' '}{t('agenda.until')}{' '}
                 {dayjs(event.untilDate).format("dddd HH:mm")}
               </>
             }
-            <div className="eventpage__timelocation">
-              <EnvironmentOutlined /> {event.locationAddress}
+            <div className="eventpage__location">
+              <a
+                href={`https://www.google.com/maps/@${event.locationCoordinates}`}
+                className="eventpage__location"
+                target="_blank"
+              >
+                <EnvironmentOutlined /> {event.locationAddress}
+              </a>
             </div>
             <br />
             <div className="eventpage__title">{event.title}</div>

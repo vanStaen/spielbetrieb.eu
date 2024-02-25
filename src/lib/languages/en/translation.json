@@ -1,6 +1,6 @@
 {
   "general": {
-    "on" : "on",
+    "on": "on",
     "emailUs": "Email us",
     "commingsoon": "comming soon",
     "dark": "Dark",
@@ -100,23 +100,23 @@
     "areYouReallyThatOld": "Are you that old?"
   },
   "404": {
-    "endOfInternet" : "You reach the end of the internet!",
-    "pageNotFound" : "Page not Found",
-    "doesNotExist" : "doest not exist"
+    "endOfInternet": "You reach the end of the internet!",
+    "pageNotFound": "Page not Found",
+    "doesNotExist": "doest not exist"
   },
   "legal": {
-    "cookiesTitle" : "This website uses cookies.",
-    "cookiesDesc" : "We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.",
-    "accept" : "Accept"
+    "cookiesTitle": "This website uses cookies.",
+    "cookiesDesc": "We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.",
+    "accept": "Accept"
   },
   "newsletter": {
     "subscribe": "Subscribe to the newsletter",
-    "subscribeDesc" : "Sign up to be first to know about Spielbetrieb & Merrier latest news.",
-    "Signup" : "Signup",
-    "emailNotValid" : "This email is not valid, please check it.",
-    "thanksAndConfirm" : "Thank you! Please confirm your email and you are in.",
-    "emailVerified" : "Thanks for confirming your email address and joining our mailing lists!",
-    "verificationError" : "An error happened! Please restart the process from the main page.",
+    "subscribeDesc": "Sign up to be first to know about Spielbetrieb & Merrier latest news.",
+    "Signup": "Signup",
+    "emailNotValid": "This email is not valid, please check it.",
+    "thanksAndConfirm": "Thank you! Please confirm your email and you are in.",
+    "emailVerified": "Thanks for confirming your email address and joining our mailing lists!",
+    "verificationError": "An error happened! Please restart the process from the main page.",
     "error": "Error while subscribing!",
     "pleaseSelectList": "Please select at least one mailing list!",
     "pleaseInputEmail": "Please input a valid email!"
@@ -126,11 +126,12 @@
     "today": "Today",
     "week": "Week",
     "noEventsFound": "No events found",
-    "tryOtherFilter": "Try another filter maybe?"
-  } ,
+    "tryOtherFilter": "Try another filter maybe?",
+    "until": "until"
+  },
   "help": {
     "helpNeeded": "Need help?",
     "yourEventIsMissing": "An event is missing?",
     "reportBug": "Want to report a Bug?"
-  } 
+  }
 }

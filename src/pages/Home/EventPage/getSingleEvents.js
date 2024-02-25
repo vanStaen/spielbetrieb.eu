@@ -14,6 +14,7 @@ export async function getSingleEvents(id) {
                   location,
                   locationAddress,
                   locationName,
+                  locationCoordinates,
                   fromDate,
                   untilDate,
                   eventTags,

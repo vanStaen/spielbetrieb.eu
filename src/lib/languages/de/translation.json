@@ -1,6 +1,6 @@
 {
   "general": {
-    "on" : "auf",
+    "on": "auf",
     "emailUs": "Schreib uns",
     "commingsoon": "demnächst",
     "dark": "Dunkel",
@@ -100,23 +100,23 @@
     "areYouReallyThatOld": "Wirklich? Sicher?"
   },
   "404": {
-    "endOfInternet" : "Sie haben das Ende des Internets erreicht!",
-    "pageNotFound" : "Seite nicht gefunden",
-    "doesNotExist" : "existiert nicht"
+    "endOfInternet": "Sie haben das Ende des Internets erreicht!",
+    "pageNotFound": "Seite nicht gefunden",
+    "doesNotExist": "existiert nicht"
   },
-  "legal": {    
-    "cookiesTitle" : "Diese Website verwendet Cookies.",
-    "cookiesDesc" : "Wir verwenden Cookies, um den Website-Verkehr zu analysieren und Ihr Website-Erlebnis zu optimieren. Wenn Sie unsere Verwendung von Cookies akzeptieren, werden Ihre Daten mit allen anderen Benutzerdaten zusammengeführt.",
-    "accept" : "Akzeptieren"
+  "legal": {
+    "cookiesTitle": "Diese Website verwendet Cookies.",
+    "cookiesDesc": "Wir verwenden Cookies, um den Website-Verkehr zu analysieren und Ihr Website-Erlebnis zu optimieren. Wenn Sie unsere Verwendung von Cookies akzeptieren, werden Ihre Daten mit allen anderen Benutzerdaten zusammengeführt.",
+    "accept": "Akzeptieren"
   },
   "newsletter": {
     "subscribe": "Den Newsletter Abonnieren",
-    "subscribeDesc" : "Melden Sie sich an, um über die Entwicklungen von Spielbetrieb & Merrier informiert zu werden.",
-    "Signup" : "Signup",
-    "emailNotValid" : "Diese E-Mail ist ungültig, bitte überprüfen Sie es.",
-    "thanksAndConfirm" : "Danke schön! Bitte bestätigen Sie noch Ihre E-Mail.",
-    "emailVerified" : "Vielen Dank für die Bestätigung Ihrer E-Mail-Addresse und die Aufnahme in unsere Mailinglisten!",
-    "verificationError" : "Es ist ein Fehler aufgetreten! Bitte starten Sie den Vorgang von der Startseite aus neu.",
+    "subscribeDesc": "Melden Sie sich an, um über die Entwicklungen von Spielbetrieb & Merrier informiert zu werden.",
+    "Signup": "Signup",
+    "emailNotValid": "Diese E-Mail ist ungültig, bitte überprüfen Sie es.",
+    "thanksAndConfirm": "Danke schön! Bitte bestätigen Sie noch Ihre E-Mail.",
+    "emailVerified": "Vielen Dank für die Bestätigung Ihrer E-Mail-Addresse und die Aufnahme in unsere Mailinglisten!",
+    "verificationError": "Es ist ein Fehler aufgetreten! Bitte starten Sie den Vorgang von der Startseite aus neu.",
     "error": "Fehler bei Abonnieren!",
     "pleaseSelectList": "Bitte wählen Sie mindestens eine Mailingliste aus!",
     "pleaseInputEmail": "Bitte geben Sie eine gültige Email-Addresse ein!"
@@ -127,11 +127,12 @@
     "week": "Woche",
     "noEventsFound": "Kein Ergebnisse",
     "tryOtherFilter": "Versuch es mit einem anderen Filter?",
-    "yourEventIsMissing": "Dein Veranstalltung fehlt?"
+    "yourEventIsMissing": "Dein Veranstalltung fehlt?",
+    "until": "bis"
   },
   "help": {
     "helpNeeded": "Hilfe?",
     "yourEventIsMissing": "Eine Veranstalltung fehlt?",
     "reportBug": "Problem melden?"
-  } 
+  }
 }

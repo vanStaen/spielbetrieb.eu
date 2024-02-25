@@ -10,10 +10,56 @@
 
         .ant-tag-borderless {
             border-color: transparent;
-            background: rgba(var(--themeFontColor), .5);
+            background: rgba(var(--themeFontColor), .75);
             color: rgba(var(--themeFontColorInvert), 1);
             margin: 3px;
         }
+    }
+
+    .eventpage__date {
+        font-size: 27px;
+        font-weight: 600;
+
+        .eventpage__weekday {
+            opacity: .5;
+            font-weight: 300;
+        }
+
+        .eventpage__year {
+            opacity: .5;
+        }
+    }
+
+    .eventpage__time {
+        padding-top: 5px;
+        font-size: 16px;
+        font-weight: 300;
+
+    }
+
+    .eventpage__location {
+        padding-top: 5px;
+        font-size: 16px;
+        font-weight: 300;
+        color: rgba(var(--themeFontColor), 1);
+        text-decoration: none;
+        transition: color .3s ease;
+
+        &:hover {
+            color: rgba(var(--themeFontColor), .75);
+        }
+    }
+
+    .eventpage__title {
+        font-size: 27px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .eventpage__desc {
+        padding-top: 10px;
+        font-size: 16px;
+        font-weight: 300;
     }
 
     .eventpage__promoter {
@@ -21,7 +67,11 @@
         font-size: 12px;
 
         .link {
-            color: rgba(var(--themeFontColor), 1) !important;
+            color: rgba(var(--themeFontColor), 1);
+
+            &:hover {
+                color: rgba(var(--themeFontColor), .75);
+            }
         }
 
         .eventpage__organizedBy {
