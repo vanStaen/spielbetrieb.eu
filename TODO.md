@@ -14,9 +14,9 @@
 - [ ] Dark Magazin
 - [ ] Stop suspended user from login
 - [ ] Forbid "+" in an email address
+- [ ] Implement forbidden usernames
 - [ ] Make column tables in admin dynamic (admin can select which one to display)
 - [ ] EVENTS PAGE
-  - [ ] SearchEvent enpoint
   - [ ] EventCard: Show max 5 Tags, and a "+x" tags to show all
   - [ ] Show number of attendee
   - [ ] Show bookmarked
@@ -37,3 +37,4 @@
 - [ ] Filter event based on city/geolocation
 - [ ] Valid some form with enter, cancel with esc
 - [ ] Rename Agenda to Spileplan in the code
+- [ ] Help buttons trigger a `tour` (see [tour ant component](https://ant.design/components/tour))
