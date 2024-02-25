@@ -10,6 +10,7 @@ export async function getSingleEvents(id) {
                   title,
                   description,
                   pictures,
+                  links,
                   location,
                   locationAddress,
                   locationName,

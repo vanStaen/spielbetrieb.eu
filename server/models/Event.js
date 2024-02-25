@@ -52,6 +52,10 @@ const Event = sequelize.define("event", {
     type: DataTypes.ARRAY(DataTypes.INTEGER),
     defaultValue: [],
   },
+  links: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: true,
+  },
   attendees: {
     type: DataTypes.ARRAY(DataTypes.INTEGER),
     defaultValue: [],

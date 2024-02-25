@@ -14,6 +14,7 @@ type Event {
     eventTags: [Int]
     attendees: [Int]
     invited: [Int]
+    links: [String]
     admin: [Int]
     private: Boolean!
     forwardable: Boolean!
@@ -39,6 +40,7 @@ input EventInputData {
     eventTags: [Int]
     attendees: [Int]
     invited: [Int]
+    links: [String]
     admin: [Int]
     private: Boolean
     forwardable: Boolean

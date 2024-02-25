@@ -88,6 +88,12 @@ We use the Geocoding API from google to get coordinates out of addresses, and vi
 
 ## Ressources
 
+### email add-on (SendGrid on Heroku)
+
+https://dashboard.heroku.com/apps/spielbetrieb/resources/new?addonService=sendgrid
+
+### Design ideas
+
 Landing page based on this codePen: https://codepen.io/nelsonleite/pen/WwZNVN.
 More landing page inspi: https://codepen.io/jeffbredenkamp/pen/jMLepL.
 Onepager display page: https://codepen.io/chrisdegroot/pen/NWNWjXr

@@ -1,3 +1,32 @@
 .eventpage__container {
-    border: 1px solid red;
+    width: calc(100% - 50px); // minus margin
+    margin: 25px;
+    max-width: 1200px;
+    color: rgba(var(--themeFontColor), 1);
+
+    .eventpage__tags {
+        width: 100%;
+        padding-top: 10px;
+
+        .ant-tag-borderless {
+            border-color: transparent;
+            background: rgba(var(--themeFontColor), .5);
+            color: rgba(var(--themeFontColorInvert), 1);
+            margin: 3px;
+        }
+    }
+
+    .eventpage__promoter {
+        padding-top: 10px;
+        font-size: 12px;
+
+        .link {
+            color: rgba(var(--themeFontColor), 1) !important;
+        }
+
+        .eventpage__organizedBy {
+            opacity: .5;
+        }
+    }
+
 }

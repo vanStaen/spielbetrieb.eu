@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Tag } from "antd";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react";
 import { ClockCircleOutlined, EnvironmentOutlined } from "@ant-design/icons";
@@ -47,12 +47,6 @@ export const EventPage = observer(() => {
       fetchEventData(params.id);
     }
   }, []);
-
-  /* TODO:
-      show number of attending
-      Mark attending event 
-      buy a ticket Ticket
-  */
 
   const eventTags = () => {
     const eventTags = event?.eventTags?.map((tagId) => {
@@ -102,43 +96,44 @@ export const EventPage = observer(() => {
         <div
           key={event._id}
           id={`eventContainer${event._id}`}
-          className={`eventpage__Container ${isInThePast && "eventpage__ContainerPast"}`}
+          className={`eventpage__container ${isInThePast && "eventpage__ContainerPast"}`}
           onClick={handleEventContainerClick}
         >
-          <div className="eventpage__date">
-            <div className="eventpage__dateYear">
-              {dayjs(event.fromDate).format("YYYY")}
-            </div>
-            <div className="eventpage__dateDayOfWeek">
-              {dayjs(event.fromDate).format("ddd")}
-            </div>
-            <div className="eventpage__dateDay">
-              {dayjs(event?.fromDate).format("DD")}
-            </div>
-            <div className="eventpage__dateMonth">
-              {dayjs(event.fromDate).format("MMM")}
-            </div>
+          <div className="">
+            {dayjs(event.fromDate).format("DD MMMM YYYY")}
           </div>
-          <div className="eventpage__main">
-            <div className="eventpage__titleLocation">
-              <div className="eventpage__location">{event.locationName} </div>
-              <div className="eventpage__title">{event.title}</div>
-              <div className="eventpage__desc">{event.description}</div>
-            </div>
-            <div className="eventpage__timelocation">
-              <ClockCircleOutlined /> {dayjs(event.fromDate).format("HH:mm")} -{" "}
-              {dayjs(event.untilDate).format("HH:mm")}
-            </div>
+          <div className="">
+            <ClockCircleOutlined />{' '}
+            {dayjs(event.fromDate).format("dddd") === dayjs(event.untilDate).format("dddd") ?
+              <>
+                {dayjs(event.fromDate).format("HH:mm")} until{' '}
+                {dayjs(event.untilDate).format("HH:mm")}
+              </>
+              : <>
+                {dayjs(event.fromDate).format("dddd HH:mm")} until{' '}
+                {dayjs(event.untilDate).format("dddd HH:mm")}
+              </>
+            }
             <div className="eventpage__timelocation">
               <EnvironmentOutlined /> {event.locationAddress}
             </div>
+            <br />
+            <div className="eventpage__title">{event.title}</div>
+            <div className="eventpage__desc">{event.description}</div>
+            <br />
             <div className="eventpage__promoter">
               <span className="eventpage__organizedBy">
                 {t("agenda.eventOrganisedBy")}{" "}
               </span>
-              {event.user.userName}
+              <Link to={`/user/${event.user.userName}`} relative="path">
+                <span className="link">
+                  {event.user.userName}
+                </span>
+              </Link>
             </div>
-            <div className="eventpage__tags">{eventTags()}</div>
+            <div className="eventpage__tags">
+              {eventTags()}
+            </div>
           </div>
         </div>
       )}
