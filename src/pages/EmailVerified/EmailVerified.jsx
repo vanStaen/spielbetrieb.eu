@@ -25,11 +25,33 @@ export const EmailVerified = observer(() => {
     const success = await postEmailVerified(params.token);
     if (success) {
       setIsVerified(true);
-      for (let i = 10; i > 0; i--) {
-        setTimeout(() => {
-          setCoundownCounter(i);
-        }, 1000);
-      }
+      setTimeout(() => {
+        setCoundownCounter(9);
+      }, 1000);
+      setTimeout(() => {
+        setCoundownCounter(8);
+      }, 2000);
+      setTimeout(() => {
+        setCoundownCounter(7);
+      }, 3000);
+      setTimeout(() => {
+        setCoundownCounter(6);
+      }, 4000);
+      setTimeout(() => {
+        setCoundownCounter(5);
+      }, 5000);
+      setTimeout(() => {
+        setCoundownCounter(4);
+      }, 6000);
+      setTimeout(() => {
+        setCoundownCounter(3);
+      }, 7000);
+      setTimeout(() => {
+        setCoundownCounter(2);
+      }, 8000);
+      setTimeout(() => {
+        setCoundownCounter(1);
+      }, 9000);
       setTimeout(() => {
         document.location.href = "/";
       }, 10000);
