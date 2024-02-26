@@ -88,9 +88,14 @@ We use the Geocoding API from google to get coordinates out of addresses, and vi
 
 ## Ressources
 
-### email add-on (SendGrid on Heroku)
+### Host
 
-https://dashboard.heroku.com/apps/spielbetrieb/resources/new?addonService=sendgrid
+The app is hosted by Heroku (Salesforce Platform) under the name `spielbetrieb`.
+
+### Email API : SendGrid via Heroku 
+
+Mail are send voia the SendGrid Api. To integerate the API into node,the package `@sendgrid/mail` is used. See its use in the Mail Service (API/Service). More detail in the doc under https://app.sendgrid.com/
+
 
 ### Design ideas
 

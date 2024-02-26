@@ -2,9 +2,11 @@ const axios = require("axios");
 const jsonwebtoken = require("jsonwebtoken");
 const { User } = require("../../models/User");
 const validateEmail = require("../../lib/validateEmail");
+const sgMail = require('@sendgrid/mail')
 require("dotenv/config");
 
 const mainDomain = "spielbetrieb.eu";
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 const emailDisclaimer = `
   <br/>
@@ -48,30 +50,17 @@ const emailDisclaimer = `
 
 exports.mailService = {
   async mail(sendto, subject, body) {
-    const requestBody = {
-      from: "Spielbetrieb <info@spielbetrieb.eu>",
+    const email = {
+      from: "Spielbetrieb <admin@spielbetrieb.eu>",
       to: sendto,
       subject,
-      body: `${body}<br/> ${emailDisclaimer}`,
-      key: process.env.MAILMAN_KEY,
+      html: `${body}<br/> ${emailDisclaimer}`,
     };
     try {
-      const response = await axios({
-        url: process.env.MAILMAN_URL,
-        method: "POST",
-        data: requestBody,
-      });
-      if ((response.status !== 200) & (response.status !== 201)) {
-        if (response.status === 401) {
-          throw new Error("Error! Unauthorized(401)");
-        } else {
-          throw new Error(`Error! Status ${response.status}`);
-        }
-      }
-      // Return true on success
+      await sgMail.send(email);
       return true;
     } catch (err) {
-      console.log(err);
+      console.error(err);
       return false;
     }
   },
@@ -82,7 +71,7 @@ exports.mailService = {
       process.env.AUTH_SECRET_KEY_RECOVERY,
       { expiresIn: "10m" },
     );
-    const body = `Hello,<br/><br/>
+    const html = `Hello,<br/><br/>
                   <br/>A recover-link has been requested for this email address.
                   By following this link you'll be able to generate a new password for your account.<br/>
                   <b>If you did not request this, ignore this email</b> and nothing else will happen.<br/>
@@ -95,27 +84,14 @@ exports.mailService = {
                   <br/>
                   ${emailDisclaimer}`;
 
-    const requestBody = {
-      from: "Spielbetrieb <info@spielbetrieb.eu>",
+    const email = {
+      from: "Spielbetrieb <admin@spielbetrieb.eu>",
       to: sendto,
       subject: "Spielbetrieb.eu | Reset your password with this link",
-      body,
-      key: process.env.MAILMAN_KEY,
+      html,
     };
     try {
-      const response = await axios({
-        url: process.env.MAILMAN_URL,
-        method: "POST",
-        data: requestBody,
-      });
-      if ((response.status !== 200) & (response.status !== 201)) {
-        if (response.status === 401) {
-          throw new Error("Error! Unauthorized(401)");
-        } else {
-          throw new Error(`Error! Status ${response.status}`);
-        }
-      }
-      // Return true on success
+      await sgMail.send(email);
       return true;
     } catch (err) {
       console.log(err);
@@ -137,7 +113,7 @@ exports.mailService = {
       process.env.AUTH_SECRET_KEY_EMAILVERIFY,
       { expiresIn: "24h" },
     );
-    const body = `Hello,<br/><br/>
+    const html = `Hello,<br/><br/>
                   Thank you for joining us, and welcome to your next aventure.
                   Protecting our community is the upmost important: By following the link 
                   underneath you will help us verify the email now linked to your account. 
@@ -153,27 +129,14 @@ exports.mailService = {
                   <br/>
                   ${emailDisclaimer}`;
 
-    const requestBody = {
-      from: "Spielbetrieb <info@spielbetrieb.eu>",
+    const email = {
+      from: "Spielbetrieb <admin@spielbetrieb.eu>",
       to: sendto,
       subject: "Spielbetrieb.eu | Confirm your email address with this link",
-      body,
-      key: process.env.MAILMAN_KEY,
+      html,
     };
     try {
-      const response = await axios({
-        url: process.env.MAILMAN_URL,
-        method: "POST",
-        data: requestBody,
-      });
-      if ((response.status !== 200) & (response.status !== 201)) {
-        if (response.status === 401) {
-          throw new Error("Error! Unauthorized(401)");
-        } else {
-          throw new Error(`Error! Status ${response.status}`);
-        }
-      }
-      // Return true on success
+      await sgMail.send(email);
       return true;
     } catch (err) {
       console.log(err);
@@ -187,7 +150,7 @@ exports.mailService = {
       process.env.AUTH_SECRET_KEY_EMAILVERIFY,
       { expiresIn: "7d" },
     );
-    const body = `Hello,<br/><br/>
+    const html = `Hello,<br/><br/>
                   Thank you for subscribing to our newsletter: By following the link 
                   underneath you will help us verify the email you gave us.<br/>
                   <b>If you did not wish to be added to our mailings lists, please simply ignore this email</b> and nothing else will happen.<br/>
@@ -201,27 +164,14 @@ exports.mailService = {
                   <br/>
                   ${emailDisclaimer}`;
 
-    const requestBody = {
-      from: "Spielbetrieb <info@spielbetrieb.eu>",
+    const email = {
+      from: "Spielbetrieb <admin@spielbetrieb.eu>",
       to: sendto,
       subject: "Spielbetrieb.eu | Confirm your registration to our newsletter",
-      body,
-      key: process.env.MAILMAN_KEY,
+      html,
     };
     try {
-      const response = await axios({
-        url: process.env.MAILMAN_URL,
-        method: "POST",
-        data: requestBody,
-      });
-      if ((response.status !== 200) & (response.status !== 201)) {
-        if (response.status === 401) {
-          throw new Error("Error! Unauthorized(401)");
-        } else {
-          throw new Error(`Error! Status ${response.status}`);
-        }
-      }
-      // Return true on success
+      await sgMail.send(email);
       return true;
     } catch (err) {
       console.log(err);
