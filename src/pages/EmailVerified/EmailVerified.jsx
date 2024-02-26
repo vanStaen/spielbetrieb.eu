@@ -16,6 +16,7 @@ import "./EmailVerified.less";
 
 export const EmailVerified = observer(() => {
   const [isLoading, setIsLoading] = useState(true);
+  const [countdownCounter, setCoundownCounter] = useState(10);
   const [isVerified, setIsVerified] = useState(false);
   const { t } = useTranslation();
   const params = useParams();
@@ -24,6 +25,11 @@ export const EmailVerified = observer(() => {
     const success = await postEmailVerified(params.token);
     if (success) {
       setIsVerified(true);
+      for (let i = 10; i > 0; i--) {
+        setTimeout(() => {
+          setCoundownCounter(i);
+        }, 1000);
+      }
       setTimeout(() => {
         document.location.href = "/";
       }, 10000);
@@ -65,7 +71,7 @@ export const EmailVerified = observer(() => {
                     {" "}
                     {t("login.loginPage")}
                   </span>
-                  .
+                  , in {countdownCounter}...
                 </div>
               </div>
             ) : (
@@ -103,7 +109,7 @@ export const EmailVerified = observer(() => {
             </Tooltip>
           </>
         )}
-      </div>
+      </div >
     </>
   );
 });
