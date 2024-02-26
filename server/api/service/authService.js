@@ -21,7 +21,9 @@ exports.authService = {
       if (!isValid) {
         throw new Error("Password is incorrect!");
       }
-
+      if (foundUser.suspended) {
+        throw new Error("User is suspended!");
+      }
       // Set token in session cookie
       const accessToken = await jsonwebtoken.sign(
         { userId: foundUser._id },

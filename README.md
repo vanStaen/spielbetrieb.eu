@@ -92,12 +92,34 @@ We use the Geocoding API from google to get coordinates out of addresses, and vi
 
 The app is hosted by Heroku (Salesforce Platform) under the name `spielbetrieb`.
 
+#### Howto deploy
+
+To upload to heroku, use the CLI tool. To install it go `brew tap heroku/brew && brew install heroku` in the terminal. You can check you have it using `heroku --version`. You will need Git too (`git --version`)</br>
+
+Then, for existing repositories, simply add the heroku remote to git with `heroku git:remote -a rewaer`.
+
+Use `heroku login` to log to your account. Then `git push heroku master`, you can deploy the app. `heroku open` to get the app opened in your browser.
+
+Use the custom script `npm run deploy` to run all of the above commands at once.
+
+#### Heroku Logs
+
+To access heroku's log, run `heroku logs --tail` in the terminal.
+The log's saved by the index.js page can be seen at https://rewaer.herokuapp.com/log
+
+
+#### Heroku CLI slow?
+
+Delete the .netrc file in the home folder (and maybe restart your IDE).
+`cmd+shift+point` to show hidden files on mac.
+
 ### Email API : SendGrid via Heroku 
 
 Mail are send voia the SendGrid Api. To integerate the API into node,the package `@sendgrid/mail` is used. See its use in the Mail Service (API/Service). More in the documentation under https://app.sendgrid.com/
 
 Some detail about the pricing and availibility of Sendgrid: https://elements.heroku.com/addons/sendgrid (free up to 12 000 email per month).
 
+Track email sent: https://app.sendgrid.com/email_activity
 
 ### Design ideas
 
