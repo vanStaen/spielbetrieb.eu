@@ -26,7 +26,7 @@ export const EmailVerified = observer(() => {
       setIsVerified(true);
       setTimeout(() => {
         document.location.href = "/";
-      }, 5000);
+      }, 10000);
     }
     setIsLoading(false);
   }, [params.verifyCode]);
