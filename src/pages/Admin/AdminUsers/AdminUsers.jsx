@@ -258,7 +258,7 @@ export const AdminUsers = () => {
             pagination={false}
             size="small"
             scroll={{
-              x: 1000,
+              x: 1200,
             }}
           />
         </>
