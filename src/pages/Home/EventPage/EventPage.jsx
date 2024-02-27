@@ -10,6 +10,7 @@ import { agendaStore } from "../../../store/agendaStore/agendaStore";
 import { pageStore } from "../../../store/pageStore/pageStore";
 import { getSingleEvents } from "./getSingleEvents";
 import { nameParser } from "../../../helpers/nameParser";
+import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
 
 import "./EventPage.less";
 
@@ -153,6 +154,7 @@ export const EventPage = observer(() => {
           </div>
         </div>
       )}
+      <HelpButtons />
     </>
   );
 });
