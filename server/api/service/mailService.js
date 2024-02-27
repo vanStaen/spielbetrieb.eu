@@ -1,4 +1,3 @@
-const axios = require("axios");
 const jsonwebtoken = require("jsonwebtoken");
 const { User } = require("../../models/User");
 const validateEmail = require("../../lib/validateEmail");
@@ -6,7 +5,7 @@ const sgMail = require('@sendgrid/mail')
 require("dotenv/config");
 
 const mainDomain = "spielbetrieb.eu";
-sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const emailDisclaimer = `
   <br/>
