@@ -105,12 +105,11 @@ export const Menu = observer(() => {
               &nbsp; Settings
             </div>
             <div className="menu__whiteline"></div>
-            <div 
-              className="link menu__element"
-              key="addtohomescreen"
-            >
+            {/* 
+            <div key="addtohomescreen" >
               <AddToHomeScreen />
             </div>
+            */}
             <div
               className="link menu__element"
               onMouseEnter={() => setShowOpenLock(true)}
