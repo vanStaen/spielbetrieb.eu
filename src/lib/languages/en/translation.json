@@ -97,7 +97,9 @@
     "birthdayMissing": "Birthday missing",
     "birthday": "Birthday",
     "mustBeOfLegalAge": "You must be over 18",
-    "areYouReallyThatOld": "Are you that old?"
+    "areYouReallyThatOld": "Are you that old?",
+    "userSuspended": "This user is suspended",
+    "userSuspendedDesc": "Please contact us if you think this is an error."
   },
   "404": {
     "endOfInternet": "You reach the end of the internet!",

@@ -72,6 +72,16 @@ export const LoginForm = observer(() => {
             placement: "bottomRight",
             className: "customNotification",
           });
+        } else if (error === "Error: User is suspended!") {
+          notification.open({
+            duration: 0,
+            message: <ErrorUserSuspended />,
+            description: (
+              <ErrorDescUserSuspended />
+            ),
+            placement: "bottomRight",
+            className: "customNotification",
+          });
         } else {
           notification.error({
             message: error,
@@ -227,5 +237,17 @@ const ErrorDescPwdIncorrect = (props) => {
       </span>{" "}
       {t("login.feature")}.
     </div>
+  );
+};
+
+const ErrorUserSuspended = () => {
+  const { t } = useTranslation();
+  return <>❌ {t("login.userSuspended")}!</>;
+};
+
+const ErrorDescUserSuspended = (props) => {
+  const { t } = useTranslation();
+  return (
+    <>{t("login.userSuspendedDesc")}</>
   );
 };

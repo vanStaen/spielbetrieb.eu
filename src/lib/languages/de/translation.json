@@ -97,7 +97,9 @@
     "birthdayMissing": "Geburtsdatum fehlt",
     "birthday": "Geburtsdatum",
     "mustBeOfLegalAge": "Du must über 18 sein",
-    "areYouReallyThatOld": "Wirklich? Sicher?"
+    "areYouReallyThatOld": "Wirklich? Sicher?",
+    "userSuspended": "Dieser Konto ist gesperrt",
+    "userSuspendedDesc": "Please contact us if you think this is an error."
   },
   "404": {
     "endOfInternet": "Sie haben das Ende des Internets erreicht!",
