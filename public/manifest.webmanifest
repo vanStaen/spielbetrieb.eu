@@ -1,10 +1,32 @@
 {
   "short_name": "spielbetrieb",
   "name": "Spielbetrieb",
-  "description" : "Spielbetrieb | coming soon",
+  "description" : "Spielbetrieb | love to love",
+  "icons": [
+    {
+      "src": "spielbetrieb_logo_beige_24.png",
+      "type": "image/png",
+      "sizes": "24x24"
+    },
+    {
+      "src": "spielbetrieb_logo_beige_128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "spielbetrieb_logo_beige_256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "spielbetrieb_logo_beige_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
   "start_url": "https://spielbetrieb.eu",
   "display": "standalone",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#e1cfbb",
+  "background_color": "#142436",
   "clipboardWrite": true
 }
