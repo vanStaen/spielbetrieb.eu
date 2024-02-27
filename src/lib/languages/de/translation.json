@@ -99,7 +99,7 @@
     "mustBeOfLegalAge": "Du must über 18 sein",
     "areYouReallyThatOld": "Wirklich? Sicher?",
     "userSuspended": "Dieser Konto ist gesperrt",
-    "userSuspendedDesc": "Please contact us if you think this is an error."
+    "userSuspendedDesc": "Bitte kontaktieren Sie uns, wenn Sie glauben, dass es sich hierbei um einen Fehler handelt."
   },
   "404": {
     "endOfInternet": "Sie haben das Ende des Internets erreicht!",
