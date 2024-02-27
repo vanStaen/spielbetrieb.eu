@@ -15,6 +15,7 @@ import {
 import { userStore } from "../../store/userStore/userStore";
 import { pageStore } from "../../store/pageStore/pageStore";
 import { authStore } from "../../store/authStore/authStore";
+import { AddToHomeScreen } from "../AddToHomeScreen/AddToHomeScreen";
 
 import "./Menu.less";
 
@@ -104,6 +105,12 @@ export const Menu = observer(() => {
               &nbsp; Settings
             </div>
             <div className="menu__whiteline"></div>
+            <div 
+              className="link menu__element"
+              key="addtohomescreen"
+            >
+              <AddToHomeScreen />
+            </div>
             <div
               className="link menu__element"
               onMouseEnter={() => setShowOpenLock(true)}

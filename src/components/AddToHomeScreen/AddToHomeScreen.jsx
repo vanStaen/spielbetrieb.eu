@@ -22,7 +22,7 @@ export const AddToHomeScreen = () => {
     e.preventDefault();
     deferredPrompt = e;
     //console.log(e);
-    //console.log("A2HS prompt was prevented and stored!");
+    console.log("A2HS prompt was prevented and stored!");
     a2hsButton.style.display = "block";
   };
 
