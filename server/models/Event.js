@@ -84,6 +84,10 @@ const Event = sequelize.define("event", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
+  isPartnerEvent: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 User.hasMany(Event);

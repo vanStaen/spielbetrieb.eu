@@ -62,24 +62,22 @@ export const EventPage = observer(() => {
     });
     eventTags?.splice(0, 0, {
       name: nameParser(
-        agendaStore.eventtypes.filter((eventtype) => parseInt(eventtype._id) === event?.eventtype)[0]
-          ?.name,
+        agendaStore.eventtypes.filter(
+          (eventtype) => parseInt(eventtype._id) === event?.eventtype,
+        )[0]?.name,
         pageStore.selectedLanguage?.toLowerCase(),
       ),
       id: event?.eventtype,
     });
-    const tagsFormatted = eventTags?.map(
-      (tag) => {
-        return (
-          <Tag key={tag.id} bordered={false}>
-            #{tag.name}
-          </Tag>
-        );
-      },
-    );
+    const tagsFormatted = eventTags?.map((tag) => {
+      return (
+        <Tag key={tag.id} bordered={false}>
+          #{tag.name}
+        </Tag>
+      );
+    });
     return tagsFormatted;
-  }
-
+  };
 
   const isInThePast = event?.fromDate < dayjs();
 
@@ -103,33 +101,34 @@ export const EventPage = observer(() => {
           <div className="eventpage__date">
             <span className="eventpage__weekday">
               {dayjs(event.fromDate).format("dddd")}
-            </span>
-            {' '}
+            </span>{" "}
             <span className="eventpage__daymonth">
               {dayjs(event.fromDate).format("DD MMMM")}
-            </span>
-            {' '}
+            </span>{" "}
             <span className="eventpage__year">
               {dayjs(event.fromDate).format("YYYY")}
             </span>
           </div>
           <div className="eventpage__time">
-            <ClockCircleOutlined />{' '}
-            {dayjs(event.fromDate).format("dddd") === dayjs(event.untilDate).format("dddd") ?
+            <ClockCircleOutlined />{" "}
+            {dayjs(event.fromDate).format("dddd") ===
+            dayjs(event.untilDate).format("dddd") ? (
               <>
-                {dayjs(event.fromDate).format("HH:mm")}{' '}{t('agenda.until')}{' '}
+                {dayjs(event.fromDate).format("HH:mm")} {t("agenda.until")}{" "}
                 {dayjs(event.untilDate).format("HH:mm")}
               </>
-              : <>
-                {dayjs(event.fromDate).format("dddd HH:mm")}{' '}{t('agenda.until')}{' '}
+            ) : (
+              <>
+                {dayjs(event.fromDate).format("dddd HH:mm")} {t("agenda.until")}{" "}
                 {dayjs(event.untilDate).format("dddd HH:mm")}
               </>
-            }
+            )}
             <div className="eventpage__location">
               <a
                 href={`https://www.google.com/maps/@${event.locationCoordinates}`}
                 className="eventpage__location"
                 target="_blank"
+                rel="noreferrer"
               >
                 <EnvironmentOutlined /> {event.locationAddress}
               </a>
@@ -143,14 +142,10 @@ export const EventPage = observer(() => {
                 {t("agenda.eventOrganisedBy")}{" "}
               </span>
               <Link to={`/user/${event.user.userName}`} relative="path">
-                <span className="link">
-                  {event.user.userName}
-                </span>
+                <span className="link">{event.user.userName}</span>
               </Link>
             </div>
-            <div className="eventpage__tags">
-              {eventTags()}
-            </div>
+            <div className="eventpage__tags">{eventTags()}</div>
           </div>
         </div>
       )}

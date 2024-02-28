@@ -76,9 +76,7 @@ export const LoginForm = observer(() => {
           notification.open({
             duration: 0,
             message: <ErrorUserSuspended />,
-            description: (
-              <ErrorDescUserSuspended />
-            ),
+            description: <ErrorDescUserSuspended />,
             placement: "bottomRight",
             className: "customNotification",
           });
@@ -247,7 +245,5 @@ const ErrorUserSuspended = () => {
 
 const ErrorDescUserSuspended = (props) => {
   const { t } = useTranslation();
-  return (
-    <>{t("login.userSuspendedDesc")}</>
-  );
+  return <>{t("login.userSuspendedDesc")}</>;
 };

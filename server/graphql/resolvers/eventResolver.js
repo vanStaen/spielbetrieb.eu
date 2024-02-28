@@ -71,6 +71,7 @@ exports.eventResolver = {
         forwardable: args.eventInput.forwardable,
         allowAnonymous: args.eventInput.allowAnonymous,
         isDraft: args.eventInput.isDraft,
+        isPartnerEvent: args.eventInput.isPartnerEvent,
         admin: [req.userId],
       });
       return await event.save();
@@ -105,6 +106,7 @@ exports.eventResolver = {
       "forwardable",
       "allowAnonymous",
       "isDraft",
+      "isPartnerEvent",
     ];
     updatableFields.forEach((field) => {
       if (field in args.eventInput) {

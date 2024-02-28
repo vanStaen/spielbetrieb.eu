@@ -1,7 +1,7 @@
 const jsonwebtoken = require("jsonwebtoken");
 const { User } = require("../../models/User");
 const validateEmail = require("../../lib/validateEmail");
-const sgMail = require('@sendgrid/mail')
+const sgMail = require("@sendgrid/mail");
 require("dotenv/config");
 
 const mainDomain = "spielbetrieb.eu";

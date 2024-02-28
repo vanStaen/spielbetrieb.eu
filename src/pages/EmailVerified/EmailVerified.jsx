@@ -131,7 +131,7 @@ export const EmailVerified = observer(() => {
             </Tooltip>
           </>
         )}
-      </div >
+      </div>
     </>
   );
 });

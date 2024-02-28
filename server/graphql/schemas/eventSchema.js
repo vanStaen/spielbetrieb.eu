@@ -20,6 +20,7 @@ type Event {
     forwardable: Boolean!
     allowAnonymous: Boolean!
     isDraft: Boolean!
+    isPartnerEvent: Boolean!
     createdAt: Float!
     updatedAt: Float!
     user: User
@@ -46,6 +47,7 @@ input EventInputData {
     forwardable: Boolean
     allowAnonymous: Boolean
     isDraft: Boolean
+    isPartnerEvent: Boolean
 }`;
 
 exports.EventQueries = `

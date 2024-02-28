@@ -86,6 +86,10 @@ The names of those parameters (save in an extra table) should be an object follo
 
 We use the Geocoding API from google to get coordinates out of addresses, and vice-versa: https://developers.google.com/maps/documentation/geocoding/overview
 
+#### Sorting
+
+Event are sorted on several levels: The main one is the day time (DD-MM-YYYY). Within a day, the partner events are shown first (isPartnerEvent), then the even with the most guest (attendees), then the start time (HH:mm), and finally alphabetically (Event name).
+
 ## Ressources
 
 ### Host
