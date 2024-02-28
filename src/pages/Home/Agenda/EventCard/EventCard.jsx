@@ -45,9 +45,11 @@ export const EventCard = observer((props) => {
       <Tag
         key={tag.id}
         bordered={false}
-        onClick={() => {
+        onClick={(event) => {
+          event.stopPropagation();
           handleTagClick(index, tag.id);
-        }}
+        }
+        }
       >
         #{tag.name}
       </Tag>
