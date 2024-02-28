@@ -22,6 +22,8 @@ export const EventPage = observer(() => {
   const navigate = useNavigate();
   const event = agendaStore.selectedEvent || null;
 
+  console.log('event', event);
+
   const keydownEventHandler = (event) => {
     const keyPressed = event.key.toLowerCase();
     console.log(keyPressed);
@@ -161,8 +163,8 @@ export const EventPage = observer(() => {
                 <span className="eventpage__organizedBy">
                   {t("agenda.eventOrganisedBy")}{" "}
                 </span>
-                <Link to={`/user/${event.user.userName}`} relative="path">
-                  <span className="link">{event.user.userName}</span>
+                <Link to={`/user/${event.user?.userName}`} relative="path">
+                  <span className="link">{event.user?.userName}</span>
                 </Link>
               </div>
             </div>
