@@ -3,7 +3,8 @@ import { Tag } from "antd";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react";
-import { ClockCircleOutlined, EnvironmentOutlined } from "@ant-design/icons";
+import { ClockCircleOutlined, EnvironmentOutlined, ArrowLeftOutlined } from "@ant-design/icons";
+
 import * as dayjs from "dayjs";
 
 import { agendaStore } from "../../../store/agendaStore/agendaStore";
@@ -91,63 +92,76 @@ export const EventPage = observer(() => {
 
   return (
     <>
+      <div
+        onClick={() => {
+          navigate(-1);
+        }}
+        className={`eventpage__back link 
+                  ${pageStore.selectedTheme === "light" ?
+            "lightColorTheme__Text" :
+            "darkColorTheme__Text"}`}
+      >
+        <ArrowLeftOutlined />{" "}back to the list of events
+      </div>
       {event !== null && (
-        <div
-          key={event._id}
-          id={`eventContainer${event._id}`}
-          className={`eventpage__container ${isInThePast && "eventpage__ContainerPast"}`}
-          onClick={handleEventContainerClick}
-        >
-          <div className="eventpage__date">
-            <span className="eventpage__weekday">
-              {dayjs(event.fromDate).format("dddd")}
-            </span>{" "}
-            <span className="eventpage__daymonth">
-              {dayjs(event.fromDate).format("DD MMMM")}
-            </span>{" "}
-            <span className="eventpage__year">
-              {dayjs(event.fromDate).format("YYYY")}
-            </span>
-          </div>
-          <div className="eventpage__time">
-            <ClockCircleOutlined />{" "}
-            {dayjs(event.fromDate).format("dddd") ===
-            dayjs(event.untilDate).format("dddd") ? (
-              <>
-                {dayjs(event.fromDate).format("HH:mm")} {t("agenda.until")}{" "}
-                {dayjs(event.untilDate).format("HH:mm")}
-              </>
-            ) : (
-              <>
-                {dayjs(event.fromDate).format("dddd HH:mm")} {t("agenda.until")}{" "}
-                {dayjs(event.untilDate).format("dddd HH:mm")}
-              </>
-            )}
-            <div className="eventpage__location">
-              <a
-                href={`https://www.google.com/maps/@${event.locationCoordinates}`}
-                className="eventpage__location"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <EnvironmentOutlined /> {event.locationAddress}
-              </a>
-            </div>
-            <br />
-            <div className="eventpage__title">{event.title}</div>
-            <div className="eventpage__desc">{event.description}</div>
-            <br />
-            <div className="eventpage__promoter">
-              <span className="eventpage__organizedBy">
-                {t("agenda.eventOrganisedBy")}{" "}
+        <>
+          <div
+            key={event._id}
+            id={`eventContainer${event._id}`}
+            className={`eventpage__container ${isInThePast && "eventpage__ContainerPast"}`}
+            onClick={handleEventContainerClick}
+          >
+            <div className="eventpage__date">
+              <span className="eventpage__weekday">
+                {dayjs(event.fromDate).format("dddd")}
+              </span>{" "}
+              <span className="eventpage__daymonth">
+                {dayjs(event.fromDate).format("DD MMMM")}
+              </span>{" "}
+              <span className="eventpage__year">
+                {dayjs(event.fromDate).format("YYYY")}
               </span>
-              <Link to={`/user/${event.user.userName}`} relative="path">
-                <span className="link">{event.user.userName}</span>
-              </Link>
             </div>
-            <div className="eventpage__tags">{eventTags()}</div>
+            <div className="eventpage__time">
+              <ClockCircleOutlined />{" "}
+              {dayjs(event.fromDate).format("dddd") ===
+                dayjs(event.untilDate).format("dddd") ? (
+                <>
+                  {dayjs(event.fromDate).format("HH:mm")} {t("agenda.until")}{" "}
+                  {dayjs(event.untilDate).format("HH:mm")}
+                </>
+              ) : (
+                <>
+                  {dayjs(event.fromDate).format("dddd HH:mm")} {t("agenda.until")}{" "}
+                  {dayjs(event.untilDate).format("dddd HH:mm")}
+                </>
+              )}
+              <div className="eventpage__location">
+                <a
+                  href={`https://www.google.com/maps/@${event.locationCoordinates}`}
+                  className="eventpage__location"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <EnvironmentOutlined /> {event.locationAddress}
+                </a>
+              </div>
+              <br />
+              <div className="eventpage__title">{event.title}</div>
+              <div className="eventpage__desc">{event.description}</div>
+              <br />
+              <div className="eventpage__promoter">
+                <span className="eventpage__organizedBy">
+                  {t("agenda.eventOrganisedBy")}{" "}
+                </span>
+                <Link to={`/user/${event.user.userName}`} relative="path">
+                  <span className="link">{event.user.userName}</span>
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
+          <div className="eventpage__tags">{eventTags()}</div>
+        </>
       )}
       <HelpButtons />
     </>

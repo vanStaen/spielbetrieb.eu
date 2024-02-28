@@ -1,24 +1,20 @@
+.eventpage__back {
+    width: calc(100% - 40px); // minus margin/padding
+    padding: 0 0;
+    margin: 25px 0 10px 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
 .eventpage__container {
     width: calc(100% - 40px - 40px); // minus margin/padding
-    margin: 25px 20px;
+    margin: 0 20px 10px 20px;
     max-width: 1200px;
     border-radius: 3px;
     border: 1px solid rgba(var(--themeFontColor), .3);
-    background: rgba(black, .25);
+    background: rgba(var(--themeBlackOrWhiteColor), .25);
     padding: 20px;
     color: rgba(white, 1);
-
-    .eventpage__tags {
-        width: 100%;
-        padding-top: 10px;
-
-        .ant-tag-borderless {
-            border-color: transparent;
-            background: rgba(var(--themeFontColor), .75);
-            color: rgba(var(--themeFontColorInvert), 1);
-            margin: 3px;
-        }
-    }
 
     .eventpage__date {
         font-size: 27px;
@@ -79,5 +75,18 @@
             }
         }
     }
+}
 
+.eventpage__tags {
+    width: calc(100% - 40px); // minus margin/padding
+    margin: 0 20px;
+    font-size: 14px;
+    font-weight: 400;
+
+    .ant-tag-borderless {
+        border-color: transparent;
+        background: rgba(var(--themeFontColor), .75);
+        color: rgba(var(--themeFontColorInvert), 1);
+        margin: 3px;
+    }
 }

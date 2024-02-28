@@ -11,6 +11,11 @@ document.documentElement.style.setProperty(
   "--themeFontColorInvert",
   "20,36,54",
 );
+document.documentElement.style.setProperty(
+  "--themeBlackOrWhiteColor",
+  "255,255,255",
+);
+
 
 export const DarkModeDropDown = observer(() => {
   const { t } = useTranslation();
@@ -31,6 +36,11 @@ export const DarkModeDropDown = observer(() => {
         "--themeFontColorInvert",
         "20,36,54",
       );
+      document.documentElement.style.setProperty(
+        "--themeBlackOrWhiteColor",
+        "255,255,255",
+      );
+
     } else {
       document.documentElement.style.setProperty(
         "--themeFontColor",
@@ -40,6 +50,11 @@ export const DarkModeDropDown = observer(() => {
         "--themeFontColorInvert",
         "225,207,187",
       );
+      document.documentElement.style.setProperty(
+        "--themeBlackOrWhiteColor",
+        "0,0,0",
+      );
+
     }
   }, [theme]);
 
