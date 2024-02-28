@@ -14,6 +14,7 @@ import { nameParser } from "../../../helpers/nameParser";
 import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
 
 import "./EventPage.less";
+import "./EventPageColors.less";
 
 export const EventPage = observer(() => {
   const { t } = useTranslation();
@@ -82,6 +83,10 @@ export const EventPage = observer(() => {
 
   const isInThePast = event?.fromDate < dayjs();
 
+  const eventColor = agendaStore.eventtypes?.filter(
+    (et) => parseInt(et._id) === event?.eventtype,
+  )[0]?.color;
+
   const handleEventContainerClick = () => {
     const elementContainer = document.getElementById(
       `eventContainer${event?._id}`,
@@ -108,7 +113,9 @@ export const EventPage = observer(() => {
           <div
             key={event._id}
             id={`eventContainer${event._id}`}
-            className={`eventpage__container ${isInThePast && "eventpage__ContainerPast"}`}
+            className={`eventpage__container 
+                      ${isInThePast && "eventpage__ContainerPast"} 
+                      ${"eventpagecolor" + eventColor}`}
             onClick={handleEventContainerClick}
           >
             <div className="eventpage__date">

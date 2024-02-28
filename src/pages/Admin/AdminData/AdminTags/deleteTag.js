@@ -1,7 +1,7 @@
 export async function deleteTag(id) {
   const graphqlQuery = {
     query: `mutation ( $id: ID! ) {
-                deleteTag ( TagId: $id ) 
+                deleteTag ( tagId: $id ) 
                 }`,
     variables: {
       id,
