@@ -154,6 +154,7 @@ export const EventForm = (props) => {
         size="small"
         onFinish={onFinish}
         name="event-form"
+        className="eventform__admin"
         initialValues={
           data && {
             eventDate: [dayjs(data.fromDate), dayjs(data.untilDate)],
@@ -174,7 +175,11 @@ export const EventForm = (props) => {
                 },
               ]}
             >
-              <Select options={eventtypes} placeholder="Event type" />
+              <Select
+                options={eventtypes}
+                placeholder="Event type"
+                className="eventtype__select"
+              />
             </Form.Item>
           </Col>
           <Col span={12}>
@@ -191,6 +196,7 @@ export const EventForm = (props) => {
                 options={locationOptions}
                 onChange={(value) => setIsNewLocation(value === 0)}
                 placeholder="Event location"
+                className="eventtype__select"
               />
             </Form.Item>
           </Col>
@@ -241,6 +247,7 @@ export const EventForm = (props) => {
             allowClear
             style={{ width: "100%" }}
             placeholder="Please select some tags"
+            className="eventtype__select"
             options={tags}
           />
         </Form.Item>
