@@ -5,9 +5,6 @@ const { Op } = require("sequelize");
 exports.eventResolver = {
   // getEvent
   async getEvent(args, req) {
-    if (!req.isAuth) {
-      throw new Error("Unauthorized!");
-    }
     return await Event.findOne({
       where: {
         _id: args.eventId,

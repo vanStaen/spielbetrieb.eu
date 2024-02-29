@@ -26,7 +26,6 @@ export const EventPage = observer(() => {
 
   const keydownEventHandler = (event) => {
     const keyPressed = event.key.toLowerCase();
-    console.log(keyPressed);
     if (keyPressed === "backspace" || keyPressed === "escape") {
       event.preventDefault();
       navigate(-1);
