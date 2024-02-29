@@ -3,7 +3,11 @@ import { Tag } from "antd";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react";
-import { ClockCircleOutlined, EnvironmentOutlined, ArrowLeftOutlined } from "@ant-design/icons";
+import {
+  ClockCircleOutlined,
+  EnvironmentOutlined,
+  ArrowLeftOutlined,
+} from "@ant-design/icons";
 
 import * as dayjs from "dayjs";
 
@@ -22,7 +26,7 @@ export const EventPage = observer(() => {
   const navigate = useNavigate();
   const event = agendaStore.selectedEvent || null;
 
-  console.log('event', event);
+  console.log("event", event);
 
   const keydownEventHandler = (event) => {
     const keyPressed = event.key.toLowerCase();
@@ -97,24 +101,26 @@ export const EventPage = observer(() => {
   };
 
   return (
-    <>
-      <div
-        onClick={() => {
-          navigate(-1);
-        }}
-        className={`eventpage__back link 
-                  ${pageStore.selectedTheme === "light" ?
-            "lightColorTheme__Text" :
-            "darkColorTheme__Text"}`}
-      >
-        <ArrowLeftOutlined />{" "}back to the list of events
-      </div>
+    <div className="eventpage__container">
       {event !== null && (
         <>
           <div
+            onClick={() => {
+              navigate(-1);
+            }}
+            className={`eventpage__back link 
+                      ${
+                        pageStore.selectedTheme === "light"
+                          ? "lightColorTheme__Text"
+                          : "darkColorTheme__Text"
+                      }`}
+          >
+            <ArrowLeftOutlined /> back to the list of events
+          </div>
+          <div
             key={event._id}
             id={`eventContainer${event._id}`}
-            className={`eventpage__container 
+            className={`eventpage__eventcontainer 
                       ${isInThePast && "eventpage__ContainerPast"} 
                       ${"eventpagecolor" + eventColor}`}
             onClick={handleEventContainerClick}
@@ -133,14 +139,15 @@ export const EventPage = observer(() => {
             <div className="eventpage__time">
               <ClockCircleOutlined />{" "}
               {dayjs(event.fromDate).format("dddd") ===
-                dayjs(event.untilDate).format("dddd") ? (
+              dayjs(event.untilDate).format("dddd") ? (
                 <>
                   {dayjs(event.fromDate).format("HH:mm")} {t("agenda.until")}{" "}
                   {dayjs(event.untilDate).format("HH:mm")}
                 </>
               ) : (
                 <>
-                  {dayjs(event.fromDate).format("dddd HH:mm")} {t("agenda.until")}{" "}
+                  {dayjs(event.fromDate).format("dddd HH:mm")}{" "}
+                  {t("agenda.until")}{" "}
                   {dayjs(event.untilDate).format("dddd HH:mm")}
                 </>
               )}
@@ -172,6 +179,6 @@ export const EventPage = observer(() => {
         </>
       )}
       <HelpButtons />
-    </>
+    </div>
   );
 });

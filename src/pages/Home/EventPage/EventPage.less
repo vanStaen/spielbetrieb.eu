@@ -1,95 +1,98 @@
-.eventpage__back {
-    width: calc(100% - 40px); // minus margin/padding
-    max-width: 1200px;
-    padding: 0 0;
-    margin: 25px 0 10px 0;
-    font-size: 14px;
-    font-weight: 400;
-}
-
 .eventpage__container {
-    width: calc(100% - 40px - 40px); // minus margin/padding
-    margin: 0 20px 10px 20px;
-    padding: 20px;
+    width: calc(100% - 50px); // -margin
     max-width: 1200px;
-    border-radius: 3px;
-    border: 1px solid rgba(var(--themeFontColor), .3);
+    margin: 0 25px;
 
-    .eventpage__date {
-        font-size: 27px;
-        font-weight: 600;
-
-        .eventpage__weekday {
-            opacity: .5;
-            font-weight: 300;
-        }
-
-        .eventpage__year {
-            opacity: .5;
-        }
+    .eventpage__back {
+        width: calc(100% - 40px); // minus margin/padding
+        padding: 0 0;
+        margin: 25px 0 10px 0;
+        font-size: 14px;
+        font-weight: 400;
     }
 
-    .eventpage__time {
-        padding-top: 5px;
-        font-size: 16px;
-        font-weight: 300;
+    .eventpage__eventcontainer {
+        width: calc(100% - 40px); // minus margin
+        margin: 0 0 10px 0;
+        padding: 20px;
+        border-radius: 3px;
+        border: 1px solid rgba(var(--themeFontColor), .3);
 
-    }
-
-    .eventpage__location {
-        padding-top: 5px;
-        font-size: 16px;
-        font-weight: 300;
-        color: rgba(white, 1);
-        text-decoration: none;
-        transition: color .3s ease;
-
-        &:hover {
-            color: rgba(var(--themeFontColor), .75);
-        }
-    }
-
-    .eventpage__title {
-        font-size: 27px;
-        font-weight: 600;
-        text-transform: uppercase;
-    }
-
-    .eventpage__desc {
-        padding-top: 10px;
-        font-size: 16px;
-        font-weight: 300;
-        line-height: 22px;
-        text-align: justify;
-        text-justify: inter-word;
-    }
-
-    .eventpage__promoter {
-        padding-top: 10px;
-        font-size: 12px;
-
-        .link {
-            color: rgba(white, 1);
+        .eventpage__date {
+            font-size: 27px;
             font-weight: 600;
+
+            .eventpage__weekday {
+                opacity: .5;
+                font-weight: 300;
+            }
+
+            .eventpage__year {
+                opacity: .5;
+            }
+        }
+
+        .eventpage__time {
+            padding-top: 5px;
+            font-size: 16px;
+            font-weight: 300;
+
+        }
+
+        .eventpage__location {
+            padding-top: 5px;
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(white, 1);
+            text-decoration: none;
+            transition: color .3s ease;
 
             &:hover {
                 color: rgba(var(--themeFontColor), .75);
             }
         }
+
+        .eventpage__title {
+            font-size: 27px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .eventpage__desc {
+            padding-top: 10px;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 22px;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .eventpage__promoter {
+            padding-top: 10px;
+            font-size: 12px;
+
+            .link {
+                color: rgba(white, 1);
+                font-weight: 600;
+
+                &:hover {
+                    color: rgba(var(--themeFontColor), .75);
+                }
+            }
+        }
     }
-}
 
-.eventpage__tags {
-    width: calc(100% - 40px); // minus margin/padding
-    max-width: 1200px;
-    margin: 0 20px;
-    font-size: 14px;
-    font-weight: 400;
+    .eventpage__tags {
+        width: calc(100% - 40px); // minus margin/padding
+        margin: 0 20px;
+        font-size: 14px;
+        font-weight: 400;
 
-    .ant-tag-borderless {
-        border-color: transparent;
-        background: rgba(var(--themeFontColor), .75);
-        color: rgba(var(--themeFontColorInvert), 1);
-        margin: 3px;
+        .ant-tag-borderless {
+            border-color: transparent;
+            background: rgba(var(--themeFontColor), .75);
+            color: rgba(var(--themeFontColorInvert), 1);
+            margin: 3px;
+        }
     }
 }
