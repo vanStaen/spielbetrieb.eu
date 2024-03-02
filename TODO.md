@@ -38,4 +38,4 @@
 - [ ] Valid some form with enter, cancel with esc
 - [ ] Rename Agenda to Spileplan in the code
 - [ ] Help buttons trigger a `tour` (see [tour ant component](https://ant.design/components/tour))
-- [ ] Error handling for suspended user
+- [ ] Create review model and schema/resolver

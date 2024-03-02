@@ -49,10 +49,6 @@ const Partner = sequelize.define("partner", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
-  deleted: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  },
   suspended: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,

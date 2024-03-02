@@ -9,6 +9,7 @@ const locationResolver = require("./resolvers/locationResolver");
 const messageResolver = require("./resolvers/messageResolver");
 const notificationResolver = require("./resolvers/notificationResolver");
 const photoResolver = require("./resolvers/photoResolver");
+const partnerResolver = require("./resolvers/partnerResolver");
 const subscriberResolver = require("./resolvers/subscriberResolver");
 const userResolver = require("./resolvers/userResolver");
 const visitorResolver = require("./resolvers/visitorResolver");
@@ -25,6 +26,7 @@ module.exports = {
   ...locationResolver.locationResolver,
   ...messageResolver.messageResolver,
   ...photoResolver.photoResolver,
+  ...partnerResolver.partnerResolver,
   ...subscriberResolver.subscriberResolver,
   ...userResolver.userResolver,
   ...visitorResolver.visitorResolver,
