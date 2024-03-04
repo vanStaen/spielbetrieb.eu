@@ -247,7 +247,7 @@ export const AdminLinks = () => {
               pagination={false}
               size="small"
               scroll={{
-                x: 1000,
+                x: 1400,
               }}
             />
           </Form>

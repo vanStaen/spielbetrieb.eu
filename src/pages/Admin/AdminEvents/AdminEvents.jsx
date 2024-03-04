@@ -294,7 +294,7 @@ export const AdminEvents = () => {
               pagination={false}
               size="small"
               scroll={{
-                x: 1800,
+                x: 1400,
               }}
             />
           </Form>

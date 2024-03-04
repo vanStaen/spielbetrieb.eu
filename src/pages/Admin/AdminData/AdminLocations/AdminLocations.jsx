@@ -231,7 +231,7 @@ export const AdminLocations = () => {
               pagination={false}
               size="small"
               scroll={{
-                x: 1800,
+                x: 1400,
               }}
             />
           </Form>
