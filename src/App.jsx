@@ -19,6 +19,7 @@ import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { Home } from "./pages/Home/Home";
 import { Legal } from "./pages/Legal/Legal";
 import { Admin } from "./pages/Admin/Admin";
+import { Impressum } from "./components/Impressum/Impressum";
 
 import "./lib/i18n";
 
@@ -77,6 +78,7 @@ const App = observer(() => {
     <BrowserRouter>
       <div className="App" id="app">
         <AcceptCookies />
+        <Impressum />
         <div className="main">
           <Routes>
             <Route

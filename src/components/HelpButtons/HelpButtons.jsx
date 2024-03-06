@@ -18,7 +18,7 @@ export const HelpButtons = observer((props) => {
       trigger="click"
       tooltip={t("help.helpNeeded")}
       icon={<QuestionOutlined />}
-      className="missingEventButtonContainer"
+      className="helpbutton"
     >
       <FloatButton
         className="missingEventButton"

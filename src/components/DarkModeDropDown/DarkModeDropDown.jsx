@@ -16,7 +16,6 @@ document.documentElement.style.setProperty(
   "255,255,255",
 );
 
-
 export const DarkModeDropDown = observer(() => {
   const { t } = useTranslation();
   const [theme, setTheme] = useState(pageStore.selectedTheme);
@@ -40,7 +39,6 @@ export const DarkModeDropDown = observer(() => {
         "--themeBlackOrWhiteColor",
         "255,255,255",
       );
-
     } else {
       document.documentElement.style.setProperty(
         "--themeFontColor",
@@ -54,7 +52,6 @@ export const DarkModeDropDown = observer(() => {
         "--themeBlackOrWhiteColor",
         "0,0,0",
       );
-
     }
   }, [theme]);
 
