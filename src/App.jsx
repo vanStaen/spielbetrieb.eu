@@ -116,11 +116,8 @@ const App = observer(() => {
             <Route path="privacy/" element={<Legal page="privacy" />} />
             <Route path="agb/" element={<Legal page="agb" />} />
             <Route path="impressum/" element={<Legal page="impressum" />} />
-            {window.location.hostname === "merrier.app" ? (
-              <Route path="/" element={<LandingPage />} />
-            ) : (
-              <Route path="/" element={<Home page="home" />} />
-            )}
+            <Route path="beta/" element={<Home page="home" />} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="*" element={<FourOfour />} />
           </Routes>
         </div>
