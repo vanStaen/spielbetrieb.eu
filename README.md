@@ -132,7 +132,8 @@ More landing page inspi: https://codepen.io/jeffbredenkamp/pen/jMLepL.
 Onepager display page: https://codepen.io/chrisdegroot/pen/NWNWjXr
 Nice Overall design: https://getcheex.com/
 cool sign up: https://dribbble.com/signup/new\
+scroll animations: https://css-tricks.com/books/greatest-css-tricks/scroll-animation/
 
 ### TechTuto
 
-esLing + prettier for React: https://www.linkedin.com/pulse/config-eslint-prettier-vs-code-react-js-anurag-kumar
+esLint + prettier for React: https://www.linkedin.com/pulse/config-eslint-prettier-vs-code-react-js-anurag-kumar
