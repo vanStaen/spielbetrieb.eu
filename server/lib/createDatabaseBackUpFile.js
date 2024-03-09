@@ -1,5 +1,6 @@
 const fs = require("fs");
 const { Client } = require("pg");
+// eslint-disable-next-line n/no-path-concat
 require("dotenv").config({ path: __dirname + "/./../../.env" });
 
 // init Postgres
@@ -37,18 +38,54 @@ const writeBackupFile = async () => {
     const month = today.getMonth() + 1; // Start from 0
     const day = today.getDate();
 
-    const databaseContentSubs = await fetchDatabaseContent("subscribers");
-    const filenameSubs = `${day}-${month}-${year}_spielbetrieb_subscribers.json`;
+    const databaseContentAdmincontacts =
+      await fetchDatabaseContent("admincontacts");
+    const filenameAdmincontact = `${day}-${month}-${year}_spielbetrieb_admincontacts.json`;
     fs.writeFileSync(
-      `../../../database-backups/spielbetrieb/${filenameSubs}`,
-      JSON.stringify(databaseContentSubs),
+      `../../../database-backups/spielbetrieb/${filenameAdmincontact}`,
+      JSON.stringify(databaseContentAdmincontacts),
     );
 
-    const databaseContentUsers = await fetchDatabaseContent("users");
-    const filenameUsers = `${day}-${month}-${year}_spielbetrieb_users.json`;
+    const databaseContentAdminlinks = await fetchDatabaseContent("adminlinks");
+    const filenameAdminlink = `${day}-${month}-${year}_spielbetrieb_adminlinks.json`;
     fs.writeFileSync(
-      `../../../database-backups/spielbetrieb/${filenameUsers}`,
-      JSON.stringify(databaseContentUsers),
+      `../../../database-backups/spielbetrieb/${filenameAdminlink}`,
+      JSON.stringify(databaseContentAdminlinks),
+    );
+
+    const databaseContentChats = await fetchDatabaseContent("chats");
+    const filenameChats = `${day}-${month}-${year}_spielbetrieb_chats.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameChats}`,
+      JSON.stringify(databaseContentChats),
+    );
+
+    const databaseContentComments = await fetchDatabaseContent("comments");
+    const filenameComments = `${day}-${month}-${year}_spielbetrieb_comments.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameComments}`,
+      JSON.stringify(databaseContentComments),
+    );
+
+    const databaseContentDarks = await fetchDatabaseContent("darks");
+    const filenameDarks = `${day}-${month}-${year}_spielbetrieb_darks.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameDarks}`,
+      JSON.stringify(databaseContentDarks),
+    );
+
+    const databaseContentEvents = await fetchDatabaseContent("events");
+    const filenameEvents = `${day}-${month}-${year}_spielbetrieb_events.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameEvents}`,
+      JSON.stringify(databaseContentEvents),
+    );
+
+    const databaseContentEventtypes = await fetchDatabaseContent("eventtypes");
+    const filenameEventtypes = `${day}-${month}-${year}_spielbetrieb_eventtypes.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameEventtypes}`,
+      JSON.stringify(databaseContentEventtypes),
     );
 
     const databaseContentLocations = await fetchDatabaseContent("locations");
@@ -58,18 +95,33 @@ const writeBackupFile = async () => {
       JSON.stringify(databaseContentLocations),
     );
 
-    const databaseContentTags = await fetchDatabaseContent("tags");
-    const filenameTags = `${day}-${month}-${year}_spielbetrieb_tags.json`;
+    const databaseContentMatchs = await fetchDatabaseContent("matchs");
+    const filenameMatchs = `${day}-${month}-${year}_spielbetrieb_matchs.json`;
     fs.writeFileSync(
-      `../../../database-backups/spielbetrieb/${filenameTags}`,
-      JSON.stringify(databaseContentTags),
+      `../../../database-backups/spielbetrieb/${filenameMatchs}`,
+      JSON.stringify(databaseContentMatchs),
     );
 
-    const databaseContentEventtypes = await fetchDatabaseContent("eventtypes");
-    const filenameEventtypes = `${day}-${month}-${year}_spielbetrieb_eventtypes.json`;
+    const databaseContentMessages = await fetchDatabaseContent("messages");
+    const filenameMessages = `${day}-${month}-${year}_spielbetrieb_messages.json`;
     fs.writeFileSync(
-      `../../../database-backups/spielbetrieb/${filenameEventtypes}`,
-      JSON.stringify(databaseContentEventtypes),
+      `../../../database-backups/spielbetrieb/${filenameMessages}`,
+      JSON.stringify(databaseContentMessages),
+    );
+
+    const databaseContentNotifications =
+      await fetchDatabaseContent("notifications");
+    const filenameNotifications = `${day}-${month}-${year}_spielbetrieb_notifications.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameNotifications}`,
+      JSON.stringify(databaseContentNotifications),
+    );
+
+    const databaseContentPartners = await fetchDatabaseContent("partners");
+    const filenamePartners = `${day}-${month}-${year}_spielbetrieb_partners.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenamePartners}`,
+      JSON.stringify(databaseContentPartners),
     );
 
     const databaseContentPartnertypes =
@@ -80,26 +132,62 @@ const writeBackupFile = async () => {
       JSON.stringify(databaseContentPartnertypes),
     );
 
-    const databaseContentEvents = await fetchDatabaseContent("events");
-    const filenameEvents = `${day}-${month}-${year}_spielbetrieb_events.json`;
+    const databaseContentPhotos = await fetchDatabaseContent("photos");
+    const filenamePhotos = `${day}-${month}-${year}_spielbetrieb_photos.json`;
     fs.writeFileSync(
-      `../../../database-backups/spielbetrieb/${filenameEvents}`,
-      JSON.stringify(databaseContentEvents),
+      `../../../database-backups/spielbetrieb/${filenamePhotos}`,
+      JSON.stringify(databaseContentPhotos),
     );
 
-    const databaseContentAdminlinks = await fetchDatabaseContent("adminlinks");
-    const filenameAdminlink = `${day}-${month}-${year}_spielbetrieb_adminlinks.json`;
+    const databaseContentReviews = await fetchDatabaseContent("reviews");
+    const filenameReviews = `${day}-${month}-${year}_spielbetrieb_reviews.json`;
     fs.writeFileSync(
-      `../../../database-backups/spielbetrieb/${filenameAdminlink}`,
-      JSON.stringify(databaseContentAdminlinks),
+      `../../../database-backups/spielbetrieb/${filenameReviews}`,
+      JSON.stringify(databaseContentReviews),
     );
 
-    const databaseContentAdmincontacts =
-      await fetchDatabaseContent("admincontacts");
-    const filenameAdmincontact = `${day}-${month}-${year}_spielbetrieb_admincontacts.json`;
+    const databaseContentSubs = await fetchDatabaseContent("subscribers");
+    const filenameSubs = `${day}-${month}-${year}_spielbetrieb_subscribers.json`;
     fs.writeFileSync(
-      `../../../database-backups/spielbetrieb/${filenameAdmincontact}`,
-      JSON.stringify(databaseContentAdmincontacts),
+      `../../../database-backups/spielbetrieb/${filenameSubs}`,
+      JSON.stringify(databaseContentSubs),
+    );
+
+    const databaseContentTags = await fetchDatabaseContent("tags");
+    const filenameTags = `${day}-${month}-${year}_spielbetrieb_tags.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameTags}`,
+      JSON.stringify(databaseContentTags),
+    );
+
+    const databaseContentUsers = await fetchDatabaseContent("users");
+    const filenameUsers = `${day}-${month}-${year}_spielbetrieb_users.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameUsers}`,
+      JSON.stringify(databaseContentUsers),
+    );
+
+    const databaseContentUsersfollowers =
+      await fetchDatabaseContent("usersfollowers");
+    const filenameUsersfollowers = `${day}-${month}-${year}_spielbetrieb_usersfollowers.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameUsersfollowers}`,
+      JSON.stringify(databaseContentUsersfollowers),
+    );
+
+    const databaseContentUsersfriends =
+      await fetchDatabaseContent("usersfriends");
+    const filenameUsersfriends = `${day}-${month}-${year}_spielbetrieb_usersfriends.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameUsersfriends}`,
+      JSON.stringify(databaseContentUsersfriends),
+    );
+
+    const databaseContentVisitors = await fetchDatabaseContent("visitors");
+    const filenameVisitors = `${day}-${month}-${year}_spielbetrieb_visitors.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameVisitors}`,
+      JSON.stringify(databaseContentVisitors),
     );
 
     console.log("Backup Success!");
