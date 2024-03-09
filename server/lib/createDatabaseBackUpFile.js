@@ -95,11 +95,11 @@ const writeBackupFile = async () => {
       JSON.stringify(databaseContentLocations),
     );
 
-    const databaseContentMatchs = await fetchDatabaseContent("matchs");
-    const filenameMatchs = `${day}-${month}-${year}_spielbetrieb_matchs.json`;
+    const databaseContentMatches = await fetchDatabaseContent("matches");
+    const filenameMatches = `${day}-${month}-${year}_spielbetrieb_matches.json`;
     fs.writeFileSync(
-      `../../../database-backups/spielbetrieb/${filenameMatchs}`,
-      JSON.stringify(databaseContentMatchs),
+      `../../../database-backups/spielbetrieb/${filenameMatches}`,
+      JSON.stringify(databaseContentMatches),
     );
 
     const databaseContentMessages = await fetchDatabaseContent("messages");
