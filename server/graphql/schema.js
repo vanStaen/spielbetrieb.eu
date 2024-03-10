@@ -4,6 +4,7 @@ const admincontactSchema = require("./schemas/admincontactSchema");
 const adminlinkSchema = require("./schemas/adminlinkSchema");
 const chatSchema = require("./schemas/chatSchema");
 const commentSchema = require("./schemas/commentSchema");
+const darkSchema = require("./schemas/darkSchema");
 const eventSchema = require("./schemas/eventSchema");
 const eventtypeSchema = require("./schemas/eventtypeSchema");
 const partnertypeSchema = require("./schemas/partnertypeSchema");
@@ -23,6 +24,7 @@ module.exports = buildSchema(`
     ${adminlinkSchema.Adminlink}
     ${chatSchema.Chat}
     ${commentSchema.Comment}
+    ${darkSchema.Dark}
     ${eventSchema.Event}
     ${eventtypeSchema.Eventtype}
     ${partnertypeSchema.Partnertype}
@@ -40,6 +42,7 @@ module.exports = buildSchema(`
     ${adminlinkSchema.AdminlinkInputData}
     ${chatSchema.ChatInputData}
     ${commentSchema.CommentInputData}
+    ${darkSchema.DarkInputData}
     ${eventSchema.EventInputData}
     ${eventtypeSchema.EventtypeInputData}
     ${partnertypeSchema.PartnertypeInputData}
@@ -58,6 +61,7 @@ module.exports = buildSchema(`
         ${adminlinkSchema.AdminlinkQueries}
         ${chatSchema.ChatQueries}
         ${commentSchema.CommentQueries}
+        ${darkSchema.DarkQueries}
         ${eventSchema.EventQueries}
         ${eventtypeSchema.EventtypeQueries}
         ${partnertypeSchema.PartnertypeQueries}
@@ -77,6 +81,7 @@ module.exports = buildSchema(`
         ${adminlinkSchema.AdminlinkMutations}
         ${chatSchema.ChatMutations}
         ${commentSchema.CommentMutations}
+        ${darkSchema.DarkMutations}
         ${eventSchema.EventMutations}
         ${eventtypeSchema.EventtypeMutations}
         ${partnertypeSchema.PartnertypeMutations}

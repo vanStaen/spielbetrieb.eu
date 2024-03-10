@@ -7,7 +7,7 @@ const Dark = sequelize.define("dark", {
     autoIncrement: true,
     primaryKey: true,
   },
-  nummer: {
+  number: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
