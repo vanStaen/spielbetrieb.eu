@@ -56,7 +56,7 @@ Possible admin roles are:
 1. `newsletter`: manage the list of subscribers to our lists
 2. `events`: overview/management of all events for the splieplan
 3. `users`: overview of registered users
-4. `shops`: overview of all partners
+4. `partners`: overview of all partners
 5. `content`: management of article for the blog and the dark issues 
 6. `analytics`: access to the portal's data
 7. `translation`: translation of the portal's texts
@@ -64,7 +64,7 @@ Possible admin roles are:
 9. `ressources`: some internal ressources for the admins only
 
 SQL update script exemple: 
-``` UPDATE public.users SET "isAdmin"=true, "adminRoles"='{newsletter,events,users,shops,content,analytics,translation,data,ressources}' WHERE _id=1; ```
+``` UPDATE public.users SET "isAdmin"=true, "adminRoles"='{newsletter,events,users,partners,content,analytics,translation,data,ressources}' WHERE _id=1; ```
 
 ### Table user | Partner
 

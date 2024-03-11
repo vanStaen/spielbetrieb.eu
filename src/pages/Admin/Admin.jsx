@@ -49,8 +49,8 @@ export const Admin = observer(() => {
         return <AdminEvents />;
       case "users":
         return <AdminUsers />;
-      case "shops":
-        return "shops";
+      case "partners":
+        return "partners";
       case "content":
         return <AdminContent />;
       case "analytics":
@@ -104,9 +104,9 @@ export const Admin = observer(() => {
                   icon: <UserOutlined />,
                 },
                 {
-                  label: !isMobile && "Shops",
-                  value: "shops",
-                  // disabled: !userStore.adminRoles?.includes('shops'),
+                  label: !isMobile && "Partners",
+                  value: "partners",
+                  // disabled: !userStore.adminRoles?.includes('partners'),
                   disabled: true,
                   icon: <ShopOutlined />,
                 },
