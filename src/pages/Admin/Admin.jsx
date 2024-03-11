@@ -19,6 +19,7 @@ import { AdminNewsletter } from "./AdminNewsletter/AdminNewsletter";
 import { AdminRessources } from "./AdminRessources/AdminRessources";
 import { AdminUsers } from "./AdminUsers/AdminUsers";
 import { AdminData } from "./AdminData/AdminData";
+import { AdminContent } from "./AdminContent/AdminContent";
 import { AdminEvents } from "./AdminEvents/AdminEvents";
 import { isMobileCheck } from "../../helpers/checkMobileTablet";
 import { authStore } from "../../store/authStore/authStore";
@@ -50,8 +51,8 @@ export const Admin = observer(() => {
         return <AdminUsers />;
       case "shops":
         return "shops";
-      case "blog":
-        return "blog";
+      case "content":
+        return <AdminContent />;
       case "analytics":
         return "analytics";
       case "translation":
@@ -110,10 +111,9 @@ export const Admin = observer(() => {
                   icon: <ShopOutlined />,
                 },
                 {
-                  label: !isMobile && "Blog",
-                  value: "blog",
-                  // disabled: !userStore.adminRoles?.includes('blog'),
-                  disabled: true,
+                  label: !isMobile && "Content",
+                  value: "content",
+                  disabled: !userStore.adminRoles?.includes('content'),
                   icon: <ReadOutlined />,
                 },
                 {

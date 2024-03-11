@@ -24,7 +24,8 @@ input DarkInputData {
 }`;
 
 exports.DarkQueries = `
-    getDarks(userId: Int): [Dark]!
+    getDark(darkId: Int): Dark!
+    getDarks: [Dark]
 `;
 
 exports.DarkMutations = `
