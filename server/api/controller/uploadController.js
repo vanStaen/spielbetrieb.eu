@@ -1,15 +1,28 @@
 const express = require("express");
-const AWS = require("aws-sdk");
 const multer = require("multer");
-const multerS3 = require("multer-s3");
 const router = express.Router();
 
-const { resizeImageFromUrl } = require("../../lib/processImageSharp");
-const uploadFileFromBufferToS3 = require("../../lib/uploadFileFromBufferToS3");
+// const { resizeImageFromUrl } = require("../../lib/processImageSharp");
+// const uploadFileFromBufferToS3 = require("../../lib/uploadFileFromBufferToS3");
 
 // Limits size of 10MB
-const sizeLimits = { fileSize: 1024 * 1024 * 10 };
+// const sizeLimits = { fileSize: 1024 * 1024 * 10 };
 
+const storage = multer.memoryStorage;
+const upload = multer({ storage });
+
+// POST single file object to s3
+router.post("/", upload.single("image"), (req, res) => {
+  if (!req.isAuth) {
+    throw new Error("Unauthorized!");
+  }
+  const { file } = req;
+  console.log(req.userId, file);
+  return res.send("upload success");
+});
+
+module.exports = router;
+/*
 // Allow only JPG and PNG
 const fileFilter = (req, file, callback) => {
   if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
@@ -109,8 +122,11 @@ router.delete("/:id", async (req, res) => {
       Key: "m_" + req.params.id,
     };
     await Promise.all([
+      // eslint-disable-next-line n/handle-callback-err
       s3.deleteObject(params, function (err, data) {}),
+      // eslint-disable-next-line n/handle-callback-err
       s3.deleteObject(paramsThumb, function (err, data) {}),
+      // eslint-disable-next-line n/handle-callback-err
       s3.deleteObject(paramsMedium, function (err, data) {}),
     ]);
     res.status(204).json({});
@@ -122,3 +138,4 @@ router.delete("/:id", async (req, res) => {
 });
 
 module.exports = router;
+*/
