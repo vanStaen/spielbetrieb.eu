@@ -1,4 +1,4 @@
-exports.Message = `
+export const Message = `
 type Message {
     _id: ID! 
     userId: Int!
@@ -11,17 +11,17 @@ type Message {
     user: User,
 }`;
 
-exports.MessageInputData = `
+export const MessageInputData = `
 input MessageInputData {
     message: String!
     attachedPhotoUrl: String
 }`;
 
-exports.MessageQueries = `
+export const MessageQueries = `
     getMessages(chatId: Int): [Message]
 `;
 
-exports.MessageMutations = `
+export const MessageMutations = `
     addMessage(chatId: ID!, messageInput: MessageInputData!): Message!
     deleteMessage(messageId: ID!): Boolean!
 `;

@@ -1,4 +1,4 @@
-exports.Visitor = `
+export const Visitor = `
 type Visitor {
     _id: ID! 
     userId: Int!
@@ -9,10 +9,10 @@ type Visitor {
     udpatedAt: String!
 }`;
 
-exports.VisitorQueries = `
+export const VisitorQueries = `
     getVisitor: [Visitor]
 `;
 
-exports.VisitorMutations = `
+export const VisitorMutations = `
     addVisitor(visitedId: Int!): Visitor!
 `;

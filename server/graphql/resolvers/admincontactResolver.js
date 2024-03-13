@@ -1,7 +1,7 @@
-const { Admincontact } = require("../../models/Admincontact");
-const { User } = require("../../models/User");
+import { Admincontact } from "../../models/Admincontact.js";
+import { User } from "../../models/User.js";
 
-exports.admincontactResolver = {
+export const admincontactResolver = {
   // getAllAdmincontacts
   async getAllAdmincontacts(args, req) {
     if (!req.isAuth) {

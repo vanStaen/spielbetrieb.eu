@@ -1,6 +1,6 @@
-const { sequelize, DataTypes } = require("../lib/sequelizedb");
+import { sequelize, DataTypes } from "../lib/sequelizedb.js";
 
-const Tag = sequelize.define("tag", {
+export const Tag = sequelize.sequelize.define("tag", {
   _id: {
     type: DataTypes.INTEGER,
     field: "_id",
@@ -32,7 +32,3 @@ const Tag = sequelize.define("tag", {
     defaultValue: true,
   },
 });
-
-module.exports = {
-  Tag,
-};

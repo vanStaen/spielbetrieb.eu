@@ -1,7 +1,7 @@
-const { Eventtype } = require("../../models/Eventtype");
-const { User } = require("../../models/User");
+import { Eventtype } from "../../models/Eventtype.js";
+import { User } from "../../models/User.js";
 
-exports.eventtypeResolver = {
+export const eventtypeResolver = {
   // getEventtypes
   async getEventtypes() {
     return await Eventtype.findAll({

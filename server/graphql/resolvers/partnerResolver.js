@@ -1,7 +1,7 @@
-const { User } = require("../../models/User");
-const { Partner } = require("../../models/Partner");
+import { User } from "../../models/User.js";
+import { Partner } from "../../models/Partner.js";
 
-exports.partnerResolver = {
+export const partnerResolver = {
   async getPartner(args, req) {
     return await Partner.findOne({
       where: { _id: args.partnerId },

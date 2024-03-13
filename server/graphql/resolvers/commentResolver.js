@@ -1,8 +1,8 @@
-const { Comment } = require("../../models/Comment");
-const { User } = require("../../models/User");
-const { Photo } = require("../../models/Photo");
+import { Comment } from "../../models/Comment.js";
+import { User } from "../../models/User.js";
+import { Photo } from "../../models/Photo.js";
 
-exports.commentResolver = {
+export const commentResolver = {
   // getComment
   async getComments(args, req) {
     return await Comment.findAll({

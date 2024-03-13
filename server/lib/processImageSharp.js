@@ -1,5 +1,5 @@
-const sharp = require("sharp");
-const axios = require("axios");
+import sharp from "sharp";
+import axios from "axios";
 
 module.exports = {
   async resizeImageFromUrl(originalImageUrl, size) {

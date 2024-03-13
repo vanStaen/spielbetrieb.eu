@@ -1,4 +1,4 @@
-exports.Comment = `
+export const Comment = `
 type Comment {
     _id: ID! 
     userId: Int!
@@ -12,7 +12,7 @@ type Comment {
     photo: Photo
 }`;
 
-exports.CommentInputData = `
+export const CommentInputData = `
 input CommentInputData {
     photoId: Int
     comment: String
@@ -20,11 +20,11 @@ input CommentInputData {
     dislikes: [Int]
 }`;
 
-exports.CommentQueries = `
+export const CommentQueries = `
     getComments(photoId: Int!): [Comment]
 `;
 
-exports.CommentMutations = `
+export const CommentMutations = `
     addComment(commentInput: CommentInputData!): Comment!
     updateComment(commentId: ID!, commentInput: CommentInputData!): Comment!
     deleteComment(commentId: ID!): Boolean!

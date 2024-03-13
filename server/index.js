@@ -1,16 +1,23 @@
-const path = require("path");
-const express = require("express");
-const cors = require(`cors`);
-const { graphqlHTTP } = require("express-graphql");
+import path from "path";
+import express from "express";
+import cors from "cors";
+import { graphqlHTTP } from "express-graphql";
+import { fileURLToPath } from "url";
 
-const db = require("./models");
-const graphqlSchema = require("./graphql/schema");
-const graphqlResolver = require("./graphql/resolvers");
-const isAuth = require("./middleware/isAuth");
-const cookieSession = require("./middleware/cookieSession");
-const redirectTraffic = require("./middleware/redirectTraffic");
+import db from "./models/index.js";
+import graphqlSchema from "./graphql/schema.js";
+import graphqlResolver from "./graphql/resolvers.js";
+import isAuth from "./middleware/isAuth.js";
+import cookieSession from "./middleware/cookieSession.js";
+import redirectTraffic from "./middleware/redirectTraffic.js";
 
-require("dotenv/config");
+import { router as AuthRouter } from "./api/controller/authController.js";
+import { router as UserRouter } from "./api/controller/userController.js";
+import { router as MailRouter } from "./api/controller/mailController.js";
+import { router as UploadRouter } from "./api/controller/uploadController.js";
+import { router as NewsletterRouter } from "./api/controller/newsletterController.js";
+
+import {} from "dotenv/config";
 
 const PORT = process.env.PORT || 5017;
 
@@ -58,11 +65,11 @@ app.use(cookieSession);
 app.use(isAuth);
 
 // Router to API endpoints
-app.use("/auth", require("./api/controller/authController"));
-app.use("/user", require("./api/controller/userController"));
-app.use("/mail", require("./api/controller/mailController"));
-app.use("/upload", require("./api/controller/uploadController"));
-app.use("/newsletter", require("./api/controller/newsletterController"));
+app.use("/auth", AuthRouter);
+app.use("/user", UserRouter);
+app.use("/mail", MailRouter);
+app.use("/upload", UploadRouter);
+app.use("/newsletter", NewsletterRouter);
 
 // Start DB
 db.sequelize.sync().then((req) => {
@@ -85,6 +92,9 @@ db.sequelize.sync().then((req) => {
     }),
   );
 });
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Set up for React
 app.use(express.static(path.join(__dirname, "../build")));

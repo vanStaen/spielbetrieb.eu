@@ -1,8 +1,8 @@
-const { User } = require("../../models/User");
-const jsonwebtoken = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+import { User } from "../../models/User.js";
+import jsonwebtoken from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 
-exports.userService = {
+export const userService = {
   async taken(username) {
     const foundUser = await User.findOne({
       where: { userName: username },

@@ -1,6 +1,6 @@
-const { sequelize, DataTypes } = require("../lib/sequelizedb");
+import { sequelize, DataTypes } from "../lib/sequelizedb.js";
 
-const Match = sequelize.define("match", {
+export const Match = sequelize.sequelize.define("match", {
   _id: {
     type: DataTypes.INTEGER,
     field: "_id",
@@ -12,7 +12,3 @@ const Match = sequelize.define("match", {
     allowNull: false,
   },
 });
-
-module.exports = {
-  Match,
-};

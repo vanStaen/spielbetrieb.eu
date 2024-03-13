@@ -1,10 +1,10 @@
-const jsonwebtoken = require("jsonwebtoken");
-const { User } = require("../models/User");
-require("dotenv/config");
+import jsonwebtoken from "jsonwebtoken";
+import { User } from "../models/User.js";
+import {} from "dotenv/config";
 
 const devMode = true;
 
-module.exports = async (req, res, next) => {
+export default async (req, res, next) => {
   // if in development mode
   if (devMode) {
     if (req.get("host") === "localhost:5017") {

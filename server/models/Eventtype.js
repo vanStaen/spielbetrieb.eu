@@ -1,6 +1,6 @@
-const { sequelize, DataTypes } = require("../lib/sequelizedb");
+import { sequelize, DataTypes } from "../lib/sequelizedb.js";
 
-const Eventtype = sequelize.define("eventtype", {
+export const Eventtype = sequelize.sequelize.define("eventtype", {
   _id: {
     type: DataTypes.INTEGER,
     field: "_id",
@@ -24,7 +24,3 @@ const Eventtype = sequelize.define("eventtype", {
     defaultValue: true,
   },
 });
-
-module.exports = {
-  Eventtype,
-};

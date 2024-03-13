@@ -1,27 +1,28 @@
-const express = require("express");
-const multer = require("multer");
-const router = express.Router();
+import multer, { memoryStorage } from "multer";
+import { Router } from "express";
+const router = Router();
 
-// const { resizeImageFromUrl } = require("../../lib/processImageSharp");
-// const uploadFileFromBufferToS3 = require("../../lib/uploadFileFromBufferToS3");
+// const { resizeImageFromUrl } from "../../lib/processImageSharp");
+// const uploadFileFromBufferToS3 from "../../lib/uploadFileFromBufferToS3");
 
 // Limits size of 10MB
 // const sizeLimits = { fileSize: 1024 * 1024 * 10 };
 
-const storage = multer.memoryStorage;
+const storage = memoryStorage();
 const upload = multer({ storage });
 
 // POST single file object to s3
-router.post("/", upload.single("image"), (req, res) => {
+router.post("/", upload.single("file"), (req, res) => {
   if (!req.isAuth) {
     throw new Error("Unauthorized!");
   }
   const { file } = req;
-  console.log(req.userId, file);
+  console.log(file);
   return res.send("upload success");
 });
 
-module.exports = router;
+export { router };
+
 /*
 // Allow only JPG and PNG
 const fileFilter = (req, file, callback) => {

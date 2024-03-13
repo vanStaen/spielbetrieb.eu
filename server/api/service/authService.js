@@ -1,8 +1,8 @@
-const { User } = require("../../models/User");
-const bcrypt = require("bcryptjs");
-const jsonwebtoken = require("jsonwebtoken");
+import { User } from "../../models/User.js";
+import bcrypt from "bcryptjs";
+import jsonwebtoken from "jsonwebtoken";
 
-exports.authService = {
+export const authService = {
   async login(req, email, username, password, remindMe) {
     let foundUser;
     if (username) {

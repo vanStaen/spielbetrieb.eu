@@ -1,7 +1,7 @@
-const { Location } = require("../../models/Location");
-const { User } = require("../../models/User");
+import { Location } from "../../models/Location.js";
+import { User } from "../../models/User.js";
 
-exports.locationResolver = {
+export const locationResolver = {
   // getLocation(locationId: ID!): Location
   async getLocation(args) {
     return await Location.findOne({

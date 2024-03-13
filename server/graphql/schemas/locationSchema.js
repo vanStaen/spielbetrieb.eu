@@ -1,4 +1,4 @@
-exports.Location = `
+export const Location = `
 type Location {
     _id: ID! 
     name: String!
@@ -11,7 +11,7 @@ type Location {
     reviews: [String]
 }`;
 
-exports.LocationInputData = `
+export const LocationInputData = `
 input LocationInputData {
     name: String
     description: String
@@ -23,12 +23,12 @@ input LocationInputData {
     reviews: [String]
 }`;
 
-exports.LocationQueries = `
+export const LocationQueries = `
     getLocation(locationId: ID!): Location
     getLocations: [Location]
     `;
 
-exports.LocationMutations = `
+export const LocationMutations = `
     addLocation(locationInput: LocationInputData!): Location!
     updateLocation(locationId: ID!, locationInput: LocationInputData!): Location!
     deleteLocation(locationId: ID!): Boolean!

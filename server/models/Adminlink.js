@@ -1,7 +1,7 @@
-const { sequelize, DataTypes } = require("../lib/sequelizedb");
-const { User } = require("./User");
+import { sequelize, DataTypes } from "../lib/sequelizedb.js";
+import { User } from "./User.js";
 
-const Adminlink = sequelize.define("adminlink", {
+export const Adminlink = sequelize.sequelize.define("adminlink", {
   _id: {
     type: DataTypes.INTEGER,
     field: "_id",
@@ -28,7 +28,3 @@ const Adminlink = sequelize.define("adminlink", {
 
 User.hasMany(Adminlink);
 Adminlink.belongsTo(User);
-
-module.exports = {
-  Adminlink,
-};
