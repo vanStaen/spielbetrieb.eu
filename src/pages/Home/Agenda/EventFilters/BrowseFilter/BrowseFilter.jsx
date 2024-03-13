@@ -7,7 +7,7 @@ import {
   CaretRightOutlined,
   CalendarOutlined,
 } from "@ant-design/icons";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 // eslint-disable-next-line no-unused-vars
 import * as customParseFormat from "dayjs/plugin/customParseFormat";
 // eslint-disable-next-line no-unused-vars

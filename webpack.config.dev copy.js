@@ -2,14 +2,21 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
 import webpack from "webpack";
 import path from "path";
+import { fileURLToPath } from "url";
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const config = {
   devtool: "source-map",
   devServer: {
     historyApiFallback: true,
+    port: 3001,
+    liveReload: true,
+    hot: false,
   },
-  entry: { index: "./src/index.js", sw: "./src/sw.js" },
-  mode: "production",
+  entry: { index: "./src/index.js" },
+  mode: "development",
   output: {
     path: path.resolve(__dirname, "build"),
     publicPath: "/",
@@ -19,8 +26,8 @@ module.exports = {
       template: "./public/index.html",
     }),
     new webpack.DefinePlugin({
-      "process.env.API_URL": JSON.stringify("https://spielbetrieb.eu"),
-      "process.env.HOST_URL": JSON.stringify("https://spielbetrieb.eu"),
+      "process.env.API_URL": JSON.stringify("http://localhost:5017"),
+      "process.env.HOST_URL": JSON.stringify("http://localhost:3001"),
     }),
     new CopyPlugin({
       patterns: [
@@ -34,14 +41,19 @@ module.exports = {
     }),
   ],
   resolve: {
-    extensions: ["*", ".js", ".jsx", ".tsx", ".ts"],
+    extensions: [".js", ".jsx", ".tsx", ".ts"],
   },
   module: {
     rules: [
       {
         test: /\.(j|t)sx?$/,
         exclude: /node_modules/,
-        loader: require.resolve("babel-loader"),
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [["@babel/preset-env", { targets: "defaults" }]],
+          },
+        },
       },
       {
         test: /\.css$/,
@@ -62,3 +74,5 @@ module.exports = {
     ],
   },
 };
+
+export default config;

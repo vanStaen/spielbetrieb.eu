@@ -9,7 +9,7 @@ import {
   ArrowLeftOutlined,
 } from "@ant-design/icons";
 
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 
 import { agendaStore } from "../../../store/agendaStore/agendaStore";
 import { pageStore } from "../../../store/pageStore/pageStore";

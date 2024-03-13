@@ -20,7 +20,7 @@ import {
   LockOutlined,
   SyncOutlined,
 } from "@ant-design/icons";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import * as isSameOrBefore from "dayjs/plugin/isSameOrBefore";
 
 import { postUsernameTaken } from "./postUsernameTaken";

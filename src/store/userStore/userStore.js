@@ -1,7 +1,7 @@
 import { action, makeObservable, observable } from "mobx";
 
-import { getUserInfo } from "./getUserInfo";
-import { updateSettings } from "./updateSettings";
+import { getUserInfo } from "./getUserInfo.js";
+import { updateSettings } from "./updateSettings.js";
 import defaultEmailSettings from "./defaultEmailSettings.json";
 import defaultProfilSettings from "./defaultProfilSettings.json";
 

@@ -3,7 +3,7 @@ import { Tag } from "antd";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ClockCircleOutlined, EnvironmentOutlined } from "@ant-design/icons";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 
 import { agendaStore } from "../../../../store/agendaStore/agendaStore";
 

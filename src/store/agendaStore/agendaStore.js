@@ -1,10 +1,10 @@
 import { action, makeObservable, observable } from "mobx";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 
-import { getAllPublicEvents } from "./getAllPublicEvents";
-import { getEventtypes } from "./getEventtypes";
-import { getTags } from "./getTags";
-import { getLocations } from "./getLocations";
+import { getAllPublicEvents } from "./getAllPublicEvents.js";
+import { getEventtypes } from "./getEventtypes.js";
+import { getTags } from "./getTags.js";
+import { getLocations } from "./getLocations.js";
 
 export class AgendaStore {
   isLoadingEvent = true;

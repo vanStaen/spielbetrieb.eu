@@ -1,9 +1,8 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-
-const dataEn from "./languages/en/translation.json");
-const dataDe from "./languages/de/translation.json");
+import dataEn from "./languages/en/translation.json";
+import dataDe from "./languages/de/translation.json";
 
 i18n
   .use(LanguageDetector)

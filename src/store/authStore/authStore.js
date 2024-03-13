@@ -1,8 +1,8 @@
 import { action, makeObservable, observable } from "mobx";
 
-import { deleteLogout } from "./deleteLogout";
-import { postLogin } from "./postLogin";
-import { getHasAccess } from "./getHasAccess";
+import { deleteLogout } from "./deleteLogout.js";
+import { postLogin } from "./postLogin.js";
+import { getHasAccess } from "./getHasAccess.js";
 
 export class AuthStore {
   hasAccess = false;

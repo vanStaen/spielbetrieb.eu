@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useEffect } from "react";
 import { observer } from "mobx-react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import "dayjs/locale/de";
 import "dayjs/locale/en";
 

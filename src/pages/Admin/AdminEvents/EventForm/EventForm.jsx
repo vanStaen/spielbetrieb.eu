@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import {
   notification,
   Modal,

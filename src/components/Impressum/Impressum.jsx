@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Modal } from "antd";
+import { observer } from "mobx-react";
 
 import { pageStore } from "../../store/pageStore/pageStore";
 
 import "./Impressum.less";
 
-export const Impressum = () => {
+export const Impressum = observer(() => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -67,4 +68,4 @@ export const Impressum = () => {
       </Modal>
     </>
   );
-};
+});

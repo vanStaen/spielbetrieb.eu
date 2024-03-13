@@ -9,7 +9,7 @@ import {
   Tooltip,
 } from "antd";
 import { EditOutlined, DeleteOutlined, CopyOutlined } from "@ant-design/icons";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 
 import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
 import { getAllEvents } from "./getAllEvents";
