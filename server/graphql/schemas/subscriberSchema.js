@@ -1,4 +1,4 @@
-exports.Subscriber = `
+export const Subscriber = `
 type Subscriber {
     _id: ID! 
     username: String
@@ -10,7 +10,7 @@ type Subscriber {
     verifiedEmail: Boolean!
 }`;
 
-exports.SubscriberInputData = `
+export const SubscriberInputData = `
 input SubscriberInputData {
     username: String
     email: String
@@ -20,11 +20,11 @@ input SubscriberInputData {
     lists: [String]
 }`;
 
-exports.SubscriberQueries = `
+export const SubscriberQueries = `
     getSubscribers: [Subscriber]
 `;
 
-exports.SubscriberMutations = `
+export const SubscriberMutations = `
     addSubscriber(subscriberInput: SubscriberInputData!): Subscriber!
     updateSubscriber(subscriberId: ID!, subscriberInput: SubscriberInputData!): Subscriber!
     deleteSubscriber(subscriberId: ID!): Boolean!

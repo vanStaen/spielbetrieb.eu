@@ -1,7 +1,7 @@
-const { Notification } = require("../../models/Notification");
-const { User } = require("../../models/User");
+import { Notification } from "../../models/Notification.js";
+import { User } from "../../models/User.js";
 
-exports.notificationResolver = {
+export const notificationResolver = {
   // getNotification
   async getNotifications(args, req) {
     if (!req.isAuth) {

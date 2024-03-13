@@ -1,5 +1,6 @@
-const router = require("express").Router();
-const { userService } = require("../service/userService");
+import { Router } from "express";
+import { userService } from "../service/userService.js";
+const router = Router();
 
 // Username Taken?
 router.post("/taken", async (req, res) => {
@@ -98,4 +99,4 @@ router.post("/emailverified", async (req, res) => {
   }
 });
 
-module.exports = router;
+export { router };

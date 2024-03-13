@@ -1,7 +1,7 @@
-const { Adminlink } = require("../../models/Adminlink");
-const { User } = require("../../models/User");
+import { Adminlink } from "../../models/Adminlink.js";
+import { User } from "../../models/User.js";
 
-exports.adminlinkResolver = {
+export const adminlinkResolver = {
   // getAllAdminlinks
   async getAllAdminlinks(args, req) {
     if (!req.isAuth) {

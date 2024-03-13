@@ -1,5 +1,5 @@
-const fs = require("fs");
-const { Client } = require("pg");
+const fs from "fs");
+const { Client } from "pg");
 // eslint-disable-next-line n/no-path-concat
 require("dotenv").config({ path: __dirname + "/./../../.env" });
 

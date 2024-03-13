@@ -1,6 +1,6 @@
-const { Visitor } = require("../../models/Visitor");
+import { Visitor } from "../../models/Visitor.js";
 
-exports.visitorResolver = {
+export const visitorResolver = {
   // getVisitor
   async getVisitor(args, req) {
     return await Visitor.findAll({

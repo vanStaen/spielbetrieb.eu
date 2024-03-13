@@ -1,4 +1,4 @@
-const AWS = require("aws-sdk");
+const AWS from "aws-sdk");
 
 const uploadFileFromUrlToS3 = async (fileBufferLocal, key) => {
   // Define S3 bucket login info

@@ -1,8 +1,8 @@
-const { Photo } = require("../../models/Photo");
-const { User } = require("../../models/User");
-const { Comment } = require("../../models/Comment");
+import { Photo } from "../../models/Photo.js";
+import { User } from "../../models/User.js";
+import { Comment } from "../../models/Comment.js";
 
-exports.photoResolver = {
+export const photoResolver = {
   // getPhoto
   async getPhotos(args, req) {
     if (!req.isAuth) {

@@ -1,15 +1,15 @@
-const bcrypt = require("bcryptjs");
-const mailService = require("../../api/service/mailService");
+import bcrypt from "bcryptjs";
+import { mailService }from "../../api/service/mailService.js";
 
-const { User } = require("../../models/User");
-const { Comment } = require("../../models/Comment");
-const { Event } = require("../../models/Event");
-const { Message } = require("../../models/Message");
-const { Notification } = require("../../models/Notification");
-const { Photo } = require("../../models/Photo");
-const { Visitor } = require("../../models/Visitor");
+import { User } from "../../models/User.js";
+import { Comment } from "../../models/Comment.js";
+import { Event } from "../../models/Event.js";
+import { Message } from "../../models/Message.js";
+import { Notification } from "../../models/Notification.js";
+import { Photo } from "../../models/Photo.js";
+import { Visitor } from "../../models/Visitor.js";
 
-exports.userResolver = {
+export const userResolver = {
   async getUser(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");

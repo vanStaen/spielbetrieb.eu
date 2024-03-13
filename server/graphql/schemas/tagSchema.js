@@ -1,4 +1,4 @@
-exports.Tag = `
+export const Tag = `
 type Tag {
     _id: ID! 
     name: String!
@@ -8,7 +8,7 @@ type Tag {
     validated: Boolean
 }`;
 
-exports.TagInputData = `
+export const TagInputData = `
 input TagInputData {
     name: String
     isUserTag: Boolean
@@ -17,11 +17,11 @@ input TagInputData {
     validated: Boolean
 }`;
 
-exports.TagQueries = `
+export const TagQueries = `
     getTags: [Tag]
     `;
 
-exports.TagMutations = `
+export const TagMutations = `
     addTag(tagInput: TagInputData!): Tag!
     updateTag(tagId: ID!, tagInput: TagInputData!): Tag!
     deleteTag(tagId: ID!): Boolean!

@@ -1,8 +1,8 @@
-const { Message } = require("../../models/Message");
-const { User } = require("../../models/User");
-const { Chat } = require("../../models/Chat");
+import { Message } from "../../models/Message.js";
+import { User } from "../../models/User.js";
+import { Chat } from "../../models/Chat.js";
 
-exports.messageResolver = {
+export const messageResolver = {
   // getMessage
   async getMessages(args, req) {
     if (!req.isAuth) {

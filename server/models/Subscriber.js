@@ -1,6 +1,6 @@
-const { sequelize, DataTypes } = require("../lib/sequelizedb");
+import { sequelize, DataTypes } from "../lib/sequelizedb.js";
 
-const Subscriber = sequelize.define("subscriber", {
+export const Subscriber = sequelize.sequelize.define("subscriber", {
   _id: {
     type: DataTypes.INTEGER,
     field: "_id",
@@ -40,7 +40,3 @@ const Subscriber = sequelize.define("subscriber", {
     defaultValue: false,
   },
 });
-
-module.exports = {
-  Subscriber,
-};

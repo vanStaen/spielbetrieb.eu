@@ -1,4 +1,4 @@
-exports.Dark = `
+export const Dark = `
 type Dark {
     _id: ID! 
     number: Int!
@@ -12,7 +12,7 @@ type Dark {
     updatedAt: String!
 }`;
 
-exports.DarkInputData = `
+export const DarkInputData = `
 input DarkInputData {
     number: Int
     title: String
@@ -23,12 +23,12 @@ input DarkInputData {
     archived: Boolean
 }`;
 
-exports.DarkQueries = `
+export const DarkQueries = `
     getDark(darkId: Int): Dark!
     getDarks: [Dark]
 `;
 
-exports.DarkMutations = `
+export const DarkMutations = `
     addDark(darkInput: DarkInputData!): Dark!
     editDark(darkId: ID!, darkInput: DarkInputData!): Dark!
     archiveDark(darkId: ID!): Dark!

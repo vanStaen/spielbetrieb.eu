@@ -1,8 +1,8 @@
-const { sequelize, DataTypes } = require("../lib/sequelizedb");
-const { User } = require("./User");
-const { Photo } = require("./Photo");
+import { sequelize, DataTypes } from "../lib/sequelizedb.js";
+import { User } from "./User.js";
+import { Photo } from "./Photo.js";
 
-const Comment = sequelize.define("comment", {
+export const Comment = sequelize.sequelize.define("comment", {
   _id: {
     type: DataTypes.INTEGER,
     field: "_id",
@@ -28,7 +28,3 @@ Comment.belongsTo(User);
 
 Photo.hasMany(Comment);
 Comment.belongsTo(Photo);
-
-module.exports = {
-  Comment,
-};

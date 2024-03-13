@@ -1,8 +1,8 @@
-const { sequelize, DataTypes } = require("../lib/sequelizedb");
-const { User } = require("./User");
-const { Chat } = require("./Chat");
+import { sequelize, DataTypes } from "../lib/sequelizedb.js";
+import { User } from "./User.js";
+import { Chat } from "./Chat.js";
 
-const Message = sequelize.define("message", {
+export const Message = sequelize.sequelize.define("message", {
   _id: {
     type: DataTypes.INTEGER,
     field: "_id",
@@ -24,7 +24,3 @@ Message.belongsTo(User);
 
 Chat.hasMany(Message);
 Message.belongsTo(Chat);
-
-module.exports = {
-  Message,
-};

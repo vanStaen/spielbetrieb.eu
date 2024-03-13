@@ -1,6 +1,6 @@
-const { sequelize, DataTypes } = require("../lib/sequelizedb");
+import { sequelize, DataTypes } from "../lib/sequelizedb.js";
 
-const Partnertype = sequelize.define("partnertype", {
+export const Partnertype = sequelize.sequelize.define("partnertype", {
   _id: {
     type: DataTypes.INTEGER,
     field: "_id",
@@ -12,7 +12,3 @@ const Partnertype = sequelize.define("partnertype", {
     allowNull: false,
   },
 });
-
-module.exports = {
-  Partnertype,
-};

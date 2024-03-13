@@ -1,24 +1,24 @@
-const { buildSchema } = require("graphql");
+import { buildSchema } from "graphql";
 
-const admincontactSchema = require("./schemas/admincontactSchema");
-const adminlinkSchema = require("./schemas/adminlinkSchema");
-const chatSchema = require("./schemas/chatSchema");
-const commentSchema = require("./schemas/commentSchema");
-const darkSchema = require("./schemas/darkSchema");
-const eventSchema = require("./schemas/eventSchema");
-const eventtypeSchema = require("./schemas/eventtypeSchema");
-const partnertypeSchema = require("./schemas/partnertypeSchema");
-const partnerSchema = require("./schemas/partnerSchema");
-const locationSchema = require("./schemas/locationSchema");
-const messageSchema = require("./schemas/messageSchema");
-const notificationSchema = require("./schemas/notificationSchema");
-const photoSchema = require("./schemas/photoSchema");
-const userSchema = require("./schemas/userSchema");
-const visitorSchema = require("./schemas/visitorSchema");
-const subscriberSchema = require("./schemas/subscriberSchema");
-const tagSchema = require("./schemas/tagSchema");
+import * as admincontactSchema from "./schemas/admincontactSchema.js";
+import * as adminlinkSchema from "./schemas/adminlinkSchema.js";
+import * as chatSchema from "./schemas/chatSchema.js";
+import * as commentSchema from "./schemas/commentSchema.js";
+import * as darkSchema from "./schemas/darkSchema.js";
+import * as eventSchema from "./schemas/eventSchema.js";
+import * as eventtypeSchema from "./schemas/eventtypeSchema.js";
+import * as partnertypeSchema from "./schemas/partnertypeSchema.js";
+import * as partnerSchema from "./schemas/partnerSchema.js";
+import * as locationSchema from "./schemas/locationSchema.js";
+import * as messageSchema from "./schemas/messageSchema.js";
+import * as notificationSchema from "./schemas/notificationSchema.js";
+import * as photoSchema from "./schemas/photoSchema.js";
+import * as userSchema from "./schemas/userSchema.js";
+import * as visitorSchema from "./schemas/visitorSchema.js";
+import * as subscriberSchema from "./schemas/subscriberSchema.js";
+import * as tagSchema from "./schemas/tagSchema.js";
 
-module.exports = buildSchema(`
+export default buildSchema(`
 
     ${admincontactSchema.Admincontact}
     ${adminlinkSchema.Adminlink}

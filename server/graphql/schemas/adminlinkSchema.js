@@ -1,4 +1,4 @@
-exports.Adminlink = `
+export const Adminlink = `
 type Adminlink {
     _id: ID! 
     shortDesc: String!
@@ -8,7 +8,7 @@ type Adminlink {
     user: User
 }`;
 
-exports.AdminlinkInputData = `
+export const AdminlinkInputData = `
 input AdminlinkInputData {
     shortDesc: String
     category: String
@@ -16,11 +16,11 @@ input AdminlinkInputData {
     archived: Boolean
 }`;
 
-exports.AdminlinkQueries = `
+export const AdminlinkQueries = `
     getAllAdminlinks: [Adminlink]
     `;
 
-exports.AdminlinkMutations = `
+export const AdminlinkMutations = `
     addAdminlink(adminlinkInput: AdminlinkInputData!): Adminlink!
     updateAdminlink(adminlinkId: ID!, adminlinkInput: AdminlinkInputData!): Adminlink!
     deleteAdminlink(adminlinkId: ID!): Boolean!

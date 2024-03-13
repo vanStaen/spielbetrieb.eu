@@ -1,8 +1,8 @@
-const { mailService } = require("../../api/service/mailService");
-const { Subscriber } = require("../../models/Subscriber");
-const { User } = require("../../models/User");
+import { mailService } from "../../api/service/mailService.js";
+import { Subscriber } from "../../models/Subscriber.js";
+import { User } from "../../models/User.js";
 
-exports.subscriberResolver = {
+export const subscriberResolver = {
   // getSubscribers: [Subscriber]
   async getSubscribers(args, req) {
     if (!req.isAuth) {

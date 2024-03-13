@@ -1,8 +1,8 @@
-const { Event } = require("../../models/Event");
-const { User } = require("../../models/User");
-const { Op } = require("sequelize");
+import { Op } from "sequelize";
+import { Event } from "../../models/Event.js";
+import { User } from "../../models/User.js";
 
-exports.eventResolver = {
+export const eventResolver = {
   // getEvent
   async getEvent(args, req) {
     return await Event.findOne({

@@ -1,7 +1,7 @@
-const { Subscriber } = require("../../models/Subscriber");
-const jsonwebtoken = require("jsonwebtoken");
+import { Subscriber } from "../../models/Subscriber.js";
+import jsonwebtoken from "jsonwebtoken";
 
-exports.newsletterService = {
+export const newsletterService = {
   async emailverified(token) {
     try {
       const decodedToken = jsonwebtoken.verify(

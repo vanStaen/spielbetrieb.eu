@@ -1,4 +1,4 @@
-exports.Photo = `
+export const Photo = `
 type Photo {
     _id: ID! 
     userId: Int!
@@ -16,7 +16,7 @@ type Photo {
     comment: [Comment]
 }`;
 
-exports.PhotoInputData = `
+export const PhotoInputData = `
 input PhotoInputData {
     photoUrl: String
     photoUrlThumb: String
@@ -28,11 +28,11 @@ input PhotoInputData {
     private: Boolean
 }`;
 
-exports.PhotoQueries = `
+export const PhotoQueries = `
     getPhotos: [Photo]
 `;
 
-exports.PhotoMutations = `
+export const PhotoMutations = `
     addPhoto(photoInput: PhotoInputData!): Photo!
     updatePhoto(photoId: ID!, photoInput: PhotoInputData!): Photo!
     deletePhoto(photoId: ID!): Boolean!

@@ -1,7 +1,7 @@
-const { Dark } = require("../../models/Dark");
-const { User } = require("../../models/User");
+import { Dark } from "../../models/Dark.js";
+import { User } from "../../models/User.js";
 
-exports.darkResolver = {
+export const darkResolver = {
   // getDark(darkId: ID!): Dark
   async getDark(args) {
     return await Dark.findOne({
@@ -94,9 +94,6 @@ exports.darkResolver = {
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("content")) {
       throw new Error("Unauthorized!");
     }
-    const foundDark = await Dark.findOne({
-      where: { _id: args.darkId, },
-    });
     const updatedDark = await Dark.update(
       { archived: true },
       {
@@ -105,7 +102,8 @@ exports.darkResolver = {
         },
         returning: true,
         plain: true,
-      });
+      },
+    );
     // updatedDark[0]: number or row udpated
     // updatedDark[1]: rows updated
     return updatedDark[1];

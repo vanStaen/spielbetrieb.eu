@@ -1,7 +1,7 @@
-const { Op } = require("sequelize");
-const { Chat } = require("../../models/Chat");
+import { Op } from "sequelize";
+import { Chat } from "../../models/Chat.js";
 
-exports.chatResolver = {
+export const chatResolver = {
   // getChat
   async getChats(args, req) {
     if (!req.isAuth) {

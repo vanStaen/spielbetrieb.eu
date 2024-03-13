@@ -1,21 +1,21 @@
-const admincontactResolver = require("./resolvers/admincontactResolver");
-const adminlinkResolver = require("./resolvers/adminlinkResolver");
-const chatResolver = require("./resolvers/chatResolver");
-const commentResolver = require("./resolvers/commentResolver");
-const eventResolver = require("./resolvers/eventResolver");
-const eventtypeResolver = require("./resolvers/eventtypeResolver");
-const partnertypeResolver = require("./resolvers/partnertypeResolver");
-const locationResolver = require("./resolvers/locationResolver");
-const messageResolver = require("./resolvers/messageResolver");
-const notificationResolver = require("./resolvers/notificationResolver");
-const photoResolver = require("./resolvers/photoResolver");
-const partnerResolver = require("./resolvers/partnerResolver");
-const subscriberResolver = require("./resolvers/subscriberResolver");
-const userResolver = require("./resolvers/userResolver");
-const visitorResolver = require("./resolvers/visitorResolver");
-const tagResolver = require("./resolvers/tagResolver");
+import * as admincontactResolver from "./resolvers/admincontactResolver.js";
+import * as adminlinkResolver from "./resolvers/adminlinkResolver.js";
+import * as chatResolver from "./resolvers/chatResolver.js";
+import * as commentResolver from "./resolvers/commentResolver.js";
+import * as eventResolver from "./resolvers/eventResolver.js";
+import * as eventtypeResolver from "./resolvers/eventtypeResolver.js";
+import * as partnertypeResolver from "./resolvers/partnertypeResolver.js";
+import * as locationResolver from "./resolvers/locationResolver.js";
+import * as messageResolver from "./resolvers/messageResolver.js";
+import * as notificationResolver from "./resolvers/notificationResolver.js";
+import * as photoResolver from "./resolvers/photoResolver.js";
+import * as partnerResolver from "./resolvers/partnerResolver.js";
+import * as subscriberResolver from "./resolvers/subscriberResolver.js";
+import * as userResolver from "./resolvers/userResolver.js";
+import * as visitorResolver from "./resolvers/visitorResolver.js";
+import * as tagResolver from "./resolvers/tagResolver.js";
 
-module.exports = {
+export default {
   ...admincontactResolver.admincontactResolver,
   ...adminlinkResolver.adminlinkResolver,
   ...chatResolver.chatResolver,

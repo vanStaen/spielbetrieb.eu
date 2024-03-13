@@ -1,7 +1,7 @@
-const { Partnertype } = require("../../models/Partnertype");
-const { User } = require("../../models/User");
+import { Partnertype } from "../../models/Partnertype.js";
+import { User } from "../../models/User.js";
 
-exports.partnertypeResolver = {
+export const partnertypeResolver = {
   // getPartnertypes
   async getPartnertypes(args, req) {
     if (!req.isAuth) {

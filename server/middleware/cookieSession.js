@@ -1,7 +1,7 @@
-const cookieSession = require("cookie-session");
-require("dotenv/config");
+import cookieSession from "cookie-session";
+import {} from "dotenv/config";
 
-module.exports = cookieSession({
+export default cookieSession({
   name: "session",
   keys: [
     process.env.COOKIE_KEY_1,

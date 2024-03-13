@@ -1,19 +1,19 @@
-exports.Partnertype = `
+export const Partnertype = `
 type Partnertype {
     _id: ID! 
     name: String!
 }`;
 
-exports.PartnertypeInputData = `
+export const PartnertypeInputData = `
 input PartnertypeInputData {
     name: String
 }`;
 
-exports.PartnertypeQueries = `
+export const PartnertypeQueries = `
     getPartnertypes: [Partnertype]
     `;
 
-exports.PartnertypeMutations = `
+export const PartnertypeMutations = `
     addPartnertype(partnertypeInput: PartnertypeInputData!): Partnertype!
     updatePartnertype(partnertypeId: ID!, partnertypeInput: PartnertypeInputData!): Partnertype!
     deletePartnertype(partnertypeId: ID!): Boolean!

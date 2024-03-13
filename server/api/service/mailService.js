@@ -1,8 +1,8 @@
-const jsonwebtoken = require("jsonwebtoken");
-const { User } = require("../../models/User");
-const validateEmail = require("../../lib/validateEmail");
-const sgMail = require("@sendgrid/mail");
-require("dotenv/config");
+import {} from "dotenv/config";
+import jsonwebtoken from "jsonwebtoken";
+import sgMail from "@sendgrid/mail";
+import { User } from "../../models/User.js";
+import { validateEmail } from "../../lib/validateEmail.js";
 
 const mainDomain = "spielbetrieb.eu";
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -47,7 +47,7 @@ const emailDisclaimer = `
   </span>
   `;
 
-exports.mailService = {
+export const mailService = {
   async mail(sendto, subject, body) {
     const email = {
       from: "Spielbetrieb <admin@spielbetrieb.eu>",

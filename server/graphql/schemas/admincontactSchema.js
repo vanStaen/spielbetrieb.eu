@@ -1,4 +1,4 @@
-exports.Admincontact = `
+export const Admincontact = `
 type Admincontact {
     _id: ID! 
     name: String!
@@ -8,7 +8,7 @@ type Admincontact {
     user: User
 }`;
 
-exports.AdmincontactInputData = `
+export const AdmincontactInputData = `
 input AdmincontactInputData {
     name: String
     email: String
@@ -16,11 +16,11 @@ input AdmincontactInputData {
     archived: Boolean
 }`;
 
-exports.AdmincontactQueries = `
+export const AdmincontactQueries = `
     getAllAdmincontacts: [Admincontact]
     `;
 
-exports.AdmincontactMutations = `
+export const AdmincontactMutations = `
     addAdmincontact(admincontactInput: AdmincontactInputData!): Admincontact!
     updateAdmincontact(admincontactId: ID!, admincontactInput: AdmincontactInputData!): Admincontact!
     deleteAdmincontact(admincontactId: ID!): Boolean!

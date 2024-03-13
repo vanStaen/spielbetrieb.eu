@@ -1,6 +1,6 @@
-const { sequelize, DataTypes } = require("../lib/sequelizedb");
+import { sequelize, DataTypes } from "../lib/sequelizedb.js";
 
-const Location = sequelize.define("location", {
+export const Location = sequelize.sequelize.define("location", {
   _id: {
     type: DataTypes.INTEGER,
     field: "_id",
@@ -44,7 +44,3 @@ const Location = sequelize.define("location", {
     allowNull: true,
   },
 });
-
-module.exports = {
-  Location,
-};

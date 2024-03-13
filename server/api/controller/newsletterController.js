@@ -1,5 +1,6 @@
-const router = require("express").Router();
-const { newsletterService } = require("../service/newsletterService");
+import { Router } from "express";
+import { newsletterService } from "../service/newsletterService.js";
+const router = Router();
 
 // Email is verified?
 router.post("/subscriberverified", async (req, res) => {
@@ -22,4 +23,4 @@ router.post("/subscriberverified", async (req, res) => {
   }
 });
 
-module.exports = router;
+export { router };

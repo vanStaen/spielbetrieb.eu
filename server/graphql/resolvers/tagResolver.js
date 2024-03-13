@@ -1,7 +1,7 @@
-const { Tag } = require("../../models/Tag");
-const { User } = require("../../models/User");
+import { Tag } from "../../models/Tag.js";
+import { User } from "../../models/User.js";
 
-exports.tagResolver = {
+export const tagResolver = {
   // getTags: [Tag]
   async getTags() {
     return await Tag.findAll({

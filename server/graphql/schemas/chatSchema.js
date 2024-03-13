@@ -1,4 +1,4 @@
-exports.Chat = `
+export const Chat = `
 type Chat {
     _id: ID! 
     userlist: [Int]!
@@ -7,16 +7,16 @@ type Chat {
     updatedAt: String!
 }`;
 
-exports.ChatInputData = `
+export const ChatInputData = `
 input ChatInputData {
     userlist: [Int]!
 }`;
 
-exports.ChatQueries = `
+export const ChatQueries = `
     getChats(userId: Int): [Chat]!
 `;
 
-exports.ChatMutations = `
+export const ChatMutations = `
     createChat(chatInput: ChatInputData!): Chat!
     archiveChat(chatId: ID!): Chat!
 `;

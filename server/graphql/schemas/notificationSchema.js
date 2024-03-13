@@ -1,4 +1,4 @@
-exports.Notification = `
+export const Notification = `
 type Notification {
     _id: ID! 
     userId: Int!
@@ -13,7 +13,7 @@ type Notification {
     user: User
 }`;
 
-exports.NotificationInputData = `
+export const NotificationInputData = `
 input NotificationInputData {
     notification: String!
     photoLinkId: Int
@@ -22,11 +22,11 @@ input NotificationInputData {
     notificationType: String!
 }`;
 
-exports.NotificationQueries = `
+export const NotificationQueries = `
     getNotifications: [Notification]
 `;
 
-exports.NotificationMutations = `
+export const NotificationMutations = `
     addNotification(notificationInput: NotificationInputData!): Notification!
     updateNotification(notificationId: ID!, seen: Boolean!): Notification!
 `;
