@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "REST API Endpoint: auth/login",
+			"name": "REST API: auth/login",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -37,7 +37,7 @@
 			"response": []
 		},
 		{
-			"name": "REST API Endpoint: auth/logout",
+			"name": "REST API: auth/logout",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -67,7 +67,7 @@
 			"response": []
 		},
 		{
-			"name": "REST API Endpoint: auth/access",
+			"name": "REST API: auth/access",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -100,7 +100,7 @@
 			"response": []
 		},
 		{
-			"name": "REST API Endpoint: user/taken",
+			"name": "REST API: user/taken",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -130,7 +130,7 @@
 			"response": []
 		},
 		{
-			"name": "REST API Endpoint: user/email",
+			"name": "REST API: user/email",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -160,7 +160,7 @@
 			"response": []
 		},
 		{
-			"name": "REST API Endpoint: user/validtoken",
+			"name": "REST API: user/validtoken",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -190,7 +190,7 @@
 			"response": []
 		},
 		{
-			"name": "REST API Endpoint: user/emailverified",
+			"name": "REST API: user/emailverified",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -220,7 +220,7 @@
 			"response": []
 		},
 		{
-			"name": "REST API Endpoint: newsletter/subscriberverified",
+			"name": "REST API: newsletter/subscriberverified",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -250,7 +250,7 @@
 			"response": []
 		},
 		{
-			"name": "REST API Endpoint: mail",
+			"name": "REST API: mail",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -279,7 +279,7 @@
 			"response": []
 		},
 		{
-			"name": "REST API Endpoint: mail/recover",
+			"name": "REST API: mail/recover",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -309,7 +309,7 @@
 			"response": []
 		},
 		{
-			"name": "REST API Endpoint: mail/emailverify",
+			"name": "REST API: mail/emailverify",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -335,6 +335,113 @@
 						"emailverify"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "REST API: upload",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmFkNThiMGM2YjgzYTc3MDQyZDZiM2EiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjEzMjM5MjAzLCJleHAiOjE2MTMyNDAxMDN9.lwSfBllOk6-SEpy3ZIVH4jI51UuYHNgQ7kX3ck4OQ04",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Content-Type",
+							"value": "multipart/form-data",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/cvanstaen/Desktop/Bildschirmfoto 2024-03-12 um 14.45.12.png"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5017/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"upload"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "REST API: upload/:id",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZmFkNThiMGM2YjgzYTc3MDQyZDZiM2EiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjEyNTQ3NzI0LCJleHAiOjE2MTI1NDg2MjR9.ksqWCgiGV8VpqP98F-tBcL14NOvB8v-SeaD9WpvilFs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Content-Type",
+							"value": "multipart/form-data",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/clementvanstaen/Desktop/37321320_10160676222355261_2262054786838822912_o.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5017/upload/5e1ecd160a19c463dda0f8b3c33aa9d6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"upload",
+						"5e1ecd160a19c463dda0f8b3c33aa9d6"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
 			},
 			"response": []
 		},
@@ -941,7 +1048,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getEvent (eventId: 1) {\n    _id,\n    eventtype,\n    title,\n    description,\n    picture,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n    user {\n        _id,\n    }\n  }\n}",
+						"query": "query {\n  getEvent (eventId: 12) {\n    _id,\n    eventtype,\n    title,\n    description,\n    pictures,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n    user {\n        _id,\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -979,7 +1086,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getAllEvents {\n    _id,\n    eventtype,\n    title,\n    description,\n    pictures,\n    location,\n    locationAdress,\n    locationCoordinates,\n    locationName,\n    fromDate,\n    untilDate,\n    eventTags,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n    user {\n        _id,\n    }\n  }\n}",
+						"query": "query {\n  getAllEvents {\n    _id,\n    eventtype,\n    title,\n    description,\n    pictures,\n    location,\n    locationAddress,\n    locationCoordinates,\n    locationName,\n    fromDate,\n    untilDate,\n    eventTags,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n    user {\n        _id,\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1017,7 +1124,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addEvent (\n    eventInput: { \n        eventtype: \"Party\",\n        title: \"This is a cool party\",\n        description: \"This is a cool party, and I am describing it.\",\n        picture: \"some/url/to/s3\",\n        location: \"berlin\",\n        fromDate: \"12/07/21 21:00\",\n        untilDate:  \"13/07/21 07:00\",\n        admin: [1, 2],\n        private: true,\n        forwardable: false,\n        allowAnonymous: false,\n        }\n  ) {\n    _id,\n    eventtype,\n    title,\n    description,\n    picture,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "mutation {\n  addEvent (\n    eventInput: { \n        eventtype: 1,\n        title: \"This is a cool party\",\n        description: \"This is a cool party, and I am describing it.\",\n        pictures: [\"some/url/to/s3\"],\n        location: 1,\n        admin: [1, 2],\n        private: true,\n        forwardable: false,\n        allowAnonymous: false,\n        }\n  ) {\n    _id,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1055,7 +1162,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateEvent (\n      eventId: 1,\n      eventInput: { \n        location: \"kreuzberg\",\n        private: false, \n        eventtype: \"Data\",\n        title: \"This is now a date \",\n        description: \"This is a cool Date, and I am describing it.\",\n        }\n      ) {\n_id,\n    eventtype,\n    title,\n    description,\n    picture,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "mutation {\n  updateEvent (\n      eventId: 1,\n      eventInput: { \n        location: \"kreuzberg\",\n        private: false, \n        eventType: \"Data\",\n        title: \"This is now a date \",\n        description: \"This is a cool Date, and I am describing it.\",\n        }\n      ) {\n_id,\n    eventType,\n    title,\n    description,\n    picture,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1601,7 +1708,7 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Query: getEventtypes",
+			"name": "GraphQL Query: getEventTypes",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -1614,7 +1721,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getEventtypes {\n    _id,\n    name,\n    validated,\n  }\n}",
+						"query": "query {\n  getEventTypes {\n    _id,\n    name,\n    validated,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1633,7 +1740,7 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Mutation: addEventtype",
+			"name": "GraphQL Mutation: addEventType",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -1651,7 +1758,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addEventtype (\n    eventtypeInput: { \n        name: \"delete me\", \n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
+						"query": "mutation {\n  addEventType (\n    eventTypeInput: { \n        name: \"delete me\", \n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1671,7 +1778,7 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Mutation: updateEventtype",
+			"name": "GraphQL Mutation: updateEventType",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -1689,7 +1796,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateEventtype (\n    eventtypeId: \"1\",\n    eventtypeInput: { \n        name: \"{en: 'date', de: 'date'}\",\n        validated: true, \n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
+						"query": "mutation {\n  updateEventType (\n    eventTypeId: \"1\",\n    eventTypeInput: { \n        name: \"{\\\"en\\\": \\\"date\\\", \\\"de\\\": \\\"date\\\"}\",\n        validated: true, \n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1709,7 +1816,7 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Mutation: deleteEventtype",
+			"name": "GraphQL Mutation: deleteEventType",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -1727,7 +1834,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  deleteEventtype (\n    eventtypeId: \"2\",\n  ) \n}",
+						"query": "mutation {\n  deleteEventType (\n    eventTypeId: \"2\",\n  ) \n}",
 						"variables": ""
 					}
 				},
@@ -1835,153 +1942,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateTag (\n    tagId: \"1\",\n    tagInput: { \n        validated: true,\n        }\n  ) {\n    _id\n    name\n    isUserTag\n    isEventTag\n    isPictureTag\n    validated\n  }\n}",
-						"variables": ""
-					}
-				},
-				"url": {
-					"raw": "http://localhost:5017/graphql",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5017",
-					"path": [
-						"graphql"
-					]
-				},
-				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
-			},
-			"response": []
-		},
-		{
-			"name": "GraphQL Mutation: deleteTag",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer 123456789",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "graphql",
-					"graphql": {
-						"query": "mutation {\n  deleteTag (\n    tagId: \"2\"\n  )\n}",
-						"variables": ""
-					}
-				},
-				"url": {
-					"raw": "http://localhost:5017/graphql",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5017",
-					"path": [
-						"graphql"
-					]
-				},
-				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
-			},
-			"response": []
-		},
-		{
-			"name": "GraphQL Query: getTags",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "graphql",
-					"graphql": {
-						"query": "query {\n  getTags {\n    _id,\n    name,\n    isUserTag,\n    isEventTag,\n    isPictureTag,\n    validated,\n  }\n}",
-						"variables": ""
-					}
-				},
-				"url": {
-					"raw": "http://localhost:5017/graphql",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5017",
-					"path": [
-						"graphql"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GraphQL Mutation: addTag",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer 123456789",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "graphql",
-					"graphql": {
-						"query": "mutation {\n  addTag (\n    tagInput: { \n        name: \"delete me\", \n        isUserTag: false,\n        isEventTag: true,\n        isPictureTag: true,\n        }\n  ) {\n    _id\n    name\n    isUserTag\n    isEventTag\n    isPictureTag\n    validated\n  }\n}",
-						"variables": ""
-					}
-				},
-				"url": {
-					"raw": "http://localhost:5017/graphql",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5017",
-					"path": [
-						"graphql"
-					]
-				},
-				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
-			},
-			"response": []
-		},
-		{
-			"name": "GraphQL Mutation: updateTag",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer 123456789",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "graphql",
-					"graphql": {
-						"query": "mutation {\n  updateTag (\n    tagId: \"1\",\n    tagInput: { \n        validated: true,\n        }\n  ) {\n    _id\n    name\n    isUserTag\n    isEventTag\n    isPictureTag\n    validated\n  }\n}",
+						"query": "mutation {\n  updateTag (\n    tagId: \"1\",\n    tagInput: { \n        name: \"{en:'BDSM', de:'BDSM'}\"\n        validated: true,\n        }\n  ) {\n    _id\n    name\n    isUserTag\n    isEventTag\n    isPictureTag\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2121,7 +2082,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addLocation (\n    locationInput: { \n        name: \"Kitkat club\", \n        }\n  ) {\n    _id\n    name\n    description\n    pictures\n    links\n    address\n    coordinates\n    validated\n    reviews\n  }\n}",
+						"query": "mutation {\n  addLocation (\n    locationInput: { \n        name: \"delete me\",\n        validated: true \n        }\n  ) {\n    _id\n    name\n    description\n    pictures\n    links\n    address\n    coordinates\n    validated\n    reviews\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2197,7 +2158,83 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  deleteLocation (\n    locationId: \"2\"\n  ) \n}",
+						"query": "mutation {\n  deleteLocation (\n    locationId: 4\n  ) \n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: addPartnerType",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  addPartnertype (\n    partnertypeInput: { \n        name: \"delete me\", \n        }\n  ) {\n    _id\n    name\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: updatePartnerType",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  updatePartnertype (\n    partnertypeId: \"1\",\n    partnertypeInput: { \n        name: \"{\\\"en\\\": \\\"date\\\", \\\"de\\\": \\\"date\\\"}\",\n        }\n  ) {\n    _id\n    name\n  }\n}",
 						"variables": ""
 					}
 				},
