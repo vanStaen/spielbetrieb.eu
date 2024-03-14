@@ -1,7 +1,9 @@
-const fs from "fs");
-const { Client } from "pg");
+import fs from "fs";
+import { Client } from "pg";
+import { } from "dotenv/config";
+
 // eslint-disable-next-line n/no-path-concat
-require("dotenv").config({ path: __dirname + "/./../../.env" });
+// require("dotenv").config({ path: __dirname + "/./../../.env" });
 
 // init Postgres
 const client = new Client({

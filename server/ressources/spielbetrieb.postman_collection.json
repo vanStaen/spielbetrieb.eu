@@ -369,13 +369,12 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "/Users/cvanstaen/Desktop/Bildschirmfoto 2024-03-12 um 14.45.12.png"
+							"src": "/Users/clementvanstaen/Desktop/Screenshot 2024-03-14 at 14.04.21.png"
 						},
 						{
-							"key": "",
-							"value": "",
-							"type": "text",
-							"disabled": true
+							"key": "bucket",
+							"value": "test",
+							"type": "text"
 						}
 					]
 				},

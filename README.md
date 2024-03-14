@@ -127,6 +127,11 @@ Some detail about the pricing and availibility of Sendgrid: https://elements.her
 
 Track email sent: https://app.sendgrid.com/email_activity
 
+### AWS | s3
+
+Our images are saved on differents AWS S3 bucket. 
+All images get stored in 3 version. Original, Medium (800px) and Thumb (180px);
+
 ### Design ideas
 
 Landing page based on this codePen: https://codepen.io/nelsonleite/pen/WwZNVN.
