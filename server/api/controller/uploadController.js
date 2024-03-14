@@ -6,10 +6,20 @@ const router = Router();
 // const uploadFileFromBufferToS3 from "../../lib/uploadFileFromBufferToS3");
 
 // Limits size of 10MB
-// const sizeLimits = { fileSize: 1024 * 1024 * 10 };
+const sizeLimits = { fileSize: 1024 * 1024 * 10 };
+
+// Allow only JPG and PNG
+const fileFilter = (req, file, callback) => {
+  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+    callback(null, true);
+  } else {
+    console.log("Wrong format!");
+    callback(null, true);
+  }
+};
 
 const storage = memoryStorage();
-const upload = multer({ storage });
+const upload = multer({ storage, limits: sizeLimits, fileFilter });
 
 // POST single file object to s3
 router.post("/", upload.single("file"), (req, res) => {
