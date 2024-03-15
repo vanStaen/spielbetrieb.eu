@@ -24,15 +24,21 @@ const upload = multer({ storage, limits: sizeLimits, fileFilter });
 
 // POST single file object to s3
 router.post("/", upload.single("file"), async (req, res) => {
-  if (!req.isAuth) {
-    throw new Error("Unauthorized!");
+  try {
+    if (!req.isAuth) {
+      throw new Error("Unauthorized!");
+    }
+    const key = await uploadFileToS3(
+      req.file,
+      req.body.bucket,
+      req.userId,
+    );
+    return res.send({ key: key });
+  } catch (err) {
+    res.status(403).json({
+      error: `${err}`,
+    });
   }
-  const key = await uploadFileToS3(
-    req.file,
-    req.body.bucket,
-    req.userId,
-  );
-  return res.send({ key: key });
 });
 
 
