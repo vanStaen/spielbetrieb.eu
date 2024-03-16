@@ -1,7 +1,7 @@
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { v4 as uuid } from "uuid";
 
-import { resizeImageFromBuffer } from '../lib/processImageSharp.js';
+import { resizeImageFromBuffer } from '../processImageSharp.js';
 
 const THUMB_SIZE_IN_PX = 180;
 const MEDIUM_SIZE_IN_PX = 800;

@@ -1,10 +1,8 @@
 import multer, { memoryStorage } from "multer";
 import { Router } from "express";
-import { uploadFileToS3 } from "../../lib/uploadFileToS3.js";
+import { uploadFileToS3 } from "../../lib/S3/uploadFileToS3.js";
+import { deleteFileFromS3 } from "../../lib/S3/deleteFileFromS3.js";
 const router = Router();
-
-// const { resizeImageFromUrl } from "../../lib/processImageSharp");
-// const uploadFileFromBufferToS3 from "../../lib/uploadFileFromBufferToS3");
 
 // Limits size of 10MB
 const sizeLimits = { fileSize: 1024 * 1024 * 10 };
@@ -44,14 +42,6 @@ router.post("/", upload.single("file"), async (req, res) => {
 
 // DELETE single file object from s3 (based on key)
 router.delete("/:id", async (req, res) => {
-
-});
-
-export { router };
-
-/*
-// DELETE single file object from s3 (based on key)
-router.delete("/:id", async (req, res) => {
   if (!req.isAuth) {
     res.status(401).json({
       error: "Unauthorized",
@@ -59,26 +49,7 @@ router.delete("/:id", async (req, res) => {
     return;
   }
   try {
-    const params = {
-      Bucket: process.env.S3_BUCKET_ID,
-      Key: req.params.id,
-    };
-    const paramsThumb = {
-      Bucket: process.env.S3_BUCKET_ID,
-      Key: "t_" + req.params.id,
-    };
-    const paramsMedium = {
-      Bucket: process.env.S3_BUCKET_ID,
-      Key: "m_" + req.params.id,
-    };
-    await Promise.all([
-      // eslint-disable-next-line n/handle-callback-err
-      s3.deleteObject(params, function (err, data) {}),
-      // eslint-disable-next-line n/handle-callback-err
-      s3.deleteObject(paramsThumb, function (err, data) {}),
-      // eslint-disable-next-line n/handle-callback-err
-      s3.deleteObject(paramsMedium, function (err, data) {}),
-    ]);
+    await deleteFileFromS3(req.body.key, req.body.bucket, req.userId);
     res.status(204).json({});
   } catch (err) {
     res.status(400).json({
@@ -87,5 +58,4 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-module.exports = router;
-*/
+export { router };
