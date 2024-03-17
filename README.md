@@ -10,7 +10,7 @@ spielbetrieb.eu | Portal
 - spielbetrieb.info (production link to b2b portal)
 - www.merrier.app (will auto redirect to the url witout `www`)
 - www.spielbetrieb.eu (will auto redirect to the url witout `www`)
-- www.spielbetrieb.info (will auto redirect to the url witout `www`)
+- www.spielbetrieb.info (will auto redirect to the url witout `www`) 
 
 
 ## Graphic chart
