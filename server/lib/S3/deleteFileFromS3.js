@@ -9,7 +9,7 @@ const s3 = new S3Client({
     }
 });
 
-export const deleteFileFromS3 = (async (key, bucket, userId) => {
+export const deleteFileFromS3 = (async (path, bucket) => {
 
     const path = `${userId}/${key}`;
 

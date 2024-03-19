@@ -58,7 +58,7 @@ export const uploadFileToS3 = (async (file, bucket, userId) => {
         await s3.send(putObjectOriginal)
         await s3.send(putObjectMedium)
         await s3.send(putObjectThumb)
-        return key;
+        return path;
     } catch (e) {
         console.error(e)
         return { error: e }

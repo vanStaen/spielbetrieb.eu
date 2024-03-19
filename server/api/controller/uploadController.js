@@ -26,12 +26,12 @@ router.post("/", upload.single("file"), async (req, res) => {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
-    const key = await uploadFileToS3(
+    const path = await uploadFileToS3(
       req.file,
       req.body.bucket,
       req.userId,
     );
-    return res.send({ key: key });
+    return res.send({ path: path });
   } catch (err) {
     res.status(403).json({
       error: `${err}`,
@@ -49,7 +49,7 @@ router.delete("/:id", async (req, res) => {
     return;
   }
   try {
-    await deleteFileFromS3(req.body.key, req.body.bucket, req.userId);
+    await deleteFileFromS3(req.body.key, req.body.bucket);
     res.status(204).json({});
   } catch (err) {
     res.status(400).json({
