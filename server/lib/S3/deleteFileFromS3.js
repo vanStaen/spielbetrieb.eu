@@ -11,8 +11,6 @@ const s3 = new S3Client({
 
 export const deleteFileFromS3 = (async (path, bucket) => {
 
-    const path = `${userId}/${key}`;
-
     let s3BucketId;
     if (bucket === 'test') {
         s3BucketId = process.env.S3_BUCKET_TEST;
