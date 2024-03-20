@@ -28,7 +28,6 @@
 - [ ] Get rid of Axios, and use fetch();
 - [ ] BackEnd : Migrate AWS SDK for JavaScript (v3) 
 - [ ] FrontEnd : Update all packages
-- [ ] Check all z-Index
 - [ ] Tracking/Analytics
 - [ ] Smooth transition for language and theme menu
 - [ ] Rerendering (e.g: notifications) 
