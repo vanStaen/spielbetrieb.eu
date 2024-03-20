@@ -9,7 +9,7 @@ import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDrop
 import { HelpButtons } from "../../components/HelpButtons/HelpButtons";
 import { Header } from "./Header/Header";
 import { pageStore } from "../../store/pageStore/pageStore";
-import { Agenda } from "./Agenda/Agenda";
+import { Spielplan } from "./Spielplan/Spielplan";
 import { Basket } from "./Basket/Basket";
 import { Magazin } from "./Magazin/Magazin";
 import { Partner } from "./Partner/Partner";
@@ -54,7 +54,7 @@ export const Home = observer((props) => {
           </div>
         );
       case "spielplan":
-        return <Agenda />;
+        return <Spielplan />;
       case "event":
         return <EventPage />;
       case "basket":

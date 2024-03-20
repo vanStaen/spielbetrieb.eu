@@ -6,7 +6,7 @@ import { getEventtypes } from "./getEventtypes.js";
 import { getTags } from "./getTags.js";
 import { getLocations } from "./getLocations.js";
 
-export class AgendaStore {
+export class SpielplanStore {
   isLoadingEvent = true;
   isLoadingData = true;
   events = [];
@@ -145,4 +145,4 @@ export class AgendaStore {
   };
 }
 
-export const agendaStore = new AgendaStore();
+export const spielplanStore = new SpielplanStore();

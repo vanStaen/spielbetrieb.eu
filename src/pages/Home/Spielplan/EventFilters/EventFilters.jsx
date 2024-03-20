@@ -11,14 +11,14 @@ import "./EventFilters.less";
 export const EventFilters = observer(() => {
   return (
     <div
-      className={`agenda__filterContainer ${pageStore.selectedTheme === "light" ? "lightColorTheme__Text" : "darkColorTheme__Text"}`}
+      className={`spielplan__filterContainer ${pageStore.selectedTheme === "light" ? "lightColorTheme__Text" : "darkColorTheme__Text"}`}
     >
-      <div className="agenda__fitler">
+      <div className="spielplan__fitler">
         <LocationsFilter />
         <EventtypesFilter />
         <TagsFilter />
       </div>
-      <div className="agenda__browseZeitRaum">
+      <div className="spielplan__browseZeitRaum">
         <BrowseFilter />
       </div>
     </div>

@@ -3,12 +3,12 @@ import { Select } from "antd";
 import { observer } from "mobx-react";
 import { BankOutlined } from "@ant-design/icons";
 
-import { agendaStore } from "../../../../../store/agendaStore/agendaStore";
+import { spielplanStore } from "../../../../../store/spielplanStore/spielplanStore";
 
 import "./LocationsFilter.less";
 
 export const LocationsFilter = observer(() => {
-  const locationOptions = agendaStore.locations.map((location) => {
+  const locationOptions = spielplanStore.locations.map((location) => {
     return { value: location._id, label: location.name };
   });
 
@@ -20,7 +20,7 @@ export const LocationsFilter = observer(() => {
   ];
 
   const selectChangehandler = (e) => {
-    agendaStore.setFilterLocations(e);
+    spielplanStore.setFilterLocations(e);
   };
 
   return (

@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 
 import { EditableCell } from "../../EditableCell";
-import { getEventtypes } from "../../../../store/agendaStore/getEventtypes";
+import { getEventtypes } from "../../../../store/spielplanStore/getEventtypes";
 import { deleteEventtype } from "./deleteEventtype";
 import { updateEventtype } from "./updateEventtype";
 import { addEventtype } from "./addEventtype";

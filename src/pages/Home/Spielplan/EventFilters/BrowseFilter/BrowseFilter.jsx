@@ -14,7 +14,7 @@ import * as customParseFormat from "dayjs/plugin/customParseFormat";
 import * as weekOfYear from "dayjs/plugin/weekOfYear";
 
 import { pageStore } from "../../../../../store/pageStore/pageStore";
-import { agendaStore } from "../../../../../store/agendaStore/agendaStore";
+import { spielplanStore } from "../../../../../store/spielplanStore/spielplanStore";
 import {
   DATE_FORMAT_MONTH,
   DATE_FORMAT_CW,
@@ -39,20 +39,20 @@ export const BrowseFilter = observer(() => {
 
   useEffect(() => {
     if (week) {
-      agendaStore.setTimeSpan("week");
+      spielplanStore.setTimeSpan("week");
       const newDate = dayjs(`${year}-01-01`).week(week);
-      agendaStore.setFilterDateFrom(newDate);
-      agendaStore.fetchEvents();
+      spielplanStore.setFilterDateFrom(newDate);
+      spielplanStore.fetchEvents();
     } else if (day) {
-      agendaStore.setTimeSpan("day");
+      spielplanStore.setTimeSpan("day");
       const newDate = dayjs(`${year}.${month}.${day}`).format("YYYY.MM.DD");
-      agendaStore.setFilterDateFrom(newDate);
-      agendaStore.fetchEvents();
+      spielplanStore.setFilterDateFrom(newDate);
+      spielplanStore.fetchEvents();
     } else if (month) {
-      agendaStore.setTimeSpan("month");
+      spielplanStore.setTimeSpan("month");
       const newDate = dayjs(`${year}.${month}.01`).format("YYYY.MM.DD");
-      agendaStore.setFilterDateFrom(newDate);
-      agendaStore.fetchEvents();
+      spielplanStore.setFilterDateFrom(newDate);
+      spielplanStore.fetchEvents();
     }
   }, []);
 
@@ -60,10 +60,10 @@ export const BrowseFilter = observer(() => {
     const keyPressed = event.key.toLowerCase();
     if (keyPressed === "arrowleft") {
       event.preventDefault();
-      agendaStore.calculateFilterDateFrom(false);
+      spielplanStore.calculateFilterDateFrom(false);
     } else if (keyPressed === "arrowright") {
       event.preventDefault();
-      agendaStore.calculateFilterDateFrom(true);
+      spielplanStore.calculateFilterDateFrom(true);
     }
   };
 
@@ -74,7 +74,7 @@ export const BrowseFilter = observer(() => {
     } else if (newtimeSpan === "week") {
       browseFilterText = (
         <>
-          <span style={{ opacity: 0.5 }}>{t("agenda.week")} </span>
+          <span style={{ opacity: 0.5 }}>{t("spielplan.week")} </span>
           {newFilterDateFrom.format(DATE_FORMAT_CW)}
         </>
       );
@@ -85,27 +85,27 @@ export const BrowseFilter = observer(() => {
   };
 
   useEffect(() => {
-    setTimeSpanDisplay(agendaStore.timeSpan, agendaStore.filterDateFrom);
-    const year = dayjs(agendaStore.filterDateFrom).format("YYYY");
-    if (agendaStore.timeSpan === "week") {
-      const week = dayjs(agendaStore.filterDateFrom).format("ww");
+    setTimeSpanDisplay(spielplanStore.timeSpan, spielplanStore.filterDateFrom);
+    const year = dayjs(spielplanStore.filterDateFrom).format("YYYY");
+    if (spielplanStore.timeSpan === "week") {
+      const week = dayjs(spielplanStore.filterDateFrom).format("ww");
       const nextURL = `${process.env.HOST_URL}/spielplan/week/${year}/${week}/`;
       const nextState = { calendarWeek: week, year };
       window.history.replaceState(nextState, "", nextURL);
     } else {
-      const month = dayjs(agendaStore.filterDateFrom).format("MM");
-      if (agendaStore.timeSpan === "month") {
+      const month = dayjs(spielplanStore.filterDateFrom).format("MM");
+      if (spielplanStore.timeSpan === "month") {
         const nextURL = `${process.env.HOST_URL}/spielplan/${year}/${month}/`;
         const nextState = { month, year };
         window.history.replaceState(nextState, "", nextURL);
-      } else if (agendaStore.timeSpan === "day") {
-        const day = dayjs(agendaStore.filterDateFrom).format("DD");
+      } else if (spielplanStore.timeSpan === "day") {
+        const day = dayjs(spielplanStore.filterDateFrom).format("DD");
         const nextURL = `${process.env.HOST_URL}/spielplan/${year}/${month}/${day}/`;
         const nextState = { day, month, year };
         window.history.replaceState(nextState, "", nextURL);
       }
     }
-  }, [agendaStore.timeSpan, agendaStore.filterDateFrom]);
+  }, [spielplanStore.timeSpan, spielplanStore.filterDateFrom]);
 
   useEffect(() => {
     window.addEventListener("keydown", keydownEventHandler);
@@ -115,8 +115,8 @@ export const BrowseFilter = observer(() => {
   }, []);
 
   const timeSpanChange = (newFormat) => {
-    agendaStore.setTimeSpan(newFormat);
-    agendaStore.fetchEvents();
+    spielplanStore.setTimeSpan(newFormat);
+    spielplanStore.fetchEvents();
     handleHideMenu();
   };
 
@@ -131,9 +131,9 @@ export const BrowseFilter = observer(() => {
   };
 
   const resetHandler = () => {
-    agendaStore.setFilterDateFrom(dayjs());
-    agendaStore.setTimeSpan("day");
-    agendaStore.fetchEvents();
+    spielplanStore.setFilterDateFrom(dayjs());
+    spielplanStore.setTimeSpan("day");
+    spielplanStore.fetchEvents();
     handleHideMenu(true);
   };
 
@@ -142,14 +142,14 @@ export const BrowseFilter = observer(() => {
       <div className="browseFilter__text">
         <CaretLeftOutlined
           className="browseFilter__logo"
-          onClick={() => agendaStore.calculateFilterDateFrom(false)}
+          onClick={() => spielplanStore.calculateFilterDateFrom(false)}
         />{" "}
         <span onClick={() => setShowFormatMenu(!showFormatMenu)}>
           {filterText}
         </span>{" "}
         <CaretRightOutlined
           className="browseFilter__logo browseFilter__logoRight"
-          onClick={() => agendaStore.calculateFilterDateFrom(true)}
+          onClick={() => spielplanStore.calculateFilterDateFrom(true)}
         />
       </div>
       {showFormatMenu && (
@@ -163,30 +163,30 @@ export const BrowseFilter = observer(() => {
             id="browseFilter__menuContainer"
           >
             <div
-              className={`browseFilter__menuElement menu__element ${agendaStore.timeSpan === "month" && "menu__elementSelected"}`}
+              className={`browseFilter__menuElement menu__element ${spielplanStore.timeSpan === "month" && "menu__elementSelected"}`}
               onClick={() => timeSpanChange("month")}
             >
-              {dayjs(agendaStore.filterDateFrom).format(DATE_FORMAT_MONTH)}
+              {dayjs(spielplanStore.filterDateFrom).format(DATE_FORMAT_MONTH)}
             </div>
             <div
-              className={`browseFilter__menuElement menu__element ${agendaStore.timeSpan === "week" && "menu__elementSelected"}`}
+              className={`browseFilter__menuElement menu__element ${spielplanStore.timeSpan === "week" && "menu__elementSelected"}`}
               onClick={() => timeSpanChange("week")}
             >
-              {t("agenda.week")}{" "}
-              {dayjs(agendaStore.filterDateFrom).format(DATE_FORMAT_CW)}
+              {t("spielplan.week")}{" "}
+              {dayjs(spielplanStore.filterDateFrom).format(DATE_FORMAT_CW)}
             </div>
             <div
-              className={`browseFilter__menuElement menu__element ${agendaStore.timeSpan === "day" && "menu__elementSelected"}`}
+              className={`browseFilter__menuElement menu__element ${spielplanStore.timeSpan === "day" && "menu__elementSelected"}`}
               onClick={() => timeSpanChange("day")}
             >
-              {dayjs(agendaStore.filterDateFrom).format(DATE_FORMAT_DAY)}
+              {dayjs(spielplanStore.filterDateFrom).format(DATE_FORMAT_DAY)}
             </div>
             <div className="menu__whiteline"></div>
             <div
               className="browseFilter__menuElement menu__element"
               onClick={resetHandler}
             >
-              <CalendarOutlined /> {t("agenda.today")}
+              <CalendarOutlined /> {t("spielplan.today")}
             </div>
           </div>
         </>

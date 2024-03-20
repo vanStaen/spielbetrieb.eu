@@ -5,12 +5,12 @@ import { TagsOutlined } from "@ant-design/icons";
 
 import { nameParser } from "../../../../../helpers/nameParser";
 import { pageStore } from "../../../../../store/pageStore/pageStore";
-import { agendaStore } from "../../../../../store/agendaStore/agendaStore";
+import { spielplanStore } from "../../../../../store/spielplanStore/spielplanStore";
 
 import "./TagsFilter.less";
 
 export const TagsFilter = observer(() => {
-  const tagOptions = agendaStore.tags.map((tag) => {
+  const tagOptions = spielplanStore.tags.map((tag) => {
     return {
       value: tag._id,
       label: nameParser(tag.name, pageStore.selectedLanguage),
@@ -18,7 +18,7 @@ export const TagsFilter = observer(() => {
   });
 
   const selectChangehandler = (e) => {
-    agendaStore.setFilterTags(e);
+    spielplanStore.setFilterTags(e);
   };
 
   return (
@@ -30,7 +30,7 @@ export const TagsFilter = observer(() => {
       className="tagfilter__Select"
       style={{ minWidth: 120 }}
       onChange={selectChangehandler}
-      value={agendaStore.filterTags}
+      value={spielplanStore.filterTags}
       placeholder={
         <>
           <TagsOutlined /> Tags

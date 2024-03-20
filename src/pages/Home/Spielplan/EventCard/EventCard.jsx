@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ClockCircleOutlined, EnvironmentOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 
-import { agendaStore } from "../../../../store/agendaStore/agendaStore";
+import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 
 import "./EventCard.less";
 import "./EventColors.less";
@@ -26,16 +26,16 @@ export const EventCard = observer((props) => {
 
   const handleTagClick = (index, id) => {
     if (index === 0) {
-      if (!agendaStore.filterEventtypes.includes(String(id))) {
-        const newArrayFilterEventtypes = agendaStore.filterEventtypes.slice();
+      if (!spielplanStore.filterEventtypes.includes(String(id))) {
+        const newArrayFilterEventtypes = spielplanStore.filterEventtypes.slice();
         newArrayFilterEventtypes.push(String(id));
-        agendaStore.setFilterEventtypes(newArrayFilterEventtypes);
+        spielplanStore.setFilterEventtypes(newArrayFilterEventtypes);
       }
     } else {
-      if (!agendaStore.filterTags.includes(String(id))) {
-        const newArrayFilterTags = agendaStore.filterTags.slice();
+      if (!spielplanStore.filterTags.includes(String(id))) {
+        const newArrayFilterTags = spielplanStore.filterTags.slice();
         newArrayFilterTags.push(String(id));
-        agendaStore.setFilterTags(newArrayFilterTags);
+        spielplanStore.setFilterTags(newArrayFilterTags);
       }
     }
   };
@@ -66,7 +66,7 @@ export const EventCard = observer((props) => {
       isShownHidden.current = false;
     } else {
       navigate(`/event/${event._id}`, { relative: "path" });
-      agendaStore.setSelectedEvent(event);
+      spielplanStore.setSelectedEvent(event);
     }
   };
 
@@ -105,7 +105,7 @@ export const EventCard = observer((props) => {
         </div>
         <div className="event__promoter">
           <span className="event__organizedBy">
-            {t("agenda.eventOrganisedBy")}{" "}
+            {t("spielplan.eventOrganisedBy")}{" "}
           </span>
           {event.user.userName}
         </div>

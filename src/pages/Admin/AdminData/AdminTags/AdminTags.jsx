@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 
 import { EditableCell } from "../../EditableCell";
-import { getTags } from "../../../../store/agendaStore/getTags";
+import { getTags } from "../../../../store/spielplanStore/getTags";
 import { deleteTag } from "./deleteTag";
 import { updateTag } from "./updateTag";
 import { addTag } from "./addTag";

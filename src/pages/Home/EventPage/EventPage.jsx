@@ -11,7 +11,7 @@ import {
 
 import dayjs from "dayjs";
 
-import { agendaStore } from "../../../store/agendaStore/agendaStore";
+import { spielplanStore } from "../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../store/pageStore/pageStore";
 import { getSingleEvents } from "./getSingleEvents";
 import { nameParser } from "../../../helpers/nameParser";
@@ -24,7 +24,7 @@ export const EventPage = observer(() => {
   const { t } = useTranslation();
   const params = useParams();
   const navigate = useNavigate();
-  const event = agendaStore.selectedEvent || null;
+  const event = spielplanStore.selectedEvent || null;
 
   console.log("event", event);
 
@@ -45,13 +45,13 @@ export const EventPage = observer(() => {
 
   const fetchEventData = async (id) => {
     const eventFound = await getSingleEvents(id);
-    agendaStore.setSelectedEvent(eventFound);
+    spielplanStore.setSelectedEvent(eventFound);
   };
 
   useEffect(() => {
-    if (agendaStore.selectedEvent === null) {
-      agendaStore.fetchTags();
-      agendaStore.fetchEventtypes();
+    if (spielplanStore.selectedEvent === null) {
+      spielplanStore.fetchTags();
+      spielplanStore.fetchEventtypes();
       fetchEventData(params.id);
     }
   }, []);
@@ -60,7 +60,7 @@ export const EventPage = observer(() => {
     const eventTags = event?.eventTags?.map((tagId) => {
       return {
         name: nameParser(
-          agendaStore.tags.filter((tag) => parseInt(tag._id) === tagId)[0]
+          spielplanStore.tags.filter((tag) => parseInt(tag._id) === tagId)[0]
             ?.name,
           pageStore.selectedLanguage?.toLowerCase(),
         ),
@@ -69,7 +69,7 @@ export const EventPage = observer(() => {
     });
     eventTags?.splice(0, 0, {
       name: nameParser(
-        agendaStore.eventtypes.filter(
+        spielplanStore.eventtypes.filter(
           (eventtype) => parseInt(eventtype._id) === event?.eventtype,
         )[0]?.name,
         pageStore.selectedLanguage?.toLowerCase(),
@@ -88,7 +88,7 @@ export const EventPage = observer(() => {
 
   const isInThePast = event?.fromDate < dayjs();
 
-  const eventColor = agendaStore.eventtypes?.filter(
+  const eventColor = spielplanStore.eventtypes?.filter(
     (et) => parseInt(et._id) === event?.eventtype,
   )[0]?.color;
 
@@ -141,13 +141,13 @@ export const EventPage = observer(() => {
               {dayjs(event.fromDate).format("dddd") ===
               dayjs(event.untilDate).format("dddd") ? (
                 <>
-                  {dayjs(event.fromDate).format("HH:mm")} {t("agenda.until")}{" "}
+                  {dayjs(event.fromDate).format("HH:mm")} {t("spielplan.until")}{" "}
                   {dayjs(event.untilDate).format("HH:mm")}
                 </>
               ) : (
                 <>
                   {dayjs(event.fromDate).format("dddd HH:mm")}{" "}
-                  {t("agenda.until")}{" "}
+                  {t("spielplan.until")}{" "}
                   {dayjs(event.untilDate).format("dddd HH:mm")}
                 </>
               )}
@@ -167,7 +167,7 @@ export const EventPage = observer(() => {
               <br />
               <div className="eventpage__promoter">
                 <span className="eventpage__organizedBy">
-                  {t("agenda.eventOrganisedBy")}{" "}
+                  {t("spielplan.eventOrganisedBy")}{" "}
                 </span>
                 <Link to={`/user/${event.user?.userName}`} relative="path">
                   <span className="link">{event.user?.userName}</span>

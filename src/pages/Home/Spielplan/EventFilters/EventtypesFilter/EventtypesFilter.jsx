@@ -5,12 +5,12 @@ import { CalendarOutlined } from "@ant-design/icons";
 
 import { nameParser } from "../../../../../helpers/nameParser";
 import { pageStore } from "../../../../../store/pageStore/pageStore";
-import { agendaStore } from "../../../../../store/agendaStore/agendaStore";
+import { spielplanStore } from "../../../../../store/spielplanStore/spielplanStore";
 
 import "./EventtypesFilter.less";
 
 export const EventtypesFilter = observer(() => {
-  const eventTypesOptions = agendaStore.eventtypes.map((eventtype) => {
+  const eventTypesOptions = spielplanStore.eventtypes.map((eventtype) => {
     return {
       value: eventtype._id,
       label: nameParser(eventtype.name, pageStore.selectedLanguage),
@@ -18,7 +18,7 @@ export const EventtypesFilter = observer(() => {
   });
 
   const selectChangehandler = (e) => {
-    agendaStore.setFilterEventtypes(e);
+    spielplanStore.setFilterEventtypes(e);
   };
 
   return (
@@ -30,7 +30,7 @@ export const EventtypesFilter = observer(() => {
       className="eventtypefilter__Select"
       style={{ minWidth: 120 }}
       onChange={selectChangehandler}
-      value={agendaStore.filterEventtypes}
+      value={spielplanStore.filterEventtypes}
       placeholder={
         <>
           <CalendarOutlined /> Event

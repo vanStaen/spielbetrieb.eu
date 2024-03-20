@@ -15,9 +15,9 @@ import {
 
 import { addEvent } from "./addEvent";
 import { nameParser } from "../../../../helpers/nameParser";
-import { getEventtypes } from "../../../../store/agendaStore/getEventtypes";
-import { getLocations } from "../../../../store/agendaStore/getLocations";
-import { getTags } from "../../../../store/agendaStore/getTags";
+import { getEventtypes } from "../../../../store/spielplanStore/getEventtypes";
+import { getLocations } from "../../../../store/spielplanStore/getLocations";
+import { getTags } from "../../../../store/spielplanStore/getTags";
 import { userStore } from "../../../../store/userStore/userStore";
 
 import "./EventForm.less";

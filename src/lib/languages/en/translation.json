@@ -123,7 +123,7 @@
     "pleaseSelectList": "Please select at least one mailing list!",
     "pleaseInputEmail": "Please input a valid email!"
   },
-  "agenda": {
+  "spielplan": {
     "eventOrganisedBy": "Event added by",
     "today": "Today",
     "week": "Week",

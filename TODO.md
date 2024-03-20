@@ -35,6 +35,5 @@
 - [ ] List of forbidden words
 - [ ] Filter event based on city/geolocation
 - [ ] Valid some form with enter, cancel with esc
-- [ ] Rename Agenda to Spileplan in the code
 - [ ] Help buttons trigger a `tour` (see [tour ant component](https://ant.design/components/tour))
 - [ ] Create review model and schema/resolver
