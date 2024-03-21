@@ -26,14 +26,12 @@
 
 - [ ] Create deployment pipeline with test env
 - [ ] Get rid of Axios, and use fetch();
-- [ ] BackEnd : Migrate AWS SDK for JavaScript (v3) 
 - [ ] FrontEnd : Update all packages
 - [ ] Tracking/Analytics
 - [ ] Smooth transition for language and theme menu
-- [ ] Rerendering (e.g: notifications) 
-- [ ] List of forbidden usernames
-- [ ] List of forbidden words
+- [ ] Use List of forbidden usernames
+- [ ] Use List of forbidden words
 - [ ] Filter event based on city/geolocation
-- [ ] Valid some form with enter, cancel with esc
+- [ ] Valid form with enter, cancel with esc
 - [ ] Help buttons trigger a `tour` (see [tour ant component](https://ant.design/components/tour))
 - [ ] Create review model and schema/resolver
