@@ -1,10 +1,14 @@
 import { action, makeObservable, observable } from "mobx";
 import dayjs from "dayjs";
+import Cookies from "universal-cookie";
 
 import { getAllPublicEvents } from "./getAllPublicEvents.js";
 import { getEventtypes } from "./getEventtypes.js";
 import { getTags } from "./getTags.js";
 import { getLocations } from "./getLocations.js";
+import { pageStore } from "../pageStore/pageStore.js"; 
+
+const cookies = new Cookies();
 
 export class SpielplanStore {
   isLoadingEvent = true;
@@ -13,7 +17,7 @@ export class SpielplanStore {
   eventtypes = [];
   tags = [];
   locations = [];
-  timeSpan = "month";
+  timeSpan = cookies.get("timeSpan") || "month";
   filterDateFrom = dayjs();
   filterLocations = [];
   filterEventtypes = [];
@@ -72,12 +76,23 @@ export class SpielplanStore {
 
   fetchEvents = async () => {
     this.setIsLoadingEvent(true);
-    const fromUnixDateStartOf = this.filterDateFrom
-      .startOf(this.timeSpan)
+    let fromUnixDateStartOf;
+    let untilUnixDateEndOf;
+    if (this.timeSpan === 'all') {
+      fromUnixDateStartOf = this.filterDateFrom
+      .startOf('day')
       .valueOf();
-    const untilUnixDateEndOf = this.filterDateFrom
-      .endOf(this.timeSpan)
+      untilUnixDateEndOf = this.filterDateFrom
+      .endOf('year')
       .valueOf();
+    } else {
+      fromUnixDateStartOf = this.filterDateFrom
+        .startOf(this.timeSpan)
+        .valueOf();
+      untilUnixDateEndOf = this.filterDateFrom
+        .endOf(this.timeSpan)
+        .valueOf();
+    }
     const events = await getAllPublicEvents(
       fromUnixDateStartOf,
       untilUnixDateEndOf,
@@ -119,6 +134,9 @@ export class SpielplanStore {
 
   setTimeSpan = (timeSpan) => {
     this.timeSpan = timeSpan;
+    if (pageStore.allowCookie) {
+      cookies.set("timeSpan", timeSpan, { path: "/" });
+    }
   };
 
   setFilterLocations = (filterLocations) => {

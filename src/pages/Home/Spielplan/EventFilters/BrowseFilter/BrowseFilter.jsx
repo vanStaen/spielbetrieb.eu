@@ -80,6 +80,8 @@ export const BrowseFilter = observer(() => {
       );
     } else if (newtimeSpan === "day") {
       browseFilterText = newFilterDateFrom.format(DATE_FORMAT_DAY);
+    } else if (newtimeSpan === "all") {
+      browseFilterText = 'all events';
     }
     setFilterText(browseFilterText);
   };
@@ -137,18 +139,29 @@ export const BrowseFilter = observer(() => {
     handleHideMenu(true);
   };
 
+
+  const allHandler = () => {
+    spielplanStore.setFilterDateFrom(dayjs());
+    spielplanStore.setTimeSpan("all");
+    spielplanStore.fetchEvents();
+    handleHideMenu(true);
+  };
+
   return (
     <div className="browseFilter__container">
-      <div className="browseFilter__text">
+      <div>
         <CaretLeftOutlined
-          className="browseFilter__logo"
+          className={`browseFilter__logo ${spielplanStore.timeSpan  === 'all' && 'browseFilter__logoDisabled'}`}
           onClick={() => spielplanStore.calculateFilterDateFrom(false)}
         />{" "}
-        <span onClick={() => setShowFormatMenu(!showFormatMenu)}>
+        <span 
+          onClick={() => setShowFormatMenu(!showFormatMenu)}
+          className={spielplanStore.timeSpan  === 'all' && 'browseFilter__textDisabled'}
+        >
           {filterText}
         </span>{" "}
         <CaretRightOutlined
-          className="browseFilter__logo browseFilter__logoRight"
+          className={`browseFilter__logo browseFilter__logoRight ${spielplanStore.timeSpan === 'all' && 'browseFilter__logoDisabled'}`}
           onClick={() => spielplanStore.calculateFilterDateFrom(true)}
         />
       </div>
@@ -187,6 +200,12 @@ export const BrowseFilter = observer(() => {
               onClick={resetHandler}
             >
               <CalendarOutlined /> {t("spielplan.today")}
+            </div>
+            <div
+              className="browseFilter__menuElement menu__element"
+              onClick={allHandler}
+            >
+              All events
             </div>
           </div>
         </>
