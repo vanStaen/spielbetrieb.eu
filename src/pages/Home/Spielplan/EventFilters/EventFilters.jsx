@@ -8,18 +8,18 @@ import { EventtypesFilter } from "./EventtypesFilter/EventtypesFilter";
 import { LocationsFilter } from "./LocationsFilter/LocationsFilter";
 
 import "./EventFilters.less";
-export const EventFilters = observer(() => {
+export const EventFilters = observer((props) => {
   return (
     <div
       className={`spielplan__filterContainer ${pageStore.selectedTheme === "light" ? "lightColorTheme__Text" : "darkColorTheme__Text"}`}
     >
-      <div className="spielplan__fitler">
+      <div className="spielplan__fitler" ref={props.ref2}>
         <LocationsFilter />
         <EventtypesFilter />
         <TagsFilter />
       </div>
       <div className="spielplan__browseZeitRaum">
-        <BrowseFilter />
+        <BrowseFilter ref1={props.ref1} />
       </div>
     </div>
   );

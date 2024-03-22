@@ -1,7 +1,7 @@
 .darkModeDropdown__container {
   .darkModeDropdown {
     position: absolute;
-    z-index: 1001;
+    z-index: 6;
     bottom: 5px;
     left: 40px;
     margin: 15px 25px;
@@ -10,19 +10,22 @@
     letter-spacing: 2.5px;
     text-transform: capitalize;
     cursor: pointer;
+
     &:hover {
       opacity: .85;
     }
   }
+
   .darkModeDropdown__menu {
     position: absolute;
     left: 60px;
     bottom: 50px;
-    z-index: 6; 
+    z-index: 6;
     width: auto;
     height: auto;
     opacity: 1;
     transition: opacity .3s;
+
     .menu__element {
       text-align: left;
       font-size: 16px;
@@ -31,8 +34,9 @@
       padding: 0px 15px;
       margin: 10px 0;
       cursor: pointer;
+
       &:hover {
-          text-decoration: none;
+        text-decoration: none;
       }
     }
   }

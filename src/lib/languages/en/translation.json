@@ -129,11 +129,14 @@
     "week": "Week",
     "noEventsFound": "No events found",
     "tryOtherFilter": "Try another filter maybe?",
-    "until": "until"
+    "until": "until",
+    "showAllEvents": "Show all",
+    "allEvents": "All Events"
   },
   "help": {
     "helpNeeded": "Need help?",
     "yourEventIsMissing": "An event is missing?",
-    "reportBug": "Want to report a Bug?"
+    "reportBug": "Want to report a Bug?",
+    "showMeAround": "Let us show you around"
   }
 }

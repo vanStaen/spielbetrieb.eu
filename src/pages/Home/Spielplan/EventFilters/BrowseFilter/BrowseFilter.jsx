@@ -23,7 +23,7 @@ import {
 
 import "./BrowseFilter.less";
 
-export const BrowseFilter = observer(() => {
+export const BrowseFilter = observer((props) => {
   const { t } = useTranslation();
   const params = useParams();
 
@@ -81,7 +81,7 @@ export const BrowseFilter = observer(() => {
     } else if (newtimeSpan === "day") {
       browseFilterText = newFilterDateFrom.format(DATE_FORMAT_DAY);
     } else if (newtimeSpan === "all") {
-      browseFilterText = 'all events';
+      browseFilterText = t("spielplan.allEvents");
     }
     setFilterText(browseFilterText);
   };
@@ -89,7 +89,11 @@ export const BrowseFilter = observer(() => {
   useEffect(() => {
     setTimeSpanDisplay(spielplanStore.timeSpan, spielplanStore.filterDateFrom);
     const year = dayjs(spielplanStore.filterDateFrom).format("YYYY");
-    if (spielplanStore.timeSpan === "week") {
+    if (spielplanStore.timeSpan === "all") {
+      const nextURL = `${process.env.HOST_URL}/spielplan/`;
+      window.history.replaceState("", "", nextURL);
+    }
+    else if (spielplanStore.timeSpan === "week") {
       const week = dayjs(spielplanStore.filterDateFrom).format("ww");
       const nextURL = `${process.env.HOST_URL}/spielplan/week/${year}/${week}/`;
       const nextState = { calendarWeek: week, year };
@@ -148,15 +152,15 @@ export const BrowseFilter = observer(() => {
   };
 
   return (
-    <div className="browseFilter__container">
+    <div className="browseFilter__container" ref={props.ref1}>
       <div>
         <CaretLeftOutlined
-          className={`browseFilter__logo ${spielplanStore.timeSpan  === 'all' && 'browseFilter__logoDisabled'}`}
+          className={`browseFilter__logo ${spielplanStore.timeSpan === 'all' && 'browseFilter__logoDisabled'}`}
           onClick={() => spielplanStore.calculateFilterDateFrom(false)}
         />{" "}
-        <span 
+        <span
           onClick={() => setShowFormatMenu(!showFormatMenu)}
-          className={spielplanStore.timeSpan  === 'all' && 'browseFilter__textDisabled'}
+          className={spielplanStore.timeSpan === 'all' && 'browseFilter__textDisabled'}
         >
           {filterText}
         </span>{" "}
@@ -205,7 +209,7 @@ export const BrowseFilter = observer(() => {
               className="browseFilter__menuElement menu__element"
               onClick={allHandler}
             >
-              All events
+              {t("spielplan.showAllEvents")}
             </div>
           </div>
         </>

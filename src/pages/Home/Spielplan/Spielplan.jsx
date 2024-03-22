@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
+import { Tour } from "antd";
 
 import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinnner";
 import { EventCard } from "./EventCard/EventCard";
@@ -122,6 +123,23 @@ export const Spielplan = observer(() => {
 
   const eventsFormattedAndCleaned = eventsFormatted.filter((events) => events);
 
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
+  const ref3 = useRef(null);
+  const [startTour, setStartTour] = useState(false);
+  const tourSteps = [
+    {
+      title: 'Filter result per time span',
+      description: 'You probably wants to see events for a specifc time frame: use this feature to filter the results per month, weeks or day.',
+      target: () => ref1.current,
+    },
+    {
+      title: 'Location, events and tags',
+      description: <>Use this to filter the results based on Locations, Event types or Tags. Those filter are not additive. Thus if you pick the locations <i>KitKatClub</i> and the tag <i>Flinta</i>, you will see all events happening at Kitkat <b>OR</b> the events maked with the tag flinta.</>,
+      target: () => ref2.current,
+    }
+  ];
+
   return (
     <>
       {spielplanStore.isLoadingData ? (
@@ -135,8 +153,8 @@ export const Spielplan = observer(() => {
           onTouchMove={onTouchMove}
           onTouchEnd={() => onTouchEnd()}
         >
-          <HelpButtons page={"spielplan"} />
-          <EventFilters />
+          <HelpButtons page={"spielplan"} setStartTour={setStartTour} />
+          <EventFilters ref1={ref1} ref2={ref2} />
           {spielplanStore.isLoadingEvent ? (
             <div className="spielplan__noEventContainer">
               <CustomSpinner text="Loading events" />
@@ -157,6 +175,8 @@ export const Spielplan = observer(() => {
           )}
         </div>
       )}
+      <Tour open={startTour} onClose={() => setStartTour(false)} steps={tourSteps} />
+
     </>
   );
 });

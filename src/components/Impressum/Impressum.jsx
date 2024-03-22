@@ -22,7 +22,7 @@ export const Impressum = observer(() => {
   };
 
   return (
-    <>
+    <div className="impressum__container">
       <div
         className={`impressum__link ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
         onClick={showModal}
@@ -66,6 +66,6 @@ export const Impressum = observer(() => {
         <br />
         <br />
       </Modal>
-    </>
+    </div>
   );
 });

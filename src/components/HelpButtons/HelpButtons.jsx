@@ -6,6 +6,7 @@ import {
   CalendarOutlined,
   QuestionOutlined,
   BugOutlined,
+  EyeOutlined,
 } from "@ant-design/icons";
 
 import "./HelpButtons.less";
@@ -14,24 +15,34 @@ export const HelpButtons = observer((props) => {
   const { t } = useTranslation();
 
   return (
-    <FloatButton.Group
-      trigger="click"
-      tooltip={t("help.helpNeeded")}
-      icon={<QuestionOutlined />}
-      className="helpbutton"
-    >
-      <FloatButton
-        className="missingEventButton"
-        icon={<BugOutlined />}
-        tooltip={t("help.reportBug")}
-      />
-      {props.page === "spielplan" && (
+    <>
+      <FloatButton.Group
+        trigger="click"
+        tooltip={t("help.helpNeeded")}
+        icon={<QuestionOutlined />}
+        className="helpbutton"
+      >
         <FloatButton
-          className="missingEventButton"
-          icon={<CalendarOutlined />}
-          tooltip={t("help.yourEventIsMissing")}
+          className="subButton"
+          icon={<BugOutlined />}
+          tooltip={t("help.reportBug")}
         />
-      )}
-    </FloatButton.Group>
+        {props.page === "spielplan" && (
+          <FloatButton
+            className="subButton"
+            icon={<CalendarOutlined />}
+            tooltip={t("help.yourEventIsMissing")}
+          />
+        )}
+        {props.page === "spielplan" && (
+          <FloatButton
+            className="subButton"
+            icon={<EyeOutlined />}
+            tooltip={t("help.showMeAround")}
+            onClick={() => { props.setStartTour(true) }}
+          />
+        )}
+      </FloatButton.Group>
+    </>
   );
 });

@@ -6,7 +6,7 @@ import { getAllPublicEvents } from "./getAllPublicEvents.js";
 import { getEventtypes } from "./getEventtypes.js";
 import { getTags } from "./getTags.js";
 import { getLocations } from "./getLocations.js";
-import { pageStore } from "../pageStore/pageStore.js"; 
+import { pageStore } from "../pageStore/pageStore.js";
 
 const cookies = new Cookies();
 
@@ -17,7 +17,7 @@ export class SpielplanStore {
   eventtypes = [];
   tags = [];
   locations = [];
-  timeSpan = cookies.get("timeSpan") || "month";
+  timeSpan = cookies.get("timeSpan") || "all";
   filterDateFrom = dayjs();
   filterLocations = [];
   filterEventtypes = [];
@@ -80,11 +80,11 @@ export class SpielplanStore {
     let untilUnixDateEndOf;
     if (this.timeSpan === 'all') {
       fromUnixDateStartOf = this.filterDateFrom
-      .startOf('day')
-      .valueOf();
+        .startOf('day')
+        .valueOf();
       untilUnixDateEndOf = this.filterDateFrom
-      .endOf('year')
-      .valueOf();
+        .endOf('year')
+        .valueOf();
     } else {
       fromUnixDateStartOf = this.filterDateFrom
         .startOf(this.timeSpan)

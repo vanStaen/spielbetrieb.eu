@@ -130,11 +130,14 @@
     "noEventsFound": "Kein Ergebnisse",
     "tryOtherFilter": "Versuch es mit einem anderen Filter?",
     "yourEventIsMissing": "Dein Veranstalltung fehlt?",
-    "until": "bis"
+    "until": "bis",
+    "showAllEvents": "Alles zeigen",
+    "allEvents": "Alles"
   },
   "help": {
     "helpNeeded": "Hilfe?",
     "yourEventIsMissing": "Eine Veranstalltung fehlt?",
-    "reportBug": "Problem melden?"
+    "reportBug": "Problem melden?",
+    "showMeAround": "Wie zeigen dir wie"
   }
 }

@@ -78,8 +78,8 @@ const App = observer(() => {
     <BrowserRouter>
       <div className="App" id="app">
         <AcceptCookies />
-        <Impressum />
         < div className="main" >
+          <Impressum />
           <Routes>
             <Route
               path="subscriberverify/:token"
