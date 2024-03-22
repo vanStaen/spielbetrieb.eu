@@ -21,6 +21,10 @@ export const Spielplan = observer(() => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const throttling = useRef(false);
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
+  const ref3 = useRef(null);
+  const [startTour, setStartTour] = useState(false);
 
   const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
 
@@ -64,7 +68,7 @@ export const Spielplan = observer(() => {
     }
   }, [spielplanStore.eventtypes, spielplanStore.locations, spielplanStore.tags]);
 
-  const eventsFormatted = spielplanStore.events?.map((event) => {
+  const eventsFormatted = spielplanStore.events?.map((event, index) => {
     const eventColor = spielplanStore.eventtypes?.filter(
       (et) => parseInt(et._id) === event.eventtype,
     )[0]?.color;
@@ -112,6 +116,16 @@ export const Spielplan = observer(() => {
     }
 
     return (
+      index === 0 ?
+      <div ref={ref3}>
+        <EventCard
+          key={`eventCard${event._id}`}
+          event={event}
+          color={eventColor}
+          tags={eventTags}
+        />
+      </div>
+      :
       <EventCard
         key={`eventCard${event._id}`}
         event={event}
@@ -123,11 +137,7 @@ export const Spielplan = observer(() => {
 
   const eventsFormattedAndCleaned = eventsFormatted.filter((events) => events);
 
-  const ref1 = useRef(null);
-  const ref2 = useRef(null);
-  const ref3 = useRef(null);
-  const [startTour, setStartTour] = useState(false);
-  const tourSteps = [
+  const spielplanTourSteps = [
     {
       title: 'Filter result per time span',
       description: 'You probably wants to see events for a specifc time frame: use this feature to filter the results per month, weeks or day.',
@@ -135,8 +145,13 @@ export const Spielplan = observer(() => {
     },
     {
       title: 'Location, events and tags',
-      description: <>Use this to filter the results based on Locations, Event types or Tags. Those filter are not additive. Thus if you pick the locations <i>KitKatClub</i> and the tag <i>Flinta</i>, you will see all events happening at Kitkat <b>OR</b> the events maked with the tag flinta.</>,
+      description: <>Use this to filter the results based on Locations, Event types or Tags. Those filter are not additive. Thus if you pick the location <i>KitKatClub</i> and the tag <i>Flinta</i>, you will see all events happening at Kitkat <b>OR</b> the events maked with the tag flinta.</>,
       target: () => ref2.current,
+    },
+    {
+      title: 'All events matching your filter',
+      description: <>All events matching your filter (if any) will be displayed here. If you don't see anything, you may want to reset some filter and maybe increase the time frame.</>,
+      target: () => ref3.current,
     }
   ];
 
@@ -156,7 +171,7 @@ export const Spielplan = observer(() => {
           <HelpButtons page={"spielplan"} setStartTour={setStartTour} />
           <EventFilters ref1={ref1} ref2={ref2} />
           {spielplanStore.isLoadingEvent ? (
-            <div className="spielplan__noEventContainer">
+            <div className="spielplan__noEventContainer" ref={ref3}>
               <CustomSpinner text="Loading events" />
             </div>
           ) : eventsFormattedAndCleaned.length === 0 ? (
@@ -175,7 +190,7 @@ export const Spielplan = observer(() => {
           )}
         </div>
       )}
-      <Tour open={startTour} onClose={() => setStartTour(false)} steps={tourSteps} />
+      <Tour open={startTour} onClose={() => setStartTour(false)} steps={spielplanTourSteps} />
 
     </>
   );
