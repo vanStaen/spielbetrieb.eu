@@ -1,0 +1,61 @@
+.profil__main {
+  width: 100vw;
+  height: auto;
+  min-height: calc(100vh - 50px - 190px); /*50px menu, 190px footer*/
+  text-align: center;
+}
+
+.profil__containerRight {
+  display: inline-block;
+  vertical-align: top;
+  width: 220px;
+  text-align: left;
+  margin-top: 30px;
+}
+
+.profil__containerRightMobile {
+  display: none;
+  text-align: left;
+  padding: 10px;
+}
+
+.profil__containerCenter {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100vw - 440px);
+  max-width: 1200px;
+  text-align: left;
+  padding: 20px 30px;
+}
+
+.profil__containerLeft {
+  display: inline-block;
+  vertical-align: top;
+  width: 220px;
+  margin-top: 30px;
+}
+
+.profil__containerCenterContent {
+  margin: 15px 0 0 0;
+}
+
+
+@media (max-width: 800px) {
+  .profil__main {
+    min-height: calc(100vh - 50px - 340px); /*50px menu, 340px footer*/
+  }
+  .profil__containerLeft {
+    display: block;
+    width: 100vw;
+    margin-top: 0;
+  }
+  .profil__containerCenter {
+    display: block;
+    width: 100vw;
+    padding: 15px 0 0 0;
+  }
+  .profil__containerRight {
+    display: none;
+    margin-top: 0;
+  }
+}

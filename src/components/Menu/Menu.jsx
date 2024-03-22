@@ -94,9 +94,12 @@ export const Menu = observer(() => {
             className={`menu__container ${pageStore.selectedTheme === "light" ? "lightColorTheme__Menu" : "darkColorTheme__Menu"}`}
             id="menuContainer"
           >
-            <div className="menu__elementDisabled">
-              <UserOutlined style={{ position: "relative", bottom: "-2px" }} />
-              &nbsp; Profile
+            <div className="menu__element">
+
+              <Link className="link menu__link" to="/profile/">
+                <UserOutlined style={{ position: "relative", bottom: "-2px" }} />
+                &nbsp; Profile
+              </Link>
             </div>
             <div className="menu__elementDisabled">
               <SettingOutlined

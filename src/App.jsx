@@ -79,7 +79,7 @@ const App = observer(() => {
       <div className="App" id="app">
         <AcceptCookies />
         <Impressum />
-        <div className="main">
+        < div className="main" >
           <Routes>
             <Route
               path="subscriberverify/:token"
@@ -87,14 +87,12 @@ const App = observer(() => {
             />
             <Route path="emailverify/:token" element={<EmailVerified />} />
             <Route path="recoverpwd/:token" element={<NewPassword />} />
-            {/* <Route path="partner/:username" element={</>} /> */}
-            {/* <Route path="user/:username" element={</>} /> */}
             <Route path="admin/" element={<Admin />} />
             <Route path="login/" element={<LoginPage />} />
             <Route path="basket/" element={<Home page="basket" />} />
             <Route path="magazin/" element={<Home page="magazin" />} />
-            <Route path="partner/:id" element={<Home page="partner" />} />
-            <Route path="user/:id" element={<Home page="profile" />} />
+            <Route path="partner/:username" element={<Home page="partner" />} />
+            <Route path="user/:username" element={<Home page="profile" />} />
             <Route path="profile/" element={<Home page="profile" />} />
             <Route path="settings/" element={<Home page="settings" />} />
             <Route path="shop/" element={<Home page="shop" />} />
@@ -122,7 +120,7 @@ const App = observer(() => {
           </Routes>
         </div>
       </div>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 });
 
