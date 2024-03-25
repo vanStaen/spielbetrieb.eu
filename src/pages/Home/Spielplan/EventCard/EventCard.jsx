@@ -101,11 +101,11 @@ export const EventCard = observer((props) => {
           <div className="event__location">{event.locationName} </div>
           <div className="event__title">{event.title}</div>
         </div>
-        <div className="event__timelocation">
+        <div className="event__time">
           <ClockCircleOutlined /> {dayjs(event.fromDate).format("HH:mm")} -{" "}
           {dayjs(event.untilDate).format("HH:mm")}
         </div>
-        <div className="event__timelocation">
+        <div className="event__location">
           <EnvironmentOutlined /> {event.locationAddress}
         </div>
         <div className="event__promoter">

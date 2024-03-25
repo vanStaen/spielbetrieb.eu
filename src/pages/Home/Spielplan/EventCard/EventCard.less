@@ -53,24 +53,32 @@
             margin-bottom: 5px;
 
             .event__dateYear {
-                display: none;
+                position: absolute;
+                right: 25px;
+                opacity: .25;
+                font-weight: 300;
+                font-size: 33px;
+                padding-top: 3px;
             }
 
             .event__dateDayOfWeek {
                 display: inline-block;
                 font-weight: 300;
                 font-size: 33px;
+                margin-left: 10px;
                 margin-right: 10px;
             }
 
             .event__dateDay {
                 display: inline-block;
-                font-size: 40px;
+                font-weight: 300;
+                font-size: 33px;
                 margin-right: 10px;
             }
 
             .event__dateMonth {
                 display: inline-block;
+                font-size: 33px;
             }
         }
     }
@@ -147,7 +155,7 @@
             }
         }
 
-        .event__timelocation {
+        .event__time, .event__location {
             padding-top: 8px;
             font-size: 12px;
         }
@@ -167,8 +175,17 @@
             padding: 0;
             width: 100%;
 
+            .event__promoter {
+                display: none;
+            }
+
+            .event__location {
+                display: none;
+            }
+
             .event__tags {
                 padding-bottom: 8px;
+                display: none;
             }
         }
     }
@@ -176,8 +193,8 @@
 
 @media only screen and (max-width: 675px) {
     .event__Container {
-        width: calc(100% -40px);
-        margin: 10px 20px 0 20px;
+        width: calc(100% - 40px);
+        margin: 10px 20px 20px 20px;
         padding: 0px;
     }
 }
