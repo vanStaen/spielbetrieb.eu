@@ -3,13 +3,15 @@ import { Tag } from "antd";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ClockCircleOutlined, EnvironmentOutlined } from "@ant-design/icons";
+import { observer } from "mobx-react";
 import dayjs from "dayjs";
 
 import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 
+import artwork from '../../../../img/artworks/ak02.jpg';
+
 import "./EventCard.less";
 import "./EventColors.less";
-import { observer } from "mobx-react";
 
 export const EventCard = observer((props) => {
   const { t } = useTranslation();
@@ -74,7 +76,7 @@ export const EventCard = observer((props) => {
     <div
       key={event._id}
       id={`eventContainer${event._id}`}
-      className={`event__Container ${isInThePast && "event__ContainerPast"} ${"color" + color}`}
+      className={`event__Container ${isInThePast && "event__ContainerPast"}`}
       onClick={handleEventContainerClick}
     >
       <div className="event__date">
@@ -90,6 +92,9 @@ export const EventCard = observer((props) => {
         <div className="event__dateMonth">
           {dayjs(event.fromDate).format("MMM")}
         </div>
+      </div>
+      <div className="event__artwork">
+        <img src={artwork} />
       </div>
       <div className="event__main">
         <div className="event__titleLocation">

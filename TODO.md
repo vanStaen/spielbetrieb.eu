@@ -35,3 +35,4 @@
 - [ ] Valid form with enter, cancel with esc
 - [ ] Help buttons trigger a `tour` (see [tour ant component](https://ant.design/components/tour))
 - [ ] Create review model and schema/resolver
+- [ ] Spielplan Filter should be of type OR (and not AND)
