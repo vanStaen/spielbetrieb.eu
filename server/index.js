@@ -17,7 +17,7 @@ import { router as MailRouter } from "./api/controller/mailController.js";
 import { router as UploadRouter } from "./api/controller/uploadController.js";
 import { router as NewsletterRouter } from "./api/controller/newsletterController.js";
 
-import {} from "dotenv/config";
+import './lib/loadEnv.js';
 
 const PORT = process.env.PORT || 5017;
 

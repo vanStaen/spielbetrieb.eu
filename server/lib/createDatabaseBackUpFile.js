@@ -1,12 +1,15 @@
 import fs from "fs";
-import { Client } from "pg";
-import { } from "dotenv/config";
+import pg from "pg";
+import path from "path";
+import dotenv from 'dotenv';
+import { fileURLToPath } from "url";
 
-// eslint-disable-next-line n/no-path-concat
-// require("dotenv").config({ path: __dirname + "/./../../.env" });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: __dirname + "/./../../.env" });
 
 // init Postgres
-const client = new Client({
+const client = new pg.Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true,
 });

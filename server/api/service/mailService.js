@@ -1,8 +1,14 @@
-import {} from "dotenv/config";
 import jsonwebtoken from "jsonwebtoken";
 import sgMail from "@sendgrid/mail";
 import { User } from "../../models/User.js";
 import { validateEmail } from "../../lib/validateEmail.js";
+import path from "path";
+import dotenv from 'dotenv';
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: __dirname + "/./../../.env" });
 
 const mainDomain = "spielbetrieb.eu";
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);

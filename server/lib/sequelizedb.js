@@ -1,4 +1,11 @@
 import Sequelize from "sequelize";
+import path from "path";
+import dotenv from 'dotenv';
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: __dirname + "/./../../.env" });
 
 const DATABASE_NAME = process.env.DATABASE_URL.split("/")[3];
 const DATABASE_URL2 = process.env.DATABASE_URL.split("/")[2];
