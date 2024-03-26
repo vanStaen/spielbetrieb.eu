@@ -7,6 +7,7 @@ import {
   ClockCircleOutlined,
   EnvironmentOutlined,
   ArrowLeftOutlined,
+  TagOutlined
 } from "@ant-design/icons";
 
 import dayjs from "dayjs";
@@ -16,6 +17,8 @@ import { pageStore } from "../../../store/pageStore/pageStore";
 import { getSingleEvents } from "./getSingleEvents";
 import { nameParser } from "../../../helpers/nameParser";
 import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
+
+import artwork from '../../../img/artworks/ak03.jpg';
 
 import "./EventPage.less";
 import "./EventPageColors.less";
@@ -86,45 +89,35 @@ export const EventPage = observer(() => {
     return tagsFormatted;
   };
 
-  const isInThePast = event?.fromDate < dayjs();
-
-  const eventColor = spielplanStore.eventtypes?.filter(
+  const eventType = spielplanStore.eventtypes?.filter(
     (et) => parseInt(et._id) === event?.eventtype,
-  )[0]?.color;
-
-  const handleEventContainerClick = () => {
-    const elementContainer = document.getElementById(
-      `eventContainer${event?._id}`,
-    );
-    elementContainer.style.maxHeight = "400px";
-    elementContainer.classList.remove("eventpage__ContainerPast");
-  };
+  )[0];
 
   return (
-    <div className="eventpage__container">
-      {event !== null && (
+    <div
+      className="eventpage__container"
+    >
+      {event !== null ? (
         <>
-          <div
+          {/*<div
             onClick={() => {
               navigate(-1);
             }}
             className={`eventpage__back link 
-                      ${
-                        pageStore.selectedTheme === "light"
-                          ? "lightColorTheme__Text"
-                          : "darkColorTheme__Text"
-                      }`}
+                      ${pageStore.selectedTheme === "light"
+                ? "lightColorTheme__Text"
+                : "darkColorTheme__Text"
+              }`}
           >
             <ArrowLeftOutlined /> back to the list of events
+            </div>*/}
+          <div className="eventpage__artworkCol">
+            <div className="eventpage__artworkContainer">
+              <img src={artwork} className="eventpage__artwork" />
+            </div>
           </div>
-          <div
-            key={event._id}
-            id={`eventContainer${event._id}`}
-            className={`eventpage__eventcontainer 
-                      ${isInThePast && "eventpage__ContainerPast"} 
-                      ${"eventpagecolor" + eventColor}`}
-            onClick={handleEventContainerClick}
-          >
+          <div className="eventpage__descCol">
+            <div className="eventpage__title">{event.title}</div>
             <div className="eventpage__date">
               <span className="eventpage__weekday">
                 {dayjs(event.fromDate).format("dddd")}
@@ -136,10 +129,31 @@ export const EventPage = observer(() => {
                 {dayjs(event.fromDate).format("YYYY")}
               </span>
             </div>
+            <div className="eventpage__typeLocation">
+              <span className="eventpage__typeLocationSpan">
+                <TagOutlined className="eventpage__typeLocationIcon" />{" "}
+                {nameParser(eventType?.name, pageStore.selectedLanguage)}
+              </span>
+              <span className="eventpage__typeLocationSpan">
+                <EnvironmentOutlined className="eventpage__typeLocationIcon" />{" "}
+                {event.locationName}
+              </span>
+            </div>
+            <div className="eventpage__descContainer">
+              <div className="eventpage__descTitle">
+                Event Description
+              </div>
+              <div className="eventpage__desc">
+                {event.description}
+              </div>
+            </div>
+          </div>
+          {/* 
+            
             <div className="eventpage__time">
               <ClockCircleOutlined />{" "}
               {dayjs(event.fromDate).format("dddd") ===
-              dayjs(event.untilDate).format("dddd") ? (
+                dayjs(event.untilDate).format("dddd") ? (
                 <>
                   {dayjs(event.fromDate).format("HH:mm")} {t("spielplan.until")}{" "}
                   {dayjs(event.untilDate).format("HH:mm")}
@@ -162,7 +176,7 @@ export const EventPage = observer(() => {
                 </a>
               </div>
               <br />
-              <div className="eventpage__title">{event.title}</div>
+              
               <div className="eventpage__desc">{event.description}</div>
               <br />
               <div className="eventpage__promoter">
@@ -176,8 +190,9 @@ export const EventPage = observer(() => {
             </div>
           </div>
           <div className="eventpage__tags">{eventTags()}</div>
+          */}
         </>
-      )}
+      ) : 'Loading'}
       <HelpButtons />
     </div>
   );

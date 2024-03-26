@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 
 import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 
-import artwork from '../../../../img/artworks/ak02.jpg';
+import artwork from '../../../../img/artworks/ak03.jpg';
 
 import "./EventCard.less";
 import "./EventColors.less";

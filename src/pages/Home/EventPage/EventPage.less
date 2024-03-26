@@ -1,7 +1,94 @@
 .eventpage__container {
-    width: calc(100% - 50px); // -margin
-    max-width: 1200px;
-    margin: 0 25px;
+    width: calc(100% - 64px);
+    margin: 32px;
+    max-width: 1080px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    .eventpage__artworkCol {
+        min-width: 330px;
+
+        .eventpage__artworkContainer {
+            .eventpage__artwork {
+                border-radius: 0px;
+                width: 100%;
+            }
+        }
+    }
+
+    .eventpage__descCol {
+        margin-left: 32px;
+        color: white;
+        flex: 2 1 0%;
+
+        .eventpage__title {
+            font-size: 62px;
+            font-weight: 100;
+            line-height: 70%;
+            text-transform: uppercase;
+            padding-bottom: 22px;
+            text-align: right;
+        }
+
+        .eventpage__date {
+            font-size: 20px;
+            letter-spacing: -1px;
+            padding-bottom: 6px;
+            text-align: right;
+
+            .eventpage__weekday {
+                opacity: .5;
+                font-weight: 200;
+                padding-right: 4px;
+            }
+
+            .eventpage__year {
+                opacity: .5;
+                padding-left: 4px;
+            }
+        }
+
+        .eventpage__typeLocation {
+            font-size: 20px;
+            letter-spacing: -1px;
+            text-align: right;
+
+            .eventpage__typeLocationSpan {
+                padding-left: 14px;
+
+                .eventpage__typeLocationIcon {
+                    padding-right: 2px;
+                    font-size: 16px;
+                    opacity: .75;
+
+                }
+            }
+        }
+
+        .eventpage__descContainer {
+            padding-top: 32px;
+
+            .eventpage__descTitle {
+                font-size: 20px;
+                opacity: 1;
+                padding-bottom: 6px;
+            }
+
+            .eventpage__desc {
+                font-size: 20px;
+                opacity: .5;
+                text-align: justify;
+                text-justify: inter-word;
+            }
+        }
+    }
+
+
+
+
+
 
     .eventpage__back {
         width: calc(100% - 40px); // minus margin/padding
@@ -17,20 +104,6 @@
         padding: 20px;
         border-radius: 3px;
         border: 1px solid rgba(var(--themeFontColor), .3);
-
-        .eventpage__date {
-            font-size: 27px;
-            font-weight: 600;
-
-            .eventpage__weekday {
-                opacity: .5;
-                font-weight: 300;
-            }
-
-            .eventpage__year {
-                opacity: .5;
-            }
-        }
 
         .eventpage__time {
             padding-top: 5px;
@@ -52,11 +125,6 @@
             }
         }
 
-        .eventpage__title {
-            font-size: 27px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
 
         .eventpage__desc {
             padding-top: 10px;
