@@ -81,7 +81,7 @@ export const BrowseFilter = observer((props) => {
     } else if (newtimeSpan === "day") {
       browseFilterText = newFilterDateFrom.format(DATE_FORMAT_DAY);
     } else if (newtimeSpan === "all") {
-      browseFilterText = t("spielplan.allEvents");
+      browseFilterText = t("spielplan.pickaDate");
     }
     setFilterText(browseFilterText);
   };
