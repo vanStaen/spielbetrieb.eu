@@ -192,6 +192,16 @@ export const EventPage = observer(() => {
                 </div>
               </div>
             </div>
+            { event.lineup && 
+            <div className="eventpage__lineupContainer">
+              <div className="eventpage__lineupTitle">
+                  Line up
+                </div>
+                <div className="eventpage__lineup">
+                  <div className="eventpage__subInfo">First Artist</div>
+                  <div className="eventpage__subInfo">Second Artist</div>
+                </div>
+            </div> }
             <div className="eventpage__locationContainer">
               <div className="eventpage__locationTitle">
                   Location

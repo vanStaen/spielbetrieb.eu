@@ -21,6 +21,12 @@
   - [ ] Show number of attendee
   - [ ] Show bookmarked
   - [ ] `showInfilter` for Locations/eventtypes/tags
+- [ ] Event 
+  - [ ] event info (age, dresscode) as standart 
+  - [ ] Line up details (artist + artwork + link)
+    - [ ] Same as location, store some recuring artists, and make them searchable
+  - [ ] Preise (als array of price: [{ price: 15, desc: 'EarlyBird'}, { price: 22, desc: 'online ticket'}, { price: 25, desc: 'AtTheDoor'}])
+  - [ ] Currency
 
 ## Tech debt:
 
