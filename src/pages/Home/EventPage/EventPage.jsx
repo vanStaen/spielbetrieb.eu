@@ -7,7 +7,11 @@ import {
   ClockCircleOutlined,
   EnvironmentOutlined,
   ArrowLeftOutlined,
-  TagOutlined
+  TagOutlined,
+  AimOutlined,
+  EuroOutlined,
+  InfoCircleOutlined,
+  TagsOutlined,
 } from "@ant-design/icons";
 
 import dayjs from "dayjs";
@@ -79,6 +83,7 @@ export const EventPage = observer(() => {
       ),
       id: event?.eventtype,
     });
+
     const tagsFormatted = eventTags?.map((tag) => {
       return (
         <Tag key={tag.id} bordered={false}>
@@ -86,6 +91,7 @@ export const EventPage = observer(() => {
         </Tag>
       );
     });
+
     return tagsFormatted;
   };
 
@@ -95,7 +101,11 @@ export const EventPage = observer(() => {
 
   return (
     <div
-      className="eventpage__container"
+      className={`eventpage__container 
+                ${pageStore.selectedTheme === "light"
+                ? "black"
+                : "white"
+              }`}
     >
       {event !== null ? (
         <>
@@ -109,7 +119,7 @@ export const EventPage = observer(() => {
                 : "darkColorTheme__Text"
               }`}
           >
-            <ArrowLeftOutlined /> back to the list of events
+            <ArrowLeftOutlined />
             </div>*/}
           <div className="eventpage__artworkCol">
             <div className="eventpage__artworkContainer">
@@ -141,11 +151,55 @@ export const EventPage = observer(() => {
             </div>
             <div className="eventpage__descContainer">
               <div className="eventpage__descTitle">
-                Event Description
+                Event description
               </div>
               <div className="eventpage__desc">
                 {event.description}
               </div>
+            </div>
+            <div className="eventpage__infoContainer">
+              <div className="eventpage__infoTitle">
+                Event infos
+              </div>
+              <div className="eventpage__info">
+                <div className="eventpage__subInfo">
+                  <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
+                  {dayjs(event.fromDate).format("dddd") ===
+                    dayjs(event.untilDate).format("dddd") ? (
+                    <>
+                      {dayjs(event.fromDate).format("HH:mm")} {t("spielplan.until")}{" "}
+                      {dayjs(event.untilDate).format("HH:mm")}
+                    </>
+                  ) : (
+                    <>
+                      {dayjs(event.fromDate).format("dddd HH:mm")}{" "}
+                      {t("spielplan.until")}{" "}
+                      {dayjs(event.untilDate).format("dddd HH:mm")}
+                    </>
+                  )}
+                </div>
+                <div className="eventpage__subInfo">
+                  <EuroOutlined  className="eventpage__infoIcon" />{" "}
+                  22€ (tickets online) - 25€ (at the door)
+                </div>
+                <div className="eventpage__subInfo">
+                  <InfoCircleOutlined  className="eventpage__infoIcon" />{" "}
+                  This is an 21+ event, with dresscode
+                </div>
+                <div className="eventpage__tags">
+                  <TagsOutlined  className="eventpage__infoIcon" />{" "}
+                  {eventTags()}
+                </div>
+              </div>
+            </div>
+            <div className="eventpage__locationContainer">
+              <div className="eventpage__locationTitle">
+                  Location
+                </div>
+                <div className="eventpage__location">
+                  <div className="eventpage__subInfo">{event.locationName}</div>
+                  <div className="eventpage__subInfo">{event.locationAddress}</div>
+                </div>
             </div>
           </div>
           {/* 

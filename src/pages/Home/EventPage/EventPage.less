@@ -1,3 +1,10 @@
+.white {
+    color: white;
+}
+.black {
+    color: black;
+}
+
 .eventpage__container {
     width: calc(100% - 64px);
     margin: 32px;
@@ -20,7 +27,6 @@
 
     .eventpage__descCol {
         margin-left: 32px;
-        color: white;
         flex: 2 1 0%;
 
         .eventpage__title {
@@ -73,22 +79,78 @@
             .eventpage__descTitle {
                 font-size: 20px;
                 opacity: 1;
-                padding-bottom: 6px;
+                padding-bottom: 8px;
             }
 
             .eventpage__desc {
-                font-size: 20px;
-                opacity: .5;
+                font-size: 18px;
+                color: rgba(var(--themeFontColor), .8);
                 text-align: justify;
                 text-justify: inter-word;
             }
         }
+        .eventpage__infoContainer {
+            padding-top: 32px;
+
+            .eventpage__infoTitle {
+                font-size: 20px;
+                opacity: 1;
+                padding-bottom: 8px;
+            }
+
+            .eventpage__info {
+                color: rgba(var(--themeFontColor), .8);
+                font-size: 16px;
+                text-align: justify;
+                text-justify: inter-word;
+                .eventpage__subInfo {
+                    padding-bottom: 8px;
+                    .eventpage__infoIcon {
+                        position: relative;
+                        top: 0px;
+                        font-size: 14px;
+                        padding-right: 3px;
+                    }
+                }
+                .eventpage__tags {
+                    .eventpage__infoIcon {
+                        position: relative;
+                        top: 0px;
+                        font-size: 14px;
+                    }
+                    .ant-tag-borderless {
+                        border-color: transparent;
+                        background: rgba(var(--themeFontColor), .75);
+                        color: rgba(var(--themeFontColorInvert), 1);
+                        margin: 0 3px;
+                    }
+                }
+            }
+        }
+        .eventpage__locationContainer {
+            padding-top: 32px;
+
+            .eventpage__locationTitle {
+                font-size: 20px;
+                opacity: 1;
+                padding-bottom: 8px;
+            }
+
+            .eventpage__location {
+                font-size: 18px;
+                color: rgba(var(--themeFontColor), .8);
+                .eventpage__subInfo {
+                    padding-bottom: 8px;
+                    .eventpage__infoIcon {
+                        position: relative;
+                        top: 0px;
+                        font-size: 14px;
+                        padding-right: 3px;
+                    }
+                }
+            }
+        }
     }
-
-
-
-
-
 
     .eventpage__back {
         width: calc(100% - 40px); // minus margin/padding
@@ -97,70 +159,19 @@
         font-size: 14px;
         font-weight: 400;
     }
-
-    .eventpage__eventcontainer {
-        width: calc(100% - 40px); // minus margin
-        margin: 0 0 10px 0;
-        padding: 20px;
-        border-radius: 3px;
-        border: 1px solid rgba(var(--themeFontColor), .3);
-
-        .eventpage__time {
-            padding-top: 5px;
-            font-size: 16px;
-            font-weight: 300;
-
-        }
-
-        .eventpage__location {
-            padding-top: 5px;
-            font-size: 16px;
-            font-weight: 300;
-            color: rgba(white, 1);
-            text-decoration: none;
-            transition: color .3s ease;
-
-            &:hover {
-                color: rgba(var(--themeFontColor), .75);
-            }
-        }
+}
 
 
-        .eventpage__desc {
-            padding-top: 10px;
-            font-size: 16px;
-            font-weight: 300;
-            line-height: 22px;
-            text-align: justify;
-            text-justify: inter-word;
-        }
+.eventpage__promoter {
+    padding-top: 10px;
+    font-size: 12px;
 
-        .eventpage__promoter {
-            padding-top: 10px;
-            font-size: 12px;
+    .link {
+        color: rgba(white, 1);
+        font-weight: 600;
 
-            .link {
-                color: rgba(white, 1);
-                font-weight: 600;
-
-                &:hover {
-                    color: rgba(var(--themeFontColor), .75);
-                }
-            }
-        }
-    }
-
-    .eventpage__tags {
-        width: calc(100% - 40px); // minus margin/padding
-        margin: 0 20px;
-        font-size: 14px;
-        font-weight: 400;
-
-        .ant-tag-borderless {
-            border-color: transparent;
-            background: rgba(var(--themeFontColor), .75);
-            color: rgba(var(--themeFontColorInvert), 1);
-            margin: 3px;
+        &:hover {
+            color: rgba(var(--themeFontColor), .75);
         }
     }
 }
