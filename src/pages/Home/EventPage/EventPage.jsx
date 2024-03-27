@@ -21,6 +21,7 @@ import { pageStore } from "../../../store/pageStore/pageStore";
 import { getSingleEvents } from "./getSingleEvents";
 import { nameParser } from "../../../helpers/nameParser";
 import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
+import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinnner";
 
 import artwork from '../../../img/artworks/ak03.jpg';
 
@@ -212,51 +213,11 @@ export const EventPage = observer(() => {
                 </div>
             </div>
           </div>
-          {/* 
-            
-            <div className="eventpage__time">
-              <ClockCircleOutlined />{" "}
-              {dayjs(event.fromDate).format("dddd") ===
-                dayjs(event.untilDate).format("dddd") ? (
-                <>
-                  {dayjs(event.fromDate).format("HH:mm")} {t("spielplan.until")}{" "}
-                  {dayjs(event.untilDate).format("HH:mm")}
-                </>
-              ) : (
-                <>
-                  {dayjs(event.fromDate).format("dddd HH:mm")}{" "}
-                  {t("spielplan.until")}{" "}
-                  {dayjs(event.untilDate).format("dddd HH:mm")}
-                </>
-              )}
-              <div className="eventpage__location">
-                <a
-                  href={`https://www.google.com/maps/@${event.locationCoordinates}`}
-                  className="eventpage__location"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <EnvironmentOutlined /> {event.locationAddress}
-                </a>
-              </div>
-              <br />
-              
-              <div className="eventpage__desc">{event.description}</div>
-              <br />
-              <div className="eventpage__promoter">
-                <span className="eventpage__organizedBy">
-                  {t("spielplan.eventOrganisedBy")}{" "}
-                </span>
-                <Link to={`/user/${event.user?.userName}`} relative="path">
-                  <span className="link">{event.user?.userName}</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="eventpage__tags">{eventTags()}</div>
-          */}
         </>
-      ) : 'Loading'}
+      ) : (
+      <div className="eventpage__spinnerContainer">
+        <CustomSpinner text="Loading events" />
+      </div>)}
       <HelpButtons />
     </div>
   );

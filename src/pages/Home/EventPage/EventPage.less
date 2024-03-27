@@ -14,6 +14,17 @@
     justify-content: flex-start;
     align-items: stretch;
 
+    .eventpage__spinnerContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 70px - 60px);
+        /* Fallback for browsers that do not support Custom Properties */
+        height: calc(var(--vh, 1vh) * 100 - 70px - 60px);
+        width: 100%;
+    }
+
     .eventpage__artworkCol {
         min-width: 330px;
 

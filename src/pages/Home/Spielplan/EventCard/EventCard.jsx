@@ -7,11 +7,11 @@ import { observer } from "mobx-react";
 import dayjs from "dayjs";
 
 import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
+import { pageStore } from "../../../../store/pageStore/pageStore";
 
 import artwork from '../../../../img/artworks/ak03.jpg';
 
 import "./EventCard.less";
-import "./EventColors.less";
 
 export const EventCard = observer((props) => {
   const { t } = useTranslation();
@@ -76,7 +76,9 @@ export const EventCard = observer((props) => {
     <div
       key={event._id}
       id={`eventContainer${event._id}`}
-      className={`event__Container ${isInThePast && "event__ContainerPast"}`}
+      className={`event__Container ${pageStore.selectedTheme === "light"
+      ? "event__black"
+      : "event__white"}`}
       onClick={handleEventContainerClick}
     >
       <div className="event__date">
