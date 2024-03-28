@@ -21,10 +21,11 @@ export const Spielplan = observer(() => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const throttling = useRef(false);
+  const [startTour, setStartTour] = useState(false);
+
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
-  const [startTour, setStartTour] = useState(false);
 
   const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
 
@@ -141,6 +142,7 @@ export const Spielplan = observer(() => {
     {
       title: 'Filter result per time span',
       description: 'You probably wants to see events for a specifc time frame: use this feature to filter the results per month, weeks or day.',
+      placement: 'right',
       target: () => ref1.current,
     },
     {
@@ -168,7 +170,7 @@ export const Spielplan = observer(() => {
           onTouchMove={onTouchMove}
           onTouchEnd={() => onTouchEnd()}
         >
-          <HelpButtons page={"spielplan"} setStartTour={setStartTour} />
+          <HelpButtons missingEvent={true} setStartTour={setStartTour} />
           <EventFilters ref1={ref1} ref2={ref2} />
           {spielplanStore.isLoadingEvent ? (
             <div className="spielplan__noEventContainer" ref={ref3}>
@@ -191,7 +193,6 @@ export const Spielplan = observer(() => {
         </div>
       )}
       <Tour open={startTour} onClose={() => setStartTour(false)} steps={spielplanTourSteps} />
-
     </>
   );
 });

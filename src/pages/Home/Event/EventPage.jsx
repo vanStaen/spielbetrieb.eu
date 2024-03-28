@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { Tag } from "antd";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { Tag, Button, Tour } from "antd";
+import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react";
 import {
@@ -8,10 +8,10 @@ import {
   EnvironmentOutlined,
   ArrowLeftOutlined,
   TagOutlined,
-  AimOutlined,
   EuroOutlined,
   InfoCircleOutlined,
   TagsOutlined,
+  EditOutlined,
 } from "@ant-design/icons";
 
 import dayjs from "dayjs";
@@ -33,6 +33,7 @@ export const EventPage = observer(() => {
   const params = useParams();
   const navigate = useNavigate();
   const event = spielplanStore.selectedEvent || null;
+  const [startTour, setStartTour] = useState(false);
 
   console.log("event", event);
 
@@ -100,7 +101,52 @@ export const EventPage = observer(() => {
     (et) => parseInt(et._id) === event?.eventtype,
   )[0];
 
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
+  const ref3 = useRef(null);
+  const ref4 = useRef(null);
+  const ref5 = useRef(null);
+  const ref6 = useRef(null);
+
+  const spielplanTourSteps = [
+    {
+      title: 'Artwork of the event',
+      description: 'This is the artwork provided by the promoter. Click to enlarge.',
+      placement: 'right',
+      target: () => ref1.current,
+    },
+    {
+      title: 'Name of the event',
+      description: 'This is the name of the event as provided by the promoter.',
+      target: () => ref2.current,
+    },
+    {
+      title: 'Basic details of the event',
+      description: `This are date of when the event will take place. Underneath is the type of event (${nameParser(eventType?.name, pageStore.selectedLanguage)}), and the location`,
+      target: () => ref3.current,
+    },
+    {
+      title: 'Description of the event',
+      description: `This is the name of the event as provided by the promoter. In case this text is long, it may be partically hidden. Click on 'Read more' to see it in full`,
+      placement: 'left',
+      target: () => ref6.current,
+    },
+    {
+      title: 'More details about the event',
+      description: 'Here are more information about the event: exact time at when the event take place, the prices applicable, and more. A list of tags describing with key words the event may also be available.',
+      placement: 'top',
+      target: () => ref4.current,
+    },
+    {
+      title: 'Exact information about the event Location',
+      description: 'You will find here address and a link to google map pointing to the event location.',
+      placement: 'top',
+      target: () => ref5.current,
+    },
+  ];
+
   return (
+    <>
     <div
       className={`eventpage__container 
                 ${pageStore.selectedTheme === "light"
@@ -108,51 +154,53 @@ export const EventPage = observer(() => {
                 : "white"
               }`}
     >
+      <div
+        onClick={() => {
+          navigate(-1);
+        }}
+        className={`eventpage__back link 
+                  ${pageStore.selectedTheme === "light"
+            ? "lightColorTheme__Text"
+            : "darkColorTheme__Text"
+          }`}
+      >
+        <ArrowLeftOutlined />
+      </div>
       {event !== null ? (
         <>
-          {/*<div
-            onClick={() => {
-              navigate(-1);
-            }}
-            className={`eventpage__back link 
-                      ${pageStore.selectedTheme === "light"
-                ? "lightColorTheme__Text"
-                : "darkColorTheme__Text"
-              }`}
-          >
-            <ArrowLeftOutlined />
-            </div>*/}
           <div className="eventpage__artworkCol">
-            <div className="eventpage__artworkContainer">
+            <div className="eventpage__artworkContainer" ref={ref1}>
               <img src={artwork} className="eventpage__artwork" />
             </div>
           </div>
           <div className="eventpage__descCol">
-            <div className="eventpage__title">{event.title}</div>
-            <div className="eventpage__date">
-              <span className="eventpage__weekday">
-                {dayjs(event.fromDate).format("dddd")}
-              </span>{" "}
-              <span className="eventpage__daymonth">
-                {dayjs(event.fromDate).format("DD MMMM")}
-              </span>{" "}
-              <span className="eventpage__year">
-                {dayjs(event.fromDate).format("YYYY")}
-              </span>
+            <div className="eventpage__title" ref={ref2}>{event.title}</div>
+            <div ref={ref3}>
+              <div className="eventpage__date">
+                <span className="eventpage__weekday">
+                  {dayjs(event.fromDate).format("dddd")}
+                </span>{" "}
+                <span className="eventpage__daymonth">
+                  {dayjs(event.fromDate).format("DD MMMM")}
+                </span>{" "}
+                <span className="eventpage__year">
+                  {dayjs(event.fromDate).format("YYYY")}
+                </span> 
+              </div>
+              <div className="eventpage__typeLocation">
+                <span className="eventpage__typeLocationSpan">
+                  <TagOutlined className="eventpage__typeLocationIcon" />{" "}
+                  {nameParser(eventType?.name, pageStore.selectedLanguage)}
+                </span>
+                <span className="eventpage__typeLocationSpan">
+                  <EnvironmentOutlined className="eventpage__typeLocationIcon" />{" "}
+                  {event.locationName}
+                </span>
+              </div>
             </div>
-            <div className="eventpage__typeLocation">
-              <span className="eventpage__typeLocationSpan">
-                <TagOutlined className="eventpage__typeLocationIcon" />{" "}
-                {nameParser(eventType?.name, pageStore.selectedLanguage)}
-              </span>
-              <span className="eventpage__typeLocationSpan">
-                <EnvironmentOutlined className="eventpage__typeLocationIcon" />{" "}
-                {event.locationName}
-              </span>
-            </div>
-            <div className="eventpage__descContainer">
+            <div className="eventpage__descContainer" ref={ref6}>
               <div className="eventpage__descTitle">
-                Event description
+                Event description <EditOutlined className="editOutlined" />
               </div>
               <div className="eventpage__desc">
                 {event.description}
@@ -160,9 +208,9 @@ export const EventPage = observer(() => {
             </div>
             <div className="eventpage__infoContainer">
               <div className="eventpage__infoTitle">
-                Event infos
+                Event infos <EditOutlined className="editOutlined" />
               </div>
-              <div className="eventpage__info">
+              <div className="eventpage__info" ref={ref4}>
                 <div className="eventpage__subInfo">
                   <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
                   {dayjs(event.fromDate).format("dddd") ===
@@ -196,7 +244,7 @@ export const EventPage = observer(() => {
             { event.lineup && 
             <div className="eventpage__lineupContainer">
               <div className="eventpage__lineupTitle">
-                  Line up
+                  Line up <EditOutlined className="editOutlined" />
                 </div>
                 <div className="eventpage__lineup">
                   <div className="eventpage__subInfo">First Artist</div>
@@ -205,11 +253,19 @@ export const EventPage = observer(() => {
             </div> }
             <div className="eventpage__locationContainer">
               <div className="eventpage__locationTitle">
-                  Location
+                  Location <EditOutlined className="editOutlined" />
                 </div>
-                <div className="eventpage__location">
+                <div className="eventpage__location" ref={ref5}>
                   <div className="eventpage__subInfo">{event.locationName}</div>
                   <div className="eventpage__subInfo">{event.locationAddress}</div>
+                  <div className="eventpage__subInfo">
+                    <a 
+                      href={`https://www.google.com/maps?q=${event.locationName.replaceAll(' *', '+')}+${event.locationAddress.replaceAll(' *', '+')}&ll=${event.locationCoordinates.replaceAll(' *', '')}`} 
+                      target="_blank"
+                    >
+                      <Button shape="round">Show me on a map</Button>
+                    </a>
+                  </div>
                 </div>
             </div>
           </div>
@@ -218,7 +274,9 @@ export const EventPage = observer(() => {
       <div className="eventpage__spinnerContainer">
         <CustomSpinner text="Loading events" />
       </div>)}
-      <HelpButtons />
+      <HelpButtons missingEvent={true} setStartTour={setStartTour} />
     </div>
+<Tour open={startTour} onClose={() => setStartTour(false)} steps={spielplanTourSteps} />
+</>
   );
 });

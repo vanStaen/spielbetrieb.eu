@@ -27,7 +27,7 @@ export const HelpButtons = observer((props) => {
           icon={<BugOutlined />}
           tooltip={t("help.reportBug")}
         />
-        {props.page === "spielplan" && (
+        {props.missingEvent && (
           <FloatButton
             className="subButton"
             icon={<CalendarOutlined />}

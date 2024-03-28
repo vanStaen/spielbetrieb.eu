@@ -21,12 +21,18 @@
   - [ ] Show number of attendee
   - [ ] Show bookmarked
   - [ ] `showInfilter` for Locations/eventtypes/tags
-- [ ] Event 
+- [ ] Event Model
   - [ ] event info (age, dresscode) as standart 
   - [ ] Line up details (artist + artwork + link)
     - [ ] Same as location, store some recuring artists, and make them searchable
   - [ ] Preise (als array of price: [{ price: 15, desc: 'EarlyBird'}, { price: 22, desc: 'online ticket'}, { price: 25, desc: 'AtTheDoor'}])
   - [ ] Currency
+- Eventpage
+  - Translate eventpage
+  - Edit function in Event page
+  - Tour function in Event page
+  - Copy/paste address location
+  - Elypsis on event description
 
 ## Tech debt:
 
