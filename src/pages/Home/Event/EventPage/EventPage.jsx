@@ -16,17 +16,16 @@ import {
 
 import dayjs from "dayjs";
 
-import { spielplanStore } from "../../../store/spielplanStore/spielplanStore";
-import { pageStore } from "../../../store/pageStore/pageStore";
-import { getSingleEvents } from "./getSingleEvents";
-import { nameParser } from "../../../helpers/nameParser";
-import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
-import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinnner";
+import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
+import { pageStore } from "../../../../store/pageStore/pageStore";
+import { getSingleEvents } from "../getSingleEvents";
+import { nameParser } from "../../../../helpers/nameParser";
+import { HelpButtons } from "../../../../components/HelpButtons/HelpButtons";
+import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinnner";
 
-import artwork from '../../../img/artworks/ak03.jpg';
+import artwork from '../../../../img/artworks/ak03.jpg';
 
 import "./EventPage.less";
-import "./EventPageColors.less";
 
 export const EventPage = observer(() => {
   const { t } = useTranslation();

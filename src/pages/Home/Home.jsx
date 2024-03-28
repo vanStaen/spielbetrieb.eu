@@ -16,7 +16,7 @@ import { Partner } from "./Partner/Partner";
 import { Profile } from "./Profile/Profile";
 import { Settings } from "./Settings/Settings";
 import { Shop } from "./Shop/Shop";
-import { EventPage } from "./Event/EventPage";
+import { EventPage } from "./Event/EventPage/EventPage";
 
 import "./Home.less";
 
