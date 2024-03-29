@@ -27,12 +27,16 @@
     - [ ] Same as location, store some recuring artists, and make them searchable
   - [ ] Preise (als array of price: [{ price: 15, desc: 'EarlyBird'}, { price: 22, desc: 'online ticket'}, { price: 25, desc: 'AtTheDoor'}])
   - [ ] Currency
-- Eventpage
-  - Translate eventpage
-  - Edit function in Event page
-  - Tour function in Event page
-  - Copy/paste address location
-  - Elypsis on event description
+- [ ] Eventpage
+  - [ ] Translate eventpage
+  - [ ] Edit function in Event page
+  - [ ] Tour function in Event page
+  - [ ] Copy/paste address location
+  - [ ] Elypsis on event description
+  - [ ] Make responsive
+- [ ] Refactor Spielplan.less
+  - [ ] Get rid of event in the past all together
+  - [ ] Conglomerate all css for mobile togehter 
 
 ## Tech debt:
 

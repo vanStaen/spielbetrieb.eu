@@ -14,7 +14,43 @@
     }
 }
 
+.eventpage__backgroundimage {
+    position: fixed;
+    z-index: 1;
+    top: 70px;
+    left: 0px;
+    filter: blur(50px);
+    height: 100vh;
+    width: 100%;
+    opacity: .4;
+}
+
+.eventpage__backgroundgradient { 
+    position: fixed;
+    z-index: 2;
+    top: 70px;
+    left: 0px;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(to top, 
+        rgba(var(--themeFontColorInvert), 1) 0%, 
+        rgba(var(--themeFontColorInvert), 0.737) 19%,
+        rgba(var(--themeFontColorInvert), 0.54) 34%, 
+        rgba(var(--themeFontColorInvert), 0.38) 47%, 
+        rgba(var(--themeFontColorInvert), 0.28) 56.5%, 
+        rgba(var(--themeFontColorInvert), 0.192) 65%, 
+        rgba(var(--themeFontColorInvert), 0.125) 73%, 
+        rgba(var(--themeFontColorInvert), 0.075) 80.2%, 
+        rgba(var(--themeFontColorInvert), 0.043) 86.1%, 
+        rgba(var(--themeFontColorInvert), 0.02) 91%, 
+        rgba(var(--themeFontColorInvert), 0.008) 95.2%, 
+        rgba(var(--themeFontColorInvert), 0.004) 98.2%, 
+        transparent 100%);
+}
+
 .eventpage__container {
+    position: relative;
+    z-index: 3;
     width: calc(100% - 64px);
     margin: 32px;
     max-width: 1080px;
@@ -22,7 +58,6 @@
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: stretch;
-
     .eventpage__spinnerContainer {
         display: flex;
         flex-direction: column;

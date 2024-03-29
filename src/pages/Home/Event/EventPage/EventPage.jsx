@@ -146,6 +146,11 @@ export const EventPage = observer(() => {
 
   return (
     <>
+    <div className="eventpage__backgroundgradient"></div>
+    <div 
+      className="eventpage__backgroundimage"
+      style={{ background: `url(${artwork}) center center/cover` }}
+    ></div>
     <div
       className={`eventpage__container 
                 ${pageStore.selectedTheme === "light"
