@@ -22,8 +22,11 @@ import { getSingleEvents } from "../getSingleEvents";
 import { nameParser } from "../../../../helpers/nameParser";
 import { HelpButtons } from "../../../../components/HelpButtons/HelpButtons";
 import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinnner";
+import { GalleryOverlay } from "../../../../components/GalleryOverlay/GalleryOverlay";
 
 import artwork from '../../../../img/artworks/ak03.jpg';
+import artwork2 from '../../../../img/artworks/ak02.jpg'
+import artwork3 from '../../../../img/artworks/ak01.jpg';
 
 import "./EventPage.less";
 
@@ -33,6 +36,7 @@ export const EventPage = observer(() => {
   const navigate = useNavigate();
   const event = spielplanStore.selectedEvent || null;
   const [startTour, setStartTour] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   console.log("event", event);
 
@@ -144,8 +148,11 @@ export const EventPage = observer(() => {
     },
   ];
 
+  const picturesObjectMock = [artwork, artwork2, artwork3]
+
   return (
     <>
+    {showOverlay && <GalleryOverlay setShowOverlay={setShowOverlay} pictures={picturesObjectMock}/>}
     <div className="eventpage__backgroundgradient"></div>
     <div 
       className="eventpage__backgroundimage"
@@ -173,8 +180,15 @@ export const EventPage = observer(() => {
       {event !== null ? (
         <>
           <div className="eventpage__artworkCol">
-            <div className="eventpage__artworkContainer" ref={ref1}>
-              <img src={artwork} className="eventpage__artwork" />
+            <div 
+              className="eventpage__artworkContainer" 
+              ref={ref1}
+              onClick={()=>{setShowOverlay(true)}}
+            >
+              <img 
+                src={artwork} 
+                className="eventpage__artwork" 
+              />
             </div>
           </div>
           <div className="eventpage__descCol">
