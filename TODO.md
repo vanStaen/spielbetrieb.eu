@@ -1,6 +1,6 @@
 # spielbetrieb
 
-- [x] SignUp Form: Small Ad for spielbetrieb? 
+- [ ] SignUp Form: Small Ad for spielbetrieb? 
 - [ ] Admin page (not for partner)
   - [ ] Newsletter management
     - [ ] Sort and filter
@@ -37,6 +37,8 @@
   - [ ] Get rid of event in the past all together
   - [ ] Conglomerate all css for mobile togehter 
 - [ ] Translate error message in Event Form
+- [ ] Spielplan Filter should be of type OR (and not AND)
+- [ ] Do not show past event
 
 ## Tech debt:
 
@@ -49,6 +51,3 @@
 - [ ] Use List of forbidden words
 - [ ] Filter event based on city/geolocation
 - [ ] Valid form with enter, cancel with esc
-- [ ] Help buttons trigger a `tour` (see [tour ant component](https://ant.design/components/tour))
-- [ ] Create review model and schema/resolver
-- [ ] Spielplan Filter should be of type OR (and not AND)
