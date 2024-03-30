@@ -222,7 +222,7 @@ export const EventPage = observer(() => {
                 Event description <EditOutlined className="editOutlined" />
               </div>
               <div className="eventpage__desc" ref={ref6}>
-                <Paragraph className="eventpage__desc" ellipsis={{rows: 5,expandable: true, symbol: 'more'}}>
+                <Paragraph className="eventpage__desc" ellipsis={{rows: 7, expandable: true, symbol: 'more'}}>
                   {event.description}
                 </Paragraph>
               </div>

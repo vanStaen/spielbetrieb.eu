@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "antd";
 import { observer } from "mobx-react";
+import { useTranslation } from "react-i18next";
 
 import { pageStore } from "../../store/pageStore/pageStore";
 
@@ -8,6 +9,16 @@ import "./Impressum.less";
 
 export const Impressum = observer(() => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { i18n } = useTranslation();
+
+  const onLanguageChangeHandler = (value) => {
+    pageStore.setSelectedLanguage(value);
+    if (value === "en") {
+      i18n.changeLanguage("en-US");
+    } else if (value === "de") {
+      i18n.changeLanguage("de-DE");
+    }
+  };
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -100,6 +111,21 @@ export const Impressum = observer(() => {
         {pageStore.selectedLanguage === 'en' ? textImpressum.EN : textImpressum.DE}
         <br />
         <br />
+        <div className="impressum__switchlanguage">
+          <span 
+            className={`${pageStore.selectedLanguage === 'en' ? 'selected' : 'unselected'}`}
+            onClick={()=> {onLanguageChangeHandler('en')}}
+          >
+            EN
+          </span>
+          <span className="separator">|</span>
+          <span 
+            className={`${pageStore.selectedLanguage === 'de' ? 'selected' : 'unselected'}`}
+            onClick={()=> {onLanguageChangeHandler('de')}}
+          >
+            DE
+          </span>        
+        </div>
       </Modal>
     </div>
   );
