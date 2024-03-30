@@ -216,11 +216,11 @@ export const EventPage = observer(() => {
                 </span>
               </div>
             </div>
-            <div className="eventpage__descContainer" ref={ref6}>
+            <div className="eventpage__descContainer">
               <div className="eventpage__descTitle">
                 Event description <EditOutlined className="editOutlined" />
               </div>
-              <div className="eventpage__desc">
+              <div className="eventpage__desc" ref={ref6}>
                 {event.description}
               </div>
             </div>
