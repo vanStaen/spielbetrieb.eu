@@ -109,7 +109,8 @@ const App = observer(() => {
               path="spielplan/:year/:month/:day"
               element={<Home page="spielplan" />}
             />
-            <Route path="event/:id" element={<Home page="event" />} />
+            <Route path="event/add" element={<Home page="eventform" />} />  
+            <Route path="event/:id" element={<Home page="eventpage" />} />
             <Route path="service/" element={<Legal page="service" />} />
             <Route path="privacy/" element={<Legal page="privacy" />} />
             <Route path="agb/" element={<Legal page="agb" />} />

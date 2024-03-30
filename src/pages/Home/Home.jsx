@@ -17,6 +17,7 @@ import { Profile } from "./Profile/Profile";
 import { Settings } from "./Settings/Settings";
 import { Shop } from "./Shop/Shop";
 import { EventPage } from "./Event/EventPage/EventPage";
+import { EventForm } from "./Event/EventForm/EventForm";
 
 import "./Home.less";
 
@@ -55,8 +56,10 @@ export const Home = observer((props) => {
         );
       case "spielplan":
         return <Spielplan />;
-      case "event":
+      case "eventpage":
         return <EventPage />;
+      case "eventform":
+        return <EventForm />;
       case "basket":
         return <Basket />;
       case "shop":

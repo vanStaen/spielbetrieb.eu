@@ -111,7 +111,7 @@ export const EventPage = observer(() => {
   const ref5 = useRef(null);
   const ref6 = useRef(null);
 
-  const spielplanTourSteps = [
+  const eventPageTourSteps = [
     {
       title: 'Artwork of the event',
       description: 'This is the artwork provided by the promoter. Click to enlarge.',
@@ -294,7 +294,7 @@ export const EventPage = observer(() => {
       </div>)}
       <HelpButtons missingEvent={true} setStartTour={setStartTour} />
     </div>
-<Tour open={startTour} onClose={() => setStartTour(false)} steps={spielplanTourSteps} />
+<Tour open={startTour} onClose={() => setStartTour(false)} steps={eventPageTourSteps} />
 </>
   );
 });

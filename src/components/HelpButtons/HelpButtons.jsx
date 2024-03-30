@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { FloatButton } from "antd";
 import { observer } from "mobx-react";
+import { useNavigate } from "react-router-dom";
 import {
   CalendarOutlined,
   QuestionOutlined,
@@ -13,6 +14,7 @@ import "./HelpButtons.less";
 
 export const HelpButtons = observer((props) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -32,6 +34,7 @@ export const HelpButtons = observer((props) => {
             className="subButton"
             icon={<CalendarOutlined />}
             tooltip={t("help.yourEventIsMissing")}
+            onClick={() => { navigate("/event/add") }}
           />
         )}
         {props.setStartTour && (

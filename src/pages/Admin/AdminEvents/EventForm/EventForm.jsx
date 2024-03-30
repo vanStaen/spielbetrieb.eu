@@ -36,59 +36,6 @@ export const EventForm = (props) => {
   const { TextArea } = Input;
   const { RangePicker } = DatePicker;
 
-  const fetchEventtypes = async () => {
-    const results = await getEventtypes();
-    const eventtypes = results.map((type) => {
-      if (type.validated === false) {
-        return null;
-      }
-      return {
-        value: parseInt(type._id),
-        label: nameParser(type.name, userStore.language.toLowerCase()),
-      };
-    });
-    setEventtypes(eventtypes);
-  };
-
-  const fetchLocations = async () => {
-    const locations = await getLocations();
-    const locationOptions = locations.map((location) => {
-      if (location.validated === false) {
-        return null;
-      }
-      return {
-        value: parseInt(location._id),
-        label: location.name,
-      };
-    });
-    locationOptions.push({
-      value: 0,
-      label: <span style={{ opacity: ".5" }}>new location</span>,
-    });
-    setLocations(locations);
-    setLocationOptions(locationOptions);
-  };
-
-  const fetchtags = async () => {
-    const results = await getTags();
-    const tags = results.map((tag) => {
-      if (tag.validated === false || tag.eventTag === false) {
-        return null;
-      }
-      return {
-        value: parseInt(tag._id),
-        label: nameParser(tag.name, userStore.language.toLowerCase()),
-      };
-    });
-    setTags(tags);
-  };
-
-  useEffect(() => {
-    fetchEventtypes();
-    fetchLocations();
-    fetchtags();
-  }, []);
-
   const onCancel = () => {
     form.resetFields();
     setShowEventForm(false);
