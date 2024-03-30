@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Tag, Button, Tour } from "antd";
+import { Tag, Button, Tour, Typography } from "antd";
 import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react";
@@ -37,6 +37,7 @@ export const EventPage = observer(() => {
   const event = spielplanStore.selectedEvent || null;
   const [startTour, setStartTour] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
+  const { Paragraph } = Typography;
 
   console.log("event", event);
 
@@ -221,7 +222,9 @@ export const EventPage = observer(() => {
                 Event description <EditOutlined className="editOutlined" />
               </div>
               <div className="eventpage__desc" ref={ref6}>
-                {event.description}
+                <Paragraph className="eventpage__desc" ellipsis={{rows: 5,expandable: true, symbol: 'more'}}>
+                  {event.description}
+                </Paragraph>
               </div>
             </div>
             <div className="eventpage__infoContainer">

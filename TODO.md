@@ -26,6 +26,7 @@
   - [ ] Copy/paste address location
   - [ ] Elypsis on event description
   - [ ] Make responsive
+  - [ ] Elipisis 'more' translate
 - [ ] Event Model
   - [ ] event info (age, dresscode) as standart 
   - [ ] Line up details (artist + artwork + link)
