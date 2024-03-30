@@ -159,13 +159,6 @@ export const EventPage = observer(() => {
       style={{ background: `url(${artwork}) center center/cover` }}
     ></div>
     <div
-      className={`eventpage__container 
-                ${pageStore.selectedTheme === "light"
-                ? "black"
-                : "white"
-              }`}
-    >
-      <div
         onClick={() => {
           navigate(-1);
         }}
@@ -177,6 +170,13 @@ export const EventPage = observer(() => {
       >
         <ArrowLeftOutlined />
       </div>
+    <div
+      className={`eventpage__container 
+                ${pageStore.selectedTheme === "light"
+                ? "black"
+                : "white"
+              }`}
+    >
       {event !== null ? (
         <>
           <div className="eventpage__artworkCol">

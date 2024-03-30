@@ -48,6 +48,14 @@
         transparent 100%);
 }
 
+.eventpage__back {
+    position: fixed;
+    top: 90px;
+    left: 20px;
+    font-size: 32px;
+    font-weight: 400; 
+}
+
 .eventpage__container {
     position: relative;
     z-index: 3;
@@ -69,14 +77,6 @@
         width: 100%;
     }
 
-    .eventpage__back {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        font-size: 32px;
-        font-weight: 400; 
-    }
-
     .eventpage__artworkCol {
         min-width: 330px;
 
@@ -92,6 +92,7 @@
     .eventpage__descCol {
         margin-left: 32px;
         flex: 2 1 0%;
+        font-size: 20px;
 
         .eventpage__title {
             font-size: 62px;
@@ -100,10 +101,10 @@
             text-transform: uppercase;
             padding-bottom: 22px;
             text-align: right;
+            overflow-wrap: anywhere;
         }
 
         .eventpage__date {
-            font-size: 20px;
             letter-spacing: -1px;
             padding-bottom: 6px;
             text-align: right;
@@ -121,7 +122,6 @@
         }
 
         .eventpage__typeLocation {
-            font-size: 20px;
             letter-spacing: -1px;
             text-align: right;
 
@@ -141,14 +141,13 @@
             padding-top: 32px;
 
             .eventpage__descTitle {
-                font-size: 20px;
                 opacity: 1;
                 padding-bottom: 8px;
             }
 
             .eventpage__desc {
-                font-size: 18px;
                 color: rgba(var(--themeFontColor), .8);
+                font-size: 16px;
                 text-align: justify;
                 text-justify: inter-word;
             }
@@ -157,7 +156,6 @@
             padding-top: 32px;
 
             .eventpage__infoTitle {
-                font-size: 20px;
                 opacity: 1;
                 padding-bottom: 8px;
             }
@@ -180,7 +178,7 @@
                     .eventpage__infoIcon {
                         position: relative;
                         top: 0px;
-                        font-size: 14px;
+                        font-size: 16px;
                     }
                     .ant-tag-borderless {
                         border-color: transparent;
@@ -196,13 +194,12 @@
             padding-top: 32px;
 
             .eventpage__lineupTitle {
-                font-size: 20px;
                 opacity: 1;
                 padding-bottom: 8px;
             }
 
             .eventpage__lineup {
-                font-size: 18px;
+                font-size: 16px;
                 color: rgba(var(--themeFontColor), .8);
                 .eventpage__subInfo {
                     padding-bottom: 8px;
@@ -220,13 +217,12 @@
             padding-top: 32px;
 
             .eventpage__locationTitle {
-                font-size: 20px;
                 opacity: 1;
                 padding-bottom: 8px;
             }
 
             .eventpage__location {
-                font-size: 18px;
+                font-size: 16px;
                 color: rgba(var(--themeFontColor), .8);
                 .eventpage__subInfo {
                     padding-bottom: 8px;
@@ -242,17 +238,33 @@
     }
 }
 
+@media only screen and (max-width: 1240px) {
+    .eventpage__back {
+        display: none;
+    }
+}
 
-.eventpage__promoter {
-    padding-top: 10px;
-    font-size: 12px;
-
-    .link {
-        color: rgba(white, 1);
-        font-weight: 600;
-
-        &:hover {
-            color: rgba(var(--themeFontColor), .75);
+@media only screen and (max-width: 675px) {
+    .eventpage__container {
+        width: 100vw;
+        margin: 0;
+        display: block;
+        .eventpage__artworkCol {
+            width: 100vw;
+            .eventpage__artworkContainer {
+                cursor: pointer;
+                .eventpage__artwork {
+                    border-radius: 0px;
+                    width: 100vw;
+                }
+            }
+        }
+        .eventpage__descCol {
+            margin: 16px;
+            font-size: 16px;
+            .eventpage__title {
+                font-size: 42px;
+            }
         }
     }
 }
