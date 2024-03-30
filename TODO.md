@@ -21,22 +21,21 @@
   - [ ] Show number of attendee
   - [ ] Show bookmarked
   - [ ] `showInfilter` for Locations/eventtypes/tags
+  - [ ] Translate eventpage
+  - [ ] Edit function in Event page
+  - [ ] Copy/paste address location
+  - [ ] Elypsis on event description
+  - [ ] Make responsive
 - [ ] Event Model
   - [ ] event info (age, dresscode) as standart 
   - [ ] Line up details (artist + artwork + link)
     - [ ] Same as location, store some recuring artists, and make them searchable
-  - [ ] Preise (als array of price: [{ price: 15, desc: 'EarlyBird'}, { price: 22, desc: 'online ticket'}, { price: 25, desc: 'AtTheDoor'}])
+  - [ ] Price (als array of price: [{ price: 15, desc: 'EarlyBird'}, { price: 22, desc: 'online ticket'}, { price: 25, desc: 'AtTheDoor'}])
   - [ ] Currency
-- [ ] Eventpage
-  - [ ] Translate eventpage
-  - [ ] Edit function in Event page
-  - [ ] Tour function in Event page
-  - [ ] Copy/paste address location
-  - [ ] Elypsis on event description
-  - [ ] Make responsive
 - [ ] Refactor Spielplan.less
   - [ ] Get rid of event in the past all together
   - [ ] Conglomerate all css for mobile togehter 
+- [ ] Translate error message in Event Form
 
 ## Tech debt:
 
