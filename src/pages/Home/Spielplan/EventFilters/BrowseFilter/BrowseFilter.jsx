@@ -37,6 +37,15 @@ export const BrowseFilter = observer((props) => {
   const month = params.month;
   const day = params.day;
 
+  const previousDateFromIsInPast = () => {
+    const todayUnixDate = dayjs().valueOf();
+    const previousDateFrom = dayjs(spielplanStore.filterDateFrom).subtract(1, spielplanStore.timeSpan).valueOf();
+    if (todayUnixDate > previousDateFrom) {
+      return true;
+    } 
+    return false
+  }  
+
   useEffect(() => {
     if (week) {
       spielplanStore.setTimeSpan("week");
@@ -58,10 +67,10 @@ export const BrowseFilter = observer((props) => {
 
   const keydownEventHandler = (event) => {
     const keyPressed = event.key.toLowerCase();
-    if (keyPressed === "arrowleft") {
+    if (keyPressed === "arrowleft" && !previousDateFromIsInPast() && spielplanStore.timeSpan !== 'all') {
       event.preventDefault();
       spielplanStore.calculateFilterDateFrom(false);
-    } else if (keyPressed === "arrowright") {
+    } else if (keyPressed === "arrowright" && spielplanStore.timeSpan !== 'all') {
       event.preventDefault();
       spielplanStore.calculateFilterDateFrom(true);
     }
@@ -155,7 +164,7 @@ export const BrowseFilter = observer((props) => {
     <div className="browseFilter__container" ref={props.ref1}>
       <div>
         <CaretLeftOutlined
-          className={`browseFilter__logo ${spielplanStore.timeSpan === 'all' && 'browseFilter__logoDisabled'}`}
+          className={`browseFilter__logo ${(spielplanStore.timeSpan === 'all' ||previousDateFromIsInPast()) && 'browseFilter__logoDisabled'}`}
           onClick={() => spielplanStore.calculateFilterDateFrom(false)}
         />{" "}
         <span

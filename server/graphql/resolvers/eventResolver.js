@@ -1,6 +1,7 @@
 import { Op } from "sequelize";
 import { Event } from "../../models/Event.js";
 import { User } from "../../models/User.js";
+import dayjs from "dayjs";
 
 export const eventResolver = {
   // getEvent
@@ -31,12 +32,16 @@ export const eventResolver = {
 
   // getAllPublicEvents
   async getAllPublicEvents(args, req) {
+    let fromDate = args.fromDate;
+    if (args.fromDate < dayjs().valueOf()) {
+      fromDate = dayjs().valueOf();
+    }
     return await Event.findAll({
       where: {
         private: false,
         isDraft: false,
         fromDate: {
-          [Op.between]: [args.fromDate, args.untilDate],
+          [Op.between]: [fromDate, args.untilDate],
         },
       },
       include: User,

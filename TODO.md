@@ -33,12 +33,8 @@
     - [ ] Same as location, store some recuring artists, and make them searchable
   - [ ] Price (als array of price: [{ price: 15, desc: 'EarlyBird'}, { price: 22, desc: 'online ticket'}, { price: 25, desc: 'AtTheDoor'}])
   - [ ] Currency
-- [ ] Refactor Spielplan.less
-  - [ ] Get rid of event in the past all together
-  - [ ] Conglomerate all css for mobile togehter 
 - [ ] Translate error message in Event Form
 - [ ] Spielplan Filter should be of type OR (and not AND)
-- [ ] Do not show past event
 
 ## Tech debt:
 
