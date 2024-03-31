@@ -48,18 +48,14 @@ export const Impressum = observer(() => {
         E-Mail: impressum@liro.berlin <br />
         <br />
         <b>Tax ID</b> <br />
-        Sales tax identification number in accordance with Section 27 a of the Sales Tax Act:
-        DE362221138 <br />
+        VAT registration number in accordance with Section 27 a of the German VAT Act: DE362221138<br />
         <br />
         <b>EU dispute resolution </b> <br />
         The European Commission provides a platform
         Online dispute resolution (ODR) ready: https://ec.europa.eu/consumers/odr/{" "}
         <br />
-        You can find our email address in the legal notice above.<br />
-        <br />
         <b>Consumer dispute resolution/universal arbitration board </b> <br />
-        We are not obliged to participate in dispute resolution procedures before a
-        to participate in the consumer arbitration board.
+        We are not willing or obliged to participate in an alternative dispute resolution process handled by a consumer dispute resolution body.
       </>,
       DE: <>
       <b>Angaben gemäß § 5 TMG</b> <br />
@@ -83,10 +79,8 @@ export const Impressum = observer(() => {
         Die Europäische Kommission stellt eine Plattform zur
         Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr/{" "}
         <br />
-        Unsere E-Mail-Adresse finden Sie oben im Impressum. <br />
-        <br />
         <b>Verbraucherstreitbeilegung/Universalschlichtungsstelle </b> <br />
-        Wir sind nicht verpflichtet, an Streitbeilegungsverfahren vor einer
+        Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
         Verbraucherschlichtungsstelle teilzunehmen.
       </>,
     };
