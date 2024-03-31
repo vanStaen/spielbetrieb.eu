@@ -54,6 +54,7 @@ export const Impressum = observer(() => {
         The European Commission provides a platform
         Online dispute resolution (ODR) ready: https://ec.europa.eu/consumers/odr/{" "}
         <br />
+        <br />
         <b>Consumer dispute resolution/universal arbitration board </b> <br />
         We are not willing or obliged to participate in an alternative dispute resolution process handled by a consumer dispute resolution body.
       </>,
@@ -78,6 +79,7 @@ export const Impressum = observer(() => {
         <b>EU-Streitschlichtung </b> <br />
         Die Europäische Kommission stellt eine Plattform zur
         Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr/{" "}
+        <br />
         <br />
         <b>Verbraucherstreitbeilegung/Universalschlichtungsstelle </b> <br />
         Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
