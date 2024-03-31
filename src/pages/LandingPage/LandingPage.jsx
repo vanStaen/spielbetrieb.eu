@@ -59,6 +59,9 @@ export const LandingPage = () => {
               src={SpielbetriebLogo}
               id="spielbetriebLogo"
               className="spielbetrieb__logo"
+              onDoubleClick={() => {
+                document.location.href = "/beta";
+              }}
             />
             <div className="spielbetrieb__titleContainer">
               <span className="spielbetrieb__text">Spielbetrieb</span>
