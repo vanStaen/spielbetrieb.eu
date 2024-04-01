@@ -1,6 +1,7 @@
 .white {
     color: white;
 }
+
 .black {
     color: black;
 }
@@ -9,6 +10,7 @@
     opacity: .5;
     font-size: 14px;
     cursor: pointer;
+
     &:hover {
         opacity: .75;
     }
@@ -25,27 +27,27 @@
     opacity: .4;
 }
 
-.eventpage__backgroundgradient { 
+.eventpage__backgroundgradient {
     position: fixed;
     z-index: 2;
     top: 70px;
     left: 0px;
     height: 100vh;
     width: 100%;
-    background: linear-gradient(to top, 
-        rgba(var(--themeFontColorInvert), 1) 0%, 
-        rgba(var(--themeFontColorInvert), 0.737) 19%,
-        rgba(var(--themeFontColorInvert), 0.54) 34%, 
-        rgba(var(--themeFontColorInvert), 0.38) 47%, 
-        rgba(var(--themeFontColorInvert), 0.28) 56.5%, 
-        rgba(var(--themeFontColorInvert), 0.192) 65%, 
-        rgba(var(--themeFontColorInvert), 0.125) 73%, 
-        rgba(var(--themeFontColorInvert), 0.075) 80.2%, 
-        rgba(var(--themeFontColorInvert), 0.043) 86.1%, 
-        rgba(var(--themeFontColorInvert), 0.02) 91%, 
-        rgba(var(--themeFontColorInvert), 0.008) 95.2%, 
-        rgba(var(--themeFontColorInvert), 0.004) 98.2%, 
-        transparent 100%);
+    background: linear-gradient(to top,
+            rgba(var(--themeFontColorInvert), 1) 0%,
+            rgba(var(--themeFontColorInvert), 0.737) 19%,
+            rgba(var(--themeFontColorInvert), 0.54) 34%,
+            rgba(var(--themeFontColorInvert), 0.38) 47%,
+            rgba(var(--themeFontColorInvert), 0.28) 56.5%,
+            rgba(var(--themeFontColorInvert), 0.192) 65%,
+            rgba(var(--themeFontColorInvert), 0.125) 73%,
+            rgba(var(--themeFontColorInvert), 0.075) 80.2%,
+            rgba(var(--themeFontColorInvert), 0.043) 86.1%,
+            rgba(var(--themeFontColorInvert), 0.02) 91%,
+            rgba(var(--themeFontColorInvert), 0.008) 95.2%,
+            rgba(var(--themeFontColorInvert), 0.004) 98.2%,
+            transparent 100%);
 }
 
 .eventpage__back {
@@ -53,7 +55,7 @@
     top: 90px;
     left: 20px;
     font-size: 32px;
-    font-weight: 400; 
+    font-weight: 400;
     z-index: 6;
 }
 
@@ -67,6 +69,7 @@
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: stretch;
+
     .eventpage__spinnerContainer {
         display: flex;
         flex-direction: column;
@@ -83,6 +86,7 @@
 
         .eventpage__artworkContainer {
             cursor: pointer;
+
             .eventpage__artwork {
                 border-radius: 0px;
                 width: 100%;
@@ -139,7 +143,7 @@
         }
 
         .eventpage__descContainer {
-            padding-top: 32px;
+            padding-top: 16px;
 
             .eventpage__descTitle {
                 opacity: 1;
@@ -151,13 +155,15 @@
                 font-size: 16px;
                 text-align: justify;
                 text-justify: inter-word;
+
                 .ant-typography-expand {
-                    color: rgba(var(--themeBlackOrWhiteColor),1); 
+                    color: rgba(var(--themeBlackOrWhiteColor), 1);
                 }
             }
         }
+
         .eventpage__infoContainer {
-            padding-top: 32px;
+            padding-top: 16px;
 
             .eventpage__infoTitle {
                 opacity: 1;
@@ -169,8 +175,10 @@
                 font-size: 16px;
                 text-align: justify;
                 text-justify: inter-word;
+
                 .eventpage__subInfo {
                     padding-bottom: 8px;
+
                     .eventpage__infoIcon {
                         position: relative;
                         top: 0px;
@@ -178,12 +186,14 @@
                         padding-right: 3px;
                     }
                 }
+
                 .eventpage__tags {
                     .eventpage__infoIcon {
                         position: relative;
                         top: 0px;
                         font-size: 16px;
                     }
+
                     .ant-tag-borderless {
                         border-color: transparent;
                         background: rgba(var(--themeFontColor), .75);
@@ -205,8 +215,10 @@
             .eventpage__lineup {
                 font-size: 16px;
                 color: rgba(var(--themeFontColor), .8);
+
                 .eventpage__subInfo {
                     padding-bottom: 8px;
+
                     .eventpage__infoIcon {
                         position: relative;
                         top: 0px;
@@ -228,8 +240,10 @@
             .eventpage__location {
                 font-size: 16px;
                 color: rgba(var(--themeFontColor), .8);
+
                 .eventpage__subInfo {
                     padding-bottom: 8px;
+
                     .eventpage__infoIcon {
                         position: relative;
                         top: 0px;
@@ -253,19 +267,24 @@
         width: 100vw;
         margin: 0;
         display: block;
+
         .eventpage__artworkCol {
             width: 100vw;
+
             .eventpage__artworkContainer {
                 cursor: pointer;
+
                 .eventpage__artwork {
                     border-radius: 0px;
                     width: 100vw;
                 }
             }
         }
+
         .eventpage__descCol {
             margin: 16px;
             font-size: 16px;
+
             .eventpage__title {
                 font-size: 42px;
             }

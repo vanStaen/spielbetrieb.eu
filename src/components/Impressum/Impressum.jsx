@@ -33,12 +33,16 @@ export const Impressum = observer(() => {
   };
 
   const textImpressum = {
-      EN: <>
+    EN: (
+      <>
         <b>According to § 5 TMG</b> <br />
-        LiRo Berlin UG (limited liability)<br />
-        Kaiser-Friedrich-Straße, 37A 10627 Berlin<br />
+        LiRo Berlin UG (limited liability)
+        <br />
+        Kaiser-Friedrich-Straße, 37A 10627 Berlin
+        <br />
         Commercial register: HRB 254901 B<br />
-        Registration court: Charlottenburg District Court<br />
+        Registration court: Charlottenburg District Court
+        <br />
         <br />
         <b>Represented by:</b> <br />
         Dominique Roch, Marc Lindner <br />
@@ -48,18 +52,22 @@ export const Impressum = observer(() => {
         E-Mail: impressum@liro.berlin <br />
         <br />
         <b>Tax ID</b> <br />
-        VAT registration number in accordance with Section 27 a of the German VAT Act: DE362221138<br />
+        VAT registration number in accordance with Section 27 a of the German
+        VAT Act: DE362221138
+        <br />
         <br />
         <b>EU dispute resolution </b> <br />
-        The European Commission provides a platform
-        Online dispute resolution (ODR) ready: https://ec.europa.eu/consumers/odr/{" "}
-        <br />
+        The European Commission provides a platform Online dispute resolution
+        (ODR) ready: https://ec.europa.eu/consumers/odr/ <br />
         <br />
         <b>Consumer dispute resolution/universal arbitration board </b> <br />
-        We are not willing or obliged to participate in an alternative dispute resolution process handled by a consumer dispute resolution body.
-      </>,
-      DE: <>
-      <b>Angaben gemäß § 5 TMG</b> <br />
+        We are not willing or obliged to participate in an alternative dispute
+        resolution process handled by a consumer dispute resolution body.
+      </>
+    ),
+    DE: (
+      <>
+        <b>Angaben gemäß § 5 TMG</b> <br />
         LiRo Berlin UG (haftungsbeschränkt) <br />
         Kaiser-Friedrich-Straße, 37A 10627 Berlin <br />
         Handelsregister: HRB 254901 B <br />
@@ -82,10 +90,11 @@ export const Impressum = observer(() => {
         <br />
         <br />
         <b>Verbraucherstreitbeilegung/Universalschlichtungsstelle </b> <br />
-        Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
-        Verbraucherschlichtungsstelle teilzunehmen.
-      </>,
-    };
+        Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren
+        vor einer Verbraucherschlichtungsstelle teilzunehmen.
+      </>
+    ),
+  };
 
   return (
     <div className="impressum__container">
@@ -93,10 +102,12 @@ export const Impressum = observer(() => {
         className={`impressum__link ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
         onClick={showModal}
       >
-        {pageStore.selectedLanguage === 'en' ? "Legal notice" : "Impressum"}
+        {pageStore.selectedLanguage === "en" ? "Legal notice" : "Impressum"}
       </div>
       <Modal
-        title={pageStore.selectedLanguage === 'en' ? "Legal notice" : "Impressum"}
+        title={
+          pageStore.selectedLanguage === "en" ? "Legal notice" : "Impressum"
+        }
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -104,23 +115,29 @@ export const Impressum = observer(() => {
         footer={null}
         centered={true}
       >
-        {pageStore.selectedLanguage === 'en' ? textImpressum.EN : textImpressum.DE}
+        {pageStore.selectedLanguage === "en"
+          ? textImpressum.EN
+          : textImpressum.DE}
         <br />
         <br />
         <div className="impressum__switchlanguage">
-          <span 
-            className={`${pageStore.selectedLanguage === 'en' ? 'selected' : 'unselected'}`}
-            onClick={()=> {onLanguageChangeHandler('en')}}
+          <span
+            className={`${pageStore.selectedLanguage === "en" ? "selected" : "unselected"}`}
+            onClick={() => {
+              onLanguageChangeHandler("en");
+            }}
           >
             EN
           </span>
           <span className="separator">|</span>
-          <span 
-            className={`${pageStore.selectedLanguage === 'de' ? 'selected' : 'unselected'}`}
-            onClick={()=> {onLanguageChangeHandler('de')}}
+          <span
+            className={`${pageStore.selectedLanguage === "de" ? "selected" : "unselected"}`}
+            onClick={() => {
+              onLanguageChangeHandler("de");
+            }}
           >
             DE
-          </span>        
+          </span>
         </div>
       </Modal>
     </div>

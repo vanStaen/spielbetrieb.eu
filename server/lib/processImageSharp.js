@@ -35,7 +35,10 @@ export const resizeImageFromBuffer = async (originalImageBuffer, size) => {
     });
 };
 
-export const rotateImage = async (originalImageBuffer, angleOfRotationInDegree) => {
+export const rotateImage = async (
+  originalImageBuffer,
+  angleOfRotationInDegree,
+) => {
   return await sharp(originalImageBuffer)
     .rotate(angleOfRotationInDegree)
     .toBuffer()

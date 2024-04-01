@@ -78,7 +78,7 @@ const App = observer(() => {
     <BrowserRouter>
       <div className="App" id="app">
         <AcceptCookies />
-        < div className="main" >
+        <div className="main">
           <Impressum />
           <Routes>
             <Route
@@ -109,7 +109,7 @@ const App = observer(() => {
               path="spielplan/:year/:month/:day"
               element={<Home page="spielplan" />}
             />
-            <Route path="event/add" element={<Home page="eventform" />} />  
+            <Route path="event/add" element={<Home page="eventform" />} />
             <Route path="event/:id" element={<Home page="eventpage" />} />
             <Route path="service/" element={<Legal page="service" />} />
             <Route path="privacy/" element={<Legal page="privacy" />} />
@@ -121,7 +121,7 @@ const App = observer(() => {
           </Routes>
         </div>
       </div>
-    </BrowserRouter >
+    </BrowserRouter>
   );
 });
 

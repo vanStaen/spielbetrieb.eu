@@ -3,7 +3,7 @@ import axios from "axios";
 export const postFremdPending = async (userId) => {
   try {
     const requestBody = {
-      userId: userId,
+      userId,
     };
 
     const response = await axios({

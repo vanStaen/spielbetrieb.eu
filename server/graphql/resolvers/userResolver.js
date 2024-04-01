@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { mailService }from "../../api/service/mailService.js";
+import { mailService } from "../../api/service/mailService.js";
 
 import { User } from "../../models/User.js";
 import { Comment } from "../../models/Comment.js";

@@ -15,7 +15,7 @@ export async function updateGender(gender) {
     }
     `,
     variables: {
-      gender
+      gender,
     },
   };
 

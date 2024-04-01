@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const deleteFriendRequest = async (friendId) => {
   const requestBody = {
-    friendId: friendId,
+    friendId,
   };
 
   try {

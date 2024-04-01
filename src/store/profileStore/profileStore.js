@@ -130,23 +130,26 @@ export class ProfileStore {
     this.looks = looks;
   };
 
-
   fetchProfileData = async (userName, loader = true) => {
     // console.log(">>> Fetching profile data");
     try {
       if (loader) {
-        this.setIsLoading(true)
-      };
+        this.setIsLoading(true);
+      }
       if (userName) {
         this.setUserName(userName);
         const profileData = await getProfileInfo(userName);
         const pendingData = await postFremdPending(parseInt(profileData._id));
         if (profileData && pendingData) {
           const friendsNotPending = profileData.friends.filter((friend) => {
-            const isPending = pendingData.findIndex(pending => pending.friend_id === parseInt(friend._id));
-            if (isPending === -1) { return true }
+            const isPending = pendingData.findIndex(
+              (pending) => pending.friend_id === parseInt(friend._id),
+            );
+            if (isPending === -1) {
+              return true;
+            }
             return false;
-          })
+          });
           this.set_id(parseInt(profileData._id));
           this.setAvatar(profileData.avatar);
           this.setFirstName(profileData.firstName);

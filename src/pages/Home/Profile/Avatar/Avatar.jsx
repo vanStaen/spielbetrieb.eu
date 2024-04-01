@@ -17,7 +17,7 @@ export const Avatar = observer(() => {
   const isStranger = userStore.userName !== profileStore.userName;
 
   const fileSelectHandler = async (event) => {
-    console.log('fileSelectHandler');
+    console.log("fileSelectHandler");
     setIsUploading(true);
     changeAvatarSubmitHandler(event.target.files[0]);
   };
@@ -29,7 +29,7 @@ export const Avatar = observer(() => {
       const res = await axios.post(process.env.API_URL + `/upload`, formData);
       const mediaUrl = res.data.imageUrl;
       console.log(res.data);
-      /*updateAvatar(mediaUrl)
+      /* updateAvatar(mediaUrl)
         .then(() => {
           notification.success({
             message: t("profile.avatarUpdateSuccess"),
@@ -44,7 +44,7 @@ export const Avatar = observer(() => {
             placement: "bottomRight",
           });
           console.log(error.message);
-        });*/
+        }); */
       setIsUploading(false);
     } catch (err) {
       notification.error({
@@ -70,20 +70,20 @@ export const Avatar = observer(() => {
           style={
             isStranger
               ? profileStore.avatar && {
-                backgroundImage: "url(" + profileStore.avatar + ")",
-              }
+                  backgroundImage: "url(" + profileStore.avatar + ")",
+                }
               : userStore.avatar && {
-                backgroundImage: "url(" + userStore.avatar + ")",
-              }
+                  backgroundImage: "url(" + userStore.avatar + ")",
+                }
           }
         >
           {isStranger
             ? !profileStore.avatar && (
-              <UserOutlined className="avatar__noAvatar" />
-            )
+                <UserOutlined className="avatar__noAvatar" />
+              )
             : !userStore.avatar && (
-              <UserOutlined className="avatar__noAvatar" />
-            )}
+                <UserOutlined className="avatar__noAvatar" />
+              )}
           {!isStranger && (
             <div className="avatar__editAvatar">
               <form

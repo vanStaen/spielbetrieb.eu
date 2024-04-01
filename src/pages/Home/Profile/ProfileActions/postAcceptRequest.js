@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const postAcceptRequest = async (friendId) => {
   const requestBody = {
-    friendId: friendId,
+    friendId,
   };
 
   try {

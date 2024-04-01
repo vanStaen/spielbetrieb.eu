@@ -1,7 +1,7 @@
 import fs from "fs";
 import pg from "pg";
 import path from "path";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);

@@ -3,7 +3,7 @@ import sgMail from "@sendgrid/mail";
 import { User } from "../../models/User.js";
 import { validateEmail } from "../../lib/validateEmail.js";
 import path from "path";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);

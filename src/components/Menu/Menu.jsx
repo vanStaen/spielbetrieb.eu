@@ -95,9 +95,10 @@ export const Menu = observer(() => {
             id="menuContainer"
           >
             <div className="menu__element">
-
               <Link className="link menu__link" to="/profile/">
-                <UserOutlined style={{ position: "relative", bottom: "-2px" }} />
+                <UserOutlined
+                  style={{ position: "relative", bottom: "-2px" }}
+                />
                 &nbsp; Profile
               </Link>
             </div>

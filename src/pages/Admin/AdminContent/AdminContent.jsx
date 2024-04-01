@@ -1,9 +1,6 @@
 import React from "react";
 import { Tabs } from "antd";
-import {
-  BulbOutlined,
-  ReadOutlined,
-} from "@ant-design/icons";
+import { BulbOutlined, ReadOutlined } from "@ant-design/icons";
 
 import { AdminDark } from "./AdminDark/AdminDark";
 

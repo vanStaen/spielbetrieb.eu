@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { observer } from "mobx-react";
 import { Spin } from "antd";
@@ -9,9 +9,9 @@ import { userStore } from "../../../store/userStore/userStore";
 import { profileStore } from "../../../store/profileStore/profileStore";
 import { authStore } from "../../../store/authStore/authStore";
 import { Avatar } from "./Avatar/Avatar";
-//import { ProfileFriends } from "./ProfileFriends/ProfileFriends";
-//import { ProfileDetails } from "./ProfileDetails/ProfileDetails";
-//import { ProfileActions } from "./ProfileActions/ProfileActions";
+// import { ProfileFriends } from "./ProfileFriends/ProfileFriends";
+// import { ProfileDetails } from "./ProfileDetails/ProfileDetails";
+// import { ProfileActions } from "./ProfileActions/ProfileActions";
 import { ProfileMain } from "./ProfileMain/ProfileMain";
 
 import "./Profile.css";
@@ -29,7 +29,9 @@ export const Profile = observer(() => {
     async () => {
       if (authStore.hasAccess === false) {
         const hasAccess = await authStore.checkAccess();
-        if (hasAccess === false) { location.href = "../"; }
+        if (hasAccess === false) {
+          location.href = "../";
+        }
       }
     };
   }, []);

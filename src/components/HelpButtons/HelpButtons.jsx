@@ -34,7 +34,9 @@ export const HelpButtons = observer((props) => {
             className="subButton"
             icon={<CalendarOutlined />}
             tooltip={t("help.yourEventIsMissing")}
-            onClick={() => { navigate("/event/add") }}
+            onClick={() => {
+              navigate("/event/add");
+            }}
           />
         )}
         {props.setStartTour && (
@@ -42,7 +44,9 @@ export const HelpButtons = observer((props) => {
             className="subButton"
             icon={<EyeOutlined />}
             tooltip={t("help.showMeAround")}
-            onClick={() => { props.setStartTour(true) }}
+            onClick={() => {
+              props.setStartTour(true);
+            }}
           />
         )}
       </FloatButton.Group>

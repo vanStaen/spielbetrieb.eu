@@ -7,8 +7,6 @@ import {
 } from "@ant-design/icons";
 import { observer } from "mobx-react";
 
-import { isMobileCheck } from '../../helpers/checkMobileTablet';
-
 import "./GalleryOverlay.less";
 
 export const GalleryOverlay = observer((props) => {
@@ -18,7 +16,7 @@ export const GalleryOverlay = observer((props) => {
   const [touchEnd, setTouchEnd] = useState(null);
   const [isPictureLoading, setIsPictureLoading] = useState(false);
   const [windowInnerHeight, setWindowInnerHeight] = useState(
-    window.innerHeight
+    window.innerHeight,
   );
   const throttling = useRef(false);
 
@@ -52,15 +50,15 @@ export const GalleryOverlay = observer((props) => {
 
   const browsePicture = (direction) => {
     if (direction) {
-      if (indexImageSelected+1 !== props.pictures.length) {
-        setIndexImageSelected (indexImageSelected+1);
+      if (indexImageSelected + 1 !== props.pictures.length) {
+        setIndexImageSelected(indexImageSelected + 1);
       }
     } else {
-      if (indexImageSelected-1 >= 0) {
-        setIndexImageSelected (indexImageSelected-1);
+      if (indexImageSelected - 1 >= 0) {
+        setIndexImageSelected(indexImageSelected - 1);
       }
     }
-  }
+  };
 
   const loadImage = async () => {
     setImageLoaded(null);
@@ -154,28 +152,32 @@ export const GalleryOverlay = observer((props) => {
           props.setShowOverlay(false);
         }}
       ></div>
-      { indexImageSelected !== 0 && <div
-        className="overlay__columnLeft"
-        style={{ height: windowInnerHeight }}
-        id="previousButton"
-        onClick={() => {
-          browsePicture(false);
-        }}
-      >
-        <LeftOutlined />
-      </div> }
-      { indexImageSelected !== (props.pictures.length -1) && <div
-        className="overlay__columnRight"
-        style={{ height: windowInnerHeight }}
-        id="nextButton"
-        onMouseEnter={() => mouseHoverHandler(true)}
-        onMouseLeave={() => mouseHoverHandler(false)}
-        onClick={() => {
-          browsePicture(true);
-        }}
-      >
-        <RightOutlined />
-      </div> }
+      {indexImageSelected !== 0 && (
+        <div
+          className="overlay__columnLeft"
+          style={{ height: windowInnerHeight }}
+          id="previousButton"
+          onClick={() => {
+            browsePicture(false);
+          }}
+        >
+          <LeftOutlined />
+        </div>
+      )}
+      {indexImageSelected !== props.pictures.length - 1 && (
+        <div
+          className="overlay__columnRight"
+          style={{ height: windowInnerHeight }}
+          id="nextButton"
+          onMouseEnter={() => mouseHoverHandler(true)}
+          onMouseLeave={() => mouseHoverHandler(false)}
+          onClick={() => {
+            browsePicture(true);
+          }}
+        >
+          <RightOutlined />
+        </div>
+      )}
       <div
         className="overlay__closeButton"
         id="closeButton"

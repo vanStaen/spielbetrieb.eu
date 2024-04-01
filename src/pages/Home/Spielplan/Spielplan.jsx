@@ -67,7 +67,11 @@ export const Spielplan = observer(() => {
     ) {
       spielplanStore.setIsLoadingData(false);
     }
-  }, [spielplanStore.eventtypes, spielplanStore.locations, spielplanStore.tags]);
+  }, [
+    spielplanStore.eventtypes,
+    spielplanStore.locations,
+    spielplanStore.tags,
+  ]);
 
   const eventsFormatted = spielplanStore.events?.map((event, index) => {
     const eventColor = spielplanStore.eventtypes?.filter(
@@ -116,8 +120,7 @@ export const Spielplan = observer(() => {
       }
     }
 
-    return (
-      index === 0 ?
+    return index === 0 ? (
       <div ref={ref3}>
         <EventCard
           key={`eventCard${event._id}`}
@@ -126,7 +129,7 @@ export const Spielplan = observer(() => {
           tags={eventTags}
         />
       </div>
-      :
+    ) : (
       <EventCard
         key={`eventCard${event._id}`}
         event={event}
@@ -140,21 +143,35 @@ export const Spielplan = observer(() => {
 
   const spielplanTourSteps = [
     {
-      title: 'Filter result per time span',
-      description: 'You probably wants to see events for a specifc time frame: use this feature to filter the results per month, weeks or day.',
-      placement: 'right',
+      title: "Filter result per time span",
+      description:
+        "You probably wants to see events for a specifc time frame: use this feature to filter the results per month, weeks or day.",
+      placement: "right",
       target: () => ref1.current,
     },
     {
-      title: 'Location, events and tags',
-      description: <>Use this to filter the results based on Locations, Event types or Tags. Those filter are not additive. Thus if you pick the location <i>KitKatClub</i> and the tag <i>Flinta</i>, you will see all events happening at Kitkat <b>OR</b> the events maked with the tag flinta.</>,
+      title: "Location, events and tags",
+      description: (
+        <>
+          Use this to filter the results based on Locations, Event types or
+          Tags. Those filter are not additive. Thus if you pick the location{" "}
+          <i>KitKatClub</i> and the tag <i>Flinta</i>, you will see all events
+          happening at Kitkat <b>OR</b> the events maked with the tag flinta.
+        </>
+      ),
       target: () => ref2.current,
     },
     {
-      title: 'All events matching your filter',
-      description: <>All events matching your filter (if any) will be displayed here. If you don't see anything, you may want to reset some filter and maybe increase the time frame.</>,
+      title: "All events matching your filter",
+      description: (
+        <>
+          All events matching your filter (if any) will be displayed here. If
+          you don't see anything, you may want to reset some filter and maybe
+          increase the time frame.
+        </>
+      ),
       target: () => ref3.current,
-    }
+    },
   ];
 
   return (
@@ -192,7 +209,11 @@ export const Spielplan = observer(() => {
           )}
         </div>
       )}
-      <Tour open={startTour} onClose={() => setStartTour(false)} steps={spielplanTourSteps} />
+      <Tour
+        open={startTour}
+        onClose={() => setStartTour(false)}
+        steps={spielplanTourSteps}
+      />
     </>
   );
 });

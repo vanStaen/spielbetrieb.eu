@@ -21,10 +21,11 @@
     "kill": "killall -9 node",
     "backup": "cd server/lib/; node createDatabaseBackUpFile.js; npm run pushbackup; cd ../../",
     "pushbackup": "cd ../database-backups; git pull origin master; git add -A; git commit -m 'Spielbetrieb - database backup files'; git push;",
-    "lint": "eslint -c ./.eslintrc.js '**/*.js' '**/*.jsx' --fix"
+    "lint": "eslint -c ./.eslintrc.json '**/*.js' '**/*.jsx' --fix"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.533.0",
+    "@babel/eslint-parser": "^7.24.1",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
     "@sendgrid/mail": "^8.1.1",

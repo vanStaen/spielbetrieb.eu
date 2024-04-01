@@ -113,7 +113,7 @@ export const Admin = observer(() => {
                 {
                   label: !isMobile && "Content",
                   value: "content",
-                  disabled: !userStore.adminRoles?.includes('content'),
+                  disabled: !userStore.adminRoles?.includes("content"),
                   icon: <ReadOutlined />,
                 },
                 {

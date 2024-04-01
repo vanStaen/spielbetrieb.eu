@@ -9,14 +9,14 @@ import dayjs from "dayjs";
 import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
 
-import artwork from '../../../../img/artworks/ak03.jpg';
+import artwork from "../../../../img/artworks/ak03.jpg";
 
 import "./EventCard.less";
 
 export const EventCard = observer((props) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { event, color, tags } = props;
+  const { event, tags } = props;
   const isInThePast = event.fromDate < dayjs();
   const isShownHidden = useRef(isInThePast);
 
@@ -29,7 +29,8 @@ export const EventCard = observer((props) => {
   const handleTagClick = (index, id) => {
     if (index === 0) {
       if (!spielplanStore.filterEventtypes.includes(String(id))) {
-        const newArrayFilterEventtypes = spielplanStore.filterEventtypes.slice();
+        const newArrayFilterEventtypes =
+          spielplanStore.filterEventtypes.slice();
         newArrayFilterEventtypes.push(String(id));
         spielplanStore.setFilterEventtypes(newArrayFilterEventtypes);
       }
@@ -50,8 +51,7 @@ export const EventCard = observer((props) => {
         onClick={(event) => {
           event.stopPropagation();
           handleTagClick(index, tag.id);
-        }
-        }
+        }}
       >
         #{tag.name}
       </Tag>
@@ -76,9 +76,9 @@ export const EventCard = observer((props) => {
     <div
       key={event._id}
       id={`eventContainer${event._id}`}
-      className={`event__Container ${pageStore.selectedTheme === "light"
-      ? "event__black"
-      : "event__white"}`}
+      className={`event__Container ${
+        pageStore.selectedTheme === "light" ? "event__black" : "event__white"
+      }`}
       onClick={handleEventContainerClick}
     >
       <div className="event__date">

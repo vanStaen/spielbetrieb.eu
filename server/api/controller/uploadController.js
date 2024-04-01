@@ -26,19 +26,14 @@ router.post("/", upload.single("file"), async (req, res) => {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
-    const path = await uploadFileToS3(
-      req.file,
-      req.body.bucket,
-      req.userId,
-    );
-    return res.send({ path: path });
+    const path = await uploadFileToS3(req.file, req.body.bucket, req.userId);
+    return res.send({ path });
   } catch (err) {
     res.status(403).json({
       error: `${err}`,
     });
   }
 });
-
 
 // DELETE single file object from s3 (based on key)
 router.delete("/:id", async (req, res) => {

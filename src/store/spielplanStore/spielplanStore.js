@@ -78,20 +78,14 @@ export class SpielplanStore {
     this.setIsLoadingEvent(true);
     let fromUnixDateStartOf;
     let untilUnixDateEndOf;
-    if (this.timeSpan === 'all') {
-      fromUnixDateStartOf = this.filterDateFrom
-        .startOf('day')
-        .valueOf();
-      untilUnixDateEndOf = this.filterDateFrom
-        .endOf('year')
-        .valueOf();
+    if (this.timeSpan === "all") {
+      fromUnixDateStartOf = this.filterDateFrom.startOf("day").valueOf();
+      untilUnixDateEndOf = this.filterDateFrom.endOf("year").valueOf();
     } else {
       fromUnixDateStartOf = this.filterDateFrom
         .startOf(this.timeSpan)
         .valueOf();
-      untilUnixDateEndOf = this.filterDateFrom
-        .endOf(this.timeSpan)
-        .valueOf();
+      untilUnixDateEndOf = this.filterDateFrom.endOf(this.timeSpan).valueOf();
     }
     const events = await getAllPublicEvents(
       fromUnixDateStartOf,
