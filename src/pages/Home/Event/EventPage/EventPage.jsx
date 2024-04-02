@@ -39,7 +39,7 @@ export const EventPage = observer(() => {
   const [showOverlay, setShowOverlay] = useState(false);
   const { Paragraph } = Typography;
 
-  console.log("event", event);
+  //console.log("event", event);
 
   const keydownEventHandler = (event) => {
     const keyPressed = event.key.toLowerCase();
@@ -133,7 +133,7 @@ export const EventPage = observer(() => {
     {
       title: "Description of the event",
       description: `This is the name of the event as provided by the promoter. In case this text is long, it may be partically hidden. Click on 'Read more' to see it in full`,
-      placement: "left",
+      placement: "top",
       target: () => ref6.current,
     },
     {
@@ -172,11 +172,10 @@ export const EventPage = observer(() => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${
-                    pageStore.selectedTheme === "light"
-                      ? "lightColorTheme__Text"
-                      : "darkColorTheme__Text"
-                  }`}
+                  ${pageStore.selectedTheme === "light"
+            ? "lightColorTheme__Text"
+            : "darkColorTheme__Text"
+          }`}
       >
         <ArrowLeftOutlined />
       </div>
@@ -245,7 +244,7 @@ export const EventPage = observer(() => {
                   <div className="eventpage__subInfo">
                     <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
                     {dayjs(event.fromDate).format("dddd") ===
-                    dayjs(event.untilDate).format("dddd") ? (
+                      dayjs(event.untilDate).format("dddd") ? (
                       <>
                         {dayjs(event.fromDate).format("HH:mm")}{" "}
                         {t("spielplan.until")}{" "}
