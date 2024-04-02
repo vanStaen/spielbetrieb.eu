@@ -123,7 +123,15 @@ export class SpielplanStore {
   };
 
   setFilterDateFrom = (filterDateFrom) => {
-    this.filterDateFrom = dayjs(filterDateFrom);
+    const todayUnixDate = dayjs().valueOf();
+    const previousEndOfDateFrom = dayjs(filterDateFrom)
+      .endOf(this.timeSpan)
+      .valueOf();
+    if (todayUnixDate > previousEndOfDateFrom) {
+      // TODO: Inform user that we don't show past event? 
+    } else {
+      this.filterDateFrom = dayjs(filterDateFrom);
+    }
   };
 
   setTimeSpan = (timeSpan) => {

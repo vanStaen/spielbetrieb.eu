@@ -38,17 +38,12 @@ export const BrowseFilter = observer((props) => {
   const day = params.day;
 
   const previousDateFromIsInPast = () => {
-    // TODO: adapt for all tinespan
     const todayUnixDate = dayjs().valueOf();
-    let previousDateFrom = dayjs(spielplanStore.filterDateFrom)
+    const previousEndOfDateFrom = dayjs(spielplanStore.filterDateFrom)
       .subtract(1, spielplanStore.timeSpan)
+      .endOf(spielplanStore.timeSpan)
       .valueOf();
-    if (spielplanStore.timeSpan === "day") {
-      previousDateFrom = dayjs(spielplanStore.filterDateFrom)
-        .subtract(2, day)
-        .valueOf();
-    }
-    if (todayUnixDate > previousDateFrom) {
+    if (todayUnixDate > previousEndOfDateFrom) {
       return true;
     }
     return false;
