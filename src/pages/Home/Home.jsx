@@ -82,9 +82,7 @@ export const Home = observer((props) => {
     <>
       <LanguageDropDown />
       <DarkModeDropDown />
-      {pageStore.showOverlayGallery && (
-        <GalleryOverlay />
-      )}
+      {pageStore.showOverlayGallery && <GalleryOverlay />}
       <Header selected={page} />
       <div className="background invertColorTheme" id="background"></div>
       <div className="home__container">

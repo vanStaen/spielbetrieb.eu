@@ -35,7 +35,7 @@
   - [ ] Currency
 - [ ] Translate error message in Event Form
 - [ ] Spielplan Filter should be of type OR (and not AND)
-- [ ] URL to old event only possible for admin and VAer, sonst meldung 'not possible'
+- [ ] URL to old event only possible for admin and VA-er, sonst meldung 'not possible'
 
 ## Tech debt:
 

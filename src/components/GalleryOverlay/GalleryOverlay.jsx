@@ -67,7 +67,8 @@ export const GalleryOverlay = observer((props) => {
     const isloaded = new Promise((resolve, reject) => {
       const loadImg = new Image();
       loadImg.src = pageStore.picturesOverlayGallery[indexImageSelected];
-      loadImg.onload = () => resolve(pageStore.picturesOverlayGallery[indexImageSelected]);
+      loadImg.onload = () =>
+        resolve(pageStore.picturesOverlayGallery[indexImageSelected]);
       loadImg.onerror = (err) => reject(err);
     });
     await isloaded;

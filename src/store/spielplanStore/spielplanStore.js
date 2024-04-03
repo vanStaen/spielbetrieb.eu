@@ -128,7 +128,7 @@ export class SpielplanStore {
       .endOf(this.timeSpan)
       .valueOf();
     if (todayUnixDate > previousEndOfDateFrom) {
-      // TODO: Inform user that we don't show past event? 
+      // TODO: Inform user that we don't show past event?
     } else {
       this.filterDateFrom = dayjs(filterDateFrom);
     }
