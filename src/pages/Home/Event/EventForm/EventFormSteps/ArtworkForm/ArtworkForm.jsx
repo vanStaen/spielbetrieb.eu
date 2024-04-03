@@ -17,7 +17,6 @@ export const ArtworkForm = observer(() => {
 
   const fileUploadHandler = (file) => {
     setIsUploading(true);
-    console.log("fileUploadHandler");
     console.log("file", file);
     // add s3 link to eventFormStore.artworks
     setIsUploading(false);
@@ -63,7 +62,7 @@ export const ArtworkForm = observer(() => {
           className="inputfile"
           name="inputfile"
           id="file"
-          onChange={fileUploadHandler}
+          onChange={(event) => {fileUploadHandler(event.target.files[0])}}
         />
         {isUploading ? (
           <label htmlFor="file" className="uploadArea">
