@@ -36,7 +36,6 @@ export const EventPage = observer(() => {
   const navigate = useNavigate();
   const event = spielplanStore.selectedEvent || null;
   const [startTour, setStartTour] = useState(false);
-  const [showOverlay, setShowOverlay] = useState(false);
   const { Paragraph } = Typography;
 
   //console.log("event", event);
@@ -152,16 +151,10 @@ export const EventPage = observer(() => {
     },
   ];
 
-  const picturesObjectMock = [artwork, artwork2, artwork3];
+  pageStore.setPicturesOverlayGallery([artwork, artwork2, artwork3]);
 
   return (
     <>
-      {showOverlay && (
-        <GalleryOverlay
-          setShowOverlay={setShowOverlay}
-          pictures={picturesObjectMock}
-        />
-      )}
       <div className="eventpage__backgroundgradient"></div>
       <div
         className="eventpage__backgroundimage"
@@ -190,7 +183,7 @@ export const EventPage = observer(() => {
                 className="eventpage__artworkContainer"
                 ref={ref1}
                 onClick={() => {
-                  setShowOverlay(true);
+                  pageStore.setShowOverlayGallery(true);
                 }}
               >
                 <img src={artwork} className="eventpage__artwork" />

@@ -14,6 +14,8 @@ export class PageStore {
   eventtypes = [];
   tags = [];
   locations = [];
+  showOverlayGallery = false;
+  picturesOverlayGallery = [];
 
   constructor() {
     makeObservable(this, {
@@ -27,6 +29,10 @@ export class PageStore {
       setShowMenu: action,
       showMenuMobile: observable,
       setShowMenuMobile: action,
+      showOverlayGallery: observable,
+      setShowOverlayGallery: action,
+      picturesOverlayGallery: observable,
+      setPicturesOverlayGallery: action,
     });
   }
 
@@ -57,6 +63,14 @@ export class PageStore {
 
   setShowMenuMobile = (showMenuMobile) => {
     this.showMenuMobile = showMenuMobile;
+  };
+
+  setShowOverlayGallery = (showOverlayGallery) => {
+    this.showOverlayGallery = showOverlayGallery;
+  };
+
+  setPicturesOverlayGallery = (picturesOverlayGallery) => {
+    this.picturesOverlayGallery = picturesOverlayGallery;
   };
 }
 

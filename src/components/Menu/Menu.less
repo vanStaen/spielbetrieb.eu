@@ -4,19 +4,23 @@
    top: 0;
    z-index: 5;
    font-size: 20px;
-   margin: 10px 10px; 
+   margin: 10px 10px;
+
    .menu__icon {
       font-size: 22px;
    }
+
    .menu__spinner {
       position: relative;
       top: 4px;
    }
-   .menu__avatar { 
+
+   .menu__avatar {
       cursor: pointer;
       position: relative;
       color: rgba(225, 207, 187, .6);
       background-color: rgba(225, 207, 187, .1);
+
       &:hover {
          background: rgba(225, 207, 187, .3);
          color: rgba(225, 207, 187, 1);
@@ -28,29 +32,33 @@
    position: absolute;
    right: 0;
    top: 70px;
-   z-index: 5; 
+   z-index: 5;
    padding-top: 10px;
    padding-bottom: 10px;
    width: 150px;
    height: auto;
    opacity: 0;
    transition: opacity .3s;
+
    .menu__element {
       padding: 2px 10px 2px 17px;
       text-align: left;
       font-size: 16px;
       font-weight: 300;
       letter-spacing: 2px;
+
       &:hover {
          font-weight: 400;
          text-decoration: none;
       }
+
       .menu__link {
          &:hover {
             text-decoration: none;
          }
       }
    }
+
    .menu__elementDisabled {
       width: 100%;
       padding: 2px 10px 2px 17px;
@@ -59,21 +67,23 @@
       font-weight: 300;
       letter-spacing: 2px;
    }
+
    .menu__whiteline {
       width: 130px;
       margin: 10px 10px;
-  }
+   }
 }
 
-.menu__silentBackground { 
-   width: 100vw;  
-   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+.menu__silentBackground {
+   width: 100vw;
+   height: 100vh;
+   /* Fallback for browsers that do not support Custom Properties */
    height: calc(var(--vh, 1vh) * 100);
    position: fixed;
    top: 0;
    left: 0px;
    z-index: 4;
    background-color: transparent;
-   // backdrop-filter: blur(0px) grayscale(0%);
+   //  backdrop-filter: blur(0px) grayscale(0%);
    transition: backdrop-filter .3s;
 }

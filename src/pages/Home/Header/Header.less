@@ -1,11 +1,11 @@
 .header__container {
-    position: relative;
-    height: 70px;
-    z-index: 6;
+   position: relative;
+   height: 70px;
+   z-index: 6;
 
    .header__logo {
-        width: 40px;
-        margin: 15px;
+      width: 40px;
+      margin: 15px;
    }
 
    .header__actions {
@@ -28,7 +28,7 @@
 
    .header__menuMobile {
       display: none;
-      z-index: 5; 
+      z-index: 5;
    }
 
    @media only screen and (max-width: 720px) {
@@ -37,12 +37,15 @@
          left: calc(50% - 35px);
          opacity: .1;
       }
+
       .header__actions {
          right: 80px;
       }
+
       .header__headerElementContainer {
          display: none;
       }
+
       .header__menuMobile {
          display: block;
          position: relative;
@@ -59,6 +62,7 @@
          cursor: pointer;
          color: rgba(225, 207, 187, .6);
          background-color: rgba(225, 207, 187, .1);
+
          &:hover {
             background: rgba(225, 207, 187, .3);
             color: rgba(225, 207, 187, 1);

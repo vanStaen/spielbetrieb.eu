@@ -1,13 +1,13 @@
 .overlay__overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
 
     .overlay__background {
         background-color: rgba(var(--themeFontColorInvert), .9);
@@ -58,7 +58,7 @@
         justify-content: center;
         font-size: 2em;
         cursor: pointer;
-        z-index: 3;
+        z-index: 11;
         visibility: visible;
         opacity: 1;
         color: rgba(var(--themeFontColor), .25);
@@ -71,7 +71,7 @@
 
     .overlay__spinner {
         color: rgba(var(--themeFontColor), 1);
-        z-index: 10;  
+        z-index: 10;
         font-size: 10vh;
     }
 
@@ -90,7 +90,7 @@
 
         .overlay__picture {
             max-width: 75vw;
-            max-height: 90vh;
+            max-height: 80vh;
             display: block;
             user-select: none;
             -moz-user-select: none;
@@ -104,6 +104,7 @@
 
 @media only screen and (max-width: 675px) {
     .overlay__overlay {
+
         .overlay__columnLeft,
         .overlay__columnRight,
         .overlay__closeButton {

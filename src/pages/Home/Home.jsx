@@ -18,6 +18,7 @@ import { Settings } from "./Settings/Settings";
 import { Shop } from "./Shop/Shop";
 import { EventPage } from "./Event/EventPage/EventPage";
 import { EventForm } from "./Event/EventForm/EventForm";
+import { GalleryOverlay } from "../../components/GalleryOverlay/GalleryOverlay";
 
 import "./Home.less";
 
@@ -81,6 +82,9 @@ export const Home = observer((props) => {
     <>
       <LanguageDropDown />
       <DarkModeDropDown />
+      {pageStore.showOverlayGallery && (
+        <GalleryOverlay />
+      )}
       <Header selected={page} />
       <div className="background invertColorTheme" id="background"></div>
       <div className="home__container">

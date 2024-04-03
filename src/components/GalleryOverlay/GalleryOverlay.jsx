@@ -7,6 +7,8 @@ import {
 } from "@ant-design/icons";
 import { observer } from "mobx-react";
 
+import { pageStore } from "../../store/pageStore/pageStore";
+
 import "./GalleryOverlay.less";
 
 export const GalleryOverlay = observer((props) => {
@@ -50,7 +52,7 @@ export const GalleryOverlay = observer((props) => {
 
   const browsePicture = (direction) => {
     if (direction) {
-      if (indexImageSelected + 1 !== props.pictures.length) {
+      if (indexImageSelected + 1 !== pageStore.picturesOverlayGallery.length) {
         setIndexImageSelected(indexImageSelected + 1);
       }
     } else {
@@ -64,12 +66,12 @@ export const GalleryOverlay = observer((props) => {
     setImageLoaded(null);
     const isloaded = new Promise((resolve, reject) => {
       const loadImg = new Image();
-      loadImg.src = props.pictures[indexImageSelected];
-      loadImg.onload = () => resolve(props.pictures[indexImageSelected]);
+      loadImg.src = pageStore.picturesOverlayGallery[indexImageSelected];
+      loadImg.onload = () => resolve(pageStore.picturesOverlayGallery[indexImageSelected]);
       loadImg.onerror = (err) => reject(err);
     });
     await isloaded;
-    setImageLoaded(props.pictures[indexImageSelected]);
+    setImageLoaded(pageStore.picturesOverlayGallery[indexImageSelected]);
     setIsPictureLoading(false);
   };
 
@@ -116,7 +118,7 @@ export const GalleryOverlay = observer((props) => {
           }
         }, 100);
       } else if (keyPressed === "escape") {
-        props.setShowOverlay(false);
+        pageStore.setShowOverlayGallery(false);
       }
       setTimeout(() => {
         throttling.current = false;
@@ -149,7 +151,7 @@ export const GalleryOverlay = observer((props) => {
         className="overlay__background"
         style={{ height: windowInnerHeight }}
         onClick={() => {
-          props.setShowOverlay(false);
+          pageStore.setShowOverlayGallery(false);
         }}
       ></div>
       {indexImageSelected !== 0 && (
@@ -164,7 +166,7 @@ export const GalleryOverlay = observer((props) => {
           <LeftOutlined />
         </div>
       )}
-      {indexImageSelected !== props.pictures.length - 1 && (
+      {indexImageSelected !== pageStore.picturesOverlayGallery.length - 1 && (
         <div
           className="overlay__columnRight"
           style={{ height: windowInnerHeight }}
@@ -182,7 +184,7 @@ export const GalleryOverlay = observer((props) => {
         className="overlay__closeButton"
         id="closeButton"
         onClick={() => {
-          props.setShowOverlay(false);
+          pageStore.setShowOverlayGallery(false);
         }}
       >
         <CloseOutlined />
