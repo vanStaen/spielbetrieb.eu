@@ -14,7 +14,6 @@ import dayjs from "dayjs";
 import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
 import { getAllEvents } from "./getAllEvents";
 import { deleteEvent } from "./deleteEvent";
-import { EventForm } from "./EventForm/EventForm";
 import { getEventtypes } from "../../../store/spielplanStore/getEventtypes";
 import { getTags } from "../../../store/spielplanStore/getTags";
 import { getUserNames } from "./getUserNames";
@@ -277,7 +276,7 @@ export const AdminEvents = () => {
         </div>
       ) : (
         <>
-          {showEventForm && (
+          {/* showEventForm && (
             <EventForm
               showEventForm={showEventForm}
               setShowEventForm={setShowEventForm}
@@ -285,7 +284,7 @@ export const AdminEvents = () => {
               reload={fetchEvents}
               isEdit={isEdit}
             />
-          )}
+          ) */}
           <Form form={form} component={false}>
             <Table
               className="admin__table"

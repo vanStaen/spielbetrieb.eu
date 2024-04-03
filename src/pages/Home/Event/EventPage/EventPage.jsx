@@ -22,7 +22,6 @@ import { getSingleEvents } from "../getSingleEvents";
 import { nameParser } from "../../../../helpers/nameParser";
 import { HelpButtons } from "../../../../components/HelpButtons/HelpButtons";
 import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinnner";
-import { GalleryOverlay } from "../../../../components/GalleryOverlay/GalleryOverlay";
 
 import artwork from "../../../../img/artworks/ak03.jpg";
 import artwork2 from "../../../../img/artworks/ak02.jpg";

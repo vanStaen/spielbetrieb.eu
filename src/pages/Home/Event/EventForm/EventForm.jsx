@@ -14,6 +14,7 @@ import {
   Input,
   DatePicker,
   Tour,
+  Steps,
 } from "antd";
 
 import errorLogo from "../../../../img/logos/errorLogo.png";
@@ -21,6 +22,7 @@ import { HelpButtons } from "../../../../components/HelpButtons/HelpButtons";
 import { addEvent } from "./addEvent";
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { getEventtypes } from "../../../../store/spielplanStore/getEventtypes";
+import { eventFormStore } from "../../../../store/eventFormStore/eventFormStore";
 import { authStore } from "../../../../store/authStore/authStore";
 import { getLocations } from "../../../../store/spielplanStore/getLocations";
 import { getTags } from "../../../../store/spielplanStore/getTags";
@@ -159,6 +161,21 @@ export const EventForm = observer(() => {
     <>
       {authStore.hasAccess ? (
         <div className="eventform__container" ref={ref1}>
+          <Steps
+            size="small"
+            current={0}
+            items={[
+              {
+                title: 'Artwork',
+              },
+              {
+                title: 'Mandatory Infos',
+              },
+              {
+                title: 'Optional Infos',
+              },
+            ]}
+          />
           <Form
             form={form}
             layout="horizontal"
@@ -166,12 +183,12 @@ export const EventForm = observer(() => {
             onFinish={onFinish}
             name="event-form"
             className="eventform__admin"
-            /* initialValues={
-                    data && {
-                        eventDate: [dayjs(data.fromDate), dayjs(data.untilDate)],
-                        ...data,
-                    }
-                    } */
+          /* initialValues={
+                  data && {
+                      eventDate: [dayjs(data.fromDate), dayjs(data.untilDate)],
+                      ...data,
+                  }
+                  } */
           >
             <div style={{ marginTop: 15 }}></div>
 

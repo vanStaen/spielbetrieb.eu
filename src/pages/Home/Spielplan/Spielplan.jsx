@@ -166,7 +166,7 @@ export const Spielplan = observer(() => {
       description: (
         <>
           All events matching your filter (if any) will be displayed here. If
-          you don't see anything, you may want to reset some filter and maybe
+          you do not see anything, you may want to reset some filter and maybe
           increase the time frame.
         </>
       ),

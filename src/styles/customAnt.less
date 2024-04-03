@@ -198,3 +198,43 @@
 .ant-tour-close {
   color: rgba(black, .75) !important;
 }
+
+/* Steps */
+
+.ant-steps {
+  padding: 0 8px;
+}
+
+.ant-steps-item-title {
+  color: rgba(var(--themeFontColor), .25) !important;
+}
+
+.ant-steps-item-active .ant-steps-item-title {
+  color: rgba(var(--themeFontColor), 1) !important;
+}
+
+.ant-steps-item-title,
+.ant-steps-item-tail {
+  &::after {
+    background-color: rgba(var(--themeFontColor), .5) !important;
+  }
+}
+
+.ant-steps-item-icon {
+  background-color: rgba(var(--themeFontColor), 1) !important;
+  border-color: rgba(var(--themeFontColor), 1) !important;
+
+  .ant-steps-icon {
+    color: rgba(var(--themeFontColorInvert), 1) !important;
+  }
+}
+
+.ant-steps-item-wait .ant-steps-item-icon {
+  background-color: rgba(var(--themeFontColor), .25) !important;
+  border-color: rgba(var(--themeFontColor), .15) !important;
+
+  .ant-steps-icon {
+    color: rgba(var(--themeFontColor), .5) !important;
+  }
+
+}
