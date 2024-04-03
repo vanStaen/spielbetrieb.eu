@@ -102,6 +102,7 @@ export const EventForm = observer(() => {
   const onStepsChange = (value) => {
     console.log("onChange:", value);
     // oldStep (=formStep) shoudl get vaidated, and get 'Error' or 'Finish'
+    // TODO
     // newStep (=value) is now 'process'
     const tempStatusSteps = statusSteps;
     tempStatusSteps[value] = "process";
