@@ -166,19 +166,19 @@ export const EventForm = observer(() => {
             current={0}
             items={[
               {
-                title: 'Artworks',
-                description: 'The face of your events'
+                title: "Artworks",
+                description: "The face of your events",
               },
               {
-                title: 'Info',
-                description: 'Name, time, and more'
+                title: "Info",
+                description: "Name, time, and more",
               },
               {
-                title: 'Option',
-                description: 'All other optional details'
+                title: "Option",
+                description: "All other optional details",
               },
               {
-                title: 'Guest',
+                title: "Guest",
               },
             ]}
           />
@@ -189,7 +189,7 @@ export const EventForm = observer(() => {
             onFinish={onFinish}
             name="event-form"
             className="eventform__admin"
-          /* initialValues={
+            /* initialValues={
                   data && {
                       eventDate: [dayjs(data.fromDate), dayjs(data.untilDate)],
                       ...data,

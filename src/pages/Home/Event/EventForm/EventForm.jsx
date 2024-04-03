@@ -8,10 +8,10 @@ import { HelpButtons } from "../../../../components/HelpButtons/HelpButtons";
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { authStore } from "../../../../store/authStore/authStore";
 
-import { ArtworkForm } from "./EventFormSteps/ArtworkForm";
-import { InfoForm } from "./EventFormSteps/InfoForm";
-import { OptionForm } from "./EventFormSteps/OptionForm";
-import { GuestForm } from "./EventFormSteps/GuestForm";
+import { ArtworkForm } from "./EventFormSteps/ArtworkForm/ArtworkForm";
+import { InfoForm } from "./EventFormSteps/InfoForm/InfoForm";
+import { OptionForm } from "./EventFormSteps/OptionForm/OptionForm";
+import { GuestForm } from "./EventFormSteps/GuestForm/GuestForm";
 import { getLocations } from "../../../../store/spielplanStore/getLocations";
 import { getTags } from "../../../../store/spielplanStore/getTags";
 import { getEventtypes } from "../../../../store/spielplanStore/getEventtypes";
@@ -135,7 +135,7 @@ export const EventForm = observer(() => {
                 status: statusSteps[2],
               },
               {
-                title: "Guest",
+                title: "Guests",
                 status: statusSteps[3],
               },
             ]}
