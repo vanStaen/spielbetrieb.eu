@@ -205,12 +205,21 @@
   padding: 0 8px;
 }
 
-.ant-steps-item-title {
+.ant-steps-item-title,
+.ant-steps-item-description {
   color: rgba(var(--themeFontColor), .25) !important;
+}
+
+.ant-steps-item-description {
+  max-width: 200px !important;
 }
 
 .ant-steps-item-active .ant-steps-item-title {
   color: rgba(var(--themeFontColor), 1) !important;
+}
+
+.ant-steps-item-active .ant-steps-item-description {
+  color: rgba(var(--themeFontColor), .7) !important;
 }
 
 .ant-steps-item-title,
@@ -227,6 +236,11 @@
   .ant-steps-icon {
     color: rgba(var(--themeFontColorInvert), 1) !important;
   }
+
+  .ant-steps-icon-dot {
+    border-color: rgba(var(--themeFontColor), 1) !important;
+    background-color: rgba(var(--themeFontColor), 1) !important;
+  }
 }
 
 .ant-steps-item-wait .ant-steps-item-icon {
@@ -237,4 +251,8 @@
     color: rgba(var(--themeFontColor), .5) !important;
   }
 
+  .ant-steps-icon-dot {
+    border-color: rgba(var(--themeFontColor), .15) !important;
+    background-color: rgba(var(--themeFontColor), .25) !important;
+  }
 }
