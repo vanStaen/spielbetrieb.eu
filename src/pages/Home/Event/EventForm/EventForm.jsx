@@ -106,6 +106,7 @@ export const EventForm = observer(() => {
       if (eventFormStore.artworks.length === 0) {
         tempStatusSteps[0] = "error";
       } else {
+        console.log('eventFormStore.artworks', eventFormStore.artworks)
         tempStatusSteps[0] = "finish";
       }
     }

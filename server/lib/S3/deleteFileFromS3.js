@@ -17,7 +17,7 @@ export const deleteFileFromS3 = async (path, bucket) => {
   } else if (bucket === "users") {
     s3BucketId = process.env.S3_BUCKET_USERS;
   } else {
-    return { error: "Bucket is missing/incorrect" };
+    throw new Error("Bucket is missing/incorrect");
   }
 
   const deleteObjectCommandOriginal = new DeleteObjectCommand({
@@ -42,6 +42,6 @@ export const deleteFileFromS3 = async (path, bucket) => {
     return true;
   } catch (e) {
     console.error(e);
-    return { error: e };
+    return { e };
   }
 };

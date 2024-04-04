@@ -2,6 +2,8 @@ import multer, { memoryStorage } from "multer";
 import { Router } from "express";
 import { uploadFileToS3 } from "../../lib/S3/uploadFileToS3.js";
 import { deleteFileFromS3 } from "../../lib/S3/deleteFileFromS3.js";
+import { getUrlFromS3 } from "../../lib/S3/getUrlFromS3.js";
+
 const router = Router();
 
 // Limits size of 10MB
@@ -23,8 +25,9 @@ const upload = multer({ storage, limits: sizeLimits, fileFilter });
 // Get file object from s3 (via signed URL)
 router.get("/", async (req, res) => {
   try {
-    console.log(req.path);
-    return true;
+    const url = await getUrlFromS3(req.body.path, req.body.bucket);
+    console.log(url);
+    return res.send({ url });
   } catch (err) {
     res.status(400).json({
       error: `${err}`,
