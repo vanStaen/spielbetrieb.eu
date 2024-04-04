@@ -40,18 +40,20 @@ export const AddToHomeScreen = () => {
 
   return (
     <>
-      { window.matchMedia("(display-mode: standalone)").matches ? (
+      {window.matchMedia("(display-mode: standalone)").matches ? (
         <div className="menu__elementDisabled" id="a2hsButton">
-          <CheckOutlined />&nbsp; Installed
+          <CheckOutlined />
+          &nbsp; Installed
         </div>
       ) : (
         <div
           className="menu__element"
           id="a2hsButton"
           onClick={addToHomeScreenClickHandler}
-          style={{display: 'none', cursor: 'pointer'}}
+          style={{ display: "none", cursor: "pointer" }}
         >
-          <DownloadOutlined />&nbsp; Install
+          <DownloadOutlined />
+          &nbsp; Install
         </div>
       )}
     </>

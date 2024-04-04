@@ -19,7 +19,7 @@ export const ArtworkForm = observer(() => {
 
   const fileUploadHandler = async (file) => {
     setIsUploading(true);
-    const result = await postPicture(file, 'test');
+    const result = await postPicture(file, "test");
     if (result.error) {
       notification.error({
         message: "Upload failed!",
@@ -35,7 +35,7 @@ export const ArtworkForm = observer(() => {
       console.log(tempArtworkArray);
     }
     setIsUploading(false);
-  };  
+  };
 
   const handleDragEnter = (e) => {
     e.preventDefault();
@@ -77,7 +77,9 @@ export const ArtworkForm = observer(() => {
           className="inputfile"
           name="inputfile"
           id="file"
-          onChange={(event) => {fileUploadHandler(event.target.files[0])}}
+          onChange={(event) => {
+            fileUploadHandler(event.target.files[0]);
+          }}
         />
         {isUploading ? (
           <label htmlFor="file" className="uploadArea">
@@ -105,7 +107,7 @@ export const ArtworkForm = observer(() => {
                   <PictureOutlined />
                 </div>
                 <div>
-                  Click, or drag here a image file <br />
+                  Click, or drag here an image file <br />
                   <i>jpg and png files only | max 10mb</i>
                 </div>
               </>
@@ -115,7 +117,7 @@ export const ArtworkForm = observer(() => {
                   <FileAddOutlined />
                 </div>
                 <div>
-                  Drop your iamges here <br />
+                  Drop your images here <br />
                   <i>Multiple files supported</i>
                 </div>
               </>

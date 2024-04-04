@@ -7,7 +7,7 @@ import errorLogo from "../../../../img/logos/errorLogo.png";
 import { HelpButtons } from "../../../../components/HelpButtons/HelpButtons";
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { authStore } from "../../../../store/authStore/authStore";
-
+import { eventFormStore } from "./eventFormStore";
 import { ArtworkForm } from "./EventFormSteps/ArtworkForm/ArtworkForm";
 import { InfoForm } from "./EventFormSteps/InfoForm/InfoForm";
 import { OptionForm } from "./EventFormSteps/OptionForm/OptionForm";
@@ -100,11 +100,16 @@ export const EventForm = observer(() => {
   */
 
   const onStepsChange = (value) => {
-    console.log("onChange:", value);
-    // oldStep (=formStep) shoudl get vaidated, and get 'Error' or 'Finish'
-    // TODO
-    // newStep (=value) is now 'process'
     const tempStatusSteps = statusSteps;
+    // oldStep (=formStep) shoudl get validated, and get 'Error' or 'Finish'
+    if (formStep === 0) {
+      if (eventFormStore.artworks.length === 0) {
+        tempStatusSteps[0] = "error";
+      } else {
+        tempStatusSteps[0] = "finish";
+      }
+    }
+    // newStep (=value) is now 'process'
     tempStatusSteps[value] = "process";
     setFormStep(value);
     setStatusSteps(tempStatusSteps);
