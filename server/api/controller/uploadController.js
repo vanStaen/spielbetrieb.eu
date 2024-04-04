@@ -20,6 +20,18 @@ const fileFilter = (req, file, callback) => {
 const storage = memoryStorage();
 const upload = multer({ storage, limits: sizeLimits, fileFilter });
 
+// Get file object from s3 (via signed URL)
+router.get("/", async (req, res) => {
+  try {
+    console.log(req.path);
+    return true;
+  } catch (err) {
+    res.status(400).json({
+      error: `${err}`,
+    });
+  }
+});
+
 // POST single file object to s3
 router.post("/", upload.single("file"), async (req, res) => {
   try {

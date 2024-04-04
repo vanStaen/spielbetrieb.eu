@@ -29,15 +29,13 @@ export const ArtworkForm = observer(() => {
         className: "customNotification",
       });
     } else if (result.path) {
-      // Add s3 link to eventFormStore.artworks
       const tempArtworkArray = eventFormStore.artworks;
-      //TODO: add the s3 domain to the path
       tempArtworkArray.push(result.path);
       eventFormStore.setArtworks(tempArtworkArray);
       console.log(tempArtworkArray);
     }
     setIsUploading(false);
-  };
+  };  
 
   const handleDragEnter = (e) => {
     e.preventDefault();

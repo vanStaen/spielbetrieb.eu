@@ -145,3 +145,4 @@ scroll animations: https://css-tricks.com/books/greatest-css-tricks/scroll-anima
 
 esLint + prettier for React: https://www.linkedin.com/pulse/config-eslint-prettier-vs-code-react-js-anurag-kumar
 S3 bucket policies and Node server: https://medium.com/how-to-react/how-to-upload-files-on-an-s3-bucket-in-react-js-97a3ccd519d1
+Implementation of the s3 endpoints: https://www.youtube.com/watch?v=vVBqEYNXxy8
