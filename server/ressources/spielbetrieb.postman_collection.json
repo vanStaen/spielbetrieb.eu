@@ -369,7 +369,7 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "/Users/clementvanstaen/Desktop/Screenshot 2024-03-14 at 14.04.21.png"
+							"src": "/Users/cvanstaen/Desktop/Bildschirmfoto 2024-03-12 um 14.45.12.png"
 						},
 						{
 							"key": "bucket",
@@ -390,6 +390,36 @@
 					]
 				},
 				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "REST API: upload/url",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bucket\": \"test\",\n    \"path\": \"1/59daf3cd-cda7-4dd7-bc5f-3b6c522d4004_m\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5017/upload/url",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"upload",
+						"url"
+					]
+				}
 			},
 			"response": []
 		},

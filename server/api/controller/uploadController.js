@@ -23,7 +23,7 @@ const storage = memoryStorage();
 const upload = multer({ storage, limits: sizeLimits, fileFilter });
 
 // Get file object from s3 (via signed URL)
-router.get("/", async (req, res) => {
+router.post("/url/", async (req, res) => {
   try {
     const url = await getUrlFromS3(req.body.path, req.body.bucket);
     return res.send({ url });

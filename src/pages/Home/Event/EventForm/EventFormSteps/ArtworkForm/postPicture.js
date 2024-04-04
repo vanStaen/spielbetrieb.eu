@@ -12,7 +12,6 @@ export const postPicture = async (file, bucket) => {
     const path = await response.json();
     return path;
   } catch (error) {
-    console.log("ERROR", error);
     return error;
   }
 };

@@ -1,7 +1,6 @@
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-
 const s3 = new S3Client({
   region: "eu-central-1",
   credentials: {
@@ -23,8 +22,8 @@ export const getUrlFromS3 = async (path, bucket) => {
   }
 
   try {
-    const command = new GetObjectCommand({ Bucket: s3BucketId, Key: path })
-    const url = await getSignedUrl(s3, command, { expiresIn: 900 })
+    const command = new GetObjectCommand({ Bucket: s3BucketId, Key: path });
+    const url = await getSignedUrl(s3, command, { expiresIn: 900 });
     return url;
   } catch (e) {
     console.error(e);

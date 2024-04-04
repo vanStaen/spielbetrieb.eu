@@ -30,7 +30,10 @@ export const uploadFileToS3 = async (file, bucket, userId) => {
   }
 
   const fileThumb = await resizeImageFromBuffer(file.buffer, THUMB_SIZE_IN_PX);
-  const fileMedium = await resizeImageFromBuffer(file.buffer, MEDIUM_SIZE_IN_PX);
+  const fileMedium = await resizeImageFromBuffer(
+    file.buffer,
+    MEDIUM_SIZE_IN_PX,
+  );
 
   const putObjectOriginal = new PutObjectCommand({
     Bucket: s3BucketId,
