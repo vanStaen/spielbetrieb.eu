@@ -3,7 +3,15 @@ import { User } from "../../models/User.js";
 
 export const eventtypeResolver = {
   // getEventtypes
-  async getEventtypes() {
+  async getEventtypes(args, req) {
+    return await Eventtype.findAll({
+      where: { usage: args.usage },
+      order: [["name", "ASC"]],
+    });
+  },
+
+  // getAllEventtypes
+  async getAllEventtypes() {
     return await Eventtype.findAll({
       order: [["name", "ASC"]],
     });
@@ -23,7 +31,7 @@ export const eventtypeResolver = {
     try {
       const eventtype = new Eventtype({
         name: args.eventtypeInput.name,
-        color: args.eventtypeInput.color,
+        usage: args.eventtypeInput.usage,
         validated: args.eventtypeInput.validated,
       });
       return await eventtype.save();
@@ -44,7 +52,7 @@ export const eventtypeResolver = {
       throw new Error("Unauthorized!");
     }
     const updateFields = [];
-    const updatableFields = ["name", "color", "validated"];
+    const updatableFields = ["name", "usage", "validated"];
     updatableFields.forEach((field) => {
       if (field in args.eventtypeInput) {
         updateFields[field] = args.eventtypeInput[field];

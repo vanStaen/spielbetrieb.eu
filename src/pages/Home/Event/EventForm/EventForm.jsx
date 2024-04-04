@@ -144,7 +144,7 @@ export const EventForm = observer(() => {
             ]}
           />
           <div style={{ marginTop: 32 }}></div>
-          {formStep === 0 && <InfoForm />}
+          {formStep === 0 && <InfoForm eventtypes={eventtypes} />}
           {formStep === 1 && <ArtworkForm />}
           {formStep === 2 && <OptionForm />}
           {formStep === 3 && <GuestForm />}

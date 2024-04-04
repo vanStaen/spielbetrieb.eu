@@ -4,7 +4,6 @@ import dayjs from "dayjs";
 import { UserOutlined } from "@ant-design/icons";
 import {
   notification,
-  Modal,
   Button,
   Form,
   Select,
@@ -189,12 +188,12 @@ export const EventForm = observer(() => {
             onFinish={onFinish}
             name="event-form"
             className="eventform__admin"
-            /* initialValues={
-                  data && {
-                      eventDate: [dayjs(data.fromDate), dayjs(data.untilDate)],
-                      ...data,
-                  }
-                  } */
+          /* initialValues={
+                data && {
+                    eventDate: [dayjs(data.fromDate), dayjs(data.untilDate)],
+                    ...data,
+                }
+                } */
           >
             <div style={{ marginTop: 15 }}></div>
 

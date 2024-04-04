@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 
 import { EditableCell } from "../../EditableCell";
-import { getEventtypes } from "../../../../store/spielplanStore/getEventtypes";
+import { getAllEventtypes } from "./getAllEventtypes";
 import { deleteEventtype } from "./deleteEventtype";
 import { updateEventtype } from "./updateEventtype";
 import { addEventtype } from "./addEventtype";
@@ -22,7 +22,7 @@ export const AdminEventtypes = () => {
   const [isNewRow, setIsNewRow] = useState(false);
 
   const fetchEventtypes = async () => {
-    const results = await getEventtypes();
+    const results = await getAllEventtypes();
     const eventtypes = results.map((type) => {
       return {
         name_en: nameParser(type.name, "en"),
@@ -64,7 +64,7 @@ export const AdminEventtypes = () => {
       const dataObject = await form.validateFields();
       const dataObjectNew = {
         name: `{"en":"${dataObject.name_en}", "de":"${dataObject.name_de}"}`,
-        color: parseInt(dataObject.color),
+        usage: parseInt(dataObject.usage),
         validated: dataObject.validated,
       };
       if (isNewRow) {
@@ -100,26 +100,18 @@ export const AdminEventtypes = () => {
       editable: true,
     },
     {
-      title: "Color",
-      dataIndex: "color",
-      key: "color",
+      title: "Usage",
+      dataIndex: "usage",
+      key: "usage",
       align: "center",
       editable: true,
-      render: (_, { color }) =>
-        color === 1 ? (
-          <div style={{ color: "white", backgroundColor: "#477778" }}>1</div>
-        ) : color === 2 ? (
-          <div style={{ color: "white", backgroundColor: "#2F4F4F" }}>2</div>
-        ) : color === 3 ? (
-          <div style={{ color: "white", backgroundColor: "#2C3E50" }}>3</div>
-        ) : color === 4 ? (
-          <div style={{ color: "white", backgroundColor: "#C99A86" }}>4</div>
-        ) : color === 5 ? (
-          <div style={{ color: "white", backgroundColor: "#CEA032" }}>5</div>
-        ) : color === 6 ? (
-          <div style={{ color: "white", backgroundColor: "#922B21" }}>6</div>
+      render: (_, { usage }) =>
+        usage === 1 ? (
+          <div>.eu</div>
+        ) : usage === 2 ? (
+          <div>.info</div>
         ) : (
-          "none"
+          <div>Both</div>
         ),
     },
     {
@@ -182,7 +174,7 @@ export const AdminEventtypes = () => {
         inputType:
           col.dataIndex === "validated"
             ? "boolean"
-            : col.dataIndex === "color"
+            : col.dataIndex === "usage"
               ? "number"
               : "text",
         dataIndex: col.dataIndex,

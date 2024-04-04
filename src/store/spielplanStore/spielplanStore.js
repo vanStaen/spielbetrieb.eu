@@ -100,7 +100,7 @@ export class SpielplanStore {
   };
 
   fetchEventtypes = async () => {
-    const eventtypes = await getEventtypes();
+    const eventtypes = await getEventtypes(1);
     this.setEventtypes(eventtypes);
   };
 

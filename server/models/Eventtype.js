@@ -11,7 +11,7 @@ export const Eventtype = sequelize.sequelize.define("eventtype", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  color: {
+  usage: { //0 for both, 1 for .eu, 2 for .info
     type: DataTypes.INTEGER,
     defaultValue: 0,
   },
