@@ -38,7 +38,7 @@ export const EventForm = observer(() => {
   ]); // value are process, finish, error and wait
 
   const fetchEventtypes = async () => {
-    const results = await getEventtypes();
+    const results = await getEventtypes(1);
     const eventtypes = results.map((type) => {
       if (type.validated === false) {
         return null;
