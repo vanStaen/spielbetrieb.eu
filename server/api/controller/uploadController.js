@@ -26,7 +26,6 @@ const upload = multer({ storage, limits: sizeLimits, fileFilter });
 router.get("/", async (req, res) => {
   try {
     const url = await getUrlFromS3(req.body.path, req.body.bucket);
-    console.log(url);
     return res.send({ url });
   } catch (err) {
     res.status(400).json({
