@@ -77,7 +77,7 @@ export const ArtworkForm = observer(() => {
     return (
       <>
         <img src={url} width="500" />
-      </>;
+      </>
     );
   });
 
