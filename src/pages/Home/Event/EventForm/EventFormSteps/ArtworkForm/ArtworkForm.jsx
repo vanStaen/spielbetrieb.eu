@@ -32,7 +32,7 @@ export const ArtworkForm = observer(() => {
     } else if (result.path) {
       const tempArtworkArray = eventFormStore.artworks;
       const tempArtworkUrlArray = eventFormStore.artworksUrl;
-      const url = await getPictureUrl(result.path, 'test');
+      const url = await getPictureUrl(result.path, "test");
       tempArtworkArray.push(result.path);
       tempArtworkUrlArray.push(url);
       eventFormStore.setArtworks(tempArtworkArray);
@@ -74,8 +74,12 @@ export const ArtworkForm = observer(() => {
   };
 
   const images = eventFormStore.artworksUrl.map((url) => {
-    return <><img src={url} width="500" /></>
-  })
+    return (
+      <>
+        <img src={url} width="500" />
+      </>;
+    );
+  });
 
   return (
     <>
