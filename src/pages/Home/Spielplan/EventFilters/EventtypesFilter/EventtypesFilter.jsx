@@ -3,7 +3,7 @@ import { Select } from "antd";
 import { observer } from "mobx-react";
 import { CalendarOutlined } from "@ant-design/icons";
 
-import { nameParser } from "../../../../../helpers/nameParser";
+import { nameParser } from "../../../../../helpers/dev/nameParser";
 import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { spielplanStore } from "../../../../../store/spielplanStore/spielplanStore";
 

@@ -5,7 +5,7 @@ import { Tour } from "antd";
 
 import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinnner";
 import { EventCard } from "./EventCard/EventCard";
-import { nameParser } from "../../../helpers/nameParser";
+import { nameParser } from "../../../helpers/dev/nameParser";
 import { spielplanStore } from "../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../store/pageStore/pageStore";
 import { EventFilters } from "./EventFilters/EventFilters";

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 // import "core-js/stable";
 // import "regenerator-runtime/runtime";
 
-import { consoleGreetings } from "./helpers/consoleGreetings.js";
+import { consoleGreetings } from "./helpers/dev/consoleGreetings.js";
 import App from "./App.jsx";
 
 /* if ("serviceWorker" in navigator) {

@@ -19,7 +19,7 @@ import dayjs from "dayjs";
 import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { getSingleEvents } from "../getSingleEvents";
-import { nameParser } from "../../../../helpers/nameParser";
+import { nameParser } from "../../../../helpers/dev/nameParser";
 import { HelpButtons } from "../../../../components/HelpButtons/HelpButtons";
 import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinnner";
 
@@ -164,11 +164,10 @@ export const EventPage = observer(() => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${
-                    pageStore.selectedTheme === "light"
-                      ? "lightColorTheme__Text"
-                      : "darkColorTheme__Text"
-                  }`}
+                  ${pageStore.selectedTheme === "light"
+            ? "lightColorTheme__Text"
+            : "darkColorTheme__Text"
+          }`}
       >
         <ArrowLeftOutlined />
       </div>
@@ -237,7 +236,7 @@ export const EventPage = observer(() => {
                   <div className="eventpage__subInfo">
                     <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
                     {dayjs(event.fromDate).format("dddd") ===
-                    dayjs(event.untilDate).format("dddd") ? (
+                      dayjs(event.untilDate).format("dddd") ? (
                       <>
                         {dayjs(event.fromDate).format("HH:mm")}{" "}
                         {t("spielplan.until")}{" "}

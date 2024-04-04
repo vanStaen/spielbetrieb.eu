@@ -17,7 +17,7 @@ import { deleteEvent } from "./deleteEvent";
 import { getEventtypes } from "../../../store/spielplanStore/getEventtypes";
 import { getTags } from "../../../store/spielplanStore/getTags";
 import { getUserNames } from "./getUserNames";
-import { nameParser } from "../../../helpers/nameParser";
+import { nameParser } from "../../../helpers/dev/nameParser";
 import { userStore } from "../../../store/userStore/userStore";
 
 export const AdminEvents = () => {

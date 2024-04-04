@@ -6,5 +6,6 @@ import { eventFormStore } from "../../eventFormStore";
 import "./InfoForm.less";
 
 export const InfoForm = observer(() => {
-  return <>Info form</>;
+  return <>Eventtype | Title | Date  from | Date to | Location |
+    locationCoordinates</>;
 });

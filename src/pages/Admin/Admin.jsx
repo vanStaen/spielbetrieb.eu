@@ -21,7 +21,7 @@ import { AdminUsers } from "./AdminUsers/AdminUsers";
 import { AdminData } from "./AdminData/AdminData";
 import { AdminContent } from "./AdminContent/AdminContent";
 import { AdminEvents } from "./AdminEvents/AdminEvents";
-import { isMobileCheck } from "../../helpers/checkMobileTablet";
+import { isMobileCheck } from "../../helpers/dev/checkMobileTablet";
 import { authStore } from "../../store/authStore/authStore";
 import { userStore } from "../../store/userStore/userStore";
 import { adminStore } from "../../store/adminStore/adminStore";

@@ -13,7 +13,7 @@ import { deleteTag } from "./deleteTag";
 import { updateTag } from "./updateTag";
 import { addTag } from "./addTag";
 import { AdminCustomSpinner } from "../../AdminCustomSpinner/AdminCustomSpinner";
-import { nameParser } from "../../../../helpers/nameParser";
+import { nameParser } from "../../../../helpers/dev/nameParser";
 
 export const AdminTags = () => {
   const [form] = Form.useForm();
@@ -185,9 +185,9 @@ export const AdminTags = () => {
         record,
         inputType:
           col.dataIndex === "validated" ||
-          col.dataIndex === "isPictureTag" ||
-          col.dataIndex === "isEventTag" ||
-          col.dataIndex === "isUserTag"
+            col.dataIndex === "isPictureTag" ||
+            col.dataIndex === "isEventTag" ||
+            col.dataIndex === "isUserTag"
             ? "boolean"
             : "text",
         dataIndex: col.dataIndex,

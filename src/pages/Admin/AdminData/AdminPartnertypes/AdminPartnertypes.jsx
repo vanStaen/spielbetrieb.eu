@@ -13,7 +13,7 @@ import { deletePartnertype } from "./deletePartnertype";
 import { updatePartnertype } from "./updatePartnertype";
 import { addPartnertype } from "./addPartnertype";
 import { AdminCustomSpinner } from "../../AdminCustomSpinner/AdminCustomSpinner";
-import { nameParser } from "../../../../helpers/nameParser";
+import { nameParser } from "../../../../helpers/dev/nameParser";
 
 export const AdminPartnertypes = () => {
   const [form] = Form.useForm();

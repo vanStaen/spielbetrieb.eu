@@ -15,8 +15,8 @@ import { GuestForm } from "./EventFormSteps/GuestForm/GuestForm";
 import { getLocations } from "../../../../store/spielplanStore/getLocations";
 import { getTags } from "../../../../store/spielplanStore/getTags";
 import { getEventtypes } from "../../../../store/spielplanStore/getEventtypes";
-import { isMobileCheck } from "../../../../helpers/checkMobileTablet";
-import { nameParser } from "../../../../helpers/nameParser";
+import { isMobileCheck } from "../../../../helpers/dev/checkMobileTablet";
+import { nameParser } from "../../../../helpers/dev/nameParser";
 
 import "./EventForm.less";
 
@@ -92,8 +92,6 @@ export const EventForm = observer(() => {
 
   /*
     TODO: 
-    pictures: [String]
-    locationCoordinates: String
     attendees: [Int]
     invited: [Int]
     admin: [Int]
@@ -102,12 +100,11 @@ export const EventForm = observer(() => {
   const onStepsChange = (value) => {
     const tempStatusSteps = statusSteps;
     // oldStep (=formStep) shoudl get validated, and get 'Error' or 'Finish'
-    if (formStep === 0) {
+    if (formStep === 1) {
       if (eventFormStore.artworks.length === 0) {
-        tempStatusSteps[0] = "error";
+        tempStatusSteps[formStep] = "error";
       } else {
-        console.log("eventFormStore.artworks", eventFormStore.artworks);
-        tempStatusSteps[0] = "finish";
+        tempStatusSteps[formStep] = "finish";
       }
     }
     // newStep (=value) is now 'process'
@@ -129,11 +126,11 @@ export const EventForm = observer(() => {
             current={formStep}
             items={[
               {
-                title: "Artworks",
+                title: "General Infos",
                 status: statusSteps[0],
               },
               {
-                title: "General Infos",
+                title: "Artworks",
                 status: statusSteps[1],
               },
               {
@@ -147,8 +144,8 @@ export const EventForm = observer(() => {
             ]}
           />
           <div style={{ marginTop: 32 }}></div>
-          {formStep === 0 && <ArtworkForm />}
-          {formStep === 1 && <InfoForm />}
+          {formStep === 0 && <InfoForm />}
+          {formStep === 1 && <ArtworkForm />}
           {formStep === 2 && <OptionForm />}
           {formStep === 3 && <GuestForm />}
         </div>

@@ -8,8 +8,8 @@ import {
 } from "@ant-design/icons";
 
 import { eventFormStore } from "../../eventFormStore";
-import { postPicture } from "./postPicture";
-import { getPictureUrl } from "./getPictureUrl";
+import { postPicture } from "../../../../../../helpers/picture/postPicture";
+import { getPictureUrl } from "../../../../../../helpers/picture/getPictureUrl";
 
 import "./ArtworkForm.less";
 

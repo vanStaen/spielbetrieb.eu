@@ -14,7 +14,7 @@ import { PasswordRecover } from "../PasswordRecover/PasswordRecover";
 import { authStore } from "../../store/authStore/authStore";
 import { pageStore } from "../../store/pageStore/pageStore";
 import { postVerifyEmailLink } from "./postVerifyEmailLink";
-import { validateEmail } from "../../helpers/validateEmail";
+import { validateEmail } from "../../helpers/validation/validateEmail";
 
 import "./LoginForm.css";
 

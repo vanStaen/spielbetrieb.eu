@@ -3,7 +3,7 @@ import { notification, Modal, Button, Form, Select, Switch } from "antd";
 
 import { updateUserAsAdmin } from "../updateUserAsAdmin";
 import { getPartnertypes } from "../../AdminData/AdminPartnertypes/getPartnertypes";
-import { nameParser } from "../../../../helpers/nameParser";
+import { nameParser } from "../../../../helpers/dev/nameParser";
 import { userStore } from "../../../../store/userStore/userStore";
 
 import "./PartnerForm.less";

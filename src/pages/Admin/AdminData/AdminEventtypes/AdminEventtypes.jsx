@@ -13,7 +13,7 @@ import { deleteEventtype } from "./deleteEventtype";
 import { updateEventtype } from "./updateEventtype";
 import { addEventtype } from "./addEventtype";
 import { AdminCustomSpinner } from "../../AdminCustomSpinner/AdminCustomSpinner";
-import { nameParser } from "../../../../helpers/nameParser";
+import { nameParser } from "../../../../helpers/dev/nameParser";
 
 export const AdminEventtypes = () => {
   const [form] = Form.useForm();
