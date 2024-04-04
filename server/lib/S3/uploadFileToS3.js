@@ -26,7 +26,7 @@ export const uploadFileToS3 = async (file, bucket, userId) => {
   } else if (bucket === "users") {
     s3BucketId = process.env.S3_BUCKET_USERS;
   } else {
-    return { error: "Bucket is missing/incorrect" };
+    throw new Error("Bucket is missing/incorrect");
   }
 
   const fileMedium = await resizeImageFromBuffer(file.buffer, THUMB_SIZE_IN_PX);
@@ -59,7 +59,6 @@ export const uploadFileToS3 = async (file, bucket, userId) => {
     await s3.send(putObjectThumb);
     return path;
   } catch (e) {
-    console.error(e);
-    return { error: e };
+    return e;
   }
 };

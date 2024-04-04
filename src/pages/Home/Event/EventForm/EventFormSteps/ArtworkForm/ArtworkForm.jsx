@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
+import { notification } from "antd";
 import {
   PictureOutlined,
   LoadingOutlined,
@@ -7,6 +8,7 @@ import {
 } from "@ant-design/icons";
 
 import { eventFormStore } from "../../eventFormStore";
+import { postPicture } from "./postPicture";
 
 import "./ArtworkForm.less";
 
@@ -15,10 +17,25 @@ export const ArtworkForm = observer(() => {
   const [isDragDroping, setIsDragDroping] = useState(false);
   const [uploadProgress, setUploadProgress] = useState([0, 0]);
 
-  const fileUploadHandler = (file) => {
+  const fileUploadHandler = async (file) => {
     setIsUploading(true);
-    console.log("file", file);
-    // add s3 link to eventFormStore.artworks
+    const result = await postPicture(file, 'test');
+    if (result.error) {
+      notification.error({
+        message: "Upload failed!",
+        description: result.error.toString(),
+        duration: 0,
+        placement: "bottomRight",
+        className: "customNotification",
+      });
+    } else if (result.path) {
+      // Add s3 link to eventFormStore.artworks
+      const tempArtworkArray = eventFormStore.artworks;
+      //TODO: add the s3 domain to the path
+      tempArtworkArray.push(result.path);
+      eventFormStore.setArtworks(tempArtworkArray);
+      console.log(tempArtworkArray);
+    }
     setIsUploading(false);
   };
 
@@ -91,7 +108,7 @@ export const ArtworkForm = observer(() => {
                 </div>
                 <div>
                   Click, or drag here a image file <br />
-                  <i>jpg and png files only</i>
+                  <i>jpg and png files only | max 10mb</i>
                 </div>
               </>
             ) : (

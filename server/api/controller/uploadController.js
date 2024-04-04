@@ -5,7 +5,7 @@ import { deleteFileFromS3 } from "../../lib/S3/deleteFileFromS3.js";
 const router = Router();
 
 // Limits size of 10MB
-const sizeLimits = { fileSize: 1024 * 1024 * 10 };
+const sizeLimits = { fileSize: 1024 * 1024 * 10 }; // Max 10MB
 
 // Allow only JPG and PNG
 const fileFilter = (req, file, callback) => {
@@ -24,12 +24,14 @@ const upload = multer({ storage, limits: sizeLimits, fileFilter });
 router.post("/", upload.single("file"), async (req, res) => {
   try {
     if (!req.isAuth) {
-      throw new Error("Unauthorized!");
+      res.status(403).json({
+        error: "Unauthorized!",
+      });
     }
     const path = await uploadFileToS3(req.file, req.body.bucket, req.userId);
     return res.send({ path });
   } catch (err) {
-    res.status(403).json({
+    res.status(400).json({
       error: `${err}`,
     });
   }
@@ -38,7 +40,7 @@ router.post("/", upload.single("file"), async (req, res) => {
 // DELETE single file object from s3 (based on key)
 router.delete("/:id", async (req, res) => {
   if (!req.isAuth) {
-    res.status(401).json({
+    res.status(403).json({
       error: "Unauthorized",
     });
     return;
