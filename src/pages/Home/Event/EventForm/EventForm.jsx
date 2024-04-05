@@ -54,21 +54,7 @@ export const EventForm = observer(() => {
 
   const fetchLocations = async () => {
     const locations = await getLocations();
-    const locationOptions = locations.map((location) => {
-      if (location.validated === false) {
-        return null;
-      }
-      return {
-        value: parseInt(location._id),
-        label: location.name,
-      };
-    });
-    locationOptions.push({
-      value: 0,
-      label: <span style={{ opacity: ".5" }}>new location</span>,
-    });
     setLocations(locations);
-    setLocationOptions(locationOptions);
   };
 
   const fetchtags = async () => {
@@ -147,7 +133,7 @@ export const EventForm = observer(() => {
             ]}
           />
           <div style={{ marginTop: 32 }}></div>
-          {formStep === 0 && <InfoForm eventtypes={eventtypes} />}
+          {formStep === 0 && <InfoForm eventtypes={eventtypes} locations={locations} />}
           {formStep === 1 && <ArtworkForm />}
           {formStep === 2 && <OptionForm />}
           {formStep === 3 && <GuestForm />}
@@ -157,7 +143,7 @@ export const EventForm = observer(() => {
           <img
             src={errorLogo}
             width="50px"
-            className="eventform__singupfirstImg"
+            className="eventform__singupfirstImg invertColorTheme "
           />
           <div
             className={`eventform__singupfirstText ${pageStore.selectedTheme === "light" ? "lightColorTheme__Text" : "darkColorTheme__Text"}`}
@@ -167,7 +153,7 @@ export const EventForm = observer(() => {
           >
             <div>You need to be logged in!</div>
             <div>
-              Click on the <UserOutlined /> - top right corner - to log in or
+              Click on the <UserOutlined className="eventform__avatarlogo" />, in the top right corner, to log in or
               sign up.
             </div>
           </div>

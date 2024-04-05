@@ -160,27 +160,6 @@ export const EventForm = observer(() => {
     <>
       {authStore.hasAccess ? (
         <div className="eventform__container" ref={ref1}>
-          <Steps
-            size="small"
-            current={0}
-            items={[
-              {
-                title: "Artworks",
-                description: "The face of your events",
-              },
-              {
-                title: "Info",
-                description: "Name, time, and more",
-              },
-              {
-                title: "Option",
-                description: "All other optional details",
-              },
-              {
-                title: "Guest",
-              },
-            ]}
-          />
           <Form
             form={form}
             layout="horizontal"
@@ -188,33 +167,11 @@ export const EventForm = observer(() => {
             onFinish={onFinish}
             name="event-form"
             className="eventform__admin"
-          /* initialValues={
-                data && {
-                    eventDate: [dayjs(data.fromDate), dayjs(data.untilDate)],
-                    ...data,
-                }
-                } */
           >
             <div style={{ marginTop: 15 }}></div>
 
             <Row gutter={16}>
-              <Col span={12}>
-                <Form.Item
-                  name="eventtype"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please select an event type!",
-                    },
-                  ]}
-                >
-                  <Select
-                    options={eventtypes}
-                    placeholder="Event type"
-                    className="eventtype__select"
-                  />
-                </Form.Item>
-              </Col>
+
               <Col span={12}>
                 <Form.Item
                   name="location"
@@ -225,12 +182,7 @@ export const EventForm = observer(() => {
                     },
                   ]}
                 >
-                  <Select
-                    options={locationOptions}
-                    onChange={(value) => setIsNewLocation(value === 0)}
-                    placeholder="Event location"
-                    className="eventtype__select"
-                  />
+
                 </Form.Item>
               </Col>
             </Row>

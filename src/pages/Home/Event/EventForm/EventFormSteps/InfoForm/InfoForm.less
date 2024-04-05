@@ -1,5 +1,14 @@
 .infoform__container {
     width: 100%;
+    max-width: 1080px;
+
+    .ant-input-outlined,
+    .ant-select-selector,
+    .ant-picker-outlined {
+        background-color: rgba(white, .5) !important;
+        border-color: transparent !important;
+        color: rgba(20, 36, 54, 1) !important;
+    }
 
     .infoform__select {
         text-align: center;
@@ -9,6 +18,18 @@
     .infoform__element {
         font-size: 16px;
         padding: 4px 0 16px 0;
+
+        .infoform__title {
+            font-size: 14px;
+            padding: 0 0 4px 8px;
+        }
+
+        .infoform__error {
+            padding: 4px;
+            color: firebrick;
+            filter: brightness(2);
+            font-size: 14px;
+        }
     }
 
 }
