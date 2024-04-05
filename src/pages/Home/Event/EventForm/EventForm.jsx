@@ -97,7 +97,8 @@ export const EventForm = observer(() => {
     // oldStep (=formStep) should get validated and get 'Error' or 'Finish'
     if (formStep === 0) {
       if (eventFormStore.eventtype === null ||
-        eventFormStore.title === null) {
+        eventFormStore.title === null ||
+        eventFormStore.titleError !== null) {
         tempStatusSteps[formStep] = "error";
       } else {
         tempStatusSteps[formStep] = "finish";
@@ -136,7 +137,7 @@ export const EventForm = observer(() => {
                 status: statusSteps[1],
               },
               {
-                title: "Optionals",
+                title: "Options",
                 status: statusSteps[2],
               },
               {

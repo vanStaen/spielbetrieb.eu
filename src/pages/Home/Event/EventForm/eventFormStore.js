@@ -5,6 +5,7 @@ export class EventFormStore {
   artworksUrl = [];
   eventtype = null;
   title = null;
+  titleError = null;
 
   constructor() {
     makeObservable(this, {
@@ -16,6 +17,8 @@ export class EventFormStore {
       setEventtype: action,
       title: observable,
       setTitle: action,
+      titleError: observable,
+      setTitleError: action,
     });
   }
 
@@ -33,6 +36,10 @@ export class EventFormStore {
 
   setTitle = (title) => {
     this.title = title;
+  };
+
+  setTitleError = (titleError) => {
+    this.titleError = titleError;
   };
 }
 
