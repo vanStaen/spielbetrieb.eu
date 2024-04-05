@@ -22,7 +22,7 @@ export const InfoForm = observer((props) => {
   eventypesMainOption &&
     eventypesMainOption.push({ value: "more", label: "..." });
 
-  //console.log('locations', locations);
+  // console.log('locations', locations);
 
   /* const locationOptions = locations?.map((location) => {
     if (location.validated === false) {
@@ -41,7 +41,7 @@ export const InfoForm = observer((props) => {
 
   const eventtypeHandler = (e) => {
     const value = e.target.value;
-    if (value == "more") {
+    if (value === "more") {
       setShowMore(true);
     } else {
       eventFormStore.setEventtype(value);
@@ -60,15 +60,17 @@ export const InfoForm = observer((props) => {
       eventFormStore.setTitleError(null);
     }
     if (!eventFormStore.eventtype) {
-      eventFormStore.setEventtypeError('Please select an event type!')
+      eventFormStore.setEventtypeError("Please select an event type!");
     } else {
-      //Create event as Draft
+      // Create event as Draft
     }
   };
 
   const dateHandler = (dates) => {
     if (dates[0].valueOf() >= dates[1].valueOf()) {
-      eventFormStore.setFromDateError("The event can not end before it has started!");
+      eventFormStore.setFromDateError(
+        "The event can not end before it has started!",
+      );
     } else if (dates[0] < dayjs()) {
       eventFormStore.setFromDateError("An event can not start in the past!");
     } else {
@@ -76,20 +78,21 @@ export const InfoForm = observer((props) => {
     }
     eventFormStore.setFromDate(dates[0]);
     eventFormStore.setUntilDate(dates[1]);
-  }
+  };
 
   const descHandler = (e) => {
     const value = e.target.value;
     console.log(value);
     eventFormStore.setDescription(value);
-  }
+  };
 
   return (
     <div
-      className={`infoform__container  ${pageStore.selectedTheme === "light"
-        ? "lightColorTheme__Text"
-        : "darkColorTheme__Text"
-        }`}
+      className={`infoform__container  ${
+        pageStore.selectedTheme === "light"
+          ? "lightColorTheme__Text"
+          : "darkColorTheme__Text"
+      }`}
     >
       <div className="infoform__select">
         <Radio.Group
@@ -99,7 +102,9 @@ export const InfoForm = observer((props) => {
           value={eventFormStore.eventtype}
         />
         <div className="infoform__error">
-          {eventFormStore.eventtypeError && <>{eventFormStore.eventtypeError}</>}
+          {eventFormStore.eventtypeError && (
+            <>{eventFormStore.eventtypeError}</>
+          )}
         </div>
       </div>
       <div className="infoform__element">
@@ -147,7 +152,9 @@ export const InfoForm = observer((props) => {
               disabled
             />
             <div className="infoform__error">
-              {eventFormStore.locationAddressError && <>{eventFormStore.locationAddressError}</>}
+              {eventFormStore.locationAddressError && (
+                <>{eventFormStore.locationAddressError}</>
+              )}
             </div>
           </Col>
         </Row>
