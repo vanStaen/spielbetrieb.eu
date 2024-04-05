@@ -24,7 +24,7 @@ Secondary color : Green (hex: #104955, rgb: 16, 73, 85)
 
 ### Dark Theme
 Logo (inverted) pale beige, background DarkBlue/Green
-Main color : Pale Beige (hex: #e1cfbb, rgb: 225, 207, 187)
+Main color : Pale Beige (hex: #e1cfbb, rgb: 226, 189, 173)
 Secondary color : Salmon (#f8b1a7, rgb: 248, 177, 167)
 
 ### Fonts

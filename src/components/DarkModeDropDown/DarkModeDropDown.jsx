@@ -6,7 +6,7 @@ import { pageStore } from "../../store/pageStore/pageStore";
 
 import "./DarkModeDropDown.less";
 
-document.documentElement.style.setProperty("--themeFontColor", "225, 207, 187");
+document.documentElement.style.setProperty("--themeFontColor", "226, 189, 173");
 document.documentElement.style.setProperty(
   "--themeFontColorInvert",
   "20,36,54",
@@ -29,7 +29,7 @@ export const DarkModeDropDown = observer(() => {
     if (theme === "dark") {
       document.documentElement.style.setProperty(
         "--themeFontColor",
-        "225, 207, 187",
+        "226, 189, 173",
       );
       document.documentElement.style.setProperty(
         "--themeFontColorInvert",
@@ -46,7 +46,7 @@ export const DarkModeDropDown = observer(() => {
       );
       document.documentElement.style.setProperty(
         "--themeFontColorInvert",
-        "225, 207, 187",
+        "226, 189, 173",
       );
       document.documentElement.style.setProperty(
         "--themeBlackOrWhiteColor",
