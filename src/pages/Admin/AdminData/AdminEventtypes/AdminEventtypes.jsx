@@ -23,7 +23,7 @@ export const AdminEventtypes = () => {
 
   const fetchEventtypes = async () => {
     const results = await getAllEventtypes();
-    console.log('results', results);
+    console.log("results", results);
     const eventtypes = results.map((type) => {
       return {
         name_en: nameParser(type.name, "en"),

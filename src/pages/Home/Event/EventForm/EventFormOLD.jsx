@@ -45,64 +45,6 @@ export const EventForm = observer(() => {
   const isEdit = false;
   const language = pageStore.selectedLanguage?.toLowerCase();
 
-  const fetchEventtypes = async () => {
-    const results = await getAllEventtypes();
-    const eventtypes = results.map((type) => {
-      if (type.validated === false) {
-        return null;
-      }
-      return {
-        value: parseInt(type._id),
-        label: nameParser(type.name, language),
-      };
-    });
-    setEventtypes(eventtypes);
-  };
-
-  const fetchLocations = async () => {
-    const locations = await getLocations();
-    const locationOptions = locations.map((location) => {
-      if (location.validated === false) {
-        return null;
-      }
-      return {
-        value: parseInt(location._id),
-        label: location.name,
-      };
-    });
-    locationOptions.push({
-      value: 0,
-      label: <span style={{ opacity: ".5" }}>new location</span>,
-    });
-    setLocations(locations);
-    setLocationOptions(locationOptions);
-  };
-
-  const fetchtags = async () => {
-    const results = await getTags();
-    const tags = results.map((tag) => {
-      if (tag.validated === false || tag.eventTag === false) {
-        return null;
-      }
-      return {
-        value: parseInt(tag._id),
-        label: nameParser(tag.name, language),
-      };
-    });
-    setTags(tags);
-  };
-
-  useEffect(() => {
-    fetchEventtypes();
-    fetchLocations();
-    fetchtags();
-  }, [pageStore.selectedLanguage]);
-
-  const onCancel = () => {
-    form.resetFields();
-    setShowEventForm(false);
-  };
-
   const onFinish = async () => {
     setLoading(true);
     const dataObject = await form.validateFields();
@@ -170,45 +112,6 @@ export const EventForm = observer(() => {
           >
             <div style={{ marginTop: 15 }}></div>
 
-            <Row gutter={16}>
-
-              <Col span={12}>
-                <Form.Item
-                  name="location"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please select an event location!",
-                    },
-                  ]}
-                >
-
-                </Form.Item>
-              </Col>
-            </Row>
-
-            {isNewLocation && (
-              <>
-                <Form.Item name="locationName">
-                  <Input placeholder="Name of the Location" />
-                </Form.Item>
-                <Form.Item name="locationAddress">
-                  <TextArea
-                    autoSize={{ minRows: 2, maxRows: 6 }}
-                    placeholder="Location's address"
-                  />
-                </Form.Item>
-              </>
-            )}
-            <Form.Item name="title">
-              <Input placeholder="Name of the event" />
-            </Form.Item>
-            <Form.Item name="description">
-              <TextArea
-                autoSize={{ minRows: 2, maxRows: 6 }}
-                placeholder={"Description of the event"}
-              />
-            </Form.Item>
             <Form.Item
               name="eventDate"
               rules={[

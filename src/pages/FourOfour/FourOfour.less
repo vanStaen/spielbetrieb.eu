@@ -7,71 +7,75 @@
   cursor: pointer;
   filter: invert(1);
   transition: opacity .3s linear;
+
   &:hover {
-     opacity: .75;
+    opacity: .75;
   }
 }
-  
-  .fourofour {    
-    position: relative;
+
+.fourofour {
+  position: relative;
+  background-image: url('../../img/background.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+
+  .spinner {
+    position: absolute;
+    z-index: 3;
+    top: 20px;
+    right: 20px;
+  }
+
+  .fourofour__backArrow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 5;
+    font-weight: 300;
+    font-size: 30px;
+    text-align: right;
+    cursor: pointer;
+    color: rgba(225, 207, 1871);
+  }
+
+  &__inner {
     background-image: url('../../img/background.jpg');
     background-size: cover;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: 100vh;
+    /* Fallback for browsers that do not support Custom Properties */
     height: calc(var(--vh, 1vh) * 100);
+    font-size: min(60vh, 50vw);
+    font-weight: 900;
+    font-family: 'Anton', sans-serif;
+    text-align: center;
+    color: rgba(#fff, 0);
+    background-repeat: repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    filter: invert(1);
 
-    .spinner {
-      position: absolute;
-      z-index: 3;
-      top: 20px;
-      right: 20px;
-    }
-
-    .fourofour__backArrow {  
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 5;
-      font-weight: 300;
-      font-size: 30px;
-      text-align: right;
-      cursor: pointer;
-      color: rgba(225,207,187,1);
-    }
-    
-    &__inner {
-      background-image: url('../../img/background.jpg');
-      background-size: cover;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100vw;
-      height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-      height: calc(var(--vh, 1vh) * 100);
-      font-size: min(60vh, 50vw);
-      font-weight: 900;
-      font-family: 'Anton', sans-serif;
-      text-align: center;
-      color: rgba(#fff, 0);    
-      background-repeat: repeat;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -moz-background-clip: text;
-      -webkit-text-fill-color: transparent; 
-      -moz-text-fill-color: transparent;
-      filter: invert(1);
-      .fourofour__innerContainer{
-        .fourofour__innerRowSubText{
-          font-size: 16px;
-          font-family: "Roboto", Sans-serif;
-          letter-spacing: 10px;
-          font-weight: 300;
-          margin-bottom: 50px;
-        }
+    .fourofour__innerContainer {
+      .fourofour__innerRowSubText {
+        font-size: 16px;
+        font-family: "Roboto", Sans-serif;
+        letter-spacing: 10px;
+        font-weight: 300;
+        margin-bottom: 50px;
       }
     }
   }
+}

@@ -77,14 +77,15 @@ export const EventForm = observer(() => {
     fetchtags();
   }, [pageStore.selectedLanguage]);
 
-
   const onStepsChange = (value) => {
     const tempStatusSteps = statusSteps;
     // oldStep (=formStep) should get validated and get 'Error' or 'Finish'
     if (formStep === 0) {
-      if (eventFormStore.eventtype === null ||
+      if (
+        eventFormStore.eventtype === null ||
         eventFormStore.title === null ||
-        eventFormStore.titleError !== null) {
+        eventFormStore.titleError !== null
+      ) {
         tempStatusSteps[formStep] = "error";
       } else {
         tempStatusSteps[formStep] = "finish";
@@ -133,7 +134,9 @@ export const EventForm = observer(() => {
             ]}
           />
           <div style={{ marginTop: 32 }}></div>
-          {formStep === 0 && <InfoForm eventtypes={eventtypes} locations={locations} />}
+          {formStep === 0 && (
+            <InfoForm eventtypes={eventtypes} locations={locations} />
+          )}
           {formStep === 1 && <ArtworkForm />}
           {formStep === 2 && <OptionForm />}
           {formStep === 3 && <GuestForm />}
@@ -153,8 +156,8 @@ export const EventForm = observer(() => {
           >
             <div>You need to be logged in!</div>
             <div>
-              Click on the <UserOutlined className="eventform__avatarlogo" />, in the top right corner, to log in or
-              sign up.
+              Click on the <UserOutlined className="eventform__avatarlogo" />,
+              in the top right corner, to log in or sign up.
             </div>
           </div>
         </div>

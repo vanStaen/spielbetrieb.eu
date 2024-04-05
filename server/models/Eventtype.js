@@ -11,9 +11,10 @@ export const Eventtype = sequelize.sequelize.define("eventtype", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  usage: { // Main types, sub types, admin only
+  usage: {
+    // Main types, sub types, admin only
     type: DataTypes.STRING,
-    defaultValue: 'main',
+    defaultValue: "main",
   },
   validated: {
     type: DataTypes.BOOLEAN,
