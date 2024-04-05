@@ -11,7 +11,7 @@ import { eventFormStore } from "./eventFormStore";
 import { ArtworkForm } from "./EventFormSteps/ArtworkForm/ArtworkForm";
 import { InfoForm } from "./EventFormSteps/InfoForm/InfoForm";
 import { OptionForm } from "./EventFormSteps/OptionForm/OptionForm";
-import { GuestForm } from "./EventFormSteps/GuestForm/GuestForm";
+import { PublishForm } from "./EventFormSteps/PublishForm/PublishForm";
 import { getLocations } from "../../../../store/spielplanStore/getLocations";
 import { getTags } from "../../../../store/spielplanStore/getTags";
 import { getAllEventtypes } from "../../../../store/spielplanStore/getAllEventtypes";
@@ -128,7 +128,7 @@ export const EventForm = observer(() => {
                 status: statusSteps[2],
               },
               {
-                title: "Guests",
+                title: "Publish",
                 status: statusSteps[3],
               },
             ]}
@@ -139,7 +139,7 @@ export const EventForm = observer(() => {
           )}
           {formStep === 1 && <ArtworkForm />}
           {formStep === 2 && <OptionForm />}
-          {formStep === 3 && <GuestForm />}
+          {formStep === 3 && <PublishForm />}
         </div>
       ) : (
         <div className="eventform__singupfirst">

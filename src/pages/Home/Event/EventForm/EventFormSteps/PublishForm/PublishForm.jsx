@@ -3,8 +3,8 @@ import React from "react";
 
 import { eventFormStore } from "../../eventFormStore";
 
-import "./GuestForm.less";
+import "./PublishForm.less";
 
-export const GuestForm = observer(() => {
-  return <>Guest form</>;
+export const PublishForm = observer(() => {
+  return <>publish form</>;
 });
