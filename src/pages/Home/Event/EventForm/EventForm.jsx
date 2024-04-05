@@ -46,7 +46,7 @@ export const EventForm = observer(() => {
       return {
         value: parseInt(type._id),
         label: nameParser(type.name, language),
-        usage: parseInt(type.usage),
+        usage: type.usage,
       };
     });
     setEventtypes(eventtypes);
@@ -91,17 +91,18 @@ export const EventForm = observer(() => {
     fetchtags();
   }, [pageStore.selectedLanguage]);
 
-  /*
-    TODO: 
-    attendees: [Int]
-    invited: [Int]
-    admin: [Int]
-  */
 
   const onStepsChange = (value) => {
     const tempStatusSteps = statusSteps;
-    // oldStep (=formStep) shoudl get validated, and get 'Error' or 'Finish'
-    if (formStep === 1) {
+    // oldStep (=formStep) should get validated and get 'Error' or 'Finish'
+    if (formStep === 0) {
+      if (eventFormStore.eventtype === null ||
+        eventFormStore.title === null) {
+        tempStatusSteps[formStep] = "error";
+      } else {
+        tempStatusSteps[formStep] = "finish";
+      }
+    } else if (formStep === 1) {
       if (eventFormStore.artworks.length === 0) {
         tempStatusSteps[formStep] = "error";
       } else {

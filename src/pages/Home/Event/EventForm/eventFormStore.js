@@ -3,6 +3,8 @@ import { action, makeObservable, observable } from "mobx";
 export class EventFormStore {
   artworks = [];
   artworksUrl = [];
+  eventtype = null;
+  title = null;
 
   constructor() {
     makeObservable(this, {
@@ -10,6 +12,10 @@ export class EventFormStore {
       setArtworks: action,
       artworksUrl: observable,
       setArtworksUrl: action,
+      eventtype: observable,
+      setEventtype: action,
+      title: observable,
+      setTitle: action,
     });
   }
 
@@ -19,6 +25,14 @@ export class EventFormStore {
 
   setArtworksUrl = (artworksUrl) => {
     this.artworksUrl = artworksUrl;
+  };
+
+  setEventtype = (eventtype) => {
+    this.eventtype = eventtype;
+  };
+
+  setTitle = (title) => {
+    this.title = title;
   };
 }
 
