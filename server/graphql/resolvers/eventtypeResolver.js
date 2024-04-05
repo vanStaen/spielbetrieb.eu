@@ -2,14 +2,6 @@ import { Eventtype } from "../../models/Eventtype.js";
 import { User } from "../../models/User.js";
 
 export const eventtypeResolver = {
-  // getEventtypes
-  async getEventtypes(args, req) {
-    return await Eventtype.findAll({
-      where: { usage: args.usage },
-      order: [["name", "ASC"]],
-    });
-  },
-
   // getAllEventtypes
   async getAllEventtypes() {
     return await Eventtype.findAll({

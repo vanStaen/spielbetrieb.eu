@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 
 import { EditableCell } from "../../EditableCell";
-import { getAllEventtypes } from "./getAllEventtypes";
+import { getAllEventtypes } from "../../../../store/spielplanStore/getAllEventtypes";
 import { deleteEventtype } from "./deleteEventtype";
 import { updateEventtype } from "./updateEventtype";
 import { addEventtype } from "./addEventtype";
@@ -23,6 +23,7 @@ export const AdminEventtypes = () => {
 
   const fetchEventtypes = async () => {
     const results = await getAllEventtypes();
+    console.log('results', results);
     const eventtypes = results.map((type) => {
       return {
         name_en: nameParser(type.name, "en"),
@@ -42,6 +43,7 @@ export const AdminEventtypes = () => {
   const edit = (record) => {
     form.setFieldsValue({
       name: "",
+      usage: "",
       validated: false,
       ...record,
     });
@@ -64,7 +66,7 @@ export const AdminEventtypes = () => {
       const dataObject = await form.validateFields();
       const dataObjectNew = {
         name: `{"en":"${dataObject.name_en}", "de":"${dataObject.name_de}"}`,
-        usage: parseInt(dataObject.usage),
+        usage: dataObject.usage,
         validated: dataObject.validated,
       };
       if (isNewRow) {
@@ -105,14 +107,6 @@ export const AdminEventtypes = () => {
       key: "usage",
       align: "center",
       editable: true,
-      render: (_, { usage }) =>
-        usage === 1 ? (
-          <div>.eu</div>
-        ) : usage === 2 ? (
-          <div>.info</div>
-        ) : (
-          <div>Both</div>
-        ),
     },
     {
       title: "Validated",
@@ -163,6 +157,12 @@ export const AdminEventtypes = () => {
     },
   ];
 
+  const eventtypeSelectOption = [
+    { label: "Main type", value: "main" },
+    { label: "Sub type", value: "sub" },
+    { label: "Admin only", value: "admin" },
+  ];
+
   const mergedColumns = columns.map((col) => {
     if (!col.editable) {
       return col;
@@ -175,11 +175,12 @@ export const AdminEventtypes = () => {
           col.dataIndex === "validated"
             ? "boolean"
             : col.dataIndex === "usage"
-              ? "number"
+              ? "select"
               : "text",
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
+        options: col.dataIndex === "usage" && eventtypeSelectOption,
       }),
     };
   });

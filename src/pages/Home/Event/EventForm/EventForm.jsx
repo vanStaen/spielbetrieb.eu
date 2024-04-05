@@ -14,7 +14,7 @@ import { OptionForm } from "./EventFormSteps/OptionForm/OptionForm";
 import { GuestForm } from "./EventFormSteps/GuestForm/GuestForm";
 import { getLocations } from "../../../../store/spielplanStore/getLocations";
 import { getTags } from "../../../../store/spielplanStore/getTags";
-import { getEventtypes } from "../../../../store/spielplanStore/getEventtypes";
+import { getAllEventtypes } from "../../../../store/spielplanStore/getAllEventtypes";
 import { isMobileCheck } from "../../../../helpers/dev/checkMobileTablet";
 import { nameParser } from "../../../../helpers/dev/nameParser";
 
@@ -38,7 +38,7 @@ export const EventForm = observer(() => {
   ]); // value are process, finish, error and wait
 
   const fetchEventtypes = async () => {
-    const results = await getEventtypes(1);
+    const results = await getAllEventtypes();
     const eventtypes = results.map((type) => {
       if (type.validated === false) {
         return null;
@@ -46,6 +46,7 @@ export const EventForm = observer(() => {
       return {
         value: parseInt(type._id),
         label: nameParser(type.name, language),
+        usage: parseInt(type.usage),
       };
     });
     setEventtypes(eventtypes);

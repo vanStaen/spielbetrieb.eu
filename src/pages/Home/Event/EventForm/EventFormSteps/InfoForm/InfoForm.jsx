@@ -9,13 +9,7 @@ import "./InfoForm.less";
 export const InfoForm = observer((props) => {
   const { eventtypes } = props;
 
-  const options = [
-    { label: 'Apple', value: 'Apple' },
-    { label: 'Pear', value: 'Pear' },
-    { label: 'Orange', value: 'Orange', title: 'Orange' },
-  ];
-
-  console.log(eventtypes)
+  console.log(eventtypes);
 
   return (
     <>

@@ -20,7 +20,7 @@ import errorLogo from "../../../../img/logos/errorLogo.png";
 import { HelpButtons } from "../../../../components/HelpButtons/HelpButtons";
 import { addEvent } from "./addEvent";
 import { pageStore } from "../../../../store/pageStore/pageStore";
-import { getEventtypes } from "../../../../store/spielplanStore/getEventtypes";
+import { getAllEventtypes } from "../../../../store/spielplanStore/getAllEventtypes";
 import { eventFormStore } from "./eventFormStore";
 import { authStore } from "../../../../store/authStore/authStore";
 import { getLocations } from "../../../../store/spielplanStore/getLocations";
@@ -46,7 +46,7 @@ export const EventForm = observer(() => {
   const language = pageStore.selectedLanguage?.toLowerCase();
 
   const fetchEventtypes = async () => {
-    const results = await getEventtypes();
+    const results = await getAllEventtypes();
     const eventtypes = results.map((type) => {
       if (type.validated === false) {
         return null;

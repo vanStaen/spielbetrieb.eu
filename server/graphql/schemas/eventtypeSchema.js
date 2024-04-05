@@ -2,19 +2,18 @@ export const Eventtype = `
 type Eventtype {
     _id: ID! 
     name: String!
-    usage: Int!
+    usage: String!
     validated: Boolean
 }`;
 
 export const EventtypeInputData = `
 input EventtypeInputData {
     name: String
-    usage: Int
+    usage: String
     validated: Boolean
 }`;
 
 export const EventtypeQueries = `
-    getEventtypes(usage: Int!): [Eventtype]
     getAllEventtypes: [Eventtype]
     `;
 

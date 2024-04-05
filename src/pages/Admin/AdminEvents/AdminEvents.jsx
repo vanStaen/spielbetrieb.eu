@@ -14,7 +14,7 @@ import dayjs from "dayjs";
 import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
 import { getAllEvents } from "./getAllEvents";
 import { deleteEvent } from "./deleteEvent";
-import { getEventtypes } from "../../../store/spielplanStore/getEventtypes";
+import { getAllEventtypes } from "../../../store/spielplanStore/getAllEventtypes";
 import { getTags } from "../../../store/spielplanStore/getTags";
 import { getUserNames } from "./getUserNames";
 import { nameParser } from "../../../helpers/dev/nameParser";
@@ -42,7 +42,7 @@ export const AdminEvents = () => {
   };
 
   const fetchEventtypes = async () => {
-    const eventtypes = await getEventtypes();
+    const eventtypes = await getAllEventtypes();
     setEventtypes(eventtypes);
   };
 

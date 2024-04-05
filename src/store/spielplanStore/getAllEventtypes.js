@@ -1,8 +1,8 @@
-export async function getEventtypes(usage) {
+export async function getAllEventtypes(usage) {
   const graphqlQuery = {
     query: `
             {
-              getEventtypes(usage: ${usage}) { 
+              getAllEventtypes { 
                 _id,
                 name,
                 usage,
@@ -30,5 +30,5 @@ export async function getEventtypes(usage) {
   if (data.errors) {
     return data.errors[0];
   }
-  return data.data.getEventtypes;
+  return data.data.getAllEventtypes;
 }

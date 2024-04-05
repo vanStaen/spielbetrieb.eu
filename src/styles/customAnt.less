@@ -78,18 +78,19 @@
 
 /* Radio custom */
 .ant-radio-button-wrapper {
-  color: rgba(30, 30, 30, .95) !important;
+  color: rgba(var(--themeFontColor), .8) !important;
+  background: rgba(var(--themeFontColorInvert), 1) !important;
+  border-color: rgba(var(--themeFontColor), .25) !important;
+
+  &:before {
+    background-color: rgba(var(--themeFontColor), .25) !important;
+  }
 }
 
 .ant-radio-button-wrapper-checked {
-  background: rgba(255, 255, 255, .75) !important;
-  border-color: rgba(255, 255, 255, .75) !important;
-  color: black !important;
-}
-
-.ant-radio-button-wrapper-checked {
-  background: rgba(255, 255, 255, .75) !important;
-  border-color: rgba(255, 255, 255, .75) !important;
+  background: rgba(var(--themeFontColor), 1) !important;
+  border-color: rgba(var(--themeFontColor), 1) !important;
+  color: rgba(var(--themeFontColorInvert), 1) !important;
 }
 
 

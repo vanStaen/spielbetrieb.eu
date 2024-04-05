@@ -184,6 +184,8 @@ export const AdminLinks = () => {
     { label: "Marketing", value: "Marketing" },
     { label: "Finance", value: "Finance" },
     { label: "Legal", value: "Legal" },
+    { label: "Parties", value: "Parties" },
+    { label: "Tech", value: "Tech" },
     { label: "Other", value: "Other" },
   ];
 

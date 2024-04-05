@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import Cookies from "universal-cookie";
 
 import { getAllPublicEvents } from "./getAllPublicEvents.js";
-import { getEventtypes } from "./getEventtypes.js";
+import { getAllEventtypes } from "./getAllEventtypes.js";
 import { getTags } from "./getTags.js";
 import { getLocations } from "./getLocations.js";
 import { pageStore } from "../pageStore/pageStore.js";
@@ -100,7 +100,7 @@ export class SpielplanStore {
   };
 
   fetchEventtypes = async () => {
-    const eventtypes = await getEventtypes(1);
+    const eventtypes = await getAllEventtypes();
     this.setEventtypes(eventtypes);
   };
 
