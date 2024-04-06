@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
-import { Radio, Input, DatePicker, Row, Col } from "antd";
+import { Radio, Input, DatePicker, Row, Col, AutoComplete } from "antd";
 import { AimOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 
@@ -24,20 +24,15 @@ export const InfoForm = observer((props) => {
 
   // console.log('locations', locations);
 
-  /* const locationOptions = locations?.map((location) => {
+  const locationOptions = locations?.map((location) => {
+    // do this in the backend
     if (location.validated === false) {
       return null;
     }
     return {
-      value: parseInt(location._id),
-      label: location.name,
+      value: location.name,
     };
   });
-  locationOptions &&
-    locationOptions.push({
-      value: 0,
-      label: <span style={{ opacity: ".5" }}>new location</span>,
-    }); */
 
   const eventtypeHandler = (e) => {
     const value = e.target.value;
@@ -80,19 +75,32 @@ export const InfoForm = observer((props) => {
     eventFormStore.setUntilDate(dates[1]);
   };
 
+  const locationNameHander = (value) => {
+    eventFormStore.setLocationName(value);
+  };
+
+  const locationNameBlurHandler = (e) => {
+    const value = e.target.value;
+    console.log('blur', value);
+  }
+
+  const locationAddressHander = (e) => {
+    const value = e.target.value;
+    eventFormStore.setLocationAddress(value);
+  };
+
+
   const descHandler = (e) => {
     const value = e.target.value;
-    console.log(value);
     eventFormStore.setDescription(value);
   };
 
   return (
     <div
-      className={`infoform__container  ${
-        pageStore.selectedTheme === "light"
-          ? "lightColorTheme__Text"
-          : "darkColorTheme__Text"
-      }`}
+      className={`infoform__container  ${pageStore.selectedTheme === "light"
+        ? "lightColorTheme__Text"
+        : "darkColorTheme__Text"
+        }`}
     >
       <div className="infoform__select">
         <Radio.Group
@@ -138,16 +146,21 @@ export const InfoForm = observer((props) => {
         <div className="infoform__title">Location</div>
         <Row gutter={16}>
           <Col xs={24} sm={24} md={12}>
-            <Input
-              placeholder="Name"
-              onChange={titleHander}
+            <AutoComplete
               value={eventFormStore.locationName}
+              options={locationOptions}
+              placeholder="Name"
+              onChange={locationNameHander}
+              onBlur={locationNameBlurHandler}
+              filterOption={(inputValue, option) =>
+                option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+              }
             />
           </Col>
           <Col xs={24} sm={24} md={12}>
             <Input
               placeholder="Address"
-              onChange={titleHander}
+              onChange={locationAddressHander}
               value={eventFormStore.locationAddress}
               disabled
             />
