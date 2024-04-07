@@ -45,7 +45,6 @@ export const EventForm = observer(() => {
   const isEdit = false;
   const language = pageStore.selectedLanguage?.toLowerCase();
 
-
   /*
         TODO: 
         pictures: [String]
@@ -86,8 +85,7 @@ export const EventForm = observer(() => {
                 placeholder={["Event start-date", "Event end-date"]}
               />
             </Form.Item>
-            <Form.Item name="eventTags">
-            </Form.Item>
+            <Form.Item name="eventTags"></Form.Item>
 
             <Row>
               <Col span={9}>

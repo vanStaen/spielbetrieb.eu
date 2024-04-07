@@ -24,7 +24,7 @@ export class EventFormStore {
   hasDresscode = 0;
   isPrivate = false;
   forwardable = true;
-  eventTags = []
+  eventTags = [];
   dresscodeDontTags = [];
   dresscodeDoTags = [];
   hasDresscode = false;
@@ -170,32 +170,31 @@ export class EventFormStore {
 
   setHasDresscode = (hasDresscode) => {
     this.hasDresscode = hasDresscode;
-  }
+  };
 
   setForwardable = (forwardable) => {
     this.forwardable = forwardable;
-  }
+  };
 
   setIsPrivate = (isPrivate) => {
     this.isPrivate = isPrivate;
-  }
+  };
 
   setEventTags = (eventTags) => {
     this.eventTags = eventTags;
-  }
+  };
 
   setHasDresscode = (hasDresscode) => {
     this.hasDresscode = hasDresscode;
-  }
+  };
 
   setDresscodeDoTags = (dresscodeDoTags) => {
     this.dresscodeDoTags = dresscodeDoTags;
-  }
+  };
 
   setDresscodeDontTags = (dresscodeDontTags) => {
     this.dresscodeDontTags = dresscodeDontTags;
-  }
-
+  };
 }
 
 export const eventFormStore = new EventFormStore();

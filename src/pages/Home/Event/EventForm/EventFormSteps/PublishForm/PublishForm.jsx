@@ -6,7 +6,6 @@ import { eventFormStore } from "../../eventFormStore";
 import "./PublishForm.less";
 
 export const PublishForm = observer(() => {
-
   const onFinish = async () => {
     setLoading(true);
     const dataObject = await form.validateFields();
