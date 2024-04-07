@@ -6,11 +6,13 @@ import dayjs from "dayjs";
 
 import { eventFormStore } from "../../eventFormStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
+import { GoogleMap } from './GoogleMap';
 
 import "./InfoForm.less";
 
 export const InfoForm = observer((props) => {
   const [showMore, setShowMore] = useState(false);
+  const [showMap, setShowMap] = useState(false);
   const { eventtypes, locations } = props;
   const { TextArea } = Input;
   const { RangePicker } = DatePicker;
@@ -23,7 +25,6 @@ export const InfoForm = observer((props) => {
     eventypesMainOption.push({ value: "more", label: "..." });
 
   // console.log('locations', locations);
-
   const locationOptions = locations?.map((location) => {
     // do this in the backend
     if (location.validated === false) {
@@ -84,11 +85,28 @@ export const InfoForm = observer((props) => {
     console.log('blur', value);
   }
 
+  const locationNameSelectHandler = (value) => {
+    const selectedLocation = locations.filter(location => location.name === value)[0];
+    console.log('select', selectedLocation);
+    eventFormStore.setLocationId(selectedLocation._id);
+    eventFormStore.setLocationName(selectedLocation.name);
+    eventFormStore.setLocationAddress(selectedLocation.address);
+  }
+
+
   const locationAddressHander = (e) => {
     const value = e.target.value;
     eventFormStore.setLocationAddress(value);
   };
 
+  const showMapHandler = () => {
+    const divmap = document.getElementById("mapdiv");
+    divmap.style.height = showMap ? 0 : '500px';
+    setShowMap(!showMap);
+    setTimeout(function () {
+      //show map?
+    }, 300);
+  }
 
   const descHandler = (e) => {
     const value = e.target.value;
@@ -152,6 +170,7 @@ export const InfoForm = observer((props) => {
               placeholder="Name"
               onChange={locationNameHander}
               onBlur={locationNameBlurHandler}
+              onSelect={locationNameSelectHandler}
               filterOption={(inputValue, option) =>
                 option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
               }
@@ -162,7 +181,8 @@ export const InfoForm = observer((props) => {
               placeholder="Address"
               onChange={locationAddressHander}
               value={eventFormStore.locationAddress}
-              disabled
+              disabled={!eventFormStore.isNewLocation}
+              suffix={<AimOutlined className="infoform__coordinates" onClick={showMapHandler} />}
             />
             <div className="infoform__error">
               {eventFormStore.locationAddressError && (
@@ -171,6 +191,10 @@ export const InfoForm = observer((props) => {
             </div>
           </Col>
         </Row>
+        <div className="infoform__googlemap" id='mapdiv'>
+          <GoogleMap
+            coordinates={eventFormStore.locationCoordinates} />
+        </div>
       </div>
       <div className="infoform__element">
         <div className="infoform__title">Description</div>

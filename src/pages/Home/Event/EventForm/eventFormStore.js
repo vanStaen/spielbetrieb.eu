@@ -19,6 +19,7 @@ export class EventFormStore {
   fromDate = null;
   untilDate = null;
   fromDateError = null;
+  isNewLocation = false;
 
   constructor() {
     makeObservable(this, {
@@ -58,6 +59,8 @@ export class EventFormStore {
       setUntilDate: action,
       fromDateError: observable,
       setFromDateError: action,
+      isNewLocation: observable,
+      setIsNewLocation: action,
     });
   }
 
@@ -132,6 +135,11 @@ export class EventFormStore {
   setFromDateError = (fromDateError) => {
     this.fromDateError = fromDateError;
   };
+
+  setIsNewLocation = (isNewLocation) => {
+    this.isNewLocation = isNewLocation;
+  };
+
 }
 
 export const eventFormStore = new EventFormStore();
