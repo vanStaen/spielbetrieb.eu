@@ -92,7 +92,7 @@ export const InfoForm = observer((props) => {
 
   const locationNameSelectHandler = (value) => {
     const selectedLocation = locations.filter(location => location.name === value)[0];
-    console.log('select', selectedLocation);
+    eventFormStore.setIsNewLocation(false);
     eventFormStore.setLocationId(selectedLocation._id);
     eventFormStore.setLocationName(selectedLocation.name);
     eventFormStore.setLocationAddress(selectedLocation.address);
