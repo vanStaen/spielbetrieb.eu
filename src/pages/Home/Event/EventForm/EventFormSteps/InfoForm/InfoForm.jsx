@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 
 import { eventFormStore } from "../../eventFormStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
-import { GoogleMap } from './GoogleMap';
+import { GoogleMap } from "./GoogleMap";
 
 import "./InfoForm.less";
 
@@ -80,22 +80,25 @@ export const InfoForm = observer((props) => {
 
   const locationNameBlurHandler = (e) => {
     const value = e.target.value;
-    const selectedLocation = locations.filter(location => location.name === value)[0];
+    const selectedLocation = locations.filter(
+      (location) => location.name === value,
+    )[0];
     if (selectedLocation === undefined) {
       eventFormStore.setLocationId(null);
       eventFormStore.setLocationAddress(null);
       eventFormStore.setIsNewLocation(true);
     }
-  }
+  };
 
   const locationNameSelectHandler = (value) => {
-    const selectedLocation = locations.filter(location => location.name === value)[0];
+    const selectedLocation = locations.filter(
+      (location) => location.name === value,
+    )[0];
     eventFormStore.setIsNewLocation(false);
     eventFormStore.setLocationId(selectedLocation._id);
     eventFormStore.setLocationName(selectedLocation.name);
     eventFormStore.setLocationAddress(selectedLocation.address);
-  }
-
+  };
 
   const locationAddressHander = (e) => {
     const value = e.target.value;
@@ -108,8 +111,8 @@ export const InfoForm = observer((props) => {
       divmap.style.height = showMap ? 0 : `${MAP_HEIGHT}`;
       divmap.style.margin = showMap ? 0 : "16px 0 0 0";
       setShowMap(!showMap);
-    } 
-  }
+    }
+  };
 
   const descHandler = (e) => {
     const value = e.target.value;
@@ -118,10 +121,11 @@ export const InfoForm = observer((props) => {
 
   return (
     <div
-      className={`infoform__container  ${pageStore.selectedTheme === "light"
-        ? "lightColorTheme__Text"
-        : "darkColorTheme__Text"
-        }`}
+      className={`infoform__container  ${
+        pageStore.selectedTheme === "light"
+          ? "lightColorTheme__Text"
+          : "darkColorTheme__Text"
+      }`}
     >
       <div className="infoform__select">
         <Radio.Group
@@ -175,7 +179,8 @@ export const InfoForm = observer((props) => {
               onBlur={locationNameBlurHandler}
               onSelect={locationNameSelectHandler}
               filterOption={(inputValue, option) =>
-                option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !==
+                -1
               }
             />
           </Col>
@@ -185,7 +190,16 @@ export const InfoForm = observer((props) => {
               onChange={locationAddressHander}
               value={eventFormStore.locationAddress}
               disabled={!eventFormStore.isNewLocation}
-              suffix={<AimOutlined className={eventFormStore.locationName ? "infoform__coordinates" : "infoform__coordinatesDisabled"} onClick={showMapHandler} />}
+              suffix={
+                <AimOutlined
+                  className={
+                    eventFormStore.locationName
+                      ? "infoform__coordinates"
+                      : "infoform__coordinatesDisabled"
+                  }
+                  onClick={showMapHandler}
+                />
+              }
             />
             <div className="infoform__error">
               {eventFormStore.locationAddressError && (
@@ -194,7 +208,7 @@ export const InfoForm = observer((props) => {
             </div>
           </Col>
         </Row>
-        <div className="infoform__googlemap" id='mapdiv'>
+        <div className="infoform__googlemap" id="mapdiv">
           <GoogleMap
             coordinates={eventFormStore.locationCoordinates}
             locationAddress={eventFormStore.locationAddress}

@@ -139,7 +139,6 @@ export class EventFormStore {
   setIsNewLocation = (isNewLocation) => {
     this.isNewLocation = isNewLocation;
   };
-
 }
 
 export const eventFormStore = new EventFormStore();

@@ -11,10 +11,16 @@ export const locationResolver = {
 
   // getLocations(onlyValidated: Boolean): [Location]
   async getLocations(args) {
-    //where: { validated: args.onlyValidated },
-    return await Location.findAll({
+    let options = {
       order: [["name", "ASC"]],
-    });
+    };
+    if (args.onlyValidated) {
+      options = {
+        order: [["name", "ASC"]],
+        where: { validated: args.onlyValidated },
+      };
+    }
+    return await Location.findAll(options);
   },
 
   // addLocation(locationInput: LocationInputData!): Location!
