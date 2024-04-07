@@ -10,6 +10,8 @@ import { GoogleMap } from './GoogleMap';
 
 import "./InfoForm.less";
 
+const MAP_HEIGHT_IN_PX = 300;
+
 export const InfoForm = observer((props) => {
   const [showMore, setShowMore] = useState(false);
   const [showMap, setShowMap] = useState(false);
@@ -82,6 +84,9 @@ export const InfoForm = observer((props) => {
 
   const locationNameBlurHandler = (e) => {
     const value = e.target.value;
+    eventFormStore.setLocationId(null);
+    eventFormStore.setLocationAddress(null);
+    eventFormStore.setIsNewLocation(true);
     console.log('blur', value);
   }
 
@@ -101,7 +106,7 @@ export const InfoForm = observer((props) => {
 
   const showMapHandler = () => {
     const divmap = document.getElementById("mapdiv");
-    divmap.style.height = showMap ? 0 : '500px';
+    divmap.style.height = showMap ? 0 : `${MAP_HEIGHT_IN_PX}px`;
     setShowMap(!showMap);
     setTimeout(function () {
       //show map?
