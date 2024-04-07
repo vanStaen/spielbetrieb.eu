@@ -1,5 +1,14 @@
 import React from 'react';
 
 export const GoogleMap = (props) => {
-    return null;
+
+    //TODO Get own GoogleAPi Key
+    console.log(props.locationName?.replaceAll("&", "").trim().replaceAll(" ", ",+"))
+    console.log(props.locationAddress?.replaceAll("&", "").trim().replaceAll(" ", ",+"))
+
+    return <iframe 
+            style={{height: "100%", width: "100%"}} 
+            frameBorder="0" 
+            src={`https://www.google.com/maps/embed/v1/place?q=${props.locationName?.replaceAll(" *", ",+")}+${props.locationAddress?.replaceAll(" *", ",+")}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`}
+            ></iframe>;
 }  

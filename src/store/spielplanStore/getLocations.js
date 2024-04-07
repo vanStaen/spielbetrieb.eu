@@ -1,8 +1,8 @@
-export async function getLocations() {
+export async function getLocations(onlyValidated = false) {
   const graphqlQuery = {
     query: `
             {
-              getLocations {
+              getLocations(onlyValidated: ${onlyValidated}) {
                 _id,
                 name,
                 description,

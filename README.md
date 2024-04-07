@@ -132,6 +132,17 @@ Track email sent: https://app.sendgrid.com/email_activity
 Our images are saved on differents AWS S3 bucket. 
 All images get stored in 3 version. Original, Medium (800px) and Thumb (180px);
 
+
+### Google Api
+
+Project name: `spielbetrieb`
+Project number: `68991850457`
+Project id: `spielbetrieb`
+
+#### Google Maps Static API
+
+// TODO
+
 ### Design ideas
 
 Landing page based on this codePen: https://codepen.io/nelsonleite/pen/WwZNVN.

@@ -25,13 +25,16 @@
             cursor: pointer;
             color: rgba(var(--themeFontColor), 1);
         }
+
+        .infoform__coordinatesDisabled {
+            cursor: not-allowed;
+            color: rgba(var(--themeFontColor), .1);
+        }
     }
 
-
     .infoform__googlemap {
-        margin-top: 16px;
+        margin: 0;
         height: 0;
-        border: 1px solid red;
         transition: height .3s;
     }
 

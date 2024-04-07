@@ -53,7 +53,7 @@ export const EventForm = observer(() => {
   };
 
   const fetchLocations = async () => {
-    const locations = await getLocations();
+    const locations = await getLocations(true);
     setLocations(locations);
   };
 

@@ -9,8 +9,9 @@ export const locationResolver = {
     });
   },
 
-  // getLocations: [Location]
-  async getLocations() {
+  // getLocations(onlyValidated: Boolean): [Location]
+  async getLocations(args) {
+    //where: { validated: args.onlyValidated },
     return await Location.findAll({
       order: [["name", "ASC"]],
     });

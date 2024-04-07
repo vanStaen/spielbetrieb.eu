@@ -48,3 +48,4 @@
 - [ ] Use List of forbidden words
 - [ ] Filter event based on city/geolocation
 - [ ] Valid form with enter, cancel with esc
+- [ ] Get own google api key

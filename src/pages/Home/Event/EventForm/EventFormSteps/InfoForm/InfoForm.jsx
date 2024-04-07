@@ -10,7 +10,7 @@ import { GoogleMap } from './GoogleMap';
 
 import "./InfoForm.less";
 
-const MAP_HEIGHT_IN_PX = 300;
+const MAP_HEIGHT = "30vh";
 
 export const InfoForm = observer((props) => {
   const [showMore, setShowMore] = useState(false);
@@ -28,10 +28,6 @@ export const InfoForm = observer((props) => {
 
   // console.log('locations', locations);
   const locationOptions = locations?.map((location) => {
-    // do this in the backend
-    if (location.validated === false) {
-      return null;
-    }
     return {
       value: location.name,
     };
@@ -84,10 +80,12 @@ export const InfoForm = observer((props) => {
 
   const locationNameBlurHandler = (e) => {
     const value = e.target.value;
-    eventFormStore.setLocationId(null);
-    eventFormStore.setLocationAddress(null);
-    eventFormStore.setIsNewLocation(true);
-    console.log('blur', value);
+    const selectedLocation = locations.filter(location => location.name === value)[0];
+    if (selectedLocation === undefined) {
+      eventFormStore.setLocationId(null);
+      eventFormStore.setLocationAddress(null);
+      eventFormStore.setIsNewLocation(true);
+    }
   }
 
   const locationNameSelectHandler = (value) => {
@@ -105,12 +103,12 @@ export const InfoForm = observer((props) => {
   };
 
   const showMapHandler = () => {
-    const divmap = document.getElementById("mapdiv");
-    divmap.style.height = showMap ? 0 : `${MAP_HEIGHT_IN_PX}px`;
-    setShowMap(!showMap);
-    setTimeout(function () {
-      //show map?
-    }, 300);
+    if (eventFormStore.locationName) {
+      const divmap = document.getElementById("mapdiv");
+      divmap.style.height = showMap ? 0 : `${MAP_HEIGHT}`;
+      divmap.style.margin = showMap ? 0 : "16px 0 0 0";
+      setShowMap(!showMap);
+    } 
   }
 
   const descHandler = (e) => {
@@ -187,7 +185,7 @@ export const InfoForm = observer((props) => {
               onChange={locationAddressHander}
               value={eventFormStore.locationAddress}
               disabled={!eventFormStore.isNewLocation}
-              suffix={<AimOutlined className="infoform__coordinates" onClick={showMapHandler} />}
+              suffix={<AimOutlined className={eventFormStore.locationName ? "infoform__coordinates" : "infoform__coordinatesDisabled"} onClick={showMapHandler} />}
             />
             <div className="infoform__error">
               {eventFormStore.locationAddressError && (
@@ -198,7 +196,10 @@ export const InfoForm = observer((props) => {
         </Row>
         <div className="infoform__googlemap" id='mapdiv'>
           <GoogleMap
-            coordinates={eventFormStore.locationCoordinates} />
+            coordinates={eventFormStore.locationCoordinates}
+            locationAddress={eventFormStore.locationAddress}
+            locationName={eventFormStore.locationName}
+          />
         </div>
       </div>
       <div className="infoform__element">

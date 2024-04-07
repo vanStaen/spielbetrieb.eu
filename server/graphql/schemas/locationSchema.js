@@ -25,7 +25,7 @@ input LocationInputData {
 
 export const LocationQueries = `
     getLocation(locationId: ID!): Location
-    getLocations: [Location]
+    getLocations(onlyValidated: Boolean): [Location]
     `;
 
 export const LocationMutations = `
