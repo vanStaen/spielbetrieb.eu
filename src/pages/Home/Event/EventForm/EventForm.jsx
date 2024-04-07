@@ -26,7 +26,6 @@ export const EventForm = observer(() => {
   const [formStep, setFormStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [locations, setLocations] = useState(null);
-  const [locationOptions, setLocationOptions] = useState(null);
   const [tags, setTags] = useState(null);
   const [eventtypes, setEventtypes] = useState(null);
 
@@ -138,7 +137,7 @@ export const EventForm = observer(() => {
             <InfoForm eventtypes={eventtypes} locations={locations} />
           )}
           {formStep === 1 && <ArtworkForm />}
-          {formStep === 2 && <OptionForm />}
+          {formStep === 2 && <OptionForm tags={tags} />}
           {formStep === 3 && <PublishForm />}
         </div>
       ) : (

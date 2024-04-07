@@ -1,0 +1,69 @@
+.optionform__container {
+    width: 100%;
+    max-width: 1080px;
+
+    .ant-input-outlined,
+    .ant-picker-outlined,
+    .ant-select-selector {
+        background-color: rgba(white, .75) !important;
+        border-color: transparent !important;
+        color: rgba(20, 36, 54, 1) !important;
+        border-radius: 5px;
+        margin-bottom: 3px;
+        width: 100% !important;
+    }
+
+    .ant-select-outlined {
+        width: 100% !important;
+    }
+
+    .ant-input-affix-wrapper-disabled {
+        background-color: rgba(white, .1) !important;
+        color: rgba(white, .5) !important;
+
+        .optionform__coordinates {
+            cursor: pointer;
+            color: rgba(var(--themeFontColor), 1);
+        }
+
+        .optionform__coordinatesDisabled {
+            cursor: not-allowed;
+            color: rgba(var(--themeFontColor), .1);
+        }
+    }
+
+    .optionform__select {
+        text-align: center;
+        padding-bottom: 8px;
+
+        .optionform__error {
+            color: firebrick;
+            filter: brightness(2);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+    }
+
+    .optionform__element {
+        font-size: 16px;
+        padding: 4px 0 8px 0;
+
+        .optionform__title {
+            font-size: 14px;
+            padding: 0 0 4px 8px;
+        }
+
+        .optionform__error {
+            color: firebrick;
+            filter: brightness(2);
+            font-size: 14px;
+        }
+    }
+
+    @media only screen and (max-width: 720px) {
+        .ant-radio-group {
+            //width: 100%;
+        }
+    }
+
+}

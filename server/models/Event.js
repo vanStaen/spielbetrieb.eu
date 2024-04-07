@@ -52,6 +52,18 @@ export const Event = sequelize.sequelize.define("event", {
     type: DataTypes.ARRAY(DataTypes.INTEGER),
     defaultValue: [],
   },
+  hasDresscode: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
+  dresscodeDoTags: {
+    type: DataTypes.ARRAY(DataTypes.INTEGER),
+    defaultValue: [],
+  },
+  dresscodeDontTags: {
+    type: DataTypes.ARRAY(DataTypes.INTEGER),
+    defaultValue: [],
+  },
   links: {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: true,

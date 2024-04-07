@@ -20,6 +20,14 @@ export class EventFormStore {
   untilDate = null;
   fromDateError = null;
   isNewLocation = false;
+  ageMin = 0;
+  hasDresscode = 0;
+  isPrivate = false;
+  forwardable = true;
+  eventTags = []
+  dresscodeDontTags = [];
+  dresscodeDoTags = [];
+  hasDresscode = false;
 
   constructor() {
     makeObservable(this, {
@@ -61,6 +69,22 @@ export class EventFormStore {
       setFromDateError: action,
       isNewLocation: observable,
       setIsNewLocation: action,
+      ageMin: observable,
+      setAgeMin: action,
+      hasDresscode: observable,
+      setHasDresscode: action,
+      isPrivate: observable,
+      setIsPrivate: action,
+      forwardable: observable,
+      setForwardable: action,
+      eventTags: observable,
+      setEventTags: action,
+      hasDresscode: observable,
+      setHasDresscode: action,
+      dresscodeDoTags: observable,
+      setDresscodeDoTags: action,
+      dresscodeDontTags: observable,
+      setDresscodeDontTags: action,
     });
   }
 
@@ -139,6 +163,39 @@ export class EventFormStore {
   setIsNewLocation = (isNewLocation) => {
     this.isNewLocation = isNewLocation;
   };
+
+  setAgeMin = (ageMin) => {
+    this.ageMin = ageMin;
+  };
+
+  setHasDresscode = (hasDresscode) => {
+    this.hasDresscode = hasDresscode;
+  }
+
+  setForwardable = (forwardable) => {
+    this.forwardable = forwardable;
+  }
+
+  setIsPrivate = (isPrivate) => {
+    this.isPrivate = isPrivate;
+  }
+
+  setEventTags = (eventTags) => {
+    this.eventTags = eventTags;
+  }
+
+  setHasDresscode = (hasDresscode) => {
+    this.hasDresscode = hasDresscode;
+  }
+
+  setDresscodeDoTags = (dresscodeDoTags) => {
+    this.dresscodeDoTags = dresscodeDoTags;
+  }
+
+  setDresscodeDontTags = (dresscodeDontTags) => {
+    this.dresscodeDontTags = dresscodeDontTags;
+  }
+
 }
 
 export const eventFormStore = new EventFormStore();
