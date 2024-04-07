@@ -165,7 +165,7 @@ export const InfoForm = observer((props) => {
       </div>
       <div className="infoform__element">
         <div className="infoform__title">Location</div>
-        <Row gutter={16}>
+        <Row gutter={[16, 8]}>
           <Col xs={24} sm={24} md={12}>
             <AutoComplete
               value={eventFormStore.locationName}

@@ -6,5 +6,7 @@ import { eventFormStore } from "../../eventFormStore";
 import "./OptionForm.less";
 
 export const OptionForm = observer(() => {
-  return <>Option form</>;
+  return <>
+      Price, Age, Dresscode, Tags, Lineup
+    </>;
 });
