@@ -13,7 +13,7 @@
 
   .inputfile+label {
     color: rgba(var(--themeFontColor), 1);
-    background: rgba(var(--themeFontColorInvert), .75);
+    background: rgba(var(--themeFontColor), .1);
     border: 1px dashed rgba(var(--themeFontColor), .5);
     cursor: pointer;
     transition: border-color 0.3s, background 0.3s, color 0.3s;
@@ -25,11 +25,13 @@
 
   .inputfile:focus+label,
   .inputfile+label:hover {
-    background: rgba(var(--themeFontColor), .15);
+    background: rgba(var(--themeFontColor), .25);
   }
 
   .uploadArea {
-    height: calc(100vh - 275px) !important;
+    height: calc(100vh - 300px) !important;
+    /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100 - 300px) !important;
     width: 100vw !important;
   }
 

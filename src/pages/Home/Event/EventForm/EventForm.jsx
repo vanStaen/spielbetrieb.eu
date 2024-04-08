@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import { UserOutlined } from "@ant-design/icons";
-import { Steps } from "antd";
+import { Button, Steps } from "antd";
 
 import errorLogo from "../../../../img/logos/errorLogo.png";
 import { HelpButtons } from "../../../../components/HelpButtons/HelpButtons";
@@ -111,6 +111,19 @@ export const EventForm = observer(() => {
     setStatusSteps(tempStatusSteps);
   };
 
+  const naviguateHandler = (next) => {
+    if (next && formStep === 3) {
+      console.error('there is only 4 steps');
+      return;
+    }
+    else if (!next && formStep === 0) {
+      console.error('it was already the first step');
+      return;
+    }
+    const newStep = next ? formStep + 1 : formStep - 1;
+    onStepsChange(newStep);
+  }
+
   return (
     <>
       <HelpButtons setStartTour={setStartTour} />
@@ -170,6 +183,22 @@ export const EventForm = observer(() => {
           </div>
         </div>
       )}
+      <div className="eventform__navigation">
+        <Button
+          className="eventform__navButtons"
+          onClick={() => { naviguateHandler(false) }}
+          disabled={formStep === 0}
+        >
+          Previous
+        </Button>
+        <Button
+          className="eventform__navButtons"
+          onClick={() => { naviguateHandler(true) }}
+          disabled={formStep === 3}
+        >
+          Next
+        </Button>
+      </div>
     </>
   );
 });
