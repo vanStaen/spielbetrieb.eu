@@ -131,6 +131,10 @@ export const OptionForm = observer((props) => {
           placeholder="Please select some tags"
           options={tags}
           onChange={tagsHandler}
+          filterOption={(inputValue, option) =>
+            option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !==
+            -1
+          }
         />
       </div>
       <div className="optionform__element">
@@ -152,7 +156,7 @@ export const OptionForm = observer((props) => {
               onChange={priceOptionHandler}
               disabled={eventFormStore.price?.value}
               filterOption={(inputValue, option) =>
-                option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !==
+                option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !==
                 -1
               }
             />
@@ -169,6 +173,10 @@ export const OptionForm = observer((props) => {
           placeholder="Line Up of your event, if any"
           options={lineUpOptions}
           onChange={lineUpHandler}
+          filterOption={(inputValue, option) =>
+            option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !==
+            -1
+          }
         />
       </div>
       <div className="optionform__element">
