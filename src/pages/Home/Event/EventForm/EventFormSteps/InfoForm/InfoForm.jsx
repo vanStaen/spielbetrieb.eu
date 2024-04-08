@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 import { Radio, Input, DatePicker, Row, Col, AutoComplete } from "antd";
 import { AimOutlined } from "@ant-design/icons";
@@ -26,7 +26,6 @@ export const InfoForm = observer((props) => {
   eventypesMainOption &&
     eventypesMainOption.push({ value: "more", label: "..." });
 
-  // console.log('locations', locations);
   const locationOptions = locations?.map((location) => {
     return {
       value: location.name,
@@ -86,7 +85,8 @@ export const InfoForm = observer((props) => {
     if (selectedLocation === undefined) {
       eventFormStore.setLocationId(null);
       eventFormStore.setLocationAddress(null);
-      eventFormStore.setIsNewLocation(true);
+      value && eventFormStore.setIsNewLocation(true);
+      value && showMapHandler(true);
     }
   };
 
@@ -105,14 +105,22 @@ export const InfoForm = observer((props) => {
     eventFormStore.setLocationAddress(value);
   };
 
-  const showMapHandler = () => {
-    if (eventFormStore.locationName) {
-      const divmap = document.getElementById("mapdiv");
-      divmap.style.height = showMap ? 0 : `${MAP_HEIGHT}`;
-      divmap.style.margin = showMap ? 0 : "16px 0 0 0";
-      setShowMap(!showMap);
-    }
+  const showMapHandler = (value) => {
+    const divmap = document.getElementById("mapdiv");
+    divmap.style.height = value ? `${MAP_HEIGHT}` : 0;
+    divmap.style.margin = value ? "16px 0 0 0" : 0;
+    setShowMap(value);
   };
+
+  useEffect(() => {
+    if (!eventFormStore.locationName) {
+      eventFormStore.setIsNewLocation(false);
+      eventFormStore.setLocationAddress(null);
+    }
+    if (!eventFormStore.locationName && !eventFormStore.locationAddress) {
+      showMapHandler(false);
+    }
+  }, [eventFormStore.locationName, eventFormStore.locationAddress])
 
   const descHandler = (e) => {
     const value = e.target.value;
@@ -121,11 +129,10 @@ export const InfoForm = observer((props) => {
 
   return (
     <div
-      className={`infoform__container  ${
-        pageStore.selectedTheme === "light"
-          ? "lightColorTheme__Text"
-          : "darkColorTheme__Text"
-      }`}
+      className={`infoform__container  ${pageStore.selectedTheme === "light"
+        ? "lightColorTheme__Text"
+        : "darkColorTheme__Text"
+        }`}
     >
       <div className="infoform__select">
         <Radio.Group
@@ -197,7 +204,7 @@ export const InfoForm = observer((props) => {
                       ? "infoform__coordinates"
                       : "infoform__coordinatesDisabled"
                   }
-                  onClick={showMapHandler}
+                  onClick={() => showMapHandler(!showMap)}
                 />
               }
             />
