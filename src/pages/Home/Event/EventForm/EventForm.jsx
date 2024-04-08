@@ -99,6 +99,7 @@ export const EventForm = observer(() => {
       }
     } else if (formStep === 1) {
       if (eventFormStore.artworks.length === 0) {
+        eventFormStore.setArtworksError("Please upload at least one artwork for your event!");
         tempStatusSteps[formStep] = "error";
       } else {
         tempStatusSteps[formStep] = "finish";

@@ -4,6 +4,7 @@ export class EventFormStore {
   eventId = null;
   artworks = [];
   artworksUrl = [];
+  artworksError = null;
   eventtype = null;
   eventtypeError = null;
   title = null;
@@ -85,6 +86,8 @@ export class EventFormStore {
       setDresscodeDoTags: action,
       dresscodeDontTags: observable,
       setDresscodeDontTags: action,
+      artworksError: observable,
+      setArtworksError: action,
     });
   }
 
@@ -98,6 +101,10 @@ export class EventFormStore {
 
   setArtworksUrl = (artworksUrl) => {
     this.artworksUrl = artworksUrl;
+  };
+
+  setArtworksError = (artworksError) => {
+    this.artworksError = artworksError;
   };
 
   setEventtype = (eventtype) => {

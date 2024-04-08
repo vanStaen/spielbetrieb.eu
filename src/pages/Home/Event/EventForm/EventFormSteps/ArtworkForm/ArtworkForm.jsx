@@ -83,6 +83,7 @@ export const ArtworkForm = observer(() => {
 
   return (
     <>
+      <div className="artworkform__error">{eventFormStore.artworksError}</div>
       <form className="artwork__form">
         <input
           type="file"
