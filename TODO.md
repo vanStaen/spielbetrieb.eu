@@ -49,3 +49,4 @@
 - [ ] Filter event based on city/geolocation
 - [ ] Valid form with enter, cancel with esc
 - [ ] Get own google api key
+- [ ] translate lib in database : https://kennedyihe.com/translate-your-react-app-from-a-database/

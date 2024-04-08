@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { observer } from "mobx-react";
-import { Radio, Select, AutoComplete, InputNumber, Row, Col } from "antd";
+import { Radio, Select, InputNumber, Row, Col } from "antd";
 
 import { eventFormStore } from "../../eventFormStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
@@ -25,10 +25,10 @@ export const OptionForm = observer((props) => {
       value: 2,
       label: "At the door",
     },
-    {
+    /*{
       value: 3,
       label: "Friends-list",
-    },
+    },*/
   ];
 
   const lineUpOptions = [
@@ -87,14 +87,14 @@ export const OptionForm = observer((props) => {
     eventFormStore.setEventTags(value);
   };
 
-  const priceHandler = (value) => {
+  const priceHandler = (value, key) => {
     //Todo
-    console.log(value);
+    console.log('price', value, key);
   };
 
-  const priceOptionHandler = (value) => {
+  const priceOptionHandler = (value, key) => {
     //todo
-    console.log(value);
+    console.log('option', value, key);
   };
 
   const lineUpHandler = (value) => {
@@ -144,21 +144,17 @@ export const OptionForm = observer((props) => {
             <InputNumber
               prefix="€"
               placeholder="Price"
-              onChange={priceHandler}
-              value={eventFormStore.title}
+              onChange={(event) => priceHandler(event, 1)}
+              value={null}
             />
           </Col>
           <Col xs={16} sm={16} md={20}>
-            <AutoComplete
-              value={null}
+            <Select
+              value={!eventFormStore.price ? 0 : null}
               options={priceOptions}
               placeholder="Price type"
               onChange={priceOptionHandler}
               disabled={eventFormStore.price?.value}
-              filterOption={(inputValue, option) =>
-                option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !==
-                -1
-              }
             />
           </Col>
         </Row>
