@@ -83,9 +83,17 @@ export const EventForm = observer(() => {
       if (
         eventFormStore.eventtype === null ||
         eventFormStore.title === null ||
-        eventFormStore.titleError !== null
+        eventFormStore.titleError !== null ||
+        eventFormStore.eventtypeError !== null ||
+        eventFormStore.fromDateError !== null ||
+        eventFormStore.fromDate === null ||
+        eventFormStore.toDate === null
       ) {
         tempStatusSteps[formStep] = "error";
+        eventFormStore.eventtype === null && eventFormStore.setEventtypeError("Please select an event type!");
+        eventFormStore.title === null && eventFormStore.setTitleError("You need a title for your event!");
+        eventFormStore.fromDate === null && eventFormStore.setFromDateError("Please input start and end time of your event!");
+        eventFormStore.toDate === null && eventFormStore.setFromDateError("Please input start and end time of your event!");
       } else {
         tempStatusSteps[formStep] = "finish";
       }

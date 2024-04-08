@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { observer } from "mobx-react";
-import { Radio, Select, Input, Row, Col } from "antd";
+import { Radio, Select, AutoComplete, InputNumber, Row, Col } from "antd";
 
 import { eventFormStore } from "../../eventFormStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
@@ -11,6 +11,32 @@ import "./OptionForm.less";
 export const OptionForm = observer((props) => {
   const { tags } = props;
   const [showDrescodeTags, setShowDresscodeTags] = useState(false);
+
+  const priceOptions = [
+    {
+      value: 0,
+      label: "Regular price",
+    },
+    {
+      value: 1,
+      label: "Early bird",
+    },
+    {
+      value: 2,
+      label: "Box-office",
+    },
+    {
+      value: 3,
+      label: "Friends-list",
+    },
+  ];
+
+  const lineUpOptions = [
+    {
+      value: 0,
+      label: "van Staen",
+    },
+  ];
 
   const ageOptions = [
     {
@@ -61,6 +87,18 @@ export const OptionForm = observer((props) => {
     console.log(value);
   };
 
+  const priceHandler = (value) => {
+    console.log(value);
+  };
+
+  const priceOptionHandler = (value) => {
+    console.log(value);
+  };
+
+  const lineUpHandler = (value) => {
+    console.log(value);
+  };
+
   const hasDresscodeHandler = (e) => {
     const value = e.target.value;
     value && setShowDresscodeTags(true);
@@ -75,15 +113,12 @@ export const OptionForm = observer((props) => {
     console.log(value);
   };
 
-  // Price, Lineup
-
   return (
     <div
-      className={`optionform__container  ${
-        pageStore.selectedTheme === "light"
-          ? "lightColorTheme__Text"
-          : "darkColorTheme__Text"
-      }`}
+      className={`optionform__container  ${pageStore.selectedTheme === "light"
+        ? "lightColorTheme__Text"
+        : "darkColorTheme__Text"
+        }`}
     >
       <div className="optionform__element">
         <div className="optionform__title">Tags</div>
@@ -94,6 +129,44 @@ export const OptionForm = observer((props) => {
           placeholder="Please select some tags"
           options={tags}
           onChange={tagsHandler}
+        />
+      </div>
+      <div className="optionform__element">
+        <div className="optionform__title">Prices</div>
+        <Row gutter={[16, 8]}>
+          <Col xs={8} sm={8} md={4}>
+            <InputNumber
+              prefix="€"
+              placeholder="Price"
+              onChange={priceHandler}
+              value={eventFormStore.title}
+            />
+          </Col>
+          <Col xs={16} sm={16} md={20}>
+            <AutoComplete
+              value={null}
+              options={priceOptions}
+              placeholder="Price type"
+              onChange={priceOptionHandler}
+              disabled={true}
+              filterOption={(inputValue, option) =>
+                option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !==
+                -1
+              }
+            />
+          </Col>
+        </Row>
+      </div>
+
+      <div className="optionform__element">
+        <div className="optionform__title">Line up</div>
+        <Select
+          mode="tags"
+          allowClear
+          style={{ width: "100%" }}
+          placeholder="Line Up of your event, if any"
+          options={lineUpOptions}
+          onChange={lineUpHandler}
         />
       </div>
       <div className="optionform__element">
