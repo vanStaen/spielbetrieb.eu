@@ -141,7 +141,7 @@ export const EventForm = observer(() => {
               },
             ]}
           />
-          <div style={{ marginTop: 32 }}></div>
+          <div className="eventform__spacer"></div>
           {formStep === 0 && (
             <InfoForm eventtypes={eventtypes} locations={locations} />
           )}

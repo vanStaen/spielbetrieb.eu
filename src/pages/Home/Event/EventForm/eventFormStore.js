@@ -26,6 +26,8 @@ export class EventFormStore {
   isPrivate = false;
   forwardable = true;
   eventTags = [];
+  prices = [];
+  lineUp = [];
   dresscodeDontTags = [];
   dresscodeDoTags = [];
   hasDresscode = false;
@@ -80,6 +82,10 @@ export class EventFormStore {
       setForwardable: action,
       eventTags: observable,
       setEventTags: action,
+      prices: observable,
+      setPrices: action,
+      lineUp: observable,
+      setLineUp: action,
       hasDresscode: observable,
       setHasDresscode: action,
       dresscodeDoTags: observable,
@@ -189,6 +195,15 @@ export class EventFormStore {
 
   setEventTags = (eventTags) => {
     this.eventTags = eventTags;
+  };
+
+  setPrices = (prices) => {
+    //Todo
+    this.prices = prices;
+  };
+
+  setLineUp = (lineUp) => {
+    this.lineUp = lineUp;
   };
 
   setHasDresscode = (hasDresscode) => {

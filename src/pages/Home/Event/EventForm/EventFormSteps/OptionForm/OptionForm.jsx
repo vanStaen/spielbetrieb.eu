@@ -84,19 +84,21 @@ export const OptionForm = observer((props) => {
   ];
 
   const tagsHandler = (value) => {
-    console.log(value);
+    eventFormStore.setEventTags(value);
   };
 
   const priceHandler = (value) => {
+    //Todo
     console.log(value);
   };
 
   const priceOptionHandler = (value) => {
+    //todo
     console.log(value);
   };
 
   const lineUpHandler = (value) => {
-    console.log(value);
+    eventFormStore.setLineUp(value);
   };
 
   const hasDresscodeHandler = (e) => {
@@ -148,7 +150,7 @@ export const OptionForm = observer((props) => {
               options={priceOptions}
               placeholder="Price type"
               onChange={priceOptionHandler}
-              disabled={true}
+              disabled={eventFormStore.price?.value}
               filterOption={(inputValue, option) =>
                 option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !==
                 -1
