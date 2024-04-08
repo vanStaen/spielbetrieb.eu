@@ -23,7 +23,7 @@ export const OptionForm = observer((props) => {
     },
     {
       value: 2,
-      label: "Box-office",
+      label: "At the door",
     },
     {
       value: 3,

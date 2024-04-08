@@ -27,13 +27,13 @@
   - [ ] Elypsis on event description
   - [ ] Make responsive
   - [ ] Elipisis 'more' translate
-- [ ] Event Model
-  - [ ] event info (age, dresscode) as standart 
-  - [ ] Line up details (artist + artwork + link)
-    - [ ] Same as location, store some recuring artists, and make them searchable
-  - [ ] Price (als array of price: [{ price: 15, desc: 'EarlyBird'}, { price: 22, desc: 'online ticket'}, { price: 25, desc: 'AtTheDoor'}])
-  - [ ] Currency
-- [ ] Translate error message in Event Form
+- [x] Event Model
+  - [x] event info (age, dresscode) as standart 
+  - [x] Price (als array of price: [{ price: 15, desc: 'EarlyBird'}, { price: 22, desc: 'online ticket'}, { price: 25, desc: 'AtTheDoor'}])
+  - [x] Currency
+- [ ] Line up Model (artist + artwork + link)
+  - [ ] Same as location, store some recuring artists, and make them searchable
+- [ ] Translate all in form Event
 - [ ] Spielplan Filter should be of type OR (and not AND)
 - [ ] URL to old event only possible for admin and VA-er, sonst meldung 'not possible'
 

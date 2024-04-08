@@ -12,6 +12,13 @@ type Event {
     fromDate: Float
     untilDate: Float
     eventTags: [Int]
+    hasDresscode: Boolean
+    dresscodeDoTags: [Int]
+    dresscodeDontTags: [Int]
+    prices: [String]
+    lineUp: [Int]
+    ageMin: Int
+    currency: String
     attendees: [Int]
     invited: [Int]
     links: [String]
@@ -39,6 +46,13 @@ input EventInputData {
     fromDate: Float
     untilDate: Float
     eventTags: [Int]
+    hasDresscode: Boolean
+    dresscodeDoTags: [Int]
+    dresscodeDontTags: [Int]
+    prices: [String]
+    lineUp: [Int]
+    ageMin: Int
+    currency: String
     attendees: [Int]
     invited: [Int]
     links: [String]

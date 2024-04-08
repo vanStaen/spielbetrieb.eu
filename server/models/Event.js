@@ -64,6 +64,22 @@ export const Event = sequelize.sequelize.define("event", {
     type: DataTypes.ARRAY(DataTypes.INTEGER),
     defaultValue: [],
   },
+  prices: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    defaultValue: [],
+  },
+  lineUp: {
+    type: DataTypes.ARRAY(DataTypes.INTEGER),
+    defaultValue: [],
+  },
+  ageMin: {
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
+  },
+  currency: {
+    type: DataTypes.STRING,
+    defaultValue: 'eur',
+  },
   links: {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: true,
