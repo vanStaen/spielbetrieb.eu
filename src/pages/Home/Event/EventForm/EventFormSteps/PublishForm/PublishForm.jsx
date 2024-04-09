@@ -77,11 +77,10 @@ export const PublishForm = observer(() => {
 
   return (
     <div
-      className={`publishform__container  ${
-        pageStore.selectedTheme === "light"
-          ? "lightColorTheme__Text"
-          : "darkColorTheme__Text"
-      }`}
+      className={`publishform__container  ${pageStore.selectedTheme === "light"
+        ? "lightColorTheme__Text"
+        : "darkColorTheme__Text"
+        }`}
     >
       {eventFormStore.errors && (
         <>
@@ -128,8 +127,14 @@ export const PublishForm = observer(() => {
           The event location will be shown as <i>'To be announced'</i>
         </div>
       )}
+      {!eventFormStore.description && (
+        <div className="publishform__info">
+          The event location does not have a description
+        </div>
+      )
+      }
       <div className="pubishform__lineSpacer"></div>
       {!eventFormStore.errors && <EventPage event={event} />}
-    </div>
+    </div >
   );
 });
