@@ -1,5 +1,6 @@
 import * as admincontactResolver from "./resolvers/admincontactResolver.js";
 import * as adminlinkResolver from "./resolvers/adminlinkResolver.js";
+import * as artistResolver from "./resolvers/artistResolver.js";
 import * as chatResolver from "./resolvers/chatResolver.js";
 import * as commentResolver from "./resolvers/commentResolver.js";
 import * as eventResolver from "./resolvers/eventResolver.js";
@@ -18,6 +19,7 @@ import * as tagResolver from "./resolvers/tagResolver.js";
 export default {
   ...admincontactResolver.admincontactResolver,
   ...adminlinkResolver.adminlinkResolver,
+  ...artistResolver.artistResolver,
   ...chatResolver.chatResolver,
   ...commentResolver.commentResolver,
   ...eventResolver.eventResolver,

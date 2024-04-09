@@ -2,6 +2,7 @@ import { buildSchema } from "graphql";
 
 import * as admincontactSchema from "./schemas/admincontactSchema.js";
 import * as adminlinkSchema from "./schemas/adminlinkSchema.js";
+import * as artistSchema from "./schemas/artistSchema.js";
 import * as chatSchema from "./schemas/chatSchema.js";
 import * as commentSchema from "./schemas/commentSchema.js";
 import * as darkSchema from "./schemas/darkSchema.js";
@@ -22,6 +23,7 @@ export default buildSchema(`
 
     ${admincontactSchema.Admincontact}
     ${adminlinkSchema.Adminlink}
+    ${artistSchema.Artist}
     ${chatSchema.Chat}
     ${commentSchema.Comment}
     ${darkSchema.Dark}
@@ -40,6 +42,7 @@ export default buildSchema(`
 
     ${admincontactSchema.AdmincontactInputData}
     ${adminlinkSchema.AdminlinkInputData}
+    ${artistSchema.ArtistInputData}
     ${chatSchema.ChatInputData}
     ${commentSchema.CommentInputData}
     ${darkSchema.DarkInputData}
@@ -59,6 +62,7 @@ export default buildSchema(`
     type RootQuery {
         ${admincontactSchema.AdmincontactQueries}
         ${adminlinkSchema.AdminlinkQueries}
+        ${artistSchema.ArtistQueries}
         ${chatSchema.ChatQueries}
         ${commentSchema.CommentQueries}
         ${darkSchema.DarkQueries}
@@ -79,6 +83,7 @@ export default buildSchema(`
     type RootMutations {
         ${admincontactSchema.AdmincontactMutations}
         ${adminlinkSchema.AdminlinkMutations}
+        ${artistSchema.ArtistMutations}
         ${chatSchema.ChatMutations}
         ${commentSchema.CommentMutations}
         ${darkSchema.DarkMutations}

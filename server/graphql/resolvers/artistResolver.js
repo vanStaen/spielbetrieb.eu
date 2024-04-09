@@ -1,16 +1,16 @@
-import { Location } from "../../models/Location.js";
+import { Artist } from "../../models/Artist.js";
 import { User } from "../../models/User.js";
 
-export const locationResolver = {
-  // getLocation(locationId: ID!): Location
-  async getLocation(args) {
-    return await Location.findOne({
-      where: { _id: args.locationId },
+export const artistResolver = {
+  // getArtist(artistId: ID!): Artist
+  async getArtist(args) {
+    return await Artist.findOne({
+      where: { _id: args.artistId },
     });
   },
 
-  // getLocations(onlyValidated: Boolean): [Location]
-  async getLocations(args) {
+  // getArtists(onlyValidated: Boolean): [Artist]
+  async getArtists(args) {
     let options = {
       order: [["name", "ASC"]],
     };
@@ -20,11 +20,11 @@ export const locationResolver = {
         where: { validated: args.onlyValidated },
       };
     }
-    return await Location.findAll(options);
+    return await Artist.findAll(options);
   },
 
-  // addLocation(locationInput: LocationInputData!): Location!
-  async addLocation(args, req) {
+  // addArtist(artistInput: ArtistInputData!): Artist!
+  async addArtist(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
@@ -36,24 +36,21 @@ export const locationResolver = {
       validated = false;
     }
     try {
-      const location = new Location({
-        name: args.locationInput.name,
-        description: args.locationInput.description,
-        pictures: args.locationInput.pictures,
-        links: args.locationInput.links,
-        address: args.locationInput.address,
-        coordinates: args.locationInput.coordinates,
+      const artist = new Artist({
+        name: args.artistInput.name,
+        pictures: args.artistInput.pictures,
+        links: args.artistInput.links,
         validated: validated,
-        reviews: args.locationInput.reviews,
+        reviews: args.artistInput.reviews,
       });
-      return await location.save();
+      return await artist.save();
     } catch (err) {
       console.log(err);
     }
   },
 
-  // updateLocation(locationId: ID!, locationInput: LocationInputData!): Location!
-  async updateLocation(args, req) {
+  // updateArtist(artistId: ID!, artistInput: ArtistInputData!): Artist!
+  async updateArtist(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
@@ -66,37 +63,34 @@ export const locationResolver = {
     const updateFields = [];
     const updatableFields = [
       "name",
-      "description",
       "pictures",
       "links",
-      "address",
-      "coordinates",
       "validated",
       "reviews",
     ];
     updatableFields.forEach((field) => {
-      if (field in args.locationInput) {
-        updateFields[field] = args.locationInput[field];
+      if (field in args.artistInput) {
+        updateFields[field] = args.artistInput[field];
       }
     });
     try {
-      const updatedLocation = await Location.update(updateFields, {
+      const updatedArtist = await Artist.update(updateFields, {
         where: {
-          _id: args.locationId,
+          _id: args.artistId,
         },
         returning: true,
         plain: true,
       });
-      // updatedLocation[0]: number or row udpated
-      // updatedLocation[1]: rows updated
-      return updatedLocation[1];
+      // updatedArtist[0]: number or row udpated
+      // updatedArtist[1]: rows updated
+      return updatedArtist[1];
     } catch (err) {
       console.log(err);
     }
   },
 
-  // deleteLocation(locationId: ID!): Boolean!
-  async deleteLocation(args, req) {
+  // deleteArtist(artistId: ID!): Boolean!
+  async deleteArtist(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
@@ -106,9 +100,9 @@ export const locationResolver = {
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
     }
-    await Location.destroy({
+    await Artist.destroy({
       where: {
-        _id: args.locationId,
+        _id: args.artistId,
       },
     });
     return true;
