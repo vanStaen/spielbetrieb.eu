@@ -150,6 +150,10 @@ export const EventForm = observer(() => {
     onStepsChange(newStep);
   };
 
+  const publishHandler = () => {
+    console.log("PUBLISH");
+  };
+
   return (
     <>
       <HelpButtons setStartTour={setStartTour} />
@@ -220,15 +224,24 @@ export const EventForm = observer(() => {
         >
           Previous
         </Button>
-        <Button
-          className="eventform__navButtons"
-          onClick={() => {
-            naviguateHandler(true);
-          }}
-          disabled={formStep === 3}
-        >
-          Next
-        </Button>
+        {formStep === 3 ? (
+          <Button
+            className="eventform__publishButton"
+            onClick={publishHandler()}
+            disabled={eventFormStore.errors}
+          >
+            Publish
+          </Button>
+        ) : (
+          <Button
+            className="eventform__navButtons"
+            onClick={() => {
+              naviguateHandler(true);
+            }}
+          >
+            Next
+          </Button>
+        )}
       </div>
     </>
   );

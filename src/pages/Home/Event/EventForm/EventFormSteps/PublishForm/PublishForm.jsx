@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { observer } from "mobx-react";
 
 import { eventFormStore } from "../../eventFormStore";
@@ -8,8 +8,6 @@ import { EventPage } from "../../../EventPage/EventPage";
 import "./PublishForm.less";
 
 export const PublishForm = observer(() => {
-  const [errors, setErrors] = useState(false);
-
   useEffect(() => {
     if (
       eventFormStore.artworksError ||
@@ -20,7 +18,9 @@ export const PublishForm = observer(() => {
       eventFormStore.locationNameError ||
       eventFormStore.descriptionError
     ) {
-      setErrors(true);
+      eventFormStore.setErrors(true);
+    } else {
+      eventFormStore.setErrors(false);
     }
   }, []);
 
@@ -77,26 +77,59 @@ export const PublishForm = observer(() => {
 
   return (
     <div
-      className={`publishform__container  ${pageStore.selectedTheme === "light"
-        ? "lightColorTheme__Text"
-        : "darkColorTheme__Text"
-        }`}>
-      {errors && (
+      className={`publishform__container  ${
+        pageStore.selectedTheme === "light"
+          ? "lightColorTheme__Text"
+          : "darkColorTheme__Text"
+      }`}
+    >
+      {eventFormStore.errors && (
         <>
-          {eventFormStore.artworksError && <div className="publishform__error">{eventFormStore.artworksError}</div>}
-          {eventFormStore.eventtypeError && <div className="publishform__error">{eventFormStore.eventtypeError}</div>}
-          {eventFormStore.titleError && <div className="publishform__error">{eventFormStore.titleError}</div>}
-          {eventFormStore.fromDateError && <div className="publishform__error">{eventFormStore.fromDateError}</div>}
-          {eventFormStore.locationAddressError && <div className="publishform__error">{eventFormStore.locationAddressError}</div>}
-          {eventFormStore.locationNameError && <div className="publishform__error">{eventFormStore.locationNameError}</div>}
-          {eventFormStore.descriptionError && <div className="publishform__error">{eventFormStore.descriptionError}</div>}
+          {eventFormStore.artworksError && (
+            <div className="publishform__error">
+              {eventFormStore.artworksError}
+            </div>
+          )}
+          {eventFormStore.eventtypeError && (
+            <div className="publishform__error">
+              {eventFormStore.eventtypeError}
+            </div>
+          )}
+          {eventFormStore.titleError && (
+            <div className="publishform__error">
+              {eventFormStore.titleError}
+            </div>
+          )}
+          {eventFormStore.fromDateError && (
+            <div className="publishform__error">
+              {eventFormStore.fromDateError}
+            </div>
+          )}
+          {eventFormStore.locationAddressError && (
+            <div className="publishform__error">
+              {eventFormStore.locationAddressError}
+            </div>
+          )}
+          {eventFormStore.locationNameError && (
+            <div className="publishform__error">
+              {eventFormStore.locationNameError}
+            </div>
+          )}
+          {eventFormStore.descriptionError && (
+            <div className="publishform__error">
+              {eventFormStore.descriptionError}
+            </div>
+          )}
         </>
       )}
 
-      {!eventFormStore.locationName && <div className="publishform__info">The event location will be shown as <i>'To be announced'</i></div>}
+      {!eventFormStore.locationName && (
+        <div className="publishform__info">
+          The event location will be shown as <i>'To be announced'</i>
+        </div>
+      )}
       <div className="pubishform__lineSpacer"></div>
-      {errors && <EventPage event={event} />}
-
+      {!eventFormStore.errors && <EventPage event={event} />}
     </div>
   );
 });

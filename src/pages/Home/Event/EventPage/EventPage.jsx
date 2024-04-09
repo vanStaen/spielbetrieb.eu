@@ -165,10 +165,11 @@ export const EventPage = observer((props) => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${pageStore.selectedTheme === "light"
-            ? "lightColorTheme__Text"
-            : "darkColorTheme__Text"
-          }`}
+                  ${
+                    pageStore.selectedTheme === "light"
+                      ? "lightColorTheme__Text"
+                      : "darkColorTheme__Text"
+                  }`}
       >
         <ArrowLeftOutlined />
       </div>
@@ -237,7 +238,7 @@ export const EventPage = observer((props) => {
                   <div className="eventpage__subInfo">
                     <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
                     {dayjs(event.fromDate).format("dddd") ===
-                      dayjs(event.untilDate).format("dddd") ? (
+                    dayjs(event.untilDate).format("dddd") ? (
                       <>
                         {dayjs(event.fromDate).format("HH:mm")}{" "}
                         {t("spielplan.until")}{" "}
