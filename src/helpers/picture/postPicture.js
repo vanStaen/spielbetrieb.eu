@@ -3,7 +3,7 @@ export const postPicture = async (file, bucket) => {
     const data = new FormData();
     data.append("file", file);
     data.append("bucket", bucket);
-    const endpoint = process.env.API_URL + `/upload`;
+    const endpoint = process.env.API_URL + "/upload";
     const options = {
       method: "POST",
       body: data,

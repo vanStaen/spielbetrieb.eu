@@ -130,7 +130,8 @@ export const EventPage = observer(() => {
     },
     {
       title: "Description of the event",
-      description: `This is the name of the event as provided by the promoter. In case this text is long, it may be partically hidden. Click on 'Read more' to see it in full`,
+      description:
+        "This is the name of the event as provided by the promoter. In case this text is long, it may be partically hidden. Click on 'Read more' to see it in full",
       placement: "top",
       target: () => ref6.current,
     },

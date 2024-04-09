@@ -90,39 +90,58 @@ export const EventForm = observer(() => {
         eventFormStore.toDate === null
       ) {
         tempStatusSteps[formStep] = "error";
-        eventFormStore.eventtype === null && eventFormStore.setEventtypeError("Please select an event type!");
-        eventFormStore.title === null && eventFormStore.setTitleError("You need a title for your event!");
-        eventFormStore.fromDate === null && eventFormStore.setFromDateError("Please input start and end time of your event!");
-        eventFormStore.toDate === null && eventFormStore.setFromDateError("Please input start and end time of your event!");
+        eventFormStore.eventtype === null &&
+          eventFormStore.setEventtypeError("Please select an event type!");
+        eventFormStore.title === null &&
+          eventFormStore.setTitleError("You need a title for your event!");
+        eventFormStore.fromDate === null &&
+          eventFormStore.setFromDateError(
+            "Please input start and end time of your event!",
+          );
+        eventFormStore.toDate === null &&
+          eventFormStore.setFromDateError(
+            "Please input start and end time of your event!",
+          );
       } else {
         tempStatusSteps[formStep] = "finish";
       }
     } else if (formStep === 1) {
       if (eventFormStore.artworks.length === 0) {
-        eventFormStore.setArtworksError("Please upload at least one artwork for your event!");
+        eventFormStore.setArtworksError(
+          "Please upload at least one artwork for your event!",
+        );
         tempStatusSteps[formStep] = "error";
       } else {
         tempStatusSteps[formStep] = "finish";
       }
     }
-    // newStep (=value) is now 'process'
-    tempStatusSteps[value] = "process";
+    // newStep (=value)
+    if (value === 3) {
+      if (eventFormStore.artworks.length === 0) {
+        eventFormStore.setArtworksError(
+          "Please upload at least one artwork for your event!",
+        );
+        tempStatusSteps[1] = "error";
+        tempStatusSteps[3] = "error";
+      }
+    } else {
+      tempStatusSteps[value] = "process";
+    }
     setFormStep(value);
     setStatusSteps(tempStatusSteps);
   };
 
   const naviguateHandler = (next) => {
     if (next && formStep === 3) {
-      console.error('there is only 4 steps');
+      console.error("there is only 4 steps");
       return;
-    }
-    else if (!next && formStep === 0) {
-      console.error('it was already the first step');
+    } else if (!next && formStep === 0) {
+      console.error("it was already the first step");
       return;
     }
     const newStep = next ? formStep + 1 : formStep - 1;
     onStepsChange(newStep);
-  }
+  };
 
   return (
     <>
@@ -186,14 +205,18 @@ export const EventForm = observer(() => {
       <div className="eventform__navigation">
         <Button
           className="eventform__navButtons"
-          onClick={() => { naviguateHandler(false) }}
+          onClick={() => {
+            naviguateHandler(false);
+          }}
           disabled={formStep === 0}
         >
           Previous
         </Button>
         <Button
           className="eventform__navButtons"
-          onClick={() => { naviguateHandler(true) }}
+          onClick={() => {
+            naviguateHandler(true);
+          }}
           disabled={formStep === 3}
         >
           Next

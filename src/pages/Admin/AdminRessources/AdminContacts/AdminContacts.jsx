@@ -164,10 +164,10 @@ export const AdminContacts = () => {
               <EditOutlined className="admin__editLogo" />
             </Typography.Link>{" "}
             {!record.archived ? (
-              <Tooltip title={`Archive link first`}>
+              <Tooltip title={"Archive link first"}>
                 <DeleteOutlined
                   style={{ cursor: "not-allowed" }}
-                  className={`admin__editLogo admin__disabled`}
+                  className={"admin__editLogo admin__disabled"}
                 />
               </Tooltip>
             ) : (

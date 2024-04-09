@@ -1,11 +1,26 @@
+import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react";
-import React from "react";
 
 import { eventFormStore } from "../../eventFormStore";
 
 import "./PublishForm.less";
 
 export const PublishForm = observer(() => {
+  const [errors, setErrors] = useState(false);
+
+  useEffect(() => {
+    if (
+      eventFormStore.artworksError ||
+      eventFormStore.eventtypeError ||
+      eventFormStore.titleError ||
+      eventFormStore.fromDateError ||
+      eventFormStore.locationAddressError ||
+      eventFormStore.locationNameError ||
+      eventFormStore.descriptionError
+    ) {
+      setErrors(true);
+    }
+  }, []);
   const onFinish = async () => {
     setLoading(true);
     const dataObject = await form.validateFields();
@@ -41,5 +56,25 @@ export const PublishForm = observer(() => {
     reload();
   };
 
-  return <>publish form</>;
+  return (
+    <div className="publishform__container">
+      {errors ? (
+        <>
+          {eventFormStore.artworksError && "Artworks are mising"}
+          {eventFormStore.eventtypeError && "Event type is mising"}
+          {eventFormStore.titleError && "You need to name your event"}
+          {eventFormStore.fromDateError &&
+            "There is an error with the event dates"}
+          {eventFormStore.locationAddressError &&
+            "There is an error with the location address"}
+          {eventFormStore.locationNameError &&
+            "There is an error with the location name"}
+          {eventFormStore.descriptionError &&
+            "There is an error with the event description"}
+        </>
+      ) : (
+        <>Publish</>
+      )}
+    </div>
+  );
 });

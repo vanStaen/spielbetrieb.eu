@@ -63,7 +63,7 @@ export const getProfileInfo = async (username) => {
   };
 
   const response = await axios({
-    url: process.env.API_URL + `/graphql`,
+    url: process.env.API_URL + "/graphql",
     method: "POST",
     data: requestBody,
   });

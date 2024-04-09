@@ -14,7 +14,8 @@
     }
 
     .ant-select-outlined {
-        width: 100% !important;
+        width: calc(100% - 58px);
+        margin-right: 16px;
     }
 
     .ant-select-disabled .ant-select-selector {
@@ -31,6 +32,18 @@
             filter: brightness(2);
             font-size: 14px;
             margin-top: 8px;
+        }
+    }
+
+    .ant-btn-default {
+        background-color: rgba(white, .75) !important;
+        border-color: transparent !important;
+
+        &:disabled {
+            background-color: rgba(white, .1) !important;
+            border-color: transparent !important;
+            color: rgba(20, 36, 54, 1) !important;
+            color: rgba(var(--themeFontColor), .1) !important;
         }
     }
 

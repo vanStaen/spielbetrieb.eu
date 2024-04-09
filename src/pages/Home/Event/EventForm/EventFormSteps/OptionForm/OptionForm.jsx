@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { observer } from "mobx-react";
-import { Radio, Select, InputNumber, Row, Col } from "antd";
+import { Radio, Select, InputNumber, Row, Col, Button } from "antd";
 
 import { eventFormStore } from "../../eventFormStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
@@ -25,10 +25,10 @@ export const OptionForm = observer((props) => {
       value: 2,
       label: "At the door",
     },
-    /*{
+    /* {
       value: 3,
       label: "Friends-list",
-    },*/
+    }, */
   ];
 
   const lineUpOptions = [
@@ -88,13 +88,13 @@ export const OptionForm = observer((props) => {
   };
 
   const priceHandler = (value, key) => {
-    //Todo
-    console.log('price', value, key);
+    // Todo
+    console.log("price", value, key);
   };
 
   const priceOptionHandler = (value, key) => {
-    //todo
-    console.log('option', value, key);
+    // todo
+    console.log("option", value, key);
   };
 
   const lineUpHandler = (value) => {
@@ -117,10 +117,11 @@ export const OptionForm = observer((props) => {
 
   return (
     <div
-      className={`optionform__container  ${pageStore.selectedTheme === "light"
-        ? "lightColorTheme__Text"
-        : "darkColorTheme__Text"
-        }`}
+      className={`optionform__container  ${
+        pageStore.selectedTheme === "light"
+          ? "lightColorTheme__Text"
+          : "darkColorTheme__Text"
+      }`}
     >
       <div className="optionform__element">
         <div className="optionform__title">Tags</div>
@@ -132,15 +133,14 @@ export const OptionForm = observer((props) => {
           options={tags}
           onChange={tagsHandler}
           filterOption={(inputValue, option) =>
-            option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !==
-            -1
+            option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
           }
         />
       </div>
       <div className="optionform__element">
         <div className="optionform__title">Prices</div>
         <Row gutter={[16, 8]}>
-          <Col xs={8} sm={8} md={4}>
+          <Col xs={7} sm={7} md={4}>
             <InputNumber
               prefix="€"
               placeholder="Price"
@@ -148,14 +148,18 @@ export const OptionForm = observer((props) => {
               value={null}
             />
           </Col>
-          <Col xs={16} sm={16} md={20}>
+          <Col xs={17} sm={17} md={20}>
             <Select
               value={!eventFormStore.price ? 0 : null}
               options={priceOptions}
               placeholder="Price type"
               onChange={priceOptionHandler}
-              disabled={eventFormStore.price?.value}
+              disabled={!eventFormStore.price?.value}
+              className="optionform__priceSelect"
             />
+            <Button className="optionform__priceButton" disabled={true}>
+              +
+            </Button>
           </Col>
         </Row>
       </div>
@@ -170,8 +174,7 @@ export const OptionForm = observer((props) => {
           options={lineUpOptions}
           onChange={lineUpHandler}
           filterOption={(inputValue, option) =>
-            option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !==
-            -1
+            option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
           }
         />
       </div>

@@ -81,7 +81,7 @@ export const GalleryOverlay = observer((props) => {
   }, [indexImageSelected]);
 
   const mouseHoverHandler = (hover) => {
-    const closeButton = document.getElementById(`closeButton`);
+    const closeButton = document.getElementById("closeButton");
     if (hover) {
       closeButton.style.visibility = "hidden";
       closeButton.style.opacity = 0;
@@ -94,8 +94,8 @@ export const GalleryOverlay = observer((props) => {
   const keyDownHandler = (event) => {
     event.preventDefault();
     const keyPressed = event.key.toLowerCase();
-    const nextButton = document.getElementById(`nextButton`);
-    const previousButton = document.getElementById(`previousButton`);
+    const nextButton = document.getElementById("nextButton");
+    const previousButton = document.getElementById("previousButton");
     if (throttling.current === false) {
       throttling.current = true;
       if (keyPressed === "arrowdown" || keyPressed === "arrowright") {

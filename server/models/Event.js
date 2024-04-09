@@ -78,7 +78,7 @@ export const Event = sequelize.sequelize.define("event", {
   },
   currency: {
     type: DataTypes.STRING,
-    defaultValue: 'eur',
+    defaultValue: "eur",
   },
   links: {
     type: DataTypes.ARRAY(DataTypes.STRING),

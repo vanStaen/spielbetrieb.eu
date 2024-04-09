@@ -14,7 +14,7 @@ export async function getPartnertypes() {
     "content-type": "application/json",
   };
 
-  const endpoint = process.env.API_URL + `/graphql`;
+  const endpoint = process.env.API_URL + "/graphql";
 
   const options = {
     method: "POST",

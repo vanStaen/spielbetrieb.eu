@@ -1,4 +1,4 @@
-import { ObservableMap, action, makeObservable, observable } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 
 export class EventFormStore {
   eventId = null;
@@ -22,11 +22,10 @@ export class EventFormStore {
   fromDateError = null;
   isNewLocation = false;
   ageMin = 0;
-  hasDresscode = 0;
   isPrivate = false;
   forwardable = true;
   eventTags = [];
-  prices = [];
+  prices = [{ price: null, option: 0 }];
   lineUp = [];
   dresscodeDontTags = [];
   dresscodeDoTags = [];
@@ -74,8 +73,6 @@ export class EventFormStore {
       setIsNewLocation: action,
       ageMin: observable,
       setAgeMin: action,
-      hasDresscode: observable,
-      setHasDresscode: action,
       isPrivate: observable,
       setIsPrivate: action,
       forwardable: observable,
@@ -181,10 +178,6 @@ export class EventFormStore {
     this.ageMin = ageMin;
   };
 
-  setHasDresscode = (hasDresscode) => {
-    this.hasDresscode = hasDresscode;
-  };
-
   setForwardable = (forwardable) => {
     this.forwardable = forwardable;
   };
@@ -198,7 +191,7 @@ export class EventFormStore {
   };
 
   setPrices = (prices) => {
-    //Todo
+    // Todo
     this.prices = prices;
   };
 

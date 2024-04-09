@@ -26,7 +26,7 @@ export const Avatar = observer(() => {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      const res = await axios.post(process.env.API_URL + `/upload`, formData);
+      const res = await axios.post(process.env.API_URL + "/upload", formData);
       const mediaUrl = res.data.imageUrl;
       console.log(res.data);
       /* updateAvatar(mediaUrl)

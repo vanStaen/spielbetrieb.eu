@@ -20,13 +20,13 @@ export async function updateGender(gender) {
   };
 
   const response = await axios({
-    url: process.env.API_URL + `/graphql`,
+    url: process.env.API_URL + "/graphql",
     method: "POST",
     data: requestBody,
   });
   if ((response.status !== 200) & (response.status !== 201)) {
     notification.error({
-      message: `Unauthenticated!`,
+      message: "Unauthenticated!",
       placement: "bottomRight",
     });
     throw new Error("Unauthenticated!");

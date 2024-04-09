@@ -202,13 +202,13 @@ export const AdminUsers = () => {
                 >
                   <DeleteOutlined
                     style={{ cursor: "not-allowed" }}
-                    className={`admin__editLogo admin__disabled`}
+                    className={"admin__editLogo admin__disabled"}
                   />
                 </Tooltip>
               </>
             ) : (
               <>
-                <Tooltip title={`Suspend User`}>
+                <Tooltip title={"Suspend User"}>
                   <Typography.Link
                     disabled={record.isAdmin}
                     style={{ marginRight: 8 }}

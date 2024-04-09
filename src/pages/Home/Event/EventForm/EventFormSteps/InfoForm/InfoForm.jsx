@@ -120,7 +120,7 @@ export const InfoForm = observer((props) => {
     if (!eventFormStore.locationName && !eventFormStore.locationAddress) {
       showMapHandler(false);
     }
-  }, [eventFormStore.locationName, eventFormStore.locationAddress])
+  }, [eventFormStore.locationName, eventFormStore.locationAddress]);
 
   const descHandler = (e) => {
     const value = e.target.value;
@@ -129,10 +129,11 @@ export const InfoForm = observer((props) => {
 
   return (
     <div
-      className={`infoform__container  ${pageStore.selectedTheme === "light"
-        ? "lightColorTheme__Text"
-        : "darkColorTheme__Text"
-        }`}
+      className={`infoform__container  ${
+        pageStore.selectedTheme === "light"
+          ? "lightColorTheme__Text"
+          : "darkColorTheme__Text"
+      }`}
     >
       <div className="infoform__select">
         <Radio.Group
