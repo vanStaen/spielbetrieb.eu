@@ -19,6 +19,7 @@ import { Shop } from "./Shop/Shop";
 import { EventPage } from "./Event/EventPage/EventPage";
 import { EventForm } from "./Event/EventForm/EventForm";
 import { GalleryOverlay } from "../../components/GalleryOverlay/GalleryOverlay";
+import { spielplanStore } from "../../store/spielplanStore/spielplanStore";
 
 import "./Home.less";
 
@@ -58,7 +59,7 @@ export const Home = observer((props) => {
       case "spielplan":
         return <Spielplan />;
       case "eventpage":
-        return <EventPage />;
+        return <EventPage event={spielplanStore.selectedEvent} />;
       case "eventform":
         return <EventForm />;
       case "basket":
@@ -77,6 +78,8 @@ export const Home = observer((props) => {
         return "Error" + page;
     }
   };
+
+  console.log(spielplanStore.selectedEvent);
 
   return (
     <>

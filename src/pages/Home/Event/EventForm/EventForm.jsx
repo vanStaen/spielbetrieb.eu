@@ -123,9 +123,16 @@ export const EventForm = observer(() => {
         );
         tempStatusSteps[1] = "error";
         tempStatusSteps[3] = "error";
+      } else {
+        eventFormStore.setArtworksError(null);
+        tempStatusSteps[1] = "finish";
+        tempStatusSteps[3] = "process";
       }
-    } else {
-      tempStatusSteps[value] = "process";
+      if (tempStatusSteps[0] === "error") {
+        tempStatusSteps[3] = "error";
+      } else {
+        tempStatusSteps[3] = "process";
+      }
     }
     setFormStep(value);
     setStatusSteps(tempStatusSteps);
@@ -154,6 +161,7 @@ export const EventForm = observer(() => {
             status="error"
             onChange={onStepsChange}
             current={formStep}
+            className="eventform__steps"
             items={[
               {
                 title: "General Infos",

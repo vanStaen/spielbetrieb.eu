@@ -29,11 +29,11 @@ import artwork3 from "../../../../img/artworks/ak01.jpg";
 
 import "./EventPage.less";
 
-export const EventPage = observer(() => {
+export const EventPage = observer((props) => {
   const { t } = useTranslation();
   const params = useParams();
   const navigate = useNavigate();
-  const event = spielplanStore.selectedEvent || null;
+  const { event } = props;
   const [startTour, setStartTour] = useState(false);
   const { Paragraph } = Typography;
 
@@ -60,7 +60,7 @@ export const EventPage = observer(() => {
   };
 
   useEffect(() => {
-    if (spielplanStore.selectedEvent === null) {
+    if (event === null) {
       spielplanStore.fetchTags();
       spielplanStore.fetchEventtypes();
       fetchEventData(params.id);
@@ -165,11 +165,10 @@ export const EventPage = observer(() => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${
-                    pageStore.selectedTheme === "light"
-                      ? "lightColorTheme__Text"
-                      : "darkColorTheme__Text"
-                  }`}
+                  ${pageStore.selectedTheme === "light"
+            ? "lightColorTheme__Text"
+            : "darkColorTheme__Text"
+          }`}
       >
         <ArrowLeftOutlined />
       </div>
@@ -238,7 +237,7 @@ export const EventPage = observer(() => {
                   <div className="eventpage__subInfo">
                     <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
                     {dayjs(event.fromDate).format("dddd") ===
-                    dayjs(event.untilDate).format("dddd") ? (
+                      dayjs(event.untilDate).format("dddd") ? (
                       <>
                         {dayjs(event.fromDate).format("HH:mm")}{" "}
                         {t("spielplan.until")}{" "}
@@ -288,7 +287,7 @@ export const EventPage = observer(() => {
                   </div>
                   <div className="eventpage__subInfo">
                     <a
-                      href={`https://www.google.com/maps?q=${event.locationName.replaceAll(" *", "+")}+${event.locationAddress.replaceAll(" *", "+")}&ll=${event.locationCoordinates.replaceAll(" *", "")}`}
+                      href={`https://www.google.com/maps?q=${event.locationName?.replaceAll(" *", "+")}+${event.locationAddress?.replaceAll(" *", "+")}&ll=${event.locationCoordinates?.replaceAll(" *", "")}`}
                       target="_blank"
                       rel="noreferrer"
                     >

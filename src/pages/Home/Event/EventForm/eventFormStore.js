@@ -30,6 +30,7 @@ export class EventFormStore {
   dresscodeDontTags = [];
   dresscodeDoTags = [];
   hasDresscode = false;
+  links = [];
 
   constructor() {
     makeObservable(this, {
@@ -91,6 +92,8 @@ export class EventFormStore {
       setDresscodeDontTags: action,
       artworksError: observable,
       setArtworksError: action,
+      links: observable,
+      setLinks: action,
     });
   }
 
@@ -209,6 +212,10 @@ export class EventFormStore {
 
   setDresscodeDontTags = (dresscodeDontTags) => {
     this.dresscodeDontTags = dresscodeDontTags;
+  };
+
+  setLinks = (links) => {
+    this.links = links;
   };
 }
 

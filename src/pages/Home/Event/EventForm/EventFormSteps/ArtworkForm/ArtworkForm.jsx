@@ -37,6 +37,7 @@ export const ArtworkForm = observer(() => {
       tempArtworkUrlArray.push(url);
       eventFormStore.setArtworks(tempArtworkArray);
       eventFormStore.setArtworksUrl(tempArtworkUrlArray);
+      eventFormStore.setArtworksError(null);
     }
     setIsUploading(false);
   };

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 
 import { eventFormStore } from "../../eventFormStore";
+import { pageStore } from "../../../../../../store/pageStore/pageStore";
+import { EventPage } from "../../../EventPage/EventPage";
 
 import "./PublishForm.less";
 
@@ -21,6 +23,7 @@ export const PublishForm = observer(() => {
       setErrors(true);
     }
   }, []);
+
   const onFinish = async () => {
     setLoading(true);
     const dataObject = await form.validateFields();
@@ -56,25 +59,44 @@ export const PublishForm = observer(() => {
     reload();
   };
 
+  const event = {
+    attendess: null,
+    description: eventFormStore.description,
+    eventTags: eventFormStore.eventTags,
+    eventtype: eventFormStore.eventtype,
+    fromDate: eventFormStore.fromDate,
+    links: eventFormStore.links,
+    location: eventFormStore.locationId,
+    locationAddress: eventFormStore.locationAddress,
+    locationCoordinates: eventFormStore.locationCoordinates,
+    locationName: eventFormStore.locationName,
+    pictures: eventFormStore.artworks,
+    title: eventFormStore.title,
+    untilDate: eventFormStore.untilDate,
+  };
+
   return (
-    <div className="publishform__container">
-      {errors ? (
+    <div
+      className={`publishform__container  ${pageStore.selectedTheme === "light"
+        ? "lightColorTheme__Text"
+        : "darkColorTheme__Text"
+        }`}>
+      {errors && (
         <>
-          {eventFormStore.artworksError && "Artworks are mising"}
-          {eventFormStore.eventtypeError && "Event type is mising"}
-          {eventFormStore.titleError && "You need to name your event"}
-          {eventFormStore.fromDateError &&
-            "There is an error with the event dates"}
-          {eventFormStore.locationAddressError &&
-            "There is an error with the location address"}
-          {eventFormStore.locationNameError &&
-            "There is an error with the location name"}
-          {eventFormStore.descriptionError &&
-            "There is an error with the event description"}
+          {eventFormStore.artworksError && <div className="publishform__error">{eventFormStore.artworksError}</div>}
+          {eventFormStore.eventtypeError && <div className="publishform__error">{eventFormStore.eventtypeError}</div>}
+          {eventFormStore.titleError && <div className="publishform__error">{eventFormStore.titleError}</div>}
+          {eventFormStore.fromDateError && <div className="publishform__error">{eventFormStore.fromDateError}</div>}
+          {eventFormStore.locationAddressError && <div className="publishform__error">{eventFormStore.locationAddressError}</div>}
+          {eventFormStore.locationNameError && <div className="publishform__error">{eventFormStore.locationNameError}</div>}
+          {eventFormStore.descriptionError && <div className="publishform__error">{eventFormStore.descriptionError}</div>}
         </>
-      ) : (
-        <>Publish</>
       )}
+
+      {!eventFormStore.locationName && <div className="publishform__info">The event location will be shown as <i>'To be announced'</i></div>}
+      <div className="pubishform__lineSpacer"></div>
+      {errors && <EventPage event={event} />}
+
     </div>
   );
 });
