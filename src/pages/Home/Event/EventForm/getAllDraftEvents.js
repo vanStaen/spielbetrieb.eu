@@ -2,7 +2,7 @@ export async function getAllEvents() {
   const graphqlQuery = {
     query: `
             {
-              getAllEvents { 
+              getAllDraftEvents { 
                 _id,
                 eventtype,
                 title,

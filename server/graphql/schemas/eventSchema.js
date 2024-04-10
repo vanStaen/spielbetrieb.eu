@@ -69,6 +69,7 @@ input EventInputData {
 export const EventQueries = `
     getEvent(eventId: Int): Event
     getAllEvents: [Event]
+    getAllDraftEvents: [Event]
     getAllPublicEvents(fromDate: Float!, untilDate: Float!, locations: [Int], eventtypes: [Int], tags: [Int]): [Event]
     `;
 

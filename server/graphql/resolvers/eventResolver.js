@@ -30,6 +30,22 @@ export const eventResolver = {
     });
   },
 
+
+  // getAllDraftEvents
+  async getAllDraftEvents(args, req) {
+    if (!req.isAuth) {
+      throw new Error("Unauthorized!");
+    }
+    return await Event.findAll({
+      where: {
+        userId: req.userId,
+        isDraft: true,
+      },
+      order: [["_id", "ASC"]]
+    });
+  },
+
+
   // getAllPublicEvents
   async getAllPublicEvents(args, req) {
     let fromDate = args.fromDate;

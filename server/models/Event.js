@@ -110,7 +110,7 @@ export const Event = sequelize.sequelize.define("event", {
   },
   isDraft: {
     type: DataTypes.BOOLEAN,
-    defaultValue: false,
+    defaultValue: true,
   },
   isPartnerEvent: {
     type: DataTypes.BOOLEAN,
