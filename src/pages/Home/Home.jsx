@@ -79,8 +79,6 @@ export const Home = observer((props) => {
     }
   };
 
-  console.log(spielplanStore.selectedEvent);
-
   return (
     <>
       <LanguageDropDown />
