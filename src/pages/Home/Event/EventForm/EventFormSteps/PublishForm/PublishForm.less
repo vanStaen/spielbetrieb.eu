@@ -1,21 +1,35 @@
 .publishform__container {
     width: 100%;
     max-width: 1080px;
+    font-size: 16px;
 
     .publishform__error {
         color: firebrick;
         filter: brightness(2);
-        font-size: 16px;
-        margin-top: 8px;
+        margin-bottom: 8px;
     }
 
     .publishform__info {
-        font-size: 16px;
-        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+}
+
+.pubishform__spacer {
+    margin: 16px 0;
+    width: 100%;
+    border-top: 1px solid rgba(var(--themeFontColor), .25);
+}
+
+@media only screen and (max-width: 720px) {
+    .publishform__container {
+        width: calc(100% - 32px);
+        margin: 16px 0;
+        font-size: 14px;
+        text-align: center;
     }
 
-    .pubishform__lineSpacer {
-        margin: 16px 0;
-        border: 1px solid rgba(var(--themeFontColor), .1);
+    .pubishform__spacer {
+        width: calc(100% - 32px);
+        border-top: 1px solid rgba(var(--themeFontColor), .5);
     }
 }

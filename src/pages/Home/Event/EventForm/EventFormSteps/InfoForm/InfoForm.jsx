@@ -59,6 +59,13 @@ export const InfoForm = observer((props) => {
     }
   };
 
+  const disabledDate = (current, { from }) => {
+    if (from) {
+      return Math.abs(current.diff(from, "days")) >= 7;
+    }
+    return false;
+  };
+
   const dateHandler = (dates) => {
     if (dates[0].valueOf() >= dates[1].valueOf()) {
       eventFormStore.setFromDateError(
@@ -69,6 +76,7 @@ export const InfoForm = observer((props) => {
     } else {
       eventFormStore.setFromDateError(null);
     }
+    console.log(dates);
     eventFormStore.setFromDate(dates[0]);
     eventFormStore.setUntilDate(dates[1]);
   };
@@ -129,11 +137,10 @@ export const InfoForm = observer((props) => {
 
   return (
     <div
-      className={`infoform__container  ${
-        pageStore.selectedTheme === "light"
+      className={`infoform__container  ${pageStore.selectedTheme === "light"
           ? "lightColorTheme__Text"
           : "darkColorTheme__Text"
-      }`}
+        }`}
     >
       <div className="infoform__select">
         <Radio.Group
@@ -169,6 +176,7 @@ export const InfoForm = observer((props) => {
           needConfirm={false}
           placeholder={["Event start-date", "Event end-date"]}
           onChange={dateHandler}
+          disabledDate={disabledDate}
           value={[eventFormStore.fromDate, eventFormStore.untilDate]}
         />
         <div className="infoform__error">

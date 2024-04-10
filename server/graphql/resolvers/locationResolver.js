@@ -43,7 +43,7 @@ export const locationResolver = {
         links: args.locationInput.links,
         address: args.locationInput.address,
         coordinates: args.locationInput.coordinates,
-        validated: validated,
+        validated,
         reviews: args.locationInput.reviews,
       });
       return await location.save();

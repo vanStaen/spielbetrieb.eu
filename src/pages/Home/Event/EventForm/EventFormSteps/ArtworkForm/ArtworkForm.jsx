@@ -122,7 +122,7 @@ export const ArtworkForm = observer(() => {
                 </div>
                 <div>
                   Click, or drag here an image file <br />
-                  <i>jpg and png files only | max 10mb</i>
+                  <i>jpg and png files only | max 10mb</i>
                 </div>
               </>
             ) : (

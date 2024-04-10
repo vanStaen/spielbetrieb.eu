@@ -40,7 +40,7 @@ export const artistResolver = {
         name: args.artistInput.name,
         pictures: args.artistInput.pictures,
         links: args.artistInput.links,
-        validated: validated,
+        validated,
         reviews: args.artistInput.reviews,
       });
       return await artist.save();

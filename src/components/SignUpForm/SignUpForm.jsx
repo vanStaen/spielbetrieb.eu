@@ -31,6 +31,7 @@ import { pageStore } from "../../store/pageStore/pageStore";
 import "./SignUpForm.css";
 
 dayjs.extend(isSameOrBefore);
+
 const dateFormat = "DD/MM/YYYY";
 const dateEighteenYearsAgo = dayjs().subtract(18, "year");
 const dateHundredYearsAgo = dayjs().subtract(100, "year");
