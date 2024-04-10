@@ -79,7 +79,6 @@ export const EventForm = observer(() => {
     await fetchLocations();
     await fetchtags();
     setIsLoading(false);
-    setShowDraftModal(true);
   };
 
   useEffect(() => {
