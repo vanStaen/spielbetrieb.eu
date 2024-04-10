@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import { UserOutlined } from "@ant-design/icons";
-import { Button, Steps } from "antd";
+import { Steps } from "antd";
 
 import errorLogo from "../../../../img/logos/errorLogo.png";
 import { HelpButtons } from "../../../../components/HelpButtons/HelpButtons";
@@ -17,13 +17,13 @@ import { getTags } from "../../../../store/spielplanStore/getTags";
 import { getAllEventtypes } from "../../../../store/spielplanStore/getAllEventtypes";
 import { isMobileCheck } from "../../../../helpers/dev/checkMobileTablet";
 import { nameParser } from "../../../../helpers/dev/nameParser";
+import { EventFormNavigation } from "./EventFormNavigation/EventFormNavigation";
 
 import "./EventForm.less";
 
 export const EventForm = observer(() => {
   const language = pageStore.selectedLanguage?.toLowerCase();
   const [startTour, setStartTour] = useState(false);
-  const [formStep, setFormStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [locations, setLocations] = useState(null);
   const [tags, setTags] = useState(null);
@@ -78,8 +78,8 @@ export const EventForm = observer(() => {
 
   const onStepsChange = (value) => {
     const tempStatusSteps = statusSteps;
-    // oldStep (=formStep) should get validated and get 'Error' or 'Finish'
-    if (formStep === 0) {
+    // oldStep (=eventFormStore.formStep) should get validated and get 'Error' or 'Finish'
+    if (eventFormStore.formStep === 0) {
       if (
         eventFormStore.eventtype === null ||
         eventFormStore.title === null ||
@@ -89,7 +89,7 @@ export const EventForm = observer(() => {
         eventFormStore.fromDate === null ||
         eventFormStore.toDate === null
       ) {
-        tempStatusSteps[formStep] = "error";
+        tempStatusSteps[eventFormStore.formStep] = "error";
         eventFormStore.eventtype === null &&
           eventFormStore.setEventtypeError("Please select an event type!");
         eventFormStore.title === null &&
@@ -103,16 +103,16 @@ export const EventForm = observer(() => {
             "Please input start and end time of your event!",
           );
       } else {
-        tempStatusSteps[formStep] = "finish";
+        tempStatusSteps[eventFormStore.formStep] = "finish";
       }
-    } else if (formStep === 1) {
+    } else if (eventFormStore.formStep === 1) {
       if (eventFormStore.artworks.length === 0) {
         eventFormStore.setArtworksError(
           "Please upload at least one artwork for your event!",
         );
-        tempStatusSteps[formStep] = "error";
+        tempStatusSteps[eventFormStore.formStep] = "error";
       } else {
-        tempStatusSteps[formStep] = "finish";
+        tempStatusSteps[eventFormStore.formStep] = "finish";
       }
     }
     // newStep (=value)
@@ -134,25 +134,10 @@ export const EventForm = observer(() => {
         tempStatusSteps[3] = "process";
       }
     }
-    setFormStep(value);
+    eventFormStore.setFormStep(value);
     setStatusSteps(tempStatusSteps);
   };
 
-  const naviguateHandler = (next) => {
-    if (next && formStep === 3) {
-      console.error("there is only 4 steps");
-      return;
-    } else if (!next && formStep === 0) {
-      console.error("it was already the first step");
-      return;
-    }
-    const newStep = next ? formStep + 1 : formStep - 1;
-    onStepsChange(newStep);
-  };
-
-  const publishHandler = () => {
-    console.log("PUBLISH");
-  };
 
   return (
     <>
@@ -164,7 +149,7 @@ export const EventForm = observer(() => {
             type={isMobileCheck() ? "inline" : "default"}
             status="error"
             onChange={onStepsChange}
-            current={formStep}
+            current={eventFormStore.formStep}
             className="eventform__steps"
             items={[
               {
@@ -186,12 +171,12 @@ export const EventForm = observer(() => {
             ]}
           />
           <div className="eventform__spacer"></div>
-          {formStep === 0 && (
+          {eventFormStore.formStep === 0 && (
             <InfoForm eventtypes={eventtypes} locations={locations} />
           )}
-          {formStep === 1 && <ArtworkForm />}
-          {formStep === 2 && <OptionForm tags={tags} />}
-          {formStep === 3 && <PublishForm />}
+          {eventFormStore.formStep === 1 && <ArtworkForm />}
+          {eventFormStore.formStep === 2 && <OptionForm tags={tags} />}
+          {eventFormStore.formStep === 3 && <PublishForm />}
         </div>
       ) : (
         <div className="eventform__singupfirst">
@@ -214,35 +199,7 @@ export const EventForm = observer(() => {
           </div>
         </div>
       )}
-      <div className="eventform__navigation">
-        <Button
-          className="eventform__navButtons"
-          onClick={() => {
-            naviguateHandler(false);
-          }}
-          disabled={formStep === 0}
-        >
-          Previous
-        </Button>
-        {formStep === 3 ? (
-          <Button
-            className="eventform__publishButton"
-            onClick={publishHandler()}
-            disabled={eventFormStore.errors}
-          >
-            Publish
-          </Button>
-        ) : (
-          <Button
-            className="eventform__navButtons"
-            onClick={() => {
-              naviguateHandler(true);
-            }}
-          >
-            Next
-          </Button>
-        )}
-      </div>
+      {authStore.hasAccess && <EventFormNavigation onStepsChange={onStepsChange} />}
     </>
   );
 });

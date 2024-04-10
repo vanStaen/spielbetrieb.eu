@@ -1,6 +1,7 @@
 import { action, makeObservable, observable } from "mobx";
 
 export class EventFormStore {
+  formStep = 0;
   errors = false;
   eventId = null;
   artworks = [];
@@ -35,6 +36,8 @@ export class EventFormStore {
 
   constructor() {
     makeObservable(this, {
+      formStep: observable,
+      setFormStep: action,
       errors: observable,
       setErrors: action,
       eventId: observable,
@@ -99,6 +102,10 @@ export class EventFormStore {
       setLinks: action,
     });
   }
+
+  setFormStep = (formStep) => {
+    this.formStep = formStep;
+  };
 
   setErrors = (errors) => {
     this.errors = errors;
