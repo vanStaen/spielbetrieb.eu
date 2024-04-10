@@ -131,7 +131,7 @@ export const AdminEvents = () => {
       title: "Description",
       dataIndex: "description",
       key: "description",
-      width: "200px",
+      width: "80px",
       render: (_, { description }) => (
         <Typography.Text style={{ width: 200 }} ellipsis>
           {description}
@@ -234,9 +234,16 @@ export const AdminEvents = () => {
       render: (_, { isDraft }) => (isDraft ? "✅" : "✖️"),
     },
     {
-      title: <span style={{ opacity: ".2" }}>Edit</span>,
-      dataIndex: "edit",
-      width: "110px",
+      title: "Validated",
+      dataIndex: "validated",
+      key: "validated",
+      align: "center",
+      width: "80px",
+      render: (_, { validated }) => (validated ? "✅" : "✖️"),
+    },
+    {
+      title: <span style={{ opacity: ".2" }}>Actions</span>,
+      dataIndex: "action",
       align: "center",
       render: (_, record) => {
         return (
@@ -293,7 +300,7 @@ export const AdminEvents = () => {
               pagination={false}
               size="small"
               scroll={{
-                x: 1400,
+                x: 1000,
               }}
             />
           </Form>

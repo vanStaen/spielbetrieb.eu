@@ -40,6 +40,7 @@ export const eventResolver = {
       where: {
         private: false,
         isDraft: false,
+        validated: true,
         fromDate: {
           [Op.between]: [fromDate, args.untilDate],
         },
@@ -80,6 +81,7 @@ export const eventResolver = {
         allowAnonymous: args.eventInput.allowAnonymous,
         isDraft: args.eventInput.isDraft,
         isPartnerEvent: args.eventInput.isPartnerEvent,
+        validated: args.eventInput.validated,
         admin: [req.userId],
       });
       return await event.save();

@@ -28,6 +28,7 @@ type Event {
     allowAnonymous: Boolean!
     isDraft: Boolean!
     isPartnerEvent: Boolean!
+    validated: Boolean!
     createdAt: Float!
     updatedAt: Float!
     user: User
@@ -62,6 +63,7 @@ input EventInputData {
     allowAnonymous: Boolean
     isDraft: Boolean
     isPartnerEvent: Boolean
+    validated: Boolean
 }`;
 
 export const EventQueries = `

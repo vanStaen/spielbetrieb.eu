@@ -116,6 +116,10 @@ export const Event = sequelize.sequelize.define("event", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
+  validated: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 User.hasMany(Event);
