@@ -103,7 +103,7 @@ export const OptionForm = observer((props) => {
 
   const hasDresscodeHandler = (e) => {
     const value = e.target.value;
-    value && setShowDresscodeTags(true);
+    setShowDresscodeTags(!!value);
     eventFormStore.setHasDresscode(value);
   };
 

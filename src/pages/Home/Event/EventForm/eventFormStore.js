@@ -31,7 +31,7 @@ export class EventFormStore {
   lineUp = [];
   dresscodeDontTags = [];
   dresscodeDoTags = [];
-  hasDresscode = false;
+  hasDresscode = 0;
   links = [];
 
   constructor() {

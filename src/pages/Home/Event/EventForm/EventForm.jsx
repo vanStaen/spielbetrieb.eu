@@ -216,7 +216,7 @@ export const EventForm = observer(() => {
           </div>
         </div>
       )}
-      {authStore.hasAccess && (
+      {authStore.hasAccess && !showDraftModal && (
         <EventFormNavigation onStepsChange={onStepsChange} />
       )}
     </>

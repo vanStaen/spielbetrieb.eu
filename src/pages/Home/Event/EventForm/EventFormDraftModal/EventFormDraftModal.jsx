@@ -52,7 +52,7 @@ export const EventFormDraftModal = observer((props) => {
 
   const draftElement = drafts?.map((draft) => {
     const { _id, title, eventtype, createdAt } = draft;
-    const created = dayjs(createdAt).format("DD/MM/YY HH:mm");
+    const created = dayjs(createdAt).format("DD/MM/YYYY HH:mm");
     const eventtypeString = eventtypes.filter((e) => e.value === eventtype)[0]
       .label;
     return (
@@ -75,7 +75,7 @@ export const EventFormDraftModal = observer((props) => {
         <div className="draftmodal__titleinfo">
           <div className="draftmodal__eventTitle">{title}</div>
           <div className="draftmodal__info">
-            {eventtypeString}, {created}
+            {eventtypeString}, added the {created}
           </div>
         </div>
         <DeleteOutlined
