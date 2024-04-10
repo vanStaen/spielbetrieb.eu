@@ -138,7 +138,6 @@ export const EventForm = observer(() => {
     setStatusSteps(tempStatusSteps);
   };
 
-
   return (
     <>
       <HelpButtons setStartTour={setStartTour} />
@@ -199,7 +198,9 @@ export const EventForm = observer(() => {
           </div>
         </div>
       )}
-      {authStore.hasAccess && <EventFormNavigation onStepsChange={onStepsChange} />}
+      {authStore.hasAccess && (
+        <EventFormNavigation onStepsChange={onStepsChange} />
+      )}
     </>
   );
 });

@@ -27,10 +27,10 @@ export async function addEvent(dataObject) {
   };
 
   const response = await fetch(endpoint, options);
-  const data = await response.json();
+  const responseJson = await response.json();
 
-  if (data.errors) {
-    return data.errors[0];
+  if (responseJson.errors) {
+    return responseJson.errors[0];
   }
-  return data.addEvent;
+  return responseJson.data.addEvent;
 }

@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
-import { Radio, Input, DatePicker, Row, Col, AutoComplete } from "antd";
+import {
+  Radio,
+  Input,
+  DatePicker,
+  Row,
+  Col,
+  AutoComplete,
+  message,
+  notification,
+} from "antd";
 import { AimOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 
 import { eventFormStore } from "../../eventFormStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import { GoogleMap } from "./GoogleMap";
+import { addEvent } from "../../addEvent";
 
 import "./InfoForm.less";
 
@@ -32,6 +42,29 @@ export const InfoForm = observer((props) => {
     };
   });
 
+  const createDraftEvent = async () => {
+    if (eventFormStore.eventId) {
+      return;
+    }
+    const dataObject = {
+      eventtype: eventFormStore.eventtype,
+      title: eventFormStore.title,
+    };
+    try {
+      const res = await addEvent(dataObject);
+      eventFormStore.setEventId(res._id);
+      message.success("Draft version saved!");
+    } catch (e) {
+      notification.error({
+        message: "Error!",
+        description: e.toString(),
+        duration: 0,
+        placement: "bottomRight",
+        className: "customNotification",
+      });
+    }
+  };
+
   const eventtypeHandler = (e) => {
     const value = e.target.value;
     if (value === "more") {
@@ -39,6 +72,9 @@ export const InfoForm = observer((props) => {
     } else {
       eventFormStore.setEventtype(value);
       eventFormStore.setEventtypeError(null);
+      if (eventFormStore.eventtype && eventFormStore.title) {
+        createDraftEvent();
+      }
     }
   };
 
@@ -54,8 +90,12 @@ export const InfoForm = observer((props) => {
     }
     if (!eventFormStore.eventtype) {
       eventFormStore.setEventtypeError("Please select an event type!");
-    } else {
-      // Create event as Draft
+    }
+  };
+
+  const titleBlurHandler = () => {
+    if (eventFormStore.eventtype && eventFormStore.title) {
+      createDraftEvent();
     }
   };
 
@@ -137,10 +177,11 @@ export const InfoForm = observer((props) => {
 
   return (
     <div
-      className={`infoform__container  ${pageStore.selectedTheme === "light"
+      className={`infoform__container  ${
+        pageStore.selectedTheme === "light"
           ? "lightColorTheme__Text"
           : "darkColorTheme__Text"
-        }`}
+      }`}
     >
       <div className="infoform__select">
         <Radio.Group
@@ -160,6 +201,7 @@ export const InfoForm = observer((props) => {
         <Input
           placeholder="Name of the event"
           onChange={titleHander}
+          onBlur={titleBlurHandler}
           value={eventFormStore.title}
         />
         <div className="infoform__error">

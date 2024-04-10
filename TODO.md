@@ -49,4 +49,6 @@
 - [ ] Filter event based on city/geolocation
 - [ ] Valid form with enter, cancel with esc
 - [ ] Get own google api key
+  - [ ] https://developers.google.com/maps/documentation/geocoding/overview
+  - [ ] https://developers.google.com/maps/documentation/javascript
 - [ ] translate lib in database : https://kennedyihe.com/translate-your-react-app-from-a-database/
