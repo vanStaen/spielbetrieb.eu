@@ -16,7 +16,7 @@ import dayjs from "dayjs";
 import { eventFormStore } from "../../eventFormStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import { GoogleMap } from "./GoogleMap";
-import { addEvent } from "../../addEvent";
+import { addEvent } from "../../../../../Admin/AdminEvents/addEvent";
 
 import "./InfoForm.less";
 

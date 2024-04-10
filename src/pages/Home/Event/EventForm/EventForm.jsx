@@ -18,16 +18,19 @@ import { getAllEventtypes } from "../../../../store/spielplanStore/getAllEventty
 import { isMobileCheck } from "../../../../helpers/dev/checkMobileTablet";
 import { nameParser } from "../../../../helpers/dev/nameParser";
 import { EventFormNavigation } from "./EventFormNavigation/EventFormNavigation";
+import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinnner";
+import { EventFormDraftModal } from "./EventFormDraftModal/EventFormDraftModal";
 
 import "./EventForm.less";
 
 export const EventForm = observer(() => {
   const language = pageStore.selectedLanguage?.toLowerCase();
   const [startTour, setStartTour] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [locations, setLocations] = useState(null);
   const [tags, setTags] = useState(null);
   const [eventtypes, setEventtypes] = useState(null);
+  const [showDraftModal, setShowDraftModal] = useState(false);
 
   const [statusSteps, setStatusSteps] = useState([
     "process",
@@ -70,10 +73,17 @@ export const EventForm = observer(() => {
     setTags(tags);
   };
 
+  const fetchAll = async () => {
+    setIsLoading(true);
+    await fetchEventtypes();
+    await fetchLocations();
+    await fetchtags();
+    setIsLoading(false);
+    setShowDraftModal(true);
+  };
+
   useEffect(() => {
-    fetchEventtypes();
-    fetchLocations();
-    fetchtags();
+    fetchAll();
   }, [pageStore.selectedLanguage]);
 
   const onStepsChange = (value) => {
@@ -138,8 +148,16 @@ export const EventForm = observer(() => {
     setStatusSteps(tempStatusSteps);
   };
 
-  return (
+  return isLoading ? (
+    <div className="eventform__singupfirst">
+      <CustomSpinner text="Loading" />
+    </div>
+  ) : (
     <>
+      <EventFormDraftModal
+        showDraftModal={showDraftModal}
+        setShowDraftModal={setShowDraftModal}
+      />
       <HelpButtons setStartTour={setStartTour} />
       {authStore.hasAccess ? (
         <div className="eventform__container">

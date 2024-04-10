@@ -30,7 +30,6 @@ export const eventResolver = {
     });
   },
 
-
   // getAllDraftEvents
   async getAllDraftEvents(args, req) {
     if (!req.isAuth) {
@@ -41,10 +40,9 @@ export const eventResolver = {
         userId: req.userId,
         isDraft: true,
       },
-      order: [["_id", "ASC"]]
+      order: [["_id", "ASC"]],
     });
   },
-
 
   // getAllPublicEvents
   async getAllPublicEvents(args, req) {

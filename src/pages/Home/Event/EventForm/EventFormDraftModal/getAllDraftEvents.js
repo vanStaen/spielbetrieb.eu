@@ -1,4 +1,4 @@
-export async function getAllEvents() {
+export async function getAllDraftEvents() {
   const graphqlQuery = {
     query: `
             {
@@ -54,5 +54,5 @@ export async function getAllEvents() {
   if (data.errors) {
     return data.errors[0];
   }
-  return data.data.getAllEvents;
+  return data.data.getAllDraftEvents;
 }

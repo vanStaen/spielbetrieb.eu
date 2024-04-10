@@ -1,0 +1,71 @@
+.eventform__draftModal {
+    font-family: "Roboto", Sans-serif;
+
+    .draftmodal__select {
+        color: black;
+        font-size: 16px;
+
+        .draftmodal__element {
+            background-color: rgba(white, .75);
+            color: black;
+            border: 1px solid black;
+            padding: 4px 8px;
+            margin: 0 0 8px 0;
+            cursor: pointer;
+            border-radius: 5px;
+
+            .draftmodal__createdDate {
+                opacity: .25;
+                padding-left: 4px;
+                font-size: 14px;
+            }
+
+            &:hover {
+                background-color: rgba(225, 207, 187, 1) !important;
+            }
+
+            .draftmodal__elementDelete {
+                padding-top: 4px;
+                position: absolute;
+                right: 32px;
+
+                &:hover {
+                    color: rgba(firebrick, 1) !important;
+                }
+            }
+
+        }
+    }
+
+    .draftmodal__footerContainer {
+        margin-bottom: 16px;
+        text-align: center;
+
+        .draftmodal__footerOr {
+            padding-top: 8px;
+            padding-bottom: 16px;
+            opacity: .55;
+
+            .draftmodal__footerOrLine {
+                display: inline-flex;
+                border-top: 1px solid rgba(white, .5);
+                width: 40%;
+                margin: 0 8px 4px 8px;
+            }
+
+            .draftmodal__footerOrText {
+                display: inline-flex;
+            }
+        }
+
+        .draftmodal__footerButton {
+            margin-left: 8px;
+
+            &:hover {
+                border: rgba(black, 1) !important;
+                color: rgba(black, 1) !important;
+                background-color: rgba(225, 207, 187, 1) !important;
+            }
+        }
+    }
+}
