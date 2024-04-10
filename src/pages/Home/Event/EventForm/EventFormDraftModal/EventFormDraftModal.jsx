@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
-import { Modal, Button } from "antd";
+import { Modal, Button, message } from "antd";
 import { useTranslation } from "react-i18next";
 import { DeleteOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
@@ -8,6 +8,7 @@ import dayjs from "dayjs";
 import { deleteEvent } from "../../../../Admin/AdminEvents/deleteEvent";
 import { getAllDraftEvents } from "./getAllDraftEvents";
 import { eventFormStore } from "../eventFormStore";
+import { pageStore } from "../../../../../store/pageStore/pageStore";
 
 import "./EventFormDraftModal.less";
 
@@ -15,6 +16,7 @@ export const EventFormDraftModal = observer((props) => {
   const { t } = useTranslation();
   const { showDraftModal, setShowDraftModal, eventtypes } = props;
   const [drafts, setDrafts] = useState(null);
+  const [draftIdToDelete, setDraftIdToDelete] = useState(null);
 
   const fetchDrafts = async () => {
     const drafts = await getAllDraftEvents();
@@ -22,14 +24,23 @@ export const EventFormDraftModal = observer((props) => {
     setShowDraftModal(!!drafts.length);
   };
 
-  const deleteDraftHandler = async (id) => {
-    // TODO (STYLING)
-    await deleteEvent(id);
-    fetchDrafts();
+  const deleteDraftHandler = (id) => {
+    setDraftIdToDelete(id);
+    setTimeout(() => {
+      setDraftIdToDelete(null);
+    }, "3000");
+  };
+
+  const confirmDeleteDraftHandler = async () => {
+    if (draftIdToDelete) {
+      await deleteEvent(draftIdToDelete);
+      message.info("Draft deleted!");
+      fetchDrafts();
+    }
   };
 
   const selectDraftHandler = (draft) => {
-    // TODO
+    // TODO: add all info
     eventFormStore.setTitle(draft.title);
     eventFormStore.setEventtype(draft.eventtype);
     setShowDraftModal(false);
@@ -50,24 +61,37 @@ export const EventFormDraftModal = observer((props) => {
         className="draftmodal__element"
         key={_id}
       >
-        <div className="draftmodal__eventTitle">{title}</div>
-        <div className="draftmodal__info">
-          {eventtypeString}, {created}
-          <DeleteOutlined
-            className="draftmodal__elementDelete"
+        {draftIdToDelete === _id && (
+          <div
+            className="darftmodal__confirmDeleteTextOver"
             onClick={(event) => {
               event.stopPropagation();
-              deleteDraftHandler(_id);
+              confirmDeleteDraftHandler();
             }}
-          />
+          >
+            Confirm deletion?
+          </div>
+        )}
+        <div className="draftmodal__titleinfo">
+          <div className="draftmodal__eventTitle">{title}</div>
+          <div className="draftmodal__info">
+            {eventtypeString}, {created}
+          </div>
         </div>
+        <DeleteOutlined
+          className="draftmodal__delete"
+          onClick={(event) => {
+            event.stopPropagation();
+            deleteDraftHandler(_id);
+          }}
+        />
       </div>
     );
   });
 
   return (
     <Modal
-      title={<div className="draftmodal__title">Finish one of your draft?</div>}
+      title={<div className="draftmodal__title">Resume work on a draft?</div>}
       open={showDraftModal}
       onCancel={() => setShowDraftModal(false)}
       footer={
@@ -81,12 +105,12 @@ export const EventFormDraftModal = observer((props) => {
             onClick={() => setShowDraftModal(false)}
             className="draftmodal__footerButton"
           >
-            New Event
+            Create a New Event
           </Button>
         </div>
       }
       centered={true}
-      className="eventform__draftModal"
+      className={`eventform__draftModal ${pageStore.selectedTheme === "light" ? "draftmodal__backgroundLight" : "draftmodal__backgroundDark"}`}
     >
       <div className="draftmodal__select">{draftElement}</div>
     </Modal>

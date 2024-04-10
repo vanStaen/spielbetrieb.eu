@@ -53,7 +53,7 @@ export const InfoForm = observer((props) => {
     try {
       const res = await addEvent(dataObject);
       eventFormStore.setEventId(res._id);
-      message.success("Draft version saved!");
+      message.success("Draft saved!");
     } catch (e) {
       notification.error({
         message: "Error!",
