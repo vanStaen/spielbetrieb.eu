@@ -43,7 +43,9 @@ export const EventFormNavigation = observer((props) => {
     };
 
     const publishHandler = () => {
-        console.log("PUBLISH");
+        if (eventFormStore.errors) {
+            console.log("PUBLISH");
+        }
     };
 
     return <div className="eventform__navigation">
