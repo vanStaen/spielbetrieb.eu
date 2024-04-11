@@ -6,7 +6,13 @@ import { Radio, Select, InputNumber, Row, Col, Button } from "antd";
 import { eventFormStore } from "../../eventFormStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
-import { priceOptions, lineUpOptions, ageOptions, hasDresscode, yesNoOptions } from './optionFormData';
+import {
+  priceOptions,
+  lineUpOptions,
+  ageOptions,
+  hasDresscode,
+  yesNoOptions,
+} from "./optionFormData";
 
 import "./OptionForm.less";
 
@@ -15,7 +21,7 @@ export const OptionForm = observer((props) => {
 
   const tagsHandler = (value) => {
     eventFormStore.setEventTags(value);
-    //TODO: New tag process
+    // TODO: New tag process
     eventFormStore.eventId &&
       updateEvent(eventFormStore.eventId, {
         eventTags: value,
@@ -24,7 +30,7 @@ export const OptionForm = observer((props) => {
 
   const lineUpHandler = (value) => {
     eventFormStore.setLineUp(value);
-    //TODO: New line up process
+    // TODO: New line up process
     eventFormStore.eventId &&
       updateEvent(eventFormStore.eventId, {
         lineUp: value,
@@ -33,7 +39,7 @@ export const OptionForm = observer((props) => {
 
   const equipmentHandler = (value) => {
     eventFormStore.setEquipment(value);
-    //TODO: New equipment process
+    // TODO: New equipment process
     eventFormStore.eventId &&
       updateEvent(eventFormStore.eventId, {
         equipment: value,
@@ -106,10 +112,11 @@ export const OptionForm = observer((props) => {
 
   return (
     <div
-      className={`optionform__container  ${pageStore.selectedTheme === "light"
-        ? "lightColorTheme__Text"
-        : "darkColorTheme__Text"
-        }`}
+      className={`optionform__container  ${
+        pageStore.selectedTheme === "light"
+          ? "lightColorTheme__Text"
+          : "darkColorTheme__Text"
+      }`}
     >
       <div className="optionform__element">
         <div className="optionform__title">Tags</div>

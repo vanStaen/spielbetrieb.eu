@@ -228,7 +228,6 @@ export class EventFormStore {
     this.equipment = equipment;
   };
 
-
   setHasDresscode = (hasDresscode) => {
     this.hasDresscode = hasDresscode;
   };
