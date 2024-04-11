@@ -19,7 +19,11 @@ export const Artist = sequelize.sequelize.define("artist", {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: true,
   },
-  type: {
+  reviews: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: true,
+  },
+  artistType: {
     type: DataTypes.INTEGER,
     allowNull: true,
   },

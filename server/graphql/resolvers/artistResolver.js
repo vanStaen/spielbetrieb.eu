@@ -10,17 +10,10 @@ export const artistResolver = {
   },
 
   // getArtists(onlyValidated: Boolean): [Artist]
-  async getArtists(args) {
-    let options = {
+  async getArtists() {
+    return await Artist.findAll({
       order: [["name", "ASC"]],
-    };
-    if (args.onlyValidated) {
-      options = {
-        order: [["name", "ASC"]],
-        where: { validated: args.onlyValidated },
-      };
-    }
-    return await Artist.findAll(options);
+    });
   },
 
   // addArtist(artistInput: ArtistInputData!): Artist!
@@ -42,6 +35,7 @@ export const artistResolver = {
         links: args.artistInput.links,
         validated,
         reviews: args.artistInput.reviews,
+        artistType: args.artistInput.artistType,
       });
       return await artist.save();
     } catch (err) {
@@ -67,6 +61,7 @@ export const artistResolver = {
       "links",
       "validated",
       "reviews",
+      "artistType",
     ];
     updatableFields.forEach((field) => {
       if (field in args.artistInput) {

@@ -8,7 +8,6 @@ import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
 import {
   priceOptions,
-  lineUpOptions,
   ageOptions,
   hasDresscode,
   yesNoOptions,
@@ -17,7 +16,7 @@ import {
 import "./OptionForm.less";
 
 export const OptionForm = observer((props) => {
-  const { tags } = props;
+  const { tags, dresscodes, equipments, artists } = props;
 
   const tagsHandler = (value) => {
     eventFormStore.setEventTags(value);
@@ -198,7 +197,7 @@ export const OptionForm = observer((props) => {
                 allowClear
                 style={{ width: "100%" }}
                 placeholder="What should people wear?"
-                options={tags}
+                options={dresscodes}
                 onChange={dresscodeDoTagsHandler}
                 onFocus={() => eventFormStore.setDeactivateNav(true)}
                 onBlur={() => eventFormStore.setDeactivateNav(false)}
@@ -211,7 +210,7 @@ export const OptionForm = observer((props) => {
                 allowClear
                 style={{ width: "100%" }}
                 placeholder="What can't people wear?"
-                options={tags}
+                options={dresscodes}
                 onChange={dresscodeDontTagsHandler}
                 onFocus={() => eventFormStore.setDeactivateNav(true)}
                 onBlur={() => eventFormStore.setDeactivateNav(false)}
@@ -228,7 +227,7 @@ export const OptionForm = observer((props) => {
           allowClear
           style={{ width: "100%" }}
           placeholder="Line Up of your event, if any"
-          options={lineUpOptions}
+          options={artists}
           onChange={lineUpHandler}
           value={eventFormStore.lineUp}
           filterOption={(inputValue, option) =>
@@ -249,6 +248,7 @@ export const OptionForm = observer((props) => {
               mode="tags"
               style={{ width: "100%" }}
               placeholder="Does your event has any furniture/accessories?"
+              options={equipments}
               onChange={equipmentHandler}
               value={eventFormStore.equipment}
               onFocus={() => eventFormStore.setDeactivateNav(true)}

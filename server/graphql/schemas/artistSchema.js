@@ -4,7 +4,7 @@ type Artist {
     name: String!
     pictures: [String]
     links: [String]
-    type: Int
+    artistType: Int
     validated: Boolean
     reviews: [String]
     createdAt: String!
@@ -13,18 +13,17 @@ type Artist {
 
 export const ArtistInputData = `
 input ArtistInputData {
-    _id: ID! 
-    name: String!
+    name: String
     pictures: [String]
     links: [String]
-    type: Int
+    artistType: Int
     validated: Boolean
     reviews: [String]
 }`;
 
 export const ArtistQueries = `
     getArtist(artistId: ID!): Artist
-    getArtists(onlyValidated: Boolean): [Artist]
+    getArtists: [Artist]
     `;
 
 export const ArtistMutations = `

@@ -14,11 +14,18 @@ export const dresscodeResolver = {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
+    const foundUser = await User.findOne({
+      where: { _id: req.userId },
+    });
+    let validated = args.dresscodeInput.validated;
+    if (!foundUser.isAdmin) {
+      validated = false;
+    }
     try {
       const dresscode = new Dresscode({
         name: args.dresscodeInput.name,
         media: args.dresscodeInput.media,
-        validated: false,
+        validated,
       });
       return await dresscode.save();
     } catch (err) {

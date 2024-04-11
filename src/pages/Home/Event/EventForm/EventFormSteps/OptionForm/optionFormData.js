@@ -17,13 +17,6 @@ export const priceOptions = [
     }, */
 ];
 
-export const lineUpOptions = [
-  {
-    value: 1,
-    label: "van Staen",
-  },
-];
-
 export const ageOptions = [
   {
     value: 0,

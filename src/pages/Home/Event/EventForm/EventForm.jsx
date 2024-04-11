@@ -14,6 +14,9 @@ import { OptionForm } from "./EventFormSteps/OptionForm/OptionForm";
 import { PublishForm } from "./EventFormSteps/PublishForm/PublishForm";
 import { getLocations } from "../../../../store/spielplanStore/getLocations";
 import { getTags } from "../../../../store/spielplanStore/getTags";
+import { getDresscodes } from "../../../../store/spielplanStore/getDresscodes";
+import { getEquipments } from "../../../../store/spielplanStore/getEquipments";
+import { getArtists } from "../../../../store/spielplanStore/getArtists";
 import { getAllEventtypes } from "../../../../store/spielplanStore/getAllEventtypes";
 import { isMobileCheck } from "../../../../helpers/dev/checkMobileTablet";
 import { nameParser } from "../../../../helpers/dev/nameParser";
@@ -32,6 +35,7 @@ export const EventForm = observer(() => {
   const [eventtypes, setEventtypes] = useState(null);
   const [dresscodes, setDresscodes] = useState(null);
   const [equipments, setEquipments] = useState(null);
+  const [artists, setArtists] = useState(null);
   const [showDraftModal, setShowDraftModal] = useState(false);
 
   const [statusSteps, setStatusSteps] = useState([
@@ -77,8 +81,8 @@ export const EventForm = observer(() => {
   };
 
   const fetchDresscodes = async () => {
-    const results = await getTags();
-    const dresscodes = results.map((dresscode) => {
+    const results = await getDresscodes();
+    const dresscodes = results?.map((dresscode) => {
       return {
         value: parseInt(dresscode._id),
         label: nameParser(dresscode.name, language),
@@ -89,8 +93,8 @@ export const EventForm = observer(() => {
   };
 
   const fetchEquipments = async () => {
-    const results = await getTags();
-    const equipements = results.map((equipement) => {
+    const results = await getEquipments();
+    const equipements = results?.map((equipement) => {
       return {
         value: parseInt(equipement._id),
         label: nameParser(equipement.name, language),
@@ -101,6 +105,18 @@ export const EventForm = observer(() => {
   };
 
 
+  const fetchArtists = async () => {
+    const results = await getArtists();
+    const artists = results?.map((artist) => {
+      return {
+        value: parseInt(artist._id),
+        label: artist.name,
+        validated: artist.validated,
+      };
+    });
+    setArtists(artists);
+  };
+
   const fetchAll = async () => {
     setIsLoading(true);
     await fetchEventtypes();
@@ -108,6 +124,7 @@ export const EventForm = observer(() => {
     await fetchtags();
     await fetchDresscodes();
     await fetchEquipments();
+    await fetchArtists();
     setIsLoading(false);
   };
 
