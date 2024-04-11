@@ -14,7 +14,7 @@
     }
 
     .ant-select-outlined {
-        width: calc(100% - 58px);
+        width: calc(100% - 60px);
         margin-right: 16px;
     }
 
@@ -61,6 +61,23 @@
             filter: brightness(2);
             font-size: 14px;
         }
+
+        .optionform__priceButton {
+            border: rgba(var(--themeFontColorInvert), 1) !important;
+            &:hover {
+                color: rgba(var(--themeFontColorInvert), 1) !important;
+                background-color: rgba(var(--themeFontColor), 1) !important;
+            }
+        }
+
+        .optionform__deletePriceButton {
+            border: rgba(var(--themeFontColorInvert), 1) !important;
+            
+            &:hover {                   
+                background-color: rgba(firebrick, .75) !important;
+                color: white !important;
+            }
+        } 
     }
 }
 

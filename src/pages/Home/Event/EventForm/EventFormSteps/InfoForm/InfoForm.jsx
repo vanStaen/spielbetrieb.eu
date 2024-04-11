@@ -44,13 +44,13 @@ export const InfoForm = observer((props) => {
     };
   });
 
-  const createDraftEvent = async () => {
+  const createDraftEvent = async (eventtype, title) => {
     if (eventFormStore.eventId) {
       return;
     }
     const dataObject = {
-      eventtype: eventFormStore.eventtype,
-      title: eventFormStore.title,
+      eventtype,
+      title,
     };
     try {
       const res = await addEvent(dataObject);
@@ -76,8 +76,8 @@ export const InfoForm = observer((props) => {
         updateEvent(eventFormStore.eventId, {
           eventtype: value,
         });
-      } else if (eventFormStore.eventtype && eventFormStore.title) {
-        createDraftEvent();
+      } else if (value && eventFormStore.title) {
+        createDraftEvent(value, eventFormStore.title);
       }
       eventFormStore.setEventtype(value);
       eventFormStore.setEventtypeError(null);
@@ -106,7 +106,7 @@ export const InfoForm = observer((props) => {
         title: eventFormStore.title,
       });
     } else if (eventFormStore.eventtype && eventFormStore.title) {
-      createDraftEvent();
+      createDraftEvent(eventFormStore.eventtype, eventFormStore.title);
     }
   };
 

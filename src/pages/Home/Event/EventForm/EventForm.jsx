@@ -104,7 +104,6 @@ export const EventForm = observer(() => {
     setEquipments(equipements);
   };
 
-
   const fetchArtists = async () => {
     const results = await getArtists();
     const artists = results.map((artist) => {
@@ -248,7 +247,14 @@ export const EventForm = observer(() => {
             <InfoForm eventtypes={eventtypes} locations={locations} />
           )}
           {eventFormStore.formStep === 1 && <ArtworkForm />}
-          {eventFormStore.formStep === 2 && (<OptionForm tags={tags} dresscodes={dresscodes} equipments={equipments} artists={artists} />)}
+          {eventFormStore.formStep === 2 && (
+            <OptionForm
+              tags={tags}
+              dresscodes={dresscodes}
+              equipments={equipments}
+              artists={artists}
+            />
+          )}
           {eventFormStore.formStep === 3 && <PublishForm />}
         </div>
       ) : (

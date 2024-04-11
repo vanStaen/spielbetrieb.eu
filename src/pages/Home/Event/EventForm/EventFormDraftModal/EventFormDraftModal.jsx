@@ -52,8 +52,6 @@ export const EventFormDraftModal = observer((props) => {
 
   const selectDraftHandler = async (draft) => {
     setIsLoading(true);
-    // TODO: add all info
-    console.log(draft);
     eventFormStore.setEventId(draft._id);
     eventFormStore.setTitle(draft.title);
     eventFormStore.setEventtype(draft.eventtype);
@@ -71,11 +69,11 @@ export const EventFormDraftModal = observer((props) => {
     eventFormStore.setHasDresscode(draft.hasDresscode);
     eventFormStore.setDresscodeDoTags(draft.dresscodeDoTags);
     eventFormStore.setDresscodeDontTags(draft.dresscodeDontTags);
-    eventFormStore.setEquipment(draft.setEquipment);
+    eventFormStore.setEquipment(draft.equipment);
     eventFormStore.setArtworksUrl(await getUrlsFromPicturePath(draft.pictures));
     draft.fromDate && eventFormStore.setFromDate(dayjs(draft.fromDate));
     draft.untilDate && eventFormStore.setUntilDate(dayjs(draft.untilDate));
-    draft.prices.length && eventFormStore.setPrices(draft.prices);
+    draft.prices.length && eventFormStore.setPrices(JSON.parse(draft.prices));
     setIsLoading(false);
     setShowDraftModal(false);
   };
