@@ -10,6 +10,7 @@ import { getAllDraftEvents } from "./getAllDraftEvents";
 import { eventFormStore } from "../eventFormStore";
 import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { getPictureUrl } from "../../../../../helpers/picture/getPictureUrl";
+import { CustomSpinner } from "../../../../../components/CustomSpinner/CustomSpinnner";
 
 import "./EventFormDraftModal.less";
 
@@ -52,7 +53,7 @@ export const EventFormDraftModal = observer((props) => {
   const selectDraftHandler = async (draft) => {
     setIsLoading(true);
     // TODO: add all info
-    console.log(draft)
+    console.log(draft);
     eventFormStore.setEventId(draft._id);
     eventFormStore.setTitle(draft.title);
     eventFormStore.setEventtype(draft.eventtype);
@@ -147,7 +148,13 @@ export const EventFormDraftModal = observer((props) => {
       centered={true}
       className={`eventform__draftModal ${pageStore.selectedTheme === "light" ? "draftmodal__backgroundLight" : "draftmodal__backgroundDark"}`}
     >
-      <div className="draftmodal__select">{draftElement}</div>
+      {isLoading ? (
+        <div className="draftmodal__loading">
+          <CustomSpinner text="Loading Drafts" />
+        </div>
+      ) : (
+        <div className="draftmodal__select">{draftElement}</div>
+      )}
     </Modal>
   );
 });
