@@ -69,7 +69,7 @@ export const EventFormDraftModal = observer((props) => {
                             confirmDeleteDraftHandler();
                         }}
                     >
-                        Confirm deletion?
+                        Click to confirm deletion?
                     </div>
                 )}
                 <div className="draftmodal__titleinfo">
