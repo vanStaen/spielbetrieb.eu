@@ -78,11 +78,10 @@ export const PublishForm = observer(() => {
   return (
     <>
       <div
-        className={`publishform__container  ${
-          pageStore.selectedTheme === "light"
+        className={`publishform__container  ${pageStore.selectedTheme === "light"
             ? "lightColorTheme__Text"
             : "darkColorTheme__Text"
-        }`}
+          }`}
       >
         {eventFormStore.errors && (
           <>
@@ -137,7 +136,7 @@ export const PublishForm = observer(() => {
       </div>
 
       {eventFormStore.errors && <div className="pubishform__spacer"></div>}
-      {eventFormStore.errors && <EventPage event={event} />}
+      {!eventFormStore.errors && <EventPage event={event} />}
     </>
   );
 });

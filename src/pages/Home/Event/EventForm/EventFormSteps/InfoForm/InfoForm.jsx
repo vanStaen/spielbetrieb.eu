@@ -102,6 +102,7 @@ export const InfoForm = observer((props) => {
   };
 
   const titleBlurHandler = () => {
+    eventFormStore.setDeactivateNav(false);
     if (eventFormStore.eventId) {
       updateEvent(eventFormStore.eventId, {
         title: eventFormStore.title,
@@ -143,6 +144,7 @@ export const InfoForm = observer((props) => {
   };
 
   const locationNameBlurHandler = (e) => {
+    eventFormStore.setDeactivateNav(false);
     const value = e.target.value;
     const selectedLocation = locations.filter(
       (location) => location.name === value,
@@ -179,6 +181,7 @@ export const InfoForm = observer((props) => {
   };
 
   const locationAddressBlurHander = () => {
+    eventFormStore.setDeactivateNav(false);
     eventFormStore.eventId &&
       updateEvent(eventFormStore.eventId, { locationAddress: eventFormStore.locationAddress })
   }
@@ -189,6 +192,7 @@ export const InfoForm = observer((props) => {
   };
 
   const descBlurHandler = () => {
+    eventFormStore.setDeactivateNav(false);
     eventFormStore.eventId &&
       updateEvent(eventFormStore.eventId, { description: eventFormStore.description })
   }
@@ -236,6 +240,7 @@ export const InfoForm = observer((props) => {
           placeholder="Name of the event"
           onChange={titleHander}
           onBlur={titleBlurHandler}
+          onFocus={() => eventFormStore.setDeactivateNav(true)}
           value={eventFormStore.title}
         />
         <div className="infoform__error">
@@ -253,6 +258,8 @@ export const InfoForm = observer((props) => {
           placeholder={["Event start-date", "Event end-date"]}
           onChange={dateHandler}
           disabledDate={disabledDate}
+          onFocus={() => eventFormStore.setDeactivateNav(true)}
+          onBlur={() => eventFormStore.setDeactivateNav(false)}
           value={[eventFormStore.fromDate, eventFormStore.untilDate]}
         />
         <div className="infoform__error">
@@ -269,6 +276,7 @@ export const InfoForm = observer((props) => {
               placeholder="Name"
               onChange={locationNameHander}
               onBlur={locationNameBlurHandler}
+              onFocus={() => eventFormStore.setDeactivateNav(true)}
               onSelect={locationNameSelectHandler}
               filterOption={(inputValue, option) =>
                 option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !==
@@ -281,6 +289,7 @@ export const InfoForm = observer((props) => {
               placeholder="Address"
               onChange={locationAddressHander}
               onBlur={locationAddressBlurHander}
+              onFocus={() => eventFormStore.setDeactivateNav(true)}
               value={eventFormStore.locationAddress}
               disabled={!eventFormStore.isNewLocation}
               suffix={
@@ -317,6 +326,7 @@ export const InfoForm = observer((props) => {
           rows={8}
           onChange={descHandler}
           onBlur={descBlurHandler}
+          onFocus={() => eventFormStore.setDeactivateNav(true)}
         />
       </div>
     </div>

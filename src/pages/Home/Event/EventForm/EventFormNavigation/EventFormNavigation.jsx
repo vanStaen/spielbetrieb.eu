@@ -7,7 +7,11 @@ import { eventFormStore } from "../eventFormStore";
 import "./EventFormNavigation.less";
 
 export const EventFormNavigation = observer((props) => {
+
   const keydownEventHandler = (event) => {
+    if (eventFormStore.deactivateNav) {
+      return;
+    }
     const keyPressed = event.key.toLowerCase();
     if (keyPressed === "arrowleft") {
       event.preventDefault();

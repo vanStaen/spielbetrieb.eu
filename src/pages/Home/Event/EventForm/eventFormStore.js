@@ -34,6 +34,7 @@ export class EventFormStore {
   dresscodeDoTags = [];
   hasDresscode = 0;
   links = [];
+  deactivateNav = false;
 
   constructor() {
     makeObservable(this, {
@@ -101,6 +102,8 @@ export class EventFormStore {
       setArtworksError: action,
       links: observable,
       setLinks: action,
+      deactivateNav: observable,
+      setDeactivateNav: action,
     });
   }
 
@@ -131,7 +134,6 @@ export class EventFormStore {
 
   setEventtype = (eventtype) => {
     this.eventtype = eventtype;
-    console.log('eventtype', eventtype)
   };
 
   setEventtypeError = (eventtypeError) => {
@@ -234,6 +236,11 @@ export class EventFormStore {
   setLinks = (links) => {
     this.links = links;
   };
+
+  setDeactivateNav = (deactivateNav) => {
+    this.deactivateNav = deactivateNav;
+  };
+
 }
 
 export const eventFormStore = new EventFormStore();
