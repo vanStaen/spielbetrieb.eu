@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: __dirname + "/./../../.env" });
 
-const devMode = false;
+const devMode = true;
 
 export default async (req, res, next) => {
   // if in development mode
