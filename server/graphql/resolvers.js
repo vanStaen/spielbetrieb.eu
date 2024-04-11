@@ -3,6 +3,9 @@ import * as adminlinkResolver from "./resolvers/adminlinkResolver.js";
 import * as artistResolver from "./resolvers/artistResolver.js";
 import * as chatResolver from "./resolvers/chatResolver.js";
 import * as commentResolver from "./resolvers/commentResolver.js";
+import * as darkResolver from "./resolvers/darkResolver.js";
+import * as dresscodeResolver from "./resolvers/dresscodeResolver.js";
+import * as equipmentResolver from "./resolvers/equipmentResolver.js";
 import * as eventResolver from "./resolvers/eventResolver.js";
 import * as eventtypeResolver from "./resolvers/eventtypeResolver.js";
 import * as partnertypeResolver from "./resolvers/partnertypeResolver.js";
@@ -21,6 +24,9 @@ export default {
   ...adminlinkResolver.adminlinkResolver,
   ...artistResolver.artistResolver,
   ...chatResolver.chatResolver,
+  ...darkResolver.darkResolver,
+  ...dresscodeResolver.dresscodeResolver,
+  ...equipmentResolver.equipmentResolver,
   ...commentResolver.commentResolver,
   ...eventResolver.eventResolver,
   ...eventtypeResolver.eventtypeResolver,

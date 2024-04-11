@@ -30,6 +30,8 @@ export const EventForm = observer(() => {
   const [locations, setLocations] = useState(null);
   const [tags, setTags] = useState(null);
   const [eventtypes, setEventtypes] = useState(null);
+  const [dresscodes, setDresscodes] = useState(null);
+  const [equipments, setEquipments] = useState(null);
   const [showDraftModal, setShowDraftModal] = useState(false);
 
   const [statusSteps, setStatusSteps] = useState([
@@ -62,22 +64,50 @@ export const EventForm = observer(() => {
   const fetchtags = async () => {
     const results = await getTags();
     const tags = results.map((tag) => {
-      if (tag.validated === false || tag.eventTag === false) {
+      if (tag.eventTag === false) {
         return null;
       }
       return {
         value: parseInt(tag._id),
         label: nameParser(tag.name, language),
+        validated: tag.validated,
       };
     });
     setTags(tags);
   };
+
+  const fetchDresscodes = async () => {
+    const results = await getTags();
+    const dresscodes = results.map((dresscode) => {
+      return {
+        value: parseInt(dresscode._id),
+        label: nameParser(dresscode.name, language),
+        validated: dresscode.validated,
+      };
+    });
+    setDresscodes(dresscodes);
+  };
+
+  const fetchEquipments = async () => {
+    const results = await getTags();
+    const equipements = results.map((equipement) => {
+      return {
+        value: parseInt(equipement._id),
+        label: nameParser(equipement.name, language),
+        validated: equipement.validated,
+      };
+    });
+    setEquipments(equipements);
+  };
+
 
   const fetchAll = async () => {
     setIsLoading(true);
     await fetchEventtypes();
     await fetchLocations();
     await fetchtags();
+    await fetchDresscodes();
+    await fetchEquipments();
     setIsLoading(false);
   };
 
@@ -201,7 +231,7 @@ export const EventForm = observer(() => {
             <InfoForm eventtypes={eventtypes} locations={locations} />
           )}
           {eventFormStore.formStep === 1 && <ArtworkForm />}
-          {eventFormStore.formStep === 2 && <OptionForm tags={tags} />}
+          {eventFormStore.formStep === 2 && (<OptionForm tags={tags} dresscodes={dresscodes} equipments={equipments} />)}
           {eventFormStore.formStep === 3 && <PublishForm />}
         </div>
       ) : (

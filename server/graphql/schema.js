@@ -6,6 +6,8 @@ import * as artistSchema from "./schemas/artistSchema.js";
 import * as chatSchema from "./schemas/chatSchema.js";
 import * as commentSchema from "./schemas/commentSchema.js";
 import * as darkSchema from "./schemas/darkSchema.js";
+import * as dresscodeSchema from "./schemas/dresscodeSchema.js";
+import * as equipmentSchema from "./schemas/equipmentSchema.js";
 import * as eventSchema from "./schemas/eventSchema.js";
 import * as eventtypeSchema from "./schemas/eventtypeSchema.js";
 import * as partnertypeSchema from "./schemas/partnertypeSchema.js";
@@ -27,6 +29,8 @@ export default buildSchema(`
     ${chatSchema.Chat}
     ${commentSchema.Comment}
     ${darkSchema.Dark}
+    ${dresscodeSchema.Dresscode}
+    ${equipmentSchema.Equipment}
     ${eventSchema.Event}
     ${eventtypeSchema.Eventtype}
     ${partnertypeSchema.Partnertype}
@@ -46,6 +50,8 @@ export default buildSchema(`
     ${chatSchema.ChatInputData}
     ${commentSchema.CommentInputData}
     ${darkSchema.DarkInputData}
+    ${dresscodeSchema.DresscodeInputData}
+    ${equipmentSchema.EquipmentInputData}
     ${eventSchema.EventInputData}
     ${eventtypeSchema.EventtypeInputData}
     ${partnertypeSchema.PartnertypeInputData}
@@ -66,6 +72,8 @@ export default buildSchema(`
         ${chatSchema.ChatQueries}
         ${commentSchema.CommentQueries}
         ${darkSchema.DarkQueries}
+        ${dresscodeSchema.DresscodeQueries}
+        ${equipmentSchema.EquipmentQueries}
         ${eventSchema.EventQueries}
         ${eventtypeSchema.EventtypeQueries}
         ${partnertypeSchema.PartnertypeQueries}
@@ -87,6 +95,8 @@ export default buildSchema(`
         ${chatSchema.ChatMutations}
         ${commentSchema.CommentMutations}
         ${darkSchema.DarkMutations}
+        ${dresscodeSchema.DresscodeMutations}
+        ${equipmentSchema.EquipmentMutations}
         ${eventSchema.EventMutations}
         ${eventtypeSchema.EventtypeMutations}
         ${partnertypeSchema.PartnertypeMutations}
