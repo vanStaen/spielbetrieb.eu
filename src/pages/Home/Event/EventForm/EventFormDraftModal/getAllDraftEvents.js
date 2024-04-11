@@ -31,6 +31,7 @@ export async function getAllDraftEvents() {
                 lineUp,
                 ageMin,
                 currency,
+                links,
               }
             }
           `,

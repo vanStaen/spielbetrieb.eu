@@ -9,6 +9,7 @@ import { deleteEvent } from "../../../../Admin/AdminEvents/deleteEvent";
 import { getAllDraftEvents } from "./getAllDraftEvents";
 import { eventFormStore } from "../eventFormStore";
 import { pageStore } from "../../../../../store/pageStore/pageStore";
+import { getPictureUrl } from "../../../../../helpers/picture/getPictureUrl";
 
 import "./EventFormDraftModal.less";
 
@@ -17,11 +18,14 @@ export const EventFormDraftModal = observer((props) => {
     const { showDraftModal, setShowDraftModal, eventtypes } = props;
     const [drafts, setDrafts] = useState([]);
     const [draftIdToDelete, setDraftIdToDelete] = useState(null);
+    const [isLoading, setIsLoading] = useState(null);
 
     const fetchDrafts = async () => {
+        setIsLoading(true);
         const drafts = await getAllDraftEvents();
         setDrafts(drafts);
         setShowDraftModal(!!drafts.length);
+        setIsLoading(false);
     };
 
     const deleteDraftHandler = (id) => {
@@ -39,10 +43,27 @@ export const EventFormDraftModal = observer((props) => {
         }
     };
 
-    const selectDraftHandler = (draft) => {
+    const getUrlsFromPicturePath = async (pictures) => {
+        // make it work for more than 1 picture
+        const url = await getPictureUrl(pictures[0], 'events');
+        return [url];
+    }
+
+    const selectDraftHandler = async (draft) => {
+        setIsLoading(true);
         // TODO: add all info
+        eventFormStore.setEventId(draft._id);
         eventFormStore.setTitle(draft.title);
         eventFormStore.setEventtype(draft.eventtype);
+        eventFormStore.setDescription(draft.description);
+        eventFormStore.setLocationId(draft.location);
+        eventFormStore.setLocationName(draft.locationName);
+        eventFormStore.setLocationAddress(draft.locationAddress);
+        draft.fromDate && eventFormStore.setFromDate(dayjs(draft.fromDate));
+        draft.untilDate && eventFormStore.setUntilDate(dayjs(draft.untilDate));
+        eventFormStore.setArtworks(draft.pictures);
+        eventFormStore.setArtworksUrl(await getUrlsFromPicturePath(draft.pictures));
+        setIsLoading(false);
         setShowDraftModal(false);
     };
 
@@ -52,7 +73,7 @@ export const EventFormDraftModal = observer((props) => {
 
     const draftElement = drafts.length > 0 && drafts?.map((draft) => {
         const { _id, title, eventtype, createdAt } = draft;
-        const created = dayjs(createdAt).format("DD/MM/YYYY HH:mm");
+        const created = dayjs(createdAt).format("DD/MM/YYYY, HH:mm");
         const eventtypeString = eventtypes.filter((e) => e.value === eventtype)[0]
             .label;
         return (

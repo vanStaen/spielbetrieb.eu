@@ -1,4 +1,5 @@
 import { action, makeObservable, observable } from "mobx";
+import { updateEvent } from '../../../Admin/AdminEvents/updateEvent.js';
 
 export class EventFormStore {
   formStep = 0;
@@ -117,6 +118,7 @@ export class EventFormStore {
 
   setArtworks = (artworks) => {
     this.artworks = artworks;
+    this.eventId && updateEvent(this.eventId, { pictures: artworks })
   };
 
   setArtworksUrl = (artworksUrl) => {
@@ -129,6 +131,7 @@ export class EventFormStore {
 
   setEventtype = (eventtype) => {
     this.eventtype = eventtype;
+    console.log('eventtype', eventtype)
   };
 
   setEventtypeError = (eventtypeError) => {

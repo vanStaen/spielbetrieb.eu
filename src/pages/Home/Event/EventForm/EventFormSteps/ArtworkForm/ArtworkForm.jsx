@@ -20,7 +20,7 @@ export const ArtworkForm = observer(() => {
 
   const fileUploadHandler = async (file) => {
     setIsUploading(true);
-    const result = await postPicture(file, "test");
+    const result = await postPicture(file, "events");
     if (result.error) {
       notification.error({
         message: "Upload failed!",
@@ -32,7 +32,7 @@ export const ArtworkForm = observer(() => {
     } else if (result.path) {
       const tempArtworkArray = eventFormStore.artworks;
       const tempArtworkUrlArray = eventFormStore.artworksUrl;
-      const url = await getPictureUrl(result.path, "test");
+      const url = await getPictureUrl(result.path, "events");
       tempArtworkArray.push(result.path);
       tempArtworkUrlArray.push(url);
       eventFormStore.setArtworks(tempArtworkArray);

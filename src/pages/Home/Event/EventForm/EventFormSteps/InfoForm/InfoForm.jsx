@@ -17,6 +17,7 @@ import { eventFormStore } from "../../eventFormStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import { GoogleMap } from "./GoogleMap";
 import { addEvent } from "../../../../../Admin/AdminEvents/addEvent";
+import { updateEvent } from '../../../../../Admin/AdminEvents/updateEvent';
 
 import "./InfoForm.less";
 
@@ -31,7 +32,10 @@ export const InfoForm = observer((props) => {
 
   const eventypesOption = eventtypes?.filter((type) => type.usage !== "admin");
   const eventypesMainOption = eventypesOption?.filter(
-    (type) => type.usage === "main",
+    (type) => {
+      const hasToBeShown = type.value === eventFormStore.eventtype;
+      return type.usage === "main" || hasToBeShown;
+    }
   );
   eventypesMainOption &&
     eventypesMainOption.push({ value: "more", label: "..." });
@@ -70,11 +74,15 @@ export const InfoForm = observer((props) => {
     if (value === "more") {
       setShowMore(true);
     } else {
-      eventFormStore.setEventtype(value);
-      eventFormStore.setEventtypeError(null);
-      if (eventFormStore.eventtype && eventFormStore.title) {
+      if (eventFormStore.eventId) {
+        updateEvent(eventFormStore.eventId, {
+          eventtype: value,
+        })
+      } else if (eventFormStore.eventtype && eventFormStore.title) {
         createDraftEvent();
       }
+      eventFormStore.setEventtype(value);
+      eventFormStore.setEventtypeError(null);
     }
   };
 
@@ -94,7 +102,12 @@ export const InfoForm = observer((props) => {
   };
 
   const titleBlurHandler = () => {
-    if (eventFormStore.eventtype && eventFormStore.title) {
+    if (eventFormStore.eventId) {
+      updateEvent(eventFormStore.eventId, {
+        title: eventFormStore.title,
+      })
+    } else if (eventFormStore.eventtype
+      && eventFormStore.title) {
       createDraftEvent();
     }
   };
@@ -116,9 +129,13 @@ export const InfoForm = observer((props) => {
     } else {
       eventFormStore.setFromDateError(null);
     }
-    console.log(dates);
     eventFormStore.setFromDate(dates[0]);
     eventFormStore.setUntilDate(dates[1]);
+    eventFormStore.eventId &&
+      updateEvent(eventFormStore.eventId, {
+        fromDate: dates[0].valueOf(),
+        untilDate: dates[1].valueOf(),
+      })
   };
 
   const locationNameHander = (value) => {
@@ -132,9 +149,11 @@ export const InfoForm = observer((props) => {
     )[0];
     if (selectedLocation === undefined) {
       eventFormStore.setLocationId(null);
-      eventFormStore.setLocationAddress(null);
+      // eventFormStore.setLocationAddress(null);
       value && eventFormStore.setIsNewLocation(true);
       value && showMapHandler(true);
+      eventFormStore.eventId &&
+        updateEvent(eventFormStore.eventId, { locationName: eventFormStore.locationName })
     }
   };
 
@@ -146,12 +165,33 @@ export const InfoForm = observer((props) => {
     eventFormStore.setLocationId(selectedLocation._id);
     eventFormStore.setLocationName(selectedLocation.name);
     eventFormStore.setLocationAddress(selectedLocation.address);
+    eventFormStore.eventId &&
+      updateEvent(eventFormStore.eventId, {
+        location: parseInt(eventFormStore.locationId),
+        locationName: eventFormStore.locationName,
+        locationAddress: eventFormStore.locationAddress,
+      })
   };
 
   const locationAddressHander = (e) => {
     const value = e.target.value;
     eventFormStore.setLocationAddress(value);
   };
+
+  const locationAddressBlurHander = () => {
+    eventFormStore.eventId &&
+      updateEvent(eventFormStore.eventId, { locationAddress: eventFormStore.locationAddress })
+  }
+
+  const descHandler = (e) => {
+    const value = e.target.value;
+    eventFormStore.setDescription(value);
+  };
+
+  const descBlurHandler = () => {
+    eventFormStore.eventId &&
+      updateEvent(eventFormStore.eventId, { description: eventFormStore.description })
+  }
 
   const showMapHandler = (value) => {
     const divmap = document.getElementById("mapdiv");
@@ -170,18 +210,12 @@ export const InfoForm = observer((props) => {
     }
   }, [eventFormStore.locationName, eventFormStore.locationAddress]);
 
-  const descHandler = (e) => {
-    const value = e.target.value;
-    eventFormStore.setDescription(value);
-  };
-
   return (
     <div
-      className={`infoform__container  ${
-        pageStore.selectedTheme === "light"
-          ? "lightColorTheme__Text"
-          : "darkColorTheme__Text"
-      }`}
+      className={`infoform__container  ${pageStore.selectedTheme === "light"
+        ? "lightColorTheme__Text"
+        : "darkColorTheme__Text"
+        }`}
     >
       <div className="infoform__select">
         <Radio.Group
@@ -246,6 +280,7 @@ export const InfoForm = observer((props) => {
             <Input
               placeholder="Address"
               onChange={locationAddressHander}
+              onBlur={locationAddressBlurHander}
               value={eventFormStore.locationAddress}
               disabled={!eventFormStore.isNewLocation}
               suffix={
@@ -281,6 +316,7 @@ export const InfoForm = observer((props) => {
           value={eventFormStore.description}
           rows={8}
           onChange={descHandler}
+          onBlur={descBlurHandler}
         />
       </div>
     </div>

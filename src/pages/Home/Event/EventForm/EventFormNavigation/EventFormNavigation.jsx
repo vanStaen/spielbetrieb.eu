@@ -41,6 +41,10 @@ export const EventFormNavigation = observer((props) => {
 
   const publishHandler = () => {
     if (eventFormStore.errors) {
+      // add new locations
+      // add new events
+      // add new artist
+      // add new spielmöbel
       console.log("PUBLISH");
     }
   };
