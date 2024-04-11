@@ -14,6 +14,7 @@ export const Legal = observer((props) => {
       <LanguageDropDown />
       <DarkModeDropDown />
       <div className="background invertColorTheme" id="background"></div>
+      <div className="overBackground"></div>
       <div className="legal__container">{page}</div>
     </>
   );

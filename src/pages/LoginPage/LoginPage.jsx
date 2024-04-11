@@ -26,6 +26,7 @@ export const LoginPage = () => {
       <DarkModeDropDown />
       <AlreadyMember showLogin={showLogin} setShowLogin={setShowLogin} />
       <div className="background invertColorTheme" id="background"></div>
+      <div className="overBackground"></div>
       {showLogin ? (
         <div className="login__container">
           <LoginForm />

@@ -1,26 +1,40 @@
 .background {
    position: absolute;
    width: 100vw;
-   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+   height: 100vh;
+   /* Fallback for browsers that do not support Custom Properties */
    height: calc(var(--vh, 1vh) * 100);
    background-image: url('../../img/background.jpg');
    background-size: cover;
 }
+
+.overBackground {
+   position: absolute;
+   width: 100vw;
+   height: 100vh;
+   /* Fallback for browsers that do not support Custom Properties */
+   height: calc(var(--vh, 1vh) * 100);
+   background-color: rgba(var(--themeFontColorInvert), 0.5);
+}
+
 @media only screen and (max-width: 675px) {
-   .background {
+
+   .background,
+   .overBackground {
       height: 201vh;
       background-size: cover;
       background-position: center;
-   }   
+   }
 }
 
 .login__container {
    position: relative;
-   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+   height: 100vh;
+   /* Fallback for browsers that do not support Custom Properties */
    height: calc(var(--vh, 1vh) * 100);
    z-index: 2;
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
-} 
+}

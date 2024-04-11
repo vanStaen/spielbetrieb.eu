@@ -10,6 +10,16 @@
    background-size: cover;
 }
 
+.overBackground {
+   position: absolute;
+   width: 100vw;
+   height: 100vh;
+   /* Fallback for browsers that do not support Custom Properties */
+   height: calc(var(--vh, 1vh) * 100);
+   background-color: rgba(var(--themeFontColorInvert), 0.5);
+}
+
+
 .landingPage__doublearrow {
    position: absolute;
    right: 0;
@@ -30,7 +40,9 @@
 }
 
 @media only screen and (max-width: 675px) {
-   .background {
+
+   .background,
+   .overBackground {
       height: 200vh;
       /* Fallback for browsers that do not support Custom Properties */
       height: calc(var(--vh, 2vh) * 100);

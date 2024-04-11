@@ -84,7 +84,7 @@ export const NewsletterForm = observer(() => {
         centered
         title={t("newsletter.subscribe")}
         onOk={onFinish}
-        onCancel={onCancel}
+        onCancel={onCancel} className={`eventform__draftModal ${pageStore.selectedTheme === "light" ? "newsletter__backgroundLight" : "newsletter__backgroundDark"}`}
         footer={null}
       >
         <div style={{ marginTop: 15 }}></div>
@@ -101,7 +101,7 @@ export const NewsletterForm = observer(() => {
           }}
         >
           <Form.Item
-            label={<div className="newsletter__whiteText">Name</div>}
+            label={<div className="newsletter__text">Name</div>}
             name="username"
           >
             <Input />
@@ -120,7 +120,7 @@ export const NewsletterForm = observer(() => {
             <Input />
           </Form.Item>
           <Form.Item
-            label={<div className="newsletter__whiteText">Mailing List(s)</div>}
+            label={<div className="newsletter__text">Mailing List(s)</div>}
             name="lists"
             rules={[
               {
@@ -140,7 +140,7 @@ export const NewsletterForm = observer(() => {
             />
           </Form.Item>
           <Form.Item
-            label={<div className="newsletter__whiteText">Interest(s)</div>}
+            label={<div className="newsletter__text">Interest(s)</div>}
             name="interests"
           >
             <Select
@@ -155,7 +155,7 @@ export const NewsletterForm = observer(() => {
             />
           </Form.Item>
           <Form.Item
-            label={<div className="newsletter__whiteText">Language</div>}
+            label={<div className="newsletter__text">Language</div>}
             name="language"
             onChange={changeLanguageHandler}
           >
@@ -167,7 +167,7 @@ export const NewsletterForm = observer(() => {
           {/* 
           <Form.Item
             label={
-              <div className="newsletter__whiteText">
+              <div className="newsletter__text">
                 Tell us something about yourself. What is your thing?
               </div>
             }

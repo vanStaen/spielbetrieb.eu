@@ -39,6 +39,7 @@ export const SubscriberVerify = observer(() => {
       <LanguageDropDown />
       <DarkModeDropDown />
       <div className="background invertColorTheme" id="background"></div>
+      <div className="overBackground"></div>
       <div className="subscriberVerifyEmail__container">
         {isLoading ? (
           <CustomSpinner size="large" text="Validating" />

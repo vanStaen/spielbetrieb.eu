@@ -43,6 +43,7 @@ export const LandingPage = () => {
       <LanguageDropDown />
       <DarkModeDropDown />
       <div className="background invertColorTheme" id="background"></div>
+      <div className="overBackground"></div>
       <div className="landingPage__doublearrow invertColorTheme" id="arrow">
         <DoubleLeftOutlined
           onClick={arrowClickHandler}

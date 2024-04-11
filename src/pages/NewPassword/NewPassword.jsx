@@ -91,6 +91,7 @@ export const NewPassword = observer(() => {
       <LanguageDropDown />
       <DarkModeDropDown />
       <div className="background invertColorTheme" id="background"></div>
+      <div className="overBackground"></div>
       <div className="verifyEmail__container">
         {isLoading ? (
           <CustomSpinner size="large" text="Validating" />

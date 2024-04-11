@@ -21,6 +21,7 @@ export const FourOfour = () => {
       <DarkModeDropDown />
       <HelpButtons />
       <div className="fourofour invertColorTheme">
+        <div className="fourofour__overBackground"></div>
         <Link to="../" relative="path">
           <Tooltip title="Back to main page" placement="left">
             <img
