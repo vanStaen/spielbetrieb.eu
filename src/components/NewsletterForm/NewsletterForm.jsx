@@ -84,7 +84,8 @@ export const NewsletterForm = observer(() => {
         centered
         title={t("newsletter.subscribe")}
         onOk={onFinish}
-        onCancel={onCancel} className={`eventform__draftModal ${pageStore.selectedTheme === "light" ? "newsletter__backgroundLight" : "newsletter__backgroundDark"}`}
+        onCancel={onCancel}
+        className={`eventform__draftModal ${pageStore.selectedTheme === "light" ? "newsletter__backgroundLight" : "newsletter__backgroundDark"}`}
         footer={null}
       >
         <div style={{ marginTop: 15 }}></div>

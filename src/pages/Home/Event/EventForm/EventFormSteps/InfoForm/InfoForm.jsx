@@ -17,7 +17,7 @@ import { eventFormStore } from "../../eventFormStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import { GoogleMap } from "./GoogleMap";
 import { addEvent } from "../../../../../Admin/AdminEvents/addEvent";
-import { updateEvent } from '../../../../../Admin/AdminEvents/updateEvent';
+import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
 
 import "./InfoForm.less";
 
@@ -31,12 +31,10 @@ export const InfoForm = observer((props) => {
   const { RangePicker } = DatePicker;
 
   const eventypesOption = eventtypes?.filter((type) => type.usage !== "admin");
-  const eventypesMainOption = eventypesOption?.filter(
-    (type) => {
-      const hasToBeShown = type.value === eventFormStore.eventtype;
-      return type.usage === "main" || hasToBeShown;
-    }
-  );
+  const eventypesMainOption = eventypesOption?.filter((type) => {
+    const hasToBeShown = type.value === eventFormStore.eventtype;
+    return type.usage === "main" || hasToBeShown;
+  });
   eventypesMainOption &&
     eventypesMainOption.push({ value: "more", label: "..." });
 
@@ -77,7 +75,7 @@ export const InfoForm = observer((props) => {
       if (eventFormStore.eventId) {
         updateEvent(eventFormStore.eventId, {
           eventtype: value,
-        })
+        });
       } else if (eventFormStore.eventtype && eventFormStore.title) {
         createDraftEvent();
       }
@@ -106,9 +104,8 @@ export const InfoForm = observer((props) => {
     if (eventFormStore.eventId) {
       updateEvent(eventFormStore.eventId, {
         title: eventFormStore.title,
-      })
-    } else if (eventFormStore.eventtype
-      && eventFormStore.title) {
+      });
+    } else if (eventFormStore.eventtype && eventFormStore.title) {
       createDraftEvent();
     }
   };
@@ -136,7 +133,7 @@ export const InfoForm = observer((props) => {
       updateEvent(eventFormStore.eventId, {
         fromDate: dates[0].valueOf(),
         untilDate: dates[1].valueOf(),
-      })
+      });
   };
 
   const locationNameHander = (value) => {
@@ -155,7 +152,9 @@ export const InfoForm = observer((props) => {
       value && eventFormStore.setIsNewLocation(true);
       value && showMapHandler(true);
       eventFormStore.eventId &&
-        updateEvent(eventFormStore.eventId, { locationName: eventFormStore.locationName })
+        updateEvent(eventFormStore.eventId, {
+          locationName: eventFormStore.locationName,
+        });
     }
   };
 
@@ -172,7 +171,7 @@ export const InfoForm = observer((props) => {
         location: parseInt(eventFormStore.locationId),
         locationName: eventFormStore.locationName,
         locationAddress: eventFormStore.locationAddress,
-      })
+      });
   };
 
   const locationAddressHander = (e) => {
@@ -183,8 +182,10 @@ export const InfoForm = observer((props) => {
   const locationAddressBlurHander = () => {
     eventFormStore.setDeactivateNav(false);
     eventFormStore.eventId &&
-      updateEvent(eventFormStore.eventId, { locationAddress: eventFormStore.locationAddress })
-  }
+      updateEvent(eventFormStore.eventId, {
+        locationAddress: eventFormStore.locationAddress,
+      });
+  };
 
   const descHandler = (e) => {
     const value = e.target.value;
@@ -194,8 +195,10 @@ export const InfoForm = observer((props) => {
   const descBlurHandler = () => {
     eventFormStore.setDeactivateNav(false);
     eventFormStore.eventId &&
-      updateEvent(eventFormStore.eventId, { description: eventFormStore.description })
-  }
+      updateEvent(eventFormStore.eventId, {
+        description: eventFormStore.description,
+      });
+  };
 
   const showMapHandler = (value) => {
     const divmap = document.getElementById("mapdiv");
@@ -216,10 +219,11 @@ export const InfoForm = observer((props) => {
 
   return (
     <div
-      className={`infoform__container  ${pageStore.selectedTheme === "light"
-        ? "lightColorTheme__Text"
-        : "darkColorTheme__Text"
-        }`}
+      className={`infoform__container  ${
+        pageStore.selectedTheme === "light"
+          ? "lightColorTheme__Text"
+          : "darkColorTheme__Text"
+      }`}
     >
       <div className="infoform__select">
         <Radio.Group

@@ -161,6 +161,7 @@ export const eventResolver = {
 
   // deleteEvent(id: ID!): Boolean!
   async deleteEvent(args, req) {
+    // TODO : Delete all event pictures
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
