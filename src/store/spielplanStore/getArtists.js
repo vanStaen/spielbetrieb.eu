@@ -33,5 +33,6 @@ export async function getArtists() {
   if (data.errors) {
     return data.errors[0];
   }
+
   return data.data.getArtists;
 }

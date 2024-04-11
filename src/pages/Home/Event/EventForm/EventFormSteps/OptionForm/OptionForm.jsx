@@ -18,6 +18,8 @@ import "./OptionForm.less";
 export const OptionForm = observer((props) => {
   const { tags, dresscodes, equipments, artists } = props;
 
+  console.log('artists', artists);
+
   const tagsHandler = (value) => {
     eventFormStore.setEventTags(value);
     // TODO: New tag process
@@ -90,13 +92,21 @@ export const OptionForm = observer((props) => {
   };
 
   const dresscodeDoTagsHandler = (value) => {
-    // TODO
-    console.log(value);
+    eventFormStore.setDresscodeDoTags(value);
+    // TODO: New dresscode process
+    eventFormStore.eventId &&
+      updateEvent(eventFormStore.eventId, {
+        dresscodeDoTags: value,
+      });
   };
 
   const dresscodeDontTagsHandler = (value) => {
-    // TODO
-    console.log(value);
+    // TODO: New dresscode process
+    eventFormStore.setDresscodeDontTags(value);
+    eventFormStore.eventId &&
+      updateEvent(eventFormStore.eventId, {
+        dresscodeDontTags: value,
+      });
   };
 
   const priceHandler = (value, key) => {
@@ -198,6 +208,7 @@ export const OptionForm = observer((props) => {
                 style={{ width: "100%" }}
                 placeholder="What should people wear?"
                 options={dresscodes}
+                value={eventFormStore.dresscodeDoTags}
                 onChange={dresscodeDoTagsHandler}
                 onFocus={() => eventFormStore.setDeactivateNav(true)}
                 onBlur={() => eventFormStore.setDeactivateNav(false)}
@@ -211,6 +222,7 @@ export const OptionForm = observer((props) => {
                 style={{ width: "100%" }}
                 placeholder="What can't people wear?"
                 options={dresscodes}
+                value={eventFormStore.dresscodeDontTags}
                 onChange={dresscodeDontTagsHandler}
                 onFocus={() => eventFormStore.setDeactivateNav(true)}
                 onBlur={() => eventFormStore.setDeactivateNav(false)}

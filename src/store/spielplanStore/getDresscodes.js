@@ -30,5 +30,5 @@ export async function getDresscodes() {
   if (data.errors) {
     return data.errors[0];
   }
-  return data.data.getTags;
+  return data.data.getDresscodes;
 }

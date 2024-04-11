@@ -82,7 +82,7 @@ export const EventForm = observer(() => {
 
   const fetchDresscodes = async () => {
     const results = await getDresscodes();
-    const dresscodes = results?.map((dresscode) => {
+    const dresscodes = results.map((dresscode) => {
       return {
         value: parseInt(dresscode._id),
         label: nameParser(dresscode.name, language),
@@ -107,7 +107,7 @@ export const EventForm = observer(() => {
 
   const fetchArtists = async () => {
     const results = await getArtists();
-    const artists = results?.map((artist) => {
+    const artists = results.map((artist) => {
       return {
         value: parseInt(artist._id),
         label: artist.name,
@@ -248,7 +248,7 @@ export const EventForm = observer(() => {
             <InfoForm eventtypes={eventtypes} locations={locations} />
           )}
           {eventFormStore.formStep === 1 && <ArtworkForm />}
-          {eventFormStore.formStep === 2 && (<OptionForm tags={tags} dresscodes={dresscodes} equipments={equipments} />)}
+          {eventFormStore.formStep === 2 && (<OptionForm tags={tags} dresscodes={dresscodes} equipments={equipments} artists={artists} />)}
           {eventFormStore.formStep === 3 && <PublishForm />}
         </div>
       ) : (

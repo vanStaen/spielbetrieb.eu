@@ -30,5 +30,5 @@ export async function getEquipments() {
   if (data.errors) {
     return data.errors[0];
   }
-  return data.data.getTags;
+  return data.data.getEquipments;
 }
