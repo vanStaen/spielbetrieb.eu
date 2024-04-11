@@ -53,8 +53,8 @@ export const Event = sequelize.sequelize.define("event", {
     defaultValue: [],
   },
   hasDresscode: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
+    type: DataTypes.INTEGER,
+    defaultValue: 0,
   },
   dresscodeDoTags: {
     type: DataTypes.ARRAY(DataTypes.INTEGER),
@@ -69,6 +69,10 @@ export const Event = sequelize.sequelize.define("event", {
     defaultValue: [],
   },
   lineUp: {
+    type: DataTypes.ARRAY(DataTypes.INTEGER),
+    defaultValue: [],
+  },
+  equipment: {
     type: DataTypes.ARRAY(DataTypes.INTEGER),
     defaultValue: [],
   },

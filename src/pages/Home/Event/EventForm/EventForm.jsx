@@ -142,6 +142,15 @@ export const EventForm = observer(() => {
       } else {
         tempStatusSteps[3] = "process";
       }
+    } else if (value === 2) {
+      if (eventFormStore.artworks.length === 0) {
+        eventFormStore.setArtworksError(
+          "Please upload at least one artwork for your event!",
+        );
+        tempStatusSteps[1] = "error";
+      } else {
+        tempStatusSteps[1] = "finish";
+      }
     }
     eventFormStore.setFormStep(value);
     setStatusSteps(tempStatusSteps);

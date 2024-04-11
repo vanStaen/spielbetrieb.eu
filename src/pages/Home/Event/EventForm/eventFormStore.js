@@ -30,6 +30,7 @@ export class EventFormStore {
   eventTags = [];
   prices = [{ price: null, option: 0 }];
   lineUp = [];
+  equipment = [];
   dresscodeDontTags = [];
   dresscodeDoTags = [];
   hasDresscode = 0;
@@ -92,6 +93,8 @@ export class EventFormStore {
       setPrices: action,
       lineUp: observable,
       setLineUp: action,
+      equipment: observable,
+      setEquipment: action,
       hasDresscode: observable,
       setHasDresscode: action,
       dresscodeDoTags: observable,
@@ -213,13 +216,18 @@ export class EventFormStore {
   };
 
   setPrices = (prices) => {
-    // Todo
+    // TODO
     this.prices = prices;
   };
 
   setLineUp = (lineUp) => {
     this.lineUp = lineUp;
   };
+
+  setEquipment = (equipment) => {
+    this.equipment = equipment;
+  };
+
 
   setHasDresscode = (hasDresscode) => {
     this.hasDresscode = hasDresscode;

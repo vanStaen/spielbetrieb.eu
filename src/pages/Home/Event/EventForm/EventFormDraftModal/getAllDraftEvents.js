@@ -32,6 +32,7 @@ export async function getAllDraftEvents() {
                 ageMin,
                 currency,
                 links,
+                equipment,
               }
             }
           `,

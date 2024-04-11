@@ -5,123 +5,111 @@ import { Radio, Select, InputNumber, Row, Col, Button } from "antd";
 
 import { eventFormStore } from "../../eventFormStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
+import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
+import { priceOptions, lineUpOptions, ageOptions, hasDresscode, yesNoOptions } from './optionFormData';
 
 import "./OptionForm.less";
 
 export const OptionForm = observer((props) => {
   const { tags } = props;
-  const [showDrescodeTags, setShowDresscodeTags] = useState(false);
-
-  const priceOptions = [
-    {
-      value: 0,
-      label: "Regular price",
-    },
-    {
-      value: 1,
-      label: "Early bird",
-    },
-    {
-      value: 2,
-      label: "At the door",
-    },
-    /* {
-      value: 3,
-      label: "Friends-list",
-    }, */
-  ];
-
-  const lineUpOptions = [
-    {
-      value: 0,
-      label: "van Staen",
-    },
-  ];
-
-  const ageOptions = [
-    {
-      value: 0,
-      label: "No restriction",
-    },
-    {
-      value: 18,
-      label: "18+",
-    },
-    {
-      value: 21,
-      label: "21+",
-    },
-    {
-      value: 30,
-      label: "30+",
-    },
-  ];
-
-  const hasDresscode = [
-    {
-      value: 0,
-      label: "No dresscode",
-    },
-    {
-      value: 1,
-      label: "Dresscode appreciated",
-    },
-    {
-      value: 2,
-      label: "Strict dresscode",
-    },
-  ];
-
-  const yesNoOptions = [
-    {
-      value: false,
-      label: "No",
-    },
-    {
-      value: true,
-      label: "Yes",
-    },
-  ];
 
   const tagsHandler = (value) => {
     eventFormStore.setEventTags(value);
-  };
-
-  const priceHandler = (value, key) => {
-    // Todo
-    console.log("price", value, key);
-  };
-
-  const priceOptionHandler = (value, key) => {
-    // todo
-    console.log("option", value, key);
+    //TODO: New tag process
+    eventFormStore.eventId &&
+      updateEvent(eventFormStore.eventId, {
+        eventTags: value,
+      });
   };
 
   const lineUpHandler = (value) => {
     eventFormStore.setLineUp(value);
+    //TODO: New line up process
+    eventFormStore.eventId &&
+      updateEvent(eventFormStore.eventId, {
+        lineUp: value,
+      });
+  };
+
+  const equipmentHandler = (value) => {
+    eventFormStore.setEquipment(value);
+    //TODO: New equipment process
+    eventFormStore.eventId &&
+      updateEvent(eventFormStore.eventId, {
+        equipment: value,
+      });
+  };
+
+  const linksHandler = (value) => {
+    eventFormStore.setLinks(value);
+    eventFormStore.eventId &&
+      updateEvent(eventFormStore.eventId, {
+        links: value,
+      });
+  };
+
+  const ageMinHandler = (e) => {
+    const value = e.target.value;
+    eventFormStore.setAgeMin(value);
+    eventFormStore.eventId &&
+      updateEvent(eventFormStore.eventId, {
+        ageMin: value,
+      });
+  };
+
+  const isPrivateHandler = (e) => {
+    const value = e.target.value;
+    eventFormStore.setIsPrivate(value);
+    eventFormStore.eventId &&
+      updateEvent(eventFormStore.eventId, {
+        private: value,
+      });
+  };
+
+  const forwardableHandler = (e) => {
+    const value = e.target.value;
+    eventFormStore.setForwardable(value);
+    eventFormStore.eventId &&
+      updateEvent(eventFormStore.eventId, {
+        forwardable: value,
+      });
   };
 
   const hasDresscodeHandler = (e) => {
     const value = e.target.value;
-    setShowDresscodeTags(!!value);
     eventFormStore.setHasDresscode(value);
+    eventFormStore.eventId &&
+      updateEvent(eventFormStore.eventId, {
+        hasDresscode: value,
+      });
   };
 
   const dresscodeDoTagsHandler = (value) => {
+    // TODO
     console.log(value);
   };
 
   const dresscodeDontTagsHandler = (value) => {
+    // TODO
     console.log(value);
+  };
+
+  const priceHandler = (value, key) => {
+    // TODO
+    console.log("price", value, key);
+  };
+
+  const priceOptionHandler = (value, key) => {
+    // TODO
+    console.log("option", value, key);
   };
 
   return (
     <div
-      className={`optionform__container  ${
-        pageStore.selectedTheme === "light"
-          ? "lightColorTheme__Text"
-          : "darkColorTheme__Text"
-      }`}
+      className={`optionform__container  ${pageStore.selectedTheme === "light"
+        ? "lightColorTheme__Text"
+        : "darkColorTheme__Text"
+        }`}
     >
       <div className="optionform__element">
         <div className="optionform__title">Tags</div>
@@ -132,11 +120,28 @@ export const OptionForm = observer((props) => {
           placeholder="Please select some tags"
           options={tags}
           onChange={tagsHandler}
+          value={eventFormStore.eventTags}
+          onFocus={() => eventFormStore.setDeactivateNav(true)}
+          onBlur={() => eventFormStore.setDeactivateNav(false)}
           filterOption={(inputValue, option) =>
             option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
           }
         />
       </div>
+
+      <div className="optionform__element">
+        <div className="optionform__title">Links</div>
+        <Select
+          mode="tags"
+          style={{ width: "100%" }}
+          placeholder="Add links to your event"
+          onChange={linksHandler}
+          value={eventFormStore.links}
+          onFocus={() => eventFormStore.setDeactivateNav(true)}
+          onBlur={() => eventFormStore.setDeactivateNav(false)}
+        />
+      </div>
+
       <div className="optionform__element">
         <div className="optionform__title">Prices</div>
         <Row gutter={[16, 8]}>
@@ -146,6 +151,8 @@ export const OptionForm = observer((props) => {
               placeholder="Price"
               onChange={(event) => priceHandler(event, 1)}
               value={null}
+              onFocus={() => eventFormStore.setDeactivateNav(true)}
+              onBlur={() => eventFormStore.setDeactivateNav(false)}
             />
           </Col>
           <Col xs={17} sm={17} md={20}>
@@ -156,6 +163,8 @@ export const OptionForm = observer((props) => {
               onChange={priceOptionHandler}
               disabled={!eventFormStore.price?.value}
               className="optionform__priceSelect"
+              onFocus={() => eventFormStore.setDeactivateNav(true)}
+              onBlur={() => eventFormStore.setDeactivateNav(false)}
             />
             <Button className="optionform__priceButton" disabled={true}>
               +
@@ -165,20 +174,6 @@ export const OptionForm = observer((props) => {
       </div>
 
       <div className="optionform__element">
-        <div className="optionform__title">Line up</div>
-        <Select
-          mode="tags"
-          allowClear
-          style={{ width: "100%" }}
-          placeholder="Line Up of your event, if any"
-          options={lineUpOptions}
-          onChange={lineUpHandler}
-          filterOption={(inputValue, option) =>
-            option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-          }
-        />
-      </div>
-      <div className="optionform__element">
         <div className="optionform__title">Dresscode</div>
         <Radio.Group
           options={hasDresscode}
@@ -187,7 +182,7 @@ export const OptionForm = observer((props) => {
           value={eventFormStore.hasDresscode}
         />
       </div>
-      {showDrescodeTags && (
+      {!!eventFormStore.hasDresscode && (
         <div className="optionform__element">
           <Row gutter={[16, 8]}>
             <Col xs={24} sm={24} md={12}>
@@ -199,6 +194,8 @@ export const OptionForm = observer((props) => {
                 placeholder="What should people wear?"
                 options={tags}
                 onChange={dresscodeDoTagsHandler}
+                onFocus={() => eventFormStore.setDeactivateNav(true)}
+                onBlur={() => eventFormStore.setDeactivateNav(false)}
               />
             </Col>
             <Col xs={24} sm={24} md={12}>
@@ -210,26 +207,62 @@ export const OptionForm = observer((props) => {
                 placeholder="What can't people wear?"
                 options={tags}
                 onChange={dresscodeDontTagsHandler}
+                onFocus={() => eventFormStore.setDeactivateNav(true)}
+                onBlur={() => eventFormStore.setDeactivateNav(false)}
               />
             </Col>
           </Row>
         </div>
       )}
+
+      <div className="optionform__element">
+        <div className="optionform__title">Line up</div>
+        <Select
+          mode="tags"
+          allowClear
+          style={{ width: "100%" }}
+          placeholder="Line Up of your event, if any"
+          options={lineUpOptions}
+          onChange={lineUpHandler}
+          value={eventFormStore.lineUp}
+          filterOption={(inputValue, option) =>
+            option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+          }
+          onFocus={() => eventFormStore.setDeactivateNav(true)}
+          onBlur={() => eventFormStore.setDeactivateNav(false)}
+        />
+      </div>
+
+      <div className="optionform__element">
+        <div className="optionform__title">Equipment</div>
+        {/* TODO: add equipment list */}
+        <Select
+          mode="tags"
+          style={{ width: "100%" }}
+          placeholder="Does your event has any furniture/accessories?"
+          onChange={equipmentHandler}
+          value={eventFormStore.equipment}
+          onFocus={() => eventFormStore.setDeactivateNav(true)}
+          onBlur={() => eventFormStore.setDeactivateNav(false)}
+        />
+      </div>
+
       <div className="optionform__element">
         <div className="optionform__title">Guest minimum age</div>
         <Radio.Group
           options={ageOptions}
           optionType="button"
-          onChange={(e) => eventFormStore.setAgeMin(e.target.value)}
+          onChange={ageMinHandler}
           value={eventFormStore.ageMin}
         />
       </div>
+
       <div className="optionform__element">
         <div className="optionform__title">Is this a private event?</div>
         <Radio.Group
           options={yesNoOptions}
           optionType="button"
-          onChange={(e) => eventFormStore.setIsPrivate(e.target.value)}
+          onChange={isPrivateHandler}
           value={eventFormStore.isPrivate}
         />
       </div>
@@ -239,7 +272,7 @@ export const OptionForm = observer((props) => {
           <Radio.Group
             options={yesNoOptions}
             optionType="button"
-            onChange={(e) => eventFormStore.setForwardable(e.target.value)}
+            onChange={forwardableHandler}
             value={eventFormStore.forwardable}
           />
         </div>
