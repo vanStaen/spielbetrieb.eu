@@ -18,8 +18,6 @@ import "./OptionForm.less";
 export const OptionForm = observer((props) => {
   const { tags, dresscodes, equipments, artists } = props;
 
-  console.log('artists', artists);
-
   const tagsHandler = (value) => {
     eventFormStore.setEventTags(value);
     // TODO: New tag process
@@ -109,15 +107,19 @@ export const OptionForm = observer((props) => {
       });
   };
 
-  const priceHandler = (value, key) => {
+  const priceHandler = (value, index) => {
     // TODO
-    console.log("price", value, key);
+    console.log("amount", value, index);
   };
 
-  const priceOptionHandler = (value, key) => {
+  const priceOptionHandler = (value, index) => {
     // TODO
-    console.log("option", value, key);
+    console.log("option", value, index);
   };
+
+  const handleAddPrice = () => {
+
+  }
 
   return (
     <div
@@ -157,36 +159,46 @@ export const OptionForm = observer((props) => {
         />
       </div>
 
-      <div className="optionform__element">
-        <div className="optionform__title">Prices</div>
-        <Row gutter={[16, 8]}>
-          <Col xs={7} sm={7} md={4}>
-            <InputNumber
-              prefix="€"
-              placeholder="Price"
-              onChange={(event) => priceHandler(event, 1)}
-              value={null}
-              onFocus={() => eventFormStore.setDeactivateNav(true)}
-              onBlur={() => eventFormStore.setDeactivateNav(false)}
-            />
-          </Col>
-          <Col xs={17} sm={17} md={20}>
-            <Select
-              value={!eventFormStore.price ? 0 : null}
-              options={priceOptions}
-              placeholder="Price type"
-              onChange={priceOptionHandler}
-              disabled={!eventFormStore.price?.value}
-              className="optionform__priceSelect"
-              onFocus={() => eventFormStore.setDeactivateNav(true)}
-              onBlur={() => eventFormStore.setDeactivateNav(false)}
-            />
-            <Button className="optionform__priceButton" disabled={true}>
-              +
-            </Button>
-          </Col>
-        </Row>
-      </div>
+
+      {eventFormStore.eventtype !== 21 && // no prices for dates
+        <div className="optionform__element">
+          <div className="optionform__title">Prices</div>
+          {eventFormStore.prices.map((price, index) => {
+            return (
+              <Row gutter={[16, 8]}>
+                <Col xs={7} sm={7} md={4}>
+                  <InputNumber
+                    prefix="€"
+                    placeholder="Price"
+                    onChange={(event) => priceHandler(event, index)}
+                    value={price.amount}
+                    onFocus={() => eventFormStore.setDeactivateNav(true)}
+                    onBlur={() => eventFormStore.setDeactivateNav(false)}
+                  />
+                </Col>
+                <Col xs={17} sm={17} md={20}>
+                  <Select
+                    value={price.option}
+                    options={priceOptions}
+                    placeholder="Price type"
+                    onChange={(event) => priceOptionHandler(event, index)}
+                    disabled={!!!price.amount}
+                    className="optionform__priceSelect"
+                    onFocus={() => eventFormStore.setDeactivateNav(true)}
+                    onBlur={() => eventFormStore.setDeactivateNav(false)}
+                  />
+                  <Button
+                    className="optionform__priceButton"
+                    onClick={handleAddPrice}
+                    disabled={!!!price.amount}
+                  >
+                    +
+                  </Button>
+                </Col>
+              </Row>)
+          }
+          )}
+        </div>}
 
       <div className="optionform__element">
         <div className="optionform__title">Dresscode</div>
@@ -250,12 +262,12 @@ export const OptionForm = observer((props) => {
         />
       </div>
 
+      {/* only show equipment for play events */}
       {(eventFormStore.eventtype === 42 ||
         eventFormStore.eventtype === 40 ||
         eventFormStore.eventtype === null) && (
           <div className="optionform__element">
             <div className="optionform__title">Play equipment</div>
-            {/* TODO: add equipment list */}
             <Select
               mode="tags"
               style={{ width: "100%" }}

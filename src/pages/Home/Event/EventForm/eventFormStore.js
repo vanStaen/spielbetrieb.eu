@@ -28,7 +28,7 @@ export class EventFormStore {
   isPrivate = false;
   forwardable = true;
   eventTags = [];
-  prices = [{ price: null, option: 0 }];
+  prices = [{ amount: null, option: 0 }];
   lineUp = [];
   equipment = [];
   dresscodeDontTags = [];

@@ -74,7 +74,7 @@ export const EventFormDraftModal = observer((props) => {
     eventFormStore.setArtworksUrl(await getUrlsFromPicturePath(draft.pictures));
     draft.fromDate && eventFormStore.setFromDate(dayjs(draft.fromDate));
     draft.untilDate && eventFormStore.setUntilDate(dayjs(draft.untilDate));
-    draft.prices && eventFormStore.setPrices(draft.prices);
+    draft.prices.length && eventFormStore.setPrices(draft.prices);
     setIsLoading(false);
     setShowDraftModal(false);
   };
