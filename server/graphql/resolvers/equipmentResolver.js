@@ -45,11 +45,7 @@ export const equipmentResolver = {
       throw new Error("Unauthorized!");
     }
     const updateFields = [];
-    const updatableFields = [
-      "name",
-      "media",
-      "validated",
-    ];
+    const updatableFields = ["name", "media", "validated"];
     updatableFields.forEach((field) => {
       if (field in args.equipmentInput) {
         updateFields[field] = args.equipmentInput[field];

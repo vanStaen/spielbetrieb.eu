@@ -220,7 +220,10 @@ export const OptionForm = observer((props) => {
                       <Button
                         className="optionform__priceButton"
                         onClick={handleAddPrice}
-                        disabled={!price.amount}
+                        disabled={
+                          !price.amount ||
+                          eventFormStore.prices.length === priceOptions.length
+                        }
                       >
                         <PlusOutlined />
                       </Button>
