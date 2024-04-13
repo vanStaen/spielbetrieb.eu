@@ -5,6 +5,8 @@ import {
   PictureOutlined,
   LoadingOutlined,
   FileAddOutlined,
+  DeleteOutlined,
+  BackwardOutlined,
 } from "@ant-design/icons";
 
 import { eventFormStore } from "../../eventFormStore";
@@ -76,9 +78,13 @@ export const ArtworkForm = observer(() => {
 
   const images = eventFormStore.artworksUrl.map((url) => {
     return (
-      <>
-        <img src={url} width="500" />
-      </>
+      <div className="artwork__imgContainer">
+        <div className="artwork__imgOverlay">
+          <div className="artwork__imgActionButton move"><BackwardOutlined /></div>
+          <div className="artwork__imgActionButton delete"><DeleteOutlined /></div>
+        </div>
+        <img src={url} className="artwork__img" />
+      </div>
     );
   });
 
@@ -139,7 +145,9 @@ export const ArtworkForm = observer(() => {
           </label>
         )}
       </form>
-      {images}
+      <div className="artwork__container">
+        {images}
+      </div>
     </>
   );
 });

@@ -45,9 +45,12 @@ export const EventFormDraftModal = observer((props) => {
   };
 
   const getUrlsFromPicturePath = async (pictures) => {
-    // make it work for more than 1 picture
-    const url = await getPictureUrl(pictures[0], "events");
-    return [url];
+    const urls = await Promise.all(
+      pictures.map(picture => {
+        return getPictureUrl(picture, "events")
+      })
+    )
+    return urls;
   };
 
   const selectDraftHandler = async (draft) => {
