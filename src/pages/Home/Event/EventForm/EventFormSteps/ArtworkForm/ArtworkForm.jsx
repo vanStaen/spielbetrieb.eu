@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
-import { notification } from "antd";
+import { Popconfirm, notification, message } from "antd";
 import {
   PictureOutlined,
   LoadingOutlined,
@@ -11,18 +11,24 @@ import {
 
 import { eventFormStore } from "../../eventFormStore";
 import { postPicture } from "../../../../../../helpers/picture/postPicture";
+import { deletePicture } from "../../../../../../helpers/picture/deletePicture";
 import { getPictureUrl } from "../../../../../../helpers/picture/getPictureUrl";
+import { arrayMove } from '../../../../../../helpers/manipulation/arrayMove';
 
 import "./ArtworkForm.less";
+
+const S3_BUCKET = 'events';
 
 export const ArtworkForm = observer(() => {
   const [isUploading, setIsUploading] = useState(false);
   const [isDragDroping, setIsDragDroping] = useState(false);
   const [uploadProgress, setUploadProgress] = useState([0, 0]);
 
+  const hasArtworks = eventFormStore.artworks.length > 0;
+
   const fileUploadHandler = async (file) => {
     setIsUploading(true);
-    const result = await postPicture(file, "events");
+    const result = await postPicture(file, S3_BUCKET);
     if (result.error) {
       notification.error({
         message: "Upload failed!",
@@ -34,7 +40,7 @@ export const ArtworkForm = observer(() => {
     } else if (result.path) {
       const tempArtworkArray = eventFormStore.artworks;
       const tempArtworkUrlArray = eventFormStore.artworksUrl;
-      const url = await getPictureUrl(result.path, "events");
+      const url = await getPictureUrl(result.path, S3_BUCKET);
       tempArtworkArray.push(result.path);
       tempArtworkUrlArray.push(url);
       eventFormStore.setArtworks(tempArtworkArray);
@@ -76,12 +82,58 @@ export const ArtworkForm = observer(() => {
     setUploadProgress([0, 0]);
   };
 
-  const images = eventFormStore.artworksUrl.map((url) => {
+  const deletePictureHandler = async (index) => {
+    try {
+      const path = eventFormStore.artworks[index];
+      await deletePicture(path, S3_BUCKET);
+      const tempArtworksObject = eventFormStore.artworks;
+      const tempArtworksUrlObject = eventFormStore.artworksUrl;
+      tempArtworksObject.splice(index, 1);
+      tempArtworksUrlObject.splice(index, 1);
+      eventFormStore.setArtworks(tempArtworksObject);
+      eventFormStore.setArtworksUrl(tempArtworksUrlObject);
+      message.success("Artwork deleted!");
+    } catch (e) {
+      notification.error({
+        message: "Error!",
+        description: e.toString(),
+        duration: 0,
+        placement: "bottomRight",
+        className: "customNotification",
+      });
+    }
+  }
+
+  const movePictureHandler = async (index) => {
+    if (index === 0) {
+      return;
+    }
+    const tempArtworksObject = eventFormStore.artworks;
+    const tempArtworksUrlObject = eventFormStore.artworksUrl;
+    eventFormStore.setArtworks(arrayMove(tempArtworksObject, index, index - 1));
+    eventFormStore.setArtworksUrl(arrayMove(tempArtworksUrlObject, index, index - 1));
+  }
+
+  const images = eventFormStore.artworksUrl.map((url, index) => {
     return (
       <div className="artwork__imgContainer">
         <div className="artwork__imgOverlay">
-          <div className="artwork__imgActionButton move"><BackwardOutlined /></div>
-          <div className="artwork__imgActionButton delete"><DeleteOutlined /></div>
+          {index > 0 && <div
+            className="artwork__imgActionButton half move"
+            onClick={() => movePictureHandler(index)}
+          >
+            <BackwardOutlined className="rotated" />
+          </div>
+          }
+          <Popconfirm
+            title="Sure to delete?"
+            onConfirm={() => deletePictureHandler(index)}
+            icon={null}
+          >
+            <div className={`artwork__imgActionButton delete ${index > 0 ? 'half' : 'full'}`}>
+              <DeleteOutlined />
+            </div>
+          </Popconfirm>
         </div>
         <img src={url} className="artwork__img" />
       </div>
@@ -102,7 +154,7 @@ export const ArtworkForm = observer(() => {
           }}
         />
         {isUploading ? (
-          <label htmlFor="file" className="uploadArea">
+          <label htmlFor="file" className={hasArtworks ? 'uploadArea' : 'uploadAreaFull'}>
             <LoadingOutlined className="uploaderSpinner" />
             {uploadProgress[1] ? (
               <>
@@ -115,7 +167,7 @@ export const ArtworkForm = observer(() => {
         ) : (
           <label
             htmlFor="file"
-            className="uploadArea"
+            className={hasArtworks ? 'uploadArea' : 'uploadAreaFull'}
             onDrop={handleDrop}
             onDragOver={(e) => handleDragOver(e)}
             onDragEnter={(e) => handleDragEnter(e)}

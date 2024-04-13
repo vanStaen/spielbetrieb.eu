@@ -52,7 +52,7 @@ router.post("/", upload.single("file"), async (req, res) => {
 });
 
 // DELETE single file object from s3 (based on key)
-router.delete("/:id", async (req, res) => {
+router.delete("/", async (req, res) => {
   if (!req.isAuth) {
     res.status(403).json({
       error: "Unauthorized",
@@ -60,8 +60,8 @@ router.delete("/:id", async (req, res) => {
     return;
   }
   try {
-    await deleteFileFromS3(req.body.key, req.body.bucket);
-    res.status(204).json({});
+    await deleteFileFromS3(req.body.path, req.body.bucket);
+    res.status(204).json({ success: true });
   } catch (err) {
     res.status(400).json({
       error: `${err}`,
