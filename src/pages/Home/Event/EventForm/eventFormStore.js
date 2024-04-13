@@ -216,7 +216,6 @@ export class EventFormStore {
   };
 
   setPrices = (prices) => {
-    // TODO
     this.prices = prices;
   };
 

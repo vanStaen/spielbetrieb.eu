@@ -13,11 +13,11 @@ import { eventFormStore } from "../../eventFormStore";
 import { postPicture } from "../../../../../../helpers/picture/postPicture";
 import { deletePicture } from "../../../../../../helpers/picture/deletePicture";
 import { getPictureUrl } from "../../../../../../helpers/picture/getPictureUrl";
-import { arrayMove } from '../../../../../../helpers/manipulation/arrayMove';
+import { arrayMove } from "../../../../../../helpers/manipulation/arrayMove";
 
 import "./ArtworkForm.less";
 
-const S3_BUCKET = 'events';
+const S3_BUCKET = "events";
 
 export const ArtworkForm = observer(() => {
   const [isUploading, setIsUploading] = useState(false);
@@ -102,7 +102,7 @@ export const ArtworkForm = observer(() => {
         className: "customNotification",
       });
     }
-  }
+  };
 
   const movePictureHandler = async (index) => {
     if (index === 0) {
@@ -111,26 +111,31 @@ export const ArtworkForm = observer(() => {
     const tempArtworksObject = eventFormStore.artworks;
     const tempArtworksUrlObject = eventFormStore.artworksUrl;
     eventFormStore.setArtworks(arrayMove(tempArtworksObject, index, index - 1));
-    eventFormStore.setArtworksUrl(arrayMove(tempArtworksUrlObject, index, index - 1));
-  }
+    eventFormStore.setArtworksUrl(
+      arrayMove(tempArtworksUrlObject, index, index - 1),
+    );
+  };
 
   const images = eventFormStore.artworksUrl.map((url, index) => {
     return (
       <div className="artwork__imgContainer">
         <div className="artwork__imgOverlay">
-          {index > 0 && <div
-            className="artwork__imgActionButton half move"
-            onClick={() => movePictureHandler(index)}
-          >
-            <BackwardOutlined className="rotated" />
-          </div>
-          }
+          {index > 0 && (
+            <div
+              className="artwork__imgActionButton half move"
+              onClick={() => movePictureHandler(index)}
+            >
+              <BackwardOutlined className="rotated" />
+            </div>
+          )}
           <Popconfirm
             title="Sure to delete?"
             onConfirm={() => deletePictureHandler(index)}
             icon={null}
           >
-            <div className={`artwork__imgActionButton delete ${index > 0 ? 'half' : 'full'}`}>
+            <div
+              className={`artwork__imgActionButton delete ${index > 0 ? "half" : "full"}`}
+            >
               <DeleteOutlined />
             </div>
           </Popconfirm>
@@ -154,7 +159,10 @@ export const ArtworkForm = observer(() => {
           }}
         />
         {isUploading ? (
-          <label htmlFor="file" className={hasArtworks ? 'uploadArea' : 'uploadAreaFull'}>
+          <label
+            htmlFor="file"
+            className={hasArtworks ? "uploadArea" : "uploadAreaFull"}
+          >
             <LoadingOutlined className="uploaderSpinner" />
             {uploadProgress[1] ? (
               <>
@@ -167,7 +175,7 @@ export const ArtworkForm = observer(() => {
         ) : (
           <label
             htmlFor="file"
-            className={hasArtworks ? 'uploadArea' : 'uploadAreaFull'}
+            className={hasArtworks ? "uploadArea" : "uploadAreaFull"}
             onDrop={handleDrop}
             onDragOver={(e) => handleDragOver(e)}
             onDragEnter={(e) => handleDragEnter(e)}
@@ -197,9 +205,7 @@ export const ArtworkForm = observer(() => {
           </label>
         )}
       </form>
-      <div className="artwork__container">
-        {images}
-      </div>
+      <div className="artwork__container">{images}</div>
     </>
   );
 });

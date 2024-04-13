@@ -46,10 +46,10 @@ export const EventFormDraftModal = observer((props) => {
 
   const getUrlsFromPicturePath = async (pictures) => {
     const urls = await Promise.all(
-      pictures.map(picture => {
-        return getPictureUrl(picture, "events")
-      })
-    )
+      pictures.map((picture) => {
+        return getPictureUrl(picture, "events");
+      }),
+    );
     return urls;
   };
 
