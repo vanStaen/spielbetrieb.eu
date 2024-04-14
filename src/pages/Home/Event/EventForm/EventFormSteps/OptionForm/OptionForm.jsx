@@ -15,25 +15,26 @@ import {
 } from "./optionFormData";
 
 import "./OptionForm.less";
+import { addOption } from "./addOption";
 
 export const OptionForm = observer((props) => {
   const { tags, dresscodes, equipments, artists } = props;
 
-  const tagsHandler = (value) => {
-    eventFormStore.setEventTags(value);
+  const tagsHandler = async (value) => {
     // TODO: New tag process
+    const tagArray = await Promise.all(
+      value.map((tag) => {
+        if (typeof tag === "string") {
+          return addOption(tag, "tag");
+        }
+        return tag;
+      }),
+    );
+    console.log(tagArray);
+    eventFormStore.setEventTags(tagArray);
     eventFormStore.eventId &&
       updateEvent(eventFormStore.eventId, {
-        eventTags: value,
-      });
-  };
-
-  const lineUpHandler = (value) => {
-    eventFormStore.setLineUp(value);
-    // TODO: New line up process
-    eventFormStore.eventId &&
-      updateEvent(eventFormStore.eventId, {
-        lineUp: value,
+        eventTags: tagArray,
       });
   };
 
@@ -43,6 +44,15 @@ export const OptionForm = observer((props) => {
     eventFormStore.eventId &&
       updateEvent(eventFormStore.eventId, {
         equipment: value,
+      });
+  };
+
+  const lineUpHandler = (value) => {
+    eventFormStore.setLineUp(value);
+    // TODO: New line up process
+    eventFormStore.eventId &&
+      updateEvent(eventFormStore.eventId, {
+        lineUp: value,
       });
   };
 
