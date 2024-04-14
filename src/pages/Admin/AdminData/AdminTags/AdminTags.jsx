@@ -108,7 +108,7 @@ export const AdminTags = () => {
       key: "isUserTag",
       align: "center",
       editable: true,
-      render: (_, { isUserTag }) => (isUserTag && "✖️"),
+      render: (_, { isUserTag }) => isUserTag && "✖️",
     },
     {
       title: "Event tag",
@@ -116,7 +116,7 @@ export const AdminTags = () => {
       key: "isEventTag",
       align: "center",
       editable: true,
-      render: (_, { isEventTag }) => (isEventTag && "✖️"),
+      render: (_, { isEventTag }) => isEventTag && "✖️",
     },
     {
       title: "Picture tag",
@@ -124,7 +124,7 @@ export const AdminTags = () => {
       key: "isPictureTag",
       align: "center",
       editable: true,
-      render: (_, { isPictureTag }) => (isPictureTag && "✖️"),
+      render: (_, { isPictureTag }) => isPictureTag && "✖️",
     },
     {
       title: "Validated",
@@ -185,9 +185,9 @@ export const AdminTags = () => {
         record,
         inputType:
           col.dataIndex === "validated" ||
-            col.dataIndex === "isPictureTag" ||
-            col.dataIndex === "isEventTag" ||
-            col.dataIndex === "isUserTag"
+          col.dataIndex === "isPictureTag" ||
+          col.dataIndex === "isEventTag" ||
+          col.dataIndex === "isUserTag"
             ? "boolean"
             : "text",
         dataIndex: col.dataIndex,
