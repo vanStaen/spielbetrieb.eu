@@ -1,10 +1,10 @@
-export async function addTag(dataObject) {
+export async function addArtist(dataObject) {
   const graphqlQuery = {
     query: `mutation ( 
-                $dataObject: TagInputData!,
+                $dataObject: ArtistInputData!,
                 ) {
-                addTag (
-                  tagInput: $dataObject,
+                addArtist (
+                  artistInput: $dataObject,
                 ) {
                   _id
                 }
@@ -32,5 +32,5 @@ export async function addTag(dataObject) {
   if (res.errors) {
     return res.errors[0];
   }
-  return res.data.addTag;
+  return res.data.addArtist;
 }
