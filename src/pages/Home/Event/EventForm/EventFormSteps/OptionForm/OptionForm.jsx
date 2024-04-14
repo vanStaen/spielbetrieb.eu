@@ -45,12 +45,21 @@ export const OptionForm = observer((props) => {
       });
   };
 
-  const lineUpHandler = (value) => {
-    eventFormStore.setLineUp(value);
-    // TODO: New line up process
+  const lineUpHandler = async (value) => {
+    const lineUpArray = await Promise.all(
+      value.map(async (artist) => {
+        if (typeof artist === "string") {
+          const newArtistId = await addOption(artist, "artist");
+          await fetchArtists();
+          return newArtistId;
+        }
+        return artist;
+      }),
+    );
+    eventFormStore.setLineUp(lineUpArray);
     eventFormStore.eventId &&
       updateEvent(eventFormStore.eventId, {
-        lineUp: value,
+        lineUp: lineUpArray,
       });
   };
 

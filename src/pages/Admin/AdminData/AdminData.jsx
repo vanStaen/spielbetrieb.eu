@@ -7,9 +7,11 @@ import {
   WomanOutlined,
   ApiOutlined,
   ShopOutlined,
+  ThunderboltOutlined,
 } from "@ant-design/icons";
 
 import { AdminTags } from "./AdminTags/AdminTags";
+import { AdminArtists } from "./AdminArtists/AdminArtists";
 import { AdminEventtypes } from "./AdminEventtypes/AdminEventtypes";
 import { AdminLocations } from "./AdminLocations/AdminLocations";
 import { AdminPartnertypes } from "./AdminPartnertypes/AdminPartnertypes";
@@ -71,6 +73,15 @@ export const AdminData = () => {
       ),
       children: "",
       disabled: true,
+    },
+    {
+      key: "7",
+      label: (
+        <>
+          <ThunderboltOutlined /> Artists
+        </>
+      ),
+      children: <AdminArtists />,
     },
   ];
 

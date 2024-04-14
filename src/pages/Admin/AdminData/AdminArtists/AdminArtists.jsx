@@ -55,7 +55,7 @@ export const AdminArtists = () => {
     try {
       const dataObject = await form.validateFields();
       const dataObjectNew = {
-        name: `{"en":"${dataObject.name_en}", "de":"${dataObject.name_de}"}`,
+        name: dataObject.name,
         isUserArtist: dataObject.isUserArtist,
         isEventArtist: dataObject.isEventArtist,
         isPictureArtist: dataObject.isPictureArtist,
@@ -83,40 +83,40 @@ export const AdminArtists = () => {
       width: "50px",
     },
     {
-      title: "Name EN",
-      dataIndex: "name_en",
-      key: "name_en",
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
       editable: true,
     },
     {
-      title: "Name DE",
-      dataIndex: "name_de",
-      key: "name_de",
+      title: "Type",
+      dataIndex: "artistType",
+      key: "artistType",
       editable: true,
     },
     {
-      title: "User artist",
-      dataIndex: "isUserArtist",
-      key: "isUserArtist",
+      title: "Pictures",
+      dataIndex: "pictures",
+      key: "pictures",
       align: "center",
       editable: true,
-      render: (_, { isUserArtist }) => (isUserArtist && "✖️"),
     },
     {
-      title: "Event artist",
-      dataIndex: "isEventArtist",
-      key: "isEventArtist",
-      align: "center",
+      title: "Links",
+      dataIndex: "links",
+      key: "links",
       editable: true,
-      render: (_, { isEventArtist }) => (isEventArtist && "✖️"),
-    },
-    {
-      title: "Picture artist",
-      dataIndex: "isPictureArtist",
-      key: "isPictureArtist",
-      align: "center",
-      editable: true,
-      render: (_, { isPictureArtist }) => (isPictureArtist && "✖️"),
+      render: (_, { links }) => (
+        <>
+          {links?.map((link) => {
+            return (
+              <Tag key={link} bordered={false}>
+                {link}
+              </Tag>
+            );
+          })}
+        </>
+      ),
     },
     {
       title: "Validated",

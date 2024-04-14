@@ -1,7 +1,7 @@
-export async function deleteTag(id) {
+export async function deleteArtist(id) {
   const graphqlQuery = {
     query: `mutation ( $id: ID! ) {
-                deleteTag ( tagId: $id ) 
+                deleteArtist ( artistId: $id ) 
                 }`,
     variables: {
       id,
@@ -26,5 +26,5 @@ export async function deleteTag(id) {
   if (data.errors) {
     return data.errors[0];
   }
-  return data.deleteTag;
+  return data.deleteArtist;
 }
