@@ -7,11 +7,13 @@ import {
   WomanOutlined,
   ApiOutlined,
   ShopOutlined,
+  SkinOutlined,
   ThunderboltOutlined,
 } from "@ant-design/icons";
 
 import { AdminTags } from "./AdminTags/AdminTags";
 import { AdminArtists } from "./AdminArtists/AdminArtists";
+import { AdminDresscodes } from "./AdminDresscodes/AdminDresscodes";
 import { AdminEventtypes } from "./AdminEventtypes/AdminEventtypes";
 import { AdminLocations } from "./AdminLocations/AdminLocations";
 import { AdminPartnertypes } from "./AdminPartnertypes/AdminPartnertypes";
@@ -82,6 +84,15 @@ export const AdminData = () => {
         </>
       ),
       children: <AdminArtists />,
+    },
+    {
+      key: "8",
+      label: (
+        <>
+          <SkinOutlined /> Dresscodes
+        </>
+      ),
+      children: <AdminDresscodes />,
     },
   ];
 

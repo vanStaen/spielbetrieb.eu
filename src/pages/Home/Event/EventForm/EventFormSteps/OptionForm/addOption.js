@@ -1,5 +1,6 @@
 import { addTag } from "../../../../../Admin/AdminData/AdminTags/addTag.js";
 import { addArtist } from "../../../../../Admin/AdminData/AdminArtists/addArtist.js";
+import { addDresscode } from "../../../../../Admin/AdminData/AdminDresscodes/addDresscode.js";
 
 export const addOption = async (option, usecase) => {
   if (usecase === "tag") {
@@ -14,6 +15,12 @@ export const addOption = async (option, usecase) => {
       name: option,
     };
     const res = await addArtist(dataObjectArtist);
+    return parseInt(res._id);
+  } else if (usecase === "dresscode") {
+    const dataObjectDresscodeTag = {
+      name: `{"en":"${option}", "de":"${option}"}`,
+    };
+    const res = await addDresscode(dataObjectDresscodeTag);
     return parseInt(res._id);
   }
 };

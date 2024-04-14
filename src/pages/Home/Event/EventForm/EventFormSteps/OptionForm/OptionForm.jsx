@@ -115,21 +115,39 @@ export const OptionForm = observer((props) => {
       });
   };
 
-  const dresscodeDoTagsHandler = (value) => {
-    eventFormStore.setDresscodeDoTags(value);
-    // TODO: New dresscode process
+  const dresscodeDoTagsHandler = async (value) => {
+    const dresscodeDoTagArray = await Promise.all(
+      value.map(async (tag) => {
+        if (typeof tag === "string") {
+          const newDresscodeTagId = await addOption(tag, "dresscode");
+          await fetchDresscodes();
+          return newDresscodeTagId;
+        }
+        return tag;
+      }),
+    );
+    eventFormStore.setDresscodeDoTags(dresscodeDoTagArray);
     eventFormStore.eventId &&
       updateEvent(eventFormStore.eventId, {
-        dresscodeDoTags: value,
+        dresscodeDoTags: dresscodeDoTagArray,
       });
   };
 
-  const dresscodeDontTagsHandler = (value) => {
-    // TODO: New dresscode process
-    eventFormStore.setDresscodeDontTags(value);
+  const dresscodeDontTagsHandler = async (value) => {
+    const dresscodeDontTagArray = await Promise.all(
+      value.map(async (tag) => {
+        if (typeof tag === "string") {
+          const newDresscodeTagId = await addOption(tag, "dresscode");
+          await fetchDresscodes();
+          return newDresscodeTagId;
+        }
+        return tag;
+      }),
+    );
+    eventFormStore.setDresscodeDoTags(dresscodeDontTagArray);
     eventFormStore.eventId &&
       updateEvent(eventFormStore.eventId, {
-        dresscodeDontTags: value,
+        dresscodeDoTags: dresscodeDontTagArray,
       });
   };
 
@@ -168,11 +186,10 @@ export const OptionForm = observer((props) => {
 
   return (
     <div
-      className={`optionform__container  ${
-        pageStore.selectedTheme === "light"
-          ? "lightColorTheme__Text"
-          : "darkColorTheme__Text"
-      }`}
+      className={`optionform__container  ${pageStore.selectedTheme === "light"
+        ? "lightColorTheme__Text"
+        : "darkColorTheme__Text"
+        }`}
     >
       <div className="optionform__element">
         <div className="optionform__title">Tags</div>
@@ -337,24 +354,24 @@ export const OptionForm = observer((props) => {
       {(eventFormStore.eventtype === 42 ||
         eventFormStore.eventtype === 40 ||
         eventFormStore.eventtype === null) && (
-        <div className="optionform__element">
-          <div className="optionform__title">Play equipment</div>
-          <Select
-            mode="tags"
-            style={{ width: "100%" }}
-            placeholder="Does your event has any furniture/accessories?"
-            options={equipments}
-            onChange={equipmentHandler}
-            value={eventFormStore.equipment}
-            onFocus={() => eventFormStore.setDeactivateNav(true)}
-            onBlur={() => eventFormStore.setDeactivateNav(false)}
-            filterOption={(inputValue, option) =>
-              option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !==
-              -1
-            }
-          />
-        </div>
-      )}
+          <div className="optionform__element">
+            <div className="optionform__title">Play equipment</div>
+            <Select
+              mode="tags"
+              style={{ width: "100%" }}
+              placeholder="Does your event has any furniture/accessories?"
+              options={equipments}
+              onChange={equipmentHandler}
+              value={eventFormStore.equipment}
+              onFocus={() => eventFormStore.setDeactivateNav(true)}
+              onBlur={() => eventFormStore.setDeactivateNav(false)}
+              filterOption={(inputValue, option) =>
+                option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !==
+                -1
+              }
+            />
+          </div>
+        )}
 
       <div className="optionform__element">
         <div className="optionform__title">Guest minimum age</div>
