@@ -1,7 +1,8 @@
 import { addTag } from "../../../../../Admin/AdminData/AdminTags/addTag.js";
+import { addArtist } from "../../../../../Admin/AdminData/AdminArtists/addArtist.js";
 
 export const addOption = async (option, usecase) => {
-  if (table === "tag") {
+  if (usecase === "tag") {
     const dataObjectTag = {
       name: `{"en":"${option}", "de":"${option}"}`,
       isEventTag: true,
