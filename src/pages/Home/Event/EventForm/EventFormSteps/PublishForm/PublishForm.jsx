@@ -25,7 +25,7 @@ export const PublishForm = observer(() => {
   }, []);
 
   const onFinish = async () => {
-    //TODO: Add new location to be validated
+    // TODO: Add new location to be validated
 
     setLoading(true);
     const dataObject = await form.validateFields();
@@ -80,10 +80,11 @@ export const PublishForm = observer(() => {
   return (
     <>
       <div
-        className={`publishform__container  ${pageStore.selectedTheme === "light"
-          ? "lightColorTheme__Text"
-          : "darkColorTheme__Text"
-          }`}
+        className={`publishform__container  ${
+          pageStore.selectedTheme === "light"
+            ? "lightColorTheme__Text"
+            : "darkColorTheme__Text"
+        }`}
       >
         {eventFormStore.errors && (
           <>

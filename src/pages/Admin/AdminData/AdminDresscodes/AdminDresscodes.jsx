@@ -165,13 +165,7 @@ export const AdminDresscodes = () => {
       ...col,
       onCell: (record) => ({
         record,
-        inputType:
-          col.dataIndex === "validated" ||
-            col.dataIndex === "isPictureDresscode" ||
-            col.dataIndex === "isEventDresscode" ||
-            col.dataIndex === "isUserDresscode"
-            ? "boolean"
-            : "text",
+        inputType: col.dataIndex === "validated" ? "boolean" : "text",
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
