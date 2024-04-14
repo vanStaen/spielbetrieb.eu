@@ -36,6 +36,7 @@
 - [ ] Translate all in form Event
 - [ ] Spielplan Filter should be of type OR (and not AND)
 - [ ] URL to old event only possible for admin and VA-er, sonst meldung 'not possible'
+- [ ] Admin: When validating new tag, if there are not accepted, they should not be shown in the event anymore.
 
 ## Tech debt:
 

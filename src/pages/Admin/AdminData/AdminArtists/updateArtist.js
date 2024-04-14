@@ -1,15 +1,18 @@
-export async function addTag(dataObject) {
+export async function updateTag(id, dataObject) {
   const graphqlQuery = {
     query: `mutation ( 
+                $id: ID!,
                 $dataObject: TagInputData!,
                 ) {
-                addTag (
+                updateTag (
+                  tagId: $id,
                   tagInput: $dataObject,
                 ) {
                   _id
                 }
                 }`,
     variables: {
+      id,
       dataObject,
     },
   };
@@ -27,10 +30,10 @@ export async function addTag(dataObject) {
   };
 
   const response = await fetch(endpoint, options);
-  const res = await response.json();
+  const data = await response.json();
 
-  if (res.errors) {
-    return res.errors[0];
+  if (data.errors) {
+    return data.errors[0];
   }
-  return res.data.addTag;
+  return data.updateTag;
 }

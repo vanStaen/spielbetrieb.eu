@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { Fragment } from "react";
 import { observer } from "mobx-react";
 import { Radio, Select, InputNumber, Row, Col, Button } from "antd";
 import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
@@ -7,6 +6,7 @@ import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
 import { eventFormStore } from "../../eventFormStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
+import { addOption } from "./addOption";
 import {
   priceOptions,
   ageOptions,
@@ -15,22 +15,21 @@ import {
 } from "./optionFormData";
 
 import "./OptionForm.less";
-import { addOption } from "./addOption";
 
 export const OptionForm = observer((props) => {
-  const { tags, dresscodes, equipments, artists } = props;
+  const { tags, fetchTags, dresscodes, fetchDresscodes, equipments, artists, fetchArtists } = props;
 
   const tagsHandler = async (value) => {
-    // TODO: New tag process
     const tagArray = await Promise.all(
-      value.map((tag) => {
+      value.map(async (tag) => {
         if (typeof tag === "string") {
-          return addOption(tag, "tag");
+          const newTagId = await addOption(tag, "tag");
+          await fetchTags();
+          return newTagId;
         }
         return tag;
       }),
     );
-    console.log(tagArray);
     eventFormStore.setEventTags(tagArray);
     eventFormStore.eventId &&
       updateEvent(eventFormStore.eventId, {
@@ -40,7 +39,6 @@ export const OptionForm = observer((props) => {
 
   const equipmentHandler = (value) => {
     eventFormStore.setEquipment(value);
-    // TODO: New equipment process
     eventFormStore.eventId &&
       updateEvent(eventFormStore.eventId, {
         equipment: value,
@@ -153,11 +151,10 @@ export const OptionForm = observer((props) => {
 
   return (
     <div
-      className={`optionform__container  ${
-        pageStore.selectedTheme === "light"
-          ? "lightColorTheme__Text"
-          : "darkColorTheme__Text"
-      }`}
+      className={`optionform__container  ${pageStore.selectedTheme === "light"
+        ? "lightColorTheme__Text"
+        : "darkColorTheme__Text"
+        }`}
     >
       <div className="optionform__element">
         <div className="optionform__title">Tags</div>
@@ -196,7 +193,7 @@ export const OptionForm = observer((props) => {
           <Row gutter={[16, 8]}>
             {eventFormStore.prices.map((price, index) => {
               return (
-                <>
+                <Fragment key={`priceRow${index}`}>
                   <Col xs={7} sm={7} md={4} key={`col-amount-${index}`}>
                     <InputNumber
                       prefix="€"
@@ -239,7 +236,7 @@ export const OptionForm = observer((props) => {
                       </Button>
                     )}
                   </Col>
-                </>
+                </Fragment>
               );
             })}
           </Row>
@@ -322,24 +319,24 @@ export const OptionForm = observer((props) => {
       {(eventFormStore.eventtype === 42 ||
         eventFormStore.eventtype === 40 ||
         eventFormStore.eventtype === null) && (
-        <div className="optionform__element">
-          <div className="optionform__title">Play equipment</div>
-          <Select
-            mode="tags"
-            style={{ width: "100%" }}
-            placeholder="Does your event has any furniture/accessories?"
-            options={equipments}
-            onChange={equipmentHandler}
-            value={eventFormStore.equipment}
-            onFocus={() => eventFormStore.setDeactivateNav(true)}
-            onBlur={() => eventFormStore.setDeactivateNav(false)}
-            filterOption={(inputValue, option) =>
-              option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !==
-              -1
-            }
-          />
-        </div>
-      )}
+          <div className="optionform__element">
+            <div className="optionform__title">Play equipment</div>
+            <Select
+              mode="tags"
+              style={{ width: "100%" }}
+              placeholder="Does your event has any furniture/accessories?"
+              options={equipments}
+              onChange={equipmentHandler}
+              value={eventFormStore.equipment}
+              onFocus={() => eventFormStore.setDeactivateNav(true)}
+              onBlur={() => eventFormStore.setDeactivateNav(false)}
+              filterOption={(inputValue, option) =>
+                option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !==
+                -1
+              }
+            />
+          </div>
+        )}
 
       <div className="optionform__element">
         <div className="optionform__title">Guest minimum age</div>

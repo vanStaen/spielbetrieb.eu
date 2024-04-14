@@ -65,7 +65,7 @@ export const EventForm = observer(() => {
     setLocations(locations);
   };
 
-  const fetchtags = async () => {
+  const fetchTags = async () => {
     const results = await getTags();
     const tags = results.map((tag) => {
       if (tag.eventTag === false) {
@@ -120,7 +120,7 @@ export const EventForm = observer(() => {
     setIsLoading(true);
     await fetchEventtypes();
     await fetchLocations();
-    await fetchtags();
+    await fetchTags();
     await fetchDresscodes();
     await fetchEquipments();
     await fetchArtists();
@@ -249,10 +249,14 @@ export const EventForm = observer(() => {
           {eventFormStore.formStep === 1 && <ArtworkForm />}
           {eventFormStore.formStep === 2 && (
             <OptionForm
-              tags={tags}
-              dresscodes={dresscodes}
-              equipments={equipments}
               artists={artists}
+              fetchArtists={fetchArtists}
+              tags={tags}
+              fetchTags={fetchTags}
+              dresscodes={dresscodes}
+              fetchDresscodes={fetchDresscodes}
+              equipments={equipments}
+
             />
           )}
           {eventFormStore.formStep === 3 && <PublishForm />}

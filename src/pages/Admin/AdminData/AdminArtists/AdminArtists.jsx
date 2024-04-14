@@ -8,33 +8,25 @@ import {
 } from "@ant-design/icons";
 
 import { EditableCell } from "../../EditableCell";
-import { getTags } from "../../../../store/spielplanStore/getTags";
-import { deleteTag } from "./deleteTag";
-import { updateTag } from "./updateTag";
-import { addTag } from "./addTag";
+import { getArtists } from "../../../../store/spielplanStore/getArtists";
+import { deleteArtist } from "./deleteArtist";
+import { updateArtist } from "./updateArtist";
+import { addArtist } from "./addArtist";
 import { AdminCustomSpinner } from "../../AdminCustomSpinner/AdminCustomSpinner";
-import { nameParser } from "../../../../helpers/dev/nameParser";
 
-export const AdminTags = () => {
+export const AdminArtists = () => {
   const [form] = Form.useForm();
-  const [tags, setTags] = useState([]);
+  const [artists, setArtists] = useState([]);
   const [editingId, setEditingId] = useState("");
   const [isNewRow, setIsNewRow] = useState(false);
 
-  const fetchTags = async () => {
-    const results = await getTags();
-    const tags = results.map((type) => {
-      return {
-        name_en: nameParser(type.name, "en"),
-        name_de: nameParser(type.name, "de"),
-        ...type,
-      };
-    });
-    setTags(tags);
+  const fetchArtists = async () => {
+    const results = await getArtists();
+    setArtists(results);
   };
 
   useEffect(() => {
-    fetchTags();
+    fetchArtists();
   }, []);
 
   const isEditing = (record) => record._id === editingId;
@@ -50,13 +42,13 @@ export const AdminTags = () => {
 
   const cancel = async () => {
     setEditingId("");
-    isNewRow && fetchTags();
+    isNewRow && fetchArtists();
     setIsNewRow(false);
   };
 
   const deleteRow = async (id) => {
-    await deleteTag(id);
-    await fetchTags();
+    await deleteArtist(id);
+    await fetchArtists();
   };
 
   const save = async (id) => {
@@ -64,17 +56,17 @@ export const AdminTags = () => {
       const dataObject = await form.validateFields();
       const dataObjectNew = {
         name: `{"en":"${dataObject.name_en}", "de":"${dataObject.name_de}"}`,
-        isUserTag: dataObject.isUserTag,
-        isEventTag: dataObject.isEventTag,
-        isPictureTag: dataObject.isPictureTag,
+        isUserArtist: dataObject.isUserArtist,
+        isEventArtist: dataObject.isEventArtist,
+        isPictureArtist: dataObject.isPictureArtist,
         validated: dataObject.validated,
       };
       if (isNewRow) {
-        await addTag(dataObjectNew);
+        await addArtist(dataObjectNew);
       } else {
-        await updateTag(id, dataObjectNew);
+        await updateArtist(id, dataObjectNew);
       }
-      await fetchTags();
+      await fetchArtists();
       setEditingId("");
       setIsNewRow(false);
     } catch (e) {
@@ -103,28 +95,28 @@ export const AdminTags = () => {
       editable: true,
     },
     {
-      title: "User tag",
-      dataIndex: "isUserTag",
-      key: "isUserTag",
+      title: "User artist",
+      dataIndex: "isUserArtist",
+      key: "isUserArtist",
       align: "center",
       editable: true,
-      render: (_, { isUserTag }) => (isUserTag && "✖️"),
+      render: (_, { isUserArtist }) => (isUserArtist && "✖️"),
     },
     {
-      title: "Event tag",
-      dataIndex: "isEventTag",
-      key: "isEventTag",
+      title: "Event artist",
+      dataIndex: "isEventArtist",
+      key: "isEventArtist",
       align: "center",
       editable: true,
-      render: (_, { isEventTag }) => (isEventTag && "✖️"),
+      render: (_, { isEventArtist }) => (isEventArtist && "✖️"),
     },
     {
-      title: "Picture tag",
-      dataIndex: "isPictureTag",
-      key: "isPictureTag",
+      title: "Picture artist",
+      dataIndex: "isPictureArtist",
+      key: "isPictureArtist",
       align: "center",
       editable: true,
-      render: (_, { isPictureTag }) => (isPictureTag && "✖️"),
+      render: (_, { isPictureArtist }) => (isPictureArtist && "✖️"),
     },
     {
       title: "Validated",
@@ -185,9 +177,9 @@ export const AdminTags = () => {
         record,
         inputType:
           col.dataIndex === "validated" ||
-            col.dataIndex === "isPictureTag" ||
-            col.dataIndex === "isEventTag" ||
-            col.dataIndex === "isUserTag"
+            col.dataIndex === "isPictureArtist" ||
+            col.dataIndex === "isEventArtist" ||
+            col.dataIndex === "isUserArtist"
             ? "boolean"
             : "text",
         dataIndex: col.dataIndex,
@@ -198,7 +190,7 @@ export const AdminTags = () => {
   });
 
   const handleAdd = () => {
-    const newId = parseInt(tags[tags.length - 1]._id) + 1;
+    const newId = parseInt(artists[artists.length - 1]._id) + 1;
     const newRow = {
       _id: newId,
       name: '{"en": "EVENT_TYPE_EN", "de": "EVENT_TYPE_DE"}',
@@ -207,14 +199,14 @@ export const AdminTags = () => {
     form.setFieldsValue({
       ...newRow,
     });
-    setTags([...tags, newRow]);
+    setArtists([...artists, newRow]);
     setIsNewRow(true);
     setEditingId(newId);
   };
 
   return (
     <div>
-      {tags.length === 0 ? (
+      {artists.length === 0 ? (
         <div className="admin__centered">
           <AdminCustomSpinner text="Loading Data" />
         </div>
@@ -228,14 +220,14 @@ export const AdminTags = () => {
                 },
               }}
               className="admin__table"
-              dataSource={tags}
+              dataSource={artists}
               columns={mergedColumns}
               pagination={false}
               size="small"
             />
           </Form>
           <div className="admin__tableFooter">
-            <Button onClick={handleAdd}>Add a new Tag</Button>
+            <Button onClick={handleAdd}>Add a new Artist</Button>
           </div>
         </>
       )}
