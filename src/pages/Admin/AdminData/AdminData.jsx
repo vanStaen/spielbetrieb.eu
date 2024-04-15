@@ -9,11 +9,13 @@ import {
   ShopOutlined,
   SkinOutlined,
   ThunderboltOutlined,
+  SplitCellsOutlined,
 } from "@ant-design/icons";
 
 import { AdminTags } from "./AdminTags/AdminTags";
 import { AdminArtists } from "./AdminArtists/AdminArtists";
 import { AdminDresscodes } from "./AdminDresscodes/AdminDresscodes";
+import { AdminEquipments } from "./AdminEquipments/AdminEquipments";
 import { AdminEventtypes } from "./AdminEventtypes/AdminEventtypes";
 import { AdminLocations } from "./AdminLocations/AdminLocations";
 import { AdminPartnertypes } from "./AdminPartnertypes/AdminPartnertypes";
@@ -93,6 +95,15 @@ export const AdminData = () => {
         </>
       ),
       children: <AdminDresscodes />,
+    },
+    {
+      key: "9",
+      label: (
+        <>
+          <SplitCellsOutlined /> Equipments
+        </>
+      ),
+      children: <AdminEquipments />,
     },
   ];
 
