@@ -19,6 +19,7 @@ import { getTags } from "../../../store/spielplanStore/getTags";
 import { getUserNames } from "./getUserNames";
 import { nameParser } from "../../../helpers/dev/nameParser";
 import { userStore } from "../../../store/userStore/userStore";
+import { updateEvent } from "./updateEvent";
 
 export const AdminEvents = () => {
   const [form] = Form.useForm();
@@ -68,11 +69,11 @@ export const AdminEvents = () => {
     await fetchEvents();
   };
 
-  const duplicateClickHandler = (record) => {
+  /* const duplicateClickHandler = (record) => {
     copyEditData.current = record;
     setIsEdit(null);
     setShowEventForm(true);
-  };
+  }; */
 
   const editClickHandler = (record) => {
     copyEditData.current = record;
@@ -84,6 +85,11 @@ export const AdminEvents = () => {
     copyEditData.current = null;
     setIsEdit(null);
     setShowEventForm(true);
+  };
+
+  const toggleValidated = (id, validated) => {
+    updateEvent(parseInt(id), { validated: !validated });
+    fetchEvents();
   };
 
   const columns = [
@@ -207,7 +213,7 @@ export const AdminEvents = () => {
       key: "isPrivate",
       align: "center",
       width: "80px",
-      render: (_, { isPrivate }) => (isPrivate ? "✅" : "✖️"),
+      render: (_, { isPrivate }) => isPrivate && "✖️",
     },
     {
       title: "Forwardable",
@@ -215,7 +221,7 @@ export const AdminEvents = () => {
       key: "forwardable",
       align: "center",
       width: "80px",
-      render: (_, { forwardable }) => (forwardable ? "✅" : "✖️"),
+      render: (_, { forwardable }) => forwardable && "✖️",
     },
     {
       title: "Allow Anonymous",
@@ -223,7 +229,7 @@ export const AdminEvents = () => {
       key: "allowAnonymous",
       align: "center",
       width: "80px",
-      render: (_, { allowAnonymous }) => (allowAnonymous ? "✅" : "✖️"),
+      render: (_, { allowAnonymous }) => allowAnonymous && "✖️",
     },
     {
       title: "Draft",
@@ -231,7 +237,7 @@ export const AdminEvents = () => {
       key: "isDraft",
       align: "center",
       width: "80px",
-      render: (_, { isDraft }) => (isDraft ? "✅" : "✖️"),
+      render: (_, { isDraft }) => isDraft && "❌",
     },
     {
       title: "Validated",
@@ -239,7 +245,14 @@ export const AdminEvents = () => {
       key: "validated",
       align: "center",
       width: "80px",
-      render: (_, { validated }) => (validated ? "✅" : "✖️"),
+      render: (_, { validated, isDraft, _id }) =>
+        validated
+          ? "✅"
+          : !isDraft && (
+            <Tooltip title='Double click to toggle this value'>
+              <div style={{ cursor: 'pointer' }} onDoubleClick={() => toggleValidated(_id, validated)}>❌</div>
+            </Tooltip>
+          ),
     },
     {
       title: <span style={{ opacity: ".2" }}>Actions</span>,
@@ -248,6 +261,7 @@ export const AdminEvents = () => {
       render: (_, record) => {
         return (
           <span>
+            {/*
             <Typography.Link
               style={{ marginRight: 8 }}
               onClick={() => duplicateClickHandler(record)}
@@ -255,7 +269,8 @@ export const AdminEvents = () => {
               <Tooltip title="Copy this event">
                 <CopyOutlined className="admin__editLogo" />
               </Tooltip>
-            </Typography.Link>
+            </Typography.Link> 
+            */}
             <Typography.Link
               style={{ marginRight: 8 }}
               onClick={() => editClickHandler(record)}

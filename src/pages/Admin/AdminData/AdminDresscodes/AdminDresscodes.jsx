@@ -114,7 +114,7 @@ export const AdminDresscodes = () => {
       key: "validated",
       align: "center",
       editable: true,
-      render: (_, { validated }) => (validated ? "✅" : " ❌"),
+      render: (_, { validated }) => (validated ? "✅" : "❌"),
     },
     {
       title: <span style={{ opacity: ".2" }}>Edit</span>,

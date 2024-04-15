@@ -114,7 +114,7 @@ export const AdminEquipments = () => {
       key: "validated",
       align: "center",
       editable: true,
-      render: (_, { validated }) => (validated ? "✅" : " ❌"),
+      render: (_, { validated }) => (validated ? "✅" : "❌"),
     }, 
     */
     {

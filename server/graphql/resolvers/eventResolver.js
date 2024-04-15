@@ -27,6 +27,7 @@ export const eventResolver = {
     }
     return await Event.findAll({
       include: User,
+      order: [["_id", "ASC"]],
     });
   },
 
@@ -139,12 +140,15 @@ export const eventResolver = {
       "allowAnonymous",
       "isDraft",
       "isPartnerEvent",
+      "validated",
     ];
     updatableFields.forEach((field) => {
       if (field in args.eventInput) {
         updateFields[field] = args.eventInput[field];
       }
     });
+    console.log('args.eventId', args.eventId);
+    console.log('updateFields', updateFields);
     try {
       const updatedEvent = await Event.update(updateFields, {
         where: {

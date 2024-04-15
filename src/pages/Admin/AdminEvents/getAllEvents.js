@@ -31,6 +31,7 @@ export async function getAllEvents() {
                 lineUp,
                 ageMin,
                 currency,
+                validated,
               }
             }
           `,
