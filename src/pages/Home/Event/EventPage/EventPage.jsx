@@ -13,19 +13,16 @@ import {
   TagsOutlined,
   EditOutlined,
 } from "@ant-design/icons";
-
 import dayjs from "dayjs";
 
+import { EventPageArtwork } from "./EventPageArtwork/EventPageArtwork";
 import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { getSingleEvents } from "../getSingleEvents";
 import { nameParser } from "../../../../helpers/dev/nameParser";
 import { HelpButtons } from "../../../../components/HelpButtons/HelpButtons";
 import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinnner";
-
-import artwork from "../../../../img/artworks/ak03.jpg";
-import artwork2 from "../../../../img/artworks/ak02.jpg";
-import artwork3 from "../../../../img/artworks/ak01.jpg";
+import { getPictureUrl } from '../../../../helpers/picture/getPictureUrl';
 
 import "./EventPage.less";
 
@@ -151,25 +148,39 @@ export const EventPage = observer((props) => {
     },
   ];
 
-  pageStore.setPicturesOverlayGallery([artwork, artwork2, artwork3]);
+  const getUrlsFromPicturePath = async (pictures) => {
+    const urls = await Promise.all(
+      pictures.map((picture) => {
+        return getPictureUrl(`${picture}`, "events");
+      }),
+    );
+    pageStore.setPicturesUrls(urls);
+  };
+
+  useEffect(() => {
+    if (event?.pictures.length) {
+      getUrlsFromPicturePath(event.pictures);
+    } else {
+      pageStore.setPicturesUrls(null);
+    }
+  }, [event?.pictures])
 
   return (
     <>
       <div className="eventpage__backgroundgradient"></div>
       <div
         className="eventpage__backgroundimage"
-        style={{ background: `url(${artwork}) center center/cover` }}
+        style={{ background: `url(${pageStore.picturesUrls && pageStore.picturesUrls[0]}) center center / cover` }}
       ></div>
       <div
         onClick={() => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${
-                    pageStore.selectedTheme === "light"
-                      ? "lightColorTheme__Text"
-                      : "darkColorTheme__Text"
-                  }`}
+                  ${pageStore.selectedTheme === "light"
+            ? "lightColorTheme__Text"
+            : "darkColorTheme__Text"
+          }`}
       >
         <ArrowLeftOutlined />
       </div>
@@ -179,17 +190,7 @@ export const EventPage = observer((props) => {
       >
         {event !== null ? (
           <>
-            <div className="eventpage__artworkCol">
-              <div
-                className="eventpage__artworkContainer"
-                ref={ref1}
-                onClick={() => {
-                  pageStore.setShowOverlayGallery(true);
-                }}
-              >
-                <img src={artwork} className="eventpage__artwork" />
-              </div>
-            </div>
+            <EventPageArtwork ref1={ref1} />
             <div className="eventpage__descCol">
               <div className="eventpage__title" ref={ref2}>
                 {event.title}
@@ -238,7 +239,7 @@ export const EventPage = observer((props) => {
                   <div className="eventpage__subInfo">
                     <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
                     {dayjs(event.fromDate).format("dddd") ===
-                    dayjs(event.untilDate).format("dddd") ? (
+                      dayjs(event.untilDate).format("dddd") ? (
                       <>
                         {dayjs(event.fromDate).format("HH:mm")}{" "}
                         {t("spielplan.until")}{" "}
@@ -293,11 +294,11 @@ export const EventPage = observer((props) => {
                       rel="noreferrer"
                     >
                       <Button shape="round">Show me on a map</Button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+                    </a >
+                  </div >
+                </div >
+              </div >
+            </div >
           </>
         ) : (
           <div className="eventpage__spinnerContainer">
@@ -305,7 +306,7 @@ export const EventPage = observer((props) => {
           </div>
         )}
         <HelpButtons missingEvent={true} setStartTour={setStartTour} />
-      </div>
+      </div >
       <Tour
         open={startTour}
         onClose={() => setStartTour(false)}

@@ -57,3 +57,4 @@
   - eg: You need to be logged in (EventForm)
   - eg: No events found (Spielplan)
   - eg: An error happened! Please restart the process (subscriberverify)
+- [ ] Why resized picture are bigger than original (_m and _t)

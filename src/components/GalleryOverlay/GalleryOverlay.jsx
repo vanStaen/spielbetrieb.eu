@@ -12,7 +12,7 @@ import { pageStore } from "../../store/pageStore/pageStore";
 import "./GalleryOverlay.less";
 
 export const GalleryOverlay = observer((props) => {
-  const [indexImageSelected, setIndexImageSelected] = useState(0);
+  const [indexImageSelected, setIndexImageSelected] = useState(pageStore.pictureSelected);
   const [imageLoaded, setImageLoaded] = useState(null);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
@@ -52,7 +52,7 @@ export const GalleryOverlay = observer((props) => {
 
   const browsePicture = (direction) => {
     if (direction) {
-      if (indexImageSelected + 1 !== pageStore.picturesOverlayGallery.length) {
+      if (indexImageSelected + 1 !== pageStore.picturesUrls.length) {
         setIndexImageSelected(indexImageSelected + 1);
       }
     } else {
@@ -66,13 +66,13 @@ export const GalleryOverlay = observer((props) => {
     setImageLoaded(null);
     const isloaded = new Promise((resolve, reject) => {
       const loadImg = new Image();
-      loadImg.src = pageStore.picturesOverlayGallery[indexImageSelected];
+      loadImg.src = pageStore.picturesUrls[indexImageSelected];
       loadImg.onload = () =>
-        resolve(pageStore.picturesOverlayGallery[indexImageSelected]);
+        resolve(pageStore.picturesUrls[indexImageSelected]);
       loadImg.onerror = (err) => reject(err);
     });
     await isloaded;
-    setImageLoaded(pageStore.picturesOverlayGallery[indexImageSelected]);
+    setImageLoaded(pageStore.picturesUrls[indexImageSelected]);
     setIsPictureLoading(false);
   };
 
@@ -167,7 +167,7 @@ export const GalleryOverlay = observer((props) => {
           <LeftOutlined />
         </div>
       )}
-      {indexImageSelected !== pageStore.picturesOverlayGallery.length - 1 && (
+      {indexImageSelected !== pageStore.picturesUrls.length - 1 && (
         <div
           className="overlay__columnRight"
           style={{ height: windowInnerHeight }}
