@@ -147,8 +147,6 @@ export const eventResolver = {
         updateFields[field] = args.eventInput[field];
       }
     });
-    console.log('args.eventId', args.eventId);
-    console.log('updateFields', updateFields);
     try {
       const updatedEvent = await Event.update(updateFields, {
         where: {

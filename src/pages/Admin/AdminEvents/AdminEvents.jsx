@@ -249,10 +249,15 @@ export const AdminEvents = () => {
         validated
           ? "✅"
           : !isDraft && (
-            <Tooltip title='Double click to toggle this value'>
-              <div style={{ cursor: 'pointer' }} onDoubleClick={() => toggleValidated(_id, validated)}>❌</div>
-            </Tooltip>
-          ),
+              <Tooltip title="Double click to toggle this value">
+                <div
+                  style={{ cursor: "pointer" }}
+                  onDoubleClick={() => toggleValidated(_id, validated)}
+                >
+                  ❌
+                </div>
+              </Tooltip>
+            ),
     },
     {
       title: <span style={{ opacity: ".2" }}>Actions</span>,

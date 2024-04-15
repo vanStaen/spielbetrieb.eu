@@ -191,10 +191,11 @@ export const OptionForm = observer((props) => {
 
   return (
     <div
-      className={`optionform__container  ${pageStore.selectedTheme === "light"
-        ? "lightColorTheme__Text"
-        : "darkColorTheme__Text"
-        }`}
+      className={`optionform__container  ${
+        pageStore.selectedTheme === "light"
+          ? "lightColorTheme__Text"
+          : "darkColorTheme__Text"
+      }`}
     >
       <div className="optionform__element">
         <div className="optionform__title">Tags</div>
@@ -364,24 +365,24 @@ export const OptionForm = observer((props) => {
       {(eventFormStore.eventtype === 42 ||
         eventFormStore.eventtype === 40 ||
         eventFormStore.eventtype === null) && (
-          <div className="optionform__element">
-            <div className="optionform__title">Play equipment</div>
-            <Select
-              mode="tags"
-              style={{ width: "100%" }}
-              placeholder="Does your event has any furniture/accessories?"
-              options={equipments}
-              onChange={equipmentHandler}
-              value={eventFormStore.equipment}
-              onFocus={() => eventFormStore.setDeactivateNav(true)}
-              onBlur={() => eventFormStore.setDeactivateNav(false)}
-              filterOption={(inputValue, option) =>
-                option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !==
-                -1
-              }
-            />
-          </div>
-        )}
+        <div className="optionform__element">
+          <div className="optionform__title">Play equipment</div>
+          <Select
+            mode="tags"
+            style={{ width: "100%" }}
+            placeholder="Does your event has any furniture/accessories?"
+            options={equipments}
+            onChange={equipmentHandler}
+            value={eventFormStore.equipment}
+            onFocus={() => eventFormStore.setDeactivateNav(true)}
+            onBlur={() => eventFormStore.setDeactivateNav(false)}
+            filterOption={(inputValue, option) =>
+              option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !==
+              -1
+            }
+          />
+        </div>
+      )}
 
       <div className="optionform__element">
         <div className="optionform__title">Guest minimum age</div>

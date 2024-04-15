@@ -34,7 +34,7 @@ export class EventFormStore {
   dresscodeDontTags = [];
   dresscodeDoTags = [];
   hasDresscode = 0;
-  dresscodeErrors = null;;
+  dresscodeErrors = null;
   links = [];
   deactivateNav = false;
 

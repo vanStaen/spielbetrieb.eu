@@ -12,7 +12,9 @@ import { pageStore } from "../../store/pageStore/pageStore";
 import "./GalleryOverlay.less";
 
 export const GalleryOverlay = observer((props) => {
-  const [indexImageSelected, setIndexImageSelected] = useState(pageStore.pictureSelected);
+  const [indexImageSelected, setIndexImageSelected] = useState(
+    pageStore.pictureSelected,
+  );
   const [imageLoaded, setImageLoaded] = useState(null);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
