@@ -62,33 +62,13 @@ export const AdminData = () => {
       key: "5",
       label: (
         <>
-          <WomanOutlined /> Genders
-        </>
-      ),
-      children: "",
-      disabled: true,
-    },
-    {
-      key: "6",
-      label: (
-        <>
-          <ApiOutlined /> Orientations
-        </>
-      ),
-      children: "",
-      disabled: true,
-    },
-    {
-      key: "7",
-      label: (
-        <>
           <ThunderboltOutlined /> Artists
         </>
       ),
       children: <AdminArtists />,
     },
     {
-      key: "8",
+      key: "6",
       label: (
         <>
           <SkinOutlined /> Dresscodes
@@ -97,13 +77,33 @@ export const AdminData = () => {
       children: <AdminDresscodes />,
     },
     {
-      key: "9",
+      key: "7",
       label: (
         <>
           <SplitCellsOutlined /> Equipments
         </>
       ),
       children: <AdminEquipments />,
+    },
+    {
+      key: "8",
+      label: (
+        <>
+          <WomanOutlined /> Genders
+        </>
+      ),
+      children: "",
+      disabled: true,
+    },
+    {
+      key: "9",
+      label: (
+        <>
+          <ApiOutlined /> Orientations
+        </>
+      ),
+      children: "",
+      disabled: true,
     },
   ];
 

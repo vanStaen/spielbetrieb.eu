@@ -102,20 +102,21 @@ export const AdminEquipments = () => {
       key: "name_de",
       editable: true,
     },
+    /* 
     {
       title: "Media",
       dataIndex: "Media",
       key: "Media",
       editable: true,
-    },
-    {
+    },{
       title: "Validated",
       dataIndex: "validated",
       key: "validated",
       align: "center",
       editable: true,
       render: (_, { validated }) => (validated ? "✅" : " ❌"),
-    },
+    }, 
+    */
     {
       title: <span style={{ opacity: ".2" }}>Edit</span>,
       dataIndex: "edit",
