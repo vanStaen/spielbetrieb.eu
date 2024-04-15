@@ -17,6 +17,9 @@ export class SpielplanStore {
   eventtypes = [];
   tags = [];
   locations = [];
+  dresscodes = [];
+  equipments = [];
+  artists = [];
   timeSpan = cookies.get("timeSpan") || "all";
   filterDateFrom = dayjs();
   filterLocations = [];
@@ -36,6 +39,10 @@ export class SpielplanStore {
       timeSpan: observable,
       filterLocations: observable,
       filterEventtypes: observable,
+      selectedEvent: observable,
+      artists: observable,
+      equipments: observable,
+      dresscodes: observable,
       fetchEvents: action,
       setEvents: action,
       setIsLoadingEvent: action,
@@ -53,13 +60,27 @@ export class SpielplanStore {
       setFilterTags: action,
       filterTags: observable,
       calculateFilterDateFrom: action,
-      selectedEvent: observable,
       setSelectedEvent: action,
+      setArtists: action,
+      setEquipments: action,
+      setDresscodes: action,
     });
   }
 
   setEvents = (events) => {
     this.events = events;
+  };
+
+  setArtists = (artists) => {
+    this.artists = artists;
+  };
+
+  setEquipments = (equipments) => {
+    this.equipments = equipments;
+  };
+
+  setDresscodes = (dresscodes) => {
+    this.dresscodes = dresscodes;
   };
 
   setSelectedEvent = (selectedEvent) => {

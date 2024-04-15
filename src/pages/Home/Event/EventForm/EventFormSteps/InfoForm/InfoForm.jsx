@@ -18,6 +18,7 @@ import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import { GoogleMap } from "./GoogleMap";
 import { addEvent } from "../../../../../Admin/AdminEvents/addEvent";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
+import { spielplanStore } from "../../../../../../store/spielplanStore/spielplanStore";
 
 import "./InfoForm.less";
 
@@ -26,11 +27,13 @@ const MAP_HEIGHT = "30vh";
 export const InfoForm = observer((props) => {
   const [showMore, setShowMore] = useState(false);
   const [showMap, setShowMap] = useState(false);
-  const { eventtypes, locations } = props;
+  const { eventtypesOptions } = props;
   const { TextArea } = Input;
   const { RangePicker } = DatePicker;
 
-  const eventypesOption = eventtypes?.filter((type) => type.usage !== "admin");
+  console.log(eventtypesOptions);
+
+  const eventypesOption = eventtypesOptions?.filter((type) => type.usage !== "admin");
   const eventypesMainOption = eventypesOption?.filter((type) => {
     const hasToBeShown = type.value === eventFormStore.eventtype;
     return type.usage === "main" || hasToBeShown;
@@ -38,7 +41,7 @@ export const InfoForm = observer((props) => {
   eventypesMainOption &&
     eventypesMainOption.push({ value: "more", label: "..." });
 
-  const locationOptions = locations?.map((location) => {
+  const locationOptions = spielplanStore.locations?.map((location) => {
     return {
       value: location.name,
     };
@@ -143,7 +146,7 @@ export const InfoForm = observer((props) => {
   const locationNameBlurHandler = (e) => {
     eventFormStore.setDeactivateNav(false);
     const value = e.target.value;
-    const selectedLocation = locations.filter(
+    const selectedLocation = spielplanStore.locations.filter(
       (location) => location.name === value,
     )[0];
     if (selectedLocation === undefined) {
@@ -159,7 +162,7 @@ export const InfoForm = observer((props) => {
   };
 
   const locationNameSelectHandler = (value) => {
-    const selectedLocation = locations.filter(
+    const selectedLocation = spielplanStore.locations.filter(
       (location) => location.name === value,
     )[0];
     eventFormStore.setIsNewLocation(false);
@@ -219,11 +222,10 @@ export const InfoForm = observer((props) => {
 
   return (
     <div
-      className={`infoform__container  ${
-        pageStore.selectedTheme === "light"
-          ? "lightColorTheme__Text"
-          : "darkColorTheme__Text"
-      }`}
+      className={`infoform__container  ${pageStore.selectedTheme === "light"
+        ? "lightColorTheme__Text"
+        : "darkColorTheme__Text"
+        }`}
     >
       <div className="infoform__select">
         <Radio.Group

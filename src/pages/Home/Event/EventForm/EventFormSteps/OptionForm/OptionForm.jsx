@@ -7,23 +7,21 @@ import { eventFormStore } from "../../eventFormStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
 import { addOption } from "./addOption";
-import {
-  priceOptions,
-  ageOptions,
-  hasDresscode,
-  yesNoOptions,
-} from "./optionFormData";
+import { ageOptions } from "../../../../../../lib/data/ageOptions";
+import { hasDresscode } from "../../../../../../lib/data/hasDresscode";
+import { priceOptions } from "../../../../../../lib/data/priceOptions";
+import { yesNoOptions } from "../../../../../../lib/data/yesNoOptions";
+import { spielplanStore } from "../../../../../../store/spielplanStore/spielplanStore";
 
 import "./OptionForm.less";
 
 export const OptionForm = observer((props) => {
   const {
-    tags,
+    tagsOptions,
     fetchTags,
-    dresscodes,
+    dresscodesOptions,
     fetchDresscodes,
     equipments,
-    artists,
     fetchArtists,
   } = props;
 
@@ -191,11 +189,10 @@ export const OptionForm = observer((props) => {
 
   return (
     <div
-      className={`optionform__container  ${
-        pageStore.selectedTheme === "light"
-          ? "lightColorTheme__Text"
-          : "darkColorTheme__Text"
-      }`}
+      className={`optionform__container  ${pageStore.selectedTheme === "light"
+        ? "lightColorTheme__Text"
+        : "darkColorTheme__Text"
+        }`}
     >
       <div className="optionform__element">
         <div className="optionform__title">Tags</div>
@@ -204,7 +201,7 @@ export const OptionForm = observer((props) => {
           allowClear
           style={{ width: "100%" }}
           placeholder="Please select some tags"
-          options={tags}
+          options={tagsOptions}
           onChange={tagsHandler}
           value={eventFormStore.eventTags}
           onFocus={() => eventFormStore.setDeactivateNav(true)}
@@ -308,7 +305,7 @@ export const OptionForm = observer((props) => {
                 allowClear
                 style={{ width: "100%" }}
                 placeholder="What should people wear?"
-                options={dresscodes}
+                options={dresscodesOptions}
                 value={eventFormStore.dresscodeDoTags}
                 onChange={dresscodeDoTagsHandler}
                 onFocus={() => eventFormStore.setDeactivateNav(true)}
@@ -327,7 +324,7 @@ export const OptionForm = observer((props) => {
                 allowClear
                 style={{ width: "100%" }}
                 placeholder="What can't people wear?"
-                options={dresscodes}
+                options={dresscodesOptions}
                 value={eventFormStore.dresscodeDontTags}
                 onChange={dresscodeDontTagsHandler}
                 onFocus={() => eventFormStore.setDeactivateNav(true)}
@@ -350,7 +347,7 @@ export const OptionForm = observer((props) => {
           allowClear
           style={{ width: "100%" }}
           placeholder="Line Up of your event, if any"
-          options={artists}
+          options={spielplanStore.artists}
           onChange={lineUpHandler}
           value={eventFormStore.lineUp}
           filterOption={(inputValue, option) =>
@@ -365,24 +362,24 @@ export const OptionForm = observer((props) => {
       {(eventFormStore.eventtype === 42 ||
         eventFormStore.eventtype === 40 ||
         eventFormStore.eventtype === null) && (
-        <div className="optionform__element">
-          <div className="optionform__title">Play equipment</div>
-          <Select
-            mode="tags"
-            style={{ width: "100%" }}
-            placeholder="Does your event has any furniture/accessories?"
-            options={equipments}
-            onChange={equipmentHandler}
-            value={eventFormStore.equipment}
-            onFocus={() => eventFormStore.setDeactivateNav(true)}
-            onBlur={() => eventFormStore.setDeactivateNav(false)}
-            filterOption={(inputValue, option) =>
-              option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !==
-              -1
-            }
-          />
-        </div>
-      )}
+          <div className="optionform__element">
+            <div className="optionform__title">Play equipment</div>
+            <Select
+              mode="tags"
+              style={{ width: "100%" }}
+              placeholder="Does your event has any furniture/accessories?"
+              options={equipments}
+              onChange={equipmentHandler}
+              value={eventFormStore.equipment}
+              onFocus={() => eventFormStore.setDeactivateNav(true)}
+              onBlur={() => eventFormStore.setDeactivateNav(false)}
+              filterOption={(inputValue, option) =>
+                option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !==
+                -1
+              }
+            />
+          </div>
+        )}
 
       <div className="optionform__element">
         <div className="optionform__title">Guest minimum age</div>

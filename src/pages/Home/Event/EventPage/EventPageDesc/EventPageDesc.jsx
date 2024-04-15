@@ -10,12 +10,14 @@ import {
     InfoCircleOutlined,
     TagsOutlined,
     EditOutlined,
+    SkinOutlined,
 } from "@ant-design/icons";
 import dayjs from "dayjs";
 
 import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { nameParser } from "../../../../../helpers/dev/nameParser";
 import { spielplanStore } from "../../../../../store/spielplanStore/spielplanStore";
+import { priceOptions } from "../../../../../lib/data/priceOptions";
 
 import "./EventPageDesc.less";
 
@@ -54,12 +56,33 @@ export const EventPageDesc = observer((props) => {
                 </Tag>
             );
         });
-
         return tagsFormatted;
     };
 
+    const dresscodeDoTags = () => {
+        const dresscodeDoTags = event?.dresscodeDoTags?.map((tagId) => {
+            return {
+                name: nameParser(
+                    spielplanStore.tags.filter((tag) => parseInt(tag._id) === tagId)[0]
+                        ?.name,
+                    pageStore.selectedLanguage?.toLowerCase(),
+                ),
+                id: tagId,
+            };
+        });
+
+        const dresscodeDoTagsFormatted = dresscodeDoTags?.map((tag) => {
+            return (
+                <Tag key={tag.id} bordered={false}>
+                    #{tag.name}
+                </Tag>
+            );
+        });
+        return dresscodeDoTagsFormatted;
+    };
+
     const eventType = spielplanStore.eventtypes?.filter(
-        (et) => parseInt(et._id) === event?.eventtype,
+        (et) => parseInt(et.value) === event?.eventtype,
     )[0];
 
     return (
@@ -124,14 +147,33 @@ export const EventPageDesc = observer((props) => {
                             </>
                         )}
                     </div>
-                    <div className="eventpage__subInfo">
-                        <EuroOutlined className="eventpage__infoIcon" /> 22€ (tickets
-                        online) - 25€ (at the door)
-                    </div>
-                    <div className="eventpage__subInfo">
-                        <InfoCircleOutlined className="eventpage__infoIcon" /> This is an
-                        21+ event, with dresscode
-                    </div>
+                    {event.prices?.length > 0 && (
+                        <div className="eventpage__subInfo">
+                            <EuroOutlined className="eventpage__infoIcon" />{" "}
+                            {event.prices.map((price) => {
+                                return <div className="eventpage__subInfoPrice">
+                                    {price.amount}€ ({priceOptions[price.option].label})
+                                </div>
+                            })
+                            }
+                        </div>
+                    )
+                    }
+                    {!!event.ageMin && (
+                        <div className="eventpage__subInfo">
+                            <InfoCircleOutlined className="eventpage__infoIcon" />{" "}
+                            This is a {event.ageMin}+ event
+                        </div>
+                    )
+                    }
+                    {!!event.hasDresscode && (
+                        <div className="eventpage__subInfo">
+                            <SkinOutlined className="eventpage__infoIcon" />{" "}
+                            Dresscode:
+                            {dresscodeDoTags()}
+                        </div>
+                    )
+                    }
                     <div className="eventpage__tags">
                         <TagsOutlined className="eventpage__infoIcon" /> {eventTags()}
                     </div>

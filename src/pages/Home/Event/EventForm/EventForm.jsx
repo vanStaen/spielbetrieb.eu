@@ -23,6 +23,7 @@ import { nameParser } from "../../../../helpers/dev/nameParser";
 import { EventFormNavigation } from "./EventFormNavigation/EventFormNavigation";
 import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinnner";
 import { EventFormDraftModal } from "./EventFormDraftModal/EventFormDraftModal";
+import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 
 import "./EventForm.less";
 
@@ -30,12 +31,10 @@ export const EventForm = observer(() => {
   const language = pageStore.selectedLanguage?.toLowerCase();
   const [startTour, setStartTour] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [locations, setLocations] = useState(null);
-  const [tags, setTags] = useState(null);
-  const [eventtypes, setEventtypes] = useState(null);
-  const [dresscodes, setDresscodes] = useState(null);
-  const [equipments, setEquipments] = useState(null);
-  const [artists, setArtists] = useState(null);
+  const [tagsOptions, setTagsOptions] = useState(null);
+  const [eventtypesOptions, setEventtypesOptions] = useState(null);
+  const [dresscodesOptions, setDresscodesOptions] = useState(null);
+  const [equipmentsOptions, setEquipmentsOptions] = useState(null);
   const [showDraftModal, setShowDraftModal] = useState(false);
 
   const [statusSteps, setStatusSteps] = useState([
@@ -47,7 +46,7 @@ export const EventForm = observer(() => {
 
   const fetchEventtypes = async () => {
     const results = await getAllEventtypes();
-    const eventtypes = results.map((type) => {
+    const eventtypesOptionsResult = results.map((type) => {
       if (type.validated === false) {
         return null;
       }
@@ -57,17 +56,17 @@ export const EventForm = observer(() => {
         usage: type.usage,
       };
     });
-    setEventtypes(eventtypes);
+    setEventtypesOptions(eventtypesOptionsResult);
   };
 
   const fetchLocations = async () => {
     const locations = await getLocations(true);
-    setLocations(locations);
+    spielplanStore.setLocations(locations);
   };
 
   const fetchTags = async () => {
     const results = await getTags();
-    const tags = results.map((tag) => {
+    const tagsOptionsResult = results.map((tag) => {
       if (tag.eventTag === false) {
         return null;
       }
@@ -77,31 +76,31 @@ export const EventForm = observer(() => {
         validated: tag.validated,
       };
     });
-    setTags(tags);
+    setTagsOptions(tagsOptionsResult);
   };
 
   const fetchDresscodes = async () => {
     const results = await getDresscodes();
-    const dresscodes = results.map((dresscode) => {
+    const dresscodesOptionsResult = results.map((dresscode) => {
       return {
         value: parseInt(dresscode._id),
         label: nameParser(dresscode.name, language),
         validated: dresscode.validated,
       };
     });
-    setDresscodes(dresscodes);
+    setDresscodesOptions(dresscodesOptionsResult);
   };
 
   const fetchEquipments = async () => {
     const results = await getEquipments();
-    const equipements = results?.map((equipement) => {
+    const equipementsOptionsResult = results?.map((equipement) => {
       return {
         value: parseInt(equipement._id),
         label: nameParser(equipement.name, language),
         validated: equipement.validated,
       };
     });
-    setEquipments(equipements);
+    setEquipmentsOptions(equipementsOptionsResult);
   };
 
   const fetchArtists = async () => {
@@ -113,7 +112,7 @@ export const EventForm = observer(() => {
         validated: artist.validated,
       };
     });
-    setArtists(artists);
+    spielplanStore.setArtists(artists);
   };
 
   const fetchAll = async () => {
@@ -237,7 +236,7 @@ export const EventForm = observer(() => {
       <EventFormDraftModal
         showDraftModal={showDraftModal}
         setShowDraftModal={setShowDraftModal}
-        eventtypes={eventtypes}
+        eventtypesOptions={eventtypesOptions}
       />
       <HelpButtons setStartTour={setStartTour} />
       {authStore.hasAccess ? (
@@ -270,18 +269,16 @@ export const EventForm = observer(() => {
           />
           <div className="eventform__spacer"></div>
           {eventFormStore.formStep === 0 && (
-            <InfoForm eventtypes={eventtypes} locations={locations} />
+            <InfoForm eventtypesOptions={eventtypesOptions} />
           )}
           {eventFormStore.formStep === 1 && <ArtworkForm />}
           {eventFormStore.formStep === 2 && (
             <OptionForm
-              artists={artists}
               fetchArtists={fetchArtists}
-              tags={tags}
               fetchTags={fetchTags}
-              dresscodes={dresscodes}
               fetchDresscodes={fetchDresscodes}
-              equipments={equipments}
+              tagsOptions={tagsOptions}
+              dresscodesOptions={dresscodesOptions}
             />
           )}
           {eventFormStore.formStep === 3 && <PublishForm />}

@@ -1,0 +1,177 @@
+.eventpage__descCol {
+    margin-left: 32px;
+    flex: 2 1 0%;
+    font-size: 20px;
+
+    .eventpage__title {
+        font-size: 62px;
+        font-weight: 100;
+        line-height: 80%;
+        text-transform: uppercase;
+        padding-bottom: 22px;
+        text-align: right;
+        overflow-wrap: anywhere;
+    }
+
+    .eventpage__date {
+        letter-spacing: -1px;
+        padding-bottom: 6px;
+        text-align: right;
+
+        .eventpage__weekday {
+            opacity: .5;
+            font-weight: 200;
+            padding-right: 4px;
+        }
+
+        .eventpage__year {
+            opacity: .5;
+            padding-left: 4px;
+        }
+    }
+
+    .eventpage__typeLocation {
+        letter-spacing: -1px;
+        text-align: right;
+
+        .eventpage__typeLocationSpan {
+            padding-left: 14px;
+
+            .eventpage__typeLocationIcon {
+                padding-right: 2px;
+                font-size: 16px;
+                opacity: .75;
+
+            }
+        }
+    }
+
+    .eventpage__descContainer {
+        padding-top: 16px;
+
+        .eventpage__descTitle {
+            opacity: 1;
+            padding-bottom: 8px;
+        }
+
+        .eventpage__desc {
+            color: rgba(var(--themeFontColor), .8);
+            font-size: 16px;
+            text-align: justify;
+            text-justify: inter-word;
+
+            .ant-typography-expand {
+                color: rgba(var(--themeBlackOrWhiteColor), 1);
+            }
+        }
+    }
+
+    .eventpage__infoContainer {
+        padding-top: 16px;
+
+        .eventpage__infoTitle {
+            opacity: 1;
+            padding-bottom: 8px;
+        }
+
+        .eventpage__info {
+            color: rgba(var(--themeFontColor), .8);
+            font-size: 16px;
+            text-align: justify;
+            text-justify: inter-word;
+
+            .eventpage__subInfo {
+                padding-bottom: 8px;
+
+                .eventpage__infoIcon {
+                    position: relative;
+                    top: 0px;
+                    font-size: 14px;
+                    padding-right: 3px;
+                }
+
+                .eventpage__subInfoPrice {
+                    margin: 0 5px 0 0;
+                    display: inline-flex;
+                }
+            }
+
+            .eventpage__tags {
+                .eventpage__infoIcon {
+                    position: relative;
+                    top: 0px;
+                    font-size: 16px;
+                }
+
+                .ant-tag-borderless {
+                    border-color: transparent;
+                    background: rgba(var(--themeFontColor), .75);
+                    color: rgba(var(--themeFontColorInvert), 1);
+                    margin: 0 3px;
+                }
+            }
+        }
+    }
+
+    .eventpage__lineupContainer {
+        padding-top: 32px;
+
+        .eventpage__lineupTitle {
+            opacity: 1;
+            padding-bottom: 8px;
+        }
+
+        .eventpage__lineup {
+            font-size: 16px;
+            color: rgba(var(--themeFontColor), .8);
+
+            .eventpage__subInfo {
+                padding-bottom: 8px;
+
+                .eventpage__infoIcon {
+                    position: relative;
+                    top: 0px;
+                    font-size: 14px;
+                    padding-right: 3px;
+                }
+            }
+        }
+    }
+
+    .eventpage__locationContainer {
+        padding-top: 32px;
+
+        .eventpage__locationTitle {
+            opacity: 1;
+            padding-bottom: 8px;
+        }
+
+        .eventpage__location {
+            font-size: 16px;
+            color: rgba(var(--themeFontColor), .8);
+
+            .eventpage__subInfo {
+                padding-bottom: 8px;
+
+                .eventpage__infoIcon {
+                    position: relative;
+                    top: 0px;
+                    font-size: 14px;
+                    padding-right: 3px;
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 675px) {
+    .eventpage__descCol {
+        margin: 16px;
+        font-size: 16px;
+
+        .eventpage__title {
+            font-size: 42px;
+        }
+    }
+}
