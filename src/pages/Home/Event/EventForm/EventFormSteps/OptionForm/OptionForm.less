@@ -26,13 +26,6 @@
     .optionform__select {
         text-align: center;
         padding-bottom: 8px;
-
-        .optionform__error {
-            color: firebrick;
-            filter: brightness(2);
-            font-size: 14px;
-            margin-top: 8px;
-        }
     }
 
     .ant-btn-default {
@@ -62,8 +55,14 @@
             font-size: 14px;
         }
 
+        .optionform__dresscodeError {
+            padding-left: 16px;
+            display: inline-flex;
+        }
+
         .optionform__priceButton {
             border: rgba(var(--themeFontColorInvert), 1) !important;
+
             &:hover {
                 color: rgba(var(--themeFontColorInvert), 1) !important;
                 background-color: rgba(var(--themeFontColor), 1) !important;
@@ -72,12 +71,12 @@
 
         .optionform__deletePriceButton {
             border: rgba(var(--themeFontColorInvert), 1) !important;
-            
-            &:hover {                   
+
+            &:hover {
                 background-color: rgba(firebrick, .75) !important;
                 color: white !important;
             }
-        } 
+        }
     }
 }
 

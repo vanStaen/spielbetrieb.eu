@@ -169,6 +169,18 @@ export const EventForm = observer(() => {
       } else {
         tempStatusSteps[eventFormStore.formStep] = "finish";
       }
+    } else if (eventFormStore.formStep === 2) {
+      console.log('eventFormStore.setHasDresscode', eventFormStore.setHasDresscode);
+      if (eventFormStore.dresscodeDoTags.length === 0 &&
+        eventFormStore.dresscodeDontTags.length === 0 &&
+        eventFormStore.hasDresscode) {
+        eventFormStore.setDresscodeErrors(
+          "Please add some dresscode details!",
+        );
+        tempStatusSteps[eventFormStore.formStep] = "error";
+      } else {
+        tempStatusSteps[eventFormStore.formStep] = "finish";
+      }
     }
     // newStep (=value)
     if (value === 3) {
@@ -187,6 +199,17 @@ export const EventForm = observer(() => {
         tempStatusSteps[3] = "error";
       } else {
         tempStatusSteps[3] = "process";
+      }
+      if (eventFormStore.dresscodeDoTags.length === 0 &&
+        eventFormStore.dresscodeDontTags.length === 0 &&
+        eventFormStore.hasDresscode) {
+        eventFormStore.setDresscodeErrors(
+          "Please add some dresscode details!",
+        );
+        tempStatusSteps[2] = "error";
+        tempStatusSteps[3] = "error";
+      } else {
+        tempStatusSteps[2] = "finish";
       }
     } else if (value === 2) {
       if (eventFormStore.artworks.length === 0) {

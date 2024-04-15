@@ -16,7 +16,8 @@ export const PublishForm = observer(() => {
       eventFormStore.fromDateError ||
       eventFormStore.locationAddressError ||
       eventFormStore.locationNameError ||
-      eventFormStore.descriptionError
+      eventFormStore.descriptionError ||
+      eventFormStore.dresscodeErrors
     ) {
       eventFormStore.setErrors(true);
     } else {
@@ -87,11 +88,10 @@ export const PublishForm = observer(() => {
   return (
     <>
       <div
-        className={`publishform__container  ${
-          pageStore.selectedTheme === "light"
-            ? "lightColorTheme__Text"
-            : "darkColorTheme__Text"
-        }`}
+        className={`publishform__container  ${pageStore.selectedTheme === "light"
+          ? "lightColorTheme__Text"
+          : "darkColorTheme__Text"
+          }`}
       >
         {eventFormStore.errors && (
           <>
@@ -128,6 +128,11 @@ export const PublishForm = observer(() => {
             {eventFormStore.descriptionError && (
               <div className="publishform__error">
                 {eventFormStore.descriptionError}
+              </div>
+            )}
+            {eventFormStore.dresscodeErrors && (
+              <div className="publishform__error">
+                {eventFormStore.dresscodeErrors}
               </div>
             )}
           </>

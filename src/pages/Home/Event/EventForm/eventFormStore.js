@@ -34,6 +34,7 @@ export class EventFormStore {
   dresscodeDontTags = [];
   dresscodeDoTags = [];
   hasDresscode = 0;
+  dresscodeErrors = null;;
   links = [];
   deactivateNav = false;
 
@@ -100,6 +101,8 @@ export class EventFormStore {
       dresscodeDoTags: observable,
       setDresscodeDoTags: action,
       dresscodeDontTags: observable,
+      dresscodeErrors: observable,
+      setDresscodeErrors: action,
       setDresscodeDontTags: action,
       artworksError: observable,
       setArtworksError: action,
@@ -237,6 +240,10 @@ export class EventFormStore {
 
   setDresscodeDontTags = (dresscodeDontTags) => {
     this.dresscodeDontTags = dresscodeDontTags;
+  };
+
+  setDresscodeErrors = (dresscodeErrors) => {
+    this.dresscodeErrors = dresscodeErrors;
   };
 
   setLinks = (links) => {
