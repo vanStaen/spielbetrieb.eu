@@ -43,10 +43,8 @@ export const EventFormNavigation = observer((props) => {
   };
 
   const publishHandler = () => {
-    if (eventFormStore.errors) {
+    if (!eventFormStore.errors) {
       // add new locations
-      // add new events
-      // add new artist
       console.log("PUBLISH");
     }
   };
@@ -65,7 +63,7 @@ export const EventFormNavigation = observer((props) => {
       {eventFormStore.formStep === 3 ? (
         <Button
           className="eventform__publishButton"
-          onClick={publishHandler()}
+          onClick={publishHandler}
           disabled={eventFormStore.errors}
         >
           Publish
