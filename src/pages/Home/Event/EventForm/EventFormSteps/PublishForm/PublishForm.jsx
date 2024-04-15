@@ -63,28 +63,34 @@ export const PublishForm = observer(() => {
 
   const event = {
     attendess: null,
-    description: eventFormStore.description,
-    eventTags: eventFormStore.eventTags,
+    title: eventFormStore.title,
     eventtype: eventFormStore.eventtype,
-    fromDate: eventFormStore.fromDate,
-    links: eventFormStore.links,
+    description: eventFormStore.description,
     location: eventFormStore.locationId,
+    locationName: eventFormStore.locationName,
     locationAddress: eventFormStore.locationAddress,
     locationCoordinates: eventFormStore.locationCoordinates,
-    locationName: eventFormStore.locationName,
     pictures: eventFormStore.artworks,
-    title: eventFormStore.title,
+    eventTags: eventFormStore.eventTags,
+    lineUp: eventFormStore.lineUp,
+    links: eventFormStore.links,
+    fromDate: eventFormStore.fromDate,
     untilDate: eventFormStore.untilDate,
+    hasDresscode: eventFormStore.hasDresscode,
+    dresscodeDoTags: eventFormStore.dresscodeDoTags,
+    dresscodeDontTags: eventFormStore.dresscodeDontTags,
+    ageMin: eventFormStore.ageMin,
+    prices: eventFormStore.prices,
+    equipment: eventFormStore.equipment,
   };
 
   return (
     <>
       <div
-        className={`publishform__container  ${
-          pageStore.selectedTheme === "light"
-            ? "lightColorTheme__Text"
-            : "darkColorTheme__Text"
-        }`}
+        className={`publishform__container  ${pageStore.selectedTheme === "light"
+          ? "lightColorTheme__Text"
+          : "darkColorTheme__Text"
+          }`}
       >
         {eventFormStore.errors && (
           <>

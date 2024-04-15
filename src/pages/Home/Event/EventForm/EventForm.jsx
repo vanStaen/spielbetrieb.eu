@@ -259,6 +259,10 @@ export const EventForm = observer(() => {
             />
           )}
           {eventFormStore.formStep === 3 && <PublishForm />}
+
+          {authStore.hasAccess && !showDraftModal && (
+            <EventFormNavigation onStepsChange={onStepsChange} />
+          )}
         </div>
       ) : (
         <div className="eventform__singupfirst">
@@ -280,9 +284,6 @@ export const EventForm = observer(() => {
             </div>
           </div>
         </div>
-      )}
-      {authStore.hasAccess && !showDraftModal && (
-        <EventFormNavigation onStepsChange={onStepsChange} />
       )}
     </>
   );

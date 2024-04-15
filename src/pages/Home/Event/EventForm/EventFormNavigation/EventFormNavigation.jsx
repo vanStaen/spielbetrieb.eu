@@ -47,7 +47,6 @@ export const EventFormNavigation = observer((props) => {
       // add new locations
       // add new events
       // add new artist
-      // add new spielmöbel
       console.log("PUBLISH");
     }
   };
