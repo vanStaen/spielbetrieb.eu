@@ -90,8 +90,9 @@ export const EventFormDraftModal = observer((props) => {
     drafts?.map((draft) => {
       const { _id, title, eventtype, createdAt } = draft;
       const created = dayjs(createdAt).format("DD/MM/YYYY, HH:mm");
-      const eventtypeString = eventtypesOptions.filter((e) => e.value === eventtype)[0]
-        .label;
+      const eventtypeString = eventtypesOptions.filter(
+        (e) => e.value === eventtype,
+      )[0].label;
       return (
         <div
           onClick={() => selectDraftHandler(draft)}

@@ -1,4 +1,3 @@
-
 export const ageOptions = [
   {
     value: 0,

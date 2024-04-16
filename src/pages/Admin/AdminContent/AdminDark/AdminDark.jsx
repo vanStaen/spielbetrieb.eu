@@ -215,7 +215,7 @@ export const AdminDark = () => {
     form.setFieldsValue({
       ...newRow,
     });
-    setLocations([...darks, newRow]);
+    setDarks([...darks, newRow]);
     setIsNewRow(true);
     setEditingId(newId);
   };

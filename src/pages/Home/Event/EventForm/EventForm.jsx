@@ -279,6 +279,7 @@ export const EventForm = observer(() => {
               fetchDresscodes={fetchDresscodes}
               tagsOptions={tagsOptions}
               dresscodesOptions={dresscodesOptions}
+              equipmentsOptions={equipmentsOptions}
             />
           )}
           {eventFormStore.formStep === 3 && <PublishForm />}

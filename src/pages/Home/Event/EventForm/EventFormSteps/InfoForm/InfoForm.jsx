@@ -31,7 +31,9 @@ export const InfoForm = observer((props) => {
   const { TextArea } = Input;
   const { RangePicker } = DatePicker;
 
-  const eventypesOption = eventtypesOptions?.filter((type) => type.usage !== "admin");
+  const eventypesOption = eventtypesOptions?.filter(
+    (type) => type.usage !== "admin",
+  );
   const eventypesMainOption = eventypesOption?.filter((type) => {
     const hasToBeShown = type.value === eventFormStore.eventtype;
     return type.usage === "main" || hasToBeShown;
@@ -220,10 +222,11 @@ export const InfoForm = observer((props) => {
 
   return (
     <div
-      className={`infoform__container  ${pageStore.selectedTheme === "light"
-        ? "lightColorTheme__Text"
-        : "darkColorTheme__Text"
-        }`}
+      className={`infoform__container  ${
+        pageStore.selectedTheme === "light"
+          ? "lightColorTheme__Text"
+          : "darkColorTheme__Text"
+      }`}
     >
       <div className="infoform__select">
         <Radio.Group

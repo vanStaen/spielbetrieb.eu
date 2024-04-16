@@ -118,7 +118,7 @@ export const ArtworkForm = observer(() => {
 
   const images = eventFormStore.artworksUrl.map((url, index) => {
     return (
-      <div className="artwork__imgContainer">
+      <div className="artwork__imgContainer" key={`imgKey${index}`}>
         <div className="artwork__imgOverlay">
           {index > 0 && (
             <div
