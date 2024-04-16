@@ -23,6 +23,7 @@ export const OptionForm = observer((props) => {
     fetchDresscodes,
     equipmentsOptions,
     fetchArtists,
+    artistsOptions,
   } = props;
 
   const tagsHandler = async (value) => {
@@ -348,7 +349,7 @@ export const OptionForm = observer((props) => {
           allowClear
           style={{ width: "100%" }}
           placeholder="Line Up of your event, if any"
-          options={spielplanStore.artists}
+          options={artistsOptions}
           onChange={lineUpHandler}
           value={eventFormStore.lineUp}
           filterOption={(inputValue, option) =>

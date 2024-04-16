@@ -26,7 +26,14 @@ export const EventPageDesc = observer((props) => {
   const { Paragraph } = Typography;
   const { ref2, ref3, ref4, ref5, ref6, event } = props;
 
-  // console.log(event);
+  console.log(event);
+
+  const eventTypeName = nameParser(
+    spielplanStore.eventtypes.filter(
+      (eventtype) => parseInt(eventtype._id) === event?.eventtype,
+    )[0]?.name,
+    pageStore.selectedLanguage?.toLowerCase(),
+  );
 
   const eventTags = () => {
     const eventTags = event?.eventTags?.map((tagId) => {
@@ -39,13 +46,9 @@ export const EventPageDesc = observer((props) => {
         id: tagId,
       };
     });
+
     eventTags?.splice(0, 0, {
-      name: nameParser(
-        spielplanStore.eventtypes.filter(
-          (eventtype) => parseInt(eventtype._id) === event?.eventtype,
-        )[0]?.name,
-        pageStore.selectedLanguage?.toLowerCase(),
-      ),
+      name: eventTypeName,
       id: event?.eventtype,
     });
 
@@ -63,8 +66,9 @@ export const EventPageDesc = observer((props) => {
     const dresscodeDoTags = event?.dresscodeDoTags?.map((tagId) => {
       return {
         name: nameParser(
-          spielplanStore.tags.filter((tag) => parseInt(tag._id) === tagId)[0]
-            ?.name,
+          spielplanStore.dresscodes.filter(
+            (tag) => parseInt(tag._id) === tagId,
+          )[0]?.name,
           pageStore.selectedLanguage?.toLowerCase(),
         ),
         id: tagId,
@@ -81,9 +85,36 @@ export const EventPageDesc = observer((props) => {
     return dresscodeDoTagsFormatted;
   };
 
-  const eventType = spielplanStore.eventtypes?.filter(
-    (et) => parseInt(et.value) === event?.eventtype,
-  )[0];
+  const equipmentsTags = () => {
+    const equipments = event?.equipment?.map((equipementId) => {
+      return {
+        name: nameParser(
+          spielplanStore.equipments.filter(
+            (equipment) => parseInt(equipment._id) === equipementId,
+          )[0]?.name,
+          pageStore.selectedLanguage?.toLowerCase(),
+        ),
+        id: equipementId,
+      };
+    });
+
+    const equipmentsTagsFormatted = equipments?.map((equipment) => {
+      return (
+        <Tag key={equipment.id} bordered={false}>
+          #{equipment.name}
+        </Tag>
+      );
+    });
+    return equipmentsTagsFormatted;
+  };
+
+  const artistFormated = (artistId) => {
+    const artistData = spielplanStore.artists.filter(
+      (artist) => parseInt(artist._id) === artistId,
+    )[0];
+    console.log("artistData", artistData);
+    return artistData;
+  };
 
   return (
     <div className="eventpage__descCol">
@@ -105,7 +136,7 @@ export const EventPageDesc = observer((props) => {
         <div className="eventpage__typeLocation">
           <span className="eventpage__typeLocationSpan">
             <TagOutlined className="eventpage__typeLocationIcon" />{" "}
-            {nameParser(eventType?.name, pageStore.selectedLanguage)}
+            {eventTypeName}
           </span>
           <span className="eventpage__typeLocationSpan">
             <EnvironmentOutlined className="eventpage__typeLocationIcon" />{" "}
@@ -113,19 +144,21 @@ export const EventPageDesc = observer((props) => {
           </span>
         </div>
       </div>
-      <div className="eventpage__descContainer">
-        <div className="eventpage__descTitle">
-          Event description <EditOutlined className="editOutlined" />
+      {event.description && (
+        <div className="eventpage__descContainer">
+          <div className="eventpage__descTitle">
+            Event description <EditOutlined className="editOutlined" />
+          </div>
+          <div className="eventpage__desc" ref={ref6}>
+            <Paragraph
+              className="eventpage__desc"
+              ellipsis={{ rows: 7, expandable: true, symbol: "more" }}
+            >
+              {event.description}
+            </Paragraph>
+          </div>
         </div>
-        <div className="eventpage__desc" ref={ref6}>
-          <Paragraph
-            className="eventpage__desc"
-            ellipsis={{ rows: 7, expandable: true, symbol: "more" }}
-          >
-            {event.description}
-          </Paragraph>
-        </div>
-      </div>
+      )}
       <div className="eventpage__infoContainer">
         <div className="eventpage__infoTitle">
           Event infos <EditOutlined className="editOutlined" />
@@ -179,34 +212,54 @@ export const EventPageDesc = observer((props) => {
           </div>
         </div>
       </div>
-      {event.lineup && (
+      {!!event.lineUp?.length && (
         <div className="eventpage__lineupContainer">
           <div className="eventpage__lineupTitle">
             Line up <EditOutlined className="editOutlined" />
           </div>
           <div className="eventpage__lineup">
-            <div className="eventpage__subInfo">First Artist</div>
-            <div className="eventpage__subInfo">Second Artist</div>
+            {event.lineUp.map((artistId) => {
+              return (
+                <div className="eventpage__subInfo" key={`artist${artistId}}`}>
+                  {artistFormated(artistId).name}
+                </div>
+              );
+            })}
           </div>
         </div>
       )}
-      <div className="eventpage__locationContainer">
+      {!!event.equipment?.length > 0 && (
+        <div className="eventpage__equipementContainer">
+          <div className="eventpage__equipmentTitle">
+            Equipment <EditOutlined className="editOutlined" />
+          </div>
+          <div className="eventpage__subInfo">{equipmentsTags()}</div>
+        </div>
+      )}
+
+      <div className="eventpage__locationContainer" ref={ref5}>
         <div className="eventpage__locationTitle">
           Location <EditOutlined className="editOutlined" />
         </div>
-        <div className="eventpage__location" ref={ref5}>
-          <div className="eventpage__subInfo">{event.locationName}</div>
-          <div className="eventpage__subInfo">{event.locationAddress}</div>
-          <div className="eventpage__subInfo">
-            <a
-              href={`https://www.google.com/maps?q=${event.locationName?.replaceAll(" *", "+")}+${event.locationAddress?.replaceAll(" *", "+")}&ll=${event.locationCoordinates?.replaceAll(" *", "")}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Button shape="round">Show me on a map</Button>
-            </a>
+        {event.location?.name && event.location?.Address ? (
+          <div className="eventpage__location">
+            <div className="eventpage__subInfo">{event.locationName}</div>
+            <div className="eventpage__subInfo">{event.locationAddress}</div>
+            <div className="eventpage__subInfo">
+              <a
+                href={`https://www.google.com/maps?q=${event.locationName?.replaceAll(" *", "+")}+${event.locationAddress?.replaceAll(" *", "+")}&ll=${event.locationCoordinates?.replaceAll(" *", "")}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Button shape="round">Show me on a map</Button>
+              </a>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="eventpage__location">
+            <div className="eventpage__subInfo">To be announced</div>
+          </div>
+        )}
       </div>
     </div>
   );

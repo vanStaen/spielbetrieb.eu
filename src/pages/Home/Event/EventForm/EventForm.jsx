@@ -32,6 +32,7 @@ export const EventForm = observer(() => {
   const [startTour, setStartTour] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [tagsOptions, setTagsOptions] = useState(null);
+  const [artistsOptions, setArtistsOptions] = useState(null);
   const [eventtypesOptions, setEventtypesOptions] = useState(null);
   const [dresscodesOptions, setDresscodesOptions] = useState(null);
   const [equipmentsOptions, setEquipmentsOptions] = useState(null);
@@ -46,6 +47,7 @@ export const EventForm = observer(() => {
 
   const fetchEventtypes = async () => {
     const results = await getAllEventtypes();
+    spielplanStore.setEventtypes(results);
     const eventtypesOptionsResult = results.map((type) => {
       if (type.validated === false) {
         return null;
@@ -66,6 +68,7 @@ export const EventForm = observer(() => {
 
   const fetchTags = async () => {
     const results = await getTags();
+    spielplanStore.setTags(results);
     const tagsOptionsResult = results.map((tag) => {
       if (tag.eventTag === false) {
         return null;
@@ -81,6 +84,7 @@ export const EventForm = observer(() => {
 
   const fetchDresscodes = async () => {
     const results = await getDresscodes();
+    spielplanStore.setDresscodes(results);
     const dresscodesOptionsResult = results.map((dresscode) => {
       return {
         value: parseInt(dresscode._id),
@@ -93,6 +97,7 @@ export const EventForm = observer(() => {
 
   const fetchEquipments = async () => {
     const results = await getEquipments();
+    spielplanStore.setEquipments(results);
     const equipementsOptionsResult = results?.map((equipement) => {
       return {
         value: parseInt(equipement._id),
@@ -105,6 +110,7 @@ export const EventForm = observer(() => {
 
   const fetchArtists = async () => {
     const results = await getArtists();
+    spielplanStore.setArtists(results);
     const artists = results.map((artist) => {
       return {
         value: parseInt(artist._id),
@@ -112,7 +118,7 @@ export const EventForm = observer(() => {
         validated: artist.validated,
       };
     });
-    spielplanStore.setArtists(artists);
+    setArtistsOptions(artists);
   };
 
   const fetchAll = async () => {
@@ -280,6 +286,7 @@ export const EventForm = observer(() => {
               tagsOptions={tagsOptions}
               dresscodesOptions={dresscodesOptions}
               equipmentsOptions={equipmentsOptions}
+              artistsOptions={artistsOptions}
             />
           )}
           {eventFormStore.formStep === 3 && <PublishForm />}
