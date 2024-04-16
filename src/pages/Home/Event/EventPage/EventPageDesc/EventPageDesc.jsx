@@ -26,7 +26,7 @@ export const EventPageDesc = observer((props) => {
   const { Paragraph } = Typography;
   const { ref2, ref3, ref4, ref5, ref6, event } = props;
 
-  // console.log(event);
+  console.log(event);
 
   const eventTypeName = nameParser(
     spielplanStore.eventtypes.filter(
@@ -160,7 +160,7 @@ export const EventPageDesc = observer((props) => {
             <TagOutlined className="eventpage__typeLocationIcon" />{" "}
             {eventTypeName}
           </span>
-          {event.location?.name && event.location?.Address && (
+          {event.locationName && event.locationAddress && (
             <span className="eventpage__typeLocationSpan">
               <EnvironmentOutlined className="eventpage__typeLocationIcon" />{" "}
               {event.locationName}
@@ -191,7 +191,7 @@ export const EventPageDesc = observer((props) => {
           <div className="eventpage__subInfo">
             <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
             {dayjs(event.fromDate).format("dddd") ===
-            dayjs(event.untilDate).format("dddd") ? (
+              dayjs(event.untilDate).format("dddd") ? (
               <>
                 {dayjs(event.fromDate).format("HH:mm")} {t("spielplan.until")}{" "}
                 {dayjs(event.untilDate).format("HH:mm")}
@@ -266,7 +266,7 @@ export const EventPageDesc = observer((props) => {
         <div className="eventpage__locationTitle">
           Location <EditOutlined className="editOutlined" />
         </div>
-        {event.location?.name && event.location?.Address ? (
+        {event.locationName && event.locationAddress ? (
           <div className="eventpage__location">
             <div className="eventpage__subInfo">{event.locationName}</div>
             <div className="eventpage__subInfo">{event.locationAddress}</div>
