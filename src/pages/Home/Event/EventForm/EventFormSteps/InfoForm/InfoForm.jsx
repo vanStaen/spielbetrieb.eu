@@ -31,8 +31,6 @@ export const InfoForm = observer((props) => {
   const { TextArea } = Input;
   const { RangePicker } = DatePicker;
 
-  console.log(eventtypesOptions);
-
   const eventypesOption = eventtypesOptions?.filter((type) => type.usage !== "admin");
   const eventypesMainOption = eventypesOption?.filter((type) => {
     const hasToBeShown = type.value === eventFormStore.eventtype;

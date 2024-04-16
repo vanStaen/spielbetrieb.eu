@@ -1,11 +1,47 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { observer } from "mobx-react";
 
 import { pageStore } from "../../../../../store/pageStore/pageStore";
 
 import "./EventPageArtwork.less";
 
+// the required distance between touchStart and touchEnd to be detected as a swipe
+const MIN_SWIPE_DISTANCE = 20;
+
 export const EventPageArtwork = observer((props) => {
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const throttling = useRef(false);
+
+  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > MIN_SWIPE_DISTANCE;
+    const isRightSwipe = distance < -MIN_SWIPE_DISTANCE;
+    if (throttling.current === false) {
+      throttling.current = true;
+      if (isRightSwipe) {
+        if (pageStore.pictureSelected > 0) {
+          pageStore.setPictureSelected(pageStore.pictureSelected - 1);
+        }
+      } else if (isLeftSwipe) {
+        if (pageStore.pictureSelected < pageStore.picturesUrls.length - 1) {
+          pageStore.setPictureSelected(pageStore.pictureSelected + 1);
+        }
+      }
+      setTimeout(() => {
+        throttling.current = false;
+      }, 500);
+    }
+  };
+
   useEffect(() => {
     const allPoints = document.getElementsByClassName("point");
     allPoints.map = Array.prototype.map;
@@ -42,6 +78,9 @@ export const EventPageArtwork = observer((props) => {
         onClick={() => {
           pageStore.setShowOverlayGallery(true);
         }}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={() => onTouchEnd()}
       >
         <img
           src={
