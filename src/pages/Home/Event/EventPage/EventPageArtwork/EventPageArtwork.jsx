@@ -90,7 +90,7 @@ export const EventPageArtwork = observer((props) => {
           className="eventpage__artwork"
         />
       </div>
-      {pageStore.picturesUrls.length > 1 && (
+      {pageStore.picturesUrls?.length > 1 && (
         <div className="carouselPoints">{points}</div>
       )}
     </div>

@@ -26,7 +26,7 @@ export const EventPageDesc = observer((props) => {
   const { Paragraph } = Typography;
   const { ref2, ref3, ref4, ref5, ref6, event } = props;
 
-  console.log(event);
+  // console.log(event);
 
   const eventTypeName = nameParser(
     spielplanStore.eventtypes.filter(
@@ -78,11 +78,34 @@ export const EventPageDesc = observer((props) => {
     const dresscodeDoTagsFormatted = dresscodeDoTags?.map((tag) => {
       return (
         <Tag key={tag.id} bordered={false}>
-          #{tag.name}
+          {tag.name}
         </Tag>
       );
     });
     return dresscodeDoTagsFormatted;
+  };
+
+  const dresscodeDontTags = () => {
+    const dresscodeDontTags = event?.dresscodeDontTags?.map((tagId) => {
+      return {
+        name: nameParser(
+          spielplanStore.dresscodes.filter(
+            (tag) => parseInt(tag._id) === tagId,
+          )[0]?.name,
+          pageStore.selectedLanguage?.toLowerCase(),
+        ),
+        id: tagId,
+      };
+    });
+
+    const dresscodeDontTagsFormatted = dresscodeDontTags?.map((tag) => {
+      return (
+        <Tag key={tag.id} bordered={false}>
+          🚫{tag.name}
+        </Tag>
+      );
+    });
+    return dresscodeDontTagsFormatted;
   };
 
   const equipmentsTags = () => {
@@ -101,7 +124,7 @@ export const EventPageDesc = observer((props) => {
     const equipmentsTagsFormatted = equipments?.map((equipment) => {
       return (
         <Tag key={equipment.id} bordered={false}>
-          #{equipment.name}
+          {equipment.name}
         </Tag>
       );
     });
@@ -112,7 +135,6 @@ export const EventPageDesc = observer((props) => {
     const artistData = spielplanStore.artists.filter(
       (artist) => parseInt(artist._id) === artistId,
     )[0];
-    console.log("artistData", artistData);
     return artistData;
   };
 
@@ -138,10 +160,12 @@ export const EventPageDesc = observer((props) => {
             <TagOutlined className="eventpage__typeLocationIcon" />{" "}
             {eventTypeName}
           </span>
-          <span className="eventpage__typeLocationSpan">
-            <EnvironmentOutlined className="eventpage__typeLocationIcon" />{" "}
-            {event.locationName}
-          </span>
+          {event.location?.name && event.location?.Address && (
+            <span className="eventpage__typeLocationSpan">
+              <EnvironmentOutlined className="eventpage__typeLocationIcon" />{" "}
+              {event.locationName}
+            </span>
+          )}
         </div>
       </div>
       {event.description && (
@@ -203,8 +227,9 @@ export const EventPageDesc = observer((props) => {
           )}
           {!!event.hasDresscode && (
             <div className="eventpage__subInfo">
-              <SkinOutlined className="eventpage__infoIcon" /> Dresscode:
+              <SkinOutlined className="eventpage__infoIcon" /> Dresscode{" "}
               {dresscodeDoTags()}
+              {dresscodeDontTags()}
             </div>
           )}
           <div className="eventpage__tags">
