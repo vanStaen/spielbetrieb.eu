@@ -149,8 +149,12 @@ export const PublishForm = observer(() => {
           </div>
         )}
       </div>
-      {!eventFormStore.errors && <EventPage event={event} />}
-      <div className="pubishform__spacer"></div>
+      {!eventFormStore.errors &&
+        <>
+          <EventPage event={event} />
+          <div className="pubishform__spacer"></div>
+        </>
+      }
     </>
   );
 });
