@@ -8,7 +8,7 @@ import {
   Button,
   Tooltip,
 } from "antd";
-import { EditOutlined, DeleteOutlined, CopyOutlined } from "@ant-design/icons";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 
 import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
@@ -24,12 +24,9 @@ import { updateEvent } from "./updateEvent";
 export const AdminEvents = () => {
   const [form] = Form.useForm();
   const [events, setEvents] = useState([]);
-  const [isEdit, setIsEdit] = useState(null);
   const [tags, setTags] = useState(null);
   const [eventtypes, setEventtypes] = useState(null);
   const [userNames, setUserNames] = useState(null);
-  const [showEventForm, setShowEventForm] = useState(false);
-  const copyEditData = useRef(null);
 
   const fetchEvents = async () => {
     const results = await getAllEvents();
@@ -69,22 +66,12 @@ export const AdminEvents = () => {
     await fetchEvents();
   };
 
-  /* const duplicateClickHandler = (record) => {
-    copyEditData.current = record;
-    setIsEdit(null);
-    setShowEventForm(true);
-  }; */
-
-  const editClickHandler = (record) => {
-    copyEditData.current = record;
-    setIsEdit(record._id);
-    setShowEventForm(true);
+  const quickEditClickHandler = (record) => {
+    // TODO
   };
 
   const openNewEventFormHandler = () => {
-    copyEditData.current = null;
-    setIsEdit(null);
-    setShowEventForm(true);
+    // TODO
   };
 
   const toggleValidated = (id, validated) => {
@@ -266,19 +253,9 @@ export const AdminEvents = () => {
       render: (_, record) => {
         return (
           <span>
-            {/*
             <Typography.Link
               style={{ marginRight: 8 }}
-              onClick={() => duplicateClickHandler(record)}
-            >
-              <Tooltip title="Copy this event">
-                <CopyOutlined className="admin__editLogo" />
-              </Tooltip>
-            </Typography.Link> 
-            */}
-            <Typography.Link
-              style={{ marginRight: 8 }}
-              onClick={() => editClickHandler(record)}
+              onClick={() => quickEditClickHandler(record)}
             >
               <EditOutlined className="admin__editLogo" />
             </Typography.Link>
@@ -303,15 +280,6 @@ export const AdminEvents = () => {
         </div>
       ) : (
         <>
-          {/* showEventForm && (
-            <EventForm
-              showEventForm={showEventForm}
-              setShowEventForm={setShowEventForm}
-              data={copyEditData.current}
-              reload={fetchEvents}
-              isEdit={isEdit}
-            />
-          ) */}
           <Form form={form} component={false}>
             <Table
               className="admin__table"
