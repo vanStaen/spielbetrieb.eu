@@ -76,8 +76,9 @@ export const EventCard = observer((props) => {
     <div
       key={event._id}
       id={`eventContainer${event._id}`}
-      className={`event__Container ${pageStore.selectedTheme === "light" ? "event__black" : "event__white"
-        }`}
+      className={`event__Container ${
+        pageStore.selectedTheme === "light" ? "event__black" : "event__white"
+      }`}
       onClick={handleEventContainerClick}
     >
       <div className="event__date">
@@ -87,7 +88,9 @@ export const EventCard = observer((props) => {
         <div className="event__dateDayOfWeek">
           {dayjs(event.fromDate).format("ddd")}
         </div>
-        <div className={`event__dateDay ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}>
+        <div
+          className={`event__dateDay ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
+        >
           {dayjs(event.fromDate).format("DD")}
         </div>
         <div className="event__dateMonth">
@@ -100,7 +103,11 @@ export const EventCard = observer((props) => {
       <div className="event__main">
         <div className="event__titleLocation">
           <div className="event__location">{event.locationName} </div>
-          <div className={`event__title ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}>{event.title}</div>
+          <div
+            className={`event__title ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
+          >
+            {event.title}
+          </div>
         </div>
         <div className="event__time">
           <ClockCircleOutlined /> {dayjs(event.fromDate).format("HH:mm")} -{" "}
