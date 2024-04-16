@@ -3,9 +3,9 @@ import { observer } from "mobx-react";
 import { Button } from "antd";
 import { EditOutlined } from "@ant-design/icons";
 
-import "./EventPageDescLocations.less";
+import "./EventPageDescLocation.less";
 
-export const EventPageDescLocations = observer((props) => {
+export const EventPageDescLocation = observer((props) => {
   const { event } = props;
 
   return (
