@@ -80,6 +80,7 @@ export const EventForm = observer(() => {
       };
     });
     setTagsOptions(tagsOptionsResult);
+
   };
 
   const fetchDresscodes = async () => {
