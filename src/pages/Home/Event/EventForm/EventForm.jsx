@@ -175,10 +175,6 @@ export const EventForm = observer(() => {
         tempStatusSteps[eventFormStore.formStep] = "finish";
       }
     } else if (eventFormStore.formStep === 2) {
-      console.log(
-        "eventFormStore.setHasDresscode",
-        eventFormStore.setHasDresscode,
-      );
       if (
         eventFormStore.dresscodeDoTags.length === 0 &&
         eventFormStore.dresscodeDontTags.length === 0 &&

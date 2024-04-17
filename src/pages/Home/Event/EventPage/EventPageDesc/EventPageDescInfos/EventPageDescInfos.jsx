@@ -105,7 +105,7 @@ export const EventPageDescInfos = observer((props) => {
         <div className="eventpage__subInfo">
           <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
           {dayjs(event.fromDate).format("dddd") ===
-          dayjs(event.untilDate).format("dddd") ? (
+            dayjs(event.untilDate).format("dddd") ? (
             <>
               {dayjs(event.fromDate).format("HH:mm")} {t("spielplan.until")}{" "}
               {dayjs(event.untilDate).format("HH:mm")}
@@ -118,7 +118,7 @@ export const EventPageDescInfos = observer((props) => {
             </>
           )}
         </div>
-        {event.prices?.length > 0 && (
+        {event.prices[0]?.amount && (
           <div className="eventpage__subInfo">
             <EuroOutlined className="eventpage__infoIcon" />{" "}
             {event.prices.map((price, index) => {

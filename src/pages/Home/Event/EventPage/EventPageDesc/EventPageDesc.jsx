@@ -10,6 +10,7 @@ import { EventPageDescInfos } from "./EventPageDescInfos/EventPageDescInfos";
 import { EventPageDescLineUp } from "./EventPageDescLineUp/EventPageDescLineUp";
 import { EventPageDescEquipment } from "./EventPageDescEquipment/EventPageDescEquipment";
 import { EventPageDescLocation } from "./EventPageDescLocation/EventPageDescLocation";
+import { EventPageDescLinks } from "./EventPageDescLinks/EventPageDescLinks";
 
 import "./EventPageDesc.less";
 import { EventPageDescription } from "./EventPageDescription/EventPageDescription";
@@ -17,7 +18,7 @@ import { EventPageDescription } from "./EventPageDescription/EventPageDescriptio
 export const EventPageDesc = observer((props) => {
   const { ref2, ref3, ref4, ref5, ref6, event } = props;
 
-  // console.log(event);
+  console.log(event);
 
   const eventTypeName = nameParser(
     spielplanStore.eventtypes.filter(
@@ -60,6 +61,7 @@ export const EventPageDesc = observer((props) => {
       {!!event.description && <EventPageDescription event={event} />}
       <EventPageDescInfos event={event} eventTypeName={eventTypeName} />
       <EventPageDescLocation event={event} />
+      {!!event.links?.length && <EventPageDescLinks event={event} />}
       {!!event.lineUp?.length && <EventPageDescLineUp event={event} />}
       {!!event.equipment?.length > 0 && (
         <EventPageDescEquipment event={event} />
