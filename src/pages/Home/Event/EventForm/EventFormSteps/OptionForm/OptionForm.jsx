@@ -26,15 +26,13 @@ export const OptionForm = observer((props) => {
 
   return (
     <div
-      className={`optionform__container  ${pageStore.selectedTheme === "light"
-        ? "lightColorTheme__Text"
-        : "darkColorTheme__Text"
-        }`}
+      className={`optionform__container  ${
+        pageStore.selectedTheme === "light"
+          ? "lightColorTheme__Text"
+          : "darkColorTheme__Text"
+      }`}
     >
-      <OptionFormEventsTags
-        tagsOptions={tagsOptions}
-        fetchTags={fetchTags}
-      />
+      <OptionFormEventsTags tagsOptions={tagsOptions} fetchTags={fetchTags} />
       <OptionFormLinks />
       <OptionFormPrices />
       <OptionFormDresscodes
@@ -45,12 +43,9 @@ export const OptionForm = observer((props) => {
         artistsOptions={artistsOptions}
         fetchArtists={fetchArtists}
       />
-      <OptionFormEquipements
-        equipmentsOptions={equipmentsOptions}
-      />
+      <OptionFormEquipements equipmentsOptions={equipmentsOptions} />
       <OptionFormAgeMin />
       <OptionFormPrivateEvent />
-
     </div>
   );
 });

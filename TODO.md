@@ -38,6 +38,7 @@
 - [ ] URL to old event only possible for admin and VA-er, sonst meldung 'not possible'
 - [ ] Admin: When validating new tag, if there are not accepted, they should not be shown in the event anymore.
 - [ ] EventPage : create nice artist component
+- [ ] EventForm : Add loader on selects
 
 ## Tech debt:
 

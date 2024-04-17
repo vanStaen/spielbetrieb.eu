@@ -1,9 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
-import {
-  EnvironmentOutlined,
-  TagOutlined,
-} from "@ant-design/icons";
+import { EnvironmentOutlined, TagOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 
 import { pageStore } from "../../../../../store/pageStore/pageStore";
