@@ -110,6 +110,7 @@ export class EventFormStore {
       setLinks: action,
       deactivateNav: observable,
       setDeactivateNav: action,
+      resetEventForm: action,
     });
   }
 
@@ -253,6 +254,41 @@ export class EventFormStore {
   setDeactivateNav = (deactivateNav) => {
     this.deactivateNav = deactivateNav;
   };
+
+  resetEventForm = () => {
+    this.eventId = null;
+    this.artworks = [];
+    this.artworksUrl = [];
+    this.artworksError = null;
+    this.eventtype = null;
+    this.eventtypeError = null;
+    this.title = null;
+    this.titleError = null;
+    this.locationId = null;
+    this.locationName = null;
+    this.locationNameError = null;
+    this.locationAddress = null;
+    this.locationAddressError = null;
+    this.locationCoordinates = null;
+    this.description = null;
+    this.descriptionError = null;
+    this.fromDate = null;
+    this.untilDate = null;
+    this.fromDateError = null;
+    this.isNewLocation = false;
+    this.ageMin = 0;
+    this.isPrivate = false;
+    this.forwardable = true;
+    this.eventTags = [];
+    this.prices = [{ amount: null, option: 0 }];
+    this.lineUp = [];
+    this.equipment = [];
+    this.dresscodeDontTags = [];
+    this.dresscodeDoTags = [];
+    this.hasDresscode = 0;
+    this.dresscodeErrors = null;
+    this.links = [];
+  }
 }
 
 export const eventFormStore = new EventFormStore();

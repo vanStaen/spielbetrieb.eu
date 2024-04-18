@@ -38,6 +38,10 @@ export const EventForm = observer(() => {
   const [equipmentsOptions, setEquipmentsOptions] = useState(null);
   const [showDraftModal, setShowDraftModal] = useState(false);
 
+  useEffect(() => {
+    eventFormStore.resetEventForm();
+  }, []);
+
   const [statusSteps, setStatusSteps] = useState([
     "process",
     "wait",
