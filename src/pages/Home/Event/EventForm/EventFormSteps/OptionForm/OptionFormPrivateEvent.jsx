@@ -1,6 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { Radio } from "antd";
+import { Radio, Tooltip } from "antd";
 
 import { eventFormStore } from "../../eventFormStore";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
@@ -25,18 +25,24 @@ export const OptionFormPrivateEvent = observer(() => {
       });
   };
 
+  const isEventtypePrivate = eventFormStore.eventtype === 22;
+  const isPrivateEvent = isEventtypePrivate ? true : eventFormStore.isPrivate
+
   return (
     <>
-      <div className="optionform__element">
-        <div className="optionform__title">Is this a private event?</div>
-        <Radio.Group
-          options={yesNoOptions}
-          optionType="button"
-          onChange={isPrivateHandler}
-          value={eventFormStore.isPrivate}
-        />
-      </div>
-      {eventFormStore.isPrivate && (
+      {!isEventtypePrivate && (
+        <div className="optionform__element">
+          <div className="optionform__title">Is this a private event?</div>
+          <Radio.Group
+            options={yesNoOptions}
+            optionType="button"
+            onChange={isPrivateHandler}
+            value={isPrivateEvent}
+            disabled={isEventtypePrivate}
+          />
+        </div>
+      )}
+      {isPrivateEvent && (
         <div className="optionform__element">
           <div className="optionform__title">Can be it forwarded?</div>
           <Radio.Group

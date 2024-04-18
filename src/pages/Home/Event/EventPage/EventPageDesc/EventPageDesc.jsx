@@ -18,8 +18,6 @@ import { EventPageDescription } from "./EventPageDescription/EventPageDescriptio
 export const EventPageDesc = observer((props) => {
   const { ref2, ref3, ref4, ref5, ref6, event } = props;
 
-  console.log(event);
-
   const eventTypeName = nameParser(
     spielplanStore.eventtypes.filter(
       (eventtype) => parseInt(eventtype._id) === event?.eventtype,

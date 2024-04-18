@@ -118,7 +118,7 @@ export const EventPageDescInfos = observer((props) => {
             </>
           )}
         </div>
-        {event.prices[0]?.amount && (
+        {event.prices && event.prices[0]?.amount && (
           <div className="eventpage__subInfo">
             <EuroOutlined className="eventpage__infoIcon" />{" "}
             {event.prices.map((price, index) => {

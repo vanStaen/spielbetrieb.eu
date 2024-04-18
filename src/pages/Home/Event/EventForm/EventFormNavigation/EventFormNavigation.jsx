@@ -46,6 +46,7 @@ export const EventFormNavigation = observer((props) => {
     if (!eventFormStore.errors) {
       // add new locations
       console.log("PUBLISH");
+      console.log(eventFormStore.eventtype);
     }
   };
 

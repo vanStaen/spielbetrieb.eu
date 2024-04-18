@@ -95,6 +95,7 @@ export const GalleryOverlay = observer((props) => {
 
   const keyDownHandler = (event) => {
     event.preventDefault();
+    event.stopPropagation();
     const keyPressed = event.key.toLowerCase();
     const nextButton = document.getElementById("nextButton");
     const previousButton = document.getElementById("previousButton");
