@@ -26,7 +26,7 @@ export const OptionFormPrivateEvent = observer(() => {
   };
 
   const isEventtypePrivate = eventFormStore.eventtype === 22;
-  const isPrivateEvent = isEventtypePrivate ? true : eventFormStore.isPrivate
+  const isPrivateEvent = isEventtypePrivate ? true : eventFormStore.isPrivate;
 
   return (
     <>

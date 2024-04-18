@@ -105,7 +105,7 @@ export const EventPageDescInfos = observer((props) => {
         <div className="eventpage__subInfo">
           <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
           {dayjs(event.fromDate).format("dddd") ===
-            dayjs(event.untilDate).format("dddd") ? (
+          dayjs(event.untilDate).format("dddd") ? (
             <>
               {dayjs(event.fromDate).format("HH:mm")} {t("spielplan.until")}{" "}
               {dayjs(event.untilDate).format("HH:mm")}

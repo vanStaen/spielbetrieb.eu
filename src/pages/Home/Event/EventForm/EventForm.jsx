@@ -300,7 +300,7 @@ export const EventForm = observer(() => {
           <img
             src={errorLogo}
             width="50px"
-            className="eventform__singupfirstImg invertColorTheme "
+            className="eventform__singupfirstImg invertColorTheme"
           />
           <div
             className={`eventform__singupfirstText ${pageStore.selectedTheme === "light" ? "lightColorTheme__Text" : "darkColorTheme__Text"}`}

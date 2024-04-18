@@ -288,7 +288,7 @@ export class EventFormStore {
     this.hasDresscode = 0;
     this.dresscodeErrors = null;
     this.links = [];
-  }
+  };
 }
 
 export const eventFormStore = new EventFormStore();

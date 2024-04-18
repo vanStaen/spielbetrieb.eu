@@ -6,6 +6,7 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 
 import { EventPageArtwork } from "./EventPageArtwork/EventPageArtwork";
 import { EventPageDesc } from "./EventPageDesc/EventPageDesc";
+import { EventPageInValidation } from "./EventPageInValidation/EventPageInValidation";
 import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { getSingleEvents } from "../getSingleEvents";
@@ -20,6 +21,7 @@ export const EventPage = observer((props) => {
   const navigate = useNavigate();
   const { event } = props;
   const [startTour, setStartTour] = useState(false);
+  const [isNotValidated, setIsNotValidated] = useState(false);
 
   const keydownEventHandler = (event) => {
     const keyPressed = event.key.toLowerCase();
@@ -38,6 +40,9 @@ export const EventPage = observer((props) => {
 
   const fetchEventData = async (id) => {
     const eventFound = await getSingleEvents(id);
+    if (!eventFound.validated) {
+      setIsNotValidated(true);
+    }
     spielplanStore.setSelectedEvent(eventFound);
   };
 
@@ -117,12 +122,14 @@ export const EventPage = observer((props) => {
   return (
     <>
       <div className="eventpage__backgroundgradient"></div>
-      <div
-        className="eventpage__backgroundimage"
-        style={{
-          background: `url(${pageStore.picturesUrls && pageStore.picturesUrls[0]}) center center / cover`,
-        }}
-      ></div>
+      {!isNotValidated && (
+        <div
+          className="eventpage__backgroundimage"
+          style={{
+            background: `url(${pageStore.picturesUrls && pageStore.picturesUrls[0]}) center center / cover`,
+          }}
+        ></div>
+      )}
       <div
         onClick={() => {
           navigate(-1);
@@ -136,29 +143,33 @@ export const EventPage = observer((props) => {
       >
         <ArrowLeftOutlined />
       </div>
-      <div
-        className={`eventpage__container 
+      {isNotValidated ? (
+        <EventPageInValidation />
+      ) : (
+        <div
+          className={`eventpage__container 
                 ${pageStore.selectedTheme === "light" ? "black" : "white"}`}
-      >
-        {event !== null ? (
-          <>
-            <EventPageArtwork ref1={ref1} />
-            <EventPageDesc
-              event={event}
-              ref2={ref2}
-              ref3={ref3}
-              ref4={ref4}
-              ref5={ref5}
-              ref6={ref6}
-            />
-          </>
-        ) : (
-          <div className="eventpage__spinnerContainer">
-            <CustomSpinner text="Loading events" />
-          </div>
-        )}
-        <HelpButtons missingEvent={true} setStartTour={setStartTour} />
-      </div>
+        >
+          {event !== null ? (
+            <>
+              <EventPageArtwork ref1={ref1} />
+              <EventPageDesc
+                event={event}
+                ref2={ref2}
+                ref3={ref3}
+                ref4={ref4}
+                ref5={ref5}
+                ref6={ref6}
+              />
+            </>
+          ) : (
+            <div className="eventpage__spinnerContainer">
+              <CustomSpinner text="Loading events" />
+            </div>
+          )}
+          <HelpButtons missingEvent={true} setStartTour={setStartTour} />
+        </div>
+      )}
       <Tour
         open={startTour}
         onClose={() => setStartTour(false)}
