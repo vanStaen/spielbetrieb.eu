@@ -3,6 +3,7 @@ import { observer } from "mobx-react";
 import { Button } from "antd";
 
 import { eventFormStore } from "../eventFormStore";
+import { publishEvent } from "../EventFormSteps/PublishForm/publishEvent";
 
 import "./EventFormNavigation.less";
 
@@ -44,9 +45,7 @@ export const EventFormNavigation = observer((props) => {
 
   const publishHandler = () => {
     if (!eventFormStore.errors) {
-      // add new locations
-      console.log("PUBLISH");
-      console.log(eventFormStore.eventtype);
+      publishEvent();
     }
   };
 
