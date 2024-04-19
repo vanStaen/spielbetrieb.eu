@@ -58,6 +58,13 @@ const writeBackupFile = async () => {
       JSON.stringify(databaseContentAdminlinks),
     );
 
+    const databaseContentArtists = await fetchDatabaseContent("artists");
+    const filenameArtist = `${day}-${month}-${year}_spielbetrieb_artists.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameArtist}`,
+      JSON.stringify(databaseContentArtists),
+    );
+
     const databaseContentChats = await fetchDatabaseContent("chats");
     const filenameChats = `${day}-${month}-${year}_spielbetrieb_chats.json`;
     fs.writeFileSync(
@@ -77,6 +84,13 @@ const writeBackupFile = async () => {
     fs.writeFileSync(
       `../../../database-backups/spielbetrieb/${filenameDarks}`,
       JSON.stringify(databaseContentDarks),
+    );
+
+    const databaseContentEquipments = await fetchDatabaseContent("equipments");
+    const filenameEquipments = `${day}-${month}-${year}_spielbetrieb_equipments.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameEquipments}`,
+      JSON.stringify(databaseContentEquipments),
     );
 
     const databaseContentEvents = await fetchDatabaseContent("events");
@@ -163,6 +177,13 @@ const writeBackupFile = async () => {
     fs.writeFileSync(
       `../../../database-backups/spielbetrieb/${filenameTags}`,
       JSON.stringify(databaseContentTags),
+    );
+
+    const databaseContentTranslations = await fetchDatabaseContent("translations");
+    const filenameTranslations = `${day}-${month}-${year}_spielbetrieb_translations.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameTranslations}`,
+      JSON.stringify(databaseContentTranslations),
     );
 
     const databaseContentUsers = await fetchDatabaseContent("users");
