@@ -7,7 +7,7 @@ import { spielplanStore } from "../../../../../../store/spielplanStore/spielplan
 import "./EventPageDescLineUp.less";
 
 export const EventPageDescLineUp = observer((props) => {
-  const { event } = props;
+  const { event, canEdit } = props;
 
   const artistFormated = (artistId) => {
     const artistData = spielplanStore.artists.filter(
@@ -19,7 +19,7 @@ export const EventPageDescLineUp = observer((props) => {
   return (
     <div className="eventpage__lineupContainer">
       <div className="eventpage__lineupTitle">
-        Line up <EditOutlined className="editOutlined" />
+        Line up {canEdit && <EditOutlined className="editOutlined" />}
       </div>
       <div className="eventpage__lineup">
         {event.lineUp.map((artistId) => {

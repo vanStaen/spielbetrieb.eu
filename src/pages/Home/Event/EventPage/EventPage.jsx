@@ -9,6 +9,7 @@ import { EventPageDesc } from "./EventPageDesc/EventPageDesc";
 import { EventPageInValidation } from "./EventPageInValidation/EventPageInValidation";
 import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
+import { userStore } from "../../../../store/userStore/userStore";
 import { getSingleEvents } from "../getSingleEvents";
 import { HelpButtons } from "../../../../components/HelpButtons/HelpButtons";
 import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinnner";
@@ -22,6 +23,7 @@ export const EventPage = observer((props) => {
   const { event } = props;
   const [startTour, setStartTour] = useState(false);
   const [isNotValidated, setIsNotValidated] = useState(false);
+  const [canEdit, setCanEdit] = useState(false);
 
   const keydownEventHandler = (event) => {
     const keyPressed = event.key.toLowerCase();
@@ -41,6 +43,7 @@ export const EventPage = observer((props) => {
   const fetchEventData = async (id) => {
     const eventFound = await getSingleEvents(id);
     setIsNotValidated(!eventFound.validated);
+    // setCanEdit(userStore.isAdmin)
     spielplanStore.setSelectedEvent(eventFound);
   };
 
@@ -131,11 +134,10 @@ export const EventPage = observer((props) => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${
-                    pageStore.selectedTheme === "light"
-                      ? "lightColorTheme__Text"
-                      : "darkColorTheme__Text"
-                  }`}
+                  ${pageStore.selectedTheme === "light"
+            ? "lightColorTheme__Text"
+            : "darkColorTheme__Text"
+          }`}
       >
         <ArrowLeftOutlined />
       </div>
@@ -151,6 +153,7 @@ export const EventPage = observer((props) => {
               <EventPageArtwork ref1={ref1} />
               <EventPageDesc
                 event={event}
+                canEdit={canEdit}
                 ref2={ref2}
                 ref3={ref3}
                 ref4={ref4}

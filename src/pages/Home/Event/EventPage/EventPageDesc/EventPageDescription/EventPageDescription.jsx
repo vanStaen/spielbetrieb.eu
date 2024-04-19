@@ -6,13 +6,13 @@ import { EditOutlined } from "@ant-design/icons";
 import "./EventPageDescription.less";
 
 export const EventPageDescription = observer((props) => {
-  const { event } = props;
+  const { event, canEdit } = props;
   const { Paragraph } = Typography;
 
   return (
     <div className="eventpage__descContainer">
       <div className="eventpage__descTitle">
-        Event description <EditOutlined className="editOutlined" />
+        Event description {canEdit && <EditOutlined className="editOutlined" />}
       </div>
       <div className="eventpage__desc">
         <Paragraph

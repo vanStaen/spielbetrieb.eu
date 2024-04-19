@@ -6,12 +6,12 @@ import { EditOutlined } from "@ant-design/icons";
 import "./EventPageDescLocation.less";
 
 export const EventPageDescLocation = observer((props) => {
-  const { event } = props;
+  const { event, canEdit } = props;
 
   return (
     <div className="eventpage__locationContainer">
       <div className="eventpage__locationTitle">
-        Location <EditOutlined className="editOutlined" />
+        Location {canEdit && <EditOutlined className="editOutlined" />}
       </div>
       {event.locationName && event.locationAddress ? (
         <div className="eventpage__location">

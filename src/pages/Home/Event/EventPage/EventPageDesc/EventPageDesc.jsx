@@ -16,7 +16,7 @@ import "./EventPageDesc.less";
 import { EventPageDescription } from "./EventPageDescription/EventPageDescription";
 
 export const EventPageDesc = observer((props) => {
-  const { ref2, ref3, ref4, ref5, ref6, event } = props;
+  const { ref2, ref3, ref4, ref5, ref6, event, canEdit } = props;
 
   const eventTypeName = nameParser(
     spielplanStore.eventtypes.filter(
@@ -56,13 +56,35 @@ export const EventPageDesc = observer((props) => {
         </div>
       </div>
 
-      {!!event.description && <EventPageDescription event={event} />}
-      <EventPageDescInfos event={event} eventTypeName={eventTypeName} />
-      <EventPageDescLocation event={event} />
-      {!!event.links?.length && <EventPageDescLinks event={event} />}
-      {!!event.lineUp?.length && <EventPageDescLineUp event={event} />}
+      {!!event.description &&
+        <EventPageDescription
+          event={event}
+          canEdit={canEdit}
+        />}
+      <EventPageDescInfos
+        canEdit={canEdit}
+        event={event}
+        eventTypeName={eventTypeName}
+      />
+      <EventPageDescLocation
+        event={event}
+        canEdit={canEdit}
+      />
+      {!!event.links?.length &&
+        <EventPageDescLinks
+          event={event}
+          canEdit={canEdit}
+        />}
+      {!!event.lineUp?.length &&
+        <EventPageDescLineUp
+          canEdit={canEdit}
+          event={event}
+        />}
       {!!event.equipment?.length > 0 && (
-        <EventPageDescEquipment event={event} />
+        <EventPageDescEquipment
+          canEdit={canEdit}
+          event={event}
+        />
       )}
     </div>
   );

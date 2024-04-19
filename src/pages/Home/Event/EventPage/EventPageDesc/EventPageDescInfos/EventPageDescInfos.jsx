@@ -21,7 +21,7 @@ import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import "./EventPageDescInfos.less";
 
 export const EventPageDescInfos = observer((props) => {
-  const { event, eventTypeName } = props;
+  const { event, eventTypeName, canEdit } = props;
   const { t } = useTranslation();
 
   const eventTags = () => {
@@ -99,13 +99,13 @@ export const EventPageDescInfos = observer((props) => {
   return (
     <div className="eventpage__infoContainer">
       <div className="eventpage__infoTitle">
-        Event infos <EditOutlined className="editOutlined" />
+        Event infos {canEdit && <EditOutlined className="editOutlined" />}
       </div>
       <div className="eventpage__info">
         <div className="eventpage__subInfo">
           <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
           {dayjs(event.fromDate).format("dddd") ===
-          dayjs(event.untilDate).format("dddd") ? (
+            dayjs(event.untilDate).format("dddd") ? (
             <>
               {dayjs(event.fromDate).format("HH:mm")} {t("spielplan.until")}{" "}
               {dayjs(event.untilDate).format("HH:mm")}

@@ -10,7 +10,7 @@ import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import "./EventPageDescEquipment.less";
 
 export const EventPageDescEquipment = observer((props) => {
-  const { event } = props;
+  const { event, canEdit } = props;
 
   const equipmentsTags = () => {
     const equipments = event?.equipment?.map((equipementId) => {
@@ -38,7 +38,7 @@ export const EventPageDescEquipment = observer((props) => {
   return (
     <div className="eventpage__equipementContainer">
       <div className="eventpage__equipmentTitle">
-        Equipment <EditOutlined className="editOutlined" />
+        Equipment {canEdit && <EditOutlined className="editOutlined" />}
       </div>
       <div className="eventpage__subInfo">{equipmentsTags()}</div>
     </div>

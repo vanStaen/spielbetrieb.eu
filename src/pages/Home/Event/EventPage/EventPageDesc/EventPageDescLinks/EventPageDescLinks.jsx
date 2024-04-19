@@ -5,12 +5,12 @@ import { EditOutlined } from "@ant-design/icons";
 import "./EventPageDescLinks.less";
 
 export const EventPageDescLinks = observer((props) => {
-  const { event } = props;
+  const { event, canEdit } = props;
 
   return (
     <div className="eventpage__linkContainer">
       <div className="eventpage__linkTitle">
-        Links <EditOutlined className="editOutlined" />
+        Links {canEdit && <EditOutlined className="editOutlined" />}
       </div>
       <div className="eventpage__link">
         {event.links.map((link, index) => {
