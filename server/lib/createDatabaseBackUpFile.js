@@ -179,7 +179,8 @@ const writeBackupFile = async () => {
       JSON.stringify(databaseContentTags),
     );
 
-    const databaseContentTranslations = await fetchDatabaseContent("translations");
+    const databaseContentTranslations =
+      await fetchDatabaseContent("translations");
     const filenameTranslations = `${day}-${month}-${year}_spielbetrieb_translations.json`;
     fs.writeFileSync(
       `../../../database-backups/spielbetrieb/${filenameTranslations}`,
