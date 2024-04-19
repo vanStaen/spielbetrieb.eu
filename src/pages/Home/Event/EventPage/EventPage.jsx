@@ -43,7 +43,7 @@ export const EventPage = observer((props) => {
   const fetchEventData = async (id) => {
     const eventFound = await getSingleEvents(id);
     setIsNotValidated(!eventFound.validated);
-    setCanEdit(userStore.isAdmin || userStore._id === eventFound.user._id)
+    setCanEdit(userStore.isAdmin || userStore._id === eventFound.user._id);
     spielplanStore.setSelectedEvent(eventFound);
   };
 
@@ -134,10 +134,11 @@ export const EventPage = observer((props) => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${pageStore.selectedTheme === "light"
-            ? "lightColorTheme__Text"
-            : "darkColorTheme__Text"
-          }`}
+                  ${
+                    pageStore.selectedTheme === "light"
+                      ? "lightColorTheme__Text"
+                      : "darkColorTheme__Text"
+                  }`}
       >
         <ArrowLeftOutlined />
       </div>

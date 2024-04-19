@@ -56,35 +56,23 @@ export const EventPageDesc = observer((props) => {
         </div>
       </div>
 
-      {!!event.description &&
-        <EventPageDescription
-          event={event}
-          canEdit={canEdit}
-        />}
+      {!!event.description && (
+        <EventPageDescription event={event} canEdit={canEdit} />
+      )}
       <EventPageDescInfos
         canEdit={canEdit}
         event={event}
         eventTypeName={eventTypeName}
       />
-      <EventPageDescLocation
-        event={event}
-        canEdit={canEdit}
-      />
-      {!!event.links?.length &&
-        <EventPageDescLinks
-          event={event}
-          canEdit={canEdit}
-        />}
-      {!!event.lineUp?.length &&
-        <EventPageDescLineUp
-          canEdit={canEdit}
-          event={event}
-        />}
+      <EventPageDescLocation event={event} canEdit={canEdit} />
+      {!!event.links?.length && (
+        <EventPageDescLinks event={event} canEdit={canEdit} />
+      )}
+      {!!event.lineUp?.length && (
+        <EventPageDescLineUp canEdit={canEdit} event={event} />
+      )}
       {!!event.equipment?.length > 0 && (
-        <EventPageDescEquipment
-          canEdit={canEdit}
-          event={event}
-        />
+        <EventPageDescEquipment canEdit={canEdit} event={event} />
       )}
     </div>
   );
