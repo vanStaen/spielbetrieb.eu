@@ -40,6 +40,7 @@
 - [ ] EventPage : create nice artist component
 - [ ] EventPage : handle secret location (id9)
 - [ ] EventForm : Add loader on selects
+- [ ] If draft is set to false, create notification for admins (in BE)
 
 ## Tech debt:
 

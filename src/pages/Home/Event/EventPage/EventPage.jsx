@@ -40,18 +40,14 @@ export const EventPage = observer((props) => {
 
   const fetchEventData = async (id) => {
     const eventFound = await getSingleEvents(id);
-    if (!eventFound.validated) {
-      setIsNotValidated(true);
-    }
+    setIsNotValidated(!eventFound.validated);
     spielplanStore.setSelectedEvent(eventFound);
   };
 
   useEffect(() => {
-    if (event === null) {
-      spielplanStore.fetchTags();
-      spielplanStore.fetchEventtypes();
-      fetchEventData(params.id);
-    }
+    spielplanStore.fetchTags();
+    spielplanStore.fetchEventtypes();
+    fetchEventData(params.id);
   }, []);
 
   const ref1 = useRef(null);

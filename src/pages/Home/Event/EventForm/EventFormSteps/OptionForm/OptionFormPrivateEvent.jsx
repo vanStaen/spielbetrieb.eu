@@ -1,6 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { Radio, Tooltip } from "antd";
+import { Radio } from "antd";
 
 import { eventFormStore } from "../../eventFormStore";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";

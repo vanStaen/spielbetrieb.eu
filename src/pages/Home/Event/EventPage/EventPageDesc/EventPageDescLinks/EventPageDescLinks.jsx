@@ -13,13 +13,19 @@ export const EventPageDescLinks = observer((props) => {
         Links <EditOutlined className="editOutlined" />
       </div>
       <div className="eventpage__link">
-        {event.links.map((link) => {
+        {event.links.map((link, index) => {
           let linkUrl = link;
           if (!link.includes("http")) {
             linkUrl = `http://${linkUrl}`;
           }
           return (
-            <a href={linkUrl} className="link" target="_blank" rel="noreferrer">
+            <a
+              href={linkUrl}
+              key={`linkKey${index}`}
+              className="link"
+              target="_blank"
+              rel="noreferrer"
+            >
               {link}
             </a>
           );

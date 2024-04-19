@@ -21,6 +21,7 @@ export async function getSingleEvents(id) {
                   attendees,
                   createdAt,
                   updatedAt,
+                  validated,
                   user {
                       userName,
                   }
