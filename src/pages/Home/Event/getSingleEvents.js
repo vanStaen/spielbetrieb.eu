@@ -23,7 +23,8 @@ export async function getSingleEvents(id) {
                   updatedAt,
                   validated,
                   user {
-                      userName,
+                    _id,
+                    userName,
                   }
                 }
               }
