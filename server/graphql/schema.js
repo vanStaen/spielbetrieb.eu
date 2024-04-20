@@ -20,6 +20,7 @@ import * as userSchema from "./schemas/userSchema.js";
 import * as visitorSchema from "./schemas/visitorSchema.js";
 import * as subscriberSchema from "./schemas/subscriberSchema.js";
 import * as tagSchema from "./schemas/tagSchema.js";
+import * as translationSchema from "./schemas/translationSchema.js";
 
 export default buildSchema(`
 
@@ -43,6 +44,7 @@ export default buildSchema(`
     ${visitorSchema.Visitor}
     ${subscriberSchema.Subscriber}
     ${tagSchema.Tag}
+    ${translationSchema.Translation}
 
     ${admincontactSchema.AdmincontactInputData}
     ${adminlinkSchema.AdminlinkInputData}
@@ -64,6 +66,7 @@ export default buildSchema(`
     ${userSchema.UserInputDataAdmin}
     ${subscriberSchema.SubscriberInputData}
     ${tagSchema.TagInputData}
+    ${translationSchema.TranslationInputData}
 
     type RootQuery {
         ${admincontactSchema.AdmincontactQueries}
@@ -86,6 +89,7 @@ export default buildSchema(`
         ${visitorSchema.VisitorQueries}
         ${subscriberSchema.SubscriberQueries}
         ${tagSchema.TagQueries}
+        ${translationSchema.TranslationQueries}
     }
 
     type RootMutations {
@@ -109,6 +113,7 @@ export default buildSchema(`
         ${visitorSchema.VisitorMutations}
         ${subscriberSchema.SubscriberMutations}
         ${tagSchema.TagMutations}
+        ${translationSchema.TranslationMutations}
     }
 
     schema {
