@@ -86,7 +86,7 @@ const writeBackupFile = async () => {
       JSON.stringify(databaseContentDarks),
     );
 
-    const databaseContentEquipments = await fetchDatabaseContent("equipments");
+    const databaseContentEquipments = await fetchDatabaseContent("equipment");
     const filenameEquipments = `${day}-${month}-${year}_spielbetrieb_equipments.json`;
     fs.writeFileSync(
       `../../../database-backups/spielbetrieb/${filenameEquipments}`,
