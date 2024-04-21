@@ -1,4 +1,4 @@
-export async function getTranslations() {
+export default async function getTranslations() {
   const graphqlQuery = {
     query: `
             {

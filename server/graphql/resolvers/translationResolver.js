@@ -5,7 +5,6 @@ import { createTranslationFiles } from "../../lib/translations/createTranslation
 export const translationResolver = {
   // getTranslations: [Translation]
   async getTranslations() {
-    createTranslationFiles();
     return await Translation.findAll({
       order: [["_id", "ASC"]],
     });
@@ -32,7 +31,9 @@ export const translationResolver = {
         ru: args.translationInput.ru,
         es: args.translationInput.es,
       });
-      return await translation.save();
+      createTranslationFiles();
+      const result = await translation.save();
+      return result;
     } catch (err) {
       console.log(err);
     }
@@ -66,6 +67,7 @@ export const translationResolver = {
       });
       // updatedTranslation[0]: number or row udpated
       // updatedTranslation[1]: rows updated
+      createTranslationFiles();
       return updatedTranslation[1];
     } catch (err) {
       console.log(err);
