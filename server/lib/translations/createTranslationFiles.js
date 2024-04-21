@@ -34,4 +34,5 @@ export async function createTranslationFiles() {
       }
     },
   );
+  console.log(">>> New translastion file have been generated! <<<");
 }

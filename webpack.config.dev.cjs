@@ -29,6 +29,8 @@ module.exports = {
       patterns: [
         { from: "public/manifest.webmanifest" },
         { from: "public/icon.png" },
+        { from: "public/locales/en/translation.json" },
+        { from: "public/locales/de/translation.json" },
         { from: "public/spielbetrieb_logo_beige_24.png" },
         { from: "public/spielbetrieb_logo_beige_128.png" },
         { from: "public/spielbetrieb_logo_beige_256.png" },
@@ -61,6 +63,10 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         type: "asset/resource",
+      },
+      {
+        test: /\.json$/,
+        loader: "json-loader",
       },
     ],
   },
