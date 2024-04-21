@@ -3,7 +3,7 @@ import { initReactI18next } from "react-i18next";
 import Backend from "i18next-http-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
 
-import { getTranslations } from "./getTranslations.js";
+// import { getTranslations } from "./getTranslations.js";
 // import dataEn from "./languages/en/translation.json";
 // import dataDe from "./languages/de/translation.json";
 

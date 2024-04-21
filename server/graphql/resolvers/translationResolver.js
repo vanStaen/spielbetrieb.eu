@@ -1,9 +1,11 @@
 import { Translation } from "../../models/Translation.js";
 import { User } from "../../models/User.js";
+import { createTranslationFiles } from "../../lib/translations/createTranslationFiles.js";
 
 export const translationResolver = {
   // getTranslations: [Translation]
   async getTranslations() {
+    createTranslationFiles();
     return await Translation.findAll({
       order: [["_id", "ASC"]],
     });
