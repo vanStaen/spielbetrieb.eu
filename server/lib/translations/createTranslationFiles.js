@@ -18,7 +18,7 @@ export async function createTranslationFiles() {
 
   fs.writeFile(
     "./public/locales/en/translation.json",
-    JSON.stringify(translationEN),
+    JSON.stringify(translationEN, null, "\t"),
     (err) => {
       if (err) {
         console.error(err);
@@ -27,7 +27,7 @@ export async function createTranslationFiles() {
   );
   fs.writeFile(
     "./public/locales/de/translation.json",
-    JSON.stringify(translationDE),
+    JSON.stringify(translationDE, null, "\t"),
     (err) => {
       if (err) {
         console.error(err);

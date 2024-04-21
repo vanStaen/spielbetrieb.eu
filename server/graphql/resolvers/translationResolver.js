@@ -31,7 +31,7 @@ export const translationResolver = {
         ru: args.translationInput.ru,
         es: args.translationInput.es,
       });
-      // createTranslationFiles();
+      createTranslationFiles();
       const result = await translation.save();
       return result;
     } catch (err) {
@@ -67,7 +67,7 @@ export const translationResolver = {
       });
       // updatedTranslation[0]: number or row udpated
       // updatedTranslation[1]: rows updated
-      // createTranslationFiles();
+      createTranslationFiles();
       return updatedTranslation[1];
     } catch (err) {
       console.log(err);

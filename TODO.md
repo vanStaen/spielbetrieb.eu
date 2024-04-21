@@ -56,7 +56,6 @@
 - [ ] Get own google api key
   - [ ] https://developers.google.com/maps/documentation/geocoding/overview
   - [ ] https://developers.google.com/maps/documentation/javascript
-- [ ] translate lib in database : https://kennedyihe.com/translate-your-react-app-from-a-database/
 - [ ] Create a custom error component (same as loader), with broken heart, as at the moment all are formated differently.
   - eg: You need to be logged in (EventForm)
   - eg: No events found (Spielplan)

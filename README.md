@@ -60,7 +60,7 @@ Possible admin roles are:
 5. `content`: management of article for the blog and the dark issues 
 6. `analytics`: access to the portal's data
 7. `translation`: translation of the portal's texts
-8. `data`: data used within the site (such as categeroies or tags)
+8. `data`: data used within the site (such as categor   ies or tags)
 9. `ressources`: some internal ressources for the admins only
 
 SQL update script exemple: 
