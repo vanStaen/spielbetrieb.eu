@@ -13,7 +13,7 @@ export const EventPageInValidation = observer(() => {
     >
       <div className="eventpagevalidated__text">
         <img src={waitLogo} width="50px" className="logo invertColorTheme" />
-        <div className="text">Event now pending review</div>
+        <div className="text">Event pending review</div>
         <div className="subText">
           This will be available after it has been reviewed by our team.
         </div>
