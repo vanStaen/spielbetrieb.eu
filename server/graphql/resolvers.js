@@ -18,6 +18,7 @@ import * as subscriberResolver from "./resolvers/subscriberResolver.js";
 import * as userResolver from "./resolvers/userResolver.js";
 import * as visitorResolver from "./resolvers/visitorResolver.js";
 import * as tagResolver from "./resolvers/tagResolver.js";
+import * as translationResolver from "./resolvers/translationResolver.js";
 
 export default {
   ...admincontactResolver.admincontactResolver,
@@ -40,4 +41,5 @@ export default {
   ...visitorResolver.visitorResolver,
   ...notificationResolver.notificationResolver,
   ...tagResolver.tagResolver,
+  ...translationResolver.translationResolver,
 };
