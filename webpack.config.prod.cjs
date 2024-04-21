@@ -61,6 +61,10 @@ module.exports = {
         test: /\.(jpe?g|png|gif|svg)$/i,
         type: "asset/resource",
       },
+      {
+        test: /\.json$/,
+        loader: "json-loader",
+      },
     ],
   },
 };
