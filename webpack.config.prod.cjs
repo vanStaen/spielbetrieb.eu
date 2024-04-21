@@ -26,8 +26,14 @@ module.exports = {
       patterns: [
         { from: "public/manifest.webmanifest" },
         { from: "public/icon.png" },
-        { from: "public/locales/en/translation.json" },
-        { from: "public/locales/de/translation.json" },
+        {
+          from: "public/locales/en/translation.json",
+          to: "locales/en/translation.json",
+        },
+        {
+          from: "public/locales/de/translation.json",
+          to: "locales/de/translation.json",
+        },
         { from: "public/spielbetrieb_logo_beige_24.png" },
         { from: "public/spielbetrieb_logo_beige_128.png" },
         { from: "public/spielbetrieb_logo_beige_256.png" },
