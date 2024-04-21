@@ -10,11 +10,11 @@ type Partner {
     partnertype: Int
     partnerRoles: Int
     lastActive: Float!
-    createdAt: Float!
-    updatedAt: Float!
     archived: Boolean
     suspended: Boolean
     user: User
+    createdAt: Float!
+    updatedAt: Float!
 }`;
 
 export const PartnerInputData = `

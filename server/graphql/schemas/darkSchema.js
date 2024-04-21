@@ -8,8 +8,8 @@ type Dark {
     link: String
     tags: [Int]
     archived: Boolean!
-    createdAt: String!
-    updatedAt: String!
+    createdAt: Float!
+    updatedAt: Float!
 }`;
 
 export const DarkInputData = `

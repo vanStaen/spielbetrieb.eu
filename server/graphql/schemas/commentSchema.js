@@ -6,10 +6,10 @@ type Comment {
     comment: String!
     likes: [Int]
     dislikes: [Int]
-    createdAt: String!
-    udpatedAt: String!
     user: User
     photo: Photo
+    createdAt: Float!
+    updatedAt: Float!
 }`;
 
 export const CommentInputData = `

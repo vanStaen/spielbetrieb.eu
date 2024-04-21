@@ -6,6 +6,8 @@ type Adminlink {
     link: String!
     archived: Boolean
     user: User
+    createdAt: Float!
+    updatedAt: Float!
 }`;
 
 export const AdminlinkInputData = `

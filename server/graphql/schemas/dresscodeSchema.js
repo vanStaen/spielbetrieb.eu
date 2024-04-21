@@ -4,6 +4,8 @@ type Dresscode {
     name: String!
     media: String
     validated: Boolean
+    createdAt: Float!
+    updatedAt: Float!
 }`;
 
 export const DresscodeInputData = `

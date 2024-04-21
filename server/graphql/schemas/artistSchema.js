@@ -7,8 +7,8 @@ type Artist {
     artistType: Int
     validated: Boolean
     reviews: [String]
-    createdAt: String!
-    updatedAt: String!
+    createdAt: Float!
+    updatedAt: Float!
 }`;
 
 export const ArtistInputData = `

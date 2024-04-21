@@ -5,10 +5,10 @@ type Message {
     chatId: Int!
     message: String!
     attachedPhotoUrl: String!
-    createdAt: String!
-    updatedAt: String!
     chat: Chat,
     user: User,
+    createdAt: Float!
+    updatedAt: Float!
 }`;
 
 export const MessageInputData = `

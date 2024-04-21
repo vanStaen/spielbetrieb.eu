@@ -24,8 +24,6 @@ type User {
     archived: Boolean
     usernameChange: Int
     lastActive: String!
-    createdAt: Float!
-    updatedAt: Float!
     comments: [Comment]
     events: [Event]
     messages: [Message]
@@ -38,6 +36,8 @@ type User {
     language: String!
     deleted: Boolean!
     suspended: Boolean!
+    createdAt: Float!
+    updatedAt: Float!
 }`;
 
 export const UserInputData = `

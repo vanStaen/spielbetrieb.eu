@@ -369,7 +369,7 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "/Users/cvanstaen/Desktop/Bildschirmfoto 2024-03-12 um 14.45.12.png"
+							"src": "/Users/clementvanstaen/Desktop/2015.02-AvatarSquare.jpg"
 						},
 						{
 							"key": "bucket",
@@ -433,9 +433,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "multipart/form-data",
-						"type": "text",
-						"disabled": true
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -444,22 +443,11 @@
 					}
 				],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "Content-Type",
-							"value": "multipart/form-data",
-							"type": "text"
-						},
-						{
-							"key": "file",
-							"type": "file",
-							"src": "/Users/clementvanstaen/Desktop/37321320_10160676222355261_2262054786838822912_o.jpg"
-						}
-					]
+					"mode": "raw",
+					"raw": "{\n    \"bucket\": \"test\",\n    \"path\": \"1/ff76b848-7270-448b-9dac-0ae44e8fa823\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:5017/upload/5e1ecd160a19c463dda0f8b3c33aa9d6",
+					"raw": "http://localhost:5017/upload/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -467,7 +455,7 @@
 					"port": "5017",
 					"path": [
 						"upload",
-						"5e1ecd160a19c463dda0f8b3c33aa9d6"
+						""
 					]
 				},
 				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
@@ -1135,6 +1123,44 @@
 			"response": []
 		},
 		{
+			"name": "GraphQL Query: getAllDraftEvents",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\n  getAllDraftEvents {\n    _id,\n    eventtype,\n    title,\n    description,\n    pictures,\n    location,\n    locationAddress,\n    locationCoordinates,\n    locationName,\n    fromDate,\n    untilDate,\n    eventTags,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
 			"name": "GraphQL Mutation: addEvent",
 			"request": {
 				"method": "POST",
@@ -1737,7 +1763,7 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Query: getEventTypes",
+			"name": "GraphQL Query: getEventtypes",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -1750,7 +1776,39 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getEventTypes {\n    _id,\n    name,\n    validated,\n  }\n}",
+						"query": "query {\n  getEventtypes(usage: 0) {\n    _id,\n    name,\n    validated,\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Query: getAllEventtypes",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\n  getAllEventtypes {\n    _id,\n    name,\n    usage,\n    validated,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2074,7 +2132,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getLocations {\n    _id,\n    name,\n    description,\n    pictures,\n    links,\n    address,\n    coordinates,\n    validated,\n    reviews,\n  }\n}",
+						"query": "query {\n  getLocations(onlyValidated: true) {\n    _id,\n    name,\n    description,\n    pictures,\n    links,\n    address,\n    coordinates,\n    validated,\n    reviews,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2264,6 +2322,622 @@
 					"mode": "graphql",
 					"graphql": {
 						"query": "mutation {\n  updatePartnertype (\n    partnertypeId: \"1\",\n    partnertypeInput: { \n        name: \"{\\\"en\\\": \\\"date\\\", \\\"de\\\": \\\"date\\\"}\",\n        }\n  ) {\n    _id\n    name\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Query: getArtist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\n  getArtist (artistId: 1) {\n    _id,\n    name,\n    pictures,\n    links,\n    validated,\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Query: getArtists",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\n  getArtists {\n    _id,\n    name,\n    pictures,\n    links,\n    validated,\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: addArtist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  addArtist (\n    artistInput: {\n        name: \"artist validated\",\n        validated: true,\n        }\n  ) {\n    _id\n    name\n    pictures\n    links\n    validated\n    artistType\n    reviews\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: updateArtist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  updateArtist (\n    artistId: \"1\",\n    artistInput: {\n        validated: true,\n        artistType: 1,\n        }\n  ) {\n    _id\n    name\n    artistType\n    validated\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: deleteArtist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  deleteArtist (\n    artistId: \"5\"\n  )\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Query: getDresscodes",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\n  getDresscodes {\n    _id,\n    name,\n    validated,\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: addDresscode",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  addDresscode (\n    dresscodeInput: {\n        name: \"{\\\"en\\\":\\\"Colorful\\\", \\\"de\\\":\\\"Bunt\\\"}\",\n        validated: true,\n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: updateDresscode",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  updateDresscode (\n    dresscodeId: \"1\",\n    dresscodeInput: {\n        name: \"{en:'latex', de:'latex'}\"\n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: deleteDresscode",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  deleteDresscode (\n    dresscodeId: \"1\"\n  )\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Query: getEquipments",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\n  getEquipments {\n    _id,\n    name,\n    validated,\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: addEquipment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  addEquipment (\n    equipmentInput: {\n        name: \"{\\\"en\\\":\\\"Gyn chair\\\", \\\"de\\\":\\\"Gyn-Stuhl\\\"}\",\n        validated: true,\n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: updateEquipment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  updateEquipment (\n    equipmentId: \"6\",\n    equipmentInput: {\n        name: \"{\\\"en\\\":\\\"Slave chair\\\", \\\"de\\\":\\\"Sklavenstuhl\\\"}\",\n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: deleteEquipment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  deleteDresscode (\n    dresscodeId: \"1\"\n  )\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Query: getTranslations",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\n  getTranslations {\n    _id,\n    category,\n    key,\n    en,\n    de,\n    fr,\n    es,\n    ru,\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: addTranslation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  addTranslation (\n    translationInput: { \n        category: \"to delete\", \n        key: \"test\",\n        en: \"test\",\n        de: \"test\",\n        }\n  ) {\n    _id\n    category\n    key\n    en\n    de\n    fr\n    es\n    ru\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: updateTranslation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  updateTranslation (\n    translationId: \"1\",\n    translationInput: { \n        category: \"test\", \n        key: \"test\",\n        en: \"test en\",\n        de: \"test de\",\n        fr: \"test fr\",\n        ru: \"test ru\",\n        es: \"test es\",\n        }\n  ) {\n    _id\n    category\n    key\n    en\n    de\n    fr\n    es\n    ru\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: deleteTranslation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  deleteTranslation (\n    translationId: \"2\"\n  )\n}",
 						"variables": ""
 					}
 				},

@@ -9,8 +9,8 @@ type Location {
     coordinates: String
     validated: Boolean
     reviews: [String]
-    createdAt: String!
-    updatedAt: String!
+    createdAt: Float!
+    updatedAt: Float!
 }`;
 
 export const LocationInputData = `

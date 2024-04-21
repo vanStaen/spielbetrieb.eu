@@ -6,6 +6,8 @@ type Tag {
     isEventTag: Boolean
     isPictureTag: Boolean
     validated: Boolean
+    createdAt: Float!
+    updatedAt: Float!
 }`;
 
 export const TagInputData = `

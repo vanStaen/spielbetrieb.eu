@@ -3,8 +3,8 @@ type Chat {
     _id: ID! 
     userlist: [Int]!
     archived: Boolean
-    createdAt: String!
-    updatedAt: String!
+    createdAt: Float!
+    updatedAt: Float!
 }`;
 
 export const ChatInputData = `

@@ -8,6 +8,8 @@ type Subscriber {
     interests: [String]
     lists: [String]!
     verifiedEmail: Boolean!
+    createdAt: Float!
+    updatedAt: Float!
 }`;
 
 export const SubscriberInputData = `

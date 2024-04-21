@@ -6,6 +6,8 @@ type Admincontact {
     details: String
     archived: Boolean
     user: User
+    createdAt: Float!
+    updatedAt: Float!
 }`;
 
 export const AdmincontactInputData = `

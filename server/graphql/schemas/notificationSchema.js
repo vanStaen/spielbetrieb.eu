@@ -8,9 +8,9 @@ type Notification {
     eventLinkId: Int
     seen: Boolean
     notificationType: String!
-    createdAt: String!
-    udpatedAt: String!
     user: User
+    createdAt: Float!
+    updatedAt: Float!
 }`;
 
 export const NotificationInputData = `

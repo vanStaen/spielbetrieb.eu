@@ -10,10 +10,10 @@ type Photo {
     likes: [Int]
     archived: Boolean
     private: Boolean!
-    createdAt: String!
-    udpatedAt: String!
     user: User
     comment: [Comment]
+    createdAt: Float!
+    udpatedAt: Float!
 }`;
 
 export const PhotoInputData = `

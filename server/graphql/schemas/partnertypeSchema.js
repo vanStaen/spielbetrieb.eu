@@ -2,6 +2,8 @@ export const Partnertype = `
 type Partnertype {
     _id: ID! 
     name: String!
+    createdAt: Float!
+    udpatedAt: Float!
 }`;
 
 export const PartnertypeInputData = `

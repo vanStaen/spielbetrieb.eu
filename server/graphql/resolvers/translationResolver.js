@@ -5,7 +5,7 @@ export const translationResolver = {
   // getTranslations: [Translation]
   async getTranslations() {
     return await Translation.findAll({
-      order: [["name", "ASC"]],
+      order: [["_id", "ASC"]],
     });
   },
 
@@ -22,11 +22,13 @@ export const translationResolver = {
     }
     try {
       const translation = new Translation({
-        name: args.translationInput.name,
-        isUserTranslation: args.translationInput.isUserTranslation,
-        isEventTranslation: args.translationInput.isEventTranslation,
-        isPictureTranslation: args.translationInput.isPictureTranslation,
-        validated: args.translationInput.validated,
+        category: args.translationInput.category,
+        key: args.translationInput.key,
+        en: args.translationInput.en,
+        de: args.translationInput.de,
+        fr: args.translationInput.fr,
+        ru: args.translationInput.ru,
+        es: args.translationInput.es,
       });
       return await translation.save();
     } catch (err) {
@@ -46,13 +48,7 @@ export const translationResolver = {
       throw new Error("Unauthorized!");
     }
     const updateFields = [];
-    const updatableFields = [
-      "name",
-      "isUserTranslation",
-      "isEventTranslation",
-      "isPictureTranslation",
-      "validated",
-    ];
+    const updatableFields = ["category", "key", "en", "de", "fr", "es", "ru"];
     updatableFields.forEach((field) => {
       if (field in args.translationInput) {
         updateFields[field] = args.translationInput[field];

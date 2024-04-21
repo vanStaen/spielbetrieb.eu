@@ -4,6 +4,8 @@ type Eventtype {
     name: String!
     usage: String!
     validated: Boolean
+    createdAt: Float!
+    updatedAt: Float!
 }`;
 
 export const EventtypeInputData = `

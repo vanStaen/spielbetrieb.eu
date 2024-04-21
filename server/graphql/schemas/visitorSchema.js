@@ -5,8 +5,8 @@ type Visitor {
     visitedId: Int!
     visitorId: Int!
     user: User
-    createdAt: String!
-    udpatedAt: String!
+    createdAt: Float!
+    udpatedAt: Float!
 }`;
 
 export const VisitorQueries = `

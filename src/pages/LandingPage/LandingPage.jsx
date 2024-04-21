@@ -74,7 +74,7 @@ export const LandingPage = () => {
               )}
             </div>
             <div className="spielbetrieb__subtext">
-              {t("general.commingsoon")}{" "}
+              {t("general.comingsoon")}{" "}
             </div>
             <div className="spielbetrieb__links">
               <div className="spielbetrieb__link">
