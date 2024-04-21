@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Form, Table, Typography, Popconfirm, Button, Tag } from "antd";
+import { Form, Table, Typography, Button } from "antd";
 import {
   EditOutlined,
   CloseCircleOutlined,
   CheckCircleOutlined,
-  DeleteOutlined,
 } from "@ant-design/icons";
 
 import { EditableCell } from "../EditableCell";
 import { getTranslations } from "./getTranslations";
-import { deleteTranslation } from "./deleteTranslation";
 import { updateTranslation } from "./updateTranslation";
 import { addTranslation } from "./addTranslation";
 import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
@@ -46,20 +44,12 @@ export const AdminTranslations = () => {
     setIsNewRow(false);
   };
 
-  const deleteRow = async (id) => {
-    await deleteTranslation(id);
-    await fetchTranslations();
-  };
-
   const save = async (id) => {
     try {
       const dataObject = await form.validateFields();
       const dataObjectNew = {
-        name: dataObject.name,
-        isUserTranslation: dataObject.isUserTranslation,
-        isEventTranslation: dataObject.isEventTranslation,
-        isPictureTranslation: dataObject.isPictureTranslation,
-        validated: dataObject.validated,
+        en: dataObject.en,
+        de: dataObject.de,
       };
       if (isNewRow) {
         await addTranslation(dataObjectNew);
@@ -86,13 +76,13 @@ export const AdminTranslations = () => {
       title: "Category",
       dataIndex: "category",
       key: "category",
-      editable: true,
+      editable: false,
     },
     {
       title: "Key",
       dataIndex: "key",
       key: "key",
-      editable: true,
+      editable: false,
     },
     {
       title: "English",
@@ -129,18 +119,10 @@ export const AdminTranslations = () => {
           <span>
             <Typography.Link
               disabled={editingId !== ""}
-              style={{ marginRight: 8 }}
               onClick={() => edit(record)}
             >
               <EditOutlined className="admin__editLogo" />
-            </Typography.Link>{" "}
-            <Popconfirm
-              title="Sure to delete?"
-              style={{ marginRight: 8 }}
-              onConfirm={() => deleteRow(record._id)}
-            >
-              <DeleteOutlined className="admin__editLogo" />
-            </Popconfirm>
+            </Typography.Link>
           </span>
         );
       },
@@ -155,13 +137,7 @@ export const AdminTranslations = () => {
       ...col,
       onCell: (record) => ({
         record,
-        inputType:
-          col.dataIndex === "validated" ||
-          col.dataIndex === "isPictureTranslation" ||
-          col.dataIndex === "isEventTranslation" ||
-          col.dataIndex === "isUserTranslation"
-            ? "boolean"
-            : "text",
+        inputType: "text",
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
