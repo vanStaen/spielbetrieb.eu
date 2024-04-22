@@ -11,6 +11,7 @@ import { getTranslations } from "./getTranslations";
 import { updateTranslation } from "./updateTranslation";
 import { addTranslation } from "./addTranslation";
 import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
+import { capitalizeFirstLetter } from "../../../helpers/manipulation/capitalizeFirstLetter";
 
 export const AdminTranslations = () => {
   const [form] = Form.useForm();
@@ -64,6 +65,25 @@ export const AdminTranslations = () => {
     }
   };
 
+
+  const categories = translations.map(translation => {
+    return translation.category
+  })
+
+  const categoryFilters = [... new Set(categories)].map(category => {
+    return {
+      text: capitalizeFirstLetter(category),
+      value: category,
+    }
+  })
+
+  const keyFilters = translations.map(translation => {
+    return {
+      text: translation.key,
+      value: translation.key,
+    }
+  })
+
   const columns = [
     {
       title: "id",
@@ -77,12 +97,19 @@ export const AdminTranslations = () => {
       dataIndex: "category",
       key: "category",
       editable: false,
+      filters: categoryFilters,
+      filterSearch: true,
+      onFilter: (value, record) => record.category.startsWith(value),
+      render: (_, { category }) => capitalizeFirstLetter(category),
     },
     {
       title: "Key",
       dataIndex: "key",
       key: "key",
       editable: false,
+      filters: keyFilters,
+      filterSearch: true,
+      onFilter: (value, record) => record.category.startsWith(value),
     },
     {
       title: "English",
