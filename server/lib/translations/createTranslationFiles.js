@@ -16,8 +16,12 @@ export async function createTranslationFiles() {
     return null;
   });
 
+  let path = 'public/locales';
+  if (process.env.API_URL === 'production') {
+    path = 'build/locales';
+  }
   fs.writeFile(
-    "./public/locales/en/translation.json",
+    `./${path}/en/translation.json`,
     JSON.stringify(translationEN, null, "\t"),
     (err) => {
       if (err) {
@@ -26,7 +30,7 @@ export async function createTranslationFiles() {
     },
   );
   fs.writeFile(
-    "./public/locales/de/translation.json",
+    `./${path}/de/translation.json`,
     JSON.stringify(translationDE, null, "\t"),
     (err) => {
       if (err) {
