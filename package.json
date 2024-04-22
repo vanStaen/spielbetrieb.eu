@@ -21,7 +21,8 @@
     "kill": "killall -9 node",
     "backup": "cd server/lib/; node createDatabaseBackUpFile.js; npm run pushbackup; cd ../../",
     "pushbackup": "cd ../database-backups; git pull origin master; git add -A; git commit -m 'Spielbetrieb - database backup files'; git push;",
-    "lint": "eslint -c ./.eslintrc.json '**/*.js' '**/*.jsx' --fix"
+    "lint": "eslint -c ./.eslintrc.json '**/*.js' '**/*.jsx' --fix",
+    "translation": "cd server/lib/translations/; node createTranslationFiles.js; cd ../../"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.533.0",

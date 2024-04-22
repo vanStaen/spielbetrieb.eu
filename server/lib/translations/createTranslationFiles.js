@@ -17,7 +17,7 @@ export async function createTranslationFiles() {
   });
 
   let path = "public/locales";
-  if (process.env.API_URL === "production") {
+  if (process.env.ENV === "production") {
     path = "build/locales";
   }
   fs.writeFile(
@@ -38,5 +38,4 @@ export async function createTranslationFiles() {
       }
     },
   );
-  console.log(">>> New translastion file have been generated! <<<");
 }
