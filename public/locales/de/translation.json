@@ -2,7 +2,7 @@
 	"404": {
 		"endOfInternet": "Sie haben das Ende des Internets erreicht!",
 		"pageNotFound": "Seite nicht gefunden",
-		"doesNotExist": "existiert nicht"
+		"doesNotExist": "Existiert nicht"
 	},
 	"general": {
 		"on": "auf",

@@ -3,26 +3,29 @@
 .background {
    position: fixed;
    width: 100vw;
-   height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+   height: 100vh;
+   /* Fallback for browsers that do not support Custom Properties */
    height: calc(var(--vh, 1vh) * 100);
    background-image: url('../../img/background.jpg');
    background-size: cover;
    filter: grayscale(1) contrast(1.25);
 }
+
 @media only screen and (max-width: 675px) {
    .background {
       height: 201vh;
       background-size: cover;
       background-position: center;
-   }  
+   }
 }
 
 .admin__container {
    position: relative;
-   min-height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+   min-height: 100vh;
+   /* Fallback for browsers that do not support Custom Properties */
    min-height: calc(var(--vh, 1vh) * 100);
    z-index: 2;
-  
+
    .admin__text {
       font-size: 15px;
       letter-spacing: 2px;
@@ -40,12 +43,12 @@
 
    .admin__saveLogo {
       font-size: 20px;
-      color: green; 
+      color: green;
    }
 
    .admin__cancelLogo {
       font-size: 20px;
-      color: red; 
+      color: red;
    }
 
    .admin__tableFooter {
@@ -55,20 +58,23 @@
    }
 
    .admin__disabled {
-      color: rgba(0,0,0,.2);
+      color: rgba(0, 0, 0, .2);
    }
-   
+
    .admin__tabs {
       .ant-tabs-tab {
-         color: rgba(255,255,255,.6) !important;
+         color: rgba(255, 255, 255, .6) !important;
       }
+
       .ant-tabs-tab-disabled {
-         color: rgba(255,255,255,.2) !important;
+         color: rgba(255, 255, 255, .2) !important;
       }
+
       .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
          color: white !important;
          font-weight: 500;
       }
+
       .ant-tabs-ink-bar {
          position: absolute;
          background: white;
@@ -80,16 +86,18 @@
       padding-top: 10px;
 
       .ant-table {
-         background: rgba(255,255,255,.8) !important;
+         background: rgba(255, 255, 255, .8) !important;
       }
+
       .ant-table-thead>tr>th {
-         background-color:rgba(0,0,0,.75);
-         color: white; 
+         background-color: rgba(0, 0, 0, .75);
+         color: white;
       }
+
       .ant-table-cell::before {
          background-color: transparent !important;
-       
       }
+
    }
 
    .admin__closeLogo {
@@ -102,6 +110,7 @@
       cursor: pointer;
       transition: opacity .3s linear;
       opacity: .75;
+
       &:hover {
          opacity: 1;
       }
@@ -111,7 +120,8 @@
       position: fixed;
       top: 0;
       left: 0;
-      height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+      height: 100vh;
+      /* Fallback for browsers that do not support Custom Properties */
       height: calc(var(--vh, 1vh) * 100);
       width: 100vw;
       display: flex;
@@ -119,6 +129,7 @@
       align-items: center;
       justify-content: center;
       color: white;
+
       .admin__title {
          font-size: 15px;
          letter-spacing: 10px;
@@ -130,6 +141,10 @@
 }
 
 .ant-segmented-item-selected {
-   background-color: rgba(0,0,0,.75) !important;
+   background-color: rgba(0, 0, 0, .75) !important;
    color: white !important;
+}
+
+.anticon-filter {
+   color: rgba(255, 255, 255, .5) !important;
 }

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Form, Table, Typography, Button } from "antd";
+import React, { useState, useEffect, useRef } from "react";
+import { Form, Table, Typography, Button, message, Tooltip } from "antd";
 import {
   EditOutlined,
   CloseCircleOutlined,
@@ -18,6 +18,7 @@ export const AdminTranslations = () => {
   const [translations, setTranslations] = useState([]);
   const [editingId, setEditingId] = useState("");
   const [isNewRow, setIsNewRow] = useState(false);
+  const throttling = useRef(false);
 
   const fetchTranslations = async () => {
     const results = await getTranslations();
@@ -28,12 +29,11 @@ export const AdminTranslations = () => {
     fetchTranslations();
   }, []);
 
+
   const isEditing = (record) => record._id === editingId;
 
   const edit = (record) => {
     form.setFieldsValue({
-      name: "",
-      validated: false,
       ...record,
     });
     setEditingId(record._id);
@@ -57,6 +57,7 @@ export const AdminTranslations = () => {
       } else {
         await updateTranslation(id, dataObjectNew);
       }
+      message.success("Translation updated!");
       await fetchTranslations();
       setEditingId("");
       setIsNewRow(false);
@@ -65,6 +66,27 @@ export const AdminTranslations = () => {
     }
   };
 
+  const keyDownHandler = (event) => {
+    const keyPressed = event.key.toLowerCase();
+    if (throttling.current === false) {
+      throttling.current = true;
+      if (keyPressed === "escape") {
+        cancel();
+      } else if (keyPressed === "enter") {
+        save(editingId);
+      }
+      setTimeout(() => {
+        throttling.current = false;
+      }, 100);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", keyDownHandler);
+    return () => {
+      document.removeEventListener("keydown", keyDownHandler);
+    };
+  }, [keyDownHandler]);
 
   const categories = translations.map(translation => {
     return translation.category
@@ -112,26 +134,50 @@ export const AdminTranslations = () => {
       onFilter: (value, record) => record.category.startsWith(value),
     },
     {
-      title: "English",
+      title: "English 🇬🇧",
       dataIndex: "en",
       key: "en",
       editable: true,
+      width: "30%",
+      render: (_, record) => {
+        return (
+          <span
+            onClick={() => edit(record)}
+          >
+            {record.en}
+          </span>
+        )
+      },
     },
     {
-      title: "Deutsch",
+      title: "Deutsch 🇩🇪",
       dataIndex: "de",
       key: "de",
       editable: true,
+      width: "30%",
+      render: (_, record) => {
+        return (
+          <span
+            onClick={() => edit(record)}
+          >
+            {record.de}
+          </span>
+        )
+      },
     },
     {
       title: <span style={{ opacity: ".2" }}>Edit</span>,
       dataIndex: "edit",
-      width: "90px",
       align: "center",
+      width: "8%",
       render: (_, record) => {
         const editable = isEditing(record);
         return editable ? (
-          <span>
+          <Tooltip title={<>
+            <div>Cancel with <i><b>escape</b></i></div>
+            <div>Confirm with <i><b>enter</b></i></div>
+          </>
+          }>
             <Typography.Link
               onClick={() => save(record._id)}
               style={{ marginRight: 8 }}
@@ -141,7 +187,7 @@ export const AdminTranslations = () => {
             <Typography.Link onClick={cancel} style={{ marginRight: 8 }}>
               <CloseCircleOutlined className="admin__cancelLogo" />
             </Typography.Link>
-          </span>
+          </Tooltip>
         ) : (
           <span>
             <Typography.Link
@@ -209,9 +255,9 @@ export const AdminTranslations = () => {
               size="small"
             />
           </Form>
-          <div className="admin__tableFooter">
+          {/*<div className="admin__tableFooter">
             <Button onClick={handleAdd}>Add a new Translation</Button>
-          </div>
+          </div>*/}
         </>
       )}
     </div>
