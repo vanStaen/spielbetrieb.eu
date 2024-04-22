@@ -16,9 +16,9 @@ export async function createTranslationFiles() {
     return null;
   });
 
-  let path = 'public/locales';
-  if (process.env.API_URL === 'production') {
-    path = 'build/locales';
+  let path = "public/locales";
+  if (process.env.API_URL === "production") {
+    path = "build/locales";
   }
   fs.writeFile(
     `./${path}/en/translation.json`,
