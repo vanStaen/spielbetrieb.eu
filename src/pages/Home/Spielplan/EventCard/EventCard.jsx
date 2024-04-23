@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Tag } from "antd";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -8,8 +8,9 @@ import dayjs from "dayjs";
 
 import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
+import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
 
-import artwork from "../../../../img/artworks/ak03.jpg";
+import eventPlaceholder from "../../../../img/artworks/eventPlaceholder.jpg";
 
 import "./EventCard.less";
 
@@ -19,6 +20,19 @@ export const EventCard = observer((props) => {
   const { event, tags } = props;
   const isInThePast = event.fromDate < dayjs();
   const isShownHidden = useRef(isInThePast);
+  const [firstPictureUrl, setFirstPictureUrl] = useState(eventPlaceholder);
+
+  const getFirstPictureUrl = async () => {
+    if (event.pictures[0]) {
+      const res = await getPictureUrl(event.pictures[0], "events");
+      console.log(res);
+      setFirstPictureUrl(res);
+    }
+  };
+
+  useEffect(() => {
+    getFirstPictureUrl();
+  }, []);
 
   /* TODO:
         show number of attending
@@ -98,7 +112,7 @@ export const EventCard = observer((props) => {
         </div>
       </div>
       <div className="event__artwork">
-        <img src={artwork} />
+        <img src={firstPictureUrl} />
       </div>
       <div className="event__main">
         <div className="event__titleLocation">

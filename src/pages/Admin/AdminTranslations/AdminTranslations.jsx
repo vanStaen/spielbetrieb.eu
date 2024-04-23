@@ -29,7 +29,6 @@ export const AdminTranslations = () => {
     fetchTranslations();
   }, []);
 
-
   const isEditing = (record) => record._id === editingId;
 
   const edit = (record) => {
@@ -88,23 +87,23 @@ export const AdminTranslations = () => {
     };
   }, [keyDownHandler]);
 
-  const categories = translations.map(translation => {
-    return translation.category
-  })
+  const categories = translations.map((translation) => {
+    return translation.category;
+  });
 
-  const categoryFilters = [... new Set(categories)].map(category => {
+  const categoryFilters = [...new Set(categories)].map((category) => {
     return {
       text: capitalizeFirstLetter(category),
       value: category,
-    }
-  })
+    };
+  });
 
-  const keyFilters = translations.map(translation => {
+  const keyFilters = translations.map((translation) => {
     return {
       text: translation.key,
       value: translation.key,
-    }
-  })
+    };
+  });
 
   const columns = [
     {
@@ -140,13 +139,7 @@ export const AdminTranslations = () => {
       editable: true,
       width: "30%",
       render: (_, record) => {
-        return (
-          <span
-            onClick={() => edit(record)}
-          >
-            {record.en}
-          </span>
-        )
+        return <span onClick={() => edit(record)}>{record.en}</span>;
       },
     },
     {
@@ -156,13 +149,7 @@ export const AdminTranslations = () => {
       editable: true,
       width: "30%",
       render: (_, record) => {
-        return (
-          <span
-            onClick={() => edit(record)}
-          >
-            {record.de}
-          </span>
-        )
+        return <span onClick={() => edit(record)}>{record.de}</span>;
       },
     },
     {
@@ -173,11 +160,24 @@ export const AdminTranslations = () => {
       render: (_, record) => {
         const editable = isEditing(record);
         return editable ? (
-          <Tooltip title={<>
-            <div>Cancel with <i><b>escape</b></i></div>
-            <div>Confirm with <i><b>enter</b></i></div>
-          </>
-          }>
+          <Tooltip
+            title={
+              <>
+                <div>
+                  Cancel with{" "}
+                  <i>
+                    <b>escape</b>
+                  </i>
+                </div>
+                <div>
+                  Confirm with{" "}
+                  <i>
+                    <b>enter</b>
+                  </i>
+                </div>
+              </>
+            }
+          >
             <Typography.Link
               onClick={() => save(record._id)}
               style={{ marginRight: 8 }}
@@ -255,9 +255,9 @@ export const AdminTranslations = () => {
               size="small"
             />
           </Form>
-          {/*<div className="admin__tableFooter">
+          {/* <div className="admin__tableFooter">
             <Button onClick={handleAdd}>Add a new Translation</Button>
-          </div>*/}
+          </div> */}
         </>
       )}
     </div>

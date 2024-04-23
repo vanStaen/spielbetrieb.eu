@@ -24,6 +24,7 @@ export const EventPage = observer((props) => {
   const [startTour, setStartTour] = useState(false);
   const [isNotValidated, setIsNotValidated] = useState(false);
   const [canEdit, setCanEdit] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const keydownEventHandler = (event) => {
     const keyPressed = event.key.toLowerCase();
@@ -108,15 +109,17 @@ export const EventPage = observer((props) => {
       }),
     );
     pageStore.setPicturesUrls(urls);
+    setIsLoading(false)
   };
 
   useEffect(() => {
     if (event?.pictures.length) {
       getUrlsFromPicturePath(event.pictures);
-    } else {
+    } else if (event) {
       pageStore.setPicturesUrls(null);
+      setIsLoading(false)
     }
-  }, [event?.pictures]);
+  }, [event]);
 
   return (
     <>
@@ -134,11 +137,10 @@ export const EventPage = observer((props) => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${
-                    pageStore.selectedTheme === "light"
-                      ? "lightColorTheme__Text"
-                      : "darkColorTheme__Text"
-                  }`}
+                  ${pageStore.selectedTheme === "light"
+            ? "lightColorTheme__Text"
+            : "darkColorTheme__Text"
+          }`}
       >
         <ArrowLeftOutlined />
       </div>
@@ -149,7 +151,7 @@ export const EventPage = observer((props) => {
           className={`eventpage__container 
                 ${pageStore.selectedTheme === "light" ? "black" : "white"}`}
         >
-          {event !== null ? (
+          {!isLoading ? (
             <>
               <EventPageArtwork ref1={ref1} />
               <EventPageDesc

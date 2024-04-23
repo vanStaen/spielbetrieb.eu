@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { observer } from "mobx-react";
 
 import { pageStore } from "../../../../../store/pageStore/pageStore";
+import eventPlaceholder from "../../../../../img/artworks/eventPlaceholder.jpg";
 
 import "./EventPageArtwork.less";
 
@@ -70,7 +71,7 @@ export const EventPageArtwork = observer((props) => {
     );
   });
 
-  return (
+  return pageStore.picturesUrls ? (
     <div className="eventpage__artworkCol">
       <div
         className="eventpage__artworkContainer"
@@ -83,16 +84,19 @@ export const EventPageArtwork = observer((props) => {
         onTouchEnd={() => onTouchEnd()}
       >
         <img
-          src={
-            pageStore.picturesUrls &&
-            pageStore.picturesUrls[pageStore.pictureSelected]
-          }
+          src={pageStore.picturesUrls[pageStore.pictureSelected]}
           className="eventpage__artwork"
         />
       </div>
       {pageStore.picturesUrls?.length > 1 && (
         <div className="carouselPoints">{points}</div>
       )}
+    </div>
+  ) : (
+    <div className="eventpage__artworkCol">
+      <div className="eventpage__artworkContainer" ref={props.ref1}>
+        <img src={eventPlaceholder} className="eventpage__artwork" />
+      </div>
     </div>
   );
 });

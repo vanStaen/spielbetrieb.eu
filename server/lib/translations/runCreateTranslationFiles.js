@@ -1,3 +1,3 @@
-import { createTranslationFiles } from './createTranslationFiles.js';
+import { createTranslationFiles } from "./createTranslationFiles.js";
 
 createTranslationFiles();
