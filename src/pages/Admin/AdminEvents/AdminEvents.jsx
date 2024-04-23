@@ -9,7 +9,7 @@ import {
   Button,
   Tooltip,
 } from "antd";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 
 import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
@@ -85,7 +85,9 @@ export const AdminEvents = () => {
       title: "Title",
       dataIndex: "title",
       key: "title",
-      render: (_, { title, _id }) => (<Link to={`../event/${_id}`}>{title}</Link>)
+      render: (_, { title, _id }) => (
+        <Link to={`../event/${_id}`}>{title}</Link>
+      ),
     },
     {
       title: "From",
@@ -227,15 +229,13 @@ export const AdminEvents = () => {
       align: "center",
       width: "80px",
       render: (_, { validated, isDraft, _id }) =>
-
         !isDraft && (
           <Tooltip title="Double click to toggle this value">
             <div
               style={{ cursor: "pointer" }}
               onDoubleClick={() => toggleValidated(_id, validated)}
             >
-              {validated
-                ? "✅" : "❌"}
+              {validated ? "✅" : "❌"}
             </div>
           </Tooltip>
         ),
@@ -279,7 +279,7 @@ export const AdminEvents = () => {
             />
           </Form>
           <div className="admin__tableFooter">
-            <Button >
+            <Button>
               <Link to={`../event/add`}>Add a new Event</Link>
             </Button>
           </div>

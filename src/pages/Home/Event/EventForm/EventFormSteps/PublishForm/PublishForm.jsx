@@ -25,43 +25,6 @@ export const PublishForm = observer(() => {
     }
   }, []);
 
-  const onFinish = async () => {
-    // TODO: Add new location to be validated
-
-    setLoading(true);
-    const dataObject = await form.validateFields();
-    dataObject.private = dataObject.isPrivate;
-    dataObject.fromDate = dataObject.eventDate[0].valueOf();
-    dataObject.untilDate = dataObject.eventDate[1].valueOf();
-    if (dataObject.location) {
-      const selectedLocation = locations.filter(
-        (loc) => parseInt(loc._id) === dataObject.location,
-      )[0];
-      dataObject.locationName = selectedLocation.name;
-      dataObject.locationAddress = selectedLocation.address;
-      dataObject.locationCoordinates = selectedLocation.coordinates;
-    }
-    delete dataObject.isPrivate;
-    delete dataObject.eventDate;
-    try {
-      if (isEdit) {
-        await updateEvent(isEdit, dataObject);
-      } else {
-        await addEvent(dataObject);
-      }
-    } catch (e) {
-      notification.error({
-        message: `Error: ${e.toString()}`,
-        duration: 0,
-        placement: "bottomRight",
-        className: "customNotification",
-      });
-    }
-    setLoading(false);
-    setShowEventForm(false);
-    reload();
-  };
-
   const event = {
     attendess: null,
     title: eventFormStore.title,
@@ -141,7 +104,7 @@ export const PublishForm = observer(() => {
 
         {!eventFormStore.locationName && (
           <div className="publishform__info">
-            The event location will be shown as <i>'To be announced'</i>
+            The event location will be shown as <i>To be announced</i>
           </div>
         )}
         {!eventFormStore.description && (
