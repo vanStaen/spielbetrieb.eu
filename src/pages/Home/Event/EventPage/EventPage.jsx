@@ -109,7 +109,7 @@ export const EventPage = observer((props) => {
       }),
     );
     pageStore.setPicturesUrls(urls);
-    setIsLoading(false)
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -117,7 +117,7 @@ export const EventPage = observer((props) => {
       getUrlsFromPicturePath(event.pictures);
     } else if (event) {
       pageStore.setPicturesUrls(null);
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }, [event]);
 
@@ -137,10 +137,11 @@ export const EventPage = observer((props) => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${pageStore.selectedTheme === "light"
-            ? "lightColorTheme__Text"
-            : "darkColorTheme__Text"
-          }`}
+                  ${
+                    pageStore.selectedTheme === "light"
+                      ? "lightColorTheme__Text"
+                      : "darkColorTheme__Text"
+                  }`}
       >
         <ArrowLeftOutlined />
       </div>

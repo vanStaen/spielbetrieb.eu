@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   Form,
   Table,
@@ -66,14 +67,6 @@ export const AdminEvents = () => {
     await fetchEvents();
   };
 
-  const quickEditClickHandler = (record) => {
-    // TODO
-  };
-
-  const openNewEventFormHandler = () => {
-    // TODO
-  };
-
   const toggleValidated = (id, validated) => {
     updateEvent(parseInt(id), { validated: !validated });
     fetchEvents();
@@ -92,6 +85,7 @@ export const AdminEvents = () => {
       title: "Title",
       dataIndex: "title",
       key: "title",
+      render: (_, { title, _id }) => (<Link to={`../event/${_id}`}>{title}</Link>)
     },
     {
       title: "From",
@@ -233,18 +227,18 @@ export const AdminEvents = () => {
       align: "center",
       width: "80px",
       render: (_, { validated, isDraft, _id }) =>
-        validated
-          ? "✅"
-          : !isDraft && (
-              <Tooltip title="Double click to toggle this value">
-                <div
-                  style={{ cursor: "pointer" }}
-                  onDoubleClick={() => toggleValidated(_id, validated)}
-                >
-                  ❌
-                </div>
-              </Tooltip>
-            ),
+
+        !isDraft && (
+          <Tooltip title="Double click to toggle this value">
+            <div
+              style={{ cursor: "pointer" }}
+              onDoubleClick={() => toggleValidated(_id, validated)}
+            >
+              {validated
+                ? "✅" : "❌"}
+            </div>
+          </Tooltip>
+        ),
     },
     {
       title: <span style={{ opacity: ".2" }}>Actions</span>,
@@ -252,21 +246,13 @@ export const AdminEvents = () => {
       align: "center",
       render: (_, record) => {
         return (
-          <span>
-            <Typography.Link
-              style={{ marginRight: 8 }}
-              onClick={() => quickEditClickHandler(record)}
-            >
-              <EditOutlined className="admin__editLogo" />
-            </Typography.Link>
-            <Popconfirm
-              title="Sure to delete?"
-              style={{ marginRight: 8 }}
-              onConfirm={() => deleteRow(record._id)}
-            >
-              <DeleteOutlined className="admin__editLogo" />
-            </Popconfirm>
-          </span>
+          <Popconfirm
+            title="Sure to delete?"
+            style={{ marginRight: 8 }}
+            onConfirm={() => deleteRow(record._id)}
+          >
+            <DeleteOutlined className="admin__editLogo" />
+          </Popconfirm>
         );
       },
     },
@@ -293,8 +279,11 @@ export const AdminEvents = () => {
             />
           </Form>
           <div className="admin__tableFooter">
-            <Button onClick={openNewEventFormHandler}>Add a new Event</Button>
+            <Button >
+              <Link to={`../event/add`}>Add a new Event</Link>
+            </Button>
           </div>
+          <br />
         </>
       )}
     </div>
