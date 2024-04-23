@@ -50,9 +50,8 @@ export const Header = observer((props) => {
         />
         <HeaderElement
           title="Dark Magazin"
-          disabled
-          page="magazin"
-          selected={selected === "magazin"}
+          page="dark"
+          selected={selected === "dark"}
         />
         <HeaderElement
           title="Partners"

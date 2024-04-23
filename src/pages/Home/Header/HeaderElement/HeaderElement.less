@@ -4,21 +4,25 @@
    margin: 0 20px;
    display: inline-block;
    font-weight: 300;
+
    .headerElement__disabled {
       opacity: .2;
    }
+
    .headerElement__enabled {
       cursor: pointer;
       transition: border-bottom .3s ease;
       padding-bottom: 7px;
-      border-bottom: 1px dashed transparent;
+      border-bottom: 1px solid transparent;
+
       &:hover {
-         border-bottom: 1px dashed;
+         border-bottom: 1px solid rgba(var(--themeFontColor), .25);
       }
    }
+
    .headerElement__selected {
-      transition: border-bottom .7s ease;
+      transition: border-bottom .3s ease;
       font-weight: 500;
-      border-bottom: 1px solid;
+      border-bottom: 1px solid rgba(var(--themeFontColor), .75);
    }
 }

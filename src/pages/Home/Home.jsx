@@ -11,7 +11,7 @@ import { Header } from "./Header/Header";
 import { pageStore } from "../../store/pageStore/pageStore";
 import { Spielplan } from "./Spielplan/Spielplan";
 import { Basket } from "./Basket/Basket";
-import { Magazin } from "./Magazin/Magazin";
+import { Dark } from "./Dark/Dark";
 import { Partner } from "./Partner/Partner";
 import { Profile } from "./Profile/Profile";
 import { Settings } from "./Settings/Settings";
@@ -66,8 +66,8 @@ export const Home = observer((props) => {
         return <Basket />;
       case "shop":
         return <Shop />;
-      case "magazin":
-        return <Magazin />;
+      case "dark":
+        return <Dark />;
       case "partner":
         return <Partner />;
       case "profile":
