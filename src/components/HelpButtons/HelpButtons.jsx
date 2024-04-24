@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { FloatButton } from "antd";
 import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
+import html2canvas from "html2canvas";
 import {
   CalendarOutlined,
   QuestionOutlined,
@@ -16,6 +17,15 @@ export const HelpButtons = observer((props) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
+  const handleBugReportClick = () => {
+    html2canvas(document.body, { allowTaint: true, logging: false }).then(
+      (canva) => {
+        // const canvaByteArray = canva.toDataURL();
+        canva.toBlob((result) => console.log(result));
+      },
+    );
+  };
+
   return (
     <>
       <FloatButton.Group
@@ -28,6 +38,7 @@ export const HelpButtons = observer((props) => {
           className="subButton"
           icon={<BugOutlined />}
           tooltip={t("help.reportBug")}
+          onClick={handleBugReportClick}
         />
         {props.missingEvent && (
           <FloatButton

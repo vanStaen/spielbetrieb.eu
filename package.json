@@ -41,6 +41,7 @@
     "express": "^4.17.1",
     "express-graphql": "^0.11.0",
     "graphql": "^15.3.0",
+    "html2canvas": "^1.4.1",
     "i18next": "^23.2.1",
     "i18next-browser-languagedetector": "^7.0.2",
     "i18next-http-backend": "^2.5.1",
