@@ -25,41 +25,45 @@ export const uploadFileToS3 = async (file, bucket, userId) => {
     s3BucketId = process.env.S3_BUCKET_EVENTS;
   } else if (bucket === "users") {
     s3BucketId = process.env.S3_BUCKET_USERS;
+  } else if (bucket === "bugs") {
+    s3BucketId = process.env.S3_BUCKET_BUGS;
   } else {
     throw new Error("Bucket is missing/incorrect");
   }
 
-  const fileThumb = await resizeImageFromBuffer(file.buffer, THUMB_SIZE_IN_PX);
-  const fileMedium = await resizeImageFromBuffer(
-    file.buffer,
-    MEDIUM_SIZE_IN_PX,
-  );
-
-  const putObjectOriginal = new PutObjectCommand({
-    Bucket: s3BucketId,
-    Key: path,
-    Body: file.buffer,
-    ContentType: file.mimetype,
-  });
-
-  const putObjectMedium = new PutObjectCommand({
-    Bucket: s3BucketId,
-    Key: `${path}_m`,
-    Body: fileMedium,
-    ContentType: "image/png",
-  });
-
-  const putObjectThumb = new PutObjectCommand({
-    Bucket: s3BucketId,
-    Key: `${path}_t`,
-    Body: fileThumb,
-    ContentType: "image/png",
-  });
-
   try {
+    const putObjectOriginal = new PutObjectCommand({
+      Bucket: s3BucketId,
+      Key: path,
+      Body: file.buffer,
+      ContentType: file.mimetype,
+    });
     await s3.send(putObjectOriginal);
-    await s3.send(putObjectMedium);
-    await s3.send(putObjectThumb);
+
+    if (bucket !== "bugs") {
+      const fileThumb = await resizeImageFromBuffer(
+        file.buffer,
+        THUMB_SIZE_IN_PX,
+      );
+      const fileMedium = await resizeImageFromBuffer(
+        file.buffer,
+        MEDIUM_SIZE_IN_PX,
+      );
+      const putObjectMedium = new PutObjectCommand({
+        Bucket: s3BucketId,
+        Key: `${path}_m`,
+        Body: fileMedium,
+        ContentType: "image/png",
+      });
+      const putObjectThumb = new PutObjectCommand({
+        Bucket: s3BucketId,
+        Key: `${path}_t`,
+        Body: fileThumb,
+        ContentType: "image/png",
+      });
+      await s3.send(putObjectMedium);
+      await s3.send(putObjectThumb);
+    }
     return path;
   } catch (e) {
     return e;

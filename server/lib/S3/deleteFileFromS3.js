@@ -16,29 +16,32 @@ export const deleteFileFromS3 = async (path, bucket) => {
     s3BucketId = process.env.S3_BUCKET_EVENTS;
   } else if (bucket === "users") {
     s3BucketId = process.env.S3_BUCKET_USERS;
+  } else if (bucket === "bugs") {
+    s3BucketId = process.env.S3_BUCKET_BUGS;
   } else {
     throw new Error("Bucket is missing/incorrect");
   }
 
-  const deleteObjectCommandOriginal = new DeleteObjectCommand({
-    Bucket: s3BucketId,
-    Key: path,
-  });
-
-  const deleteObjectCommandMedium = new DeleteObjectCommand({
-    Bucket: s3BucketId,
-    Key: `${path}_m`,
-  });
-
-  const deleteObjectCommandThumb = new DeleteObjectCommand({
-    Bucket: s3BucketId,
-    Key: `${path}_t`,
-  });
-
   try {
+    const deleteObjectCommandOriginal = new DeleteObjectCommand({
+      Bucket: s3BucketId,
+      Key: path,
+    });
     await s3.send(deleteObjectCommandOriginal);
-    await s3.send(deleteObjectCommandMedium);
-    await s3.send(deleteObjectCommandThumb);
+
+    if (bucket !== "bugs") {
+      const deleteObjectCommandMedium = new DeleteObjectCommand({
+        Bucket: s3BucketId,
+        Key: `${path}_m`,
+      });
+      const deleteObjectCommandThumb = new DeleteObjectCommand({
+        Bucket: s3BucketId,
+        Key: `${path}_t`,
+      });
+      await s3.send(deleteObjectCommandMedium);
+      await s3.send(deleteObjectCommandThumb);
+    }
+
     return true;
   } catch (e) {
     console.error(e);

@@ -17,6 +17,8 @@ export const getUrlFromS3 = async (path, bucket) => {
     s3BucketId = process.env.S3_BUCKET_EVENTS;
   } else if (bucket === "users") {
     s3BucketId = process.env.S3_BUCKET_USERS;
+  } else if (bucket === "bugs") {
+    s3BucketId = process.env.S3_BUCKET_BUGS;
   } else {
     throw new Error("Bucket is missing/incorrect");
   }
