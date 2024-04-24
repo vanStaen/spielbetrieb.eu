@@ -32,12 +32,19 @@ export const ReportBugModal = (props) => {
         if (!desc || desc.length <= 5) {
             setShowError(true);
         } else {
-            html2canvas(document.body, { allowTaint: true, logging: false }).then(
-                (canva) => {
-                    // const canvaByteArray = canva.toDataURL();
-                    canva.toBlob((result) => console.log(result));
-                },
-            );
+            if (addScreenshot) {
+                document.body.style.filter = "brightness(3)";
+                setTimeout(() => {
+                    document.body.style.filter = "brightness(1)";
+                }, "100");
+
+                html2canvas(document.body, { allowTaint: true, logging: false }).then(
+                    (canva) => {
+                        // const canvaByteArray = canva.toDataURL();
+                        canva.toBlob((result) => console.log(result));
+                    },
+                );
+            }
         }
     };
 
