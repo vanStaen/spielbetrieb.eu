@@ -30,3 +30,17 @@
         color: rgba(var(--themeFontColorInvert), 1) !important;
     }
 }
+
+.subButtonDisabled .ant-float-btn-body {
+    background-color: rgba(var(--themeFontColor), .25) !important;
+    cursor: not-allowed;
+
+    &:hover {
+        background-color: rgba(var(--themeFontColor), .15) !important;
+    }
+
+    .ant-float-btn-icon {
+        position: relative;
+        color: rgba(var(--themeFontColorInvert), 1) !important;
+    }
+}

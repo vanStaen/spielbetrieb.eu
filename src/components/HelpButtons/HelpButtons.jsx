@@ -11,6 +11,8 @@ import {
 } from "@ant-design/icons";
 
 import { ReportBugModal } from "./ReportBugModal/ReportBugModal";
+import { authStore } from "../../store/authStore/authStore";
+
 import "./HelpButtons.less";
 
 export const HelpButtons = observer((props) => {
@@ -31,16 +33,24 @@ export const HelpButtons = observer((props) => {
         className="helpbutton"
       >
         <FloatButton
-          className="subButton"
+          className={authStore.hasAccess ? "subButton" : "subButtonDisabled"}
           icon={<BugOutlined />}
-          tooltip={t("help.reportBug")}
+          tooltip={
+            authStore.hasAccess ? t("help.reportBug") : "Please sign up first"
+          }
           onClick={() => setShowReportBugModal(true)}
+          disabled={!authStore.hasAccess}
         />
         {props.missingEvent && (
           <FloatButton
-            className="subButton"
+            className={authStore.hasAccess ? "subButton" : "subButtonDisabled"}
             icon={<CalendarOutlined />}
-            tooltip={t("help.yourEventIsMissing")}
+            tooltip={
+              authStore.hasAccess
+                ? t("help.yourEventIsMissing")
+                : "please sign up first"
+            }
+            disabled={!authStore.hasAccess}
             onClick={() => {
               navigate("/event/add");
             }}
