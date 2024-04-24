@@ -1,0 +1,67 @@
+.reportbug__modal {
+    background-color: black !important;
+    background-size: cover;
+    border-radius: 8px;
+
+    .reportbug__screenshotCheck {
+        padding-top: 8px;
+        color: rgba(var(--themeFontColor), 1);
+    }
+
+    .reportbug__footerContainer {
+        margin-bottom: 24px;
+        text-align: right;
+
+        .reportbug__footerOr {
+            padding-top: 8px;
+            padding-bottom: 16px;
+            opacity: .75;
+
+            .reportbug__footerOrLine {
+                display: inline-flex;
+                border-top: 1px solid rgba(var(--themeFontColor), .5);
+                width: 40%;
+                max-width: 25vw;
+                margin: 0 8px 4px 8px;
+            }
+
+            .reportbug__footerOrText {
+                display: inline-flex;
+            }
+        }
+
+        .reportbug__footerButton {
+            margin-left: 8px;
+            border: rgba(var(--themeFontColorInvert), 1) !important;
+
+            &:hover {
+                color: rgba(var(--themeFontColorInvert), 1) !important;
+                background-color: rgba(var(--themeFontColor), 1) !important;
+            }
+        }
+    }
+
+    .reportbug__error {
+        color: firebrick;
+        filter: brightness(2);
+        font-size: 14px;
+        margin-top: 8px;
+        font-weight: 400;
+    }
+
+}
+
+.reportbug__backgroundLight {
+    background-image: url('../../../img/backgroundinverted.jpg');
+}
+
+.reportbug__backgroundDark {
+    background-image: url('../../../img/background.jpg')
+}
+
+@media only screen and (max-width: 675px) {
+    .ant-modal-body {
+        font-weight: 300;
+        font-size: 10px !important;
+    }
+}

@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FloatButton } from "antd";
 import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
-import html2canvas from "html2canvas";
 import {
   CalendarOutlined,
   QuestionOutlined,
@@ -11,23 +10,20 @@ import {
   EyeOutlined,
 } from "@ant-design/icons";
 
+import { ReportBugModal } from "./ReportBugModal/ReportBugModal";
 import "./HelpButtons.less";
 
 export const HelpButtons = observer((props) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-
-  const handleBugReportClick = () => {
-    html2canvas(document.body, { allowTaint: true, logging: false }).then(
-      (canva) => {
-        // const canvaByteArray = canva.toDataURL();
-        canva.toBlob((result) => console.log(result));
-      },
-    );
-  };
+  const [showReportBugModal, setShowReportBugModal] = useState(false);
 
   return (
     <>
+      <ReportBugModal
+        showReportBugModal={showReportBugModal}
+        setShowReportBugModal={setShowReportBugModal}
+      />
       <FloatButton.Group
         trigger="click"
         tooltip={t("help.helpNeeded")}
@@ -38,7 +34,7 @@ export const HelpButtons = observer((props) => {
           className="subButton"
           icon={<BugOutlined />}
           tooltip={t("help.reportBug")}
-          onClick={handleBugReportClick}
+          onClick={() => setShowReportBugModal(true)}
         />
         {props.missingEvent && (
           <FloatButton
