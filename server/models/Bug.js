@@ -1,6 +1,7 @@
 import { sequelize, DataTypes } from "../lib/sequelizedb.js";
+import { User } from "./User.js";
 
-export const Bug = sequelize.sequelize.define("Bug", {
+export const Bug = sequelize.sequelize.define("bug", {
   _id: {
     type: DataTypes.INTEGER,
     field: "_id",
@@ -28,3 +29,6 @@ export const Bug = sequelize.sequelize.define("Bug", {
     defaultValue: false,
   },
 });
+
+User.hasMany(Bug);
+Bug.belongsTo(User);

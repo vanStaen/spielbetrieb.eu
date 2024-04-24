@@ -1,8 +1,10 @@
 export const Bug = `
 type Bug {
     _id: ID! 
+    userId: Int!
+    user: User
     category: Int!
-    Desc: String!
+    desc: String!
     screenshot: String
     isUrgent: Boolean
     isResolved: Boolean
@@ -13,12 +15,12 @@ type Bug {
 export const BugInputData = `
 input BugInputData {
     category: Int
-    Desc: String
+    desc: String
     screenshot: String
     isUrgent: Boolean
     isResolved: Boolean
-    createdAt: Float!
-    updatedAt: Float!
+    createdAt: Float
+    updatedAt: Float
 }`;
 
 export const BugQueries = `

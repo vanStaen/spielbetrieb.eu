@@ -3,51 +3,52 @@
     background-size: cover;
     border-radius: 8px;
 
-    .reportbug__screenshotCheck {
-        padding-top: 8px;
-        color: rgba(var(--themeFontColor), 1);
-    }
-
     .reportbug__footerContainer {
-        margin-bottom: 24px;
-        text-align: right;
+        margin: 16px 0;
+        text-align: left;
 
-        .reportbug__footerOr {
-            padding-top: 8px;
-            padding-bottom: 16px;
-            opacity: .75;
+        .reportbug__footerContainerLeft {
+            display: inline-flex;
+            vertical-align: baseline;
+            width: calc(100% - 140px);
 
-            .reportbug__footerOrLine {
-                display: inline-flex;
-                border-top: 1px solid rgba(var(--themeFontColor), .5);
-                width: 40%;
-                max-width: 25vw;
-                margin: 0 8px 4px 8px;
+            .reportbug__screenshotCheck {
+                color: rgba(var(--themeFontColor), 1);
             }
+        }
 
-            .reportbug__footerOrText {
-                display: inline-flex;
-            }
+        .reportbug__error {
+            display: inline;
+            color: firebrick;
+            filter: brightness(2);
+            font-size: 14px;
+            margin-top: 8px;
+            font-weight: 400;
         }
 
         .reportbug__footerButton {
             margin-left: 8px;
+            width: 130px;
             border: rgba(var(--themeFontColorInvert), 1) !important;
 
             &:hover {
                 color: rgba(var(--themeFontColorInvert), 1) !important;
                 background-color: rgba(var(--themeFontColor), 1) !important;
             }
+
+            &:disabled {
+                border: 1px solid rgba(white, .3) !important;
+                color: rgba(white, .5);
+
+                &:hover {
+                    border: 1px solid rgba(white, .2) !important;
+                    color: rgba(white, .3) !important;
+                    background-color: transparent !important;
+                }
+            }
         }
     }
 
-    .reportbug__error {
-        color: firebrick;
-        filter: brightness(2);
-        font-size: 14px;
-        margin-top: 8px;
-        font-weight: 400;
-    }
 
 }
 

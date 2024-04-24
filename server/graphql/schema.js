@@ -3,6 +3,7 @@ import { buildSchema } from "graphql";
 import * as admincontactSchema from "./schemas/admincontactSchema.js";
 import * as adminlinkSchema from "./schemas/adminlinkSchema.js";
 import * as artistSchema from "./schemas/artistSchema.js";
+import * as bugSchema from "./schemas/bugSchema.js";
 import * as chatSchema from "./schemas/chatSchema.js";
 import * as commentSchema from "./schemas/commentSchema.js";
 import * as darkSchema from "./schemas/darkSchema.js";
@@ -27,6 +28,7 @@ export default buildSchema(`
     ${admincontactSchema.Admincontact}
     ${adminlinkSchema.Adminlink}
     ${artistSchema.Artist}
+    ${bugSchema.Bug}
     ${chatSchema.Chat}
     ${commentSchema.Comment}
     ${darkSchema.Dark}
@@ -49,6 +51,7 @@ export default buildSchema(`
     ${admincontactSchema.AdmincontactInputData}
     ${adminlinkSchema.AdminlinkInputData}
     ${artistSchema.ArtistInputData}
+    ${bugSchema.BugInputData}
     ${chatSchema.ChatInputData}
     ${commentSchema.CommentInputData}
     ${darkSchema.DarkInputData}
@@ -72,6 +75,7 @@ export default buildSchema(`
         ${admincontactSchema.AdmincontactQueries}
         ${adminlinkSchema.AdminlinkQueries}
         ${artistSchema.ArtistQueries}
+        ${bugSchema.BugQueries}
         ${chatSchema.ChatQueries}
         ${commentSchema.CommentQueries}
         ${darkSchema.DarkQueries}
@@ -96,6 +100,7 @@ export default buildSchema(`
         ${admincontactSchema.AdmincontactMutations}
         ${adminlinkSchema.AdminlinkMutations}
         ${artistSchema.ArtistMutations}
+        ${bugSchema.BugMutations}
         ${chatSchema.ChatMutations}
         ${commentSchema.CommentMutations}
         ${darkSchema.DarkMutations}

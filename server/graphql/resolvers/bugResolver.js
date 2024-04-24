@@ -22,6 +22,7 @@ export const bugResolver = {
     }
     try {
       const bug = new Bug({
+        userId: req.userId,
         category: args.bugInput.category,
         desc: args.bugInput.desc,
         screenshot: args.bugInput.screenshot,
