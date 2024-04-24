@@ -41,6 +41,15 @@
 - [ ] EventPage : handle secret location (id9)
 - [ ] EventForm : Add loader on selects
 - [ ] If draft is set to false, create notification for admins (in BE)
+- [ ] Form should show that it is only 5 pic max (evengt uplaod artwork)
+- [ ] Draft doesnt show dates and desc and loc
+- [ ] Vorschau vom pending event (for admin and creator)
+
+AI bilder
+- lexica creart
+- starryai
+- nerolens
+- stabeldiffusiom
 
 ## Tech debt:
 
