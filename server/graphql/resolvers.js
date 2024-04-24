@@ -2,6 +2,7 @@ import * as admincontactResolver from "./resolvers/admincontactResolver.js";
 import * as adminlinkResolver from "./resolvers/adminlinkResolver.js";
 import * as artistResolver from "./resolvers/artistResolver.js";
 import * as chatResolver from "./resolvers/chatResolver.js";
+import * as bugResolver from "./resolvers/bugResolver.js";
 import * as commentResolver from "./resolvers/commentResolver.js";
 import * as darkResolver from "./resolvers/darkResolver.js";
 import * as dresscodeResolver from "./resolvers/dresscodeResolver.js";
@@ -25,6 +26,7 @@ export default {
   ...adminlinkResolver.adminlinkResolver,
   ...artistResolver.artistResolver,
   ...chatResolver.chatResolver,
+  ...bugResolver.bugResolver,
   ...darkResolver.darkResolver,
   ...dresscodeResolver.dresscodeResolver,
   ...equipmentResolver.equipmentResolver,
