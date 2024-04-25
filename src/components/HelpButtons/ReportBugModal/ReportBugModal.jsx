@@ -6,7 +6,7 @@ import html2canvas from "html2canvas";
 
 import { pageStore } from "../../../store/pageStore/pageStore";
 import { postPicture } from "../../../helpers/picture/postPicture";
-import { addBug } from "./addBug";
+import { addBug } from "../../../pages/Admin/AdminBugs/addBug";
 
 import "./ReportBugModal.less";
 
@@ -81,7 +81,7 @@ export const ReportBugModal = (props) => {
         screenshot: screenshotPath,
         isUrgent: false,
       };
-      const res = await addBug(dataObjectNew);
+      await addBug(dataObjectNew);
     } catch (e) {
       notification.error({
         message: "Operation failed!",

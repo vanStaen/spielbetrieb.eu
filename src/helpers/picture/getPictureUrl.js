@@ -16,6 +16,7 @@ export const getPictureUrl = async (path, bucket) => {
     const responseJson = await response.json();
     return responseJson.url;
   } catch (error) {
+    console.log(error);
     return error;
   }
 };

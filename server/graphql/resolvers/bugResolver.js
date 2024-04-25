@@ -5,7 +5,7 @@ export const bugResolver = {
   // getBugs: [Bug]
   async getBugs() {
     return await Bug.findAll({
-      order: [["name", "ASC"]],
+      order: [["_id", "ASC"]],
     });
   },
 

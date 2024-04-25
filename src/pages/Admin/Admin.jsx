@@ -13,6 +13,7 @@ import {
   CloseOutlined,
   DatabaseOutlined,
   AuditOutlined,
+  BugOutlined,
 } from "@ant-design/icons";
 
 import { AdminNewsletter } from "./AdminNewsletter/AdminNewsletter";
@@ -26,9 +27,9 @@ import { isMobileCheck } from "../../helpers/dev/checkMobileTablet";
 import { authStore } from "../../store/authStore/authStore";
 import { userStore } from "../../store/userStore/userStore";
 import { adminStore } from "../../store/adminStore/adminStore";
+import { AdminBugs } from "./AdminBugs/AdminBugs";
 
 import "./Admin.less";
-
 export const Admin = observer(() => {
   const segmentedChangeHandler = (e) => {
     adminStore.setSelectedPage(e);
@@ -62,6 +63,8 @@ export const Admin = observer(() => {
         return <AdminData />;
       case "ressources":
         return <AdminRessources />;
+      case "bugs":
+        return <AdminBugs />;
       default:
         return "Error";
     }
@@ -139,9 +142,14 @@ export const Admin = observer(() => {
                 {
                   label: !isMobile && "Ressources",
                   value: "ressources",
-                  // disabled: !userStore.adminRoles?.includes('ressources'),
-                  disabled: false,
+                  disabled: !userStore.adminRoles?.includes("ressources"),
                   icon: <AuditOutlined />,
+                },
+                {
+                  label: !isMobile && "Bugs",
+                  value: "bugs",
+                  disabled: !userStore.adminRoles?.includes("bugs"),
+                  icon: <BugOutlined />,
                 },
               ]}
             />
