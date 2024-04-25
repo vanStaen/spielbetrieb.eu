@@ -9,7 +9,7 @@
 		"or": "or",
 		"emailUs": "Email us",
 		"comingsoon": "coming soon",
-		"dark": "Dark",
+		"dark": "Dörk",
 		"light": "Light",
 		"backTomainScreen": "Back to main screen",
 		"logout": "Logout"
@@ -139,6 +139,7 @@
 		"helpNeeded": "Need help?",
 		"yourEventIsMissing": "An event is missing?",
 		"reportBug": "Want to report a Bug?",
-		"showMeAround": "Let us show you around"
+		"showMeAround": "Let us show you around",
+		"addDesc": "You need to add a description"
 	}
 }

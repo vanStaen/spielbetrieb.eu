@@ -48,6 +48,8 @@ export const AdminTranslations = () => {
     try {
       const dataObject = await form.validateFields();
       const dataObjectNew = {
+        category: dataObject.category.toLowerCase(),
+        key: dataObject.key,
         en: dataObject.en,
         de: dataObject.de,
       };
@@ -66,7 +68,7 @@ export const AdminTranslations = () => {
   };
 
   const keyDownHandler = (event) => {
-    const keyPressed = event.key.toLowerCase();
+    const keyPressed = event.key?.toLowerCase();
     if (throttling.current === false) {
       throttling.current = true;
       if (keyPressed === "escape") {
@@ -117,7 +119,7 @@ export const AdminTranslations = () => {
       title: "Category",
       dataIndex: "category",
       key: "category",
-      editable: false,
+      editable: true,
       filters: categoryFilters,
       filterSearch: true,
       onFilter: (value, record) => record.category.startsWith(value),
@@ -127,7 +129,7 @@ export const AdminTranslations = () => {
       title: "Key",
       dataIndex: "key",
       key: "key",
-      editable: false,
+      editable: true,
       filters: keyFilters,
       filterSearch: true,
       onFilter: (value, record) => record.category.startsWith(value),
@@ -222,8 +224,6 @@ export const AdminTranslations = () => {
     const newId = parseInt(translations[translations.length - 1]._id) + 1;
     const newRow = {
       _id: newId,
-      name: '{"en": "EVENT_TYPE_EN", "de": "EVENT_TYPE_DE"}',
-      validated: true,
     };
     form.setFieldsValue({
       ...newRow,
@@ -255,9 +255,10 @@ export const AdminTranslations = () => {
               size="small"
             />
           </Form>
-          {/* <div className="admin__tableFooter">
+          <div className="admin__tableFooter">
             <Button onClick={handleAdd}>Add a new Translation</Button>
-          </div> */}
+          </div>
+          <br />
         </>
       )}
     </div>

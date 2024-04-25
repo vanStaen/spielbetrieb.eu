@@ -124,11 +124,11 @@ export const Admin = observer(() => {
         icon: <DatabaseOutlined />,
       });
     }
-    if (roles.includes("ressources")) {
+    if (roles.includes("translation")) {
       options.push({
-        label: !isMobile && "Ressources",
-        value: "ressources",
-        icon: <AuditOutlined />,
+        label: !isMobile && "Translation",
+        value: "translation",
+        icon: <FontSizeOutlined />,
       });
     }
     if (roles.includes("bugs")) {
@@ -136,6 +136,13 @@ export const Admin = observer(() => {
         label: !isMobile && "Bugs",
         value: "bugs",
         icon: <BugOutlined />,
+      });
+    }
+    if (roles.includes("ressources")) {
+      options.push({
+        label: !isMobile && "Ressources",
+        value: "ressources",
+        icon: <AuditOutlined />,
       });
     }
     return options;

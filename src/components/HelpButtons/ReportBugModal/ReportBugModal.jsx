@@ -136,7 +136,7 @@ export const ReportBugModal = (props) => {
           )}
         </Button>
         {showError && (
-          <div className="reportbug__error">You need to add a description</div>
+          <div className="reportbug__error">{t("help.addDesc")}</div>
         )}
       </div>
     </Modal>
