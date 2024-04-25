@@ -70,6 +70,77 @@ export const Admin = observer(() => {
     }
   };
 
+  const Options = () => {
+    const options = [];
+    const roles = userStore.adminRoles || null;
+    if (roles.includes("newsletter")) {
+      options.push({
+        label: !isMobile && "Newsletter",
+        value: "newsletter",
+        icon: <PicLeftOutlined />,
+      });
+    }
+    if (roles.includes("events")) {
+      options.push({
+        label: !isMobile && "Events",
+        value: "events",
+        icon: <CalendarOutlined />,
+      });
+    }
+    if (roles.includes("users")) {
+      options.push({
+        label: !isMobile && "Users",
+        value: "users",
+        icon: <UserOutlined />,
+      });
+    }
+    if (roles.includes("partners")) {
+      options.push({
+        label: !isMobile && "Partners",
+        value: "partners",
+        icon: <ShopOutlined />,
+        disabled: true,
+      });
+    }
+    if (roles.includes("content")) {
+      options.push({
+        label: !isMobile && "Content",
+        value: "content",
+        icon: <ReadOutlined />,
+      });
+    }
+    if (roles.includes("analytics")) {
+      options.push({
+        label: !isMobile && "Analytics",
+        value: "analytics",
+        icon: <PieChartOutlined />,
+        disabled: true,
+      });
+    }
+    if (roles.includes("data")) {
+      options.push({
+        label: !isMobile && "Data",
+        value: "data",
+        icon: <DatabaseOutlined />,
+      });
+    }
+    if (roles.includes("ressources")) {
+      options.push({
+        label: !isMobile && "Ressources",
+        value: "ressources",
+        icon: <AuditOutlined />,
+      });
+    }
+    if (roles.includes("bugs")) {
+      options.push({
+        label: !isMobile && "Bugs",
+        value: "bugs",
+        icon: <BugOutlined />,
+      });
+    }
+    return options;
+  };
+
   return (
     <>
       <div className="background"></div>
@@ -88,70 +159,7 @@ export const Admin = observer(() => {
               style={{ position: "relative", zIndex: "10", marginBottom: 10 }}
               onChange={segmentedChangeHandler}
               value={adminStore.selectedPage}
-              options={[
-                {
-                  label: !isMobile && "Newsletter",
-                  value: "newsletter",
-                  disabled: !userStore.adminRoles?.includes("newsletter"),
-                  icon: <PicLeftOutlined />,
-                },
-                {
-                  label: !isMobile && "Events",
-                  value: "events",
-                  disabled: !userStore.adminRoles?.includes("events"),
-                  icon: <CalendarOutlined />,
-                },
-                {
-                  label: !isMobile && "Users",
-                  value: "users",
-                  disabled: !userStore.adminRoles?.includes("users"),
-                  icon: <UserOutlined />,
-                },
-                {
-                  label: !isMobile && "Partners",
-                  value: "partners",
-                  // disabled: !userStore.adminRoles?.includes('partners'),
-                  disabled: true,
-                  icon: <ShopOutlined />,
-                },
-                {
-                  label: !isMobile && "Content",
-                  value: "content",
-                  disabled: !userStore.adminRoles?.includes("content"),
-                  icon: <ReadOutlined />,
-                },
-                {
-                  label: !isMobile && "Analytics",
-                  value: "analytics",
-                  // disabled: !userStore.adminRoles?.includes('analytics'),
-                  disabled: true,
-                  icon: <PieChartOutlined />,
-                },
-                {
-                  label: !isMobile && "Translations",
-                  value: "translation",
-                  disabled: !userStore.adminRoles?.includes("translation"),
-                  icon: <FontSizeOutlined />,
-                },
-                {
-                  label: !isMobile && "Data",
-                  value: "data",
-                  disabled: !userStore.adminRoles?.includes("data"),
-                  icon: <DatabaseOutlined />,
-                },
-                {
-                  label: !isMobile && "Ressources",
-                  value: "ressources",
-                  disabled: !userStore.adminRoles?.includes("ressources"),
-                  icon: <AuditOutlined />,
-                },
-                {
-                  label: !isMobile && "Bugs",
-                  value: "bugs",
-                  disabled: !userStore.adminRoles?.includes("bugs"),
-                  icon: <BugOutlined />,
-                },
-              ]}
+              options={Options()}
             />
             <div className="admin__title">
               {renderSwitch(adminStore.selectedPage)}

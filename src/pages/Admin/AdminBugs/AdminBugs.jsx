@@ -90,7 +90,7 @@ export const AdminBugs = () => {
       width: "50px",
     },
     {
-      title: "Category",
+      title: "Cat",
       dataIndex: "category",
       key: "category",
       editable: true,
@@ -109,7 +109,7 @@ export const AdminBugs = () => {
       render: (_, { _id }, index) => {
         return (
           <div>
-            <img src={bugsUrls[index]} width={100} />
+            <img src={bugsUrls[index]} width={100} height={70} />
           </div>
         );
       },
