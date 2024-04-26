@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Tooltip, Segmented } from "antd";
+import { Tooltip, Segmented, FloatButton } from "antd";
 import { observer } from "mobx-react";
 import {
   PieChartOutlined,
@@ -171,6 +171,13 @@ export const Admin = observer(() => {
             <div className="admin__title">
               {renderSwitch(adminStore.selectedPage)}
             </div>
+            <FloatButton.BackTop
+              visibilityHeight={window.innerHeight}
+              style={{
+                right: 48,
+                bottom: 120,
+              }}
+            />
           </div>
         ) : (
           <div className="admin__centered">
