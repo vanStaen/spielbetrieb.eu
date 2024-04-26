@@ -175,10 +175,9 @@ export const Admin = observer(() => {
               {renderSwitch(adminStore.selectedPage)}
             </div>
             <FloatButton.BackTop
-              visibilityHeight={window.innerHeight}
+              visibilityHeight={75}
               style={{
                 right: 48,
-                bottom: 120,
               }}
             />
           </div>

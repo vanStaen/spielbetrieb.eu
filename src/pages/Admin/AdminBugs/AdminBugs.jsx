@@ -82,6 +82,13 @@ export const AdminBugs = () => {
     }
   };
 
+  const categoryBugMapping = {
+    0: <span style={{ opacity: "0.25" }}>default</span>,
+    1: <span>Spielplan</span>,
+    2: <span>Shop</span>,
+    3: <span>Admin</span>,
+  };
+
   const columns = [
     {
       title: "id",
@@ -94,7 +101,9 @@ export const AdminBugs = () => {
       title: "Cat",
       dataIndex: "category",
       key: "category",
+      width: "120px",
       editable: true,
+      render: (_, { category }) => categoryBugMapping[category],
     },
     {
       title: "Desc",
@@ -107,6 +116,7 @@ export const AdminBugs = () => {
       dataIndex: "url",
       key: "url",
       editable: false,
+      width: "100px",
       render: (_, __, index) => {
         return (
           <div
@@ -126,13 +136,29 @@ export const AdminBugs = () => {
       title: "Urgent",
       dataIndex: "isUrgent",
       key: "isUrgent",
+      align: "center",
       editable: true,
+      width: "100px",
+      render: (_, { isUrgent }) => isUrgent && "🔥",
+      filters: [
+        { text: "Urgent", value: true },
+        { text: "Not urgent", value: false },
+      ],
+      onFilter: (value, record) => record.isUrgent === value,
     },
     {
       title: "Resolved",
       dataIndex: "isResolved",
       key: "isResolved",
+      align: "center",
       editable: true,
+      width: "100px",
+      render: (_, { isResolved }) => isResolved && "✅",
+      filters: [
+        { text: "Resolved", value: true },
+        { text: "Not resolved", value: false },
+      ],
+      onFilter: (value, record) => record.isResolved === value,
     },
     {
       title: <span style={{ opacity: ".2" }}>Edit</span>,
@@ -184,12 +210,17 @@ export const AdminBugs = () => {
       onCell: (record) => ({
         record,
         inputType:
-          col.dataIndex === "isUrgend" || col.dataIndex === "isResolved"
-            ? "boolean"
-            : "text",
+          col.dataIndex === "category"
+            ? "select"
+            : col.dataIndex === "isUrgent" || col.dataIndex === "isResolved"
+              ? "boolean"
+              : "text",
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
+        options: Object.keys(categoryBugMapping).map((key) => {
+          return { value: key, label: categoryBugMapping[key] };
+        }),
       }),
     };
   });

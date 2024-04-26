@@ -213,6 +213,7 @@ export const AdminDresscodes = () => {
           <div className="admin__tableFooter">
             <Button onClick={handleAdd}>Add a new Dresscode</Button>
           </div>
+          <br />
         </>
       )}
     </div>
