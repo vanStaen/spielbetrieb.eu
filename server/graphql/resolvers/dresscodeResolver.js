@@ -5,7 +5,10 @@ export const dresscodeResolver = {
   // getDresscodes: [Dresscode]
   async getDresscodes() {
     return await Dresscode.findAll({
-      order: [["name", "ASC"]],
+      order: [
+        ["validated", "DESC"],
+        ["name", "ASC"],
+      ],
     });
   },
 

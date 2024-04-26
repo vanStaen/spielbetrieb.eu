@@ -12,7 +12,10 @@ export const artistResolver = {
   // getArtists(onlyValidated: Boolean): [Artist]
   async getArtists() {
     return await Artist.findAll({
-      order: [["name", "ASC"]],
+      order: [
+        ["validated", "DESC"],
+        ["name", "ASC"],
+      ],
     });
   },
 

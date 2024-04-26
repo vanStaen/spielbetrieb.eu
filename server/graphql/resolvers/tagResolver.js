@@ -5,7 +5,10 @@ export const tagResolver = {
   // getTags: [Tag]
   async getTags() {
     return await Tag.findAll({
-      order: [["name", "ASC"]],
+      order: [
+        ["validated", "DESC"],
+        ["name", "ASC"],
+      ],
     });
   },
 

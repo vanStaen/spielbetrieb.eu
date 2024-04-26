@@ -5,7 +5,10 @@ export const eventtypeResolver = {
   // getAllEventtypes
   async getAllEventtypes() {
     return await Eventtype.findAll({
-      order: [["name", "ASC"]],
+      order: [
+        ["validated", "DESC"],
+        ["name", "ASC"],
+      ],
     });
   },
 

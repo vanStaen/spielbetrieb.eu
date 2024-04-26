@@ -81,8 +81,8 @@ export const EventForm = observer(() => {
       }
       return {
         value: parseInt(tag._id),
-        label: nameParser(tag.name, language),
-        validated: tag.validated,
+        label: `${nameParser(tag.name, language)}${!tag.validated ? ` (${t("general.pendingReview")})` : ""}`,
+        disabled: !tag.validated,
       };
     });
     setTagsOptions(tagsOptionsResult);
@@ -94,8 +94,8 @@ export const EventForm = observer(() => {
     const dresscodesOptionsResult = results.map((dresscode) => {
       return {
         value: parseInt(dresscode._id),
-        label: nameParser(dresscode.name, language),
-        validated: dresscode.validated,
+        label: `${nameParser(dresscode.name, language)}${!dresscode.validated ? ` (${t("general.pendingReview")})` : ""}`,
+        disabled: !dresscode.validated,
       };
     });
     setDresscodesOptions(dresscodesOptionsResult);
@@ -107,8 +107,8 @@ export const EventForm = observer(() => {
     const equipementsOptionsResult = results?.map((equipement) => {
       return {
         value: parseInt(equipement._id),
-        label: nameParser(equipement.name, language),
-        validated: equipement.validated,
+        label: `${nameParser(equipement.name, language)}${!equipement.validated ? ` (${t("general.pendingReview")})` : ""}`,
+        disabled: !equipement.validated,
       };
     });
     setEquipmentsOptions(equipementsOptionsResult);
@@ -120,8 +120,8 @@ export const EventForm = observer(() => {
     const artists = results.map((artist) => {
       return {
         value: parseInt(artist._id),
-        label: artist.name,
-        validated: artist.validated,
+        label: `${artist.name} ${!artist.validated ? ` (${t("general.pendingReview")})` : ""}`,
+        disabled: !artist.validated,
       };
     });
     setArtistsOptions(artists);

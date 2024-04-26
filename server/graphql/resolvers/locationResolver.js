@@ -12,7 +12,10 @@ export const locationResolver = {
   // getLocations(onlyValidated: Boolean): [Location]
   async getLocations(args) {
     let options = {
-      order: [["name", "ASC"]],
+      order: [
+        ["validated", "DESC"],
+        ["name", "ASC"],
+      ],
     };
     if (args.onlyValidated) {
       options = {
