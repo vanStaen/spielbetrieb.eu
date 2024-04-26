@@ -21,7 +21,7 @@ export const EventPageDescLineUp = observer((props) => {
   return (
     <div className="eventpage__lineupContainer">
       <div className="eventpage__lineupTitle">
-        {t("event-lineup")}
+        {t("event.lineup")}
         {canEdit && <EditOutlined className="editOutlined" />}
       </div>
       <div className="eventpage__lineup">
