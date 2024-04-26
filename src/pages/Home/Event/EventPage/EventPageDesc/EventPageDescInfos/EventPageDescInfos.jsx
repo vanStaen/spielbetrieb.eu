@@ -99,7 +99,8 @@ export const EventPageDescInfos = observer((props) => {
   return (
     <div className="eventpage__infoContainer">
       <div className="eventpage__infoTitle">
-        Event infos {canEdit && <EditOutlined className="editOutlined" />}
+        {t("event.eventInfos")}{" "}
+        {canEdit && <EditOutlined className="editOutlined" />}
       </div>
       <div className="eventpage__info">
         <div className="eventpage__subInfo">

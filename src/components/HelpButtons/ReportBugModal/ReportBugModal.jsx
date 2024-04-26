@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Modal, Button, Input, Checkbox, notification } from "antd";
+import { Modal, Button, Input, Checkbox, notification, message } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import html2canvas from "html2canvas";
 
@@ -51,7 +51,6 @@ export const ReportBugModal = (props) => {
           allowTaint: true,
           logging: false,
         }).then((canva) => {
-          // const canvaByteArray = canva.toDataURL();
           canva.toBlob(async (file) => {
             const result = await postPicture(file, S3_BUCKET);
             if (result.error) {
@@ -82,6 +81,7 @@ export const ReportBugModal = (props) => {
         isUrgent: false,
       };
       await addBug(dataObjectNew);
+      message.success(t("help.bugReportSuccess"));
     } catch (e) {
       notification.error({
         message: "Operation failed!",
@@ -96,7 +96,7 @@ export const ReportBugModal = (props) => {
 
   return (
     <Modal
-      title="Report bug"
+      title={t("help.reportBug")}
       open={showReportBugModal}
       onOk={ReportBugClick}
       onCancel={cancelClickHandler}
@@ -106,7 +106,7 @@ export const ReportBugModal = (props) => {
       footer={null}
     >
       <TextArea
-        placeholder={"Please describe this bug"}
+        placeholder={t("help.bugDesc")}
         value={desc}
         rows={6}
         onChange={descHandler}
@@ -119,7 +119,7 @@ export const ReportBugModal = (props) => {
             onChange={checkScreenshotHandler}
             checked={addScreenshot}
           >
-            Automatically add a screenshot
+            {t("help.addScreenshot")}
           </Checkbox>
         </div>
         <Button

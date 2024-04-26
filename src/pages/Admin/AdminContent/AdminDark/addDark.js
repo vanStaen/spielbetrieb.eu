@@ -3,7 +3,7 @@ export async function addDark(dataObject) {
     query: `mutation ( 
                 $dataObject: DarkInputData!,
                 ) {
-                addLocation (
+                addDark (
                   darkInput: $dataObject,
                 ) {
                   _id

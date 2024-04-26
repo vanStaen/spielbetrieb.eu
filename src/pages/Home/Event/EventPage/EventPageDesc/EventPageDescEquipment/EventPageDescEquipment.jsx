@@ -2,15 +2,17 @@ import React from "react";
 import { observer } from "mobx-react";
 import { Tag } from "antd";
 import { EditOutlined } from "@ant-design/icons";
-import { nameParser } from "../../../../../../helpers/dev/nameParser";
+import { useTranslation } from "react-i18next";
 
 import { spielplanStore } from "../../../../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
+import { nameParser } from "../../../../../../helpers/dev/nameParser";
 
 import "./EventPageDescEquipment.less";
 
 export const EventPageDescEquipment = observer((props) => {
   const { event, canEdit } = props;
+  const { t } = useTranslation();
 
   const equipmentsTags = () => {
     const equipments = event?.equipment?.map((equipementId) => {
@@ -38,7 +40,8 @@ export const EventPageDescEquipment = observer((props) => {
   return (
     <div className="eventpage__equipementContainer">
       <div className="eventpage__equipmentTitle">
-        Equipment {canEdit && <EditOutlined className="editOutlined" />}
+        {t("event.equipment")}{" "}
+        {canEdit && <EditOutlined className="editOutlined" />}
       </div>
       <div className="eventpage__subInfo">{equipmentsTags()}</div>
     </div>

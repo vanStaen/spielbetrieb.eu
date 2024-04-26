@@ -2,16 +2,19 @@ import React from "react";
 import { observer } from "mobx-react";
 import { Button } from "antd";
 import { EditOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 
 import "./EventPageDescLocation.less";
 
 export const EventPageDescLocation = observer((props) => {
   const { event, canEdit } = props;
+  const { t } = useTranslation();
 
   return (
     <div className="eventpage__locationContainer">
       <div className="eventpage__locationTitle">
-        Location {canEdit && <EditOutlined className="editOutlined" />}
+        {t("event.location")}{" "}
+        {canEdit && <EditOutlined className="editOutlined" />}
       </div>
       {event.locationName && event.locationAddress ? (
         <div className="eventpage__location">

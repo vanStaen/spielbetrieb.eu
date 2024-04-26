@@ -138,8 +138,19 @@
 	"help": {
 		"helpNeeded": "Hilfe?",
 		"yourEventIsMissing": "Eine Veranstalltung fehlt?",
-		"reportBug": "Problem melden?",
+		"reportBug": "Bug melden",
 		"showMeAround": "Wie zeigen dir wie",
-		"addDesc": "Ein Beschreibung fehlt noch"
+		"addDesc": "Ein Beschreibung fehlt noch",
+		"addScreenshot": "Screenshot automatisch hinzufügen",
+		"bugDesc": "Bitte dieser Bug beschreiben",
+		"bugReportSuccess": "Bug gemeldet. Danke für die Hilfe!"
+	},
+	"event": {
+		"eventDesc": "Beschreibung",
+		"eventInfos": "Details",
+		"location": "Veranstalltungsort",
+		"links": "Links",
+		"lineup": "Line up",
+		"equipment": "Austattung"
 	}
 }
