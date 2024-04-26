@@ -13,6 +13,7 @@ import { deleteBug } from "./deleteBug";
 import { updateBug } from "./updateBug";
 import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
 import { getPictureUrl } from "../../../helpers/picture/getPictureUrl";
+import { pageStore } from "../../../store/pageStore/pageStore";
 
 export const AdminBugs = () => {
   const [form] = Form.useForm();
@@ -106,10 +107,21 @@ export const AdminBugs = () => {
       dataIndex: "url",
       key: "url",
       editable: false,
-      render: (_, { _id }, index) => {
+      render: (_, __, index) => {
         return (
-          <div>
-            <img src={bugsUrls[index]} width={100} height={70} />
+          <div
+            onClick={() => {
+              pageStore.setPicturesUrls([bugsUrls[index]])
+              pageStore.setPictureSelected(0);
+              pageStore.setShowOverlayGallery(true);
+            }}
+            className="screenshotCell"
+          >
+            <img
+              src={bugsUrls[index]}
+              width={100}
+              height={70}
+            />
           </div>
         );
       },

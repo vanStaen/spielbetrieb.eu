@@ -26,8 +26,10 @@ import { AdminTranslations } from "./AdminTranslations/AdminTranslations";
 import { isMobileCheck } from "../../helpers/dev/checkMobileTablet";
 import { authStore } from "../../store/authStore/authStore";
 import { userStore } from "../../store/userStore/userStore";
+import { pageStore } from "../../store/pageStore/pageStore";
 import { adminStore } from "../../store/adminStore/adminStore";
 import { AdminBugs } from "./AdminBugs/AdminBugs";
+import { GalleryOverlay } from "../../components/GalleryOverlay/GalleryOverlay";
 
 import "./Admin.less";
 export const Admin = observer(() => {
@@ -150,6 +152,7 @@ export const Admin = observer(() => {
 
   return (
     <>
+      {pageStore.showOverlayGallery && <GalleryOverlay />}
       <div className="background"></div>
       <div className="admin__container">
         {!isMobile && (
