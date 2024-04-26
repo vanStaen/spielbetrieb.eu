@@ -209,7 +209,7 @@
 		"isPrivate": "Is this a private event?",
 		"isForwardable": "Can it be forwarded? ",
 		"priceType": "Price type",
-		"missingLocation": "The event location will be shown as <i>To be announced</i>",
+		"missingLocation": "The event location will be shown as 'To be announced'",
 		"missingDesc": "The event location does not have a description"
 	}
 }

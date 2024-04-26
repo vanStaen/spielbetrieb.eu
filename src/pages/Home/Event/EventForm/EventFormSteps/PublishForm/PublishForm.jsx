@@ -54,10 +54,11 @@ export const PublishForm = observer(() => {
   return (
     <>
       <div
-        className={`publishform__container  ${pageStore.selectedTheme === "light"
-          ? "lightColorTheme__Text"
-          : "darkColorTheme__Text"
-          }`}
+        className={`publishform__container  ${
+          pageStore.selectedTheme === "light"
+            ? "lightColorTheme__Text"
+            : "darkColorTheme__Text"
+        }`}
       >
         {eventFormStore.errors && (
           <>
@@ -106,13 +107,11 @@ export const PublishForm = observer(() => {
 
         {!eventFormStore.locationName && (
           <div className="publishform__info">
-            {t('eventform.missingLocation')}
+            {t("eventform.missingLocation")}
           </div>
         )}
         {!eventFormStore.description && (
-          <div className="publishform__info">
-            {t('eventform.missingDesc')}
-          </div>
+          <div className="publishform__info">{t("eventform.missingDesc")}</div>
         )}
       </div>
 

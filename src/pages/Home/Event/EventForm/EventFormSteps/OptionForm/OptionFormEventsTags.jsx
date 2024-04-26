@@ -31,12 +31,12 @@ export const OptionFormEventsTags = observer((props) => {
 
   return (
     <div className="optionform__element">
-      <div className="optionform__title">{t('eventform.tags')}</div>
+      <div className="optionform__title">{t("eventform.tags")}</div>
       <Select
         mode="tags"
         allowClear
         style={{ width: "100%" }}
-        placeholder={t('eventform.pleaseSelectTags')}
+        placeholder={t("eventform.pleaseSelectTags")}
         options={tagsOptions}
         onChange={tagsHandler}
         value={eventFormStore.eventTags}

@@ -20,11 +20,11 @@ export const OptionFormEquipements = observer((props) => {
 
   return (
     <div className="optionform__element">
-      <div className="optionform__title">{t('eventform.playEquipment')}</div>
+      <div className="optionform__title">{t("eventform.playEquipment")}</div>
       <Select
         mode="tags"
         style={{ width: "100%" }}
-        placeholder={t('eventform.equipmentDesc')}
+        placeholder={t("eventform.equipmentDesc")}
         options={equipmentsOptions}
         onChange={equipmentHandler}
         value={eventFormStore.equipment}

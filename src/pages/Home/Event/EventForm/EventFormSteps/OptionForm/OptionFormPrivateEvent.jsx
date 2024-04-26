@@ -36,7 +36,7 @@ export const OptionFormPrivateEvent = observer(() => {
     <>
       {!isEventtypePrivate && (
         <div className="optionform__element">
-          <div className="optionform__title">{t('eventform.isPrivate')}</div>
+          <div className="optionform__title">{t("eventform.isPrivate")}</div>
           <Radio.Group
             options={yesNoOptions[pageStore.selectedLanguage]}
             optionType="button"
@@ -48,7 +48,9 @@ export const OptionFormPrivateEvent = observer(() => {
       )}
       {isPrivateEvent && (
         <div className="optionform__element">
-          <div className="optionform__title">{t('eventform.isForwardable')}</div>
+          <div className="optionform__title">
+            {t("eventform.isForwardable")}
+          </div>
           <Radio.Group
             options={yesNoOptions[pageStore.selectedLanguage]}
             optionType="button"

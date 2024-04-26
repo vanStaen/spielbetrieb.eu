@@ -66,7 +66,7 @@ export const OptionFormDresscodes = observer((props) => {
   return (
     <>
       <div className="optionform__element">
-        <div className="optionform__title">{t('eventform.dresscode')}</div>
+        <div className="optionform__title">{t("eventform.dresscode")}</div>
         <Radio.Group
           options={hasDresscode[pageStore.selectedLanguage]}
           optionType="button"
@@ -83,7 +83,9 @@ export const OptionFormDresscodes = observer((props) => {
         <div className="optionform__element">
           <Row gutter={[16, 8]}>
             <Col xs={24} sm={24} md={12}>
-              <div className="optionform__title">{t('eventform.dresscodeAllowed')}</div>
+              <div className="optionform__title">
+                {t("eventform.dresscodeAllowed")}
+              </div>
               <Select
                 mode="tags"
                 allowClear
@@ -102,7 +104,9 @@ export const OptionFormDresscodes = observer((props) => {
               />
             </Col>
             <Col xs={24} sm={24} md={12}>
-              <div className="optionform__title">{t('eventform.dresscodeVerboten')}</div>
+              <div className="optionform__title">
+                {t("eventform.dresscodeVerboten")}
+              </div>
               <Select
                 mode="tags"
                 allowClear

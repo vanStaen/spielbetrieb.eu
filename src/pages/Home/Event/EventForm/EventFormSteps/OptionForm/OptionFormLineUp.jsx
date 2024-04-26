@@ -31,12 +31,12 @@ export const OptionFormLineUp = observer((props) => {
 
   return (
     <div className="optionform__element">
-      <div className="optionform__title">{t('eventform.lineup')}</div>
+      <div className="optionform__title">{t("eventform.lineup")}</div>
       <Select
         mode="tags"
         allowClear
         style={{ width: "100%" }}
-        placeholder={t('eventform.lineupDesc')}
+        placeholder={t("eventform.lineupDesc")}
         options={artistsOptions}
         onChange={lineUpHandler}
         value={eventFormStore.lineUp}

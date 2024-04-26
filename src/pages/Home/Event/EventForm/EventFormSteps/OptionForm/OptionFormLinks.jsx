@@ -19,11 +19,11 @@ export const OptionFormLinks = observer(() => {
 
   return (
     <div className="optionform__element">
-      <div className="optionform__title">{t('eventform.links')}</div>
+      <div className="optionform__title">{t("eventform.links")}</div>
       <Select
         mode="tags"
         style={{ width: "100%" }}
-        placeholder={t('eventform.addLinks')}
+        placeholder={t("eventform.addLinks")}
         onChange={linksHandler}
         value={eventFormStore.links}
         onFocus={() => eventFormStore.setDeactivateNav(true)}

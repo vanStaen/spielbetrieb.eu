@@ -51,7 +51,7 @@ export const EventPage = observer((props) => {
       } else {
         setIsNotValidated(!eventFound.validated);
       }
-      console.log('eventFound.validated', eventFound.validated);
+      console.log("eventFound.validated", eventFound.validated);
       setCanEdit(userStore.isAdmin || userStore._id === eventFound.user._id);
       spielplanStore.setSelectedEvent(eventFound);
     }
@@ -146,10 +146,11 @@ export const EventPage = observer((props) => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${pageStore.selectedTheme === "light"
-            ? "lightColorTheme__Text"
-            : "darkColorTheme__Text"
-          }`}
+                  ${
+                    pageStore.selectedTheme === "light"
+                      ? "lightColorTheme__Text"
+                      : "darkColorTheme__Text"
+                  }`}
       >
         <ArrowLeftOutlined />
       </div>

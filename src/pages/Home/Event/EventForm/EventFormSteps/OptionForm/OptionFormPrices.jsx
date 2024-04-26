@@ -47,7 +47,7 @@ export const OptionFormPrices = observer((props) => {
 
   return (
     <div className="optionform__element">
-      <div className="optionform__title">{t('eventform.prices')}</div>
+      <div className="optionform__title">{t("eventform.prices")}</div>
       <Row gutter={[16, 8]}>
         {eventFormStore.prices.map((price, index) => {
           return (
@@ -55,7 +55,7 @@ export const OptionFormPrices = observer((props) => {
               <Col xs={7} sm={7} md={4} key={`col-amount-${index}`}>
                 <InputNumber
                   prefix="€"
-                  placeholder={t('eventform.price')}
+                  placeholder={t("eventform.price")}
                   onChange={(event) => priceHandler(event, index)}
                   value={price.amount}
                   onFocus={() => eventFormStore.setDeactivateNav(true)}
@@ -66,7 +66,7 @@ export const OptionFormPrices = observer((props) => {
                 <Select
                   value={price.option}
                   options={priceOptions[pageStore.selectedLanguage]}
-                  placeholder={t('eventform.priceType')}
+                  placeholder={t("eventform.priceType")}
                   onChange={(event) => priceOptionHandler(event, index)}
                   disabled={!price.amount}
                   className="optionform__priceSelect"

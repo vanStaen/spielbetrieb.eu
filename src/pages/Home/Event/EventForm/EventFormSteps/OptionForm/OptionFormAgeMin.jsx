@@ -21,7 +21,7 @@ export const OptionFormAgeMin = observer(() => {
 
   return (
     <div className="optionform__element">
-      <div className="optionform__title">{t('eventform.guestMinAge')}</div>
+      <div className="optionform__title">{t("eventform.guestMinAge")}</div>
       <Radio.Group
         options={ageOptions}
         optionType="button"

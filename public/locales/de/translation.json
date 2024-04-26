@@ -205,11 +205,11 @@
 		"lineup": "Line up",
 		"lineupDesc": "Line up für dieser Veranstaltung",
 		"playEquipment": "Spielmöbel",
-		"equipmentDesc": "Stehen Spielmöbel oder besondere Austattuung zu verfügung während dieser Veranstalltung?",
+		"equipmentDesc": "Stehen Spielmöbel oder besondere Austatung zu verfügung während dieser Veranstalltung?",
 		"isPrivate": "Handelt es um eine Private Veranstalltung? ",
 		"isForwardable": "Kann es an dritte weitergeleitet? ",
 		"priceType": "Preistyp",
-		"missingLocation": "Dieser VeranstaltungLocation wird als <i>To be announced</i> angekündigt",
+		"missingLocation": "Dieser VeranstaltungLocation wird als 'To be announced' angekündigt",
 		"missingDesc": "Dieser Veranstaltung hat keine Beschreibung"
 	}
 }

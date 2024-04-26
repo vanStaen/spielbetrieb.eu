@@ -18,6 +18,5 @@ export const yesNoOptions = {
       value: true,
       label: "Ja",
     },
-  ]
-
+  ],
 };
