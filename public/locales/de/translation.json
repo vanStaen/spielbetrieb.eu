@@ -9,21 +9,21 @@
 		"or": "oder",
 		"emailUs": "Schreib uns",
 		"comingsoon": "demnächst",
-		"dark": "Dunkel",
-		"light": "Hell",
+		"dark": "dunkel",
+		"light": "hell",
 		"backTomainScreen": "Zurück zur Startseite",
-		"logout": "Auslogen"
+		"logout": "abmelden"
 	},
 	"login": {
 		"loginSuccess": "Erfolgreich eingelogt!",
-		"logoutSuccess": "Erfolgreich ausgelogt!",
+		"logoutSuccess": "Erfolgreich abgemeldet!",
 		"forgotPassword": "Passwort vergessen?",
 		"remember": "Alles gut,  ich errinere mich",
 		"sendResetPasswordEmail": "Passwort Reset Link verschicken",
-		"newHere": "Erstes mal hier",
-		"signUp": "Zum Anmeldung",
+		"newHere": "Neu hier",
+		"signUp": "Zur Anmeldung",
 		"member": "Schon angemeldet",
-		"login": "Einlogen",
+		"login": "Login",
 		"emailNotVerifyYet": "Ihre email ist noch nicht bestättigt",
 		"checkPostBoxForVerificationLink": "Bitte ihre email postfach prüfen für den Email bestättigungslink",
 		"clickToGetNewVerificationLink": "Bitte hier klicken um eine neue link zu bekommen:",
@@ -75,7 +75,7 @@
 		"firstName": "Vorname",
 		"lastNameMissing": "Nachname fehlt",
 		"lastName": "Nachname",
-		"howShouldWeCallYou": "Wie sollen wir Ihn nennen?",
+		"howShouldWeCallYou": "Wie dürfen wir dich nennen?",
 		"pickUsername": "Benutzernamen wählen",
 		"pleaseAcceptTerms": "Bitte akzeptieren Sie unsere Bedingungen und Richtlinien!",
 		"createAccount": "Benutzerkonto erstellen",
@@ -129,21 +129,21 @@
 		"eventOrganisedBy": "Hinzugefügt von",
 		"today": "Heute",
 		"week": "Woche",
-		"noEventsFound": "Kein Ergebnisse",
+		"noEventsFound": "Keine Ergebnisse",
 		"tryOtherFilter": "Versuch es mit einem anderen Filter?",
 		"until": "bis",
-		"showAllEvents": "Alles zeigen",
+		"showAllEvents": "Alle anzeigen",
 		"pickaDate": "Datum auswählen"
 	},
 	"help": {
 		"helpNeeded": "Hilfe?",
 		"yourEventIsMissing": "Eine Veranstalltung fehlt?",
-		"reportBug": "Bug melden",
+		"reportBug": "Störung melden",
 		"showMeAround": "Wie zeigen dir wie",
-		"addDesc": "Ein Beschreibung fehlt noch",
+		"addDesc": "Eine Beschreibung fehlt noch",
 		"addScreenshot": "Screenshot automatisch hinzufügen",
-		"bugDesc": "Bitte dieser Bug beschreiben",
-		"bugReportSuccess": "Bug gemeldet. Danke für die Hilfe!"
+		"bugDesc": "Bitte beschreibe die Störung",
+		"bugReportSuccess": "Wir haben deine Störungsmeldung empfangen. Danke für deine Hilfe!"
 	},
 	"event": {
 		"eventDesc": "Beschreibung",
@@ -152,5 +152,16 @@
 		"links": "Links",
 		"lineup": "Line up",
 		"equipment": "Austattung"
+	},
+	"eventform": {
+		"generalInfo": "Allgemein",
+		"artworks": "Grafiken",
+		"options": "Optionen",
+		"publish": "Veröffentlichen",
+		"next": "Weiter",
+		"previous": "Zurück",
+		"title": "Titel",
+		"DateFrom": "Datum von",
+		"DateUntil": "Datum bis"
 	}
 }

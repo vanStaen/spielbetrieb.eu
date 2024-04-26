@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { observer } from "mobx-react";
 import { Button } from "antd";
+import { useTranslation } from "react-i18next";
 
 import { eventFormStore } from "../eventFormStore";
 import { publishEvent } from "../EventFormSteps/PublishForm/publishEvent";
@@ -8,6 +9,8 @@ import { publishEvent } from "../EventFormSteps/PublishForm/publishEvent";
 import "./EventFormNavigation.less";
 
 export const EventFormNavigation = observer((props) => {
+  const { t } = useTranslation();
+
   const keydownEventHandler = (event) => {
     if (eventFormStore.deactivateNav) {
       return;
@@ -58,7 +61,7 @@ export const EventFormNavigation = observer((props) => {
         }}
         disabled={eventFormStore.formStep === 0}
       >
-        Previous
+        {t('eventform.previous')}
       </Button>
       {eventFormStore.formStep === 3 ? (
         <Button
@@ -66,7 +69,7 @@ export const EventFormNavigation = observer((props) => {
           onClick={publishHandler}
           disabled={eventFormStore.errors}
         >
-          Publish
+          {t('eventform.publish')}
         </Button>
       ) : (
         <Button
@@ -75,7 +78,7 @@ export const EventFormNavigation = observer((props) => {
             naviguateHandler(true);
           }}
         >
-          Next
+          {t('eventform.next')}
         </Button>
       )}
     </div>

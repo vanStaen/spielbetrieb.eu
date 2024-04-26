@@ -152,5 +152,16 @@
 		"links": "Links",
 		"lineup": "Line up",
 		"equipment": "Equipment"
+	},
+	"eventform": {
+		"generalInfo": "General Infos",
+		"artworks": "Artworks",
+		"options": "Options",
+		"publish": "Publish",
+		"next": "Next",
+		"previous": "Previous",
+		"title": "Title",
+		"DateFrom": "Date from",
+		"DateUntil": "Date until"
 	}
 }

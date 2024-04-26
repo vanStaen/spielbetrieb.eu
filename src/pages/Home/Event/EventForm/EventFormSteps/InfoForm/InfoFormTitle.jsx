@@ -1,12 +1,14 @@
 import React from "react";
 import { observer } from "mobx-react";
 import { Input } from "antd";
+import { useTranslation } from "react-i18next";
 
 import { eventFormStore } from "../../eventFormStore";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
 
 export const InfoFormTitle = observer((props) => {
   const { createDraftEvent } = props;
+  const { t } = useTranslation();
 
   const titleHander = (e) => {
     const value = e.target.value;
@@ -37,9 +39,9 @@ export const InfoFormTitle = observer((props) => {
   return (
     <>
       <div className="infoform__element">
-        <div className="infoform__title">Title</div>
+        <div className="infoform__title">{t('eventform.title')}</div>
         <Input
-          placeholder="Name of the event"
+          placeholder={t('eventform.nameOfEvent')}
           onChange={titleHander}
           onBlur={titleBlurHandler}
           onFocus={() => eventFormStore.setDeactivateNav(true)}

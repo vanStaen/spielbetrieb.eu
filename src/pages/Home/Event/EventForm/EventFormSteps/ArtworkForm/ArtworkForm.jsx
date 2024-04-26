@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
 import { Popconfirm, notification, message } from "antd";
+import { useTranslation } from "react-i18next";
 import {
   PictureOutlined,
   LoadingOutlined,
@@ -23,6 +24,7 @@ export const ArtworkForm = observer(() => {
   const [isUploading, setIsUploading] = useState(false);
   const [isDragDroping, setIsDragDroping] = useState(false);
   const [uploadProgress, setUploadProgress] = useState([0, 0]);
+  const { t } = useTranslation();
 
   const hasArtworks = eventFormStore.artworks.length > 0;
 
@@ -129,7 +131,7 @@ export const ArtworkForm = observer(() => {
             </div>
           )}
           <Popconfirm
-            title="Sure to delete?"
+            title={t('eventform.validateDelete')}
             onConfirm={() => deletePictureHandler(index)}
             icon={null}
           >
@@ -169,7 +171,7 @@ export const ArtworkForm = observer(() => {
                 {uploadProgress[0]} of {uploadProgress[1]}
               </>
             ) : (
-              <p className="uploadText">Loading</p>
+              <p className="uploadText">{t('general.loading')}</p>
             )}
           </label>
         ) : (
@@ -188,7 +190,7 @@ export const ArtworkForm = observer(() => {
                 </div>
                 <div>
                   Click, or drag here an image file <br />
-                  <i>jpg and png files only | max 10mb</i>
+                  <i>jpg and png files only | max 5 files | 5mb per file</i>
                 </div>
               </>
             ) : (

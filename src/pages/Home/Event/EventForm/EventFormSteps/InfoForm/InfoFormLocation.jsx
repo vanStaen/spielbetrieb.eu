@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import { AimOutlined } from "@ant-design/icons";
 import { Input, Row, Col, AutoComplete } from "antd";
+import { useTranslation } from "react-i18next";
 
 import { eventFormStore } from "../../eventFormStore";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
@@ -12,6 +13,7 @@ const MAP_HEIGHT = "30vh";
 
 export const InfoFormLocation = observer(() => {
   const [showMap, setShowMap] = useState(false);
+  const { t } = useTranslation();
 
   const locationOptions = spielplanStore.locations?.map((location) => {
     return {
@@ -89,13 +91,13 @@ export const InfoFormLocation = observer(() => {
 
   return (
     <div className="infoform__element">
-      <div className="infoform__title">Location</div>
+      <div className="infoform__title">{t('eventform.location')}</div>
       <Row gutter={[16, 8]}>
         <Col xs={24} sm={24} md={12}>
           <AutoComplete
             value={eventFormStore.locationName}
             options={locationOptions}
-            placeholder="Name"
+            placeholder={t('eventform.locationName')}
             onChange={locationNameHander}
             onBlur={locationNameBlurHandler}
             onFocus={() => eventFormStore.setDeactivateNav(true)}
@@ -108,7 +110,7 @@ export const InfoFormLocation = observer(() => {
         </Col>
         <Col xs={24} sm={24} md={12}>
           <Input
-            placeholder="Address"
+            placeholder={t('eventform.locationAddress')}
             onChange={locationAddressHander}
             onBlur={locationAddressBlurHander}
             onFocus={() => eventFormStore.setDeactivateNav(true)}

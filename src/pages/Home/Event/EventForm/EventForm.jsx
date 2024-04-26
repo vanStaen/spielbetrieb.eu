@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import { UserOutlined } from "@ant-design/icons";
 import { Steps } from "antd";
+import { useTranslation } from "react-i18next";
 
 import errorLogo from "../../../../img/logos/errorLogo.png";
 import { HelpButtons } from "../../../../components/HelpButtons/HelpButtons";
@@ -37,6 +38,7 @@ export const EventForm = observer(() => {
   const [dresscodesOptions, setDresscodesOptions] = useState(null);
   const [equipmentsOptions, setEquipmentsOptions] = useState(null);
   const [showDraftModal, setShowDraftModal] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     eventFormStore.resetEventForm();
@@ -235,7 +237,7 @@ export const EventForm = observer(() => {
 
   return isLoading ? (
     <div className="eventform__singupfirst">
-      <CustomSpinner text="Loading" />
+      <CustomSpinner text={t('general.loading')} />
     </div>
   ) : (
     <>
@@ -256,19 +258,19 @@ export const EventForm = observer(() => {
             className="eventform__steps"
             items={[
               {
-                title: "General Infos",
+                title: t('eventform.generalInfo'),
                 status: statusSteps[0],
               },
               {
-                title: "Artworks",
+                title: t('eventform.artworks'),
                 status: statusSteps[1],
               },
               {
-                title: "Options",
+                title: t('eventform.options'),
                 status: statusSteps[2],
               },
               {
-                title: "Publish",
+                title: t('eventform.publish'),
                 status: statusSteps[3],
               },
             ]}
