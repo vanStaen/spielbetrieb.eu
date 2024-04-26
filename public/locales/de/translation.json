@@ -12,7 +12,11 @@
 		"dark": "dunkel",
 		"light": "hell",
 		"backTomainScreen": "Zurück zur Startseite",
-		"logout": "abmelden"
+		"logout": "abmelden",
+		"loading": "Wird geladen",
+		"needToBeLogin": "Man muss hier eingeloggt sein!",
+		"clickOn": "Klick auf",
+		"inCornerToLogin": "in der obere rechte Ecke um sich einzuloggen"
 	},
 	"login": {
 		"loginSuccess": "Erfolgreich eingelogt!",
@@ -161,7 +165,32 @@
 		"next": "Weiter",
 		"previous": "Zurück",
 		"title": "Titel",
-		"DateFrom": "Datum von",
-		"DateUntil": "Datum bis"
+		"dateFrom": "Datum von",
+		"dateUntil": "Datum bis",
+		"day": "Tag",
+		"month": "Monat",
+		"year": "Jahr",
+		"hour": "Uhr",
+		"min": "Min",
+		"locationName": "Name",
+		"locationAddress": "Adresse",
+		"description": "Beschreibung",
+		"more": "mehr",
+		"location": "Veranstalltungsort",
+		"nameOfEvent": "Veranstalltungsname",
+		"validateDelete": "Wirklich löschen?",
+		"clickOrDrag": "Klicken oder ziehen Bilddatei hierher",
+		"onlyPhotoFiles": "nur jpg und png Dateien",
+		"maxFiles": "max 5 Dateien",
+		"maxSize": "5mb pro Dateien",
+		"dropHere": "Ziehen Bilddateien hierher",
+		"multipleFile": "Mehrere Dateien werden unterstützt",
+		"eventDescription": "Veranstalltungsbeschreibung",
+		"errorEventType": "Bitte Veranstaltungtype auswählen",
+		"errorEventTitle": "Ein Titel für diese Veranstaltiung wird gebraucht!",
+		"errorEventTitleShort": "Das Titel schein ein bisschen kurz!",
+		"errorEventDate": " Bitte Start und Enddatum und Uhrzeit für diese Veranstaltung eingeben",
+		"errorEventArtwork": "Mindestens eine Grafik wird für Veranstaltung Event gebraucht",
+		"errorEventDresscode": "Bitte Dresscode details angeben!"
 	}
 }

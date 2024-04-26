@@ -25,9 +25,9 @@ export const InfoFormDesc = observer(() => {
 
   return (
     <div className="infoform__element">
-      <div className="infoform__title">{t('eventform.description')}</div>
+      <div className="infoform__title">{t("eventform.description")}</div>
       <TextArea
-        placeholder={"Description of the event"}
+        placeholder={t("eventform.eventDescription")}
         value={eventFormStore.description}
         rows={8}
         onChange={descHandler}

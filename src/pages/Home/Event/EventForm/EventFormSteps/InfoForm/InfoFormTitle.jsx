@@ -14,14 +14,14 @@ export const InfoFormTitle = observer((props) => {
     const value = e.target.value;
     eventFormStore.setTitle(value);
     if (value.length === 0) {
-      eventFormStore.setTitleError("You need a title for your event!");
+      eventFormStore.setTitleError(t("eventform.errorEventTitle"));
     } else if (value.length < 4) {
-      eventFormStore.setTitleError("This title looks a bit short!");
+      eventFormStore.setTitleError(t("eventform.errorEventTitleShort"));
     } else {
       eventFormStore.setTitleError(null);
     }
     if (!eventFormStore.eventtype) {
-      eventFormStore.setEventtypeError("Please select an event type!");
+      eventFormStore.setEventtypeError(t("eventform.errorEventType"));
     }
   };
 
@@ -39,9 +39,9 @@ export const InfoFormTitle = observer((props) => {
   return (
     <>
       <div className="infoform__element">
-        <div className="infoform__title">{t('eventform.title')}</div>
+        <div className="infoform__title">{t("eventform.title")}</div>
         <Input
-          placeholder={t('eventform.nameOfEvent')}
+          placeholder={t("eventform.nameOfEvent")}
           onChange={titleHander}
           onBlur={titleBlurHandler}
           onFocus={() => eventFormStore.setDeactivateNav(true)}

@@ -12,7 +12,11 @@
 		"dark": "Dörk",
 		"light": "Light",
 		"backTomainScreen": "Back to main screen",
-		"logout": "Logout"
+		"logout": "Logout",
+		"loading": "Loading",
+		"needToBeLogin": "You need to be logged in!",
+		"clickOn": "Click on the",
+		"inCornerToLogin": "in the top right corner to log in or sign up"
 	},
 	"login": {
 		"loginSuccess": "Login was sucessfull!",
@@ -161,7 +165,32 @@
 		"next": "Next",
 		"previous": "Previous",
 		"title": "Title",
-		"DateFrom": "Date from",
-		"DateUntil": "Date until"
+		"dateFrom": "Date from",
+		"dateUntil": "Date until",
+		"day": "day",
+		"month": "month",
+		"year": "year",
+		"hour": "hour",
+		"min": "min",
+		"locationName": "Name",
+		"locationAddress": "Address",
+		"description": "Description",
+		"more": "more",
+		"location": "Location",
+		"nameOfEvent": "Name of the event",
+		"validateDelete": "Sure to delete?",
+		"clickOrDrag": "Click, or drag here an image file",
+		"onlyPhotoFiles": "jpg and png files only",
+		"maxFiles": "max 5 files",
+		"maxSize": "5mb per file",
+		"dropHere": "Drop your images here",
+		"multipleFile": "Multiple files supported",
+		"eventDescription": "Description of the event",
+		"errorEventType": "Please select an event type!",
+		"errorEventTitle": "You need a title for your event!",
+		"errorEventTitleShort": "This title looks a bit short!",
+		"errorEventDate": "Please input start and end time of your event!",
+		"errorEventArtwork": "Please upload at least one artwork for your event!",
+		"errorEventDresscode": "Please add some dresscode details!"
 	}
 }

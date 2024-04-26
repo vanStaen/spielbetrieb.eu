@@ -157,25 +157,19 @@ export const EventForm = observer(() => {
       ) {
         tempStatusSteps[eventFormStore.formStep] = "error";
         eventFormStore.eventtype === null &&
-          eventFormStore.setEventtypeError("Please select an event type!");
+          eventFormStore.setEventtypeError(t("eventform.errorEventType"));
         eventFormStore.title === null &&
-          eventFormStore.setTitleError("You need a title for your event!");
+          eventFormStore.setTitleError(t("eventform.errorEventTitle"));
         eventFormStore.fromDate === null &&
-          eventFormStore.setFromDateError(
-            "Please input start and end time of your event!",
-          );
+          eventFormStore.setFromDateError(t("eventform.errorEventDate"));
         eventFormStore.toDate === null &&
-          eventFormStore.setFromDateError(
-            "Please input start and end time of your event!",
-          );
+          eventFormStore.setFromDateError(t("eventform.errorEventDate"));
       } else {
         tempStatusSteps[eventFormStore.formStep] = "finish";
       }
     } else if (eventFormStore.formStep === 1) {
       if (eventFormStore.artworks.length === 0) {
-        eventFormStore.setArtworksError(
-          "Please upload at least one artwork for your event!",
-        );
+        eventFormStore.setArtworksError(t("eventform.errorEventArtwork"));
         tempStatusSteps[eventFormStore.formStep] = "error";
       } else {
         tempStatusSteps[eventFormStore.formStep] = "finish";
@@ -186,7 +180,7 @@ export const EventForm = observer(() => {
         eventFormStore.dresscodeDontTags.length === 0 &&
         eventFormStore.hasDresscode
       ) {
-        eventFormStore.setDresscodeErrors("Please add some dresscode details!");
+        eventFormStore.setDresscodeErrors(t("eventform.errorEventDresscode"));
         tempStatusSteps[eventFormStore.formStep] = "error";
       } else {
         tempStatusSteps[eventFormStore.formStep] = "finish";
@@ -195,9 +189,7 @@ export const EventForm = observer(() => {
     // newStep (=value)
     if (value === 3) {
       if (eventFormStore.artworks.length === 0) {
-        eventFormStore.setArtworksError(
-          "Please upload at least one artwork for your event!",
-        );
+        eventFormStore.setArtworksError(t("eventform.errorEventArtwork"));
         tempStatusSteps[1] = "error";
         tempStatusSteps[3] = "error";
       } else {
@@ -215,7 +207,7 @@ export const EventForm = observer(() => {
         eventFormStore.dresscodeDontTags.length === 0 &&
         eventFormStore.hasDresscode
       ) {
-        eventFormStore.setDresscodeErrors("Please add some dresscode details!");
+        eventFormStore.setDresscodeErrors(t("eventform.errorEventDresscode"));
         tempStatusSteps[2] = "error";
         tempStatusSteps[3] = "error";
       } else {
@@ -223,9 +215,7 @@ export const EventForm = observer(() => {
       }
     } else if (value === 2) {
       if (eventFormStore.artworks.length === 0) {
-        eventFormStore.setArtworksError(
-          "Please upload at least one artwork for your event!",
-        );
+        eventFormStore.setArtworksError(t("eventform.errorEventArtwork"));
         tempStatusSteps[1] = "error";
       } else {
         tempStatusSteps[1] = "finish";
@@ -237,7 +227,7 @@ export const EventForm = observer(() => {
 
   return isLoading ? (
     <div className="eventform__singupfirst">
-      <CustomSpinner text={t('general.loading')} />
+      <CustomSpinner text={t("general.loading")} />
     </div>
   ) : (
     <>
@@ -258,19 +248,19 @@ export const EventForm = observer(() => {
             className="eventform__steps"
             items={[
               {
-                title: t('eventform.generalInfo'),
+                title: t("eventform.generalInfo"),
                 status: statusSteps[0],
               },
               {
-                title: t('eventform.artworks'),
+                title: t("eventform.artworks"),
                 status: statusSteps[1],
               },
               {
-                title: t('eventform.options'),
+                title: t("eventform.options"),
                 status: statusSteps[2],
               },
               {
-                title: t('eventform.publish'),
+                title: t("eventform.publish"),
                 status: statusSteps[3],
               },
             ]}
@@ -310,10 +300,11 @@ export const EventForm = observer(() => {
               document.location.href = "/login";
             }}
           >
-            <div>You need to be logged in!</div>
+            <div>{t("general.needToBeLogin")}</div>
             <div>
-              Click on the <UserOutlined className="eventform__avatarlogo" />,
-              in the top right corner, to log in or sign up.
+              {t("general.clickOn")}{" "}
+              <UserOutlined className="eventform__avatarlogo" />
+              {t("general.inCornerToLogin")}.
             </div>
           </div>
         </div>

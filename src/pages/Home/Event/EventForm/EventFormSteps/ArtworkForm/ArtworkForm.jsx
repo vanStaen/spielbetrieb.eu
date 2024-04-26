@@ -131,7 +131,7 @@ export const ArtworkForm = observer(() => {
             </div>
           )}
           <Popconfirm
-            title={t('eventform.validateDelete')}
+            title={t("eventform.validateDelete")}
             onConfirm={() => deletePictureHandler(index)}
             icon={null}
           >
@@ -171,7 +171,7 @@ export const ArtworkForm = observer(() => {
                 {uploadProgress[0]} of {uploadProgress[1]}
               </>
             ) : (
-              <p className="uploadText">{t('general.loading')}</p>
+              <p className="uploadText">{t("general.loading")}</p>
             )}
           </label>
         ) : (
@@ -189,8 +189,11 @@ export const ArtworkForm = observer(() => {
                   <PictureOutlined />
                 </div>
                 <div>
-                  Click, or drag here an image file <br />
-                  <i>jpg and png files only | max 5 files | 5mb per file</i>
+                  {t("eventform.clickOrDrag")} <br />
+                  <i>
+                    {t("eventform.onlyPhotoFiles")} | {t("eventform.maxFiles")}{" "}
+                    | {t("eventform.maxSize")}
+                  </i>
                 </div>
               </>
             ) : (
@@ -199,8 +202,8 @@ export const ArtworkForm = observer(() => {
                   <FileAddOutlined />
                 </div>
                 <div>
-                  Drop your images here <br />
-                  <i>Multiple files supported</i>
+                  {t("eventform.dropHere")} <br />
+                  <i>{t("eventform.multipleFile")}</i>
                 </div>
               </>
             )}

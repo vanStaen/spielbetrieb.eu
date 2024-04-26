@@ -110,11 +110,11 @@ export const InfoFormDateTime = observer(() => {
       <div className="infoform__element">
         <Row gutter={[8, 8]}>
           <Col xs={24} sm={24} md={11}>
-            <div className="infoform__title">{t('eventform.dateFrom')}</div>
+            <div className="infoform__title">{t("eventform.dateFrom")}</div>
             <Space.Compact style={{ width: "65%" }}>
               <InputNumber
                 style={{ width: "30%" }}
-                placeholder={t('eventform.day')}
+                placeholder={t("eventform.day")}
                 value={fromDay}
                 onChange={(value) => setFromDay(value)}
                 formatter={formatDateValue}
@@ -125,7 +125,7 @@ export const InfoFormDateTime = observer(() => {
               />
               <InputNumber
                 style={{ width: "30%" }}
-                placeholder={t('eventform.month')}
+                placeholder={t("eventform.month")}
                 value={fromMonth}
                 onChange={(value) => setFromMonth(value)}
                 formatter={formatDateValue}
@@ -136,7 +136,7 @@ export const InfoFormDateTime = observer(() => {
               />
               <InputNumber
                 style={{ width: "40%" }}
-                placeholder={t('eventform.year')}
+                placeholder={t("eventform.year")}
                 value={fromYear}
                 onChange={(value) => setFromYear(value)}
                 formatter={formatDateValue}
@@ -151,7 +151,7 @@ export const InfoFormDateTime = observer(() => {
             >
               <InputNumber
                 style={{ width: "50%" }}
-                placeholder={t('eventform.hour')}
+                placeholder={t("eventform.hour")}
                 value={fromHour}
                 onChange={(value) => setFromHour(value)}
                 formatter={formatDateValue}
@@ -162,7 +162,7 @@ export const InfoFormDateTime = observer(() => {
               />
               <InputNumber
                 style={{ width: "50%" }}
-                placeholder={t('eventform.min')}
+                placeholder={t("eventform.min")}
                 value={fromMin}
                 onChange={(value) => setFromMin(value)}
                 formatter={formatDateValue}
@@ -179,11 +179,11 @@ export const InfoFormDateTime = observer(() => {
             </div>
           </Col>
           <Col xs={24} sm={24} md={11}>
-            <div className="infoform__title">{t('eventform.dateUntil')}</div>
+            <div className="infoform__title">{t("eventform.dateUntil")}</div>
             <Space.Compact style={{ width: "65%" }}>
               <InputNumber
                 style={{ width: "30%" }}
-                placeholder={t('eventform.day')}
+                placeholder={t("eventform.day")}
                 value={untilDay}
                 onChange={(value) => setUntilDay(value)}
                 formatter={formatDateValue}
@@ -194,7 +194,7 @@ export const InfoFormDateTime = observer(() => {
               />
               <InputNumber
                 style={{ width: "30%" }}
-                placeholder={t('eventform.month')}
+                placeholder={t("eventform.month")}
                 value={untilMonth}
                 onChange={(value) => setUntilMonth(value)}
                 formatter={formatDateValue}
@@ -205,7 +205,7 @@ export const InfoFormDateTime = observer(() => {
               />
               <InputNumber
                 style={{ width: "40%" }}
-                placeholder={t('eventform.year')}
+                placeholder={t("eventform.year")}
                 value={untilYear}
                 onChange={(value) => setUntilYear(value)}
                 formatter={formatDateValue}
@@ -220,7 +220,7 @@ export const InfoFormDateTime = observer(() => {
             >
               <InputNumber
                 style={{ width: "50%" }}
-                placeholder={t('eventform.hour')}
+                placeholder={t("eventform.hour")}
                 value={untilHour}
                 onChange={(value) => setUntilHour(value)}
                 formatter={formatDateValue}
@@ -231,7 +231,7 @@ export const InfoFormDateTime = observer(() => {
               />
               <InputNumber
                 style={{ width: "50%" }}
-                placeholder={t('eventform.min')}
+                placeholder={t("eventform.min")}
                 value={untilMin}
                 onChange={(value) => setUntilMin(value)}
                 formatter={formatDateValue}

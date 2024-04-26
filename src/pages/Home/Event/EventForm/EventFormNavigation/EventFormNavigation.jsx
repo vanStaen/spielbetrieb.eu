@@ -61,7 +61,7 @@ export const EventFormNavigation = observer((props) => {
         }}
         disabled={eventFormStore.formStep === 0}
       >
-        {t('eventform.previous')}
+        {t("eventform.previous")}
       </Button>
       {eventFormStore.formStep === 3 ? (
         <Button
@@ -69,7 +69,7 @@ export const EventFormNavigation = observer((props) => {
           onClick={publishHandler}
           disabled={eventFormStore.errors}
         >
-          {t('eventform.publish')}
+          {t("eventform.publish")}
         </Button>
       ) : (
         <Button
@@ -78,7 +78,7 @@ export const EventFormNavigation = observer((props) => {
             naviguateHandler(true);
           }}
         >
-          {t('eventform.next')}
+          {t("eventform.next")}
         </Button>
       )}
     </div>

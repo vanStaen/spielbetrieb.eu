@@ -178,7 +178,7 @@ export const Spielplan = observer(() => {
     <>
       {spielplanStore.isLoadingData ? (
         <div className="spielplan__spinnerContainer">
-          <CustomSpinner text="Loading events" />
+          <CustomSpinner text={`${t("general.loading")} (Events)`} />
         </div>
       ) : (
         <div
@@ -191,7 +191,7 @@ export const Spielplan = observer(() => {
           <EventFilters ref1={ref1} ref2={ref2} />
           {spielplanStore.isLoadingEvent ? (
             <div className="spielplan__noEventContainer" ref={ref3}>
-              <CustomSpinner text="Loading events" />
+              <CustomSpinner text={`${t("general.loading")} (Events)`} />
             </div>
           ) : eventsFormattedAndCleaned.length === 0 ? (
             <div className="spielplan__noEventContainer">

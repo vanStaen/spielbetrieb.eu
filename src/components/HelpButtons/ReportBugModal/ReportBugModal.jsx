@@ -129,7 +129,8 @@ export const ReportBugModal = (props) => {
         >
           {isLoading ? (
             <>
-              <LoadingOutlined style={{ marginRight: "8px" }} /> Loading ...
+              <LoadingOutlined style={{ marginRight: "8px" }} />{" "}
+              {t("general.loading")} ...
             </>
           ) : (
             "Report this bug"

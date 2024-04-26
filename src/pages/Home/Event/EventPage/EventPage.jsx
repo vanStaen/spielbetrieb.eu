@@ -167,7 +167,7 @@ export const EventPage = observer((props) => {
             </>
           ) : (
             <div className="eventpage__spinnerContainer">
-              <CustomSpinner text="Loading events" />
+              <CustomSpinner text={`${t("general.loading")} (Events)`} />
             </div>
           )}
           <HelpButtons missingEvent={true} setStartTour={setStartTour} />

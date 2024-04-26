@@ -91,13 +91,13 @@ export const InfoFormLocation = observer(() => {
 
   return (
     <div className="infoform__element">
-      <div className="infoform__title">{t('eventform.location')}</div>
+      <div className="infoform__title">{t("eventform.location")}</div>
       <Row gutter={[16, 8]}>
         <Col xs={24} sm={24} md={12}>
           <AutoComplete
             value={eventFormStore.locationName}
             options={locationOptions}
-            placeholder={t('eventform.locationName')}
+            placeholder={t("eventform.locationName")}
             onChange={locationNameHander}
             onBlur={locationNameBlurHandler}
             onFocus={() => eventFormStore.setDeactivateNav(true)}
@@ -110,7 +110,7 @@ export const InfoFormLocation = observer(() => {
         </Col>
         <Col xs={24} sm={24} md={12}>
           <Input
-            placeholder={t('eventform.locationAddress')}
+            placeholder={t("eventform.locationAddress")}
             onChange={locationAddressHander}
             onBlur={locationAddressBlurHander}
             onFocus={() => eventFormStore.setDeactivateNav(true)}

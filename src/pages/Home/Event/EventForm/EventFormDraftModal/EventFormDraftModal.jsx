@@ -152,7 +152,7 @@ export const EventFormDraftModal = observer((props) => {
     >
       {isLoading ? (
         <div className="draftmodal__loading">
-          <CustomSpinner text="Loading Drafts" />
+          <CustomSpinner text={`${t("general.loading")} (Drafts)`} />
         </div>
       ) : (
         <div className="draftmodal__select">{draftElement}</div>
