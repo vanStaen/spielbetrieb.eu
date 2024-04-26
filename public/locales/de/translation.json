@@ -187,7 +187,7 @@
 		"multipleFile": "Mehrere Dateien werden unterstützt",
 		"eventDescription": "Veranstalltungsbeschreibung",
 		"errorEventType": "Bitte Veranstaltungtype auswählen",
-		"errorEventTitle": "Ein Titel für diese Veranstaltiung wird gebraucht!",
+		"errorEventTitle": "Ein Titel für diese Veranstaltung wird gebraucht!",
 		"errorEventTitleShort": "Das Titel schein ein bisschen kurz!",
 		"errorEventDate": " Bitte Start und Enddatum und Uhrzeit für diese Veranstaltung eingeben",
 		"errorEventArtwork": "Mindestens eine Grafik wird für Veranstaltung Event gebraucht",
@@ -195,6 +195,21 @@
 		"guestMinAge": "Mindestalter der Gäste",
 		"dresscode": "Dresscode",
 		"dresscodeAllowed": "Dresscode erlaubt",
-		"dresscodeVerboten": "Dresscode verboten"
+		"dresscodeVerboten": "Dresscode verboten",
+		"tags": "Tags",
+		"pleaseSelectTags": "Bitte Tags auswählen ",
+		"links": "Links",
+		"addLinks": "Links zum Veranstalltung hinzufügen",
+		"prices": "Preisen",
+		"price": "Preis",
+		"lineup": "Line up",
+		"lineupDesc": "Line up für dieser Veranstaltung",
+		"playEquipment": "Spielmöbel",
+		"equipmentDesc": "Stehen Spielmöbel oder besondere Austattuung zu verfügung während dieser Veranstalltung?",
+		"isPrivate": "Handelt es um eine Private Veranstalltung? ",
+		"isForwardable": "Kann es an dritte weitergeleitet? ",
+		"priceType": "Preistyp",
+		"missingLocation": "Dieser VeranstaltungLocation wird als <i>To be announced</i> angekündigt",
+		"missingDesc": "Dieser Veranstaltung hat keine Beschreibung"
 	}
 }

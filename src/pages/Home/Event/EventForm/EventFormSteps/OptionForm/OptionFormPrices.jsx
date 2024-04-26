@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { observer } from "mobx-react";
 import { Select, InputNumber, Row, Col, Button } from "antd";
 import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
 import { priceOptions } from "../../../../../../lib/data/priceOptions";
@@ -9,6 +10,8 @@ import { eventFormStore } from "../../eventFormStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
 
 export const OptionFormPrices = observer((props) => {
+  const { t } = useTranslation();
+
   const priceHandler = (value, index) => {
     const tempPricesObject = eventFormStore.prices;
     tempPricesObject[index].amount = value;
@@ -44,7 +47,7 @@ export const OptionFormPrices = observer((props) => {
 
   return (
     <div className="optionform__element">
-      <div className="optionform__title">Prices</div>
+      <div className="optionform__title">{t('eventform.prices')}</div>
       <Row gutter={[16, 8]}>
         {eventFormStore.prices.map((price, index) => {
           return (
@@ -52,7 +55,7 @@ export const OptionFormPrices = observer((props) => {
               <Col xs={7} sm={7} md={4} key={`col-amount-${index}`}>
                 <InputNumber
                   prefix="€"
-                  placeholder="Price"
+                  placeholder={t('eventform.price')}
                   onChange={(event) => priceHandler(event, index)}
                   value={price.amount}
                   onFocus={() => eventFormStore.setDeactivateNav(true)}
@@ -63,7 +66,7 @@ export const OptionFormPrices = observer((props) => {
                 <Select
                   value={price.option}
                   options={priceOptions[pageStore.selectedLanguage]}
-                  placeholder="Price type"
+                  placeholder={t('eventform.priceType')}
                   onChange={(event) => priceOptionHandler(event, index)}
                   disabled={!price.amount}
                   className="optionform__priceSelect"

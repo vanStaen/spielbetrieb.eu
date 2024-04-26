@@ -1,6 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react";
 import { Select } from "antd";
+import { useTranslation } from "react-i18next";
 
 import { eventFormStore } from "../../eventFormStore";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
@@ -8,6 +9,7 @@ import { addOption } from "./addOption";
 
 export const OptionFormEventsTags = observer((props) => {
   const { tagsOptions, fetchTags } = props;
+  const { t } = useTranslation();
 
   const tagsHandler = async (value) => {
     const tagArray = await Promise.all(
@@ -29,12 +31,12 @@ export const OptionFormEventsTags = observer((props) => {
 
   return (
     <div className="optionform__element">
-      <div className="optionform__title">Tags</div>
+      <div className="optionform__title">{t('eventform.tags')}</div>
       <Select
         mode="tags"
         allowClear
         style={{ width: "100%" }}
-        placeholder="Please select some tags"
+        placeholder={t('eventform.pleaseSelectTags')}
         options={tagsOptions}
         onChange={tagsHandler}
         value={eventFormStore.eventTags}

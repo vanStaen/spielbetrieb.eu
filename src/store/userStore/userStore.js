@@ -37,6 +37,7 @@ export class UserStore {
   notifications = [];
   photos = [];
   visitors = [];
+  _id = null;
 
   constructor() {
     makeObservable(this, {
@@ -102,6 +103,8 @@ export class UserStore {
       setFollowers: action,
       followed: observable,
       setFollowed: action,
+      _id: observable,
+      set_id: action,
     });
   }
 

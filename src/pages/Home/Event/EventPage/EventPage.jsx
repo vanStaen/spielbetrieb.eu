@@ -46,7 +46,12 @@ export const EventPage = observer((props) => {
   const fetchEventData = async (id) => {
     if (id) {
       const eventFound = await getSingleEvents(id);
-      setIsNotValidated(!eventFound.validated);
+      if (userStore.isAdmin || eventFound.user._id === userStore._id) {
+        setIsNotValidated(false);
+      } else {
+        setIsNotValidated(!eventFound.validated);
+      }
+      console.log('eventFound.validated', eventFound.validated);
       setCanEdit(userStore.isAdmin || userStore._id === eventFound.user._id);
       spielplanStore.setSelectedEvent(eventFound);
     }

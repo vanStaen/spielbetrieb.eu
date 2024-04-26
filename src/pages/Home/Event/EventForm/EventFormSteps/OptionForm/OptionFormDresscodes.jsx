@@ -66,7 +66,7 @@ export const OptionFormDresscodes = observer((props) => {
   return (
     <>
       <div className="optionform__element">
-        <div className="optionform__title">{t('eventforn.dresscode')}</div>
+        <div className="optionform__title">{t('eventform.dresscode')}</div>
         <Radio.Group
           options={hasDresscode[pageStore.selectedLanguage]}
           optionType="button"

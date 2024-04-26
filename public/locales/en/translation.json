@@ -195,6 +195,21 @@
 		"guestMinAge": "Guest minimum age",
 		"dresscode": "Dresscode",
 		"dresscodeAllowed": "Dresscode allowed",
-		"dresscodeVerboten": "Dresscode forbidden"
+		"dresscodeVerboten": "Dresscode forbidden",
+		"tags": "Tags",
+		"pleaseSelectTags": "Please select some tags",
+		"links": "Links",
+		"addLinks": "Add links to your event",
+		"prices": "Prices",
+		"price": "Price",
+		"lineup": "Line up",
+		"lineupDesc": "Line up of your event, if any",
+		"playEquipment": "Play equipment",
+		"equipmentDesc": "Does your event has any furnitures or accessoires?",
+		"isPrivate": "Is this a private event?",
+		"isForwardable": "Can it be forwarded? ",
+		"priceType": "Price type",
+		"missingLocation": "The event location will be shown as <i>To be announced</i>",
+		"missingDesc": "The event location does not have a description"
 	}
 }

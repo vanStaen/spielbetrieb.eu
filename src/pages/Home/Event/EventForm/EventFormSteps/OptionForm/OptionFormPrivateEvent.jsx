@@ -1,6 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react";
 import { Radio } from "antd";
+import { useTranslation } from "react-i18next";
 
 import { eventFormStore } from "../../eventFormStore";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
@@ -8,6 +9,8 @@ import { yesNoOptions } from "../../../../../../lib/data/yesNoOptions";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
 
 export const OptionFormPrivateEvent = observer(() => {
+  const { t } = useTranslation();
+
   const isPrivateHandler = (e) => {
     const value = e.target.value;
     eventFormStore.setIsPrivate(value);
@@ -33,7 +36,7 @@ export const OptionFormPrivateEvent = observer(() => {
     <>
       {!isEventtypePrivate && (
         <div className="optionform__element">
-          <div className="optionform__title">Is this a private event?</div>
+          <div className="optionform__title">{t('eventform.isPrivate')}</div>
           <Radio.Group
             options={yesNoOptions[pageStore.selectedLanguage]}
             optionType="button"
@@ -45,7 +48,7 @@ export const OptionFormPrivateEvent = observer(() => {
       )}
       {isPrivateEvent && (
         <div className="optionform__element">
-          <div className="optionform__title">Can be it forwarded?</div>
+          <div className="optionform__title">{t('eventform.isForwardable')}</div>
           <Radio.Group
             options={yesNoOptions[pageStore.selectedLanguage]}
             optionType="button"

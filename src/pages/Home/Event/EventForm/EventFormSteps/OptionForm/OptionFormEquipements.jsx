@@ -1,12 +1,14 @@
 import React from "react";
 import { observer } from "mobx-react";
 import { Select } from "antd";
+import { useTranslation } from "react-i18next";
 
 import { eventFormStore } from "../../eventFormStore";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
 
 export const OptionFormEquipements = observer((props) => {
   const { equipmentsOptions } = props;
+  const { t } = useTranslation();
 
   const equipmentHandler = (value) => {
     eventFormStore.setEquipment(value);
@@ -18,11 +20,11 @@ export const OptionFormEquipements = observer((props) => {
 
   return (
     <div className="optionform__element">
-      <div className="optionform__title">Play equipment</div>
+      <div className="optionform__title">{t('eventform.playEquipment')}</div>
       <Select
         mode="tags"
         style={{ width: "100%" }}
-        placeholder="Does your event has any furniture/accessories?"
+        placeholder={t('eventform.equipmentDesc')}
         options={equipmentsOptions}
         onChange={equipmentHandler}
         value={eventFormStore.equipment}
