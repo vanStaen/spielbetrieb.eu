@@ -121,18 +121,36 @@ export const InfoFormDateTime = observer(() => {
                 min={1}
                 max={31}
                 onFocus={() => eventFormStore.setDeactivateNav(true)}
-                onBlur={() => eventFormStore.setDeactivateNav(false)}
+                onBlur={() => {
+                  eventFormStore.setDeactivateNav(false);
+                  if (untilDay === null) {
+                    setUntilDay(fromDay);
+                  }
+                }}
               />
               <InputNumber
                 style={{ width: "30%" }}
                 placeholder={t("eventform.month")}
                 value={fromMonth}
-                onChange={(value) => setFromMonth(value)}
+                onChange={(value) => {
+                  setFromMonth(value);
+                  if (fromYear === null) {
+                    setFromYear(now.year);
+                  }
+                  if (untilYear === null) {
+                    setUntilYear(now.year);
+                  }
+                }}
                 formatter={formatDateValue}
                 min={1}
                 max={12}
                 onFocus={() => eventFormStore.setDeactivateNav(true)}
-                onBlur={() => eventFormStore.setDeactivateNav(false)}
+                onBlur={() => {
+                  eventFormStore.setDeactivateNav(false);
+                  if (untilMonth === null) {
+                    setUntilMonth(fromMonth);
+                  }
+                }}
               />
               <InputNumber
                 style={{ width: "40%" }}
@@ -157,7 +175,12 @@ export const InfoFormDateTime = observer(() => {
                 formatter={formatDateValue}
                 min={0}
                 max={23}
-                onFocus={() => eventFormStore.setDeactivateNav(true)}
+                onFocus={() => {
+                  eventFormStore.setDeactivateNav(true);
+                  if (fromMin === null) {
+                    setFromMin(0);
+                  }
+                }}
                 onBlur={() => eventFormStore.setDeactivateNav(false)}
               />
               <InputNumber
@@ -226,7 +249,12 @@ export const InfoFormDateTime = observer(() => {
                 formatter={formatDateValue}
                 min={0}
                 max={23}
-                onFocus={() => eventFormStore.setDeactivateNav(true)}
+                onFocus={() => {
+                  eventFormStore.setDeactivateNav(true);
+                  if (untilMin === null) {
+                    setUntilMin(0);
+                  }
+                }}
                 onBlur={() => eventFormStore.setDeactivateNav(false)}
               />
               <InputNumber

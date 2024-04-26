@@ -29,7 +29,6 @@ export const PublishForm = observer(() => {
   }, []);
 
   const event = {
-    attendess: null,
     title: eventFormStore.title,
     eventtype: eventFormStore.eventtype,
     description: eventFormStore.description,

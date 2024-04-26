@@ -23,7 +23,25 @@ export const InfoForm = observer((props) => {
     const dataObject = {
       eventtype,
       title,
+      description: eventFormStore.description,
+      location: eventFormStore.locationId,
+      locationName: eventFormStore.locationName,
+      locationAddress: eventFormStore.locationAddress,
+      locationCoordinates: eventFormStore.locationCoordinates,
+      pictures: eventFormStore.artworks,
+      eventTags: eventFormStore.eventTags,
+      lineUp: eventFormStore.lineUp,
+      links: eventFormStore.links,
+      fromDate: eventFormStore.fromDate.valueOf(),
+      untilDate: eventFormStore.untilDate.valueOf(),
+      hasDresscode: eventFormStore.hasDresscode,
+      dresscodeDoTags: eventFormStore.dresscodeDoTags,
+      dresscodeDontTags: eventFormStore.dresscodeDontTags,
+      ageMin: eventFormStore.ageMin,
+      prices: JSON.stringify(eventFormStore.prices),
+      equipment: eventFormStore.equipment,
     };
+
     try {
       const res = await addEvent(dataObject);
       eventFormStore.setEventId(res._id);
