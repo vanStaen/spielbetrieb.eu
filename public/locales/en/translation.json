@@ -191,6 +191,10 @@
 		"errorEventTitleShort": "This title looks a bit short!",
 		"errorEventDate": "Please input start and end time of your event!",
 		"errorEventArtwork": "Please upload at least one artwork for your event!",
-		"errorEventDresscode": "Please add some dresscode details!"
+		"errorEventDresscode": "Please add some dresscode details!",
+		"guestMinAge": "Guest minimum age",
+		"dresscode": "Dresscode",
+		"dresscodeAllowed": "Dresscode allowed",
+		"dresscodeVerboten": "Dresscode forbidden"
 	}
 }

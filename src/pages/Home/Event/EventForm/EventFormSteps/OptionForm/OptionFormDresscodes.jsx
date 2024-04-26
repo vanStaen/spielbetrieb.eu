@@ -1,13 +1,16 @@
 import React from "react";
 import { observer } from "mobx-react";
 import { Radio, Select, Row, Col } from "antd";
+import { useTranslation } from "react-i18next";
 
 import { eventFormStore } from "../../eventFormStore";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
 import { hasDresscode } from "../../../../../../lib/data/hasDresscode";
 import { addOption } from "./addOption";
+import { pageStore } from "../../../../../../store/pageStore/pageStore";
 
 export const OptionFormDresscodes = observer((props) => {
+  const { t } = useTranslation();
   const { dresscodesOptions, fetchDresscodes } = props;
 
   const hasDresscodeHandler = (e) => {
@@ -63,9 +66,9 @@ export const OptionFormDresscodes = observer((props) => {
   return (
     <>
       <div className="optionform__element">
-        <div className="optionform__title">Dresscode</div>
+        <div className="optionform__title">{t('eventforn.dresscode')}</div>
         <Radio.Group
-          options={hasDresscode}
+          options={hasDresscode[pageStore.selectedLanguage]}
           optionType="button"
           onChange={hasDresscodeHandler}
           value={eventFormStore.hasDresscode}
@@ -80,7 +83,7 @@ export const OptionFormDresscodes = observer((props) => {
         <div className="optionform__element">
           <Row gutter={[16, 8]}>
             <Col xs={24} sm={24} md={12}>
-              <div className="optionform__title">Dresscode allowed</div>
+              <div className="optionform__title">{t('eventform.dresscodeAllowed')}</div>
               <Select
                 mode="tags"
                 allowClear
@@ -99,7 +102,7 @@ export const OptionFormDresscodes = observer((props) => {
               />
             </Col>
             <Col xs={24} sm={24} md={12}>
-              <div className="optionform__title">Dresscode forbidden</div>
+              <div className="optionform__title">{t('eventform.dresscodeVerboten')}</div>
               <Select
                 mode="tags"
                 allowClear

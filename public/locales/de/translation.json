@@ -191,6 +191,10 @@
 		"errorEventTitleShort": "Das Titel schein ein bisschen kurz!",
 		"errorEventDate": " Bitte Start und Enddatum und Uhrzeit für diese Veranstaltung eingeben",
 		"errorEventArtwork": "Mindestens eine Grafik wird für Veranstaltung Event gebraucht",
-		"errorEventDresscode": "Bitte Dresscode details angeben!"
+		"errorEventDresscode": "Bitte Dresscode details angeben!",
+		"guestMinAge": "Mindestalter der Gäste",
+		"dresscode": "Dresscode",
+		"dresscodeAllowed": "Dresscode erlaubt",
+		"dresscodeVerboten": "Dresscode verboten"
 	}
 }

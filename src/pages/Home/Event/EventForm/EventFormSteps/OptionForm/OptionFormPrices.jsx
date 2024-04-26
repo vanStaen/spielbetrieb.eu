@@ -6,6 +6,7 @@ import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
 import { priceOptions } from "../../../../../../lib/data/priceOptions";
 import { eventFormStore } from "../../eventFormStore";
+import { pageStore } from "../../../../../../store/pageStore/pageStore";
 
 export const OptionFormPrices = observer((props) => {
   const priceHandler = (value, index) => {
@@ -61,10 +62,10 @@ export const OptionFormPrices = observer((props) => {
               <Col xs={17} sm={17} md={20} key={`col-option-${index}`}>
                 <Select
                   value={price.option}
-                  options={priceOptions}
+                  options={priceOptions[pageStore.selectedLanguage]}
                   placeholder="Price type"
                   onChange={(event) => priceOptionHandler(event, index)}
-                  disabled={index === 0 || !price.amount}
+                  disabled={!price.amount}
                   className="optionform__priceSelect"
                   onFocus={() => eventFormStore.setDeactivateNav(true)}
                   onBlur={() => eventFormStore.setDeactivateNav(false)}

@@ -3,6 +3,7 @@ import { Tour } from "antd";
 import { useParams, useNavigate } from "react-router-dom";
 import { observer } from "mobx-react";
 import { ArrowLeftOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 
 import { EventPageArtwork } from "./EventPageArtwork/EventPageArtwork";
 import { EventPageDesc } from "./EventPageDesc/EventPageDesc";
@@ -25,6 +26,7 @@ export const EventPage = observer((props) => {
   const [isNotValidated, setIsNotValidated] = useState(false);
   const [canEdit, setCanEdit] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation();
 
   const keydownEventHandler = (event) => {
     const keyPressed = event.key.toLowerCase();
@@ -42,10 +44,12 @@ export const EventPage = observer((props) => {
   }, []);
 
   const fetchEventData = async (id) => {
-    const eventFound = await getSingleEvents(id);
-    setIsNotValidated(!eventFound.validated);
-    setCanEdit(userStore.isAdmin || userStore._id === eventFound.user._id);
-    spielplanStore.setSelectedEvent(eventFound);
+    if (id) {
+      const eventFound = await getSingleEvents(id);
+      setIsNotValidated(!eventFound.validated);
+      setCanEdit(userStore.isAdmin || userStore._id === eventFound.user._id);
+      spielplanStore.setSelectedEvent(eventFound);
+    }
   };
 
   useEffect(() => {
@@ -137,11 +141,10 @@ export const EventPage = observer((props) => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${
-                    pageStore.selectedTheme === "light"
-                      ? "lightColorTheme__Text"
-                      : "darkColorTheme__Text"
-                  }`}
+                  ${pageStore.selectedTheme === "light"
+            ? "lightColorTheme__Text"
+            : "darkColorTheme__Text"
+          }`}
       >
         <ArrowLeftOutlined />
       </div>

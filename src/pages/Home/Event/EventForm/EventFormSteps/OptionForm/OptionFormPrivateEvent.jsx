@@ -5,6 +5,7 @@ import { Radio } from "antd";
 import { eventFormStore } from "../../eventFormStore";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
 import { yesNoOptions } from "../../../../../../lib/data/yesNoOptions";
+import { pageStore } from "../../../../../../store/pageStore/pageStore";
 
 export const OptionFormPrivateEvent = observer(() => {
   const isPrivateHandler = (e) => {
@@ -34,7 +35,7 @@ export const OptionFormPrivateEvent = observer(() => {
         <div className="optionform__element">
           <div className="optionform__title">Is this a private event?</div>
           <Radio.Group
-            options={yesNoOptions}
+            options={yesNoOptions[pageStore.selectedLanguage]}
             optionType="button"
             onChange={isPrivateHandler}
             value={isPrivateEvent}
@@ -46,7 +47,7 @@ export const OptionFormPrivateEvent = observer(() => {
         <div className="optionform__element">
           <div className="optionform__title">Can be it forwarded?</div>
           <Radio.Group
-            options={yesNoOptions}
+            options={yesNoOptions[pageStore.selectedLanguage]}
             optionType="button"
             onChange={forwardableHandler}
             value={eventFormStore.forwardable}
