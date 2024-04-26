@@ -111,17 +111,13 @@ export const AdminBugs = () => {
         return (
           <div
             onClick={() => {
-              pageStore.setPicturesUrls([bugsUrls[index]])
+              pageStore.setPicturesUrls([bugsUrls[index]]);
               pageStore.setPictureSelected(0);
               pageStore.setShowOverlayGallery(true);
             }}
             className="screenshotCell"
           >
-            <img
-              src={bugsUrls[index]}
-              width={100}
-              height={70}
-            />
+            <img src={bugsUrls[index]} width={100} height={70} />
           </div>
         );
       },
