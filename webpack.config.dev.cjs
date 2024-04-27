@@ -24,6 +24,7 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env.API_URL": JSON.stringify("http://localhost:5017"),
       "process.env.HOST_URL": JSON.stringify("http://localhost:3001"),
+      "process.env.PROD": false,
     }),
     new CopyPlugin({
       patterns: [

@@ -20,6 +20,7 @@ import { EventPage } from "./Event/EventPage/EventPage";
 import { EventForm } from "./Event/EventForm/EventForm";
 import { GalleryOverlay } from "../../components/GalleryOverlay/GalleryOverlay";
 import { spielplanStore } from "../../store/spielplanStore/spielplanStore";
+import { Banner } from "../../components/Banner/Banner";
 
 import "./Home.less";
 
@@ -79,11 +80,16 @@ export const Home = observer((props) => {
     }
   };
 
+  console.log(process.env.PROD);
+
   return (
     <>
       <LanguageDropDown />
       <DarkModeDropDown />
       {pageStore.showOverlayGallery && <GalleryOverlay />}
+      {process.env.PROD && (
+        <Banner desc="THIS IS A BETA VERSION" id={"betaBanner"} show={true} />
+      )}
       <Header selected={page} />
       <div className="background invertColorTheme" id="background"></div>
       <div className="home__container">

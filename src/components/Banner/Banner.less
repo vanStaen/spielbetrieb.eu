@@ -1,0 +1,39 @@
+.banner__container {
+  position: sticky;
+  top: 70px;
+  z-index: 3;
+  width: 100vw;
+  font-size: 16px;
+  background-color: rgba(DarkRed, .75);
+  transition: max-height .5s linear, color , .3s linear;
+  visibility: hidden;
+
+  .banner__desc {
+    text-align: center;
+    font-weight: 300;
+    padding: 12px 40px;
+    color: rgba(white, 1);
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(DarkRed, 1);
+    }
+  }
+
+  .banner__close {
+    position: absolute;
+    height: calc(100% - 20px);
+    width: 36px;
+    padding: 10px;
+    z-index: 2;
+    right: 0;
+    top: 0;
+    color: rgba(white, .85);
+    cursor: pointer;
+    text-align: center;
+
+    &:hover {
+      color: rgba(white, 1);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+}
