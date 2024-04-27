@@ -36,7 +36,7 @@ export const Banner = observer((props) => {
 
   return (
     <>
-      <div id={id} className="banner__container">
+      <div id={id} className="banner__container" onClick={closeHandler}>
         <div className="banner__desc" id={`${id}${desc}`}>
           {desc}
         </div>
