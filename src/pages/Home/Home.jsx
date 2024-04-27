@@ -90,7 +90,7 @@ export const Home = observer((props) => {
       <Header selected={page} />
       {process.env.PROD && (
         <Banner
-          desc="THIS IS BETA VERSION * USE FOR TESTING ONLY"
+          desc="* THIS IS A BETA VERSION * USE FOR TESTING ONLY * "
           id={"betaBanner"}
           show={true}
         />
