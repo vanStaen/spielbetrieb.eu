@@ -36,7 +36,9 @@ export const HelpButtons = observer((props) => {
           className={authStore.hasAccess ? "subButton" : "subButtonDisabled"}
           icon={<BugOutlined />}
           tooltip={
-            authStore.hasAccess ? t("help.reportBug") : "Please sign up first"
+            authStore.hasAccess
+              ? t("help.reportBug")
+              : t("general.needToBeLogin")
           }
           onClick={() => setShowReportBugModal(true)}
           disabled={!authStore.hasAccess}
@@ -48,7 +50,7 @@ export const HelpButtons = observer((props) => {
             tooltip={
               authStore.hasAccess
                 ? t("help.yourEventIsMissing")
-                : "please sign up first"
+                : t("general.needToBeLogin")
             }
             disabled={!authStore.hasAccess}
             onClick={() => {

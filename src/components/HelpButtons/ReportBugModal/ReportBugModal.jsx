@@ -96,7 +96,7 @@ export const ReportBugModal = (props) => {
 
   return (
     <Modal
-      title={t("help.reportBug")}
+      title={t("help.reportBugTitle")}
       open={showReportBugModal}
       onOk={ReportBugClick}
       onCancel={cancelClickHandler}

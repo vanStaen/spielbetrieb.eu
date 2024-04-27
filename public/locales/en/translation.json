@@ -9,7 +9,7 @@
 		"or": "or",
 		"emailUs": "Email us",
 		"comingsoon": "coming soon",
-		"dark": "Dörk",
+		"dark": "Dark",
 		"light": "Light",
 		"backTomainScreen": "Back to main screen",
 		"logout": "Logout",
@@ -143,10 +143,11 @@
 	"help": {
 		"helpNeeded": "Need help?",
 		"yourEventIsMissing": "An event is missing?",
-		"reportBug": "Report Bug",
+		"reportBug": "Want to report a Bug?",
 		"showMeAround": "Let us show you around",
 		"addDesc": "You need to add a description",
 		"addScreenshot": "Automatically add a screenshot",
+		"reportBugTitle": "Report Bug",
 		"bugDesc": "Please describe this bug",
 		"bugReportSuccess": "Bug reported. Thanks for your help!"
 	},

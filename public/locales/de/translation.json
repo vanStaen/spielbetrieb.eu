@@ -9,8 +9,8 @@
 		"or": "oder",
 		"emailUs": "Schreib uns",
 		"comingsoon": "demnächst",
-		"dark": "dunkel",
-		"light": "hell",
+		"dark": "Dunkel",
+		"light": "Hell",
 		"backTomainScreen": "Zurück zur Startseite",
 		"logout": "abmelden",
 		"loading": "Wird geladen",
@@ -143,12 +143,13 @@
 	"help": {
 		"helpNeeded": "Hilfe?",
 		"yourEventIsMissing": "Eine Veranstalltung fehlt?",
-		"reportBug": "Störung melden",
+		"reportBug": "Bug melden?",
 		"showMeAround": "Wie zeigen dir wie",
 		"addDesc": "Eine Beschreibung fehlt noch",
 		"addScreenshot": "Screenshot automatisch hinzufügen",
-		"bugDesc": "Bitte beschreibe die Störung",
-		"bugReportSuccess": "Wir haben deine Störungsmeldung empfangen. Danke für deine Hilfe!"
+		"reportBugTitle": "Bug melden",
+		"bugDesc": "Bitte beschreibe der Bug",
+		"bugReportSuccess": "Wir haben dein Bug empfangen. Danke für deine Hilfe!"
 	},
 	"event": {
 		"eventDesc": "Beschreibung",
