@@ -87,10 +87,14 @@ export const Home = observer((props) => {
       <LanguageDropDown />
       <DarkModeDropDown />
       {pageStore.showOverlayGallery && <GalleryOverlay />}
-      {process.env.PROD && (
-        <Banner desc="THIS IS A BETA VERSION" id={"betaBanner"} show={true} />
-      )}
       <Header selected={page} />
+      {process.env.PROD && (
+        <Banner
+          desc="THIS IS BETA VERSION * USE FOR TESTING ONLY"
+          id={"betaBanner"}
+          show={true}
+        />
+      )}
       <div className="background invertColorTheme" id="background"></div>
       <div className="home__container">
         <div
