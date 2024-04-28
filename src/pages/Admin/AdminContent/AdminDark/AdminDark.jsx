@@ -10,7 +10,7 @@ import {
 import { EditableCell } from "../../EditableCell";
 import { getDarks } from "./getDarks";
 import { archiveDark } from "./archiveDark";
-import { editDark } from "./editDark";
+import { updateDark } from "./updateDark";
 import { addDark } from "./addDark";
 import { AdminCustomSpinner } from "../../AdminCustomSpinner/AdminCustomSpinner";
 
@@ -37,12 +37,13 @@ export const AdminDark = () => {
 
   const edit = (record) => {
     form.setFieldsValue({
-      name: "",
+      number: null,
+      title: "",
       description: "",
-      links: [],
-      address: "",
-      coordinates: "",
-      validated: false,
+      link: "",
+      artwork: "",
+      tags: [],
+      archived: false,
       ...record,
     });
     setEditingId(record._id);
@@ -65,7 +66,7 @@ export const AdminDark = () => {
       if (isNewRow) {
         await addDark(dataObject);
       } else {
-        await editDark(id, dataObject);
+        await updateDark(id, dataObject);
       }
       await fetchDarks();
       setEditingId("");
@@ -80,18 +81,28 @@ export const AdminDark = () => {
       dataIndex: "_id",
       key: "id",
       align: "center",
-      width: "50px",
+      width: "30px",
     },
     {
-      title: "Number",
+      title: "#",
       dataIndex: "number",
       key: "number",
       editable: true,
+      width: "30px",
+      align: "center",
     },
     {
       title: "Title",
       dataIndex: "title",
       key: "title",
+      width: "200px",
+      editable: true,
+    },
+    {
+      title: "Link",
+      dataIndex: "link",
+      key: "link",
+      width: "330px",
       editable: true,
     },
     {
@@ -101,27 +112,13 @@ export const AdminDark = () => {
       editable: true,
     },
     {
-      title: "Link",
-      dataIndex: "link",
-      key: "link",
-      width: "200px",
-      editable: true,
-    },
-    {
-      title: "Artwork",
-      dataIndex: "pictures",
-      key: "pictures",
-      editable: true,
-    },
-    {
       title: "Tags",
       dataIndex: "tags",
       key: "tags",
-      width: "200px",
       editable: true,
       render: (_, { tags }) => (
         <>
-          {tags.map((tag) => {
+          {tags?.map((tag) => {
             return (
               <Tag key={tag} bordered={false}>
                 {tag}
@@ -136,7 +133,7 @@ export const AdminDark = () => {
       dataIndex: "archived",
       key: "archived",
       align: "center",
-      render: (_, { archived }) => (archived ? "✅" : "✖️"),
+      render: (_, { archived }) => archived && "✅",
       editable: true,
     },
     {
@@ -189,11 +186,13 @@ export const AdminDark = () => {
       onCell: (record) => ({
         record,
         inputType:
-          col.dataIndex === "validated"
+          col.dataIndex === "archived"
             ? "boolean"
-            : col.dataIndex === "links"
-              ? "stringObject"
-              : "text",
+            : col.dataIndex === "number"
+              ? "number"
+              : col.dataIndex === "links"
+                ? "stringObject"
+                : "text",
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),

@@ -1,3 +1,44 @@
 .dark__container {
-    border: 1px solid red;
+    width: 100%;
+    min-height: calc(100vh - 70px - 60px);
+    /* Fallback for browsers that do not support Custom Properties */
+    min-height: calc(var(--vh, 1vh) * 100 - 70px - 60px); // 70px is the header
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    .dark__subContainer {
+        text-align: center;    
+        .dark__issue {
+            display: inline-flex;
+            padding: 32px 16px 0 16px;
+            .dark__cover {
+                border: none;
+                height: 100%;
+                filter: grayscale(1);
+                &:hover {
+                 filter: grayscale(0);
+                }
+            } 
+            .dark__iframe {
+                border: none;
+                width: 420px;
+                height: 590px;
+            }
+        }
+    }
 }
+
+
+@media only screen and (max-width: 675px) {
+    .dark__container {
+        .dark__subContainer {
+            .dark__issue {
+                padding: 0 0 32px 0;
+                .dark__cover {
+                    height: auto;
+                    width: 100vw;
+                }
+            }
+        }
+    }
+ }

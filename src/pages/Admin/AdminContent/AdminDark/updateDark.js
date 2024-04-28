@@ -1,10 +1,10 @@
-export async function editDark(id, dataObject) {
+export async function updateDark(id, dataObject) {
   const graphqlQuery = {
     query: `mutation ( 
                 $id: ID!,
                 $dataObject: DarkInputData!,
                 ) {
-                editDark (
+                  updateDark (
                   darkId: $id,
                   darkInput: $dataObject,
                 ) {
@@ -35,5 +35,5 @@ export async function editDark(id, dataObject) {
   if (data.errors) {
     return data.errors[0];
   }
-  return data.editDark;
+  return data.updateDark;
 }
