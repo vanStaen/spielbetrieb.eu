@@ -1,11 +1,18 @@
-export async function archiveDark(id) {
+export async function getPublicDarks() {
   const graphqlQuery = {
-    query: `mutation ( $id: ID! ) {
-                archiveDark ( darkId: $id ) 
-                }`,
-    variables: {
-      id,
-    },
+    query: `
+            {
+              getPublicDarks {
+                _id,
+                number,
+                title,
+                description,
+                pictures,
+                link,
+                tags,
+              }
+            }
+          `,
   };
 
   const headers = {
@@ -26,5 +33,5 @@ export async function archiveDark(id) {
   if (data.errors) {
     return data.errors[0];
   }
-  return data.archiveDark;
+  return data.data.getPublicDarks;
 }

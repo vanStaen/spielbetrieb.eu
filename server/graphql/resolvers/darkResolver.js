@@ -16,6 +16,14 @@ export const darkResolver = {
     });
   },
 
+  // getPublicDarks: [Dark]
+  async getPublicDarks() {
+    return await Dark.findAll({
+      order: [["number", "DESC"]],
+      where: { archived: false },
+    });
+  },
+
   // addDark(darkInput: DarkInputData!): Dark!
   async addDark(args, req) {
     if (!req.isAuth) {
@@ -61,6 +69,7 @@ export const darkResolver = {
       "pictures",
       "link",
       "tags",
+      "archived",
     ];
     updatableFields.forEach((field) => {
       if (field in args.darkInput) {
@@ -83,7 +92,7 @@ export const darkResolver = {
     }
   },
 
-  // archiveDark(darkId: ID!): Boolean!
+  // deleteDark(darkId: ID!): Boolean!
   async deleteDark(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
@@ -94,18 +103,11 @@ export const darkResolver = {
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("content")) {
       throw new Error("Unauthorized!");
     }
-    const updatedDark = await Dark.update(
-      { archived: true },
-      {
-        where: {
-          _id: args.darkId,
-        },
-        returning: true,
-        plain: true,
+    await Dark.destroy({
+      where: {
+        _id: args.darkId,
       },
-    );
-    // updatedDark[0]: number or row udpated
-    // updatedDark[1]: rows updated
-    return updatedDark[1];
+    });
+    return true;
   },
 };

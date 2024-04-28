@@ -9,7 +9,7 @@ import {
 
 import { EditableCell } from "../../EditableCell";
 import { getDarks } from "./getDarks";
-import { archiveDark } from "./archiveDark";
+import { deleteDark } from "./deleteDark";
 import { updateDark } from "./updateDark";
 import { addDark } from "./addDark";
 import { AdminCustomSpinner } from "../../AdminCustomSpinner/AdminCustomSpinner";
@@ -56,13 +56,14 @@ export const AdminDark = () => {
   };
 
   const deleteRow = async (id) => {
-    await archiveDark(id);
+    await deleteDark(id);
     await fetchDarks();
   };
 
   const save = async (id) => {
     try {
       const dataObject = await form.validateFields();
+      console.log(dataObject);
       if (isNewRow) {
         await addDark(dataObject);
       } else {
@@ -133,6 +134,7 @@ export const AdminDark = () => {
       dataIndex: "archived",
       key: "archived",
       align: "center",
+      width: "50px",
       render: (_, { archived }) => archived && "✅",
       editable: true,
     },

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 
-import { getDarks } from "../../Admin/AdminContent/AdminDark/getDarks";
+import { getPublicDarks } from "./getPublicDarks";
 
 import "./Dark.less";
 
@@ -9,7 +9,7 @@ export const Dark = observer(() => {
   const [darks, setDarks] = useState([]);
 
   const fetchAllDarks = async () => {
-    const res = await getDarks();
+    const res = await getPublicDarks();
     setDarks(res);
   };
 
@@ -24,7 +24,10 @@ export const Dark = observer(() => {
           return (
             <div key={index} className="dark__issue">
               <a href={dark.link} target="_blank" rel="noreferrer">
-                <img className="dark__cover" src={dark.description} />
+                <img
+                  className="dark__cover"
+                  src={`${dark.link}files/shot.jpg`}
+                />
               </a>
             </div>
           );

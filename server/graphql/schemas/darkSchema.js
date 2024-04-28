@@ -25,11 +25,12 @@ input DarkInputData {
 
 export const DarkQueries = `
     getDark(darkId: Int): Dark!
+    getPublicDarks: [Dark]
     getDarks: [Dark]
 `;
 
 export const DarkMutations = `
     addDark(darkInput: DarkInputData!): Dark!
     updateDark(darkId: ID!, darkInput: DarkInputData!): Dark!
-    archiveDark(darkId: ID!): Dark!
+    deleteDark(darkId: ID!): Dark!
 `;
