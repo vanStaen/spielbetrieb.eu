@@ -23,7 +23,7 @@ export const Dark = observer(() => {
         {darks.map((dark, index) => {
           return (
             <div key={index} className="dark__issue">
-              <a href={dark.link}>
+              <a href={dark.link} target="_blank" rel="noreferrer">
                 <img className="dark__cover" src={dark.description} />
               </a>
             </div>
