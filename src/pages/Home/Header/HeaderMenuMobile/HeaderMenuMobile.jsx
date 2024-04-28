@@ -54,9 +54,14 @@ export const HeaderMenuMobile = observer((props) => {
           Spielplan
         </div>
         <div className="menu__whiteline"></div>
-        <div className="menu__elementDisabled">Shop</div>
+        <div
+          className={`menu__element ${selected === "dark" && "menu__elementSelected"}`}
+          onClick={() => menuLinkClickHandle("dark")}
+        >
+          Dark Magazin
+        </div>
         <div className="menu__whiteline"></div>
-        <div className="menu__elementDisabled">Dark Magazin</div>
+        <div className="menu__elementDisabled">Shop</div>
         <div className="menu__whiteline"></div>
         <div className="menu__elementDisabled">Partner</div>
       </div>
