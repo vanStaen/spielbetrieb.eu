@@ -3,22 +3,42 @@
     min-height: calc(100vh - 70px - 60px);
     /* Fallback for browsers that do not support Custom Properties */
     min-height: calc(var(--vh, 1vh) * 100 - 70px - 60px); // 70px is the header
-    display: flex;
-    justify-content: center;
-    align-items: center;    
+
+    .dark__intro {
+        margin: 32px 32px 0 32px;
+        font-size: 16px;
+        letter-spacing: 3px;
+        font-weight: 300 !important;
+    }
+
     .dark__subContainer {
-        text-align: center;    
+        text-align: center;
+
         .dark__issue {
             display: inline-flex;
             padding: 32px 16px 0 16px;
-            .dark__cover {
-                border: none;
-                height: 100%;
-                filter: grayscale(1);
-                &:hover {
-                 filter: grayscale(0);
+
+            .dark__issueContainer {
+                display: block;
+
+                .dark__cover {
+                    border: none;
+                    height: 300px;
+                    filter: grayscale(1);
+
+                    &:hover {
+                        filter: grayscale(0);
+                    }
                 }
-            } 
+
+                .dark__issueInfo {
+                    color: rgba(white, .5);
+                    font-size: 12px;
+                    letter-spacing: 3px;
+                    font-weight: 300 !important;
+                }
+            }
+
             .dark__iframe {
                 border: none;
                 width: 420px;
@@ -34,11 +54,14 @@
         .dark__subContainer {
             .dark__issue {
                 padding: 0 0 32px 0;
-                .dark__cover {
-                    height: auto;
-                    width: 100vw;
+
+                .dark__issueContainer {
+                    .dark__cover {
+                        height: auto;
+                        width: 100vw;
+                    }
                 }
             }
         }
     }
- }
+}
