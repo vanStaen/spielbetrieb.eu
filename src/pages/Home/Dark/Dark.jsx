@@ -23,13 +23,11 @@ export const Dark = observer(() => {
       <div
         className={`dark__intro ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
       >
-        Dark is: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        <div className="dark__introTitle">DARK magazin is</div>
+        a lifestyle magazin made in Berlin, themed around BDSM fetish and kink. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
         minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+        ex ea commodo consequat.
       </div>
 
       <div className="dark__subContainer">
