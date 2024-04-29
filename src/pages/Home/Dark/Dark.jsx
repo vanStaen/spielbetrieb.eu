@@ -20,10 +20,16 @@ export const Dark = observer(() => {
 
   return (
     <div className="dark__container">
-
       <div
-        className={`dark__intro ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}>
-        Dark is: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        className={`dark__intro ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
+      >
+        Dark is: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
       </div>
 
       <div className="dark__subContainer">
@@ -37,7 +43,9 @@ export const Dark = observer(() => {
                     src={`${dark.link}files/shot.jpg`}
                   />
                 </a>
-                <div className="dark__issueInfo">{dark.description} • #{dark.number}</div>
+                <div className="dark__issueInfo">
+                  {dark.description} • #{dark.number}
+                </div>
               </div>
             </div>
           );
