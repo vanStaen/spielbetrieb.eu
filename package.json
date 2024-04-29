@@ -13,7 +13,7 @@
     "dev": "nodemon server/index.js",
     "prebuild": "rm -rf ./build",
     "build": "webpack --config webpack.config.prod.cjs --mode production",
-    "predeploy": "npm run build",
+    "predeploy": "npm run translation; npm run build",
     "deploy": "npm i; heroku git:remote -a spielbetrieb; git push heroku master; npm run backup;",
     "postdeploy": "rm -rf ./build",
     "log": "heroku logs --tail",
