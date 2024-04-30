@@ -49,15 +49,12 @@ export const Dark = observer(() => {
       <div
         className={`dark__intro ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
       >
-        <div className="dark__introTitle">{t('dark.darkIs')}</div>
+        <div className="dark__introTitle">{t("dark.darkIs")}</div>
 
-
-
-        {t('dark.darkShortDesc')}
+        {t("dark.darkShortDesc")}
       </div>
 
       <div className="dark__subContainer">
-
         <iframe
           className="dark__iframe"
           src={darks[selectedIssue]?.link}
@@ -65,8 +62,10 @@ export const Dark = observer(() => {
           allowfullscreen="true"
         ></iframe>
 
-        <div className={`dark__allIssues ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}>
-          {t('dark.allIssues')}
+        <div
+          className={`dark__allIssues ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
+        >
+          {t("dark.allIssues")}
         </div>
 
         {darks.map((dark, index) => {
@@ -81,8 +80,9 @@ export const Dark = observer(() => {
                 ) : (
                   <img
                     onClick={() => setSelectedIssue(index)}
-                    className={`dark__cover  ${index === selectedIssue ? 'halo' : 'greyed'}`}
-                    src={images[index]} />
+                    className={`dark__cover  ${index === selectedIssue ? "halo" : "greyed"}`}
+                    src={images[index]}
+                  />
                 )}
                 <div className="dark__issueInfo">
                   {dark.description} • #{dark.number}
@@ -92,6 +92,6 @@ export const Dark = observer(() => {
           );
         })}
       </div>
-    </div >
+    </div>
   );
 });
