@@ -35,14 +35,8 @@ export const Banner = observer((props) => {
   return (
     <>
       <div id={id} className="banner__container" onClick={closeHandler}>
-        <div className="banner__desc">
-          {desc}
-        </div>
-        <div
-          className="banner__close"
-          id={`${id}close`}
-          onClick={closeHandler}
-        >
+        <div className="banner__desc">{desc}</div>
+        <div className="banner__close" id={`${id}close`} onClick={closeHandler}>
           <CloseOutlined />
         </div>
       </div>
