@@ -213,5 +213,10 @@
 		"priceType": "Price type",
 		"missingLocation": "The event location will be shown as 'To be announced'",
 		"missingDesc": "The event location does not have a description"
+	},
+	"dark": {
+		"allIssues": "All the magazine issues",
+		"darkIs": "Dark is ...",
+		"darkShortDesc": "... a lifestyle magazin made in Berlin, themed around BDSM fetish and kink. "
 	}
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
+import { useTranslation } from "react-i18next";
 
 import { getPublicDarks } from "./getPublicDarks";
 import { pageStore } from "../../../store/pageStore/pageStore";
@@ -11,6 +12,8 @@ export const Dark = observer(() => {
   const [darks, setDarks] = useState([]);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState([]);
+  const [selectedIssue, setSelectedIssue] = useState(0);
+  const { t } = useTranslation();
 
   const fetchAllDarks = async () => {
     const res = await getPublicDarks();
@@ -33,7 +36,6 @@ export const Dark = observer(() => {
       await isloaded;
       const udpateLoadingStatus = loading;
       udpateLoadingStatus[index] = false;
-      console.log(udpateLoadingStatus);
       setLoading(udpateLoadingStatus);
     });
   };
@@ -47,28 +49,41 @@ export const Dark = observer(() => {
       <div
         className={`dark__intro ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
       >
-        <div className="dark__introTitle">DARK is ...</div>
-        ... a lifestyle magazin made in Berlin, themed around BDSM fetish and
-        kink. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-        ex ea commodo consequat.
+        <div className="dark__introTitle">{t('dark.darkIs')}</div>
+
+
+
+        {t('dark.darkShortDesc')}
       </div>
 
       <div className="dark__subContainer">
+
+        <iframe
+          className="dark__iframe"
+          src={darks[selectedIssue]?.link}
+          seamless="seamless"
+          allowfullscreen="true"
+        ></iframe>
+
+        <div className={`dark__allIssues ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}>
+          {t('dark.allIssues')}
+        </div>
+
         {darks.map((dark, index) => {
           return (
             <div key={index} className="dark__issue">
-              <div className="dark__issueContainer">
-                <a href={dark.link} target="_blank" rel="noreferrer">
-                  {loading[index] ? (
-                    <div className="dark__loader">
-                      <CustomSpinner />{" "}
-                    </div>
-                  ) : (
-                    <img className="dark__cover" src={images[index]} />
-                  )}
-                </a>
+              <div className={`dark__issueContainer`}>
+                {/* <a href={dark.link} target="_blank" rel="noreferrer"></a> */}
+                {loading[index] ? (
+                  <div className="dark__loader">
+                    <CustomSpinner />{" "}
+                  </div>
+                ) : (
+                  <img
+                    onClick={() => setSelectedIssue(index)}
+                    className={`dark__cover  ${index === selectedIssue ? 'halo' : 'greyed'}`}
+                    src={images[index]} />
+                )}
                 <div className="dark__issueInfo">
                   {dark.description} • #{dark.number}
                 </div>
@@ -77,19 +92,6 @@ export const Dark = observer(() => {
           );
         })}
       </div>
-    </div>
+    </div >
   );
 });
-
-/*
-<iframe
-  className="dark__iframe"
-  src={dark.link}
-  seamless="seamless"
-  scrolling="no"
-  frameBorder="0"
-  // eslint-disable-next-line react/no-unknown-property
-  allowtransparency="true"
-  allowfullscreen="true"
-></iframe>
-*/

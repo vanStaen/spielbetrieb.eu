@@ -73,7 +73,7 @@
 		"pleaseConfirmEmail2": "Bitte überprüfen Sie Ihr E-Mail-Postfach, dort finden Sie eine E-Mail von uns.",
 		"signinto": "Sich bei",
 		"signintoAfter": "einloggen",
-		"yourInvitationCode": "Ihr Einladungscode",
+		"yourInvitationCode": "Dein Einladungscode",
 		"invitationRequiredCreateAccount": "Zum Erstellen eines Kontos ist eine Einladung erforderlich",
 		"invitationCode": "Einladungscode",
 		"firstNameMissing": "Vorname fehlt",
@@ -213,5 +213,10 @@
 		"priceType": "Preistyp",
 		"missingLocation": "Dieser VeranstaltungLocation wird als 'To be announced' angekündigt",
 		"missingDesc": "Dieser Veranstaltung hat keine Beschreibung"
+	},
+	"dark": {
+		"allIssues": "Alle Zeitschriftenausgaben",
+		"darkIs": "Dark ist ...",
+		"darkShortDesc": "... ein Lifestyle-Magazin aus Berlin, das sich mit den Themen BDSM-Fetisch und Kink beschäftigt."
 	}
 }
