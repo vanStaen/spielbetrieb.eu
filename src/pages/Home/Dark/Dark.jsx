@@ -3,15 +3,39 @@ import { observer } from "mobx-react";
 
 import { getPublicDarks } from "./getPublicDarks";
 import { pageStore } from "../../../store/pageStore/pageStore";
+import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinnner";
 
 import "./Dark.less";
 
 export const Dark = observer(() => {
   const [darks, setDarks] = useState([]);
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState([]);
 
   const fetchAllDarks = async () => {
     const res = await getPublicDarks();
     setDarks(res);
+    const imageLink = res.map((dark) => `${dark.link}files/shot.jpg`);
+    const loadingStatus = res.map((_) => true);
+    setImages(imageLink);
+    setLoading(loadingStatus);
+    loadImageDark(imageLink);
+  };
+
+  const loadImageDark = (imageLink) => {
+    imageLink.map(async (link, index) => {
+      const isloaded = new Promise((resolve, reject) => {
+        const loadImg = new Image();
+        loadImg.src = link;
+        loadImg.onload = () => resolve(link);
+        loadImg.onerror = (err) => reject(err);
+      });
+      await isloaded;
+      const udpateLoadingStatus = loading;
+      udpateLoadingStatus[index] = false;
+      console.log(udpateLoadingStatus);
+      setLoading(udpateLoadingStatus);
+    });
   };
 
   useEffect(() => {
@@ -37,10 +61,13 @@ export const Dark = observer(() => {
             <div key={index} className="dark__issue">
               <div className="dark__issueContainer">
                 <a href={dark.link} target="_blank" rel="noreferrer">
-                  <img
-                    className="dark__cover"
-                    src={`${dark.link}files/shot.jpg`}
-                  />
+                  {loading[index] ? (
+                    <div className="dark__loader">
+                      <CustomSpinner />{" "}
+                    </div>
+                  ) : (
+                    <img className="dark__cover" src={images[index]} />
+                  )}
                 </a>
                 <div className="dark__issueInfo">
                   {dark.description} • #{dark.number}

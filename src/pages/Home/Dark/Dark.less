@@ -33,6 +33,7 @@
 
                 .dark__cover {
                     border: none;
+                    width: 220px;
                     height: 300px;
                     filter: grayscale(1);
 
@@ -42,9 +43,20 @@
                 }
 
                 .dark__issueInfo {
-                    color: rgba(white, .5);
+                    color: rgba(var(--themeFontColor), .5);
                     font-size: 12px;
                     letter-spacing: 3px;
+                    margin-top: 4px;
+                }
+
+                .dark__loader {
+                    width: 220px;
+                    height: 300px;
+                    background-color: rgba(var(--themeFontColor), .05);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
                 }
             }
 
