@@ -106,14 +106,16 @@ export const SignUpForm = observer((props) => {
     const username = values.username;
     const email = values.email;
     const password = values.password;
+    const birthday = values.birthday;
     try {
-      // TODO add birthday
+      // TODO test birthday (float)
       const response = await postAddUser(
         firstname,
         lastname,
         username,
         email,
         password,
+        birthday,
         pageStore.selectedLanguage,
       );
       if (!response.errors) {
