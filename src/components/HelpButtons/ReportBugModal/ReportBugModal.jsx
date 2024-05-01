@@ -18,7 +18,7 @@ export const ReportBugModal = (props) => {
   const { TextArea } = Input;
   const [showError, setShowError] = useState(null);
   const [desc, setDesc] = useState(null);
-  const [addScreenshot, setAddScreenshot] = useState(true);
+  const [addScreenshot, setAddScreenshot] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const cancelClickHandler = () => {
