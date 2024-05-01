@@ -1,28 +1,89 @@
 .dark__container {
-    min-width: 100%;
+    max-width: 1200px;
     min-height: calc(100vh - 70px - 60px);
     /* Fallback for browsers that do not support Custom Properties */
     min-height: calc(var(--vh, 1vh) * 100 - 70px - 60px); // 70px is the header
+
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items: center;    
+
+    font-size: 14px;
+    letter-spacing: 3px;
+    font-weight: 300;
+
+    .dark__intro {
+        margin: 32px 32px 0 32px;
+        text-align: justify;
+        text-justify: inter-word;
+        line-height: 22px;
+
+        .dark__introTitle {
+            font-size: 16px;
+            opacity: .5;
+            padding-left: 16px;
+            padding-bottom: 16px;
+        }
+    }
+
     .dark__subContainer {
-        text-align: center;    
+        text-align: center;
+        padding-bottom: 32px;
+
+        .dark__iframe {
+            padding: 32px 0;
+            border: none;
+            width: 100%;
+            height: 60vh;
+        }
+
+        .dark__allIssues {
+            padding: 32px 0;
+        }
+
         .dark__issue {
             display: inline-flex;
-            padding: 32px 16px 0 16px;
-            .dark__cover {
-                border: none;
-                height: 100%;
-                filter: grayscale(1);
-                &:hover {
-                 filter: grayscale(0);
+            padding: 0 16px;
+
+            .dark__issueContainer {
+                display: block;
+
+                .dark__cover {
+                    border: none;
+                    width: 220px;
+                    height: 300px;
+                    cursor: pointer;
                 }
-            } 
-            .dark__iframe {
-                border: none;
-                width: 420px;
-                height: 590px;
+
+                .dark__issueInfo {
+                    color: rgba(var(--themeFontColor), .5);
+                    font-size: 12px;
+                    letter-spacing: 3px;
+                    margin-top: 4px;
+                }
+
+                .dark__loader {
+                    width: 220px;
+                    height: 300px;
+                    background-color: rgba(var(--themeFontColor), .05);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .greyed {
+                    filter: grayscale(1);
+
+                    &:hover {
+                        filter: grayscale(0);
+                    }
+                }
+
+                .halo {
+                    box-shadow: 0 0 35px 12px rgba(var(--themeFontColor), .75);
+                }
             }
         }
     }
@@ -31,14 +92,38 @@
 
 @media only screen and (max-width: 675px) {
     .dark__container {
+        .dark__intro {
+            font-size: 12px;
+            line-height: 20px;
+            padding-bottom: 8px;
+
+            .dark__introTitle {
+                font-size: 14px;
+                padding-bottom: 8px;
+                padding-left: 0;
+            }
+        }
+
         .dark__subContainer {
             .dark__issue {
-                padding: 0 0 32px 0;
-                .dark__cover {
-                    height: auto;
-                    width: 100vw;
+                padding-bottom: 16px;
+
+                .dark__issueContainer {
+                    .dark__issueInfo {
+                        color: rgba(white, .75);
+                        font-size: 14px;
+                    }
+
+                    .dark__cover {
+                        height: auto;
+                        width: 40vw;
+                    }
+
+                    .greyed {
+                        filter: grayscale(0);
+                    }
                 }
             }
         }
     }
- }
+}

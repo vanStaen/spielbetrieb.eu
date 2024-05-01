@@ -86,6 +86,7 @@ export const bugResolver = {
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
     }
+    // TODO : Delete all bug pictures (screenshots)
     await Bug.destroy({
       where: {
         _id: args.bugId,

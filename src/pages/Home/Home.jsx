@@ -80,8 +80,6 @@ export const Home = observer((props) => {
     }
   };
 
-  console.log(process.env.PROD);
-
   return (
     <>
       <LanguageDropDown />
