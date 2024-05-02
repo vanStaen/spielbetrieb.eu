@@ -6,6 +6,7 @@ export const postAddUser = async (
   userName,
   email,
   password,
+  birthday,
   language,
 ) => {
   const requestBody = {
@@ -13,7 +14,8 @@ export const postAddUser = async (
                        $lastName: String, 
                        $userName: String, 
                        $email: String, 
-                       $password: String
+                       $password: String,
+                       $birthday: Float,
                        $language: String ) {
                 addUser (
                     userInput: { 
@@ -21,7 +23,8 @@ export const postAddUser = async (
                         lastName: $lastName,
                         userName: $userName, 
                         email: $email, 
-                        password: $password, 
+                        password: $password,
+                        birthday: $birthday, 
                         language: $language,
                         }
                     ) {
@@ -35,6 +38,7 @@ export const postAddUser = async (
       userName,
       email,
       password,
+      birthday,
       language,
     },
   };

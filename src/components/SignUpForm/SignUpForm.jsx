@@ -27,6 +27,7 @@ import { postUsernameTaken } from "./postUsernameTaken";
 import { postVerifyEmailLink } from "../LoginForm/postVerifyEmailLink";
 import { postAddUser } from "./postAddUser";
 import { pageStore } from "../../store/pageStore/pageStore";
+import { signUpStore } from "./signUpStore";
 
 import "./SignUpForm.css";
 
@@ -96,6 +97,7 @@ export const SignUpForm = observer((props) => {
       }
       setIsValidBirthday("success");
       setErrorMsgBirthday(null);
+      signUpStore.setBirthday(birthday);
     }
   };
 
@@ -106,9 +108,8 @@ export const SignUpForm = observer((props) => {
     const username = values.username;
     const email = values.email;
     const password = values.password;
-    const birthday = values.birthday;
+    const birthday = values.birthday.valueOf();
     try {
-      // TODO test birthday (float)
       const response = await postAddUser(
         firstname,
         lastname,
@@ -143,6 +144,7 @@ export const SignUpForm = observer((props) => {
       });
       console.log(error);
     }
+    signUpStore.resetAll();
     setIsLoading(false);
   };
 
@@ -160,6 +162,11 @@ export const SignUpForm = observer((props) => {
         className="signup__form"
         initialValues={{
           code: props.inviteCode,
+          firstname: signUpStore.firstname,
+          lastname: signUpStore.lastname,
+          birthday: dayjs(signUpStore.birthday),
+          username: signUpStore.username,
+          email: signUpStore.email,
         }}
         onFinish={submitHandler}
       >
@@ -199,7 +206,12 @@ export const SignUpForm = observer((props) => {
                 },
               ]}
             >
-              <Input placeholder={t("login.firstName")} />
+              <Input
+                placeholder={t("login.firstName")}
+                onChange={(e) => {
+                  signUpStore.setFirstname(e.target.value);
+                }}
+              />
             </Form.Item>
           </Col>
           <Col span={12}>
@@ -212,7 +224,12 @@ export const SignUpForm = observer((props) => {
                 },
               ]}
             >
-              <Input placeholder={t("login.lastName")} />
+              <Input
+                placeholder={t("login.lastName")}
+                onChange={(e) => {
+                  signUpStore.setLastname(e.target.value);
+                }}
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -283,6 +300,9 @@ export const SignUpForm = observer((props) => {
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
                   placeholder={t("login.pickUsername")}
+                  onChange={(e) => {
+                    signUpStore.setUsername(e.target.value);
+                  }}
                 />
               </Form.Item>
             </Tooltip>
@@ -302,6 +322,9 @@ export const SignUpForm = observer((props) => {
           <Input
             prefix={<MailOutlined className="site-form-item-icon" />}
             placeholder="Email"
+            onChange={(e) => {
+              signUpStore.setEmail(e.target.value);
+            }}
           />
         </Form.Item>
 

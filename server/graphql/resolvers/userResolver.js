@@ -68,9 +68,10 @@ export const userResolver = {
         wishes: args.userInput.wishes,
         interests: args.userInput.interests,
         language: args.userInput.language,
+        birthday: args.userInput.birthday,
         lastActive: Date.now(),
       });
-      await mailService.mailService.emailVerify(email);
+      await mailService.emailVerify(email);
       return await user.save();
     } catch (err) {
       console.log(err);
