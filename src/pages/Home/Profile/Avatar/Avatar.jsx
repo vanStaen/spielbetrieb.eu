@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
-import { Tooltip, notification, Spin } from "antd";
+import { notification, Spin } from "antd";
 import { UserOutlined, EditOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
 import { userStore } from "../../../../store/userStore/userStore";
 import { profileStore } from "../../../../store/profileStore/profileStore";
+import { postPicture } from "../../../../helpers/picture/postPicture";
+import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
 import { updateAvatar } from "./updateAvatar";
 
 import "./Avatar.css";
@@ -15,9 +16,20 @@ export const Avatar = observer(() => {
   const { t } = useTranslation();
   const [isUploading, setIsUploading] = useState(false);
   const isStranger = userStore.userName !== profileStore.userName;
+  const [avatarPic, setAvatarPic] = useState(null);
+
+  const getAvatarUrl = async (path) => {
+    const url = await getPictureUrl(path, "users");
+    setAvatarPic(url);
+  };
+
+  useEffect(() => {
+    isStranger
+      ? getAvatarUrl(profileStore.avatar)
+      : getAvatarUrl(userStore.avatar);
+  }, []);
 
   const fileSelectHandler = async (event) => {
-    console.log("fileSelectHandler");
     setIsUploading(true);
     changeAvatarSubmitHandler(event.target.files[0]);
   };
@@ -26,30 +38,21 @@ export const Avatar = observer(() => {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      const res = await axios.post(process.env.API_URL + "/upload", formData);
-      const mediaUrl = res.data.imageUrl;
-      console.log(res.data);
-      /* updateAvatar(mediaUrl)
-        .then(() => {
-          notification.success({
-            message: t("profile.avatarUpdateSuccess"),
-            placement: "bottomRight",
-          });
-          userStore.setAvatar(mediaUrl);
-          console.log("Success!");
-        })
-        .catch((error) => {
-          notification.error({
-            message: t("profile.avatarUpdateFail"),
-            placement: "bottomRight",
-          });
-          console.log(error.message);
-        }); */
+      const res = await postPicture(file, "users");
+      await updateAvatar(res.path);
+      notification.success({
+        message: t("profile.avatarUpdateSuccess"),
+        placement: "bottomRight",
+        className: "customNotification",
+      });
+      userStore.setAvatar(res.path);
+      getAvatarUrl(res.path);
       setIsUploading(false);
     } catch (err) {
       notification.error({
         message: t("profile.avatarUpdateFail"),
         placement: "bottomRight",
+        className: "customNotification",
       });
       setIsUploading(false);
       console.log(err);
@@ -70,10 +73,10 @@ export const Avatar = observer(() => {
           style={
             isStranger
               ? profileStore.avatar && {
-                  backgroundImage: "url(" + profileStore.avatar + ")",
+                  backgroundImage: "url(" + avatarPic + ")",
                 }
               : userStore.avatar && {
-                  backgroundImage: "url(" + userStore.avatar + ")",
+                  backgroundImage: "url(" + avatarPic + ")",
                 }
           }
         >

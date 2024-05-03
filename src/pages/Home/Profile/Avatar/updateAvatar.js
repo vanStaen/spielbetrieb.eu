@@ -1,20 +1,20 @@
 import axios from "axios";
 import { notification } from "antd";
 
-export async function updateAvatar(mediaUrl) {
+export async function updateAvatar(path) {
   const requestBody = {
     query: `
-    mutation ($mediaUrl: String) {
+    mutation ($path: String) {
       updateUser(
         userInput: {
-          avatar: $mediaUrl,
+          avatar: $path,
         }
       ) {
         avatar,
       }
     }`,
     variables: {
-      mediaUrl,
+      path,
     },
   };
 

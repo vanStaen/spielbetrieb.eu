@@ -16,6 +16,7 @@ import { userStore } from "../../store/userStore/userStore";
 import { pageStore } from "../../store/pageStore/pageStore";
 import { authStore } from "../../store/authStore/authStore";
 import { AddToHomeScreen } from "../AddToHomeScreen/AddToHomeScreen";
+import { getPictureUrl } from "../../helpers/picture/getPictureUrl";
 
 import "./Menu.less";
 
@@ -23,6 +24,16 @@ export const Menu = observer(() => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [showOpenLock, setShowOpenLock] = useState(false);
+  const [avatarPic, setAvatarPic] = useState(null);
+
+  const getAvatarUrl = async (path) => {
+    const url = await getPictureUrl(path, "users");
+    setAvatarPic(url);
+  };
+
+  useEffect(() => {
+    getAvatarUrl(userStore.avatar);
+  }, [userStore.avatar]);
 
   useEffect(() => {
     if (pageStore.showMenu) {
@@ -73,7 +84,13 @@ export const Menu = observer(() => {
         onClick={avatarClickhandle}
       >
         <Avatar
-          src={!userStore.isLoading && <UserOutlined className="menu__icon" />}
+          src={
+            !userStore.isLoading && userStore.avatar ? (
+              <img src={avatarPic} className="menu__icon" />
+            ) : (
+              <UserOutlined className="menu__icon" />
+            )
+          }
           icon={
             userStore.isLoading && (
               <Spin className="menu__spinner" indicator={spinIcon} />

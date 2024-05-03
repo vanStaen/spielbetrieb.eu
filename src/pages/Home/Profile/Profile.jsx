@@ -26,6 +26,7 @@ export const Profile = observer(() => {
   }, [userStore.isLoading, userStore.userName]);
 
   useEffect(() => {
+    // eslint-disable-next-line no-unused-expressions
     async () => {
       if (authStore.hasAccess === false) {
         const hasAccess = await authStore.checkAccess();
