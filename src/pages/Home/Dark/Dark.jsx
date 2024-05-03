@@ -46,13 +46,13 @@ export const Dark = observer(() => {
 
   return (
     <div className="dark__container">
-      <div
+      {/* <div
         className={`dark__intro ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
       >
         <div className="dark__introTitle">{t("dark.darkIs")}</div>
 
         {t("dark.darkShortDesc")}
-      </div>
+  </div> */}
 
       <div className="dark__subContainer">
         <iframe
