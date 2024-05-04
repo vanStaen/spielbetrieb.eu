@@ -7,7 +7,7 @@
     border: 1px solid #aaaaaa;
     width: 200px;
     height: 200px;
-    border-radius: 3px;
+    border-radius: 5px;
     display: inline-block;
     position: relative;
     vertical-align: top;
@@ -32,16 +32,6 @@
     }
 
     .avatar__editAvatar {
-      position: absolute;
-      bottom: 0px;
-      font-size: 22px;
-      color: rgba(var(--themeFontColor), .5);
-      width: 200px;
-      text-align: right;
-      &:hover {
-        color: rgba(var(--themeFontColor), .75);
-      }
-
       .avatar__form {
         width: 25px;
         margin-left: 175px;
@@ -56,7 +46,22 @@
         }
       
         .avatar__inputfile+label {
+          position: absolute;
+          left: 0;
           cursor: pointer;
+          font-size: 50px;
+          width: 200px;
+          height: 200px;
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color: rgba(black, 0);
+          &:hover {
+            background-color: rgba(white, .25);
+            color: rgba(black, 1);
+          }
         }
       }
     }
