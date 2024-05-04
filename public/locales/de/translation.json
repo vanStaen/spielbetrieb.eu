@@ -17,7 +17,8 @@
 		"needToBeLogin": "Man muss hier eingeloggt sein!",
 		"clickOn": "Klick auf",
 		"inCornerToLogin": "in der obere rechte Ecke um sich einzuloggen",
-		"pendingReview": "zur Überprüfung"
+		"pendingReview": "zur Überprüfung",
+		"youGotMail": "Du hast Post!"
 	},
 	"login": {
 		"loginSuccess": "Erfolgreich eingelogt!",

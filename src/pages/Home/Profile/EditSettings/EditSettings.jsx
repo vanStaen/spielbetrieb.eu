@@ -52,12 +52,15 @@ export const EditSettings = observer(() => {
   const resetPasswordLink = async () => {
     try {
       await postSendRecoverLink(userStore.email);
-      notification.success({
-        message: t("login.recoverEmailSent"),
+      notification.open({
+        duration: 0,
+        message: <TitleRecoverEmailSent />,
+        description: <DescRecoverEmailSent />,
         placement: "bottomRight",
+        className: "customNotification",
       });
     } catch (error) {
-      notification.warn({
+      notification.error({
         message: error.message,
         placement: "bottomRight",
       });
@@ -290,3 +293,13 @@ export const EditSettings = observer(() => {
     </div>
   );
 });
+
+const TitleRecoverEmailSent = () => {
+  const { t } = useTranslation();
+  return <>✅ {t("general.youGotMail")}</>;
+};
+
+const DescRecoverEmailSent = () => {
+  const { t } = useTranslation();
+  return <>{t("login.recoverEmailSent")}</>;
+};

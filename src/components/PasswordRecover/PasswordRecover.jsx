@@ -32,14 +32,16 @@ export const PasswordRecover = observer((props) => {
       setEmailDoNotExist("success");
       try {
         await postSendRecoverLink(email);
-        notification.success({
-          message: t("login.recoverEmailSent"),
+        notification.open({
+          duration: 0,
+          message: <TitleRecoverEmailSent />,
+          description: <DescRecoverEmailSent />,
           placement: "bottomRight",
           className: "customNotification",
         });
         props.setIsRecovery(false);
       } catch (error) {
-        notification.warn({
+        notification.error({
           message: error.message,
           placement: "bottomRight",
           className: "customNotification",
@@ -110,3 +112,13 @@ export const PasswordRecover = observer((props) => {
     </div>
   );
 });
+
+const TitleRecoverEmailSent = () => {
+  const { t } = useTranslation();
+  return <>✅ {t("general.youGotMail")}</>;
+};
+
+const DescRecoverEmailSent = () => {
+  const { t } = useTranslation();
+  return <>{t("login.recoverEmailSent")}</>;
+};

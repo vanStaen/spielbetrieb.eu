@@ -201,9 +201,10 @@ const ErrorDescNotVerified = (props) => {
       className="justify"
       onClick={() => {
         postVerifyEmailLink(props.emailOrUsername);
-        notification.success({
+        notification.open({
           duration: 0,
-          message: t("login.recoverEmailSent"),
+          message: <TitleRecoverEmailSent />,
+          description: <DescRecoverEmailSent />,
           placement: "bottomRight",
           className: "customNotification",
         });
@@ -246,4 +247,14 @@ const ErrorUserSuspended = () => {
 const ErrorDescUserSuspended = (props) => {
   const { t } = useTranslation();
   return <>{t("login.userSuspendedDesc")}</>;
+};
+
+const TitleRecoverEmailSent = () => {
+  const { t } = useTranslation();
+  return <>✅ {t("general.youGotMail")}</>;
+};
+
+const DescRecoverEmailSent = () => {
+  const { t } = useTranslation();
+  return <>{t("login.recoverEmailSent")}</>;
 };

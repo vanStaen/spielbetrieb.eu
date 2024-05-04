@@ -40,7 +40,7 @@ export const Avatar = observer(() => {
     try {
       const res = await postPicture(file, "users");
       await updateAvatar(res.path);
-      notification.success({
+      notification.open({
         message: t("profile.avatarUpdateSuccess"),
         placement: "bottomRight",
         className: "customNotification",

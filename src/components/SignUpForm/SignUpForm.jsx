@@ -121,7 +121,7 @@ export const SignUpForm = observer((props) => {
       );
       if (!response.errors) {
         await postVerifyEmailLink(email);
-        notification.warning({
+        notification.open({
           message: <ErrorTitleNotVerified />,
           description: <ErrorDescNotVerified />,
           placement: "bottomRight",

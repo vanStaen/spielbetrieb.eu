@@ -61,7 +61,7 @@ export const UserNameUpdate = () => {
     if (response) {
       userStore.setUserName(newUserName);
       userStore.setUsernameChange(userStore.usernameChange + 1);
-      notification.success({
+      notification.open({
         message: (
           <>
             {t("profile.yourNewUserName")} <b>{newUserName}</b>{" "}
