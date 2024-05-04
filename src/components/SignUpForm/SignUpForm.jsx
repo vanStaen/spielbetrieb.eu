@@ -164,7 +164,7 @@ export const SignUpForm = observer((props) => {
           code: props.inviteCode,
           firstname: signUpStore.firstname,
           lastname: signUpStore.lastname,
-          birthday: dayjs(signUpStore.birthday),
+          birthday: signUpStore.birthday && dayjs(signUpStore.birthday),
           username: signUpStore.username,
           email: signUpStore.email,
         }}
@@ -256,6 +256,7 @@ export const SignUpForm = observer((props) => {
             >
               <DatePicker
                 onChange={changeBirthdayHandler}
+                className="signup__datePicker"
                 format={{
                   format: dateFormat,
                   type: "mask",

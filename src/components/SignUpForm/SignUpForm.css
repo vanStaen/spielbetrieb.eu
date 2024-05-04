@@ -33,6 +33,10 @@
   background: #43464D;
 }
 
+.signup__datePicker {
+  width: 100%;
+}
+
 .signup__full .signup__header {
   width: 400px;
   font-weight: 200;
