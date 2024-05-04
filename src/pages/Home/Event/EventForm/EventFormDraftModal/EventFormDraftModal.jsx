@@ -10,7 +10,7 @@ import { getAllDraftEvents } from "./getAllDraftEvents";
 import { eventFormStore } from "../eventFormStore";
 import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { getPictureUrl } from "../../../../../helpers/picture/getPictureUrl";
-import { CustomSpinner } from "../../../../../components/CustomSpinner/CustomSpinnner";
+import { CustomSpinner } from "../../../../../components/CustomSpinner/CustomSpinner";
 
 import "./EventFormDraftModal.less";
 

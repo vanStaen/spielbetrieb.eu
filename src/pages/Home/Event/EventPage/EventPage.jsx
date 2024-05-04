@@ -13,7 +13,7 @@ import { pageStore } from "../../../../store/pageStore/pageStore";
 import { userStore } from "../../../../store/userStore/userStore";
 import { getSingleEvents } from "../getSingleEvents";
 import { HelpButtons } from "../../../../components/HelpButtons/HelpButtons";
-import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinnner";
+import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinner";
 import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
 
 import "./EventPage.less";

@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 import { Tour } from "antd";
 
-import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinnner";
+import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
 import { EventCard } from "./EventCard/EventCard";
 import { nameParser } from "../../../helpers/dev/nameParser";
 import { spielplanStore } from "../../../store/spielplanStore/spielplanStore";

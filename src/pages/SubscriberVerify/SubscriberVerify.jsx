@@ -5,7 +5,7 @@ import { Tooltip } from "antd";
 import { observer } from "mobx-react";
 
 import { postSubscriberVerified } from "./postSubscriberVerified";
-import { CustomSpinner } from "../../components/CustomSpinner/CustomSpinnner";
+import { CustomSpinner } from "../../components/CustomSpinner/CustomSpinner";
 import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
 import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";

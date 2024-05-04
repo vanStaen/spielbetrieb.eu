@@ -7,7 +7,7 @@ import { observer } from "mobx-react";
 
 import { postTokenVerify } from "./postTokenVerify";
 import { postChangePassword } from "./postChangePassword";
-import { CustomSpinner } from "../../components/CustomSpinner/CustomSpinnner";
+import { CustomSpinner } from "../../components/CustomSpinner/CustomSpinner";
 import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
 import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 import { pageStore } from "../../store/pageStore/pageStore";

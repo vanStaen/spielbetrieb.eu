@@ -22,7 +22,7 @@ import { getAllEventtypes } from "../../../../store/spielplanStore/getAllEventty
 import { isMobileCheck } from "../../../../helpers/dev/checkMobileTablet";
 import { nameParser } from "../../../../helpers/dev/nameParser";
 import { EventFormNavigation } from "./EventFormNavigation/EventFormNavigation";
-import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinnner";
+import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinner";
 import { EventFormDraftModal } from "./EventFormDraftModal/EventFormDraftModal";
 import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 

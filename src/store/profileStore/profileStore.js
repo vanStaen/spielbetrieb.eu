@@ -164,8 +164,8 @@ export class ProfileStore {
           this.setLastActive(profileData.lastActive);
           this.setProfilSettings(JSON.parse(profileData.profilSettings));
         }
-        this.setIsLoading(false);
         this.setError(null);
+        this.setIsLoading(false);
       }
     } catch (error) {
       this.setError(error);

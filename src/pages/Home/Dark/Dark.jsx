@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { getPublicDarks } from "./getPublicDarks";
 import { pageStore } from "../../../store/pageStore/pageStore";
-import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinnner";
+import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
 
 import "./Dark.less";
 
