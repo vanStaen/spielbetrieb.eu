@@ -1,6 +1,6 @@
 import { sequelize, DataTypes } from "../lib/sequelizedb.js";
 
-export const Usersfollowers = sequelize.sequelize.define("usersfollowers", {
+export const Usersfollower = sequelize.sequelize.define("usersfollower", {
   _id: {
     type: DataTypes.INTEGER,
     field: "_id",

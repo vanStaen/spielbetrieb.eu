@@ -14,5 +14,6 @@ export const getHasAccess = async () => {
     }
   }
 
+  console.log("response.data.access", response.data.access);
   return response.data.access;
 };

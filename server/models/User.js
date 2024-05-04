@@ -1,6 +1,6 @@
 import { sequelize, DataTypes } from "../lib/sequelizedb.js";
-import { Usersfriends } from "./Usersfriends.js";
-import { Usersfollowers } from "./Usersfollowers.js";
+import { Usersfriend } from "./Usersfriend.js";
+import { Usersfollower } from "./Usersfollower.js";
 
 export const User = sequelize.sequelize.define("user", {
   _id: {
@@ -129,23 +129,23 @@ export const User = sequelize.sequelize.define("user", {
 User.belongsToMany(User, {
   as: "friends",
   foreignKey: "user_id",
-  through: Usersfriends,
+  through: Usersfriend,
 });
 
 User.belongsToMany(User, {
   as: "userFriends",
   foreignKey: "friend_id",
-  through: Usersfriends,
+  through: Usersfriend,
 });
 
 User.belongsToMany(User, {
   as: "followers",
   foreignKey: "follower_id",
-  through: Usersfollowers,
+  through: Usersfollower,
 });
 
 User.belongsToMany(User, {
   as: "followed",
   foreignKey: "followed_id",
-  through: Usersfollowers,
+  through: Usersfollower,
 });
