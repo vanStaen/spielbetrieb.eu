@@ -27,8 +27,10 @@ export const Menu = observer(() => {
   const [avatarPic, setAvatarPic] = useState(null);
 
   const getAvatarUrl = async (path) => {
-    const url = await getPictureUrl(path, "users");
-    setAvatarPic(url);
+    if (path) {
+      const url = await getPictureUrl(path, "users");
+      setAvatarPic(url);
+    }
   };
 
   useEffect(() => {
@@ -84,6 +86,7 @@ export const Menu = observer(() => {
         onClick={avatarClickhandle}
       >
         <Avatar
+          shape="square"
           src={
             !userStore.isLoading && userStore.avatar ? (
               <img src={avatarPic} className="menu__icon" />
