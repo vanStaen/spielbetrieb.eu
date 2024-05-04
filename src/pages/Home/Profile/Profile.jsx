@@ -33,6 +33,7 @@ export const Profile = observer(() => {
   useEffect(() => {
     const username = params.username ? params.username : userStore.userName;
     username && profileStore.fetchProfileData(username);
+    // TODO : user doesnt exist
   }, [userStore.isLoading, userStore.userName]);
 
   useEffect(() => {

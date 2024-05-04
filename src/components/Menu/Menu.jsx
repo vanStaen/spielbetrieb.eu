@@ -79,6 +79,11 @@ export const Menu = observer(() => {
     }
   };
 
+  const profileClickHandler = () => {
+    userStore.setIsLoading(true);
+    navigate("/profile");
+  };
+
   return (
     <>
       <div
@@ -114,13 +119,9 @@ export const Menu = observer(() => {
             className={`menu__container ${pageStore.selectedTheme === "light" ? "lightColorTheme__Menu" : "darkColorTheme__Menu"}`}
             id="menuContainer"
           >
-            <div className="menu__element">
-              <Link className="link menu__link" to="/profile/">
-                <UserOutlined
-                  style={{ position: "relative", bottom: "-2px" }}
-                />
-                &nbsp; Profile
-              </Link>
+            <div className="menu__element" onClick={profileClickHandler}>
+              <UserOutlined style={{ position: "relative", bottom: "-2px" }} />
+              &nbsp; Profile
             </div>
             <div className="menu__elementDisabled">
               <SettingOutlined
