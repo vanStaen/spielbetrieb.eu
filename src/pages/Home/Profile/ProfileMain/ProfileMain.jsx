@@ -9,9 +9,5 @@ import "./ProfileMain.less";
 export const ProfileMain = observer((props) => {
   const { t } = useTranslation();
 
-  return (
-    <div className="profil__mainContainer">
-      here will come some history/wallpaper feature
-    </div>
-  );
+  return <div className="profil__mainContainer">{/* Placeholder */}</div>;
 });
