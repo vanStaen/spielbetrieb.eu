@@ -41,7 +41,8 @@ export const Avatar = observer(() => {
       const res = await postPicture(file, "users");
       await updateAvatar(res.path);
       notification.open({
-        message: t("profile.avatarUpdateSuccess"),
+        message: <TitleAvatarUpdateSuccess />,
+        description: <DescAvatarUpdateSuccess />,
         placement: "bottomRight",
         className: "customNotification",
       });
@@ -111,3 +112,17 @@ export const Avatar = observer(() => {
     </div>
   );
 });
+
+const TitleAvatarUpdateSuccess = () => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <UserOutlined /> {t("profile.avatarUpdateSuccessTitle")}
+    </>
+  );
+};
+
+const DescAvatarUpdateSuccess = () => {
+  const { t } = useTranslation();
+  return <>{t("profile.avatarUpdateSuccess")}</>;
+};

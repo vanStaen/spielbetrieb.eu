@@ -219,5 +219,10 @@
 		"allIssues": "All the magazine issues",
 		"darkIs": "Dark is ...",
 		"darkShortDesc": "... a lifestyle magazin made in Berlin, themed around BDSM fetish and kink. "
+	},
+	"profile": {
+		"avatarUpdateSuccessTitle": "Avatar successfully updated",
+		"avatarUpdateSuccess": "Your avatar was successfully updated",
+		"avatarUpdateFail": "An error happen whilte uploading your new Avatar"
 	}
 }

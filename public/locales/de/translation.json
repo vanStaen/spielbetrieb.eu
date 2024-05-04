@@ -219,5 +219,10 @@
 		"allIssues": "Alle Zeitschriftenausgaben",
 		"darkIs": "Dark ist ...",
 		"darkShortDesc": "... ein Lifestyle-Magazin aus Berlin, das sich mit den Themen BDSM-Fetisch und Kink beschäftigt."
+	},
+	"profile": {
+		"avatarUpdateSuccessTitle": "Avatar erfolgreich aktualisiert",
+		"avatarUpdateSuccess": "Ihr Avatar wurde erfolgreich aktualisiert",
+		"avatarUpdateFail": "Beim Hochladen Ihres neuen Avatars ist ein Fehler aufgetreten"
 	}
 }
