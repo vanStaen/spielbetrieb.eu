@@ -30,7 +30,7 @@ export const NewPassword = observer(() => {
       const success = await postChangePassword(token, password);
       if (success === true) {
         notification.open({
-          duration: 3,
+          duration: 5,
           message: <ErrorTitlePwdReseted />,
           description: <ErrorDescPwdReseted />,
           placement: "bottomRight",
@@ -50,7 +50,7 @@ export const NewPassword = observer(() => {
       }
     } catch (error) {
       notification.error({
-        duration: 10,
+        duration: 0,
         message: error.message,
         placement: "bottomRight",
         className: "customNotification",

@@ -41,6 +41,7 @@ export const Avatar = observer(() => {
       const res = await postPicture(file, "users");
       await updateAvatar(res.path);
       notification.open({
+        duration: 5,
         message: <TitleAvatarUpdateSuccess />,
         description: <DescAvatarUpdateSuccess />,
         placement: "bottomRight",
