@@ -10,7 +10,7 @@ import { postPicture } from "../../../../helpers/picture/postPicture";
 import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
 import { updateAvatar } from "./updateAvatar";
 
-import "./Avatar.css";
+import "./Avatar.less";
 
 export const Avatar = observer(() => {
   const { t } = useTranslation();
