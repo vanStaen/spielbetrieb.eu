@@ -28,37 +28,32 @@ export const ProfileActions = observer(() => {
   const [isFollowed, setIsFollowed] = useState(
     userStore.followed
       ? !(
-          userStore.followed.findIndex(
-            (followed) => parseInt(followed._id) === profileStore._id,
-          ) < 0
-        )
+        userStore.followed.findIndex(
+          (followed) => parseInt(followed._id) === profileStore._id,
+        ) < 0
+      )
       : false,
   );
   const [isFriend, setIsFriend] = useState(
     userStore.friends
       ? !(
-          userStore.friends.findIndex(
-            (friend) => parseInt(friend._id) === profileStore._id,
-          ) < 0
-        )
+        userStore.friends.findIndex(
+          (friend) => parseInt(friend._id) === profileStore._id,
+        ) < 0
+      )
       : false,
   );
   const [isPending, setIsPending] = useState(
     userStore.friendsPending
       ? !(
-          userStore.friendsPending.findIndex(
-            (pending) => parseInt(pending.friend_id) === profileStore._id,
-          ) < 0
-        )
+        userStore.friendsPending.findIndex(
+          (pending) => parseInt(pending.friend_id) === profileStore._id,
+        ) < 0
+      )
       : false,
   );
 
-  const thisIsMe = userStore._id === profileStore._id;
-
   const handleClick = async (action) => {
-    if (thisIsMe) {
-      return;
-    }
     try {
       if (action === "follow") {
         await postFollow(profileStore._id);
@@ -111,28 +106,28 @@ export const ProfileActions = observer(() => {
         </div>
       </div>
       <div className="profil__actionContainer">
-        <div className={thisIsMe ? "profil__actionDisabled" : "profil__action"}>
+        <div className={"profil__action"}>
           <MailOutlined /> {t("profile.sendMessage")}
         </div>
         {
           // Friend/Unfriend action
           isPending ? (
             <div
-              className={thisIsMe ? "profil__actionDisabled" : "profil__action"}
+              className={"profil__action"}
               onClick={() => handleClick("unrequest")}
             >
               <UserDeleteOutlined /> {t("profile.deletePendingRequest")}
             </div>
           ) : isFriend ? (
             <div
-              className={thisIsMe ? "profil__actionDisabled" : "profil__action"}
+              className={"profil__action"}
               onClick={() => handleClick("unfriend")}
             >
               <UserDeleteOutlined /> {t("profile.unfriendRequest")}
             </div>
           ) : (
             <div
-              className={thisIsMe ? "profil__actionDisabled" : "profil__action"}
+              className={"profil__action"}
               onClick={() => handleClick("request")}
             >
               <UserAddOutlined /> {t("profile.sendFriendRequest")}
@@ -143,7 +138,7 @@ export const ProfileActions = observer(() => {
           // Follow/Unfollow action
           isFollowed ? (
             <div
-              className={thisIsMe ? "profil__actionDisabled" : "profil__action"}
+              className={"profil__action"}
               onClick={() => handleClick("unfollow")}
             >
               <EyeInvisibleOutlined /> {t("profile.unfollow")}{" "}
@@ -151,7 +146,7 @@ export const ProfileActions = observer(() => {
             </div>
           ) : (
             <div
-              className={thisIsMe ? "profil__actionDisabled" : "profil__action"}
+              className={"profil__action"}
               onClick={() => handleClick("follow")}
             >
               <EyeOutlined /> {t("profile.follow")}{" "}
@@ -160,7 +155,6 @@ export const ProfileActions = observer(() => {
           )
         }
       </div>
-      {/* showProfileFriends && <ProfileFriends /> */}
     </>
   );
 });

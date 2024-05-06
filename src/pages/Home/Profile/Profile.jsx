@@ -40,6 +40,8 @@ export const Profile = observer(() => {
     redirectIfNotLoggedIn();
   }, []);
 
+  const thisIsMe = userStore._id === profileStore._id;
+
   return (
     <>
       <div className="profil__main">
@@ -57,7 +59,7 @@ export const Profile = observer(() => {
             <div className="profil__containerLeft">
               <Avatar />
               <ProfileDetails />
-              <ProfileActions />
+              {!thisIsMe && <ProfileActions />}
               <ProfileFriends />
             </div>
             <div className="profil__containerCenter">
