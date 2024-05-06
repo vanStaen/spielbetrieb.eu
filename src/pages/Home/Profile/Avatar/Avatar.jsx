@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
-import { notification, Spin } from "antd";
-import { UserOutlined, EditOutlined } from "@ant-design/icons";
+import { notification } from "antd";
+import { UserOutlined, EditOutlined, LoadingOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
 import { userStore } from "../../../../store/userStore/userStore";
@@ -14,13 +14,23 @@ import "./Avatar.less";
 
 export const Avatar = observer(() => {
   const { t } = useTranslation();
-  const [isUploading, setIsUploading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const isStranger = userStore.userName !== profileStore.userName;
   const [avatarPic, setAvatarPic] = useState(null);
 
   const getAvatarUrl = async (path) => {
-    const url = await getPictureUrl(path, "users");
-    setAvatarPic(url);
+    if (path) {
+      const url = await getPictureUrl(path, "users");
+      const isloaded = new Promise((resolve, reject) => {
+        const loadImg = new Image();
+        loadImg.src = url;
+        loadImg.onload = () => resolve(url);
+        loadImg.onerror = (err) => reject(err);
+      });
+      await isloaded;
+      setAvatarPic(url);
+    }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -30,7 +40,7 @@ export const Avatar = observer(() => {
   }, []);
 
   const fileSelectHandler = async (event) => {
-    setIsUploading(true);
+    setIsLoading(true);
     changeAvatarSubmitHandler(event.target.files[0]);
   };
 
@@ -63,32 +73,26 @@ export const Avatar = observer(() => {
 
   return (
     <div className="avatar__container">
-      {isUploading ? (
-        <div className="avatar__avatar" style={{ backgroundColor: "#f9f9f9" }}>
+      {isLoading ? (
+        <div className="avatar__avatar">
           <div className="avatar__avatarLoading">
-            <Spin size="large" />
+            <LoadingOutlined
+              style={{ fontSize: 50, color: "#e1cfbb", top: "-4px" }}
+              spin
+            />
           </div>
         </div>
       ) : (
         <div
           className="avatar__avatar"
-          style={
-            isStranger
-              ? profileStore.avatar && {
-                  backgroundImage: "url(" + avatarPic + ")",
-                }
-              : userStore.avatar && {
-                  backgroundImage: "url(" + avatarPic + ")",
-                }
+          style={avatarPic && {
+            backgroundImage: "url(" + avatarPic + ")",
+          }
           }
         >
-          {isStranger
-            ? !profileStore.avatar && (
-                <UserOutlined className="avatar__noAvatar" />
-              )
-            : !userStore.avatar && (
-                <UserOutlined className="avatar__noAvatar" />
-              )}
+          {!profileStore.avatar && (
+            <UserOutlined className="avatar__noAvatar" />
+          )}
           {!isStranger && (
             <div className="avatar__editAvatar">
               <form

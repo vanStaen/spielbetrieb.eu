@@ -109,9 +109,9 @@ export const ProfileActions = observer(() => {
         <div className={"profil__action"}>
           <MailOutlined /> {t("profile.sendMessage")}
         </div>
-        {
+        {!profileStore.isPartner &&
           // Friend/Unfriend action
-          isPending ? (
+          (isPending ? (
             <div
               className={"profil__action"}
               onClick={() => handleClick("unrequest")}
@@ -133,7 +133,7 @@ export const ProfileActions = observer(() => {
               <UserAddOutlined /> {t("profile.sendFriendRequest")}
             </div>
           )
-        }
+          )}
         {
           // Follow/Unfollow action
           isFollowed ? (

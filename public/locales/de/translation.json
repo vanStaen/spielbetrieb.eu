@@ -227,8 +227,8 @@
 		"friends": "Freunden",
 		"followers": "Gefolgt von",
 		"following": "Folgt",
-		"follow": "Folgen",
-		"unfollow": "Entfolgen",
+		"follow": "Folge",
+		"unfollow": "Entfolge",
 		"sendFriendRequest": "Freundschaft anbieten",
 		"sendMessage": "Nachricht senden"
 	}

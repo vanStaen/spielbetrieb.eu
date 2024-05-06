@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Tooltip } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
+import { LoadingOutlined, UserOutlined } from "@ant-design/icons";
 
 import { getPictureUrl } from "../../../../../helpers/picture/getPictureUrl";
 import { profileStore } from "../../../../../store/profileStore/profileStore";
@@ -14,15 +14,17 @@ export const ProfileFriendAvatar = (props) => {
     const { userName, path, isPartner } = props;
 
     const fetchAvatarUrls = async () => {
-        const avatarUrl = await getPictureUrl(path, "users");
-        setAvatar(avatarUrl);
-        const isloaded = new Promise((resolve, reject) => {
-            const loadImg = new Image();
-            loadImg.src = avatarUrl;
-            loadImg.onload = () => resolve(avatarUrl);
-            loadImg.onerror = (err) => reject(err);
-        });
-        await isloaded;
+        if (path) {
+            const avatarUrl = await getPictureUrl(path, "users");
+            setAvatar(avatarUrl);
+            const isloaded = new Promise((resolve, reject) => {
+                const loadImg = new Image();
+                loadImg.src = avatarUrl;
+                loadImg.onload = () => resolve(avatarUrl);
+                loadImg.onerror = (err) => reject(err);
+            });
+            await isloaded;
+        }
         setAvatarLoading(false);
     };
 
@@ -53,7 +55,9 @@ export const ProfileFriendAvatar = (props) => {
                         style={{
                             backgroundImage: `url(${avatar})`,
                         }}
-                    ></div>
+                    >{!path &&
+                        <UserOutlined className="profilFriendAvatar__noAvatar" />
+                        }</div>
                 )}
             </Link>
         </Tooltip>

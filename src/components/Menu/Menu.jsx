@@ -29,6 +29,13 @@ export const Menu = observer(() => {
   const getAvatarUrl = async (path) => {
     if (path) {
       const url = await getPictureUrl(path, "users");
+      const isloaded = new Promise((resolve, reject) => {
+        const loadImg = new Image();
+        loadImg.src = url;
+        loadImg.onload = () => resolve(url);
+        loadImg.onerror = (err) => reject(err);
+      });
+      await isloaded;
       setAvatarPic(url);
     }
   };

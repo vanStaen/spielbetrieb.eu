@@ -45,7 +45,7 @@ export const ProfileFriends = observer(() => {
 
   return (
     <div className="profilFriends__mainContainer">
-      {!!profileStore.friends.length && (
+      {!!profileStore.friends.length && !profileStore.isPartner && (
         <div className="profilFriends__container">
           <div className="profilFriends__title">
             {t("profile.friends")} ({profileStore.friends.length})
@@ -64,7 +64,7 @@ export const ProfileFriends = observer(() => {
           {friendsFollowers}
         </div>
       )}
-      {!!profileStore.followed.length && (
+      {!!profileStore.followed.length && !profileStore.isPartner && (
         <div className="profilFriends__container">
           <div className="profilFriends__title">
             {t("profile.following")} ({profileStore.followed.length})
