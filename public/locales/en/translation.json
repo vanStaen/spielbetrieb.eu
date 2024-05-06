@@ -223,6 +223,13 @@
 	"profile": {
 		"avatarUpdateSuccessTitle": "Avatar successfully updated",
 		"avatarUpdateSuccess": "Your avatar was successfully updated",
-		"avatarUpdateFail": "An error happen whilte uploading your new Avatar"
+		"avatarUpdateFail": "An error happen whilte uploading your new Avatar",
+		"friends": "Friends",
+		"followers": "Followers",
+		"following": "Following",
+		"follow": "Follow",
+		"unfollow": "Unfollow",
+		"sendFriendRequest": "Send a friendrequest",
+		"sendMessage": "Send a message"
 	}
 }

@@ -16,11 +16,10 @@ export class ProfileStore {
   friendsPending = [];
   followers = [];
   followed = [];
-  items = null;
-  looks = null;
   lastActive = null;
   profilSettings = null;
   filterIsPopingUp = false;
+  isPartner = null;
 
   constructor() {
     makeObservable(this, {
@@ -38,8 +37,7 @@ export class ProfileStore {
       followed: observable,
       lastActive: observable,
       profilSettings: observable,
-      items: observable,
-      looks: observable,
+      isPartner: observable,
       filterIsPopingUp: observable,
       setIsLoading: action,
       setError: action,
@@ -55,8 +53,7 @@ export class ProfileStore {
       setFollowed: action,
       setLastActive: action,
       setProfilSettings: action,
-      setLooks: action,
-      setItems: action,
+      setIsPartner: action,
       setFilterIsPopingUp: action,
       fetchProfileData: action,
     });
@@ -108,6 +105,7 @@ export class ProfileStore {
 
   setFollowed = (followed) => {
     this.followed = followed;
+    console.log(followed)
   };
 
   setLastActive = (lastActive) => {
@@ -118,16 +116,12 @@ export class ProfileStore {
     this.profilSettings = profilSettings;
   };
 
-  setItems = (items) => {
-    this.items = items;
+  setIsPartner = (isPartner) => {
+    this.isPartner = isPartner;
   };
 
   setFilterIsPopingUp = (filterIsPopingUp) => {
     this.filterIsPopingUp = filterIsPopingUp;
-  };
-
-  setLooks = (looks) => {
-    this.looks = looks;
   };
 
   fetchProfileData = async (userName, loader = true) => {
@@ -159,8 +153,7 @@ export class ProfileStore {
           this.setFollowers(profileData.followers);
           this.setFollowed(profileData.followed);
           this.setGender(profileData.gender);
-          this.setLooks(profileData.looks);
-          this.setItems(profileData.items);
+          this.setIsPartner(profileData.isPartner);
           this.setLastActive(profileData.lastActive);
           this.setProfilSettings(JSON.parse(profileData.profilSettings));
         }

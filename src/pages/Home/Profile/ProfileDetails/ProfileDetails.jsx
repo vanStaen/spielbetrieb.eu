@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { profileStore } from "../../../../store/profileStore/profileStore";
 
-import "./ProfileDetails.css";
+import "./ProfileDetails.less";
 
 export const ProfileDetails = observer(() => {
   const { t } = useTranslation();

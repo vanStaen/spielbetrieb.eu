@@ -1,0 +1,29 @@
+.profil__detailsContainer {
+  width: 100%;
+  display: inline-block;
+  color: rgba(var(--themeBlackOrWhiteColor), 1);
+
+  .profil__hello {
+    display: inline-block;
+    vertical-align: top;
+    text-align: right;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 20px 0 0 0;
+    width: 100%;
+  }
+
+  .profil__lastSeenOnline,
+  .profil__username {
+    font-weight: 300;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 800px) {
+  .profil__detailsContainer {
+    display: inline-block;
+    width: 70vw;
+    padding: 20px 20px 20px 0;
+  }
+}

@@ -16,6 +16,7 @@ export const ProfileFriends = observer(() => {
         key={`friend${index}`}
         userName={friend.userName}
         path={friend.avatar}
+        isPartner={friend.isPartner}
       />
     );
   });
@@ -26,6 +27,7 @@ export const ProfileFriends = observer(() => {
         key={`follower${index}`}
         userName={follower.userName}
         path={follower.avatar}
+        isPartner={follower.isPartner}
       />
     );
   });
@@ -36,6 +38,7 @@ export const ProfileFriends = observer(() => {
         key={`followed${index}`}
         userName={followed.userName}
         path={followed.avatar}
+        isPartner={followed.isPartner}
       />
     );
   });
