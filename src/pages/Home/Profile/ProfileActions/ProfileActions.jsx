@@ -10,41 +10,41 @@ import {
   EyeInvisibleOutlined,
 } from "@ant-design/icons";
 
-import { profileStore } from "../../../stores/profileStore/profileStore";
-import { userStore } from "../../../stores/userStore/userStore";
-import { ProfileFriends } from "../ProfileFriends/ProfileFriends";
+import { profileStore } from "../../../../store/profileStore/profileStore";
+import { userStore } from "../../../../store/userStore/userStore";
+// import { ProfileFriends } from "../ProfileFriends/ProfileFriends";
 import { deleteFriend } from "./deleteFriend";
 import { deleteFollow } from "./deleteFollow";
 import { deleteFriendRequest } from "./deleteFriendRequest";
 import { postFollow } from "./postFollow";
 import { postFriendRequest } from "./postFriendRequest";
 
-import "./ProfileActions.css";
+import "./ProfileActions.less";
 
 export const ProfileActions = observer(() => {
   const { t } = useTranslation();
   const [showProfileFriends, setShowProfileFriends] = useState(false);
 
   const [isFollowed, setIsFollowed] = useState(
-    !(
+    userStore.followed ? !(
       userStore.followed.findIndex(
         (followed) => parseInt(followed._id) === profileStore._id,
       ) < 0
-    ),
+    ) : false,
   );
   const [isFriend, setIsFriend] = useState(
-    !(
+    userStore.friends ? !(
       userStore.friends.findIndex(
         (friend) => parseInt(friend._id) === profileStore._id,
       ) < 0
-    ),
+    ) : false,
   );
   const [isPending, setIsPending] = useState(
-    !(
+    userStore.friendsPending ? !(
       userStore.friendsPending.findIndex(
         (pending) => parseInt(pending.friend_id) === profileStore._id,
       ) < 0
-    ),
+    ) : false,
   );
 
   const thisIsMe = userStore._id === profileStore._id;
@@ -154,7 +154,7 @@ export const ProfileActions = observer(() => {
           )
         }
       </div>
-      {showProfileFriends && <ProfileFriends />}
+      {/* showProfileFriends && <ProfileFriends /> */}
     </>
   );
 });

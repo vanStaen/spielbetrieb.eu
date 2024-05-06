@@ -105,7 +105,7 @@ export const Menu = observer(() => {
             )
           }
           className="menu__avatar"
-          size={50}
+          size={48}
         />
       </div>
       {pageStore.showMenu && (

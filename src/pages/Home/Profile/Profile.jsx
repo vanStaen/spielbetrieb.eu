@@ -11,9 +11,9 @@ import { Avatar } from "./Avatar/Avatar";
 import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
 import { ProfileMain } from "./ProfileMain/ProfileMain";
 
-// import { ProfileFriends } from "./ProfileFriends/ProfileFriends";
+import { ProfileFriends } from "./ProfileFriends/ProfileFriends";
 // import { ProfileDetails } from "./ProfileDetails/ProfileDetails";
-// import { ProfileActions } from "./ProfileActions/ProfileActions";
+import { ProfileActions } from "./ProfileActions/ProfileActions";
 
 import "./Profile.less";
 
@@ -56,8 +56,8 @@ export const Profile = observer(() => {
           <>
             <div className="profil__containerLeft">
               <Avatar />
-              {/*  <ProfileDetails />
-              <ProfileActions /> */}
+              {/* <ProfileDetails /> */}
+              <ProfileActions />
             </div>
             <div className="profil__containerCenter">
               <ProfileMain />
