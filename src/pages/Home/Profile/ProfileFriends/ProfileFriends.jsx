@@ -1,82 +1,42 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
-import { Tooltip } from "antd";
 import { useTranslation } from "react-i18next";
 
 import { profileStore } from "../../../../store/profileStore/profileStore";
 
 import "./ProfileFriends.css";
+import { ProfileFriendAvatar } from "./ProfileFriendAvatar/ProfileFriendAvatar";
 
 export const ProfileFriends = observer(() => {
   const { t } = useTranslation();
 
-  const friendsFormatted = profileStore.friends.map((friend) => {
+  const friendsFormatted = profileStore.friends.map((friend, index) => {
     return (
-      <Tooltip title={friend.userName}>
-        <Link
-          to={`/${friend.userName}`}
-          onClick={() => {
-            profileStore.fetchProfileData(friend.userName);
-          }}
-        >
-          <div
-            className="profilFriends__followersAvatar"
-            style={{
-              background: `url(${friend.avatar})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
-          ></div>
-        </Link>
-      </Tooltip>
+      <ProfileFriendAvatar
+        key={`friend${index}`}
+        userName={friend.userName}
+        path={friend.avatar}
+      />
     );
   });
 
-  const friendsFollowers = profileStore.followers.map((follower) => {
+  const friendsFollowers = profileStore.followers.map((follower, index) => {
     return (
-      <Tooltip title={follower.userName}>
-        <Link
-          to={`/${follower.userName}`}
-          onClick={() => {
-            profileStore.fetchProfileData(follower.userName);
-          }}
-        >
-          <div
-            className="profilFriends__followersAvatar"
-            style={{
-              background: `url(${follower.avatar})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
-          ></div>
-        </Link>
-      </Tooltip>
+      <ProfileFriendAvatar
+        key={`follower${index}`}
+        userName={follower.userName}
+        path={follower.avatar}
+      />
     );
   });
 
-  const friendsFollowed = profileStore.followed.map((followed) => {
+  const friendsFollowed = profileStore.followed.map((followed, index) => {
     return (
-      <Tooltip title={followed.userName}>
-        <Link
-          to={`/${followed.userName}`}
-          onClick={() => {
-            profileStore.fetchProfileData(followed.userName);
-          }}
-        >
-          <div
-            className="profilFriends__followersAvatar"
-            style={{
-              background: `url(${followed.avatar})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
-          ></div>
-        </Link>
-      </Tooltip>
+      <ProfileFriendAvatar
+        key={`followed${index}`}
+        userName={followed.userName}
+        path={followed.avatar}
+      />
     );
   });
 

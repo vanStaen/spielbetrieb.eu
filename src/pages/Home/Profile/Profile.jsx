@@ -63,7 +63,7 @@ export const Profile = observer(() => {
               <ProfileMain />
             </div>
             <div className="profil__containerRight">
-              {/* <ProfileFriends /> */}
+              <ProfileFriends />
             </div>
           </>
         )}

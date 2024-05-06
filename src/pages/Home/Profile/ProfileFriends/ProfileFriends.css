@@ -2,32 +2,19 @@
     font-weight: 300;
     font-size: 12px;
     margin-bottom: 20px;
+    color: rgba(var(--themeFontColor), 1);
 }
-  
+
 .profilFriends__followersTitle {
-    border-bottom: 1px solid #f0f0f0;
-    margin-bottom: 5px;
-}
-
-.profilFriends__followersAvatar {
-    border: 1px solid #f0f0f0;
-    border-radius: 2px;
-    width: 45px;
-    height: 45px;
-    margin: 2px;
-    display: inline-block;
-    vertical-align: top;
-    cursor: pointer;
-}
-
-.profilFriends__followersAvatar:hover {
-    filter: contrast(1.2) opacity(.95);
+    border-bottom: 1px solid rgba(var(--themeFontColor), .25);
+    padding-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .profilFriends__followersCounterContainer {
-    border: 1px dashed #f0f0f0;
-    background-color: #fafafa;
-    color: rgba(0,0,0,.5);
+    border: 1px dashed rgba(var(--themeFontColor), .25);
+    background-color: rgba(var(--themeFontColor), .15);
+    color: rgba(0, 0, 0, .5);
     font-weight: 200;
     font-size: 14px;
     cursor: pointer;
@@ -41,7 +28,7 @@
 
 .profilFriends__followersCounter {
     width: 45px;
-    height: 45px; 
+    height: 45px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,10 +37,11 @@
 
 @media (max-width: 800px) {
     .profilFriends__mainContainer {
-      text-align: left;
-      padding: 20px 20px 0 20px;
+        text-align: left;
+        padding: 20px 20px 0 20px;
     }
+
     .profilFriends__followersContainer {
-      margin-bottom: 20px;
+        margin-bottom: 20px;
     }
-  }
+}
