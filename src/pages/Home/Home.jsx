@@ -12,7 +12,6 @@ import { pageStore } from "../../store/pageStore/pageStore";
 import { Spielplan } from "./Spielplan/Spielplan";
 import { Basket } from "./Basket/Basket";
 import { Dark } from "./Dark/Dark";
-import { Partner } from "./Partner/Partner";
 import { Profile } from "./Profile/Profile";
 import { Settings } from "./Settings/Settings";
 import { Shop } from "./Shop/Shop";

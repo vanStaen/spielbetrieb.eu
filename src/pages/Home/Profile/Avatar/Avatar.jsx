@@ -14,7 +14,7 @@ import "./Avatar.less";
 
 export const Avatar = observer(() => {
   const { t } = useTranslation();
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const isStranger = userStore.userName !== profileStore.userName;
   const [avatarPic, setAvatarPic] = useState(null);
 
@@ -30,7 +30,7 @@ export const Avatar = observer(() => {
       await isloaded;
       setAvatarPic(url);
     }
-    setLoading(false);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -59,14 +59,14 @@ export const Avatar = observer(() => {
       });
       userStore.setAvatar(res.path);
       getAvatarUrl(res.path);
-      setIsUploading(false);
+      setIsLoading(false);
     } catch (err) {
       notification.error({
         message: t("profile.avatarUpdateFail"),
         placement: "bottomRight",
         className: "customNotification",
       });
-      setIsUploading(false);
+      setIsLoading(false);
       console.log(err);
     }
   };
@@ -85,9 +85,10 @@ export const Avatar = observer(() => {
       ) : (
         <div
           className="avatar__avatar"
-          style={avatarPic && {
-            backgroundImage: "url(" + avatarPic + ")",
-          }
+          style={
+            avatarPic && {
+              backgroundImage: "url(" + avatarPic + ")",
+            }
           }
         >
           {!profileStore.avatar && (

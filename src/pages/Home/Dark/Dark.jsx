@@ -58,8 +58,8 @@ export const Dark = observer(() => {
         <iframe
           className="dark__iframe"
           src={darks[selectedIssue]?.link}
-        //seamless="seamless"
-        //allowfullscreen="true"
+          // seamless="seamless"
+          // allowfullscreen="true"
         ></iframe>
 
         <div
