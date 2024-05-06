@@ -3,9 +3,9 @@ import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 
 import { profileStore } from "../../../../store/profileStore/profileStore";
-
-import "./ProfileFriends.css";
 import { ProfileFriendAvatar } from "./ProfileFriendAvatar/ProfileFriendAvatar";
+
+import "./ProfileFriends.less";
 
 export const ProfileFriends = observer(() => {
   const { t } = useTranslation();
@@ -43,8 +43,8 @@ export const ProfileFriends = observer(() => {
   return (
     <div className="profilFriends__mainContainer">
       {!!profileStore.friends.length && (
-        <div className="profilFriends__followersContainer">
-          <div className="profilFriends__followersTitle">
+        <div className="profilFriends__container">
+          <div className="profilFriends__title">
             {t("profile.friends")} ({profileStore.friends.length})
           </div>
           {friendsFormatted}
@@ -54,16 +54,16 @@ export const ProfileFriends = observer(() => {
         </div>
       )}
       {!!profileStore.followers.length && (
-        <div className="profilFriends__followersContainer">
-          <div className="profilFriends__followersTitle">
+        <div className="profilFriends__container">
+          <div className="profilFriends__title">
             {t("profile.followers")} ({profileStore.followers.length})
           </div>
           {friendsFollowers}
         </div>
       )}
       {!!profileStore.followed.length && (
-        <div className="profilFriends__followersContainer">
-          <div className="profilFriends__followersTitle">
+        <div className="profilFriends__container">
+          <div className="profilFriends__title">
             {t("profile.following")} ({profileStore.followed.length})
           </div>
           {friendsFollowed}

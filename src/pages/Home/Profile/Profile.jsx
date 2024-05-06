@@ -12,7 +12,7 @@ import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
 import { ProfileMain } from "./ProfileMain/ProfileMain";
 
 import { ProfileFriends } from "./ProfileFriends/ProfileFriends";
-// import { ProfileDetails } from "./ProfileDetails/ProfileDetails";
+import { ProfileDetails } from "./ProfileDetails/ProfileDetails";
 import { ProfileActions } from "./ProfileActions/ProfileActions";
 
 import "./Profile.less";
@@ -56,14 +56,12 @@ export const Profile = observer(() => {
           <>
             <div className="profil__containerLeft">
               <Avatar />
-              {/* <ProfileDetails /> */}
+              <ProfileDetails />
               <ProfileActions />
+              <ProfileFriends />
             </div>
             <div className="profil__containerCenter">
               <ProfileMain />
-            </div>
-            <div className="profil__containerRight">
-              <ProfileFriends />
             </div>
           </>
         )}
