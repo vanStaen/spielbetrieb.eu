@@ -13,8 +13,6 @@ export const ProfileFriendAvatar = (props) => {
     const [avatar, setAvatar] = useState(null);
     const { userName, path, isPartner } = props;
 
-    console.log('isPartner', isPartner);
-
     const fetchAvatarUrls = async () => {
         const avatarUrl = await getPictureUrl(path, "users");
         setAvatar(avatarUrl);
@@ -35,7 +33,7 @@ export const ProfileFriendAvatar = (props) => {
     return (
         <Tooltip title={userName}>
             <Link
-                to={`../${isPartner ? 'partner' : 'user'}/${userName}`}
+                to={`../${isPartner ? "partner" : "user"}/${userName}`}
                 onClick={() => {
                     profileStore.fetchProfileData(userName);
                 }}

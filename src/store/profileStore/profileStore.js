@@ -105,7 +105,6 @@ export class ProfileStore {
 
   setFollowed = (followed) => {
     this.followed = followed;
-    console.log(followed)
   };
 
   setLastActive = (lastActive) => {
