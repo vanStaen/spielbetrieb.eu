@@ -3,6 +3,12 @@ import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react";
 import { notification, Button, Input, Form, Radio, Select } from "antd";
 import { useNavigate } from "react-router-dom";
+import {
+  MailOutlined,
+  UserOutlined,
+  UnorderedListOutlined,
+  HeartOutlined,
+} from "@ant-design/icons";
 
 import { pageStore } from "../../store/pageStore/pageStore";
 import { addSubscriber } from "./addSubscriber";
@@ -14,7 +20,6 @@ export const NewsletterForm = observer(() => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  // const { TextArea } = Input;
 
   const onCancel = () => {
     form.resetFields();
@@ -62,7 +67,6 @@ export const NewsletterForm = observer(() => {
     <Form
       form={form}
       layout="horizontal"
-      size="small"
       onFinish={onFinish}
       name="newsletter-form"
       initialValues={{
@@ -72,13 +76,14 @@ export const NewsletterForm = observer(() => {
       }}
     >
       <Form.Item
-        label={<div className="newsletter__text">{t("newsletter.name")}</div>}
         name="username"
       >
-        <Input />
+        <Input
+          prefix={<UserOutlined className="site-form-item-icon" />}
+          placeholder={t("newsletter.name")}
+        />
       </Form.Item>
       <Form.Item
-        label={t("newsletter.email")}
         name="email"
         rules={[
           {
@@ -88,10 +93,25 @@ export const NewsletterForm = observer(() => {
           },
         ]}
       >
-        <Input />
+        <Input
+          prefix={<MailOutlined className="site-form-item-icon" />}
+          placeholder={t("newsletter.email")}
+        />
       </Form.Item>
       <Form.Item
-        label={<div className="newsletter__text">{t("newsletter.lists")}</div>}
+        name="language"
+        onChange={changeLanguageHandler}
+        className='newsletter__radioContainer'
+      >
+        <Radio.Group
+          buttonStyle="solid"
+          size="small"
+        >
+          <Radio.Button value="de">{t("newsletter.german")}</Radio.Button>
+          <Radio.Button value="en">{t("newsletter.english")}</Radio.Button>
+        </Radio.Group>
+      </Form.Item>
+      <Form.Item
         name="lists"
         rules={[
           {
@@ -103,6 +123,8 @@ export const NewsletterForm = observer(() => {
         <Select
           mode="multiple"
           allowClear
+          placeholder={t("newsletter.lists")}
+          suffixIcon={<UnorderedListOutlined className="site-form-item-icon" />}
           options={[
             { value: "parties", label: t("newsletter.parties") },
             { value: "deals", label: t("newsletter.deals") },
@@ -111,14 +133,13 @@ export const NewsletterForm = observer(() => {
         />
       </Form.Item>
       <Form.Item
-        label={
-          <div className="newsletter__text">{t("newsletter.interests")}</div>
-        }
         name="interests"
       >
         <Select
           mode="multiple"
           allowClear
+          placeholder={t("newsletter.interests")}
+          suffixIcon={<HeartOutlined className="site-form-item-icon" />}
           options={[
             { value: "BDSM", label: "BDSM" },
             {
@@ -130,37 +151,6 @@ export const NewsletterForm = observer(() => {
           ]}
         />
       </Form.Item>
-      <Form.Item
-        label={
-          <div className="newsletter__text">{t("newsletter.language")}</div>
-        }
-        name="language"
-        onChange={changeLanguageHandler}
-      >
-        <Radio.Group buttonStyle="solid">
-          <Radio.Button value="de">{t("newsletter.german")}</Radio.Button>
-          <Radio.Button value="en">{t("newsletter.english")}</Radio.Button>
-        </Radio.Group>
-      </Form.Item>
-      {/* 
-    <Form.Item
-      label={
-        <div className="newsletter__text">
-          Tell us something about yourself. What is your thing?
-        </div>
-      }
-      name="about"
-      labelCol={{ span: 24 }}
-      rules={[
-        {
-          required: false,
-        },
-      ]}
-    >
-      <TextArea />
-    </Form.Item>
-    */}
-
       <Form.Item>
         <div className="newsletter__buttonContainer">
           <Button
@@ -171,7 +161,7 @@ export const NewsletterForm = observer(() => {
             {t("newsletter.reset")}
           </Button>
           <Button
-            className="newsletter__submitButton"
+            className={`newsletter__submitButton ${pageStore.selectedTheme === "light" ? "lightColorTheme__Button" : "darkColorTheme__Button"}`}
             htmlType="submit"
             loading={loading}
           >
