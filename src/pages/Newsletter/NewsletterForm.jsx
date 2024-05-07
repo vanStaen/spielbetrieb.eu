@@ -3,12 +3,12 @@ import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react";
 import { notification, Button, Input, Form, Radio, Select } from "antd";
 
-import { pageStore } from "../../../store/pageStore/pageStore";
+import { pageStore } from "../../store/pageStore/pageStore";
 import { addSubscriber } from "./addSubscriber";
 
-import "./Newsletter.less";
+import "./NewsletterForm.less";
 
-export const Newsletter = observer(() => {
+export const NewsletterForm = observer(() => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);

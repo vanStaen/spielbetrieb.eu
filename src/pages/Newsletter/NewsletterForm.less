@@ -1,0 +1,86 @@
+.newsletter__backgroundLight {
+    background-image: url('../../img/backgroundinverted.jpg');
+}
+
+.newsletter__backgroundDark {
+    background-image: url('../../img/background.jpg');
+}
+
+.newsletter__button {
+    margin-top: 16px;
+    border-radius: 2px;
+    letter-spacing: 2px;
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    color: black !important;
+    transition:
+        background-color .3s,
+        color .3s,
+        border-color .3s;
+
+    &:hover {
+        border-color: rgba(100, 100, 100, 0.3) !important;
+        background-color: rgba(200, 200, 200, 0.1) !important;
+        color: white !important;
+    }
+}
+
+.newsletter__input {
+    margin-top: 16px;
+    border-radius: 2px;
+    letter-spacing: 0px;
+}
+
+.newsletter__emailNotValid {
+    color: red;
+}
+
+.newsletter__text {
+    color: rgba(var(--themeFontColor), 1);
+}
+
+.newsletter__buttonContainer {
+    width: 100%;
+
+    .newsletter__submitButton {
+        width: 50%;
+        height: 32px;
+        border-radius: 2px;
+        letter-spacing: 2px;
+        background-color: rgba(255, 255, 255, 1) !important;
+        transition:
+            color .3s,
+            background-color .3s,
+            border-color .3s,
+            letter-spacing 1s;
+
+        &:hover {
+            border-color: rgba(100, 100, 100, 0.3) !important;
+            background-color: rgba(255, 255, 255, .9) !important;
+            color: black !important;
+            letter-spacing: 7px;
+        }
+    }
+
+    .newsletter__cancelButton {
+        width: calc(50% - 10px);
+        height: 32px;
+        margin-right: 10px;
+        border-radius: 2px;
+        letter-spacing: 2px;
+        background-color: rgba(200, 200, 200, 0.1) !important;
+        border-color: rgba(100, 100, 100, .1) !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        transition:
+            color .3s,
+            background-color .3s,
+            border-color .3s,
+            letter-spacing 1s;
+
+        &:hover {
+            border-color: rgba(100, 100, 100, 0.3) !important;
+            background-color: rgba(200, 200, 200, 0.1) !important;
+            color: rgba(255, 255, 255, 1) !important;
+            letter-spacing: 7px;
+        }
+    }
+}

@@ -19,6 +19,7 @@ import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { Home } from "./pages/Home/Home";
 import { Legal } from "./pages/Legal/Legal";
 import { Admin } from "./pages/Admin/Admin";
+import { Newsletter } from "./pages/Newsletter/Newsletter";
 import { Impressum } from "./components/Impressum/Impressum";
 
 import "./lib/i18n";
@@ -97,7 +98,7 @@ const App = observer(() => {
             <Route path="settings/" element={<Home page="settings" />} />
             <Route path="shop/" element={<Home page="shop" />} />
             <Route path="spielplan/" element={<Home page="spielplan" />} />
-            <Route path="newsletter/" element={<Home page="newsletter" />} />
+            <Route path="newsletter/" element={<Newsletter />} />
             <Route
               path="spielplan/week/:year/:week"
               element={<Home page="spielplan" />}
