@@ -139,13 +139,13 @@ User.belongsToMany(User, {
 });
 
 User.belongsToMany(User, {
-  as: "followers",
+  as: "following",
   foreignKey: "follower_id",
   through: Usersfollower,
 });
 
 User.belongsToMany(User, {
-  as: "following",
+  as: "followers",
   foreignKey: "followed_id",
   through: Usersfollower,
 });

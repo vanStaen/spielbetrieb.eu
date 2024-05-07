@@ -46,14 +46,17 @@ export const getUserInfo = async () => {
                     _id,
                 },
                 friends {
+                    _id,
                     userName,
                     avatar,
                 },
                 followers {
+                    _id
                     userName,
                     avatar,
                 },
                 following {
+                    _id,
                     userName,
                     avatar,
                 }

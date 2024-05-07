@@ -243,7 +243,8 @@
 		"unfollow": "Unfollow",
 		"sendFriendRequest": "Send a friendrequest",
 		"sendMessage": "Send a message",
-		"deletePendingRequest": "Delete pending request"
+		"deletePendingRequest": "Delete pending request",
+		"unfriendRequest": "Unfriend"
 	},
 	"scene": {
 		"fetish": "Fetish",

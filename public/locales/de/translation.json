@@ -243,7 +243,8 @@
 		"unfollow": "Entfolge",
 		"sendFriendRequest": "Freundschaft anbieten",
 		"sendMessage": "Nachricht senden",
-		"deletePendingRequest": "Ausstehende Anfrage löschen"
+		"deletePendingRequest": "Ausstehende Anfrage löschen",
+		"unfriendRequest": "Freundschaft löschen"
 	},
 	"scene": {
 		"fetish": "Fetisch",

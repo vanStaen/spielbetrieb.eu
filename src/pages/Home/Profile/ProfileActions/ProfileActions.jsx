@@ -82,31 +82,6 @@ export const ProfileActions = observer(() => {
 
   return (
     <>
-      <div
-        className="profil__friendsActionContainer"
-        onClick={() => setShowProfileFriends(!showProfileFriends)}
-      >
-        <div>
-          <Badge showZero count={profileStore.friends.length} color="#526d5f" />{" "}
-          {t("profile.friends")}
-        </div>
-        <div>
-          <Badge
-            showZero
-            count={profileStore.followers.length}
-            color="#7f9f8e"
-          />{" "}
-          {t("profile.followers")}
-        </div>
-        <div>
-          <Badge
-            showZero
-            count={profileStore.following.length}
-            color="#b6c8bf"
-          />{" "}
-          {t("profile.following")}
-        </div>
-      </div>
       <div className="profil__actionContainer">
         <div className={"profil__action"}>
           <MailOutlined /> {t("profile.sendMessage")}
@@ -144,7 +119,7 @@ export const ProfileActions = observer(() => {
               onClick={() => handleClick("unfollow")}
             >
               <EyeInvisibleOutlined /> {t("profile.unfollow")}{" "}
-              {profileStore.userName || "user"}
+              {profileStore.userName}
             </div>
           ) : (
             <div
@@ -152,7 +127,7 @@ export const ProfileActions = observer(() => {
               onClick={() => handleClick("follow")}
             >
               <EyeOutlined /> {t("profile.follow")}{" "}
-              {profileStore.userName || "user"}
+              {profileStore.userName}
             </div>
           )
         }

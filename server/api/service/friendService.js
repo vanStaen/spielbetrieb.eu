@@ -1,5 +1,5 @@
 import { Usersfriend } from "../../models/Usersfriend.js";
-import { notificationService } from "./notificationService.js";
+// import { notificationService } from "./notificationService.js";
 
 export const friendService = {
   async getFriends(userId) {
@@ -30,10 +30,10 @@ export const friendService = {
         friend_id: parseInt(friendId),
       });
       await newFriend.save();
-      await notificationService.createNotificationNewFriendRequest(
+      /* await notificationService.createNotificationNewFriendRequest(
         userId,
         friendId,
-      );
+      ); */
       return true;
     } catch (err) {
       console.log(err);
@@ -72,10 +72,10 @@ export const friendService = {
           friend_id: parseInt(friendId),
         },
       });
-      await notificationService.deleteNotificatioFriendRequest(
+      /* await notificationService.deleteNotificatioFriendRequest(
         userId,
         friendId,
-      );
+      ); */
       return true;
     } catch (err) {
       console.log(err);
