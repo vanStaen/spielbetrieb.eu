@@ -21,7 +21,7 @@ export const ProfileFriends = observer(() => {
     );
   });
 
-  const friendsFollowers = profileStore.followers.map((follower, index) => {
+  const followersFormatted = profileStore.followers.map((follower, index) => {
     return (
       <ProfileFriendAvatar
         key={`follower${index}`}
@@ -32,7 +32,7 @@ export const ProfileFriends = observer(() => {
     );
   });
 
-  const friendsFollowed = profileStore.followed.map((followed, index) => {
+  const followedFormatted = profileStore.followed.map((followed, index) => {
     return (
       <ProfileFriendAvatar
         key={`followed${index}`}
@@ -45,7 +45,7 @@ export const ProfileFriends = observer(() => {
 
   return (
     <div className="profilFriends__mainContainer">
-      {!!profileStore.friends.length && !profileStore.isPartner && (
+      {!!profileStore.friends.length && (
         <div className="profilFriends__container">
           <div className="profilFriends__title">
             {t("profile.friends")} ({profileStore.friends.length})
@@ -61,15 +61,15 @@ export const ProfileFriends = observer(() => {
           <div className="profilFriends__title">
             {t("profile.followers")} ({profileStore.followers.length})
           </div>
-          {friendsFollowers}
+          {followersFormatted}
         </div>
       )}
-      {!!profileStore.followed.length && !profileStore.isPartner && (
+      {!!profileStore.followed.length && (
         <div className="profilFriends__container">
           <div className="profilFriends__title">
             {t("profile.following")} ({profileStore.followed.length})
           </div>
-          {friendsFollowed}
+          {followedFormatted}
         </div>
       )}
     </div>
