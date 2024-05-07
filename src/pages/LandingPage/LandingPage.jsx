@@ -43,7 +43,10 @@ export const LandingPage = () => {
     <>
       <LanguageDropDown />
       <DarkModeDropDown />
-      <div className="landingPage__background invertColorTheme" id="background"></div>
+      <div
+        className="landingPage__background invertColorTheme"
+        id="background"
+      ></div>
       <div className="landingPage__overBackground"></div>
       <div className="landingPage__doublearrow invertColorTheme" id="arrow">
         <DoubleLeftOutlined

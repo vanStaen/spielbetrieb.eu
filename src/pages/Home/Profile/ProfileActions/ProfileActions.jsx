@@ -28,30 +28,30 @@ export const ProfileActions = observer(() => {
   const [isFollowed, setIsFollowed] = useState(
     userStore.followed
       ? !(
-        userStore.followed.findIndex(
-          (followed) => parseInt(followed._id) === profileStore._id,
-        ) < 0
-      )
+          userStore.followed.findIndex(
+            (followed) => parseInt(followed._id) === profileStore._id,
+          ) < 0
+        )
       : false,
   );
 
   const [isFriend, setIsFriend] = useState(
     userStore.friends
       ? !(
-        userStore.friends.findIndex(
-          (friend) => parseInt(friend._id) === profileStore._id,
-        ) < 0
-      )
+          userStore.friends.findIndex(
+            (friend) => parseInt(friend._id) === profileStore._id,
+          ) < 0
+        )
       : false,
   );
 
   const [isPending, setIsPending] = useState(
     userStore.friendsPending
       ? !(
-        userStore.friendsPending.findIndex(
-          (pending) => parseInt(pending.friend_id) === profileStore._id,
-        ) < 0
-      )
+          userStore.friendsPending.findIndex(
+            (pending) => parseInt(pending.friend_id) === profileStore._id,
+          ) < 0
+        )
       : false,
   );
 
@@ -134,7 +134,8 @@ export const ProfileActions = observer(() => {
             >
               <UserAddOutlined /> {t("profile.sendFriendRequest")}
             </div>
-          )}
+          )
+        }
         {
           // Follow/Unfollow action
           isFollowed ? (

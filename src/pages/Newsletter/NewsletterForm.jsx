@@ -75,9 +75,7 @@ export const NewsletterForm = observer(() => {
         // interests: ["BDSM", "Fetish", "Hedonistic Love", "Queer"],
       }}
     >
-      <Form.Item
-        name="username"
-      >
+      <Form.Item name="username">
         <Input
           prefix={<UserOutlined className="site-form-item-icon" />}
           placeholder={t("newsletter.name")}
@@ -101,12 +99,9 @@ export const NewsletterForm = observer(() => {
       <Form.Item
         name="language"
         onChange={changeLanguageHandler}
-        className='newsletter__radioContainer'
+        className="newsletter__radioContainer"
       >
-        <Radio.Group
-          buttonStyle="solid"
-          size="small"
-        >
+        <Radio.Group buttonStyle="solid" size="small">
           <Radio.Button value="de">{t("newsletter.german")}</Radio.Button>
           <Radio.Button value="en">{t("newsletter.english")}</Radio.Button>
         </Radio.Group>
@@ -132,9 +127,7 @@ export const NewsletterForm = observer(() => {
           ]}
         />
       </Form.Item>
-      <Form.Item
-        name="interests"
-      >
+      <Form.Item name="interests">
         <Select
           mode="multiple"
           allowClear

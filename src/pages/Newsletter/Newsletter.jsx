@@ -23,7 +23,10 @@ export const Newsletter = () => {
       </div>
       <LanguageDropDown />
       <DarkModeDropDown />
-      <div className="newsletter__background invertColorTheme" id="background"></div>
+      <div
+        className="newsletter__background invertColorTheme"
+        id="background"
+      ></div>
       <div className="newsletter__overBackground"></div>
       <div className="newsletter__container">
         <div className="newsletter__formContainer">
