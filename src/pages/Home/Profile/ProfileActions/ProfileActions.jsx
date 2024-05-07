@@ -28,30 +28,30 @@ export const ProfileActions = observer(() => {
   const [isFollowing, setIsFollowing] = useState(
     userStore.following
       ? !(
-        userStore.following.findIndex(
-          (following) => parseInt(following._id) === profileStore._id,
-        ) < 0
-      )
+          userStore.following.findIndex(
+            (following) => parseInt(following._id) === profileStore._id,
+          ) < 0
+        )
       : false,
   );
 
   const [isFriend, setIsFriend] = useState(
     userStore.friends
       ? !(
-        userStore.friends.findIndex(
-          (friend) => parseInt(friend._id) === profileStore._id,
-        ) < 0
-      )
+          userStore.friends.findIndex(
+            (friend) => parseInt(friend._id) === profileStore._id,
+          ) < 0
+        )
       : false,
   );
 
   const [isPending, setIsPending] = useState(
     userStore.friendsPending
       ? !(
-        userStore.friendsPending.findIndex(
-          (pending) => parseInt(pending.friend_id) === profileStore._id,
-        ) < 0
-      )
+          userStore.friendsPending.findIndex(
+            (pending) => parseInt(pending.friend_id) === profileStore._id,
+          ) < 0
+        )
       : false,
   );
 
@@ -126,8 +126,7 @@ export const ProfileActions = observer(() => {
               className={"profil__action"}
               onClick={() => handleClick("follow")}
             >
-              <EyeOutlined /> {t("profile.follow")}{" "}
-              {profileStore.userName}
+              <EyeOutlined /> {t("profile.follow")} {profileStore.userName}
             </div>
           )
         }
