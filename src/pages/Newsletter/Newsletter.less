@@ -1,5 +1,5 @@
-.background {
-   position: absolute;
+.newsletter__background {
+   position: fixed;
    width: 100vw;
    height: 100vh;
    /* Fallback for browsers that do not support Custom Properties */
@@ -8,8 +8,8 @@
    background-size: cover;
 }
 
-.overBackground {
-   position: absolute;
+.newsletter__overBackground {
+   position: fixed;
    width: 100vw;
    height: 100vh;
    /* Fallback for browsers that do not support Custom Properties */
@@ -19,8 +19,8 @@
 
 @media only screen and (max-width: 675px) {
 
-   .background,
-   .overBackground {
+   .newsletter__background,
+   .newsletter__overBackground {
       height: 201vh;
       background-size: cover;
       background-position: center;

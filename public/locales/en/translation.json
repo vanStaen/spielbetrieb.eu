@@ -18,8 +18,7 @@
 		"clickOn": "Click on the",
 		"inCornerToLogin": "in the top right corner to log in or sign up",
 		"pendingReview": "pending review",
-		"youGotMail": "You got mail!",
-		"cancel": "Cancel"
+		"youGotMail": "You got mail!"
 	},
 	"login": {
 		"loginSuccess": "Login was sucessfull!",
@@ -141,6 +140,7 @@
 		"language": "Language",
 		"german": "German",
 		"english": "English",
+		"reset": "Reset",
 		"signup": "Sign up"
 	},
 	"spielplan": {

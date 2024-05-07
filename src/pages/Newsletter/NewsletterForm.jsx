@@ -168,7 +168,7 @@ export const NewsletterForm = observer(() => {
             htmlType="button"
             onClick={onCancel}
           >
-            {t("general.cancel")}
+            {t("newsletter.reset")}
           </Button>
           <Button
             className="newsletter__submitButton"

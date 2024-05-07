@@ -18,8 +18,7 @@
 		"clickOn": "Klick auf",
 		"inCornerToLogin": "in der obere rechte Ecke um sich einzuloggen",
 		"pendingReview": "zur Überprüfung",
-		"youGotMail": "Du hast Post!",
-		"cancel": "Zurück"
+		"youGotMail": "Du hast Post!"
 	},
 	"login": {
 		"loginSuccess": "Erfolgreich eingelogt!",
@@ -141,6 +140,7 @@
 		"language": "Sprache",
 		"german": "Deutsch",
 		"english": "Englisch",
+		"reset": "Zurücksetzen",
 		"signup": "Abonnieren"
 	},
 	"spielplan": {
