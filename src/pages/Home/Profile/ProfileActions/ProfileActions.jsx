@@ -25,33 +25,33 @@ export const ProfileActions = observer(() => {
   const { t } = useTranslation();
   const [showProfileFriends, setShowProfileFriends] = useState(false);
 
-  const [isFollowed, setIsFollowed] = useState(
-    userStore.followed
+  const [isFollowing, setIsFollowing] = useState(
+    userStore.following
       ? !(
-          userStore.followed.findIndex(
-            (followed) => parseInt(followed._id) === profileStore._id,
-          ) < 0
-        )
+        userStore.following.findIndex(
+          (following) => parseInt(following._id) === profileStore._id,
+        ) < 0
+      )
       : false,
   );
 
   const [isFriend, setIsFriend] = useState(
     userStore.friends
       ? !(
-          userStore.friends.findIndex(
-            (friend) => parseInt(friend._id) === profileStore._id,
-          ) < 0
-        )
+        userStore.friends.findIndex(
+          (friend) => parseInt(friend._id) === profileStore._id,
+        ) < 0
+      )
       : false,
   );
 
   const [isPending, setIsPending] = useState(
     userStore.friendsPending
       ? !(
-          userStore.friendsPending.findIndex(
-            (pending) => parseInt(pending.friend_id) === profileStore._id,
-          ) < 0
-        )
+        userStore.friendsPending.findIndex(
+          (pending) => parseInt(pending.friend_id) === profileStore._id,
+        ) < 0
+      )
       : false,
   );
 
@@ -59,10 +59,10 @@ export const ProfileActions = observer(() => {
     try {
       if (action === "follow") {
         await postFollow(profileStore._id);
-        setIsFollowed(true);
+        setIsFollowing(true);
       } else if (action === "unfollow") {
         await deleteFollow(profileStore._id);
-        setIsFollowed(false);
+        setIsFollowing(false);
       } else if (action === "request") {
         await postFriendRequest(profileStore._id);
         setIsPending(true);
@@ -101,7 +101,7 @@ export const ProfileActions = observer(() => {
         <div>
           <Badge
             showZero
-            count={profileStore.followed.length}
+            count={profileStore.following.length}
             color="#b6c8bf"
           />{" "}
           {t("profile.following")}
@@ -138,7 +138,7 @@ export const ProfileActions = observer(() => {
         }
         {
           // Follow/Unfollow action
-          isFollowed ? (
+          isFollowing ? (
             <div
               className={"profil__action"}
               onClick={() => handleClick("unfollow")}

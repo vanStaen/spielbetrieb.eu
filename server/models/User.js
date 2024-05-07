@@ -145,7 +145,7 @@ User.belongsToMany(User, {
 });
 
 User.belongsToMany(User, {
-  as: "followed",
+  as: "following",
   foreignKey: "followed_id",
   through: Usersfollower,
 });

@@ -131,7 +131,7 @@
 		"pleaseSelectList": "Please select at least one mailing list!",
 		"pleaseInputEmail": "Please input a valid email!",
 		"name": "Name",
-		"email": "email",
+		"email": "Email",
 		"lists": "Mailing List(s)",
 		"extravaganzas": "Extravaganzas",
 		"deals": "Deals",
@@ -242,7 +242,8 @@
 		"follow": "Follow",
 		"unfollow": "Unfollow",
 		"sendFriendRequest": "Send a friendrequest",
-		"sendMessage": "Send a message"
+		"sendMessage": "Send a message",
+		"deletePendingRequest": "Delete pending request"
 	},
 	"scene": {
 		"fetish": "Fetish",

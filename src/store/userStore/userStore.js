@@ -30,7 +30,7 @@ export class UserStore {
   language = null;
   friends = [];
   followers = [];
-  followed = [];
+  following = [];
   comments = [];
   events = [];
   messages = [];
@@ -101,8 +101,8 @@ export class UserStore {
       setFriends: action,
       followers: observable,
       setFollowers: action,
-      followed: observable,
-      setFollowed: action,
+      following: observable,
+      setFollowing: action,
       _id: observable,
       set_id: action,
     });
@@ -212,8 +212,8 @@ export class UserStore {
     this.followers = followers;
   };
 
-  setFollowed = (followed) => {
-    this.followed = followed;
+  setFollowing = (following) => {
+    this.following = following;
   };
 
   setVisitors = (visitors) => {
@@ -258,7 +258,7 @@ export class UserStore {
         this.setFriends(userData.friends);
         this.setDescription(userData.description);
         this.setFollowers(userData.followers);
-        this.setFollowed(userData.followed);
+        this.setFollowing(userData.following);
         this.setLastActive(userData.lastActive);
         this.setLanguage(userData.language);
         this.setGender(userData.gender);

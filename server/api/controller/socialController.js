@@ -36,8 +36,8 @@ router.post("/follow", async (req, res) => {
   }
   try {
     const follower = req.userId;
-    const followed = req.body.followed;
-    const response = await followerService.addFollow(follower, followed);
+    const following = req.body.following;
+    const response = await followerService.addFollow(follower, following);
     res.status(200).json({
       success: response,
     });
@@ -54,8 +54,8 @@ router.delete("/follow", async (req, res) => {
   }
   try {
     const follower = req.userId;
-    const followed = req.body.followed;
-    const response = await followerService.deleteFollow(follower, followed);
+    const following = req.body.following;
+    const response = await followerService.deleteFollow(follower, following);
     res.status(200).json({
       success: response,
     });

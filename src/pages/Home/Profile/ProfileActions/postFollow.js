@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const postFollow = async (followedId) => {
+export const postFollow = async (followingId) => {
   const requestBody = {
-    followed: followedId,
+    following: followingId,
   };
 
   try {

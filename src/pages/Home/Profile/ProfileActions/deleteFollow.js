@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const deleteFollow = async (followedId) => {
+export const deleteFollow = async (followingId) => {
   const requestBody = {
-    followed: followedId,
+    following: followingId,
   };
 
   try {

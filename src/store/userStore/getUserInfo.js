@@ -53,7 +53,7 @@ export const getUserInfo = async () => {
                     userName,
                     avatar,
                 },
-                followed {
+                following {
                     userName,
                     avatar,
                 }

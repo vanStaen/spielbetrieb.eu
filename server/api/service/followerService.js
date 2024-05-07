@@ -16,15 +16,15 @@ export const followerService = {
     return foundFollowing;
   },
 
-  async addFollow(follower, followed) {
+  async addFollow(follower, following) {
     try {
       const newFollow = new Usersfollower({
         follower_id: follower,
-        followed_id: followed,
+        followed_id: following,
       });
       const newFollower = await newFollow.save();
       await notificationService.createNotificationNewFollower(
-        followed,
+        following,
         follower,
       );
       return newFollower;
@@ -33,11 +33,11 @@ export const followerService = {
     }
   },
 
-  async deleteFollow(follower, followed) {
+  async deleteFollow(follower, following) {
     await Usersfollower.destroy({
       where: {
         follower_id: follower,
-        followed_id: followed,
+        followed_id: following,
       },
     });
     return true;

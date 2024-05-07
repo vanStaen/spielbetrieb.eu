@@ -15,7 +15,7 @@ export class ProfileStore {
   friends = [];
   friendsPending = [];
   followers = [];
-  followed = [];
+  following = [];
   lastActive = null;
   profilSettings = null;
   filterIsPopingUp = false;
@@ -34,7 +34,7 @@ export class ProfileStore {
       friends: observable,
       friendsPending: observable,
       followers: observable,
-      followed: observable,
+      following: observable,
       lastActive: observable,
       profilSettings: observable,
       isPartner: observable,
@@ -50,7 +50,7 @@ export class ProfileStore {
       setFriends: action,
       setFriendsPending: action,
       setFollowers: action,
-      setFollowed: action,
+      setFollowing: action,
       setLastActive: action,
       setProfilSettings: action,
       setIsPartner: action,
@@ -103,8 +103,8 @@ export class ProfileStore {
     this.followers = followers;
   };
 
-  setFollowed = (followed) => {
-    this.followed = followed;
+  setFollowing = (following) => {
+    this.following = following;
   };
 
   setLastActive = (lastActive) => {
@@ -150,7 +150,7 @@ export class ProfileStore {
           this.setFriends(friendsNotPending);
           this.setFriendsPending(pendingData);
           this.setFollowers(profileData.followers);
-          this.setFollowed(profileData.followed);
+          this.setFollowing(profileData.following);
           this.setGender(profileData.gender);
           this.setIsPartner(profileData.isPartner);
           this.setLastActive(profileData.lastActive);

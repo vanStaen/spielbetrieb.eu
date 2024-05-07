@@ -476,7 +476,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getUser {\n    _id,\n    isAdmin,\n    adminRoles,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    emailSettings,\n    profilSettings,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    interests,\n    lastActive,\n    archived,\n    usernameChange,\n    comments {\n        _id,\n    },\n    events {\n        _id,\n    },\n    messages {\n        _id,\n    },\n    notifications {\n        _id,\n    },\n    photos {\n        _id,\n    },\n    visitors {\n        _id,\n    },\n    friends {\n        userName,\n        avatar,\n    },\n    followers {\n        userName,\n        avatar,\n    },\n    followed {\n        userName,\n        avatar,\n    }\n  }\n}",
+						"query": "query {\n  getUser {\n    _id,\n    isAdmin,\n    adminRoles,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    emailSettings,\n    profilSettings,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    interests,\n    lastActive,\n    archived,\n    usernameChange,\n    comments {\n        _id,\n    },\n    events {\n        _id,\n    },\n    messages {\n        _id,\n    },\n    notifications {\n        _id,\n    },\n    photos {\n        _id,\n    },\n    visitors {\n        _id,\n    },\n    friends {\n        userName,\n        avatar,\n    },\n    followers {\n        userName,\n        avatar,\n    },\n    following {\n        userName,\n        avatar,\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -572,7 +572,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getProfileById (_id: 5) {\n    _id,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    interests,\n    comments {\n        _id,\n    }\n    events {\n        _id,\n    }\n    messages {\n        _id,\n    }\n    notifications {\n        _id,\n    }\n    photos {\n        _id,\n    }\n    visitors {\n        _id,\n    }\n    friends {\n        userName,\n        avatar,\n    },\n    followers {\n        userName,\n        avatar,\n    },\n    followed {\n        userName,\n        avatar,\n    },\n  }\n}",
+						"query": "query {\n  getProfileById (_id: 5) {\n    _id,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    interests,\n    comments {\n        _id,\n    }\n    events {\n        _id,\n    }\n    messages {\n        _id,\n    }\n    notifications {\n        _id,\n    }\n    photos {\n        _id,\n    }\n    visitors {\n        _id,\n    }\n    friends {\n        userName,\n        avatar,\n    },\n    followers {\n        userName,\n        avatar,\n    },\n    following {\n        userName,\n        avatar,\n    },\n  }\n}",
 						"variables": ""
 					}
 				},

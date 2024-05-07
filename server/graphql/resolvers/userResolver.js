@@ -25,7 +25,7 @@ export const userResolver = {
         Visitor,
         "friends",
         "followers",
-        "followed",
+        "following",
       ],
     });
   },
@@ -195,14 +195,14 @@ export const userResolver = {
   async getProfileByName(args, req) {
     return await User.findOne({
       where: { userName: args.userName },
-      include: ["friends", "followers", "followed"],
+      include: ["friends", "followers", "following"],
     });
   },
 
   async getProfileById(args, req) {
     return await User.findOne({
       where: { _id: args._id },
-      include: ["friends", "followers", "followed"],
+      include: ["friends", "followers", "following"],
     });
   },
 

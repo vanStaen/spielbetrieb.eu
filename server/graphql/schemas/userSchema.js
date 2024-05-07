@@ -32,7 +32,7 @@ type User {
     visitors: [Visitor] 
     friends: [User]
     followers: [User]
-    followed: [User]
+    following: [User]
     language: String!
     deleted: Boolean!
     suspended: Boolean!
