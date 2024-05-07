@@ -6,7 +6,7 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
 import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 import { NewsletterForm } from "./NewsletterForm";
-import { pageStore } from '../../store/pageStore/pageStore';
+import { pageStore } from "../../store/pageStore/pageStore";
 
 import "./Newsletter.less";
 
