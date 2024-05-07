@@ -1,7 +1,7 @@
 @widthPhonePanel: 40vw;
 
-.background {
-   position: absolute;
+.landingPage__background {
+   position: fixed;
    width: 100vw;
    height: 100vh;
    /* Fallback for browsers that do not support Custom Properties */
@@ -10,8 +10,8 @@
    background-size: cover;
 }
 
-.overBackground {
-   position: absolute;
+.landingPage__overBackground {
+   position: fixed;
    width: 100vw;
    height: 100vh;
    /* Fallback for browsers that do not support Custom Properties */
@@ -40,16 +40,6 @@
 }
 
 @media only screen and (max-width: 675px) {
-
-   .background,
-   .overBackground {
-      height: 200vh;
-      /* Fallback for browsers that do not support Custom Properties */
-      height: calc(var(--vh, 2vh) * 100);
-      background-size: cover;
-      background-position: center;
-   }
-
    .landingPage__doublearrow {
       display: none;
    }
@@ -220,6 +210,7 @@
 
    .phone__mobileContainer {
       display: none;
+      margin-bottom: 20px;
       height: 100vh;
       /* Fallback for browsers that do not support Custom Properties */
       height: calc(var(--vh, 1vh) * 100);
