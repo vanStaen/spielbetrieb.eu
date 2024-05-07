@@ -15,7 +15,7 @@ export const ProfileFriendAvatar = (props) => {
 
   const fetchAvatarUrls = async () => {
     if (path) {
-      const avatarUrl = await getPictureUrl(path, "users");
+      const avatarUrl = await getPictureUrl(`${path}_t`, "users");
       setAvatar(avatarUrl);
       const isloaded = new Promise((resolve, reject) => {
         const loadImg = new Image();
@@ -44,7 +44,7 @@ export const ProfileFriendAvatar = (props) => {
           <div className="profilFriendAvatar__avatar">
             <div className="profilFriendAvatar__loader">
               <LoadingOutlined
-                style={{ fontSize: 24, color: "#e1cfbb", top: "-4px" }}
+                className="profilFriendAvatar__loaderSpinner"
                 spin
               />
             </div>
