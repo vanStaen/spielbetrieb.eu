@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ArrowLeftOutlined } from "@ant-design/icons";
+import { observer } from "mobx-react";
 
 import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
 import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
@@ -10,12 +11,12 @@ import { pageStore } from "../../store/pageStore/pageStore";
 
 import "./Newsletter.less";
 
-export const Newsletter = () => {
+export const Newsletter = observer(() => {
   const { t } = useTranslation();
   return (
     <>
       <div
-        className={`login__goBack ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
+        className={`newsletter__goBack ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
       >
         <Link to="/" relative="path">
           <ArrowLeftOutlined />
@@ -40,4 +41,4 @@ export const Newsletter = () => {
       </div>
     </>
   );
-};
+});

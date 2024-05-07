@@ -91,14 +91,9 @@ export const Menu = observer(() => {
     navigate("/profile");
   };
 
-  console.log(!avatarPic);
-
   return (
     <>
-      <div
-        className={`menu__containerAvatar`}
-        onClick={avatarClickhandle}
-      >
+      <div className={`menu__containerAvatar`} onClick={avatarClickhandle}>
         <Avatar
           shape="square"
           src={
