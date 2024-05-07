@@ -18,7 +18,8 @@
 		"clickOn": "Klick auf",
 		"inCornerToLogin": "in der obere rechte Ecke um sich einzuloggen",
 		"pendingReview": "zur Überprüfung",
-		"youGotMail": "Du hast Post!"
+		"youGotMail": "Du hast Post!",
+		"cancel": "Zurück"
 	},
 	"login": {
 		"loginSuccess": "Erfolgreich eingelogt!",
@@ -129,7 +130,18 @@
 		"verificationError": "Es ist ein Fehler aufgetreten! Bitte starten Sie den Vorgang von der Startseite aus neu.",
 		"error": "Fehler bei Abonnieren!",
 		"pleaseSelectList": "Bitte wählen Sie mindestens eine Mailingliste aus!",
-		"pleaseInputEmail": "Bitte geben Sie eine gültige Email-Addresse ein!"
+		"pleaseInputEmail": "Bitte geben Sie eine gültige Email-Addresse ein!",
+		"name": "Name",
+		"email": "eMail",
+		"lists": "Mailingliste(n)",
+		"extravaganzas": "Extravaganzas",
+		"deals": "Deals",
+		"parties": "Veranstalltungen",
+		"interests": "Interesse",
+		"language": "Sprache",
+		"german": "Deutsch",
+		"english": "Englisch",
+		"signup": "Abonnieren"
 	},
 	"spielplan": {
 		"eventOrganisedBy": "Hinzugefügt von",
@@ -231,5 +243,9 @@
 		"unfollow": "Entfolge",
 		"sendFriendRequest": "Freundschaft anbieten",
 		"sendMessage": "Nachricht senden"
+	},
+	"scene": {
+		"fetish": "Fetisch",
+		"hedonisticLove": "Hedonistische Liebe"
 	}
 }

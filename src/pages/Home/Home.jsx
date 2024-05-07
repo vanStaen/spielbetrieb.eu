@@ -1,9 +1,9 @@
 import React from "react";
 import { Tooltip } from "antd";
-import { MailOutlined } from "@ant-design/icons";
+import { MailOutlined, NotificationOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react";
+import { Link } from "react-router-dom";
 
-import { NewsletterForm } from "../../components/NewsletterForm/NewsletterForm";
 import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
 import { HelpButtons } from "../../components/HelpButtons/HelpButtons";
@@ -39,12 +39,16 @@ export const Home = observer((props) => {
               <HelpButtons />
               <div className="home__links">
                 <div className="home__link">
-                  <NewsletterForm />
+                  <Link to="/newsletter" relative="path">
+                    <Tooltip title="Newsletter" placement="bottom">
+                      <NotificationOutlined />
+                    </Tooltip>
+                  </Link>
                 </div>
                 <div className="home__link">
                   <Tooltip title="eMail" placement="bottom">
                     <a
-                      href="mailto:info@spielbetrieb.online"
+                      href="mailto:info@spielbetrieb.eu"
                       target="_blank"
                       rel="noreferrer"
                     >

@@ -18,7 +18,8 @@
 		"clickOn": "Click on the",
 		"inCornerToLogin": "in the top right corner to log in or sign up",
 		"pendingReview": "pending review",
-		"youGotMail": "You got mail!"
+		"youGotMail": "You got mail!",
+		"cancel": "Cancel"
 	},
 	"login": {
 		"loginSuccess": "Login was sucessfull!",
@@ -129,7 +130,18 @@
 		"verificationError": "An error happened! Please restart the process from the main page.",
 		"error": "Error while subscribing!",
 		"pleaseSelectList": "Please select at least one mailing list!",
-		"pleaseInputEmail": "Please input a valid email!"
+		"pleaseInputEmail": "Please input a valid email!",
+		"name": "Name",
+		"email": "email",
+		"lists": "Mailing List(s)",
+		"extravaganzas": "Extravaganzas",
+		"deals": "Deals",
+		"parties": "Parties/Events",
+		"interests": "Interest(s)",
+		"language": "Language",
+		"german": "German",
+		"english": "English",
+		"signup": "Sign up"
 	},
 	"spielplan": {
 		"eventOrganisedBy": "Event added by",
@@ -231,5 +243,9 @@
 		"unfollow": "Unfollow",
 		"sendFriendRequest": "Send a friendrequest",
 		"sendMessage": "Send a message"
+	},
+	"scene": {
+		"fetish": "Fetish",
+		"hedonisticLove": "Hedonistic Love"
 	}
 }

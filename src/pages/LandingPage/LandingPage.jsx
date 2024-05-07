@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
 import { Tooltip } from "antd";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import {
   MailOutlined,
   LinkOutlined,
   DoubleLeftOutlined,
+  NotificationOutlined,
 } from "@ant-design/icons";
 
 import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { Phone } from "../../components/Phone/Phone";
-import { NewsletterForm } from "../../components/NewsletterForm/NewsletterForm";
 import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
 
@@ -78,12 +79,16 @@ export const LandingPage = () => {
             </div>
             <div className="spielbetrieb__links">
               <div className="spielbetrieb__link">
-                <NewsletterForm />
+                <Link to="/newsletter" relative="path">
+                  <Tooltip title="Newsletter" placement="bottom">
+                    <NotificationOutlined />
+                  </Tooltip>
+                </Link>
               </div>
               <div className="spielbetrieb__link">
                 <Tooltip title="eMail" placement="bottom">
                   <a
-                    href="mailto:info@spielbetrieb.online"
+                    href="mailto:info@spielbetrieb.eu"
                     target="_blank"
                     rel="noreferrer"
                   >

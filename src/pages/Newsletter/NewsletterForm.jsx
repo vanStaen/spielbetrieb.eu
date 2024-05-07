@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react";
 import { notification, Button, Input, Form, Radio, Select } from "antd";
+import { useNavigate } from "react-router-dom";
 
 import { pageStore } from "../../store/pageStore/pageStore";
 import { addSubscriber } from "./addSubscriber";
@@ -12,6 +13,7 @@ export const NewsletterForm = observer(() => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   // const { TextArea } = Input;
 
   const onCancel = () => {
@@ -49,6 +51,7 @@ export const NewsletterForm = observer(() => {
       });
     }
     setLoading(false);
+    navigate("/");
   };
 
   const changeLanguageHandler = (e) => {
@@ -69,13 +72,13 @@ export const NewsletterForm = observer(() => {
       }}
     >
       <Form.Item
-        label={<div className="newsletter__text">Name</div>}
+        label={<div className="newsletter__text">{t('newsletter.name')}</div>}
         name="username"
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Email"
+        label={t('newsletter.email')}
         name="email"
         rules={[
           {
@@ -88,7 +91,7 @@ export const NewsletterForm = observer(() => {
         <Input />
       </Form.Item>
       <Form.Item
-        label={<div className="newsletter__text">Mailing List(s)</div>}
+        label={<div className="newsletter__text">{t('newsletter.lists')}</div>}
         name="lists"
         rules={[
           {
@@ -101,14 +104,14 @@ export const NewsletterForm = observer(() => {
           mode="multiple"
           allowClear
           options={[
-            { value: "parties", label: "Parties/Events" },
-            { value: "deals", label: "Deals" },
-            { value: "extravaganzas", label: "Extravaganzas" },
+            { value: "parties", label: t('newsletter.parties') },
+            { value: "deals", label: t('newsletter.deals') },
+            { value: "extravaganzas", label: t('newsletter.extravaganzas') },
           ]}
         />
       </Form.Item>
       <Form.Item
-        label={<div className="newsletter__text">Interest(s)</div>}
+        label={<div className="newsletter__text">{t('newsletter.interests')}</div>}
         name="interests"
       >
         <Select
@@ -116,20 +119,22 @@ export const NewsletterForm = observer(() => {
           allowClear
           options={[
             { value: "BDSM", label: "BDSM" },
-            { value: "fetish", label: "Fetish" },
-            { value: "hedonisticlove", label: "Hedonistic Love" },
+            {
+              value: "fetish", label: t('scene.fetish')
+            },
+            { value: "hedonisticlove", label: t('scene.hedonisticLove') },
             { value: "queer", label: "Queer" },
           ]}
         />
       </Form.Item>
       <Form.Item
-        label={<div className="newsletter__text">Language</div>}
+        label={<div className="newsletter__text">{t('newsletter.language')}</div>}
         name="language"
         onChange={changeLanguageHandler}
       >
         <Radio.Group buttonStyle="solid">
-          <Radio.Button value="de">German</Radio.Button>
-          <Radio.Button value="en">English</Radio.Button>
+          <Radio.Button value="de">{t('newsletter.german')}</Radio.Button>
+          <Radio.Button value="en">{t('newsletter.english')}</Radio.Button>
         </Radio.Group>
       </Form.Item>
       {/* 
@@ -158,14 +163,14 @@ export const NewsletterForm = observer(() => {
             htmlType="button"
             onClick={onCancel}
           >
-            Cancel
+            {t('general.cancel')}
           </Button>
           <Button
             className="newsletter__submitButton"
             htmlType="submit"
             loading={loading}
           >
-            Sign up
+            {t('newsletter.signup')}
           </Button>
         </div>
       </Form.Item>
