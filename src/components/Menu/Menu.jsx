@@ -100,7 +100,7 @@ export const Menu = observer(() => {
         <Avatar
           shape="square"
           src={
-            !userStore.isLoading && userStore.avatar ? (
+            avatarPic ? (
               <img src={avatarPic} className="menu__icon" />
             ) : (
               <UserOutlined className="menu__icon" />
