@@ -10,7 +10,7 @@ dotenv.config({ path: __dirname + "/./../../.env" });
 
 const devMode = true;
 
-export default async (req, res, next) => {
+export default async (req, _, next) => {
   // if in development mode
   if (devMode) {
     if (req.get("host") === "localhost:5017") {

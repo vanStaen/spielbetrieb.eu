@@ -91,17 +91,19 @@ export const Menu = observer(() => {
     navigate("/profile");
   };
 
+  console.log(!avatarPic);
+
   return (
     <>
       <div
-        className="menu__containerAvatar invertColorTheme"
+        className={`menu__containerAvatar`}
         onClick={avatarClickhandle}
       >
         <Avatar
           shape="square"
           src={
             avatarPic ? (
-              <img src={avatarPic} className="menu__icon" />
+              <img src={avatarPic} />
             ) : (
               <UserOutlined className="menu__icon" />
             )

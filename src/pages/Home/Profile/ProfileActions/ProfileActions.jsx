@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
-import { Badge } from "antd";
 import { useTranslation } from "react-i18next";
 import {
   MailOutlined,
@@ -23,7 +22,6 @@ import "./ProfileActions.less";
 
 export const ProfileActions = observer(() => {
   const { t } = useTranslation();
-  const [showProfileFriends, setShowProfileFriends] = useState(false);
 
   const [isFollowing, setIsFollowing] = useState(
     userStore.following

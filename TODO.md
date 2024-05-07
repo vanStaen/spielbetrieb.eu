@@ -71,4 +71,4 @@ AI bilder
 - [ ] Why resized picture are bigger than original (_m and _t)
 - [ ] Check if user is online, and react if not (with custom error) (https://react.dev/learn/reusing-logic-with-custom-hooks)
 - [ ] Convert social REST endpoint to GraphQL
-- rename to friends, follower, following, requested, requesting
+- [ ] clean theme.less (use less --var)
