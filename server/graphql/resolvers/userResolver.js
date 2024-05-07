@@ -16,7 +16,7 @@ export const userResolver = {
     }
     return await User.findOne({
       where: { _id: req.userId },
-      include: [Comment, Event, Message, Notification, Photo, Visitor],
+      include: [Comment, Event, Message, Notification, Photo, Visitor, "friends", "followers", "followed"],
     });
   },
 
