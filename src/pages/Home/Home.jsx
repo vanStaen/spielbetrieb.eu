@@ -16,6 +16,7 @@ import { Profile } from "./Profile/Profile";
 import { Settings } from "./Settings/Settings";
 import { Shop } from "./Shop/Shop";
 import { EventPage } from "./Event/EventPage/EventPage";
+import { Links } from "./Links/Links";
 import { EventForm } from "./Event/EventForm/EventForm";
 import { GalleryOverlay } from "../../components/GalleryOverlay/GalleryOverlay";
 import { spielplanStore } from "../../store/spielplanStore/spielplanStore";
@@ -78,6 +79,8 @@ export const Home = observer((props) => {
         return <Profile />;
       case "settings":
         return <Settings />;
+      case "links":
+        return <Links />;
       default:
         return "Error" + page;
     }
