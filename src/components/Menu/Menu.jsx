@@ -96,7 +96,6 @@ export const Menu = observer(() => {
     navigate("/settings");
   };
 
-
   return (
     <>
       <div className={`menu__containerAvatar`} onClick={avatarClickhandle}>

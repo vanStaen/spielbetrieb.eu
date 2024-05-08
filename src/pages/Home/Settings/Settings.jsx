@@ -69,7 +69,9 @@ export const Settings = observer(() => {
 
   return (
     <div className="EditSettings__main">
-      {userStore.isLoading ? 'loading' : (
+      {userStore.isLoading ? (
+        "loading"
+      ) : (
         <div className="EditSettings__container">
           <div className="EditSettings__centerDiv">
             <div className="EditSettings__title">
@@ -104,7 +106,9 @@ export const Settings = observer(() => {
                 <Radio.Button value="1">{t("profile.male")}</Radio.Button>
                 <Radio.Button value="2">{t("profile.female")}</Radio.Button>
                 <Tooltip placement="top" title={t("profile.tooltipNB")}>
-                  <Radio.Button value="3">{t("profile.nonbinary")}</Radio.Button>
+                  <Radio.Button value="3">
+                    {t("profile.nonbinary")}
+                  </Radio.Button>
                 </Tooltip>
               </Radio.Group>
             </div>
@@ -260,7 +264,8 @@ export const Settings = observer(() => {
             <DeleteAccountButton />
           </div>
           <div className="EditSettings__SpacerBeforeDivider" />
-        </div>)}
+        </div>
+      )}
     </div>
   );
 });
