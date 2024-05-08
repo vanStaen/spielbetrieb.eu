@@ -1,13 +1,14 @@
 .EditSettings__main {
   width: 100vw;
   height: auto;
+  color: rgba(var(--themeFontColor), 1);
 }
 
 .EditSettings__container {
   margin: 40px 8vw;
   max-width: 1200px;
   text-align: left;
-  vertical-align:top;
+  vertical-align: top;
   font-size: 16px;
 }
 
@@ -42,19 +43,23 @@
     margin: 10px 20px;
     font-size: 16px;
   }
+
   .EditSettings__title {
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 0;
   }
+
   .EditSettings__singleSetting {
     font-size: 13px;
     text-justify: inter-word;
   }
+
   .EditSettings__centerDiv {
     width: 100%;
     text-align: center;
   }
+
   .ant-divider-inner-text {
     color: rgba(0, 0, 0, .25) !important;
   }

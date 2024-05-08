@@ -6,7 +6,7 @@ import defaultEmailSettings from "./defaultEmailSettings.json";
 import defaultProfilSettings from "./defaultProfilSettings.json";
 
 export class UserStore {
-  isLoading = false;
+  isLoading = true;
   isAdmin = false;
   adminRoles = [];
   isPartner = false;
@@ -274,8 +274,8 @@ export class UserStore {
           this.setPartnerRoles(userData.partnerRoles);
         }
         if (
-          userData.profilSettings === "{}" ||
-          userData.emailSettings === "{}"
+          userData.profilSettings === null ||
+          userData.emailSettings === null
         ) {
           this.setEmailSettings(defaultEmailSettings);
           this.setProfilSettings(defaultProfilSettings);
