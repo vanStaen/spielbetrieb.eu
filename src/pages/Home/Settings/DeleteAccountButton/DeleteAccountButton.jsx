@@ -34,7 +34,7 @@ export const DeleteAccountButton = () => {
   };
 
   const deleteAccountHandler = (event) => {
-    archiveAccount(true);
+    //archiveAccount(true);
     notification.error({
       message: (
         <>
@@ -58,7 +58,7 @@ export const DeleteAccountButton = () => {
       >
         {t("profile.deleteAccount")}
       </Button>
-      {!showAreYouSureButton && (
+      {showAreYouSureButton && (
         <>
           <div className="deleteButtonSpacer"></div>
           <Button

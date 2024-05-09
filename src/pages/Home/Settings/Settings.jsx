@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 import { Divider, Switch, Radio, Tooltip, notification } from "antd";
 import { CloseOutlined, CheckOutlined } from "@ant-design/icons";
@@ -17,6 +17,11 @@ import "./Settings.css";
 export const Settings = observer(() => {
   const { i18n, t } = useTranslation();
   const initLanguage = i18n.language.slice(0, 2);
+
+
+  useEffect(() => {
+    userStore.isLoading && userStore.fetchUserData();
+  }, [])
 
   const changeEmailSettingsHandler = (setting, value) => {
     const tempEmailSettings = userStore.emailSettings;
