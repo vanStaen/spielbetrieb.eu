@@ -17,7 +17,7 @@ type User {
     verifiedEmail: Boolean!
     verifiedIdentity: Boolean!
     birthday: Float
-    gender: String
+    gender: Int
     orientation: String
     wishes: [String]
     interests: [String]
@@ -52,7 +52,7 @@ input UserInputData {
     emailSettings: String
     profilSettings: String
     birthday: Float
-    gender: String
+    gender: Int
     orientation: String
     wishes: [String]
     interests: [String]
@@ -73,7 +73,7 @@ input UserInputDataAdmin {
     emailSettings: String
     profilSettings: String
     birthday: Float
-    gender: String
+    gender: Int
     orientation: String
     wishes: [String]
     interests: [String]

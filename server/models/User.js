@@ -43,12 +43,12 @@ export const User = sequelize.sequelize.define("user", {
     allowNull: true,
   },
   emailSettings: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: true,
     defaultValue: null,
   },
   profilSettings: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: true,
     defaultValue: null,
   },
@@ -61,7 +61,7 @@ export const User = sequelize.sequelize.define("user", {
     defaultValue: false,
   },
   gender: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     allowNull: true,
   },
   birthday: {

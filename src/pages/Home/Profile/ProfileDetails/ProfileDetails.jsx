@@ -10,11 +10,13 @@ export const ProfileDetails = observer(() => {
   const { t } = useTranslation();
   const [showLastSeenOnline, setShowLastSeenOnline] = useState(false);
   const [showLastName, setShowLastName] = useState(false);
+  const [showFirstName, setShowFirstName] = useState(false);
 
   useEffect(() => {
     if (!profileStore.isLoading && profileStore.profilSettings) {
       setShowLastSeenOnline(profileStore.profilSettings.showLastSeenOnline);
       setShowLastName(profileStore.profilSettings.showLastName);
+      setShowFirstName(profileStore.profilSettings.showFirstName);
     }
   }, [profileStore.isLoading, profileStore.profilSettings]);
 
@@ -24,7 +26,7 @@ export const ProfileDetails = observer(() => {
     <div className="profil__detailsContainer">
       <div className="profil__hello">
         <div>
-          {profileStore.firstName}
+          {showFirstName && ` ${profileStore.firstName}`}
           {showLastName && ` ${profileStore.lastName}`}
         </div>
         <div className="profil__username">@{profileStore.userName}</div>
