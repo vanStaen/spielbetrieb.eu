@@ -86,6 +86,7 @@ export const Settings = observer(() => {
 
           <UserNameUpdate />
 
+          <div className="EditSettings__spacerDiv" />
           <Divider plain className="EditSettings__divider">
             {t("settings.profileSettings")}
           </Divider>
@@ -118,6 +119,8 @@ export const Settings = observer(() => {
             value={userStore.profilSettings.showLastName}
           />
 
+
+          <div className="EditSettings__spacerDiv" />
           <Divider plain className="EditSettings__divider">
             {t("settings.emailSettings")}
           </Divider>
@@ -143,6 +146,7 @@ export const Settings = observer(() => {
             value={userStore.emailSettings.sendEmailMarketing}
           />
 
+          <div className="EditSettings__spacerDiv" />
           <Divider plain className="EditSettings__divider">
             {t("settings.dangerZone")}
           </Divider>
