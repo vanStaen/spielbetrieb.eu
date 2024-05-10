@@ -10,7 +10,9 @@ export const Links = observer(() => {
     document.location.href = "https://linktr.ee/spielbetrieb";
   }, []);
 
-  return <div className="links__container">
-    <CustomSpinner text='You will be redirected' />
-  </div>;
+  return (
+    <div className="links__container">
+      <CustomSpinner text="You will be redirected" />
+    </div>
+  );
 });

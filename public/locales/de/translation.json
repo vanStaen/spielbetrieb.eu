@@ -275,7 +275,9 @@
 		"hasBeenSaved": "würde erfolgreich gespeichert",
 		"MaxUserNameChange": "Benutzernamen kann nicht mehr geändert werden",
 		"showFirstName": "Vorname in deinem Profile anzeigen",
-		"deleteAccount": "Konto löschen"
+		"deleteAccount": "Konto löschen",
+		"willBeArchived": "Diese Konto würde archiviert.",
+		"loggingToReactivate": "Diese Konto würde archiviert."
 	},
 	"gender": {
 		"male": "Männlich",

@@ -34,12 +34,12 @@ export const DeleteAccountButton = () => {
   };
 
   const deleteAccountHandler = (event) => {
-    //archiveAccount(true);
+    archiveAccount(true);
     notification.error({
       message: (
         <>
-          <b> {t("profile.willBeArchived")} </b>{" "}
-          {t("profile.loggingToReactivate")}
+          <b> {t("settings.willBeArchived")} </b>{" "}
+          {t("settings.loggingToReactivate")}
         </>
       ),
       placement: "bottomRight",

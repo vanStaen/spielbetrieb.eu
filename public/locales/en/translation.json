@@ -275,7 +275,9 @@
 		"hasBeenSaved": "has been saved",
 		"MaxUserNameChange": "You can't change your username anymore",
 		"showFirstName": "Show my first name in my profile",
-		"deleteAccount": "Delete account"
+		"deleteAccount": "Delete account",
+		"willBeArchived": "Your account is now archived.",
+		"loggingToReactivate": "Ihr Konto ist nun reaktiviert."
 	},
 	"gender": {
 		"male": "Male",

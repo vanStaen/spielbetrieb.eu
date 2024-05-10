@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import { observer } from "mobx-react";
-import { Divider, Switch, Radio, notification } from "antd";
-import { CloseOutlined, CheckOutlined } from "@ant-design/icons";
+import { Divider, Radio } from "antd";
 import { useTranslation } from "react-i18next";
 
-import { postSendRecoverLink } from "../../../components/PasswordRecover/postSendRecoverLink";
 import { userStore } from "../../../store/userStore/userStore";
 import { updateLanguage } from "./updateLanguage";
 import { updateGender } from "./updateGender";
@@ -19,10 +17,9 @@ export const Settings = observer(() => {
   const { i18n, t } = useTranslation();
   const initLanguage = i18n.language.slice(0, 2);
 
-
   useEffect(() => {
     userStore.isLoading && userStore.fetchUserData();
-  }, [])
+  }, []);
 
   const changeLanguageHandler = (event) => {
     const value = event.target.value;
@@ -46,11 +43,13 @@ export const Settings = observer(() => {
     <div className="EditSettings__main">
       {userStore.isLoading ? (
         <div className="EditSettings__loader">
-          <CustomSpinner text={`${t("general.loading")} (${t('settings.settings')})`} />
+          <CustomSpinner
+            text={`${t("general.loading")} (${t("settings.settings")})`}
+          />
         </div>
       ) : (
         <div className="EditSettings__container">
-          <Divider plain className='EditSettings__divider'>
+          <Divider plain className="EditSettings__divider">
             {t("settings.accountSettings")}
           </Divider>
 
@@ -87,72 +86,70 @@ export const Settings = observer(() => {
 
           <UserNameUpdate />
 
-          <Divider plain className='EditSettings__divider'>
+          <Divider plain className="EditSettings__divider">
             {t("settings.profileSettings")}
           </Divider>
 
           <SettingElementSwitch
             title={t("settings.settingShowLastOnline")}
-            type={'profilSettings'}
-            setting={'showLastSeenOnline'}
+            type={"profilSettings"}
+            setting={"showLastSeenOnline"}
             value={userStore.profilSettings.showLastSeenOnline}
           />
 
           <SettingElementSwitch
             title={t("settings.hideProfilToStrangers")}
-            type={'profilSettings'}
-            setting={'hideProfilToStrangers'}
+            type={"profilSettings"}
+            setting={"hideProfilToStrangers"}
             value={userStore.profilSettings.hideProfilToStrangers}
           />
 
           <SettingElementSwitch
             title={t("settings.showFirstName")}
-            type={'profilSettings'}
-            setting={'showFirstName'}
+            type={"profilSettings"}
+            setting={"showFirstName"}
             value={userStore.profilSettings.showFirstName}
           />
 
           <SettingElementSwitch
             title={t("settings.showLastName")}
-            type={'profilSettings'}
-            setting={'showLastName'}
+            type={"profilSettings"}
+            setting={"showLastName"}
             value={userStore.profilSettings.showLastName}
           />
 
-          <Divider plain className='EditSettings__divider'>
+          <Divider plain className="EditSettings__divider">
             {t("settings.emailSettings")}
           </Divider>
 
           <SettingElementSwitch
             title={t("settings.sendEmailOnFriendRequest")}
-            type={'emailSettings'}
-            setting={'sendEmailFriendRequest'}
+            type={"emailSettings"}
+            setting={"sendEmailFriendRequest"}
             value={userStore.emailSettings.sendEmailFriendRequest}
           />
 
           <SettingElementSwitch
             title={t("settings.sendEmailWhenNewMessage")}
-            type={'emailSettings'}
-            setting={'sendEmailNewMessage'}
+            type={"emailSettings"}
+            setting={"sendEmailNewMessage"}
             value={userStore.emailSettings.sendEmailNewMessage}
           />
 
           <SettingElementSwitch
             title={t("settings.keepMeInformedAboutSielbetrieb")}
-            type={'emailSettings'}
-            setting={'sendEmailMarketing'}
+            type={"emailSettings"}
+            setting={"sendEmailMarketing"}
             value={userStore.emailSettings.sendEmailMarketing}
           />
 
-
-          <Divider plain className='EditSettings__divider'>
+          <Divider plain className="EditSettings__divider">
             {t("settings.dangerZone")}
           </Divider>
 
           <div className="EditSettings__centerDiv">
             <DeleteAccountButton />
           </div>
-
         </div>
       )}
     </div>

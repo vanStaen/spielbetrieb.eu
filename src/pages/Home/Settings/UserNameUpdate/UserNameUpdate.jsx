@@ -12,7 +12,7 @@ import { updateUserName } from "./updateUserName";
 import { postUsernameTaken } from "../../../../components/SignUpForm/postUsernameTaken";
 import { MAX_USERNAME_CHANGE_ALLOWED } from "../../../../lib/setup";
 
-import './UserNameUpdate.less';
+import "./UserNameUpdate.less";
 
 export const UserNameUpdate = () => {
   const { t } = useTranslation();
@@ -105,7 +105,7 @@ export const UserNameUpdate = () => {
           type="primary"
           shape="circle"
           onClick={onChangeUserNameHandler}
-          className='UserNameUpdate__button'
+          className="UserNameUpdate__button"
           icon={<ArrowRightOutlined />}
           loading={userNameIsValidating}
           disabled={
