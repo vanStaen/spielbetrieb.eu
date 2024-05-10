@@ -18,7 +18,8 @@
 		"clickOn": "Klick auf",
 		"inCornerToLogin": "in der obere rechte Ecke um sich einzuloggen",
 		"pendingReview": "zur Überprüfung",
-		"youGotMail": "Du hast Post!"
+		"youGotMail": "Du hast Post!",
+		"language": "Sprache"
 	},
 	"login": {
 		"loginSuccess": "Erfolgreich eingelogt!",
@@ -137,7 +138,6 @@
 		"deals": "Deals",
 		"parties": "Veranstalltungen",
 		"interests": "Interesse",
-		"language": "Sprache",
 		"german": "Deutsch",
 		"english": "Englisch",
 		"reset": "Zurücksetzen",
@@ -244,10 +244,29 @@
 		"sendFriendRequest": "Freundschaft anbieten",
 		"sendMessage": "Nachricht senden",
 		"deletePendingRequest": "Ausstehende Anfrage löschen",
-		"unfriendRequest": "Freundschaft löschen"
+		"unfriendRequest": "Freundschaft löschen",
+		"editYourSetting": "Einstellungen bearbeiten",
+		"lastSeenOnline": "Zuletzt online gesehen der",
+		"at": "um"
 	},
 	"scene": {
 		"fetish": "Fetisch",
 		"hedonisticLove": "Hedonistische Liebe"
+	},
+	"settings": {
+		"keepMeInformedAboutSielbetrieb": "Mich über alle Änderungen bei Spielbetrieb auf dem Laufenden halten",
+		"sendEmailWhenNewMessage": "Mich per eMail bescheid geben, wenn ich eine neue Nachricht bekomme",
+		"sendEmailOnFriendRequest": "Mich per eMail bescheid geben, wenn ich eine Freundschaftsanfrage bekomme",
+		"showLastName": "Nachname in deinem Profile anzeigen",
+		"triggerPasswordReset": "Um der Passwort zu ändern",
+		"clickHere": "hier klicken",
+		"userGender": "Geschlecht",
+		"settings": "Einstellungen",
+		"hideProfilToStrangers": "Verstecke mein Konto für jeden der nicht mein Freund ist"
+	},
+	"gender": {
+		"male": "Männlich",
+		"female": "Weiblich",
+		"other": "Diverse"
 	}
 }

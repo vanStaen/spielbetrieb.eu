@@ -18,7 +18,8 @@
 		"clickOn": "Click on the",
 		"inCornerToLogin": "in the top right corner to log in or sign up",
 		"pendingReview": "pending review",
-		"youGotMail": "You got mail!"
+		"youGotMail": "You got mail!",
+		"language": "Language"
 	},
 	"login": {
 		"loginSuccess": "Login was sucessfull!",
@@ -137,7 +138,6 @@
 		"deals": "Deals",
 		"parties": "Parties/Events",
 		"interests": "Interest(s)",
-		"language": "Language",
 		"german": "German",
 		"english": "English",
 		"reset": "Reset",
@@ -244,10 +244,29 @@
 		"sendFriendRequest": "Send a friendrequest",
 		"sendMessage": "Send a message",
 		"deletePendingRequest": "Delete pending request",
-		"unfriendRequest": "Unfriend"
+		"unfriendRequest": "Unfriend",
+		"editYourSetting": "Edit settings",
+		"lastSeenOnline": "Last seen online the",
+		"at": "at"
 	},
 	"scene": {
 		"fetish": "Fetish",
 		"hedonisticLove": "Hedonistic Love"
+	},
+	"settings": {
+		"keepMeInformedAboutSielbetrieb": "Keep me informed about all updates and changes about Spielbetrieb",
+		"sendEmailWhenNewMessage": "Inform me per email when I am getting a new message",
+		"sendEmailOnFriendRequest": "Inform me per email when I am getting a new friend request",
+		"showLastName": "Show my last name in your profile",
+		"triggerPasswordReset": "To change your password",
+		"clickHere": "Click here",
+		"userGender": "Gender",
+		"settings": "Settings",
+		"hideProfilToStrangers": "Hide my account to anyone who is not my friend"
+	},
+	"gender": {
+		"male": "Male",
+		"female": "Female",
+		"other": "Other"
 	}
 }
