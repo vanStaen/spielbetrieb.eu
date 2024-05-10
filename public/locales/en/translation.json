@@ -19,7 +19,8 @@
 		"inCornerToLogin": "in the top right corner to log in or sign up",
 		"pendingReview": "pending review",
 		"youGotMail": "You got mail!",
-		"language": "Language"
+		"language": "Language",
+		"areYouSure": "Are you sure?"
 	},
 	"login": {
 		"loginSuccess": "Login was sucessfull!",
@@ -257,12 +258,24 @@
 		"keepMeInformedAboutSielbetrieb": "Keep me informed about all updates and changes about Spielbetrieb",
 		"sendEmailWhenNewMessage": "Inform me per email when I am getting a new message",
 		"sendEmailOnFriendRequest": "Inform me per email when I am getting a new friend request",
-		"showLastName": "Show my last name in your profile",
+		"showLastName": "Show my last name in my profile",
 		"triggerPasswordReset": "To change your password",
 		"clickHere": "Click here",
 		"userGender": "Gender",
 		"settings": "Settings",
-		"hideProfilToStrangers": "Hide my account to anyone who is not my friend"
+		"hideProfilToStrangers": "Hide my account to anyone who is not my friend",
+		"profileSettings": "Profile settings",
+		"emailSettings": "Email settings",
+		"settingShowLastOnline": "Show in my profile when I was last seen online",
+		"dangerZone": "Danger zone",
+		"accountSettings": "Account settings",
+		"changeUserName": "Change your username",
+		"changesLeft": "change(s) still allowed",
+		"yourNewUserName": "Your new username",
+		"hasBeenSaved": "has been saved",
+		"MaxUserNameChange": "You can't change your username anymore",
+		"showFirstName": "Show my first name in my profile",
+		"deleteAccount": "Delete account"
 	},
 	"gender": {
 		"male": "Male",

@@ -42,24 +42,6 @@ export const Settings = observer(() => {
     updateGender(value);
   };
 
-  const resetPasswordLink = async () => {
-    try {
-      await postSendRecoverLink(userStore.email);
-      notification.open({
-        duration: 0,
-        message: <TitleRecoverEmailSent />,
-        description: <DescRecoverEmailSent />,
-        placement: "bottomRight",
-        className: "customNotification",
-      });
-    } catch (error) {
-      notification.error({
-        message: error.message,
-        placement: "bottomRight",
-      });
-    }
-  };
-
   return (
     <div className="EditSettings__main">
       {userStore.isLoading ? (
@@ -68,30 +50,11 @@ export const Settings = observer(() => {
         </div>
       ) : (
         <div className="EditSettings__container">
-          <div className="EditSettings__centerDiv">
-            <div className="EditSettings__title">
-              {t("profile.editYourSetting")}
-            </div>
-          </div>
-          <div className="EditSettings__Spacer" />
-          <Divider orientation="left" plain>
-            {t("profile.accountSettings")}
+          <Divider plain className='EditSettings__divider'>
+            {t("settings.accountSettings")}
           </Divider>
+
           <div className="EditSettings__singleSetting">
-            {t("settings.triggerPasswordReset")}{" "}
-            <span onClick={resetPasswordLink} className="EditSettings__link">
-              {t("settings.clickHere")}
-            </span>
-          </div>
-          <div className="EditSettings__Spacer" />
-          <UserNameUpdate />
-          <div className="EditSettings__SpacerBeforeDivider" />
-          <Divider orientation="left" plain>
-            {t("profile.displaySettings")}
-          </Divider>
-          <div className="EditSettings__singleSetting">
-            {t("settings.userGender")}
-            &nbsp;&nbsp;&nbsp;
             <div className="EditSettings__centerDiv">
               <Radio.Group
                 defaultValue={String(userStore.gender)}
@@ -104,10 +67,10 @@ export const Settings = observer(() => {
               </Radio.Group>
             </div>
           </div>
-          <div className="EditSettings__Spacer" />
+
+          <div className="EditSettings__spacerDiv" />
+
           <div className="EditSettings__singleSetting">
-            {t("general.language")}
-            &nbsp;&nbsp;&nbsp;
             <div className="EditSettings__centerDiv">
               <Radio.Group
                 defaultValue={initLanguage}
@@ -119,24 +82,21 @@ export const Settings = observer(() => {
               </Radio.Group>
             </div>
           </div>
-          <div className="EditSettings__SpacerBeforeDivider" />
-          <Divider orientation="left" plain>
-            {t("profile.profileSettings")}
+
+          <div className="EditSettings__spacerDiv" />
+
+          <UserNameUpdate />
+
+          <Divider plain className='EditSettings__divider'>
+            {t("settings.profileSettings")}
           </Divider>
-          <div className="EditSettings__singleSetting">
-            <Switch
-              checkedChildren={<CheckOutlined />}
-              unCheckedChildren={<CloseOutlined />}
-              onChange={() => {
-                changeProfilSettingsHandler(
-                  "showLastSeenOnline",
-                  !userStore.profilSettings.showLastSeenOnline,
-                );
-              }}
-              checked={userStore.profilSettings.showLastSeenOnline}
-            />{" "}
-            {t("profile.settingShowLastOnline")}
-          </div>
+
+          <SettingElementSwitch
+            title={t("settings.settingShowLastOnline")}
+            type={'profilSettings'}
+            setting={'showLastSeenOnline'}
+            value={userStore.profilSettings.showLastSeenOnline}
+          />
 
           <SettingElementSwitch
             title={t("settings.hideProfilToStrangers")}
@@ -146,14 +106,21 @@ export const Settings = observer(() => {
           />
 
           <SettingElementSwitch
+            title={t("settings.showFirstName")}
+            type={'profilSettings'}
+            setting={'showFirstName'}
+            value={userStore.profilSettings.showFirstName}
+          />
+
+          <SettingElementSwitch
             title={t("settings.showLastName")}
             type={'profilSettings'}
             setting={'showLastName'}
             value={userStore.profilSettings.showLastName}
           />
 
-          <Divider orientation="left" plain>
-            {t("profile.emailSettings")}
+          <Divider plain className='EditSettings__divider'>
+            {t("settings.emailSettings")}
           </Divider>
 
           <SettingElementSwitch
@@ -178,9 +145,10 @@ export const Settings = observer(() => {
           />
 
 
-          <Divider orientation="left" plain>
-            {t("profile.dangerZone")}
+          <Divider plain className='EditSettings__divider'>
+            {t("settings.dangerZone")}
           </Divider>
+
           <div className="EditSettings__centerDiv">
             <DeleteAccountButton />
           </div>
@@ -190,13 +158,3 @@ export const Settings = observer(() => {
     </div>
   );
 });
-
-const TitleRecoverEmailSent = () => {
-  const { t } = useTranslation();
-  return <>✅ {t("general.youGotMail")}</>;
-};
-
-const DescRecoverEmailSent = () => {
-  const { t } = useTranslation();
-  return <>{t("login.recoverEmailSent")}</>;
-};

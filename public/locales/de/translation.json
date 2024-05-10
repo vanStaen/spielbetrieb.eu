@@ -19,7 +19,8 @@
 		"inCornerToLogin": "in der obere rechte Ecke um sich einzuloggen",
 		"pendingReview": "zur Überprüfung",
 		"youGotMail": "Du hast Post!",
-		"language": "Sprache"
+		"language": "Sprache",
+		"areYouSure": "Absolut sicher?"
 	},
 	"login": {
 		"loginSuccess": "Erfolgreich eingelogt!",
@@ -262,7 +263,19 @@
 		"clickHere": "hier klicken",
 		"userGender": "Geschlecht",
 		"settings": "Einstellungen",
-		"hideProfilToStrangers": "Verstecke mein Konto für jeden der nicht mein Freund ist"
+		"hideProfilToStrangers": "Verstecke mein Konto für jeden der nicht mein Freund ist",
+		"profileSettings": "Profileseinstellungen",
+		"emailSettings": "Emailseinstellungen",
+		"settingShowLastOnline": "Auf meinem Profile anzeigen wann ich das letzte Mal online gesehen wurde",
+		"dangerZone": "Gefahrenzone",
+		"accountSettings": "Kontoseinstellungen",
+		"changeUserName": "Benutzernamen ändern",
+		"changesLeft": "Änderung(en) noch möglich",
+		"yourNewUserName": "Dein neue Benutzernamen",
+		"hasBeenSaved": "würde erfolgreich gespeichert",
+		"MaxUserNameChange": "Benutzernamen kann nicht mehr geändert werden",
+		"showFirstName": "Vorname in deinem Profile anzeigen",
+		"deleteAccount": "Konto löschen"
 	},
 	"gender": {
 		"male": "Männlich",

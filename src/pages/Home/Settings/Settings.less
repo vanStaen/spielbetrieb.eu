@@ -1,6 +1,7 @@
 .EditSettings__main {
   width: 100vw;
   height: auto;
+  font-size: 16px;
   color: rgba(var(--themeFontColor), 1);
 
   .EditSettings__loader {
@@ -18,12 +19,18 @@
     max-width: 1200px;
     text-align: left;
     vertical-align: top;
-    font-size: 16px;
 
-    .EditSettings__title {
-      font-size: 22px;
-      font-weight: 400;
-      margin-bottom: 16px;
+    .ant-divider-inner-text {
+      font-size: 18px;
+      color: rgba(var(--themeBlackOrWhiteColor), 1);
+    }
+
+    .EditSettings__divider {
+      border-color: rgba(var(--themeBlackOrWhiteColor), .25);
+    }
+
+    .EditSettings__spacerDiv {
+      padding: 8px;
     }
   }
 }
@@ -31,24 +38,16 @@
 
 @media (max-width: 800px) {
   .EditSettings__main {
+    font-size: 14px;
+
     .EditSettings__container {
-      margin: 16px;
-      font-size: 16px;
-    }
+      .ant-divider-inner-text {
+        font-size: 16px;
+      }
 
-    .EditSettings__title {
-      font-size: 18px;
-      font-weight: 500;
-      margin-bottom: 0;
-    }
-
-    .EditSettings__centerDiv {
-      width: 100%;
-      text-align: center;
-    }
-
-    .ant-divider-inner-text {
-      color: rgba(0, 0, 0, .25) !important;
+      .EditSettings__centerDiv {
+        text-align: center;
+      }
     }
   }
 }

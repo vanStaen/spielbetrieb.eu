@@ -56,7 +56,7 @@ export const DeleteAccountButton = () => {
         onClick={areYouSureHandler}
         type="primary"
       >
-        {t("profile.deleteAccount")}
+        {t("settings.deleteAccount")}
       </Button>
       {showAreYouSureButton && (
         <>
@@ -68,7 +68,7 @@ export const DeleteAccountButton = () => {
             onClick={deleteAccountHandler}
             type="primary"
           >
-            {t("profile.areYouSure")} ... {secondsBeforeDisapearing}
+            {t("general.areYouSure")} ... {secondsBeforeDisapearing}
           </Button>
         </>
       )}

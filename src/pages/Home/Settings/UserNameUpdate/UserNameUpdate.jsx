@@ -12,6 +12,8 @@ import { updateUserName } from "./updateUserName";
 import { postUsernameTaken } from "../../../../components/SignUpForm/postUsernameTaken";
 import { MAX_USERNAME_CHANGE_ALLOWED } from "../../../../lib/setup";
 
+import './UserNameUpdate.less';
+
 export const UserNameUpdate = () => {
   const { t } = useTranslation();
   const [userNameIsValidating, setUserNameIsValidating] = useState(false);
@@ -64,8 +66,8 @@ export const UserNameUpdate = () => {
       notification.open({
         message: (
           <>
-            {t("profile.yourNewUserName")} <b>{newUserName}</b>{" "}
-            {t("profile.hasBeenSaved")}
+            {t("settings.yourNewUserName")} <b>{newUserName}</b>{" "}
+            {t("settings.hasBeenSaved")}
           </>
         ),
         placement: "bottomRight",
@@ -76,18 +78,20 @@ export const UserNameUpdate = () => {
   };
 
   return (
-    <div className="EditSettings__singleSetting">
-      {t("profile.changeUserName")}:&nbsp;&nbsp;
+    <div className="UserNameUpdate__container">
+      <div className="UserNameUpdate__title">
+        {t("settings.changeUserName")}
+      </div>
       <Input
         placeholder={userStore.userName}
-        style={{ width: "250px" }}
+        className="UserNameUpdate__input"
         prefix={<UserOutlined className="site-form-item-icon" />}
         suffix={
           <Tooltip
             title={
               <>
                 {MAX_USERNAME_CHANGE_ALLOWED - userStore.usernameChange}{" "}
-                {t("profile.changesLeft")}
+                {t("settings.changesLeft")}
               </>
             }
           >
@@ -95,12 +99,13 @@ export const UserNameUpdate = () => {
           </Tooltip>
         }
         onChange={onInputUsernameHandler}
-      />{" "}
+      />
       <Tooltip title={errorMsgUsername} placement="right">
         <Button
           type="primary"
           shape="circle"
           onClick={onChangeUserNameHandler}
+          className='UserNameUpdate__button'
           icon={<ArrowRightOutlined />}
           loading={userNameIsValidating}
           disabled={

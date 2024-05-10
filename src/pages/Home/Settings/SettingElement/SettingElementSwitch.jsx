@@ -26,16 +26,19 @@ export const SettingElementSwitch = (props) => {
 
     return (
         <div className="settingElement__container">
-            <Switch
-                className="settingElement__switch"
-                checkedChildren={<CheckOutlined />}
-                unCheckedChildren={<CloseOutlined />}
-                onChange={() => {
-                    changeSettingsHandler();
-                }}
-                checked={value}
-            />
-            {title}
+            <div className="settingElement__switchContainer">
+                <Switch
+                    checkedChildren={<CheckOutlined />}
+                    unCheckedChildren={<CloseOutlined />}
+                    onChange={() => {
+                        changeSettingsHandler();
+                    }}
+                    checked={value}
+                />
+            </div>
+            <div className="settingElement__titleContainer">
+                {title}
+            </div>
         </div>
     )
 

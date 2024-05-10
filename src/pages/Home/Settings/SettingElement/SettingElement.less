@@ -1,15 +1,21 @@
 .settingElement__container {
     padding: 8px 0;
-    font-size: 16px;
     font-weight: 300;
 
     &:hover {
         cursor: pointer;
     }
 
-    .settingElement__switch {
-        margin-right: 4px;
+    .settingElement__switchContainer {
+        width: 50px;
+        display: inline-flex;
     }
+
+    .settingElement__titleContainer {
+        width: calc(100% - 55px);
+        display: inline-flex;
+    }
+
 }
 
 @media (max-width: 800px) {
