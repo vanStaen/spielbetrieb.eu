@@ -281,7 +281,9 @@
 		"showFriendListToStrangers": "Alle können sehen wer meinen Freunden sind",
 		"showFriendListToFriends": "Freunden können sehen wer meinen Freunden sind",
 		"showFollowingListToStrangers": "Alle können sehen wer ich folge",
-		"showFollowingListToFriends": "Freunden können sehen wer ich folge"
+		"showFollowingListToFriends": "Freunden können sehen wer ich folge",
+		"sendEmailPartnerEvent": "Mich per eMail bescheid geben, wenn eine Veranstalter die ich folge, eine Neue event hinzufügt.",
+		"sendEmailNotification": "Mich per eMail bescheid geben, wenn ich eine neue Benachrichtigung bekomme"
 	},
 	"gender": {
 		"male": "Männlich",

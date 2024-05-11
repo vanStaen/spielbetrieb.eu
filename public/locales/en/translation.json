@@ -281,7 +281,9 @@
 		"showFriendListToStrangers": "Show my list of friends to anyone",
 		"showFriendListToFriends": "Show my list of friends to my friends",
 		"showFollowingListToStrangers": "Show the list of people I follow to anyone",
-		"showFollowingListToFriends": "Show the list of people I follow to my friends"
+		"showFollowingListToFriends": "Show the list of people I follow to my friends",
+		"sendEmailPartnerEvent": "Inform me per email when the promoter I follow post a new event",
+		"sendEmailNotification": "Inform me per email when I am getting a notification"
 	},
 	"gender": {
 		"male": "Male",

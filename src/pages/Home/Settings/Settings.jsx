@@ -170,6 +170,20 @@ export const Settings = observer(() => {
           />
 
           <SettingElementSwitch
+            title={t("settings.sendEmailNotification")}
+            type={"emailSettings"}
+            setting={"sendEmailNotification"}
+            value={userStore.emailSettings.sendEmailNotification}
+          />
+
+          <SettingElementSwitch
+            title={t("settings.sendEmailPartnerEvent")}
+            type={"emailSettings"}
+            setting={"sendEmailPartnerEvent"}
+            value={userStore.emailSettings.sendEmailPartnerEvent}
+          />
+
+          <SettingElementSwitch
             title={t("settings.keepMeInformedAboutSielbetrieb")}
             type={"emailSettings"}
             setting={"sendEmailMarketing"}

@@ -3,5 +3,5 @@
   "sendEmailNewMessage": true,
   "sendEmailMarketing": false,
   "sendEmailNotification": false,
-  "sendEmailPartnerEvent": false
+  "sendEmailPartnerEvent": true
 }
