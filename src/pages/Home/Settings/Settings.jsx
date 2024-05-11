@@ -125,15 +125,15 @@ export const Settings = observer(() => {
             setting={"showFriendListToStrangers"}
             value={userStore.profilSettings.showFriendListToStrangers}
           />
-          {!userStore.profilSettings.showFriendListToStrangers &&
+          {!userStore.profilSettings.showFriendListToStrangers && (
             <SettingElementSwitch
               title={t("settings.showFriendListToFriends")}
               type={"profilSettings"}
               setting={"showFriendListToFriends"}
               value={userStore.profilSettings.showFriendListToFriends}
               dependOnPrevious={true}
-            />}
-
+            />
+          )}
 
           <SettingElementSwitch
             title={t("settings.showFollowingListToStrangers")}
@@ -141,14 +141,15 @@ export const Settings = observer(() => {
             setting={"showFollowingListToStrangers"}
             value={userStore.profilSettings.showFollowingListToStrangers}
           />
-          {!userStore.profilSettings.showFollowingListToStrangers &&
+          {!userStore.profilSettings.showFollowingListToStrangers && (
             <SettingElementSwitch
               title={t("settings.showFollowingListToFriends")}
               type={"profilSettings"}
               setting={"showFollowingListToFriends"}
               value={userStore.profilSettings.showFollowingListToFriends}
               dependOnPrevious={true}
-            />}
+            />
+          )}
 
           <div className="EditSettings__spacerDiv" />
           <Divider plain className="EditSettings__divider">

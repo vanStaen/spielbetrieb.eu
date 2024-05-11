@@ -24,8 +24,16 @@ export const SettingElementSwitch = (props) => {
 
   return (
     <div className="settingElement__container">
-      <div className={dependOnPrevious ? "settingElement__switchContainerDepend" : "settingElement__switchContainer"}>
-        {dependOnPrevious && <EnterOutlined className='settingsElement__dependLogo' />}
+      <div
+        className={
+          dependOnPrevious
+            ? "settingElement__switchContainerDepend"
+            : "settingElement__switchContainer"
+        }
+      >
+        {dependOnPrevious && (
+          <EnterOutlined className="settingsElement__dependLogo" />
+        )}
         <Switch
           checkedChildren={<CheckOutlined />}
           unCheckedChildren={<CloseOutlined />}
@@ -35,7 +43,13 @@ export const SettingElementSwitch = (props) => {
           checked={value}
         />
       </div>
-      <div className={dependOnPrevious ? "settingElement__titleContainerDepend" : "settingElement__titleContainer"}>
+      <div
+        className={
+          dependOnPrevious
+            ? "settingElement__titleContainerDepend"
+            : "settingElement__titleContainer"
+        }
+      >
         {title}
       </div>
     </div>
