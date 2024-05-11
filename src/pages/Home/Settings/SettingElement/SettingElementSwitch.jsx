@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch } from "antd";
-import { CloseOutlined, CheckOutlined } from "@ant-design/icons";
+import { CloseOutlined, CheckOutlined, EnterOutlined } from "@ant-design/icons";
 
 import { updateSettings } from "./updateSettings";
 import { userStore } from "../../../../store/userStore/userStore";
@@ -8,7 +8,7 @@ import { userStore } from "../../../../store/userStore/userStore";
 import "./SettingElement.less";
 
 export const SettingElementSwitch = (props) => {
-  const { title, value, setting, type } = props;
+  const { title, value, setting, type, dependOnPrevious } = props;
 
   const changeSettingsHandler = () => {
     const tempSettings = userStore[type];
@@ -24,7 +24,8 @@ export const SettingElementSwitch = (props) => {
 
   return (
     <div className="settingElement__container">
-      <div className="settingElement__switchContainer">
+      <div className={dependOnPrevious ? "settingElement__switchContainerDepend" : "settingElement__switchContainer"}>
+        {dependOnPrevious && <EnterOutlined className='settingsElement__dependLogo' />}
         <Switch
           checkedChildren={<CheckOutlined />}
           unCheckedChildren={<CloseOutlined />}
@@ -34,7 +35,9 @@ export const SettingElementSwitch = (props) => {
           checked={value}
         />
       </div>
-      <div className="settingElement__titleContainer">{title}</div>
+      <div className={dependOnPrevious ? "settingElement__titleContainerDepend" : "settingElement__titleContainer"}>
+        {title}
+      </div>
     </div>
   );
 };

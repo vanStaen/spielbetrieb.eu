@@ -1,5 +1,7 @@
 {
   "sendEmailFriendRequest": true,
   "sendEmailNewMessage": true,
-  "sendEmailMarketing": false
+  "sendEmailMarketing": false,
+  "sendEmailNotification": false,
+  "sendEmailPartnerEvent": false
 }

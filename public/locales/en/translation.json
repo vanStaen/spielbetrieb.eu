@@ -277,7 +277,11 @@
 		"showFirstName": "Show my first name in my profile",
 		"deleteAccount": "Delete account",
 		"willBeArchived": "Your account is now archived.",
-		"loggingToReactivate": "Ihr Konto ist nun reaktiviert."
+		"loggingToReactivate": "Ihr Konto ist nun reaktiviert.",
+		"showFriendListToStrangers": "Show my list of friends to anyone",
+		"showFriendListToFriends": "Show my list of friends to my friends",
+		"showFollowingListToStrangers": "Show the list of people I follow to anyone",
+		"showFollowingListToFriends": "Show the list of people I follow to my friends"
 	},
 	"gender": {
 		"male": "Male",

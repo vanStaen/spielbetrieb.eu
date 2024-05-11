@@ -2,5 +2,9 @@
   "showLastSeenOnline": true,
   "hideProfilToStrangers": false,
   "showFirstName": false,
-  "showLastName": false
+  "showLastName": false,
+  "showFriendListToStrangers": true,
+  "showFriendListToFriends": true,
+  "showFollowingListToStrangers": true,
+  "showFollowingListToFriends": true
 }

@@ -277,7 +277,11 @@
 		"showFirstName": "Vorname in deinem Profile anzeigen",
 		"deleteAccount": "Konto löschen",
 		"willBeArchived": "Diese Konto würde archiviert.",
-		"loggingToReactivate": "Diese Konto würde archiviert."
+		"loggingToReactivate": "Diese Konto würde archiviert.",
+		"showFriendListToStrangers": "Alle können sehen wer meinen Freunden sind",
+		"showFriendListToFriends": "Freunden können sehen wer meinen Freunden sind",
+		"showFollowingListToStrangers": "Alle können sehen wer ich folge",
+		"showFollowingListToFriends": "Freunden können sehen wer ich folge"
 	},
 	"gender": {
 		"male": "Männlich",
