@@ -37,6 +37,8 @@ export const Profile = observer(() => {
   }, [userStore.isLoading, userStore.userName, params.username]);
 
   useEffect(() => {
+    // TODO : Redirect only if own profile.
+    // If params.username = true, then check profile settings
     redirectIfNotLoggedIn();
   }, []);
 

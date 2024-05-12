@@ -4,6 +4,7 @@ import { Divider, Radio } from "antd";
 import { useTranslation } from "react-i18next";
 
 import { userStore } from "../../../store/userStore/userStore";
+import { authStore } from "../../../store/authStore/authStore";
 import { updateLanguage } from "./updateLanguage";
 import { updateGender } from "./updateGender";
 import { UserNameUpdate } from "./UserNameUpdate/UserNameUpdate";
@@ -17,7 +18,17 @@ export const Settings = observer(() => {
   const { i18n, t } = useTranslation();
   const initLanguage = i18n.language.slice(0, 2);
 
+  const redirectIfNotLoggedIn = async () => {
+    if (!authStore.hasAccess) {
+      const hasAccess = await authStore.checkAccess();
+      if (!hasAccess) {
+        location.href = "../";
+      }
+    }
+  };
+
   useEffect(() => {
+    redirectIfNotLoggedIn();
     userStore.isLoading && userStore.fetchUserData();
   }, []);
 
