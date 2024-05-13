@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer';
+import fs from "fs";
 
 (async () => {
     // Launch the browser and open a new blank page
@@ -13,7 +14,7 @@ import puppeteer from 'puppeteer';
         waitUntil: "domcontentloaded",
     });
 
-    //Scroll down
+    // Scroll down
     await autoScroll(page);
 
     // Get page data
@@ -36,7 +37,14 @@ import puppeteer from 'puppeteer';
         return array;
     });
 
-    console.log(data);
+    // Export results to Json file
+    const content = JSON.stringify(data);
+    fs.writeFile('./insomiaParties.json', content, err => {
+        if (err) {
+            console.error(err);
+        }
+    });
+
     await browser.close();
 
 })();
