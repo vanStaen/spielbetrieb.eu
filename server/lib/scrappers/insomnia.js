@@ -14,7 +14,7 @@ import puppeteer from 'puppeteer';
     });
 
     //Scroll down
-    // await autoScroll(page);
+    await autoScroll(page);
 
     // Get page data
     const data = await page.evaluate(() => {
@@ -38,6 +38,7 @@ import puppeteer from 'puppeteer';
 
     console.log(data);
     await browser.close();
+
 })();
 
 async function autoScroll(page) {
