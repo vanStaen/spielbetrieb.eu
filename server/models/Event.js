@@ -8,6 +8,10 @@ export const Event = sequelize.sequelize.define("event", {
     autoIncrement: true,
     primaryKey: true,
   },
+  externalId: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   eventtype: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -23,6 +27,10 @@ export const Event = sequelize.sequelize.define("event", {
   pictures: {
     type: DataTypes.ARRAY(DataTypes.STRING),
     defaultValue: [],
+  },
+  externalPicture: {
+    type: DataTypes.STRING,
+    allowNull: true,
   },
   location: {
     type: DataTypes.INTEGER,

@@ -22,7 +22,7 @@
     "backup": "cd server/lib/; node createDatabaseBackUpFile.js; npm run pushbackup; cd ../../",
     "pushbackup": "cd ../database-backups; git pull origin master; git add -A; git commit -m 'Spielbetrieb - database backup files'; git push;",
     "lint": "eslint -c ./.eslintrc.json '**/*.js' '**/*.jsx' --fix",
-    "translation": "cd server/lib/translations/; node runCreateTranslationFiles.js/; cd ../../"
+    "scrapper": "cd server/lib/scrappers; node insomnia.js/; cd ../../../"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.533.0",
@@ -51,6 +51,7 @@
     "multer": "^1.4.5-lts.1",
     "path": "^0.12.7",
     "pg": "^8.7.1",
+    "puppeteer": "^22.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^13.0.0",
