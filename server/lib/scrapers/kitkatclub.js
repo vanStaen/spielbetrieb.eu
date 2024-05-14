@@ -38,7 +38,7 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
         .querySelector(".ClubTermineDatum")
         ?.innerHTML.split("<br>")[1]
         .replace("&nbsp;", "");
-      const fromtime = events[i]
+      const fromTime = events[i]
         .querySelector(".ClubTermineDatum")
         ?.innerHTML.split("<br>")[2]
         .replace("\n\tab ", "")
@@ -60,7 +60,7 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
         .join(" ")
         .trim()
         .replace(">br/>", " ");
-      array.push({ datum, fromtime, name, desc });
+      array.push({ datum, fromTime, name, desc });
     }
     return array;
   });
