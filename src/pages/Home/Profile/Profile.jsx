@@ -10,7 +10,7 @@ import { authStore } from "../../../store/authStore/authStore";
 import { Avatar } from "./Avatar/Avatar";
 import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
 import { ProfileMain } from "./ProfileMain/ProfileMain";
-
+import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
 import { ProfileFriends } from "./ProfileFriends/ProfileFriends";
 import { ProfileDetails } from "./ProfileDetails/ProfileDetails";
 import { ProfileActions } from "./ProfileActions/ProfileActions";
@@ -70,6 +70,7 @@ export const Profile = observer(() => {
           </>
         )}
       </div>
+      <HelpButtons />
     </>
   );
 });

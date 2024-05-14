@@ -11,6 +11,7 @@ import { UserNameUpdate } from "./UserNameUpdate/UserNameUpdate";
 import { DeleteAccountButton } from "./DeleteAccountButton/DeleteAccountButton";
 import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
 import { SettingElementSwitch } from "./SettingElement/SettingElementSwitch";
+import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
 
 import "./Settings.less";
 
@@ -212,6 +213,7 @@ export const Settings = observer(() => {
           </div>
         </div>
       )}
+      <HelpButtons />
     </div>
   );
 });
