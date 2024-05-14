@@ -1,5 +1,13 @@
-import puppeteer from 'puppeteer';
+import puppeteer from "puppeteer";
 import fs from "fs";
+import dayjs from "dayjs";
+
+import insertEventIntoDB from "./helpers/insertEventIntoDB.js";
+
+const INSOMNIA_LOCATION_ID = 8;
+const INSOMNIA_LOCATION_NAME = "Insomnia";
+const INSOMNIA_LOCATION_ADDRESS = "Alt-Tempelhof 17-19, 12099 Berlin";
+const INSOMNIA_LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354	";
 
 (async () => {
     // Launch the browser and open a new blank page
@@ -10,7 +18,7 @@ import fs from "fs";
     const page = await browser.newPage();
 
     // Navigate the page to a URL
-    await page.goto('https://www.insomnia-berlin.de/partys.html', {
+    await page.goto("https://www.insomnia-berlin.de/partys.html", {
         waitUntil: "domcontentloaded",
     });
 
@@ -22,40 +30,56 @@ import fs from "fs";
         const events = document.querySelectorAll(".row_aktuellePartys");
         const array = [];
 
-        for (i = 0; i < events.length; i++) {
-            const name = events[i].querySelector('img').alt.split(' @')[0];
-            const tags = events[i].querySelector('img').alt.split(' @')[1]?.replace(/\s+/g, "").replace('INSOMNIANightclubBerlin-', '').replace('-Party', '').split(',');
-            array.push({
-                id: events[i].querySelector('a').href.split('id=')[1],
-                img: events[i].querySelector('img').src,
-                name: name,
-                tags: tags,
-                date: events[i].querySelector('.partyText > h3').innerHTML,
-            })
+        for (let i = 0; i < events.length; i++) {
+            const id = events[i].querySelector("a").href.split("id=")[1];
+            const img = events[i].querySelector("img").src;
+            const name = events[i].querySelector("img").alt.split(" @")[0];
+            const tags = events[i]
+                .querySelector("img")
+                .alt.split(" @")[1]
+                ?.replace(/\s+/g, "")
+                .replace("INSOMNIANightclubBerlin-", "")
+                .replace("-Party", "")
+                .split(",");
+            const date = events[i].querySelector(".partyText > h3").innerHTML;
+            // Add event to array
+            array.push({ id, img, name, tags, date });
         }
-
         return array;
     });
 
     // Export results to Json file
     const content = JSON.stringify(data);
-    fs.writeFile('./insomiaParties.json', content, err => {
-        if (err) {
-            console.error(err);
-        }
-    });
+    fs.writeFile(
+        `./exports/${dayjs().format("MM_DD")}_insomia_parties.json`,
+        content,
+        (err) => {
+            if (err) {
+                console.error(err);
+            }
+        },
+    );
 
     await browser.close();
 
+    // Add event into db
+    for (const dataEvent of data) {
+        await insertEventIntoDB(dataEvent, {
+            location: INSOMNIA_LOCATION_ID,
+            locationName: INSOMNIA_LOCATION_NAME,
+            locationAddress: INSOMNIA_LOCATION_ADDRESS,
+            locationCoordinates: INSOMNIA_LOCATION_COORDINATES,
+        });
+    }
 })();
 
 async function autoScroll(page) {
     await page.evaluate(async () => {
         await new Promise((resolve) => {
-            var totalHeight = 0;
-            var distance = 100;
-            var timer = setInterval(() => {
-                var scrollHeight = document.body.scrollHeight;
+            let totalHeight = 0;
+            const distance = 100;
+            const timer = setInterval(() => {
+                const scrollHeight = document.body.scrollHeight;
                 window.scrollBy(0, distance);
                 totalHeight += distance;
 
