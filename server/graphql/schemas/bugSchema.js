@@ -5,6 +5,7 @@ type Bug {
     user: User
     category: Int!
     desc: String!
+    url: String
     screenshot: String
     isUrgent: Boolean
     isResolved: Boolean
@@ -16,6 +17,7 @@ export const BugInputData = `
 input BugInputData {
     category: Int
     desc: String
+    url: String
     screenshot: String
     isUrgent: Boolean
     isResolved: Boolean

@@ -20,6 +20,10 @@ export const Bug = sequelize.sequelize.define("bug", {
     type: DataTypes.STRING,
     defaultValue: null,
   },
+  url: {
+    type: DataTypes.STRING,
+    defaultValue: null,
+  },
   isUrgent: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
