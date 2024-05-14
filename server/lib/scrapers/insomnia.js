@@ -51,7 +51,7 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
   // Export results to Json file
   const content = JSON.stringify(data);
   fs.writeFile(
-    `./exports/${dayjs().format("MM_DD")}_insomia_parties.json`,
+    `./exports/${dayjs().format("MM_DD")}_insomia.json`,
     content,
     (err) => {
       if (err) {

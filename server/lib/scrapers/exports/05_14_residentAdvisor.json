@@ -1,0 +1,3689 @@
+{
+    "data": {
+        "eventListings": {
+            "data": [
+                {
+                    "id": "11902707",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1902707",
+                        "startTime": "2024-05-15T20:00:00.000",
+                        "endTime": "2024-05-16T00:00:00.000",
+                        "title": "WISE by night CANCELLED",
+                        "contentUrl": "/events/1902707",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/78763a6291167fce8a0ed252118d0149a652f4e4.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Badehaus Berlin"
+                        },
+                        "artists": []
+                    }
+                },
+                {
+                    "id": "11885049",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1885049",
+                        "startTime": "2024-05-15T23:00:00.000",
+                        "endTime": "2024-05-16T09:00:00.000",
+                        "title": "TECHNO MITTWOCH: TUNNEL/TURBINE",
+                        "contentUrl": "/events/1885049",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/83661ea466ceac8396b3896fcea9a8e9e4d792cb.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "AVA Club"
+                        },
+                        "artists": [
+                            {
+                                "name": "Christa K"
+                            },
+                            {
+                                "name": "serowtonin"
+                            },
+                            {
+                                "name": "Bloodkedelic"
+                            },
+                            {
+                                "name": "Beqqi"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11903793",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1903793",
+                        "startTime": "2024-05-15T18:00:00.000",
+                        "endTime": "2024-05-16T06:00:00.000",
+                        "title": "Puff Puff Pass",
+                        "contentUrl": "/events/1903793",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/d03bf3921253500f33ebd9cf3d14e8c8654f9f78.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "ÆDEN"
+                        },
+                        "artists": [
+                            {
+                                "name": "Amøn"
+                            },
+                            {
+                                "name": "Bélavie"
+                            },
+                            {
+                                "name": "DJ Henk"
+                            },
+                            {
+                                "name": "DJ TIPSTER"
+                            },
+                            {
+                                "name": "Femme Fatale"
+                            },
+                            {
+                                "name": "FUMI"
+                            },
+                            {
+                                "name": "Kiran"
+                            },
+                            {
+                                "name": "NIØ (DE)"
+                            },
+                            {
+                                "name": "1000kJulez"
+                            },
+                            {
+                                "name": "$EITAN777"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11899530",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1899530",
+                        "startTime": "2024-05-15T20:00:00.000",
+                        "endTime": "2024-05-16T02:00:00.000",
+                        "title": "pre SuperB",
+                        "contentUrl": "/events/1899530",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/8f68458bdc3b258f8d769af8fadde7827d82bf8f.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "OHM"
+                        },
+                        "artists": [
+                            {
+                                "name": "Blush Response"
+                            },
+                            {
+                                "name": "Cuckoo"
+                            },
+                            {
+                                "name": "Fess Grandiose"
+                            },
+                            {
+                                "name": "Hataken"
+                            },
+                            {
+                                "name": "JacqNoise"
+                            },
+                            {
+                                "name": "Trovarsi"
+                            },
+                            {
+                                "name": "ALX-106"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11910164",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1910164",
+                        "startTime": "2024-05-15T23:00:00.000",
+                        "endTime": "2024-05-16T06:00:00.000",
+                        "title": "Rave am Mittwoch",
+                        "contentUrl": "/events/1910164",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/5fa99ec6be8096832d9715d8e7ad08b7dc5de98c.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "M-BIA"
+                        },
+                        "artists": [
+                            {
+                                "name": "DJ RÖM_MYX"
+                            },
+                            {
+                                "name": "Foxy L."
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11898434",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1898434",
+                        "startTime": "2024-05-15T23:00:00.000",
+                        "endTime": "2024-05-16T09:00:00.000",
+                        "title": "Tresor New Faces hosted by RIDE",
+                        "contentUrl": "/events/1898434",
+                        "images": [],
+                        "venue": {
+                            "name": "Tresor / Globus"
+                        },
+                        "artists": [
+                            {
+                                "name": "Ponygirl"
+                            },
+                            {
+                                "name": "Tom Talenberg"
+                            },
+                            {
+                                "name": "Clarence Wu"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11910381",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1910381",
+                        "startTime": "2024-05-15T22:00:00.000",
+                        "endTime": "2024-05-16T07:00:00.000",
+                        "title": "SYMBIOTIKKA at KitKat Club",
+                        "contentUrl": "/events/1910381",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/0d2e498fa2458c21ef7c3c29a29603581aeb54f2.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/b8f7c4017d0be67684103b40f765f3cb75d84185.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "KitKatClub"
+                        },
+                        "artists": [
+                            {
+                                "name": "elMefti"
+                            },
+                            {
+                                "name": "Grace Thompson"
+                            },
+                            {
+                                "name": "Melanchromie"
+                            },
+                            {
+                                "name": "Bonq"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11902235",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1902235",
+                        "startTime": "2024-05-15T18:00:00.000",
+                        "endTime": "2024-05-16T04:00:00.000",
+                        "title": "mittendrin mit henry",
+                        "contentUrl": "/events/1902235",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/31c5b06cbda953fb375a1fd20282ac623078ddb5.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Minimal Bar"
+                        },
+                        "artists": [
+                            {
+                                "name": "Henry (2)"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11918955",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1918955",
+                        "startTime": "2024-05-15T18:00:00.000",
+                        "endTime": "2024-05-15T23:59:00.000",
+                        "title": "DUAT x TORTE",
+                        "contentUrl": "/events/1918955",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/79537955c6393d676601540b00bdacb13e7a4941.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "TORTE BAR"
+                        },
+                        "artists": [
+                            {
+                                "name": "Basic Instinct"
+                            },
+                            {
+                                "name": "Discrete Circuit"
+                            },
+                            {
+                                "name": "Eluzid"
+                            },
+                            {
+                                "name": "Ones."
+                            },
+                            {
+                                "name": "Ruede Hagelstein"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11922429",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1922429",
+                        "startTime": "2024-05-15T18:00:00.000",
+                        "endTime": "2024-05-15T22:00:00.000",
+                        "title": "://sektgarten [free entry & open air]",
+                        "contentUrl": "/events/1922429",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/296f1f9dd26f31f10e9e701707ddaacc49227c8c.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/9a21670407383a7f295f1d7721494be61525235a.png",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "://about blank"
+                        },
+                        "artists": []
+                    }
+                },
+                {
+                    "id": "11905379",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1905379",
+                        "startTime": "2024-05-15T21:00:00.000",
+                        "endTime": "2024-05-16T01:00:00.000",
+                        "title": "The Art of Listening: Perlon inspired Dreams",
+                        "contentUrl": "/events/1905379",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/bbad814045cba67504ee2f3c599e9aaccc5cda30.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Mysliwska"
+                        },
+                        "artists": [
+                            {
+                                "name": "IKAAW"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11913646",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1913646",
+                        "startTime": "2024-05-15T15:00:00.000",
+                        "endTime": "2024-05-16T06:00:00.000",
+                        "title": "Zel presents Nautilus Vol.5",
+                        "contentUrl": "/events/1913646",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/4a3dfc769d68884dde07bfff37c015892ecbbc63.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/57bd196549af48faa147f49620d76077a0ec3a79.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Club der Visionaere"
+                        },
+                        "artists": [
+                            {
+                                "name": "Gwenan"
+                            },
+                            {
+                                "name": "Basse Frequenze Soundsystem"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11924674",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1924674",
+                        "startTime": "2024-05-15T19:00:00.000",
+                        "endTime": "2024-05-16T01:00:00.000",
+                        "title": "BLVSH x Pepsi Boston Bar: FLINTA* Drag Open Stage",
+                        "contentUrl": "/events/1924674",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/ca7d26b06ac3a042381fd25dd7f0f52db35bc69e.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Schwuz"
+                        },
+                        "artists": [
+                            {
+                                "name": "Kiki"
+                            },
+                            {
+                                "name": "_Charmi_"
+                            },
+                            {
+                                "name": "Grenouillette"
+                            },
+                            {
+                                "name": "Aggy"
+                            },
+                            {
+                                "name": "Caro Vola"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11925068",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1925068",
+                        "startTime": "2024-05-15T19:00:00.000",
+                        "endTime": "2024-05-15T22:00:00.000",
+                        "title": "Listening Session: MAKAYABUNDO",
+                        "contentUrl": "/events/1925068",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/9a015508075a86611ec89c2eab3f6a9326caf038.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Baraza"
+                        },
+                        "artists": [
+                            {
+                                "name": "MAKAYABUNDO"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11900353",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1900353",
+                        "startTime": "2024-05-15T20:00:00.000",
+                        "endTime": "2024-05-16T01:00:00.000",
+                        "title": "Open Decks",
+                        "contentUrl": "/events/1900353",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/386fc00f0d29d7e8fcdde59fd7ec0b768fcfcad2.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Bautrockner"
+                        },
+                        "artists": []
+                    }
+                },
+                {
+                    "id": "11902407",
+                    "listingDate": "2024-05-15T00:00:00.000",
+                    "event": {
+                        "id": "1902407",
+                        "startTime": "2024-05-15T21:00:00.000",
+                        "endTime": "2024-05-16T04:00:00.000",
+                        "title": "Hot Tunes for Cool Cats",
+                        "contentUrl": "/events/1902407",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/d47d05107395661249c20bc242f7b358b92f1119.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Eschschloraque"
+                        },
+                        "artists": []
+                    }
+                },
+                {
+                    "id": "11897439",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1897439",
+                        "startTime": "2024-05-16T19:00:00.000",
+                        "endTime": "2024-05-16T23:59:00.000",
+                        "title": "Analogue Foundation presents Kali Malone live",
+                        "contentUrl": "/events/1897439",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/40f59cd0d6de7e96ec2d732d51b4609bc36b42f9.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "ZENNER"
+                        },
+                        "artists": [
+                            {
+                                "name": "Kali Malone"
+                            },
+                            {
+                                "name": "Baby Vulture"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11863192",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1863192",
+                        "startTime": "2024-05-16T22:00:00.000",
+                        "endTime": "2024-05-17T08:00:00.000",
+                        "title": "UNITY",
+                        "contentUrl": "/events/1863192",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/bb6c21c0a6b45fd0e99cbe58be0db312454f939c.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/f5dd2e15081f2d772cdb43339a3b4f2e204565c6.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "KitKatClub"
+                        },
+                        "artists": [
+                            {
+                                "name": "Markus Glanz"
+                            },
+                            {
+                                "name": "D.KYU"
+                            },
+                            {
+                                "name": "ONNY CHO"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11861797",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1861797",
+                        "startTime": "2024-05-16T22:00:00.000",
+                        "endTime": "2024-05-17T06:00:00.000",
+                        "title": "Amsterdam Techno Records - OXI X-FLOOR hosted by ATR [Amsterdam and Berlin]",
+                        "contentUrl": "/events/1861797",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/87fcbcb21a47bd911ef76a4e3d406d3dc47d0909.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "OXI"
+                        },
+                        "artists": [
+                            {
+                                "name": "Latnam"
+                            },
+                            {
+                                "name": "ATR DJ-TEAM"
+                            },
+                            {
+                                "name": "Gabrielle (DE)"
+                            },
+                            {
+                                "name": "R4W&L00PZ"
+                            },
+                            {
+                                "name": "Hesper Act"
+                            },
+                            {
+                                "name": "GLASSBASS"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11874125",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1874125",
+                        "startTime": "2024-05-16T21:00:00.000",
+                        "endTime": "2024-05-17T03:00:00.000",
+                        "title": "Hunger To Create",
+                        "contentUrl": "/events/1874125",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/ae1897041ca27b8c800434f0ba1c1ceeeb20a8e1.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Berghain | Panorama Bar | Säule"
+                        },
+                        "artists": [
+                            {
+                                "name": "Colin Benders"
+                            },
+                            {
+                                "name": "Dasha Rush"
+                            },
+                            {
+                                "name": "Quelza"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11919137",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1919137",
+                        "startTime": "2024-05-16T23:00:00.000",
+                        "endTime": "2024-05-17T07:00:00.000",
+                        "title": "Indiskret: Bianka Banks, Confred, Konfusia, Marius Holm, Pajüh, Rabauke",
+                        "contentUrl": "/events/1919137",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/6165bb5abb4f79fbb3803749d97f03cdf72a7852.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Watergate"
+                        },
+                        "artists": [
+                            {
+                                "name": "Bianka Banks"
+                            },
+                            {
+                                "name": "Confred"
+                            },
+                            {
+                                "name": "Konfusia"
+                            },
+                            {
+                                "name": "Marius Holm"
+                            },
+                            {
+                                "name": "Pajüh"
+                            },
+                            {
+                                "name": "Rabauke"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11856161",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1856161",
+                        "startTime": "2024-05-16T23:00:00.000",
+                        "endTime": "2024-05-17T08:00:00.000",
+                        "title": "Renate x Digital Diamonds",
+                        "contentUrl": "/events/1856161",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/7591afffbb1438c960cf052fcd5151ca00e50bb6.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/2d037eeb2fab84d9ca52937b74be28b423bdc1ea.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Renate"
+                        },
+                        "artists": [
+                            {
+                                "name": "Nicorus"
+                            },
+                            {
+                                "name": "Adamson"
+                            },
+                            {
+                                "name": "Leon Licht"
+                            },
+                            {
+                                "name": "Elli Altenberger"
+                            },
+                            {
+                                "name": "Scoopsi"
+                            },
+                            {
+                                "name": "Annina"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11906627",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1906627",
+                        "startTime": "2024-05-16T19:00:00.000",
+                        "endTime": "2024-05-17T01:00:00.000",
+                        "title": "ATMOSPHÈRES VOL.2",
+                        "contentUrl": "/events/1906627",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/2d8a0067cc2a8be80820c5a4e5ec6046dc0a5e04.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Kater Blau"
+                        },
+                        "artists": [
+                            {
+                                "name": "Nadia Struiwigh"
+                            },
+                            {
+                                "name": "Emme Moises"
+                            },
+                            {
+                                "name": "hhnoi"
+                            },
+                            {
+                                "name": "Rachel Palmer"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11915305",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1915305",
+                        "startTime": "2024-05-16T21:00:00.000",
+                        "endTime": "2024-05-17T06:00:00.000",
+                        "title": "MIKROMAL. Clubnight with lievar, Ina all, Fannik, Heide. b2b Meerkat",
+                        "contentUrl": "/events/1915305",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/1dbcd3475f179de959829a61bbac83e640de62b7.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/6f34dab9f4b4b90f653a965e0f1d26d59b3ce14a.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Crack Bellmer"
+                        },
+                        "artists": [
+                            {
+                                "name": "lievar"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11910981",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1910981",
+                        "startTime": "2024-05-16T15:00:00.000",
+                        "endTime": "2024-05-17T05:00:00.000",
+                        "title": "Naissance Musik",
+                        "contentUrl": "/events/1910981",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/221d3abb5544f7307670f1ac5afe08afd4b75bc9.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Club der Visionaere"
+                        },
+                        "artists": [
+                            {
+                                "name": "ALINA (3)"
+                            },
+                            {
+                                "name": "Atree"
+                            },
+                            {
+                                "name": "HEAR"
+                            },
+                            {
+                                "name": "Ronny Krohn"
+                            },
+                            {
+                                "name": "DJ Zurückbleiben Bitte"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11903886",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1903886",
+                        "startTime": "2024-05-16T22:00:00.000",
+                        "endTime": "2024-05-17T02:00:00.000",
+                        "title": "THE UNKNOWN",
+                        "contentUrl": "/events/1903886",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/13195039a84d4362177875b87f4443b44c1f2741.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Zu Mir Oder Zu Dir"
+                        },
+                        "artists": []
+                    }
+                },
+                {
+                    "id": "11882794",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1882794",
+                        "startTime": "2024-05-16T18:00:00.000",
+                        "endTime": "2024-05-17T06:00:00.000",
+                        "title": "electronic.thursday mit Pyrame",
+                        "contentUrl": "/events/1882794",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/1496024a90e6036e11c4d794fe7b47d28ac6fbc3.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Minimal Bar"
+                        },
+                        "artists": [
+                            {
+                                "name": "Pyrame"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11898442",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1898442",
+                        "startTime": "2024-05-16T23:00:00.000",
+                        "endTime": "2024-05-17T09:00:00.000",
+                        "title": "Globus Invites hosted by Die Orakel",
+                        "contentUrl": "/events/1898442",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/054893f64d66385a95847442693d7102b68677f9.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Tresor / Globus"
+                        },
+                        "artists": [
+                            {
+                                "name": "Dana Kuehr"
+                            },
+                            {
+                                "name": "Joe Delon"
+                            },
+                            {
+                                "name": "Oliver Hafenbauer"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11880476",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1880476",
+                        "startTime": "2024-05-16T18:30:00.000",
+                        "endTime": "2024-05-16T23:59:00.000",
+                        "title": "PATCHWERK Launch Party",
+                        "contentUrl": "/events/1880476",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/e6dd34fc3378907aecd8d362399fb4fee46e55c0.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/4d286c5970a34d92dac0f0804c7121eecc4213b0.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "90mil"
+                        },
+                        "artists": [
+                            {
+                                "name": "Tum Ásh"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11915082",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1915082",
+                        "startTime": "2024-05-16T22:00:00.000",
+                        "endTime": "2024-05-17T04:00:00.000",
+                        "title": "Tausend ELECTRONICA - Steve Challier",
+                        "contentUrl": "/events/1915082",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/326dc7473451e5f34e31f1a2fbb174324f8de528.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Tausend"
+                        },
+                        "artists": [
+                            {
+                                "name": "Steve Challier"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11921304",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1921304",
+                        "startTime": "2024-05-16T22:00:00.000",
+                        "endTime": "2024-05-17T06:00:00.000",
+                        "title": "ACID BABIES",
+                        "contentUrl": "/events/1921304",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/414c5815f978b604f31b8d071116918f2955291f.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Zur Klappe"
+                        },
+                        "artists": [
+                            {
+                                "name": "Christophe Darbouze"
+                            },
+                            {
+                                "name": "Hideto Omura"
+                            },
+                            {
+                                "name": "Mat Fink"
+                            },
+                            {
+                                "name": "Mini Nik"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11917184",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1917184",
+                        "startTime": "2024-05-16T20:00:00.000",
+                        "endTime": "2024-05-17T01:00:00.000",
+                        "title": "Chinabot Release Party of Memeshift's '𝕰𝖈𝖍𝖔𝖊𝖘'",
+                        "contentUrl": "/events/1917184",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/a8853e93c64895b54077c1cba6af3266b770085a.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Fitzroy"
+                        },
+                        "artists": [
+                            {
+                                "name": "Memeshift"
+                            },
+                            {
+                                "name": "Pisitakun"
+                            },
+                            {
+                                "name": "Jaeho Hwang"
+                            },
+                            {
+                                "name": "Chooc Ly"
+                            },
+                            {
+                                "name": "Marylou"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11922467",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1922467",
+                        "startTime": "2024-05-16T23:00:00.000",
+                        "endTime": "2024-05-17T08:00:00.000",
+                        "title": "Art|Dicction / meets d.OHA!se",
+                        "contentUrl": "/events/1922467",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/08972c02757cb7f444ee59488db6785eeea1e895.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Der Weiße Hase"
+                        },
+                        "artists": [
+                            {
+                                "name": "Wiebe Roose"
+                            },
+                            {
+                                "name": "DAV3"
+                            },
+                            {
+                                "name": "ED2000"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11890179",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1890179",
+                        "startTime": "2024-05-16T20:00:00.000",
+                        "endTime": "2024-05-16T22:00:00.000",
+                        "title": "Audiovisionen: Mora (Nikolai von Sallwitz + Robert Seidel)",
+                        "contentUrl": "/events/1890179",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/a2c114c2c5b9054025ab2e7fd74ed466bf258e50.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Kulturraum Zwingli Kirche e.V."
+                        },
+                        "artists": [
+                            {
+                                "name": "Robert Seidel"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11920957",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1920957",
+                        "startTime": "2024-05-16T18:00:00.000",
+                        "endTime": "2024-05-16T22:00:00.000",
+                        "title": "Latitude In-Store Sessions with Inherit Records",
+                        "contentUrl": "/events/1920957",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/cef3c681658010bb499e883a1da8be3ba6e20f27.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Latitude Record Store"
+                        },
+                        "artists": [
+                            {
+                                "name": "Felix Herrmann"
+                            },
+                            {
+                                "name": "LEON SCHANZENBACH"
+                            },
+                            {
+                                "name": "SESO"
+                            },
+                            {
+                                "name": "Toni Dextor"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11915354",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1915354",
+                        "startTime": "2024-05-16T23:59:00.000",
+                        "endTime": "2024-05-17T12:00:00.000",
+                        "title": "Donnerdogge",
+                        "contentUrl": "/events/1915354",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/eee9fa8a4fc165c915fd78e2608889dd5141757b.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Golden Gate"
+                        },
+                        "artists": [
+                            {
+                                "name": "Rigopolar"
+                            },
+                            {
+                                "name": "Ark3r"
+                            },
+                            {
+                                "name": "De Mode"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11913924",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1913924",
+                        "startTime": "2024-05-16T20:00:00.000",
+                        "endTime": "2024-05-17T02:00:00.000",
+                        "title": "K3LLR",
+                        "contentUrl": "/events/1913924",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/96e30e49210086b0175681c6b8884ae90cf41182.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Lauschangriff"
+                        },
+                        "artists": [
+                            {
+                                "name": "Leyda Isasso"
+                            },
+                            {
+                                "name": "Electric Visionary"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11925255",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1925255",
+                        "startTime": "2024-05-16T23:00:00.000",
+                        "endTime": "2024-05-17T06:00:00.000",
+                        "title": "Chantals House of Shame",
+                        "contentUrl": "/events/1925255",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/640ef0ce993b38594b8e22dd23010b1fd306cb2f.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Lokschuppen Berlin"
+                        },
+                        "artists": [
+                            {
+                                "name": "Der Eggert"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11923985",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1923985",
+                        "startTime": "2024-05-16T07:00:00.000",
+                        "endTime": "2024-05-16T14:00:00.000",
+                        "title": "Recharge After Party",
+                        "contentUrl": "/events/1923985",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/e91d8abd65410abf96f99d197e7645667d0d74b4.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "DAS Institut"
+                        },
+                        "artists": [
+                            {
+                                "name": "Herrmess"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11923959",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1923959",
+                        "startTime": "2024-05-16T20:00:00.000",
+                        "endTime": "2024-05-17T02:00:00.000",
+                        "title": "WILDERNESS AGENCY x Klunkerkranich w. MUKKIMIAU, SEIUN, ONNI",
+                        "contentUrl": "/events/1923959",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/667598948de412257394d3894d41529a14535fba.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Klunkerkranich"
+                        },
+                        "artists": [
+                            {
+                                "name": "MUKKIMIAU"
+                            },
+                            {
+                                "name": "SEIUN"
+                            },
+                            {
+                                "name": "ONNI"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11922291",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1922291",
+                        "startTime": "2024-05-16T18:00:00.000",
+                        "endTime": "2024-05-16T23:59:00.000",
+                        "title": "Visco Release Party",
+                        "contentUrl": "/events/1922291",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/41e88ce01c780d3825db6e0b2cba76864bf61375.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Michelberger Hotel"
+                        },
+                        "artists": [
+                            {
+                                "name": "Jen UFO"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11923026",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1923026",
+                        "startTime": "2024-05-16T18:00:00.000",
+                        "endTime": "2024-05-16T22:00:00.000",
+                        "title": "://sektgarten [free entry & open air]",
+                        "contentUrl": "/events/1923026",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/b5286820fe48b677d4f1fc2acd1b209d4dc28002.png",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/8121d142e5a6e95cb1622fadd1ee2ecb4c7d2da8.png",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "://about blank"
+                        },
+                        "artists": []
+                    }
+                },
+                {
+                    "id": "11903460",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1903460",
+                        "startTime": "2024-05-16T22:00:00.000",
+                        "endTime": "2024-05-17T06:00:00.000",
+                        "title": "PROM with Olin & Mr. Sian",
+                        "contentUrl": "/events/1903460",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/b49ec0607914cebed07e6456d9b849b15adf9690.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Paloma"
+                        },
+                        "artists": []
+                    }
+                },
+                {
+                    "id": "11923957",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1923957",
+                        "startTime": "2024-05-16T16:00:00.000",
+                        "endTime": "2024-05-17T01:00:00.000",
+                        "title": "NAUA x Klunkerkranich w. Bob Marius, Jose Palma, InDeLa, Kumbale, Medusone",
+                        "contentUrl": "/events/1923957",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/3535fc2ceeb00690f613881963030069d54bd5d9.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Klunkerkranich"
+                        },
+                        "artists": []
+                    }
+                },
+                {
+                    "id": "11922777",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1922777",
+                        "startTime": "2024-05-16T19:00:00.000",
+                        "endTime": "2024-05-16T23:59:00.000",
+                        "title": "DJIIN + Valley Of The Sluts + yondalll",
+                        "contentUrl": "/events/1922777",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/b277910fc5ccbb1b5363c830d6c31801b17b2316.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Zukunft am Ostkreuz"
+                        },
+                        "artists": []
+                    }
+                },
+                {
+                    "id": "11923649",
+                    "listingDate": "2024-05-16T00:00:00.000",
+                    "event": {
+                        "id": "1923649",
+                        "startTime": "2024-05-16T19:30:00.000",
+                        "endTime": "2024-05-17T03:00:00.000",
+                        "title": "Fusion Nights Berlin",
+                        "contentUrl": "/events/1923649",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/b383d3290047fb1f99a77f1245ef3f392049c6ed.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Anomalie Art Club"
+                        },
+                        "artists": []
+                    }
+                },
+                {
+                    "id": "11791108",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1791108",
+                        "startTime": "2024-05-17T22:00:00.000",
+                        "endTime": "2024-05-20T12:00:00.000",
+                        "title": "BCCO x STORNO 68 hours",
+                        "contentUrl": "/events/1791108",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/834ed678ff2f22545e5fe6f4b151d7dd618b4469.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "ÆDEN"
+                        },
+                        "artists": [
+                            {
+                                "name": "MCR-T"
+                            },
+                            {
+                                "name": "Lucia Lu"
+                            },
+                            {
+                                "name": "future.666"
+                            },
+                            {
+                                "name": "DJ Hyperdrive"
+                            },
+                            {
+                                "name": "slin"
+                            },
+                            {
+                                "name": "BAUGRUPPE90"
+                            },
+                            {
+                                "name": "Adrian Mills"
+                            },
+                            {
+                                "name": "dasstudach"
+                            },
+                            {
+                                "name": "Benwal"
+                            },
+                            {
+                                "name": "Juicy Romance"
+                            },
+                            {
+                                "name": "Blue Hawaii"
+                            },
+                            {
+                                "name": "Only Fire"
+                            },
+                            {
+                                "name": "SHOKI287"
+                            },
+                            {
+                                "name": "Meg10"
+                            },
+                            {
+                                "name": "Lovefoxy"
+                            },
+                            {
+                                "name": "Faster Horses"
+                            },
+                            {
+                                "name": "Tarkno"
+                            },
+                            {
+                                "name": "Cirkle"
+                            },
+                            {
+                                "name": "Regent"
+                            },
+                            {
+                                "name": "Cyan85"
+                            },
+                            {
+                                "name": "P.Vanillaboy"
+                            },
+                            {
+                                "name": "SHADYLINES"
+                            },
+                            {
+                                "name": "ÜBERKIKZ"
+                            },
+                            {
+                                "name": "lucaabi"
+                            },
+                            {
+                                "name": "Arkan"
+                            },
+                            {
+                                "name": "TONI BA"
+                            },
+                            {
+                                "name": "Nina Farrina"
+                            },
+                            {
+                                "name": "ROGEVAR"
+                            },
+                            {
+                                "name": "Posture"
+                            },
+                            {
+                                "name": "ALI3N"
+                            },
+                            {
+                                "name": "GEN97"
+                            },
+                            {
+                                "name": "Kristian Sibast"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11899463",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1899463",
+                        "startTime": "2024-05-17T20:00:00.000",
+                        "endTime": "2024-05-17T23:00:00.000",
+                        "title": "HTRK turn 21",
+                        "contentUrl": "/events/1899463",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/53fe670087d3795a79f65134888bb76130d2de47.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/ec0d64108d9cf10ecd681bcbabd09a1bf7473cde.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Tresor / Globus"
+                        },
+                        "artists": [
+                            {
+                                "name": "HTRK"
+                            },
+                            {
+                                "name": "Carrier (2)"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11815228",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1815228",
+                        "startTime": "2024-05-17T16:00:00.000",
+                        "endTime": "2024-05-18T06:00:00.000",
+                        "title": "ROOM W/ Alarico pres. Kenji Hina, Chlär, BLANKA, Ndrx & More",
+                        "contentUrl": "/events/1815228",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/4ad6566dafc106297ecaf48ae5aa6cafaf44cb0f.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/83ff86bbab6ca8661d0f2decae4c6ab76fc3f725.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Else"
+                        },
+                        "artists": [
+                            {
+                                "name": "Alarico"
+                            },
+                            {
+                                "name": "Angioma"
+                            },
+                            {
+                                "name": "BLANKA"
+                            },
+                            {
+                                "name": "Chlär"
+                            },
+                            {
+                                "name": "Lyric"
+                            },
+                            {
+                                "name": "Ndrx"
+                            },
+                            {
+                                "name": "WINDFUHR"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11904200",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1904200",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T10:00:00.000",
+                        "title": "IPSO: Kölsch, Fiona Kraft, Jonathan Kaspar, Just Lauren, Mona Pirzad",
+                        "contentUrl": "/events/1904200",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/2c493145f9eb9f47149efeb76021b4068c1dbea8.png",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/d8325a0a1020a73ff4ebd94ef6f7144dae127af2.png",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Watergate"
+                        },
+                        "artists": [
+                            {
+                                "name": "Kolsch"
+                            },
+                            {
+                                "name": "Fiona Kraft"
+                            },
+                            {
+                                "name": "Jonathan Kaspar"
+                            },
+                            {
+                                "name": "Just Lauren"
+                            },
+                            {
+                                "name": "Mona Pirzad"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11856000",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1856000",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T08:00:00.000",
+                        "title": "Laboratorium 5 years/ Echoes Of October, Andrew Moore, BXTR ",
+                        "contentUrl": "/events/1856000",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/fab383d0d7484a3ab5e110cdd3a713d6e02016c8.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/e8cfb5968d045b4955445c6a15e438a608303b5c.png",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "OST"
+                        },
+                        "artists": [
+                            {
+                                "name": "Andrew Moore"
+                            },
+                            {
+                                "name": "Armahanz"
+                            },
+                            {
+                                "name": ".Cheka"
+                            },
+                            {
+                                "name": "BXTR"
+                            },
+                            {
+                                "name": "Danny Wabbit"
+                            },
+                            {
+                                "name": "Echoes Of October"
+                            },
+                            {
+                                "name": "Nastya Muravyova"
+                            },
+                            {
+                                "name": "Niia Y"
+                            },
+                            {
+                                "name": "PHLOXO"
+                            },
+                            {
+                                "name": "riko (2)"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11878878",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1878878",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T11:00:00.000",
+                        "title": "Veselka X Dissident w/ Audrey Danza, Kasper Marrot, Newa, SITA",
+                        "contentUrl": "/events/1878878",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/c368bbcf7aa05d16f45f4681860efe4aa413c388.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/b2add2d67f2b654799745f0263cc01d4601392ac.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "RSO.BERLIN"
+                        },
+                        "artists": [
+                            {
+                                "name": "Audrey Danza"
+                            },
+                            {
+                                "name": "Carly Zeng"
+                            },
+                            {
+                                "name": "Cora (CN)"
+                            },
+                            {
+                                "name": "Kasper Marott"
+                            },
+                            {
+                                "name": "Marie Malarie"
+                            },
+                            {
+                                "name": "Newa"
+                            },
+                            {
+                                "name": "PRYMARA"
+                            },
+                            {
+                                "name": "SITA"
+                            },
+                            {
+                                "name": "Tweeman"
+                            },
+                            {
+                                "name": "Vani Vachi"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11865193",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1865193",
+                        "startTime": "2024-05-17T23:59:00.000",
+                        "endTime": "2024-05-19T12:00:00.000",
+                        "title": "Betriebsfeier",
+                        "contentUrl": "/events/1865193",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/d5b5b59e55df90d8c5e10e65c89cb3b3ae313a3f.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Hoppetosse"
+                        },
+                        "artists": [
+                            {
+                                "name": "Annina"
+                            },
+                            {
+                                "name": "Butterman"
+                            },
+                            {
+                                "name": "Coco"
+                            },
+                            {
+                                "name": "dinaLiks"
+                            },
+                            {
+                                "name": "DJ Kuma"
+                            },
+                            {
+                                "name": "Empro"
+                            },
+                            {
+                                "name": "Finona Rider"
+                            },
+                            {
+                                "name": "Hans Hammer"
+                            },
+                            {
+                                "name": "Hula Hula Reisegruppe"
+                            },
+                            {
+                                "name": "Kotelett"
+                            },
+                            {
+                                "name": "Minimalte & Karaat"
+                            },
+                            {
+                                "name": "Schwirri"
+                            },
+                            {
+                                "name": "SILSAN"
+                            },
+                            {
+                                "name": "Stan Starry"
+                            },
+                            {
+                                "name": "Yetti Meißner"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11883956",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1883956",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T10:00:00.000",
+                        "title": "Syntop w/ Inland, V:SONNTAG, Marie Lung, Carlotta Jacobi, Rill, Juri Heidemann and more",
+                        "contentUrl": "/events/1883956",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/cccfc89d65e52dd80b4853bde16efb8802f81406.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "://about blank"
+                        },
+                        "artists": [
+                            {
+                                "name": "Carlotta Jacobi"
+                            },
+                            {
+                                "name": "Inland"
+                            },
+                            {
+                                "name": "Juri Heidemann"
+                            },
+                            {
+                                "name": "Marie Lung"
+                            },
+                            {
+                                "name": "PAU PAU"
+                            },
+                            {
+                                "name": "Rill"
+                            },
+                            {
+                                "name": "V:SONNTAG"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11867085",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1867085",
+                        "startTime": "2024-05-17T22:00:00.000",
+                        "endTime": "2024-05-18T09:00:00.000",
+                        "title": "Nora En Pure presents Purified Berlin",
+                        "contentUrl": "/events/1867085",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/e81dc34c69d9fa3700fb3a98ed2a1b3476d039bb.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/405a26a728a381bd026135d2e0e65d8e92310188.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Ritter Butzke"
+                        },
+                        "artists": [
+                            {
+                                "name": "Nora En Pure"
+                            },
+                            {
+                                "name": "Paradoks"
+                            },
+                            {
+                                "name": "Corren Cavini"
+                            },
+                            {
+                                "name": "Dominik Gehringer"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11877367",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1877367",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T09:00:00.000",
+                        "title": "REINKARNATION w/ Paraçek, Exil der Schatten, 5euroGoldi, NOTMYTYPE, ARDL, DJBOUNTY3000, Analect",
+                        "contentUrl": "/events/1877367",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/36541958200c4393b06fbc7cdee86c28d45708ec.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Lokschuppen Berlin"
+                        },
+                        "artists": [
+                            {
+                                "name": "Paraçek"
+                            },
+                            {
+                                "name": "5euroGoldi"
+                            },
+                            {
+                                "name": "Filialleiter"
+                            },
+                            {
+                                "name": "djbounty3000"
+                            },
+                            {
+                                "name": "Blame the Booker"
+                            },
+                            {
+                                "name": "LUPENKO"
+                            },
+                            {
+                                "name": "Bélavie"
+                            },
+                            {
+                                "name": "Ronny Pepper"
+                            },
+                            {
+                                "name": "Leon Ziener"
+                            },
+                            {
+                                "name": "Exil der Schatten"
+                            },
+                            {
+                                "name": "NOTMYTYPE (2)"
+                            },
+                            {
+                                "name": "Analect"
+                            },
+                            {
+                                "name": "ARDL"
+                            },
+                            {
+                                "name": "Al Aslan"
+                            },
+                            {
+                                "name": "Elias Nuit (2)"
+                            },
+                            {
+                                "name": "Ėrrør.A"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11897059",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1897059",
+                        "startTime": "2024-05-17T22:00:00.000",
+                        "endTime": "2024-05-18T04:00:00.000",
+                        "title": "Persian Love: Summer Discotheque with Milli (Mehmooni LDN/ YARD Records) All Night Long",
+                        "contentUrl": "/events/1897059",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/230d926d7fc21e76f578f72bf42df337af4b43c1.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Acud Macht NEU"
+                        },
+                        "artists": [
+                            {
+                                "name": "Milli"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11875912",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1875912",
+                        "startTime": "2024-05-17T22:00:00.000",
+                        "endTime": "2024-05-20T08:00:00.000",
+                        "title": "Birgits Karneval der Kulturen with Matchy, Tommahawk, Sebastian Konrad, Avocado, uvm",
+                        "contentUrl": "/events/1875912",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/8ba201f171c5685641f519ed61f872b2d8264118.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/135716fc1da4f101e126d0b7568e935f773e7aa3.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Birgit"
+                        },
+                        "artists": [
+                            {
+                                "name": "nøvae"
+                            },
+                            {
+                                "name": "Matchy"
+                            },
+                            {
+                                "name": "Sebastian Konrad"
+                            },
+                            {
+                                "name": "rusky"
+                            },
+                            {
+                                "name": "Tommahawk"
+                            },
+                            {
+                                "name": "ADAMN"
+                            },
+                            {
+                                "name": "Rallo"
+                            },
+                            {
+                                "name": "Dydaa Forne"
+                            },
+                            {
+                                "name": "Bergstock"
+                            },
+                            {
+                                "name": "Avocado"
+                            },
+                            {
+                                "name": "Dave Dinger"
+                            },
+                            {
+                                "name": "Sika Akis"
+                            },
+                            {
+                                "name": "BAHAA AL DEEN"
+                            },
+                            {
+                                "name": "Techmo"
+                            },
+                            {
+                                "name": "Karim Alkhayat"
+                            },
+                            {
+                                "name": "Ute Ungewiss"
+                            },
+                            {
+                                "name": "AndShe"
+                            },
+                            {
+                                "name": "Ramy Hasnawe"
+                            },
+                            {
+                                "name": "MINJA"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11872853",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1872853",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T09:00:00.000",
+                        "title": "JUICY",
+                        "contentUrl": "/events/1872853",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/cd37b6c09fc8d4ee6971d2ff51ca0d0aaac609dd.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "OXI"
+                        },
+                        "artists": [
+                            {
+                                "name": "Alex Friday"
+                            },
+                            {
+                                "name": "ROJI"
+                            },
+                            {
+                                "name": "Ben Derris"
+                            },
+                            {
+                                "name": "EloTrance"
+                            },
+                            {
+                                "name": "HØLEIGH"
+                            },
+                            {
+                                "name": "Mareike Bautz"
+                            },
+                            {
+                                "name": "DJ Primitivo"
+                            },
+                            {
+                                "name": "Twinflames"
+                            },
+                            {
+                                "name": "A.N.I."
+                            },
+                            {
+                                "name": "SaltySis"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11881611",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1881611",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T08:00:00.000",
+                        "title": "5Y CARTEL BERLIN [PII] with MATRAKK, Secret Act, Esilise, Sancris ",
+                        "contentUrl": "/events/1881611",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/8495a1dffbb277f1cd77d114d30c906c92325411.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "M-BIA"
+                        },
+                        "artists": [
+                            {
+                                "name": "MATRAKK"
+                            },
+                            {
+                                "name": "Esilise"
+                            },
+                            {
+                                "name": "Sancris"
+                            },
+                            {
+                                "name": "INSØMNIÆC"
+                            },
+                            {
+                                "name": "ALX (IE)"
+                            },
+                            {
+                                "name": "DE.fine"
+                            },
+                            {
+                                "name": "Saara"
+                            },
+                            {
+                                "name": "Diana Orion"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11856162",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1856162",
+                        "startTime": "2024-05-17T17:00:00.000",
+                        "endTime": "2024-05-18T08:00:00.000",
+                        "title": "Renate Klubnacht with Iron Curtis, Sara Miller, Zola, JVN, MYRA, JANE, Marco Effe, Weg",
+                        "contentUrl": "/events/1856162",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/7ab1586ee14173447033282124a86273a3e2e9fe.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/bb537f17c0fe092f4f90a916cf673f49280dff8f.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Renate"
+                        },
+                        "artists": [
+                            {
+                                "name": "Dominik Graf"
+                            },
+                            {
+                                "name": "Lai Raw"
+                            },
+                            {
+                                "name": "JVN"
+                            },
+                            {
+                                "name": "MYRA (NL)"
+                            },
+                            {
+                                "name": "Dani Ramos"
+                            },
+                            {
+                                "name": "Weg (DE)"
+                            },
+                            {
+                                "name": "Loran"
+                            },
+                            {
+                                "name": "Marco Effe"
+                            },
+                            {
+                                "name": "Sara Miller"
+                            },
+                            {
+                                "name": "Iron Curtis"
+                            },
+                            {
+                                "name": "Zola"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11909423",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1909423",
+                        "startTime": "2024-05-17T21:30:00.000",
+                        "endTime": "2024-05-18T06:00:00.000",
+                        "title": "MODERNISMUS 7: Flawless Issues, Serpentin, Blanche Biau, Nomate",
+                        "contentUrl": "/events/1909423",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/29d1fa753bde07e893ba95a4973e19ce9e0df245.png",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/133441ca9f2ecedae2088bfe654a751b6758be5a.png",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Humboldthain Club"
+                        },
+                        "artists": [
+                            {
+                                "name": "Talia Dorr"
+                            },
+                            {
+                                "name": "Paty Vapor"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11914036",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1914036",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T08:30:00.000",
+                        "title": "UNDERGROUND RAVE BERLIN HARDTECHNO / HARDTEKK / HARDTRANCE",
+                        "contentUrl": "/events/1914036",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/1f91896e85cc35d0358bb6324cb8cb206d8aa9a0.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Recede Club Berlin"
+                        },
+                        "artists": [
+                            {
+                                "name": "ZOEVITA"
+                            },
+                            {
+                                "name": "ZoneX"
+                            },
+                            {
+                                "name": "Freulein P."
+                            },
+                            {
+                                "name": "ELOISA"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11913298",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1913298",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-20T12:00:00.000",
+                        "title": "Anomalie Distrikt - Grand Opening",
+                        "contentUrl": "/events/1913298",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/898f1432e6823553c37a0915bda8fcd7c536268e.png",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/e82c30ec820f4174554954db9990a1864500c28b.png",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Anomalie Art Club"
+                        },
+                        "artists": [
+                            {
+                                "name": "01100110"
+                            },
+                            {
+                                "name": "7CIRCLE"
+                            },
+                            {
+                                "name": "Aliska"
+                            },
+                            {
+                                "name": "Al Aslan"
+                            },
+                            {
+                                "name": "AMRTUM"
+                            },
+                            {
+                                "name": "A N U A G E"
+                            },
+                            {
+                                "name": "ANXHELA"
+                            },
+                            {
+                                "name": "Ash Roy"
+                            },
+                            {
+                                "name": "Avocado"
+                            },
+                            {
+                                "name": "Bazeja"
+                            },
+                            {
+                                "name": "Bergstock"
+                            },
+                            {
+                                "name": "Ben Bear"
+                            },
+                            {
+                                "name": "Cassie Raptor"
+                            },
+                            {
+                                "name": "Cara Elizabeth"
+                            },
+                            {
+                                "name": "CARAVEL"
+                            },
+                            {
+                                "name": "Dave Dinger"
+                            },
+                            {
+                                "name": "David Dorad"
+                            },
+                            {
+                                "name": "DE.fine"
+                            },
+                            {
+                                "name": "Diana May"
+                            },
+                            {
+                                "name": "DJ Eivissa"
+                            },
+                            {
+                                "name": "DJ pusspuss"
+                            },
+                            {
+                                "name": "Eliza Feliz"
+                            },
+                            {
+                                "name": "Eluzid"
+                            },
+                            {
+                                "name": "em.ævi"
+                            },
+                            {
+                                "name": "freytag"
+                            },
+                            {
+                                "name": "HEDDA"
+                            },
+                            {
+                                "name": "Heimlich Knüller"
+                            },
+                            {
+                                "name": "Irini Kefalas"
+                            },
+                            {
+                                "name": "K.EULE"
+                            },
+                            {
+                                "name": "Kim Valmount"
+                            },
+                            {
+                                "name": "La Penderie Noire"
+                            },
+                            {
+                                "name": "Lady Maru"
+                            },
+                            {
+                                "name": "Lotte LAUT"
+                            },
+                            {
+                                "name": "Louis Harshman"
+                            },
+                            {
+                                "name": "Mark Mohs"
+                            },
+                            {
+                                "name": "Martin Ka"
+                            },
+                            {
+                                "name": "Midas 104"
+                            },
+                            {
+                                "name": "Mimi Love"
+                            },
+                            {
+                                "name": "Niki Sadeki"
+                            },
+                            {
+                                "name": "Paula Hilton"
+                            },
+                            {
+                                "name": "Riker Striker"
+                            },
+                            {
+                                "name": "rfta"
+                            },
+                            {
+                                "name": "SALIMATA"
+                            },
+                            {
+                                "name": "Samantha Togni"
+                            },
+                            {
+                                "name": "SaltySis"
+                            },
+                            {
+                                "name": "Sarahtonin"
+                            },
+                            {
+                                "name": "Skungal"
+                            },
+                            {
+                                "name": "Sophie Kah"
+                            },
+                            {
+                                "name": "Tante Emma"
+                            },
+                            {
+                                "name": "TIKOA"
+                            },
+                            {
+                                "name": "Tvísker"
+                            },
+                            {
+                                "name": "vom Feisten"
+                            },
+                            {
+                                "name": "Viscerale"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11911238",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1911238",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T07:00:00.000",
+                        "title": "HYPERBOOTH with Zardonic & Blush Response",
+                        "contentUrl": "/events/1911238",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/fb9e0cf9dfd470c8a765d4697bc603c1939a1c38.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Void Club"
+                        },
+                        "artists": [
+                            {
+                                "name": "Upzet"
+                            },
+                            {
+                                "name": "Blush Response"
+                            },
+                            {
+                                "name": "Honschu Lee"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11914316",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1914316",
+                        "startTime": "2024-05-17T23:59:00.000",
+                        "endTime": "2024-05-18T05:00:00.000",
+                        "title": "FURIOSA 'Paulina Rubio Edition'",
+                        "contentUrl": "/events/1914316",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/7a3ef21bac6c335fc481cb4f9fc9df32dcf64be0.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/07961f4389d761a0f5bd502ae797876ff74638c8.png",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Lido Berlin"
+                        },
+                        "artists": []
+                    }
+                },
+                {
+                    "id": "11885995",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1885995",
+                        "startTime": "2024-05-17T22:00:00.000",
+                        "endTime": "2024-05-18T04:00:00.000",
+                        "title": "Brutal Forms & Mutant Modality: a night of uncompromising sound",
+                        "contentUrl": "/events/1885995",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/48a109269af309a3ca968c5732062a39e9db7b54.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Urban Spree"
+                        },
+                        "artists": [
+                            {
+                                "name": "Templer"
+                            },
+                            {
+                                "name": "Incendie"
+                            },
+                            {
+                                "name": "Harsh Mentor"
+                            },
+                            {
+                                "name": "Melania ."
+                            },
+                            {
+                                "name": "Ottoman Grüw"
+                            },
+                            {
+                                "name": "Skumring_"
+                            },
+                            {
+                                "name": "Zeitreise"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11908583",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1908583",
+                        "startTime": "2024-05-17T22:00:00.000",
+                        "endTime": "2024-05-18T10:00:00.000",
+                        "title": "LIMINAL TRANSMISSIONS",
+                        "contentUrl": "/events/1908583",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/1823f37cf081c965817ecae9ceaa63a6b74a963e.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Kater Blau"
+                        },
+                        "artists": []
+                    }
+                },
+                {
+                    "id": "11838544",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1838544",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T09:00:00.000",
+                        "title": "Borderless Goes Paris",
+                        "contentUrl": "/events/1838544",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/6fc0d45d6b3f8c97d6bf5775d1cee483116a8fe4.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/07e42c11fc061fd251f5b0ff5f3ad1b043ac967c.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "AVA Club"
+                        },
+                        "artists": [
+                            {
+                                "name": "TVNG"
+                            },
+                            {
+                                "name": "Neary"
+                            },
+                            {
+                                "name": "sense?"
+                            },
+                            {
+                                "name": "Pōnky"
+                            },
+                            {
+                                "name": "Erna (FR)"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11900901",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1900901",
+                        "startTime": "2024-05-17T22:00:00.000",
+                        "endTime": "2024-05-18T08:00:00.000",
+                        "title": "SYNTHESIS",
+                        "contentUrl": "/events/1900901",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/8ed88ab8cf2a28b71ef29abd1d8de15077661605.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "M01"
+                        },
+                        "artists": [
+                            {
+                                "name": "PETDuo"
+                            },
+                            {
+                                "name": "DJ Ogi"
+                            },
+                            {
+                                "name": "Mechanic Slave"
+                            },
+                            {
+                                "name": "Millhouse"
+                            },
+                            {
+                                "name": "Sarkha"
+                            },
+                            {
+                                "name": "der KØCH"
+                            },
+                            {
+                                "name": "Thian"
+                            },
+                            {
+                                "name": "Livaton"
+                            },
+                            {
+                                "name": "Professor Dictabeat"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11874127",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1874127",
+                        "startTime": "2024-05-17T22:00:00.000",
+                        "endTime": "2024-05-18T03:00:00.000",
+                        "title": "Homodrop",
+                        "contentUrl": "/events/1874127",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/349056bf01cd7d5f6bb30d2f70259498d8034ec6.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Berghain | Panorama Bar | Säule"
+                        },
+                        "artists": [
+                            {
+                                "name": "Cheriii"
+                            },
+                            {
+                                "name": "Kiddy Smile"
+                            },
+                            {
+                                "name": "Maze DJ"
+                            },
+                            {
+                                "name": "Michelle Manetti"
+                            },
+                            {
+                                "name": "Victor Kubin"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11894994",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1894994",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T07:00:00.000",
+                        "title": "MILLIAMPERE presents: DJ SHZ & YËDM B-DAY BASH",
+                        "contentUrl": "/events/1894994",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/fb30cddb572a4f93c2716390696d61c6bd3d66ae.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Void Hall"
+                        },
+                        "artists": [
+                            {
+                                "name": "YËDM"
+                            },
+                            {
+                                "name": "dj.da.li"
+                            },
+                            {
+                                "name": "Sievert Serviert"
+                            },
+                            {
+                                "name": "ANTNK"
+                            },
+                            {
+                                "name": "OUTOFORDERB2B"
+                            },
+                            {
+                                "name": "DiskoJochen"
+                            },
+                            {
+                                "name": "Osiris (2)"
+                            },
+                            {
+                                "name": "DJ Steuerhinterziehung"
+                            },
+                            {
+                                "name": "DJ S3XERCISE"
+                            },
+                            {
+                                "name": "Aexhy"
+                            },
+                            {
+                                "name": "Zoanthropiia"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11918821",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1918821",
+                        "startTime": "2024-05-17T12:00:00.000",
+                        "endTime": "2024-05-18T18:00:00.000",
+                        "title": "MA Symposium: Art/In.formation",
+                        "contentUrl": "/events/1918821",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/7823abb338f0d166667abd88576588ba3daf0d02.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Funkhaus Berlin"
+                        },
+                        "artists": [
+                            {
+                                "name": "Grand River"
+                            },
+                            {
+                                "name": "Oman Sounds"
+                            },
+                            {
+                                "name": "Temple Rat"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11901624",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1901624",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T08:00:00.000",
+                        "title": "Taranau at Secret Location",
+                        "contentUrl": "/events/1901624",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/f100221a63cff37c5773b9178f4011f032ca8e34.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/e5058e135b617e345245b376b19bc366af69c745.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "TBA - See Telegram"
+                        },
+                        "artists": [
+                            {
+                                "name": "Indigo Plateaux"
+                            },
+                            {
+                                "name": "Dshanna"
+                            },
+                            {
+                                "name": "Zoë Alhosni"
+                            },
+                            {
+                                "name": "FunkyKid"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11906562",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1906562",
+                        "startTime": "2024-05-17T23:59:00.000",
+                        "endTime": "2024-05-18T08:00:00.000",
+                        "title": "Undercloud: DJ Travella, Lolo Batten, careza, DJEENO, DJ Strawberry",
+                        "contentUrl": "/events/1906562",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/7c9943f72003d60f088942b9715475506c14dcad.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Fitzroy"
+                        },
+                        "artists": [
+                            {
+                                "name": "DJ Travella"
+                            },
+                            {
+                                "name": "Lolo Batten"
+                            },
+                            {
+                                "name": "careza"
+                            },
+                            {
+                                "name": "DJ Strawberry"
+                            },
+                            {
+                                "name": "DJEENO"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11916536",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1916536",
+                        "startTime": "2024-05-17T23:59:00.000",
+                        "endTime": "2024-05-18T08:00:00.000",
+                        "title": "BOTA",
+                        "contentUrl": "/events/1916536",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/633d1255454e1e63e54dfa6a8f53448f514c0539.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Zur Klappe"
+                        },
+                        "artists": [
+                            {
+                                "name": "PSL"
+                            },
+                            {
+                                "name": "HEMATOMA"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11896011",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1896011",
+                        "startTime": "2024-05-17T23:59:00.000",
+                        "endTime": "2024-05-18T08:00:00.000",
+                        "title": "5 YEARS OF RAIDERS w/ DJ Clent, Zoë Mc Pherson",
+                        "contentUrl": "/events/1896011",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/a207bf318a68674daceb189f21970a95bea6334a.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "OHM"
+                        },
+                        "artists": [
+                            {
+                                "name": "DJ Clent"
+                            },
+                            {
+                                "name": "Zoe Mc Pherson"
+                            },
+                            {
+                                "name": "DJ Fucks Himself"
+                            },
+                            {
+                                "name": "Souci"
+                            },
+                            {
+                                "name": "$ombi"
+                            },
+                            {
+                                "name": "Young Lychee"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11856984",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1856984",
+                        "startTime": "2024-05-17T22:00:00.000",
+                        "endTime": "2024-05-18T06:00:00.000",
+                        "title": "LIBIDOH",
+                        "contentUrl": "/events/1856984",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/b1ced9b1e0ee2d0e266dea2a2049933b7b61e022.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Insomnia"
+                        },
+                        "artists": [
+                            {
+                                "name": "Pierre Remy"
+                            },
+                            {
+                                "name": "Lotte LAUT"
+                            },
+                            {
+                                "name": "Yetti Meißner"
+                            },
+                            {
+                                "name": "DJ Rakita"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11903177",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1903177",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T06:00:00.000",
+                        "title": "Isle of Wax: CHEWCHEW, DJ Luv You, DJ Aficionado, Davin Underwood",
+                        "contentUrl": "/events/1903177",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/3887b4848b5f997f581182688cc61d54860a4933.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/272416ebfdd4ba0b611cd2a049dfe76e41f83e78.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Bulbul Berlin"
+                        },
+                        "artists": [
+                            {
+                                "name": "CHEWCHEW"
+                            },
+                            {
+                                "name": "DJ Luv You"
+                            },
+                            {
+                                "name": "DJ Aficionado"
+                            },
+                            {
+                                "name": "Davin Underwood"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11916076",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1916076",
+                        "startTime": "2024-05-17T23:59:00.000",
+                        "endTime": "2024-05-18T06:00:00.000",
+                        "title": "RAW INDUSTRIES",
+                        "contentUrl": "/events/1916076",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/06b04af8bd07c4cf02d430c62f64622ef5322c06.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Monarch"
+                        },
+                        "artists": [
+                            {
+                                "name": "Tomo in der Muhlen"
+                            },
+                            {
+                                "name": "Ruman"
+                            },
+                            {
+                                "name": "Josef Kunz"
+                            },
+                            {
+                                "name": "Sarah Sommers"
+                            },
+                            {
+                                "name": "Richard Easel"
+                            },
+                            {
+                                "name": "Planetary Echoes"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11912412",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1912412",
+                        "startTime": "2024-05-17T18:00:00.000",
+                        "endTime": "2024-05-18T03:00:00.000",
+                        "title": "Inner City Expressions Carnival Takeover 2024",
+                        "contentUrl": "/events/1912412",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/45ea49e22f59012a0e1d362bc3174db44d522ebb.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/35d0521284e575475d436d05c99540102fe146b2.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Can Bar"
+                        },
+                        "artists": [
+                            {
+                                "name": "Martelo"
+                            },
+                            {
+                                "name": "Nissa"
+                            },
+                            {
+                                "name": "yung_womb"
+                            },
+                            {
+                                "name": "Kemarr"
+                            },
+                            {
+                                "name": "404 eros"
+                            },
+                            {
+                                "name": "JAXX TMS"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11879342",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1879342",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T08:00:00.000",
+                        "title": "The Waves Collective presents: Night Grooves",
+                        "contentUrl": "/events/1879342",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/ba6d8c8e9bddbc9d84dafed55003a23c7eca49c2.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Beate Uwe"
+                        },
+                        "artists": [
+                            {
+                                "name": "Leah Marie"
+                            },
+                            {
+                                "name": "Eddie Paradise"
+                            },
+                            {
+                                "name": "Ponyfeet"
+                            },
+                            {
+                                "name": "Oscar Pol"
+                            },
+                            {
+                                "name": "crémoët"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11902237",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1902237",
+                        "startTime": "2024-05-17T18:00:00.000",
+                        "endTime": "2024-05-18T06:00:00.000",
+                        "title": "Klangraum mit Oliver Raumklang & Freunde",
+                        "contentUrl": "/events/1902237",
+                        "images": [],
+                        "venue": {
+                            "name": "Minimal Bar"
+                        },
+                        "artists": [
+                            {
+                                "name": "Oliver Raumklang"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11919517",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1919517",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T11:00:00.000",
+                        "title": "TeKK Attack ",
+                        "contentUrl": "/events/1919517",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/dc1e20ee5183e9c6f5364ce0d3a6e32a8047e8c0.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Der Weiße Hase"
+                        },
+                        "artists": [
+                            {
+                                "name": "maniaclina"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11918496",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1918496",
+                        "startTime": "2024-05-17T21:00:00.000",
+                        "endTime": "2024-05-18T03:00:00.000",
+                        "title": "AN(8)X su dance110 release event with Ziúr, Marylou, Gina Lo",
+                        "contentUrl": "/events/1918496",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/9552a901ba01c1d0a4df37962f27ec0f9db568b7.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "90mil"
+                        },
+                        "artists": [
+                            {
+                                "name": "kjjabber"
+                            },
+                            {
+                                "name": "Marylou"
+                            },
+                            {
+                                "name": "su dance110"
+                            },
+                            {
+                                "name": "yimo yivil"
+                            },
+                            {
+                                "name": "Ziúr"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11886662",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1886662",
+                        "startTime": "2024-05-17T21:00:00.000",
+                        "endTime": "2024-05-18T06:00:00.000",
+                        "title": "Fan Fiction w/ Lily Haz, Extase Urbaine & DiscoDisco Soundsystem",
+                        "contentUrl": "/events/1886662",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/1553ba2a8d4435ad1f59e271cc58f73aaf1bce48.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Crack Bellmer"
+                        },
+                        "artists": [
+                            {
+                                "name": "Lily Haz"
+                            },
+                            {
+                                "name": "Extase Urbaine"
+                            },
+                            {
+                                "name": "Nils Nilsson"
+                            },
+                            {
+                                "name": "Brink (US)"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11898462",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1898462",
+                        "startTime": "2024-05-17T23:00:00.000",
+                        "endTime": "2024-05-18T09:00:00.000",
+                        "title": "Tresor meets Enigma",
+                        "contentUrl": "/events/1898462",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/968ddfcc1e41c2d3ee81c62c2b4d09341fbfd899.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Tresor / Globus"
+                        },
+                        "artists": [
+                            {
+                                "name": "Sugar Free"
+                            },
+                            {
+                                "name": "Fonte"
+                            },
+                            {
+                                "name": "DAHRAXT"
+                            },
+                            {
+                                "name": "Hurtado"
+                            },
+                            {
+                                "name": "Liza Aikin"
+                            },
+                            {
+                                "name": "Scalameriya"
+                            },
+                            {
+                                "name": "Endlec"
+                            },
+                            {
+                                "name": "Pareal"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11869125",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1869125",
+                        "startTime": "2024-05-17T20:00:00.000",
+                        "endTime": "2024-05-17T22:00:00.000",
+                        "title": "Burnt Friedman & João Pais Filipe + Bryozone",
+                        "contentUrl": "/events/1869125",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/50eb43e1a04a537ede140a99043f58c64ebefc31.png",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Silent Green"
+                        },
+                        "artists": [
+                            {
+                                "name": "Burnt Friedman"
+                            },
+                            {
+                                "name": "Bryozone"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11920850",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1920850",
+                        "startTime": "2024-05-17T16:00:00.000",
+                        "endTime": "2024-05-18T01:00:00.000",
+                        "title": "PFIRSICHTÖNE ∞ LETZTE WIESE",
+                        "contentUrl": "/events/1920850",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/1366222e8ea72115b4dc88766ff9c24e11d40675.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Klunkerkranich"
+                        },
+                        "artists": [
+                            {
+                                "name": "Danielle Arielli"
+                            },
+                            {
+                                "name": "Otto Lebowski"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11901328",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1901328",
+                        "startTime": "2024-05-17T22:00:00.000",
+                        "endTime": "2024-05-18T05:00:00.000",
+                        "title": "Karneval de Funk w/ Gu (Our Label) and Voodoocuts (Juice on Wax)",
+                        "contentUrl": "/events/1901328",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/3d747e0152ef42d5f02e69053e1149cf9974d1d3.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/49d651d58f68fbcdb9ea81940d476e7248086789.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Panke"
+                        },
+                        "artists": [
+                            {
+                                "name": "Soulski"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11916925",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1916925",
+                        "startTime": "2024-05-17T15:00:00.000",
+                        "endTime": "2024-05-18T08:00:00.000",
+                        "title": "Meltdown",
+                        "contentUrl": "/events/1916925",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/117883b7c87b4c76abe2bbfc1ef7a77ddc93764b.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Club der Visionaere"
+                        },
+                        "artists": [
+                            {
+                                "name": "Moodman"
+                            },
+                            {
+                                "name": "David Delgado"
+                            },
+                            {
+                                "name": "Maik Yells"
+                            },
+                            {
+                                "name": "Mejia"
+                            },
+                            {
+                                "name": "BeleeJean"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11888215",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1888215",
+                        "startTime": "2024-05-17T13:00:00.000",
+                        "endTime": "2024-05-17T22:00:00.000",
+                        "title": "Afrobeats Meets Soca On The Beach",
+                        "contentUrl": "/events/1888215",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/575df261cae2abe9f75593eb02edcb9993f3bc48.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Badeschiff"
+                        },
+                        "artists": [
+                            {
+                                "name": "Mista Wallizz"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11923971",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1923971",
+                        "startTime": "2024-05-17T22:00:00.000",
+                        "endTime": "2024-05-18T03:00:00.000",
+                        "title": "WOW! 10 YEARS OF BITWIG w. Stimming *live, Rust *live, Daniel Troberg, Robin Schellenberg",
+                        "contentUrl": "/events/1923971",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/e60c76c2b029d32c018967266053ca6ee4ef5097.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Klunkerkranich"
+                        },
+                        "artists": [
+                            {
+                                "name": "Stimming"
+                            },
+                            {
+                                "name": "Robin Schellenberg"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11908496",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1908496",
+                        "startTime": "2024-05-17T22:00:00.000",
+                        "endTime": "2024-05-18T09:00:00.000",
+                        "title": "Jonas Saalbach & Bebetta",
+                        "contentUrl": "/events/1908496",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/4aca6ffdd49db9a35612e85d24252ed9d96b1f39.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/05c24bc5dc219cd799de61ccc86132f5a049f73f.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Ritter Butzke"
+                        },
+                        "artists": [
+                            {
+                                "name": "Jonas Saalbach"
+                            },
+                            {
+                                "name": "Bebetta"
+                            },
+                            {
+                                "name": "Prismode"
+                            },
+                            {
+                                "name": "Solvane"
+                            },
+                            {
+                                "name": "Garance"
+                            },
+                            {
+                                "name": "Chris Brid"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11911515",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1911515",
+                        "startTime": "2024-05-17T16:00:00.000",
+                        "endTime": "2024-05-17T22:00:00.000",
+                        "title": "Tropic Disco Sound System meets Ras Digby (UK) - Karneval der Kulturen 2024",
+                        "contentUrl": "/events/1911515",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/bea951584f1fbef3633cc1e4bb9efb98bf7d7140.jpg",
+                                "type": "FLYERFRONT"
+                            },
+                            {
+                                "filename": "https://images.ra.co/a030be3e3d528df4897ca01ff68e5d4b76a5fcf9.jpg",
+                                "type": "FLYERBACK"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Zossener Brücke"
+                        },
+                        "artists": [
+                            {
+                                "name": "Tropic Disco Sound System"
+                            },
+                            {
+                                "name": "Giouann"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11900075",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1900075",
+                        "startTime": "2024-05-17T21:00:00.000",
+                        "endTime": "2024-05-18T05:00:00.000",
+                        "title": "Italo Talking",
+                        "contentUrl": "/events/1900075",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/398096d1b1cd3875755018d94748c925871b4445.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Lauschangriff"
+                        },
+                        "artists": [
+                            {
+                                "name": "Preller"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11919488",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1919488",
+                        "startTime": "2024-05-17T20:00:00.000",
+                        "endTime": "2024-05-18T01:00:00.000",
+                        "title": "Vibes ~ AfterWork with aaandscha",
+                        "contentUrl": "/events/1919488",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/8822d949446067f4c10d090bb581e301c8d0023d.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "St. Oberholz"
+                        },
+                        "artists": [
+                            {
+                                "name": "aaandscha"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11896685",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1896685",
+                        "startTime": "2024-05-17T23:30:00.000",
+                        "endTime": "2024-05-18T06:00:00.000",
+                        "title": "Carnival Tunez by Freak de l'Afrique",
+                        "contentUrl": "/events/1896685",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/974c3a915069bfbd7546fe3daab233db4b76b7ae.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Metropol"
+                        },
+                        "artists": [
+                            {
+                                "name": "Mista Wallizz"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11912540",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1912540",
+                        "startTime": "2024-05-17T22:30:00.000",
+                        "endTime": "2024-05-18T06:00:00.000",
+                        "title": "HOUSELAND",
+                        "contentUrl": "/events/1912540",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/d2ea9763c6bda73a015727ab0f036509b1099ee8.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Bohnengold"
+                        },
+                        "artists": [
+                            {
+                                "name": "Dennis Beutler"
+                            },
+                            {
+                                "name": "Bombata"
+                            },
+                            {
+                                "name": "Peet Flower"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "11915363",
+                    "listingDate": "2024-05-17T00:00:00.000",
+                    "event": {
+                        "id": "1915363",
+                        "startTime": "2024-05-17T23:59:00.000",
+                        "endTime": "2024-05-18T12:00:00.000",
+                        "title": "KIOTO Night",
+                        "contentUrl": "/events/1915363",
+                        "images": [
+                            {
+                                "filename": "https://images.ra.co/65a89c4a57bb0fd49894162abb2ef72caf66b0b0.jpg",
+                                "type": "FLYERFRONT"
+                            }
+                        ],
+                        "venue": {
+                            "name": "Golden Gate"
+                        },
+                        "artists": [
+                            {
+                                "name": "Markus Sommer"
+                            },
+                            {
+                                "name": "Henriku"
+                            },
+                            {
+                                "name": "Paul Kine"
+                            },
+                            {
+                                "name": "Stevo"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "totalResults": 1429
+        }
+    }
+}
