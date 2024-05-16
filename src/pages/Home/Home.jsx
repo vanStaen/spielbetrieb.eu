@@ -21,6 +21,7 @@ import { EventForm } from "./Event/EventForm/EventForm";
 import { GalleryOverlay } from "../../components/GalleryOverlay/GalleryOverlay";
 import { spielplanStore } from "../../store/spielplanStore/spielplanStore";
 import { Banner } from "../../components/Banner/Banner";
+import { Notifications } from "./Notifications/Notifications";
 
 import "./Home.less";
 
@@ -81,6 +82,8 @@ export const Home = observer((props) => {
         return <Settings />;
       case "links":
         return <Links />;
+      case "notifications":
+        return <Notifications />;
       default:
         return "Error" + page;
     }

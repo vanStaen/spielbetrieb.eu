@@ -10,6 +10,7 @@ import {
   UserOutlined,
   PieChartOutlined,
   LoadingOutlined,
+  NotificationOutlined,
 } from "@ant-design/icons";
 
 import { userStore } from "../../store/userStore/userStore";
@@ -96,6 +97,10 @@ export const Menu = observer(() => {
     navigate("/settings");
   };
 
+  const notificationsClickHandler = () => {
+    navigate("/notifications");
+  };
+
   return (
     <>
       <div className={`menu__containerAvatar`} onClick={avatarClickhandle}>
@@ -138,6 +143,16 @@ export const Menu = observer(() => {
                 style={{ position: "relative", bottom: "-2px" }}
               />
               &nbsp; Settings
+            </div>
+            <div className="menu__spacer"></div>
+            <div
+              className="link menu__element"
+              onClick={notificationsClickHandler}
+            >
+              <NotificationOutlined
+                style={{ position: "relative", bottom: "-2px" }}
+              />
+              &nbsp; Notifications
             </div>
             <div className="menu__whiteline"></div>
             <div key="addtohomescreen">
