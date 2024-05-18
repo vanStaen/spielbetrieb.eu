@@ -8,7 +8,8 @@ type Notification {
     eventLinkId: Int
     seen: Boolean
     notificationType: String!
-    user: User
+    actionData: Int
+    mediaUrl: String
     createdAt: Float!
     updatedAt: Float!
 }`;
@@ -19,6 +20,8 @@ input NotificationInputData {
     photoLinkId: Int
     userLinkId: Int
     eventLinkId: Int
+    actionData: Int
+    mediaUrl: String
     notificationType: String!
 }`;
 

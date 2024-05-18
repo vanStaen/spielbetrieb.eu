@@ -27,6 +27,8 @@ export const notificationResolver = {
         photoLinkId: args.notificationInput.photoLinkId,
         userLinkId: args.notificationInput.userLinkId,
         eventLinkId: args.notificationInput.eventLinkId,
+        actionData: args.notificationInput.actionData,
+        mediaUrl: args.notificationInput.mediaUrl,
         notificationType: args.notificationInput.notificationType,
       });
       return await notification.save();
