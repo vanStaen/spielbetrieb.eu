@@ -24,6 +24,14 @@ export const Notification = sequelize.sequelize.define("notification", {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
+  mediaUrl: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  actionData: {
+    type: DataTypes.INTEGER,
+    required: false,
+  },
   seen: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
