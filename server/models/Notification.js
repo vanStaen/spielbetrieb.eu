@@ -44,3 +44,5 @@ export const Notification = sequelize.sequelize.define("notification", {
 
 User.hasMany(Notification);
 Notification.belongsTo(User);
+
+// TODO: Define notificationType
