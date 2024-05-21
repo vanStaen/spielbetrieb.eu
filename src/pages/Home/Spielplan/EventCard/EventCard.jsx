@@ -25,8 +25,9 @@ export const EventCard = observer((props) => {
   const getFirstPictureUrl = async () => {
     if (event.pictures[0]) {
       const res = await getPictureUrl(event.pictures[0], "events");
-      console.log(res);
       setFirstPictureUrl(res);
+    } else if (event.externalPicture) {
+      setFirstPictureUrl(event.externalPicture);
     }
   };
 
@@ -38,6 +39,7 @@ export const EventCard = observer((props) => {
         show number of attending
         Mark attending event 
         buy a ticket Ticket
+        picture loader
     */
 
   const handleTagClick = (index, id) => {
@@ -90,9 +92,8 @@ export const EventCard = observer((props) => {
     <div
       key={event._id}
       id={`eventContainer${event._id}`}
-      className={`event__Container ${
-        pageStore.selectedTheme === "light" ? "event__black" : "event__white"
-      }`}
+      className={`event__Container ${pageStore.selectedTheme === "light" ? "event__black" : "event__white"
+        }`}
       onClick={handleEventContainerClick}
     >
       <div className="event__date">

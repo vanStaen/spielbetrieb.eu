@@ -38,7 +38,7 @@ export default async function insertEventIntoDB(dataObject) {
       links: dataObject.links,
       forwardable: dataObject.forwardable,
       allowAnonymous: dataObject.allowAnonymous,
-      isDraft: true,
+      isDraft: false,
       isPartnerEvent: dataObject.isPartnerEvent,
       validated: false,
       admin: [17, 1],
