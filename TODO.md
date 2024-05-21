@@ -43,6 +43,7 @@
 - [ ] If draft is set to false, create notification for admins (in BE)
 - [ ] Form should show that it is only 5 pic max (evengt uplaod artwork)
 - [ ] Partner profile, should not have friends or following, just followers
+- [ ] Report broken link feature 
 
 AI bilder
 - lexica creart
