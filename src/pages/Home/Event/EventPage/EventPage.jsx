@@ -36,8 +36,6 @@ export const EventPage = observer((props) => {
     }
   };
 
-  console.log("event", event);
-
   useEffect(() => {
     window.addEventListener("keydown", keydownEventHandler);
     return () => {
@@ -125,6 +123,9 @@ export const EventPage = observer((props) => {
   useEffect(() => {
     if (event?.pictures.length) {
       getUrlsFromPicturePath(event.pictures);
+    } else if (event?.externalPicture) {
+      pageStore.setPicturesUrls([props.event.externalPicture]);
+      setIsLoading(false);
     } else if (event) {
       pageStore.setPicturesUrls(null);
       setIsLoading(false);
@@ -147,11 +148,10 @@ export const EventPage = observer((props) => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${
-                    pageStore.selectedTheme === "light"
-                      ? "lightColorTheme__Text"
-                      : "darkColorTheme__Text"
-                  }`}
+                  ${pageStore.selectedTheme === "light"
+            ? "lightColorTheme__Text"
+            : "darkColorTheme__Text"
+          }`}
       >
         <ArrowLeftOutlined />
       </div>

@@ -92,19 +92,6 @@ export const EventPageArtwork = observer((props) => {
         <div className="carouselPoints">{points}</div>
       )}
     </div>
-  ) : props.event.externalPicture ? (
-    <div className="eventpage__artworkCol">
-      <div
-        className="eventpage__artworkContainer"
-        onClick={() => {
-          pageStore.setPicturesUrls([props.event.externalPicture]);
-          pageStore.setShowOverlayGallery(true);
-        }}
-        ref={props.ref1}
-      >
-        <img src={props.event.externalPicture} className="eventpage__artwork" />
-      </div>
-    </div>
   ) : (
     <div className="eventpage__artworkCol">
       <div className="eventpage__artworkContainer" ref={props.ref1}>
