@@ -5,6 +5,7 @@ type Event {
     title: String!
     description: String
     pictures: [String]
+    externalPicture: String
     location: Int
     locationName: String
     locationAddress: String
@@ -41,6 +42,7 @@ input EventInputData {
     title: String
     description: String
     pictures: [String]
+    externalPicture: String
     location: Int
     locationName: String
     locationAddress: String
