@@ -36,7 +36,7 @@ export const EventPage = observer((props) => {
     }
   };
 
-  console.log('event', event);
+  console.log("event", event);
 
   useEffect(() => {
     window.addEventListener("keydown", keydownEventHandler);
@@ -147,10 +147,11 @@ export const EventPage = observer((props) => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${pageStore.selectedTheme === "light"
-            ? "lightColorTheme__Text"
-            : "darkColorTheme__Text"
-          }`}
+                  ${
+                    pageStore.selectedTheme === "light"
+                      ? "lightColorTheme__Text"
+                      : "darkColorTheme__Text"
+                  }`}
       >
         <ArrowLeftOutlined />
       </div>

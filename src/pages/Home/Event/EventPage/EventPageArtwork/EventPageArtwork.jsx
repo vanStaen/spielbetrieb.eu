@@ -100,7 +100,8 @@ export const EventPageArtwork = observer((props) => {
           pageStore.setPicturesUrls([props.event.externalPicture]);
           pageStore.setShowOverlayGallery(true);
         }}
-        ref={props.ref1}>
+        ref={props.ref1}
+      >
         <img src={props.event.externalPicture} className="eventpage__artwork" />
       </div>
     </div>

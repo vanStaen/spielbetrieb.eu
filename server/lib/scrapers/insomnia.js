@@ -6,7 +6,6 @@ import insertEventIntoDB from "./helpers/insertEventIntoDB.js";
 import getTags from "./helpers/getTags.js";
 import nameParser from "./helpers/nameParser.js";
 
-
 const LOCATION_ID = 8;
 const LOCATION_NAME = "Insomnia";
 const LOCATION_ADDRESS = "Alt-Tempelhof 17-19, 12099 Berlin";
@@ -49,7 +48,12 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
 
       // Add event to array
       array.push({
-        externalId, externalPicture, title, tags, fromDate, link
+        externalId,
+        externalPicture,
+        title,
+        tags,
+        fromDate,
+        link,
       });
     }
     return array;
@@ -74,32 +78,37 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
 
   // Add event into db
   for (const dataEvent of data) {
-
-    const fromDateSplit = dataEvent.fromDate.split('.');
-    const d = new Date(2024, fromDateSplit[1], fromDateSplit[0])
+    const fromDateSplit = dataEvent.fromDate.split(".");
+    const d = new Date(2024, fromDateSplit[1], fromDateSplit[0]);
     const fromDateNew = dayjs(d).valueOf();
     const links = [dataEvent.link];
-    const eventTags = dataEvent.tags ? dataEvent.tags.map(tag => {
-      const result = tagData.filter(data => nameParser(data.name, 'en') === tag);
-      if (result.length === 1) {
-        return result[0].id;
-      } else {
-        return undefined;
-      };
-    }).filter(Boolean) : [];
+    const eventTags = dataEvent.tags
+      ? dataEvent.tags
+          .map((tag) => {
+            const result = tagData.filter(
+              (data) => nameParser(data.name, "en") === tag,
+            );
+            if (result.length === 1) {
+              return result[0].id;
+            } else {
+              return undefined;
+            }
+          })
+          .filter(Boolean)
+      : [];
 
     const dataEventNew = {
       ...dataEvent,
-      eventtype: 42, //Play&Dance
+      eventtype: 42, // Play&Dance
       fromDate: fromDateNew,
       untilDate: fromDateNew,
       location: LOCATION_ID,
       locationName: LOCATION_NAME,
       locationAddress: LOCATION_ADDRESS,
       locationCoordinates: LOCATION_COORDINATES,
-      links: links,
-      eventTags: eventTags,
-    }
+      links,
+      eventTags,
+    };
 
     await insertEventIntoDB(dataEventNew);
   }

@@ -4,4 +4,4 @@ export default function nameParser(json, language) {
   }
   const obj = JSON.parse(json);
   return obj[language];
-};
+}

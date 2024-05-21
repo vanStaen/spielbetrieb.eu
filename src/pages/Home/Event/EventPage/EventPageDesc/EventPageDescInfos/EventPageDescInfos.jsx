@@ -96,7 +96,8 @@ export const EventPageDescInfos = observer((props) => {
     return dresscodeDontTagsFormatted;
   };
 
-  const fromUntilDateAreTheSame = dayjs(event.fromDate).valueOf === dayjs(event.untilDate).valueOf;
+  const fromUntilDateAreTheSame =
+    dayjs(event.fromDate).valueOf === dayjs(event.untilDate).valueOf;
 
   return (
     <div className="eventpage__infoContainer">
@@ -105,22 +106,24 @@ export const EventPageDescInfos = observer((props) => {
         {canEdit && <EditOutlined className="editOutlined" />}
       </div>
       <div className="eventpage__info">
-        {!fromUntilDateAreTheSame && <div className="eventpage__subInfo">
-          <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
-          {dayjs(event.fromDate).format("dddd") ===
+        {!fromUntilDateAreTheSame && (
+          <div className="eventpage__subInfo">
+            <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
+            {dayjs(event.fromDate).format("dddd") ===
             dayjs(event.untilDate).format("dddd") ? (
-            <>
-              {dayjs(event.fromDate).format("HH:mm")} {t("spielplan.until")}{" "}
-              {dayjs(event.untilDate).format("HH:mm")}
-            </>
-          ) : (
-            <>
-              {dayjs(event.fromDate).format("dddd HH:mm")}{" "}
-              {t("spielplan.until")}{" "}
-              {dayjs(event.untilDate).format("dddd HH:mm")}
-            </>
-          )}
-        </div>}
+              <>
+                {dayjs(event.fromDate).format("HH:mm")} {t("spielplan.until")}{" "}
+                {dayjs(event.untilDate).format("HH:mm")}
+              </>
+            ) : (
+              <>
+                {dayjs(event.fromDate).format("dddd HH:mm")}{" "}
+                {t("spielplan.until")}{" "}
+                {dayjs(event.untilDate).format("dddd HH:mm")}
+              </>
+            )}
+          </div>
+        )}
         {event.prices && event.prices[0]?.amount && (
           <div className="eventpage__subInfo">
             <EuroOutlined className="eventpage__infoIcon" />{" "}

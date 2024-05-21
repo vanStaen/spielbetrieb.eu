@@ -3,7 +3,6 @@ import getEventByExternalId from "./getEventByExternalId.js";
 
 export default async function insertEventIntoDB(dataObject) {
   try {
-
     const existAlready = await getEventByExternalId(dataObject.externalId);
 
     if (existAlready) {
@@ -11,7 +10,7 @@ export default async function insertEventIntoDB(dataObject) {
       return;
     }
 
-    console.log('New Event', 'id:', dataObject.externalId);
+    console.log("New Event", "id:", dataObject.externalId);
 
     const event = new Event({
       userId: 17, // Bot
