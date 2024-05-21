@@ -3,6 +3,9 @@ import fs from "fs";
 import dayjs from "dayjs";
 
 import insertEventIntoDB from "./helpers/insertEventIntoDB.js";
+import getTags from "./helpers/getTags.js";
+import nameParser from "./helpers/nameParser.js";
+
 
 const LOCATION_ID = 8;
 const LOCATION_NAME = "Insomnia";
@@ -31,9 +34,10 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
     const array = [];
 
     for (let i = 0; i < events.length; i++) {
-      const id = events[i].querySelector("a").href.split("id=")[1];
-      const img = events[i].querySelector("img").src;
-      const name = events[i].querySelector("img").alt.split(" @")[0];
+      const externalId = events[i].querySelector("a").href.split("id=")[1];
+      const externalPicture = events[i].querySelector("img").src;
+      const title = events[i].querySelector("img").alt.split(" @")[0];
+      const link = events[i].querySelector("a").href;
       const tags = events[i]
         .querySelector("img")
         .alt.split(" @")[1]
@@ -41,9 +45,12 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
         .replace("INSOMNIANightclubBerlin-", "")
         .replace("-Party", "")
         .split(",");
-      const date = events[i].querySelector(".partyText > h3").innerHTML;
+      const fromDate = events[i].querySelector(".partyText > h3").innerHTML;
+
       // Add event to array
-      array.push({ id, img, name, tags, date });
+      array.push({
+        externalId, externalPicture, title, tags, fromDate, link
+      });
     }
     return array;
   });
@@ -62,14 +69,39 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
 
   await browser.close();
 
+  // GetTags
+  const tagData = await getTags();
+
   // Add event into db
   for (const dataEvent of data) {
-    await insertEventIntoDB(dataEvent, {
+
+    const fromDateSplit = dataEvent.fromDate.split('.');
+    const d = new Date(2024, fromDateSplit[1], fromDateSplit[0])
+    const fromDateNew = dayjs(d).valueOf();
+    const links = [dataEvent.link];
+    const eventTags = dataEvent.tags ? dataEvent.tags.map(tag => {
+      const result = tagData.filter(data => nameParser(data.name, 'en') === tag);
+      if (result.length === 1) {
+        return result[0].id;
+      } else {
+        return undefined;
+      };
+    }).filter(Boolean) : [];
+
+    const dataEventNew = {
+      ...dataEvent,
+      eventtype: 42, //Play&Dance
+      fromDate: fromDateNew,
+      untilDate: fromDateNew,
       location: LOCATION_ID,
       locationName: LOCATION_NAME,
       locationAddress: LOCATION_ADDRESS,
       locationCoordinates: LOCATION_COORDINATES,
-    });
+      links: links,
+      eventTags: eventTags,
+    }
+
+    await insertEventIntoDB(dataEventNew);
   }
 })();
 
