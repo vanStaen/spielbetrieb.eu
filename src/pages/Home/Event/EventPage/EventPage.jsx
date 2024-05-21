@@ -148,10 +148,11 @@ export const EventPage = observer((props) => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${pageStore.selectedTheme === "light"
-            ? "lightColorTheme__Text"
-            : "darkColorTheme__Text"
-          }`}
+                  ${
+                    pageStore.selectedTheme === "light"
+                      ? "lightColorTheme__Text"
+                      : "darkColorTheme__Text"
+                  }`}
       >
         <ArrowLeftOutlined />
       </div>

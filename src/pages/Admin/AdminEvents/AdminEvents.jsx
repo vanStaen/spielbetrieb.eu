@@ -85,9 +85,7 @@ export const AdminEvents = () => {
       align: "center",
       width: "50px",
       sorter: (a, b) => a._id - b._id,
-      render: (_, { _id }) => (
-        <Link to={`../event/${_id}`}>{_id}</Link>
-      ),
+      render: (_, { _id }) => <Link to={`../event/${_id}`}>{_id}</Link>,
     },
     {
       title: "Title",
