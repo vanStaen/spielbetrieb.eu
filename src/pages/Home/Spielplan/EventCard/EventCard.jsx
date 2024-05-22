@@ -91,13 +91,18 @@ export const EventCard = observer((props) => {
     }
   };
 
+  const fromUntilDateAreTheSame =
+    dayjs(event.fromDate).valueOf === dayjs(event.untilDate).valueOf;
+
+  const fromUntilDateAreNull =
+    dayjs(event.fromDate).format("HH:mm") === "00:00";
+
   return (
     <div
       key={event._id}
       id={`eventContainer${event._id}`}
-      className={`event__Container ${
-        pageStore.selectedTheme === "light" ? "event__black" : "event__white"
-      }`}
+      className={`event__Container ${pageStore.selectedTheme === "light" ? "event__black" : "event__white"
+        }`}
       onClick={handleEventContainerClick}
     >
       <div className="event__date">
@@ -136,8 +141,16 @@ export const EventCard = observer((props) => {
           </div>
         </div>
         <div className="event__time">
-          <ClockCircleOutlined /> {dayjs(event.fromDate).format("HH:mm")} -{" "}
-          {dayjs(event.untilDate).format("HH:mm")}
+          <ClockCircleOutlined /> {
+            !fromUntilDateAreNull ?
+              <>{dayjs(event.fromDate).format("HH:mm")}
+                {!fromUntilDateAreTheSame &&
+                  <> -{" "}
+                    {dayjs(event.untilDate).format("HH:mm")}
+                  </>}
+              </>
+              : 'tba'
+          }
         </div>
         <div className="event__location">
           <EnvironmentOutlined /> {event.locationAddress}
