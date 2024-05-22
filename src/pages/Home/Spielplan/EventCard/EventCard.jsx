@@ -9,6 +9,7 @@ import dayjs from "dayjs";
 import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
+import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinner";
 
 import eventPlaceholder from "../../../../img/artworks/eventPlaceholder.jpg";
 
@@ -20,7 +21,7 @@ export const EventCard = observer((props) => {
   const { event, tags } = props;
   const isInThePast = event.fromDate < dayjs();
   const isShownHidden = useRef(isInThePast);
-  const [firstPictureUrl, setFirstPictureUrl] = useState(eventPlaceholder);
+  const [firstPictureUrl, setFirstPictureUrl] = useState(null);
 
   const getFirstPictureUrl = async () => {
     if (event.pictures[0]) {
@@ -28,6 +29,8 @@ export const EventCard = observer((props) => {
       setFirstPictureUrl(res);
     } else if (event.externalPicture) {
       setFirstPictureUrl(event.externalPicture);
+    } else {
+      setFirstPictureUrl(eventPlaceholder);
     }
   };
 
@@ -92,9 +95,8 @@ export const EventCard = observer((props) => {
     <div
       key={event._id}
       id={`eventContainer${event._id}`}
-      className={`event__Container ${
-        pageStore.selectedTheme === "light" ? "event__black" : "event__white"
-      }`}
+      className={`event__Container ${pageStore.selectedTheme === "light" ? "event__black" : "event__white"
+        }`}
       onClick={handleEventContainerClick}
     >
       <div className="event__date">
@@ -113,9 +115,15 @@ export const EventCard = observer((props) => {
           {dayjs(event.fromDate).format("MMM")}
         </div>
       </div>
-      <div className="event__artwork">
-        <img src={firstPictureUrl} />
-      </div>
+
+      {firstPictureUrl ?
+        <div className="event__artwork">
+          <img src={firstPictureUrl} />
+        </div> :
+        <div className="event__artworkLoading">
+          <CustomSpinner />
+        </div>
+      }
       <div className="event__main">
         <div className="event__titleLocation">
           <div className="event__location">{event.locationName} </div>
