@@ -5,23 +5,23 @@ import dayjs from "dayjs";
 import insertEventIntoDB from "./helpers/insertEventIntoDB.js";
 
 const months = {
-  Jan: '01',
-  Feb: '02',
-  Mär: '03',
-  Mar: '03',
-  Apr: '04',
-  May: '05',
-  Mai: '05',
-  Jun: '06',
-  Jul: '07',
-  Aug: '08',
-  Sep: '09',
-  Oct: '10',
-  Okt: '10',
-  Nov: '11',
-  Dec: '12',
-  Dez: '12',
-}
+  Jan: "01",
+  Feb: "02",
+  Mär: "03",
+  Mar: "03",
+  Apr: "04",
+  May: "05",
+  Mai: "05",
+  Jun: "06",
+  Jul: "07",
+  Aug: "08",
+  Sep: "09",
+  Oct: "10",
+  Okt: "10",
+  Nov: "11",
+  Dec: "12",
+  Dez: "12",
+};
 
 const LOCATION_ID = 1;
 const LOCATION_NAME = "KitKatClub";
@@ -75,9 +75,7 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
       const text4 = events[i]
         .querySelectorAll(".ClubTermineText")[3]
         ?.innerHTML.split("</span> ")[1];
-      const description = [text1, text2, text3, text4]
-        .join(" ")
-        .trim();
+      const description = [text1, text2, text3, text4].join(" ").trim();
       array.push({ datum, fromTime, title, description });
     }
     return array;
@@ -99,19 +97,23 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
 
   // Add event into db
   for (const dataEvent of data) {
-
     if (dataEvent.datum) {
-
       const externalId = dataEvent.datum + dataEvent.title.replaceAll(/ /g, "");
-      const day = dataEvent.datum.split('.')[0];
-      const month = months[dataEvent.datum.split('.')[1]];
-      const hour = dataEvent.fromTime.split('h')[0];
+      const day = dataEvent.datum.split(".")[0];
+      const month = months[dataEvent.datum.split(".")[1]];
+      const hour = dataEvent.fromTime.split("h")[0];
 
-      const dateBerlinUTC = new Date(`2024-${month}-${day}T${hour}:00:00.000+02:00`);
+      const dateBerlinUTC = new Date(
+        `2024-${month}-${day}T${hour}:00:00.000+02:00`,
+      );
       const fromDateNew = new Date(dateBerlinUTC);
 
-      const titleCleaned = dataEvent.title.replaceAll('<br>', "").replaceAll('&amp;', '&');
-      const descriptionCleaned = dataEvent.description.replaceAll('<br>', " ").replaceAll('&amp;', '&');
+      const titleCleaned = dataEvent.title
+        .replaceAll("<br>", "")
+        .replaceAll("&amp;", "&");
+      const descriptionCleaned = dataEvent.description
+        .replaceAll("<br>", " ")
+        .replaceAll("&amp;", "&");
 
       const dataEventNew = {
         ...dataEvent,

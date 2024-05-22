@@ -1,11 +1,10 @@
-import isEqual from 'lodash.isequal';
+import isEqual from "lodash.isequal";
 
 import { Event } from "../../../models/Event.js";
 import getEventByExternalId from "./getEventByExternalId.js";
 
 export default async function insertEventIntoDB(dataObject) {
   try {
-
     const existAlready = await getEventByExternalId(dataObject.externalId);
 
     if (existAlready) {
@@ -21,7 +20,7 @@ export default async function insertEventIntoDB(dataObject) {
           await Event.update(isNewValue, {
             where: {
               externalId: dataObject.externalId,
-            }
+            },
           });
           console.log("Event updated", "id:", dataObject.externalId);
           return true;
@@ -29,7 +28,7 @@ export default async function insertEventIntoDB(dataObject) {
           console.log(err);
         }
       } else {
-        console.log('No changes: Event will be ignored')
+        console.log("No changes: Event will be ignored");
       }
       return;
     }
@@ -66,7 +65,7 @@ export default async function insertEventIntoDB(dataObject) {
       admin: [17, 1],
     });
     console.log("New Event", "id:", dataObject.externalId);
-    //TODO: notifications new events
+    // TODO: notifications new events
     return await event.save();
   } catch (err) {
     console.log(err);

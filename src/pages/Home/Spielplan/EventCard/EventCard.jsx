@@ -95,8 +95,9 @@ export const EventCard = observer((props) => {
     <div
       key={event._id}
       id={`eventContainer${event._id}`}
-      className={`event__Container ${pageStore.selectedTheme === "light" ? "event__black" : "event__white"
-        }`}
+      className={`event__Container ${
+        pageStore.selectedTheme === "light" ? "event__black" : "event__white"
+      }`}
       onClick={handleEventContainerClick}
     >
       <div className="event__date">
@@ -116,14 +117,15 @@ export const EventCard = observer((props) => {
         </div>
       </div>
 
-      {firstPictureUrl ?
+      {firstPictureUrl ? (
         <div className="event__artwork">
           <img src={firstPictureUrl} />
-        </div> :
+        </div>
+      ) : (
         <div className="event__artworkLoading">
           <CustomSpinner />
         </div>
-      }
+      )}
       <div className="event__main">
         <div className="event__titleLocation">
           <div className="event__location">{event.locationName} </div>
