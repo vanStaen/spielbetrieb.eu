@@ -78,7 +78,6 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
 
   // Add event into db
   for (const dataEvent of data) {
-    const fromDateSplit = dataEvent.fromDate.split(".");
     const links = [dataEvent.link];
     const eventTags = dataEvent.tags
       ? dataEvent.tags
@@ -95,6 +94,7 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
         .filter(Boolean)
       : [];
 
+    const fromDateSplit = dataEvent.fromDate.split(".");
     const dateBerlinUTC = new Date(`2024-${fromDateSplit[1]}-${fromDateSplit[0]}T00:00:00.000+02:00`);
     const fromDateNew = new Date(dateBerlinUTC);
 

@@ -66,6 +66,7 @@ export default async function insertEventIntoDB(dataObject) {
       admin: [17, 1],
     });
     console.log("New Event", "id:", dataObject.externalId);
+    //TODO: notifications new events
     return await event.save();
   } catch (err) {
     console.log(err);
