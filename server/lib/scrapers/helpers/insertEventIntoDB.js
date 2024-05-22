@@ -1,16 +1,38 @@
+import isEqual from 'lodash.isequal';
+
 import { Event } from "../../../models/Event.js";
 import getEventByExternalId from "./getEventByExternalId.js";
 
 export default async function insertEventIntoDB(dataObject) {
   try {
+
     const existAlready = await getEventByExternalId(dataObject.externalId);
 
     if (existAlready) {
-      // TODO update instead of ignore
+      const isNewValue = {};
+      for (const [key, value] of Object.entries(dataObject)) {
+        if (!isEqual(value, existAlready[key])) {
+          isNewValue[key] = value;
+        }
+      }
+      if (Object.keys(isNewValue).length) {
+        isNewValue.validated = false;
+        try {
+          await Event.update(isNewValue, {
+            where: {
+              externalId: dataObject.externalId,
+            }
+          });
+          console.log("Event updated", "id:", dataObject.externalId);
+          return true;
+        } catch (err) {
+          console.log(err);
+        }
+      } else {
+        console.log('No changes: Event will be ignored')
+      }
       return;
     }
-
-    console.log("New Event", "id:", dataObject.externalId);
 
     const event = new Event({
       userId: 17, // Bot
@@ -38,11 +60,12 @@ export default async function insertEventIntoDB(dataObject) {
       links: dataObject.links,
       forwardable: dataObject.forwardable,
       allowAnonymous: dataObject.allowAnonymous,
-      isDraft: false,
       isPartnerEvent: dataObject.isPartnerEvent,
+      isDraft: false,
       validated: false,
       admin: [17, 1],
     });
+    console.log("New Event", "id:", dataObject.externalId);
     return await event.save();
   } catch (err) {
     console.log(err);

@@ -73,3 +73,4 @@ AI bilder
 - [ ] Check if user is online, and react if not (with custom error) (https://react.dev/learn/reusing-logic-with-custom-hooks)
 - [ ] Convert social REST endpoint to GraphQL
 - [ ] clean theme.less (use less --var)
+- [ ] Spielplan: lazy loading with pagination

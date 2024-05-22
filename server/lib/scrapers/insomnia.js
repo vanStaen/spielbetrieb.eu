@@ -79,23 +79,24 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
   // Add event into db
   for (const dataEvent of data) {
     const fromDateSplit = dataEvent.fromDate.split(".");
-    const d = new Date(2024, fromDateSplit[1], fromDateSplit[0]);
-    const fromDateNew = dayjs(d).valueOf();
     const links = [dataEvent.link];
     const eventTags = dataEvent.tags
       ? dataEvent.tags
-          .map((tag) => {
-            const result = tagData.filter(
-              (data) => nameParser(data.name, "en") === tag,
-            );
-            if (result.length === 1) {
-              return result[0].id;
-            } else {
-              return undefined;
-            }
-          })
-          .filter(Boolean)
+        .map((tag) => {
+          const result = tagData.filter(
+            (data) => nameParser(data.name, "en") === tag,
+          );
+          if (result.length === 1) {
+            return result[0].id;
+          } else {
+            return undefined;
+          }
+        })
+        .filter(Boolean)
       : [];
+
+    const dateBerlinUTC = new Date(`2024-${fromDateSplit[1]}-${fromDateSplit[0]}T00:00:00.000+02:00`);
+    const fromDateNew = new Date(dateBerlinUTC);
 
     const dataEventNew = {
       ...dataEvent,
@@ -109,6 +110,9 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
       links,
       eventTags,
     };
+
+    delete dataEventNew.tags;
+    delete dataEventNew.link;
 
     await insertEventIntoDB(dataEventNew);
   }
