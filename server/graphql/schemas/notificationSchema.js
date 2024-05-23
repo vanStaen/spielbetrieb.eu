@@ -15,6 +15,7 @@ type Notification {
 }`;
 
 export const NotificationQueries = `
+    getAllNotifications: [Notification]
     getNotifications: [Notification]
 `;
 

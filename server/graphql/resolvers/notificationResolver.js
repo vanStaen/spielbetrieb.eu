@@ -2,6 +2,22 @@ import { Notification } from "../../models/Notification.js";
 import { User } from "../../models/User.js";
 
 export const notificationResolver = {
+  // getAllNotifications for debugging
+  async getAllNotifications(args, req) {
+    if (!req.isAuth) {
+      throw new Error("Unauthorized!");
+    }
+    const foundUser = await User.findOne({
+      where: { _id: req.userId },
+    });
+    if (!foundUser.isAdmin) {
+      throw new Error("Unauthorized!");
+    }
+    return await Notification.findAll({
+      include: User,
+    });
+  },
+
   // getNotification
   async getNotifications(args, req) {
     if (!req.isAuth) {
