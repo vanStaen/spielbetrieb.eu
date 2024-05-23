@@ -123,6 +123,9 @@ export const EventPage = observer((props) => {
   useEffect(() => {
     if (event?.pictures.length) {
       getUrlsFromPicturePath(event.pictures);
+    } else if (event?.externalPicture) {
+      pageStore.setPicturesUrls([props.event.externalPicture]);
+      setIsLoading(false);
     } else if (event) {
       pageStore.setPicturesUrls(null);
       setIsLoading(false);
@@ -162,7 +165,7 @@ export const EventPage = observer((props) => {
         >
           {!isLoading ? (
             <>
-              <EventPageArtwork ref1={ref1} />
+              <EventPageArtwork event={event} ref1={ref1} />
               <EventPageDesc
                 event={event}
                 canEdit={canEdit}

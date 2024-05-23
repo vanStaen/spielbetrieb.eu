@@ -43,6 +43,7 @@
 - [ ] If draft is set to false, create notification for admins (in BE)
 - [ ] Form should show that it is only 5 pic max (evengt uplaod artwork)
 - [ ] Partner profile, should not have friends or following, just followers
+- [ ] Report broken link feature 
 
 AI bilder
 - lexica creart
@@ -72,3 +73,4 @@ AI bilder
 - [ ] Check if user is online, and react if not (with custom error) (https://react.dev/learn/reusing-logic-with-custom-hooks)
 - [ ] Convert social REST endpoint to GraphQL
 - [ ] clean theme.less (use less --var)
+- [ ] Spielplan: lazy loading with pagination

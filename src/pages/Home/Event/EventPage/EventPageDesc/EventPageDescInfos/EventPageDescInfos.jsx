@@ -96,6 +96,12 @@ export const EventPageDescInfos = observer((props) => {
     return dresscodeDontTagsFormatted;
   };
 
+  const fromUntilDateAreTheSame =
+    dayjs(event.fromDate).valueOf === dayjs(event.untilDate).valueOf;
+
+  const fromUntilDateAreNull =
+    dayjs(event.fromDate).format("HH:mm") === "00:00";
+
   return (
     <div className="eventpage__infoContainer">
       <div className="eventpage__infoTitle">
@@ -103,22 +109,29 @@ export const EventPageDescInfos = observer((props) => {
         {canEdit && <EditOutlined className="editOutlined" />}
       </div>
       <div className="eventpage__info">
-        <div className="eventpage__subInfo">
-          <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
-          {dayjs(event.fromDate).format("dddd") ===
-          dayjs(event.untilDate).format("dddd") ? (
-            <>
-              {dayjs(event.fromDate).format("HH:mm")} {t("spielplan.until")}{" "}
-              {dayjs(event.untilDate).format("HH:mm")}
-            </>
-          ) : (
-            <>
-              {dayjs(event.fromDate).format("dddd HH:mm")}{" "}
-              {t("spielplan.until")}{" "}
-              {dayjs(event.untilDate).format("dddd HH:mm")}
-            </>
-          )}
-        </div>
+        {!fromUntilDateAreNull && (
+          <div className="eventpage__subInfo">
+            <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
+            {dayjs(event.fromDate).format("dddd") ===
+            dayjs(event.untilDate).format("dddd") ? (
+              <>
+                {dayjs(event.fromDate).format("HH:mm")}
+                {!fromUntilDateAreTheSame && (
+                  <>
+                    {t("spielplan.until")}{" "}
+                    {dayjs(event.untilDate).format("HH:mm")}
+                  </>
+                )}
+              </>
+            ) : (
+              <>
+                {dayjs(event.fromDate).format("dddd HH:mm")}{" "}
+                {t("spielplan.until")}{" "}
+                {dayjs(event.untilDate).format("dddd HH:mm")}
+              </>
+            )}
+          </div>
+        )}
         {event.prices && event.prices[0]?.amount && (
           <div className="eventpage__subInfo">
             <EuroOutlined className="eventpage__infoIcon" />{" "}

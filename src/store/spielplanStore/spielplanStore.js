@@ -112,6 +112,7 @@ export class SpielplanStore {
       fromUnixDateStartOf,
       untilUnixDateEndOf,
     );
+    console.log("events", events);
     this.setEvents(events);
     this.setIsLoadingEvent(false);
   };

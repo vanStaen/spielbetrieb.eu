@@ -68,7 +68,12 @@ export const AdminEvents = () => {
   };
 
   const toggleValidated = (id, validated) => {
-    updateEvent(parseInt(id), { validated: !validated });
+    if (validated) {
+      updateEvent(parseInt(id), { validated: false });
+    } else {
+      updateEvent(parseInt(id), { validated: true, isDraft: false });
+    }
+
     fetchEvents();
   };
 
@@ -80,6 +85,7 @@ export const AdminEvents = () => {
       align: "center",
       width: "50px",
       sorter: (a, b) => a._id - b._id,
+      render: (_, { _id }) => <Link to={`../event/${_id}`}>{_id}</Link>,
     },
     {
       title: "Title",
@@ -220,7 +226,7 @@ export const AdminEvents = () => {
       key: "isDraft",
       align: "center",
       width: "80px",
-      render: (_, { isDraft }) => isDraft && "❌",
+      render: (_, { isDraft }) => isDraft && "✖️",
     },
     {
       title: "Validated",
@@ -228,8 +234,8 @@ export const AdminEvents = () => {
       key: "validated",
       align: "center",
       width: "80px",
-      render: (_, { validated, isDraft, _id }) =>
-        !isDraft && (
+      render: (_, { validated, isDraft, _id, admin }) =>
+        (!isDraft || admin.includes(17)) && (
           <Tooltip title="Double click to toggle this value">
             <div
               style={{ cursor: "pointer" }}
