@@ -63,7 +63,6 @@ export default buildSchema(`
     ${partnerSchema.PartnerInputData}
     ${locationSchema.LocationInputData}
     ${messageSchema.MessageInputData}
-    ${notificationSchema.NotificationInputData}
     ${photoSchema.PhotoInputData}
     ${userSchema.UserInputData}
     ${userSchema.UserInputDataAdmin}

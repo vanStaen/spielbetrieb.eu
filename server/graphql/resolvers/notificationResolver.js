@@ -15,28 +15,6 @@ export const notificationResolver = {
     });
   },
 
-  // addNotification(notificationInput: NotificationInputData!): Notification!
-  async addNotification(args, req) {
-    if (!req.isAuth) {
-      throw new Error("Unauthorized!");
-    }
-    try {
-      const notification = new Notification({
-        userId: req.userId,
-        notification: args.notificationInput.notification,
-        photoLinkId: args.notificationInput.photoLinkId,
-        userLinkId: args.notificationInput.userLinkId,
-        eventLinkId: args.notificationInput.eventLinkId,
-        actionData: args.notificationInput.actionData,
-        mediaUrl: args.notificationInput.mediaUrl,
-        notificationType: args.notificationInput.notificationType,
-      });
-      return await notification.save();
-    } catch (err) {
-      console.log(err);
-    }
-  },
-
   // updateNotification(_id: ID!, seen: Boolean!): Notification!
   async updateNotification(args, req) {
     if (!req.isAuth) {
@@ -59,5 +37,18 @@ export const notificationResolver = {
     } catch (err) {
       console.log(err);
     }
+  },
+
+  // deleteNotification(tagId: ID!): Boolean!
+  async deleteNotification(args, req) {
+    if (!req.isAuth) {
+      throw new Error("Unauthorized!");
+    }
+    await Notification.destroy({
+      where: {
+        _id: args.notificationId,
+      },
+    });
+    return true;
   },
 };

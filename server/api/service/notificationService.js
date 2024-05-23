@@ -15,17 +15,6 @@ export const notificationService = {
     }
   },
 
-  async getNotifications(userId) {
-    try {
-      return await Notification.findAll({
-        order: [["_id", "DESC"]],
-        where: { user_id: userId },
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  },
-
   async createNotificationNewFollower(userId, followerId) {
     try {
       const follower = await User.findOne({

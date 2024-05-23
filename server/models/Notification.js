@@ -36,7 +36,7 @@ export const Notification = sequelize.sequelize.define("notification", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
-  notificationType: {
+  type: {
     type: DataTypes.INTEGER,
     defaultValue: 0,
   },
@@ -60,5 +60,9 @@ types:
   51: New Event from followed partner 
   52: New Shop article from followed partner
   61: New Avatar from friends/followed
+  71: New blog article
+  72: New Dark issue
   9: Spielbetrieb anouncement
+  91: Event waiting for review // for admin with role event
+  92: New Bug reported // for admin with role bug
 */
