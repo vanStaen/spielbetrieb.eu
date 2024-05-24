@@ -1,5 +1,5 @@
 import { Usersfollower } from "../../models/Usersfollower.js";
-// import { notificationService } from "./notificationService.js";
+import { notificationService } from "./notificationService.js";
 
 export const followerService = {
   async getFollower(userId) {
@@ -23,10 +23,10 @@ export const followerService = {
         followed_id: following,
       });
       const newFollower = await newFollow.save();
-      /* await notificationService.createNotificationNewFollower(
+      await notificationService.createNotificationNewFollower(
         following,
         follower,
-      ); */
+      );
       return newFollower;
     } catch (err) {
       console.log(err);

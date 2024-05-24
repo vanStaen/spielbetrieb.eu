@@ -7,6 +7,7 @@ type Notification {
     eventLinkId: Int
     seen: Boolean
     type: Int!
+    data: String
     actionData: Int
     mediaUrl: String
     createdAt: Float!

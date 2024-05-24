@@ -24,6 +24,10 @@ export const Notification = sequelize.sequelize.define("notification", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  data: {
+    type: DataTypes.STRING,
+    required: false,
+  },
   actionData: {
     type: DataTypes.INTEGER,
     required: false,
