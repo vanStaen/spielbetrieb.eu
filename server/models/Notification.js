@@ -8,10 +8,6 @@ export const Notification = sequelize.sequelize.define("notification", {
     autoIncrement: true,
     primaryKey: true,
   },
-  notification: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
   photoLinkId: {
     type: DataTypes.INTEGER,
     allowNull: true,

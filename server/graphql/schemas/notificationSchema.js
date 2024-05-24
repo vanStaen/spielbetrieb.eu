@@ -2,7 +2,6 @@ export const Notification = `
 type Notification {
     _id: ID! 
     userId: Int!
-    notification: String!
     photoLinkId: Int
     userLinkId: Int
     eventLinkId: Int
