@@ -36,9 +36,6 @@ export const getUserInfo = async () => {
                 messages {
                     _id,
                 },
-                notifications {
-                    _id,
-                },
                 photos {
                     _id,
                 },

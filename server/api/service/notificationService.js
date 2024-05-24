@@ -15,8 +15,7 @@ export const notificationService = {
         actionData: followerId,
         type: 2,
       });
-      const res = await newNotification.save();
-      console.log('res', res);
+      await newNotification.save();
       return true;
     } catch (err) {
       console.log(err);
