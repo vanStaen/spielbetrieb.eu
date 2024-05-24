@@ -10,6 +10,7 @@ export const notificationService = {
       });
       const newNotification = new Notification({
         userId: userId,
+        userLinkId: follower._id,
         mediaUrl: follower.avatar,
         data: follower.userName,
         actionData: followerId,
