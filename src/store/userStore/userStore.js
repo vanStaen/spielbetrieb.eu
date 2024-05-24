@@ -266,6 +266,7 @@ export class UserStore {
         this.setWishes(userData.wishes);
         this.setInterests(userData.interests);
         this.setUsernameChange(userData.usernameChange);
+        this.setNotifications(userData.notifications);
         this.setArchived(userData.archived);
         if (userData.isAdmin) {
           this.setAdminRoles(userData.adminRoles);
