@@ -44,25 +44,3 @@ export const Notification = sequelize.sequelize.define("notification", {
 
 User.hasMany(Notification);
 Notification.belongsTo(User);
-
-// TODO: Define notificationType
-/*
-types:
-  0: Fallback
-  1: New Friend request
-  11: (your sent) Friend requested accepted
-  12: (your sent) Friend requested refused
-  2: New Follower
-  3: New Message
-  41: (an) Event invite received 
-  42: (your) Event Invite accepted 
-  43: (your) Event Invite refused
-  51: New Event from followed partner 
-  52: New Shop article from followed partner
-  61: New Avatar from friends/followed
-  71: New blog article
-  72: New Dark issue
-  9: Spielbetrieb anouncement
-  91: Event waiting for review // for admin with role event
-  92: New Bug reported // for admin with role bug
-*/

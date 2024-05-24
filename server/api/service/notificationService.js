@@ -2,8 +2,6 @@ import { Notification } from "../../models/Notification.js";
 import { User } from "../../models/User.js";
 import { Op } from "sequelize";
 
-// TODO : Define notification types
-
 export const notificationService = {
   async getAllNotifications() {
     try {

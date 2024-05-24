@@ -84,6 +84,29 @@ Some description parameters (`eventtype`, `location` and `tags`) are dynamics, h
 
 The names of those parameters (save in an extra table) should be an object following this type: `{ "en": "english", "de": "deutsch" }`. In case of new languages coming later, default will then be english. 
 
+### Table Notifications
+
+The notifications have a specific type, which influence how they are rendered in the frontend. Those types are as follow:
+
+0. Fallback
+1. New Friend request
+11. (your sent) Friend requested accepted
+12. (your sent) Friend requested refused
+2. New Follower
+3. New Message
+41. (an) Event invite received 
+42. (your) Event Invite accepted 
+43. (your) Event Invite refused
+51. New Event from followed partner 
+52. New Shop article from followed partner
+61. New Avatar from friends/followed
+71. New blog article
+72. New Dark issue
+9. Spielbetrieb anouncement
+91. Event waiting for review // for admin with role event
+92. New Bug reported // for admin with role bug
+
+
 #### Address and Geocoding
 
 We use the Geocoding API from google to get coordinates out of addresses, and vice-versa: https://developers.google.com/maps/documentation/geocoding/overview
