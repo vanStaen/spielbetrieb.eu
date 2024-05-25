@@ -36,6 +36,19 @@ export const getUserInfo = async () => {
                 messages {
                     _id,
                 },
+                notifications {
+                  _id,
+                  userId,
+                  photoLinkId,
+                  userLinkId,
+                  eventLinkId,
+                  mediaUrl,
+                  data,
+                  actionData,
+                  type,
+                  createdAt,
+                  updatedAt,
+                }
                 photos {
                     _id,
                 },

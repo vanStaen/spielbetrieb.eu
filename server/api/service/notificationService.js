@@ -1,6 +1,5 @@
 import { Notification } from "../../models/Notification.js";
 import { User } from "../../models/User.js";
-import { Op } from "sequelize";
 
 export const notificationService = {
   async createNotificationNewFollower(userId, followerId) {
@@ -9,7 +8,7 @@ export const notificationService = {
         where: { _id: followerId },
       });
       const newNotification = new Notification({
-        userId: userId,
+        userId,
         userLinkId: follower._id,
         mediaUrl: follower.avatar,
         data: follower.userName,
@@ -23,7 +22,7 @@ export const notificationService = {
     }
   },
 
-  //TODO: check this
+  // TODO: check this
   async createNotificationNewFriendRequest(requestingId, requestedId) {
     try {
       const requesting = await User.findOne({
@@ -43,7 +42,7 @@ export const notificationService = {
     }
   },
 
-  //TODO: check this
+  // TODO: check this
   async createNotificationNewFriend(userId, friendId) {
     try {
       const user = await User.findOne({
@@ -63,7 +62,7 @@ export const notificationService = {
     }
   },
 
-  //TODO: check this
+  // TODO: check this
   async deleteNotificatioFriendRequest(requestingId, requestedId) {
     try {
       return await Notification.destroy({
@@ -78,7 +77,7 @@ export const notificationService = {
     }
   },
 
-  //TODO: check this
+  // TODO: check this
   async createNotificationBasic(
     userId,
     mediaUrl,
@@ -115,7 +114,7 @@ export const notificationService = {
     }
   },
 
-  //TODO: check this
+  // TODO: check this
   async createNotificationSingle(
     userId,
     userNotifiedId,
