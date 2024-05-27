@@ -90,16 +90,15 @@ input UserInputDataAdmin {
 export const UserQueries = `
     getUser: User
     getUsersAsAdmin: [User]
-    getFriends: [User]
-    getFollowers: [User]
-    getFollowed: [User]
     getProfileByName(userName: String): User
     getProfileById(_id: ID!): User
 `;
 
 export const UserMutations = `
     addUser(userInput: UserInputData!): User!
+    addFollow(followedId: ID!): Boolean!
     updateUser(userInput: UserInputData!): User!
     updateUserAsAdmin(userId: ID!, userInput: UserInputDataAdmin!): User!
     deleteUserAsAdmin(userId: ID!): Boolean!
+    deleteFollow(followedId: ID!): Boolean!
 `;

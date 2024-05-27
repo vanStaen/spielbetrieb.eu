@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import { mailService } from "../../api/service/mailService.js";
+import { notificationService } from "../../api/service/notificationService.js";
 
 import { User } from "../../models/User.js";
 import { Comment } from "../../models/Comment.js";
@@ -8,6 +9,7 @@ import { Message } from "../../models/Message.js";
 import { Notification } from "../../models/Notification.js";
 import { Photo } from "../../models/Photo.js";
 import { Visitor } from "../../models/Visitor.js";
+import { Usersfollower } from "../../models/Usersfollower.js";
 
 export const userResolver = {
   async getUser(args, req) {
@@ -225,4 +227,39 @@ export const userResolver = {
     req.session = null;
     return true;
   },
+
+  // addFollow(followedId: ID!): Boolean!
+  async addFollow(args, req) {
+    try {
+      const newFollow = new Usersfollower({
+        follower_id: req.userId,
+        followed_id: args.followedId,
+      });
+      const newFollower = await newFollow.save();
+      await notificationService.createNotificationNewFollower(
+        args.followedId,
+        req.userId,
+      );
+      return true;
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
+  },
+
+  // deleteFollow(followedId: ID!): Boolean!
+  async deleteFollow(args, req) {
+    await Usersfollower.destroy({
+      where: {
+        follower_id: req.userId,
+        followed_id: args.followedId,
+      },
+    });
+    await notificationService.deleteNotificationNewFollower(
+      args.followedId,
+      req.userId,
+    );
+    return true;
+  },
+
 };
