@@ -46,6 +46,7 @@ export const getUserInfo = async () => {
                   data,
                   actionData,
                   type,
+                  seen,
                   createdAt,
                   updatedAt,
                 }

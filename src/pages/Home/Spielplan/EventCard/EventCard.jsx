@@ -141,16 +141,17 @@ export const EventCard = observer((props) => {
           </div>
         </div>
         <div className="event__time">
-          <ClockCircleOutlined /> {
-            !fromUntilDateAreNull ?
-              <>{dayjs(event.fromDate).format("HH:mm")}
-                {!fromUntilDateAreTheSame &&
-                  <> -{" "}
-                    {dayjs(event.untilDate).format("HH:mm")}
-                  </>}
-              </>
-              : 'tba'
-          }
+          <ClockCircleOutlined />{" "}
+          {!fromUntilDateAreNull ? (
+            <>
+              {dayjs(event.fromDate).format("HH:mm")}
+              {!fromUntilDateAreTheSame && (
+                <> - {dayjs(event.untilDate).format("HH:mm")}</>
+              )}
+            </>
+          ) : (
+            "tba"
+          )}
         </div>
         <div className="event__location">
           <EnvironmentOutlined /> {event.locationAddress}
