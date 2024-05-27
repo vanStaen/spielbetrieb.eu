@@ -53,11 +53,11 @@ export const Notification = observer((props) => {
 
   const notFollowingYet =
     userStore.following.findIndex(
-      (userFollowed) => userFollowed._id === userLinkId,
+      (userFollowed) => userFollowed._id === String(userLinkId),
     ) === -1;
 
   const isNotFriend =
-    userStore.friends.findIndex((friend) => friend._id === userLinkId) === -1;
+    userStore.friends.findIndex((friend) => friend._id === String(userLinkId)) === -1;
 
   const notificationAge = dayjs(createdAt).fromNow();
 
@@ -150,7 +150,7 @@ export const Notification = observer((props) => {
       setTimeout(() => {
         elementMobile.style.display = "none";
       }, 300);
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const acceptRequestHandler = async (event) => {
@@ -167,7 +167,7 @@ export const Notification = observer((props) => {
       setTimeout(() => {
         elementMobile.style.display = "none";
       }, 300);
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const notificationClickHandler = async () => {

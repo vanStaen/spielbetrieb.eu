@@ -38,7 +38,7 @@ export const Notifications = observer(() => {
             width="50px"
             className="notification__nothingImg invertColorTheme"
           />
-          No notification for now
+          No notifications for now
         </div>
       ) : (
         notificationsFormated
