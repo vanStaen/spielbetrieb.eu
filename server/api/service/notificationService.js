@@ -9,14 +9,28 @@ export const notificationService = {
       });
       const newNotification = new Notification({
         userId,
-        userLinkId: follower._id,
+        userLinkId: followerId,
         mediaUrl: follower.avatar,
         data: follower.userName,
         actionData: followerId,
-        userLinkId: followerId,
         type: 2,
       });
       await newNotification.save();
+      return true;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  async deleteNotificationNewFollower(userId, followerId) {
+    try {
+      await Notification.destroy({
+        where: {
+          userId: userId,
+          actionData: followerId,
+          userLinkId: followerId,
+        },
+      });
       return true;
     } catch (err) {
       console.log(err);

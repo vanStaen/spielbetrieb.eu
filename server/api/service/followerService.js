@@ -40,6 +40,10 @@ export const followerService = {
         followed_id: following,
       },
     });
+    await notificationService.deleteNotificationNewFollower(
+      following,
+      follower,
+    );
     return true;
   },
 };
