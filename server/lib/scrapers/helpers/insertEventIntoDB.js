@@ -28,7 +28,7 @@ export default async function insertEventIntoDB(dataObject) {
           console.log(err);
         }
       } else {
-        console.log("No changes: Event will be ignored");
+        // console.log("No changes: Event will be ignored");
       }
       return;
     }
