@@ -20,6 +20,6 @@ export const NotificationQueries = `
 `;
 
 export const NotificationMutations = `
-    updateNotification(notificationId: ID!, seen: Boolean!): Notification!
+    updateNotificationSeen: Boolean!
     deleteNotification(notificationId: ID!): Boolean!
 `;

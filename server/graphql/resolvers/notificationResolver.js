@@ -3,7 +3,7 @@ import { User } from "../../models/User.js";
 
 export const notificationResolver = {
   // getAllNotifications for debugging
-  async getAllNotifications(args, req) {
+  async getAllNotifications(_, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
@@ -19,7 +19,7 @@ export const notificationResolver = {
   },
 
   // getNotification
-  async getNotifications(args, req) {
+  async getNotifications(_, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
@@ -32,17 +32,17 @@ export const notificationResolver = {
     });
   },
 
-  // updateNotification(_id: ID!, seen: Boolean!): Notification!
-  async updateNotification(args, req) {
+  // updateNotificationSeen: Notification!
+  async updateNotificationSeen(_, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
     try {
       const updatedNotification = await Notification.update(
-        { seen: args.seen },
+        { seen: true },
         {
           where: {
-            _id: args.notificationId,
+            userId: req.userId,
           },
           returning: true,
           plain: true,
@@ -50,7 +50,7 @@ export const notificationResolver = {
       );
       // updatedNotification[0]: number or row udpated
       // updatedNotification[1]: rows updated
-      return updatedNotification[1];
+      return true;
     } catch (err) {
       console.log(err);
     }

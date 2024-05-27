@@ -19,9 +19,10 @@ import {
 import { userStore } from "../../../../store/userStore/userStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { deleteNotification } from "./deleteNotification";
+import { addFollow } from "../../Profile/ProfileActions/addFollow";
+import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
 
 import "./Notification.less";
-import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
 
 // the required distance between touchStart and touchEnd to be detected as a swipe
 const MIN_SWIPE_DISTANCE = 20;
@@ -143,7 +144,7 @@ export const Notification = observer((props) => {
   const followBackHandler = async (event) => {
     event.stopPropagation();
     try {
-      // TODO : await postFollow(actionData);
+      await addFollow(actionData);
       userStore.fetchUserData(false);
       const element = document.getElementById(`followback${_id}`);
       const elementMobile = document.getElementById(`followbackMobile${_id}`);
@@ -152,7 +153,7 @@ export const Notification = observer((props) => {
       setTimeout(() => {
         elementMobile.style.display = "none";
       }, 300);
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const acceptRequestHandler = async (event) => {
@@ -169,7 +170,7 @@ export const Notification = observer((props) => {
       setTimeout(() => {
         elementMobile.style.display = "none";
       }, 300);
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const notificationClickHandler = async () => {

@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import errorLogo from "../../../img/logos/errorLogo.png";
 import { Notification } from "./Notification/Notification";
 import { pageStore } from "../../../store/pageStore/pageStore";
-import { postNotificationsSeen } from "./postNotificationsSeen";
+import { postNotificationSeen } from "./postNotificationSeen";
 import { userStore } from "../../../store/userStore/userStore";
 
 import "./Notifications.less";
@@ -14,7 +14,8 @@ export const Notifications = observer(() => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    // postNotificationsSeen();
+    postNotificationSeen();
+    // TODO: badge showing new notifications
     // pageStore.setUnseenNotificationsCount(0);
   }, []);
 
