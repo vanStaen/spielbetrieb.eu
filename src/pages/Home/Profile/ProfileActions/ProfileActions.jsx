@@ -15,7 +15,7 @@ import { userStore } from "../../../../store/userStore/userStore";
 import { deleteFriend } from "./deleteFriend";
 import { deleteFollow } from "./deleteFollow";
 import { deleteFriendRequest } from "./deleteFriendRequest";
-import { postFollow } from "./postFollow";
+import { addFollow } from "./addFollow";
 import { postFriendRequest } from "./postFriendRequest";
 
 import "./ProfileActions.less";
@@ -26,37 +26,37 @@ export const ProfileActions = observer(() => {
   const [isFollowing, setIsFollowing] = useState(
     userStore.following
       ? !(
-          userStore.following.findIndex(
-            (following) => parseInt(following._id) === profileStore._id,
-          ) < 0
-        )
+        userStore.following.findIndex(
+          (following) => parseInt(following._id) === profileStore._id,
+        ) < 0
+      )
       : false,
   );
 
   const [isFriend, setIsFriend] = useState(
     userStore.friends
       ? !(
-          userStore.friends.findIndex(
-            (friend) => parseInt(friend._id) === profileStore._id,
-          ) < 0
-        )
+        userStore.friends.findIndex(
+          (friend) => parseInt(friend._id) === profileStore._id,
+        ) < 0
+      )
       : false,
   );
 
   const [isPending, setIsPending] = useState(
     userStore.friendsPending
       ? !(
-          userStore.friendsPending.findIndex(
-            (pending) => parseInt(pending.friend_id) === profileStore._id,
-          ) < 0
-        )
+        userStore.friendsPending.findIndex(
+          (pending) => parseInt(pending.friend_id) === profileStore._id,
+        ) < 0
+      )
       : false,
   );
 
   const handleClick = async (action) => {
     try {
       if (action === "follow") {
-        await postFollow(profileStore._id);
+        await addFollow(profileStore._id);
         setIsFollowing(true);
       } else if (action === "unfollow") {
         await deleteFollow(profileStore._id);

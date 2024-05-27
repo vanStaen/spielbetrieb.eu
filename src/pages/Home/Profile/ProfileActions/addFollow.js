@@ -1,7 +1,7 @@
-export async function deleteFollow(id) {
+export async function addFollow(id) {
   const graphqlQuery = {
     query: `mutation ( $id: ID! ) {
-                deleteFollow ( followedId: $id ) 
+                addFollow ( followedId: $id ) 
                 }`,
     variables: {
       id,
@@ -21,10 +21,10 @@ export async function deleteFollow(id) {
   };
 
   const response = await fetch(endpoint, options);
-  const data = await response.json();
+  const res = await response.json();
 
-  if (data.errors) {
-    return data.errors[0];
+  if (res.errors) {
+    return res.errors[0];
   }
-  return data.deleteFollow;
+  return res.data.addFollow;
 }
