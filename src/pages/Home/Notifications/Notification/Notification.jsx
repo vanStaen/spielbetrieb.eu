@@ -153,7 +153,9 @@ export const Notification = observer((props) => {
       setTimeout(() => {
         elementMobile.style.display = "none";
       }, 300);
-    } catch (e) { }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const acceptRequestHandler = async (event) => {
@@ -170,7 +172,9 @@ export const Notification = observer((props) => {
       setTimeout(() => {
         elementMobile.style.display = "none";
       }, 300);
-    } catch (e) { }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const notificationClickHandler = async () => {
