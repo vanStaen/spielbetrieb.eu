@@ -101,8 +101,9 @@ export const EventCard = observer((props) => {
     <div
       key={event._id}
       id={`eventContainer${event._id}`}
-      className={`event__Container ${pageStore.selectedTheme === "light" ? "event__black" : "event__white"
-        }`}
+      className={`event__Container ${
+        pageStore.selectedTheme === "light" ? "event__black" : "event__white"
+      }`}
       onClick={handleEventContainerClick}
     >
       <div className="event__date">

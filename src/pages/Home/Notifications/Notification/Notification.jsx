@@ -68,9 +68,9 @@ export const Notification = observer((props) => {
   );
 
   const getPicture = async () => {
-    const res = await getPictureUrl(mediaUrl, 'users');
+    const res = await getPictureUrl(mediaUrl, "users");
     setPicture(res);
-  }
+  };
 
   useEffect(() => {
     getPicture();
@@ -150,7 +150,7 @@ export const Notification = observer((props) => {
       setTimeout(() => {
         elementMobile.style.display = "none";
       }, 300);
-    } catch (e) { }
+    } catch (e) {}
   };
 
   const acceptRequestHandler = async (event) => {
@@ -167,7 +167,7 @@ export const Notification = observer((props) => {
       setTimeout(() => {
         elementMobile.style.display = "none";
       }, 300);
-    } catch (e) { }
+    } catch (e) {}
   };
 
   const notificationClickHandler = async () => {
@@ -243,7 +243,11 @@ export const Notification = observer((props) => {
             (isNotFriend ? (
               <div className="notification__actionsButtons">
                 <Button
-                  className={pageStore.selectedTheme === "light" ? "lightColorTheme__Button" : "darkColorTheme__Button"}
+                  className={
+                    pageStore.selectedTheme === "light"
+                      ? "lightColorTheme__Button"
+                      : "darkColorTheme__Button"
+                  }
                   type="primary"
                   onClick={(e) => acceptRequestHandler(e)}
                 >
@@ -262,7 +266,11 @@ export const Notification = observer((props) => {
             (notFollowingYet ? (
               <div className="notification__actionsButtons">
                 <Button
-                  className={pageStore.selectedTheme === "light" ? "lightColorTheme__Button" : "darkColorTheme__Button"}
+                  className={
+                    pageStore.selectedTheme === "light"
+                      ? "lightColorTheme__Button"
+                      : "darkColorTheme__Button"
+                  }
                   type="primary"
                   onClick={(e) => followBackHandler(e)}
                 >
