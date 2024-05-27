@@ -28,6 +28,7 @@ export const notificationResolver = {
         userId: req.userId,
       },
       include: User,
+      order: [["_id", "ASC"]],
     });
   },
 

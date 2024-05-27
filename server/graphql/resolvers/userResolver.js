@@ -235,7 +235,7 @@ export const userResolver = {
         follower_id: req.userId,
         followed_id: args.followedId,
       });
-      const newFollower = await newFollow.save();
+      await newFollow.save();
       await notificationService.createNotificationNewFollower(
         args.followedId,
         req.userId,
@@ -261,5 +261,4 @@ export const userResolver = {
     );
     return true;
   },
-
 };

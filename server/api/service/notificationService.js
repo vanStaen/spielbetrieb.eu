@@ -26,7 +26,7 @@ export const notificationService = {
     try {
       await Notification.destroy({
         where: {
-          userId: userId,
+          userId,
           actionData: followerId,
           userLinkId: followerId,
         },
