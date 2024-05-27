@@ -1,21 +1,30 @@
-import axios from "axios";
-
-export const deleteNotification = async (id) => {
-  try {
-    const requestBody = {
+export async function deleteNotification(id) {
+  const graphqlQuery = {
+    query: `mutation ( $id: ID! ) {
+                  deleteNotification ( notificationId: $id ) 
+                }`,
+    variables: {
       id,
-    };
+    },
+  };
 
-    await axios({
-      url: process.env.API_URL + `/notification/`,
-      method: "DELETE",
-      data: requestBody,
-    });
-    return true;
-  } catch (err) {
-    if (err.response.status === 401) {
-      throw new Error(`Error! Unauthorized(401)`);
-    }
-    return err.response.data;
+  const headers = {
+    "content-type": "application/json",
+  };
+
+  const endpoint = process.env.API_URL + "/graphql";
+
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify(graphqlQuery),
+  };
+
+  const response = await fetch(endpoint, options);
+  const data = await response.json();
+
+  if (data.errors) {
+    return data.errors[0];
   }
-};
+  return data.deleteNotification;
+}

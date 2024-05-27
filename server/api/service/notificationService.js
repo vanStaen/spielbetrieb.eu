@@ -13,6 +13,7 @@ export const notificationService = {
         mediaUrl: follower.avatar,
         data: follower.userName,
         actionData: followerId,
+        userLinkId: followerId,
         type: 2,
       });
       await newNotification.save();
@@ -29,11 +30,12 @@ export const notificationService = {
         where: { _id: requestingId },
       });
       const newNotification = new Notification({
-        user_id: requestedId,
-        media_url: requesting.avatar,
-        title: requesting.userName,
+        userId: requestedId,
+        mediaUrl: requesting.avatar,
         type: 1,
-        action_data: requestingId,
+        data: requesting.userName,
+        actionData: requestingId,
+        userLinkId: requestingId,
       });
       await newNotification.save();
       return true;
@@ -49,11 +51,12 @@ export const notificationService = {
         where: { _id: userId },
       });
       const newNotification = new Notification({
-        user_id: friendId,
-        media_url: user.avatar,
-        title: user.userName,
+        userId: friendId,
+        mediaUrl: user.avatar,
         type: 17,
+        data: user.userName,
         action_data: userId,
+        userLinkId: userId,
       });
       await newNotification.save();
       return true;
