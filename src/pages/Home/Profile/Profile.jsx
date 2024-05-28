@@ -49,6 +49,8 @@ export const Profile = observer((props) => {
     // Redirect to partner URL if user is partner and url is user
     if (profileStore.isPartner && url === 'user') {
       navigate(`/partner/${params.username}`);
+    } else if (!profileStore.isPartner && url === 'partner') {
+      navigate(`/user/${params.username}`);
     }
   }, [profileStore.isPartner]);
 
