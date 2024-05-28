@@ -1,6 +1,5 @@
 import { action, makeObservable, observable } from "mobx";
 import Cookies from "universal-cookie";
-import { getNotifications } from "./getNotifications.js";
 
 const cookies = new Cookies();
 

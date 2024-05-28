@@ -18,10 +18,10 @@ export const EventFormNavigation = observer((props) => {
     const keyPressed = event.key.toLowerCase();
     if (keyPressed === "arrowleft") {
       event.preventDefault();
-      naviguateHandler(false);
+      navigateHandler(false);
     } else if (keyPressed === "arrowright") {
       event.preventDefault();
-      naviguateHandler(true);
+      navigateHandler(true);
     }
   };
 
@@ -32,7 +32,7 @@ export const EventFormNavigation = observer((props) => {
     };
   }, []);
 
-  const naviguateHandler = (next) => {
+  const navigateHandler = (next) => {
     if (next && eventFormStore.formStep === 3) {
       // console.error("there is only 4 steps");
       return;
@@ -57,7 +57,7 @@ export const EventFormNavigation = observer((props) => {
       <Button
         className="eventform__navButtons"
         onClick={() => {
-          naviguateHandler(false);
+          navigateHandler(false);
         }}
         disabled={eventFormStore.formStep === 0}
       >
@@ -75,7 +75,7 @@ export const EventFormNavigation = observer((props) => {
         <Button
           className="eventform__navButtons"
           onClick={() => {
-            naviguateHandler(true);
+            navigateHandler(true);
           }}
         >
           {t("eventform.next")}

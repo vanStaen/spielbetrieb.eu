@@ -5,7 +5,12 @@
   padding-bottom: 20px;
 
   .seen {
-    opacity: .66
+    opacity: .5;
+    background-color: rgba(var(--themeBlackOrWhiteColor), .05) !important;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
   .notifications__notification {
@@ -14,8 +19,12 @@
     left: 0;
     transition: .3s left;
     width: 100%;
-    background-color: rgba(var(--themeBlackOrWhiteColor), .05);
+    background-color: rgba(var(--themeBlackOrWhiteColor), .1);
     border-radius: 3px;
+
+    &:hover {
+      background-color: rgba(var(--themeBlackOrWhiteColor), .15);
+    }
 
     .notifications__leftSide {
       display: inline-block;

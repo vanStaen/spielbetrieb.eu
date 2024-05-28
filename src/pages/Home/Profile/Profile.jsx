@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+
 import { observer } from "mobx-react";
 import { MehOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
@@ -17,9 +18,11 @@ import { ProfileActions } from "./ProfileActions/ProfileActions";
 
 import "./Profile.less";
 
-export const Profile = observer(() => {
+export const Profile = observer((props) => {
   const params = useParams();
+  const navigate = useNavigate();
   const { t } = useTranslation();
+  const { url } = props;
 
   const redirectIfNotLoggedIn = async () => {
     if (!authStore.hasAccess) {
@@ -41,6 +44,14 @@ export const Profile = observer(() => {
     // If params.username = true, then check profile settings
     redirectIfNotLoggedIn();
   }, []);
+
+  useEffect(() => {
+    // Redirect to partner URL if user is partner and url is user
+    if (profileStore.isPartner && url === 'user') {
+      navigate(`/partner/${params.username}`);
+    }
+  }, [profileStore.isPartner]);
+
 
   const thisIsMe = userStore._id === profileStore._id;
 

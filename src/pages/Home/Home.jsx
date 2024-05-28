@@ -75,9 +75,9 @@ export const Home = observer((props) => {
       case "dark":
         return <Dark />;
       case "partner":
-        return <Profile />;
+        return <Profile url={'partner'} />;
       case "profile":
-        return <Profile />;
+        return <Profile url={'user'} />;
       case "settings":
         return <Settings />;
       case "links":
