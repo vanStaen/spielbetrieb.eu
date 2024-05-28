@@ -20,7 +20,7 @@ export class SpielplanStore {
   dresscodes = [];
   equipments = [];
   artists = [];
-  timeSpan = cookies.get("timeSpan") || "all";
+  timeSpan = cookies.get("timeSpan") || "week";
   filterDateFrom = dayjs();
   filterLocations = [];
   filterEventtypes = [];

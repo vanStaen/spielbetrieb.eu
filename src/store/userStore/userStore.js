@@ -288,7 +288,9 @@ export class UserStore {
         }
         const notificationsCount = userData.notifications.length;
         pageStore.setNotificationsCount(notificationsCount);
-        const unSeenNotificationsCount = userData.notifications.filter((notif) => notif.seen === false).length;
+        const unSeenNotificationsCount = userData.notifications.filter(
+          (notif) => notif.seen === false,
+        ).length;
         pageStore.setUnseenNotificationsCount(unSeenNotificationsCount);
       }
       this.setIsLoading(false);

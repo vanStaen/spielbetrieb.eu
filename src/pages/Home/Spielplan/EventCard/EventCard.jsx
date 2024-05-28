@@ -8,12 +8,8 @@ import dayjs from "dayjs";
 
 import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
-import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
 import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinner";
-
-import eventPlaceholder from "../../../../img/artworks/eventPlaceholder.jpg";
-import kitkatPlaceholder from "../../../../img/artworks/kitkatclub.png";
-import insomniaPlaceholder from "../../../../img/artworks/insomniaberlin.jpg";
+import { pictureOrPlaceholder } from "./pictureOrPlaceholder";
 
 import "./EventCard.less";
 
@@ -26,19 +22,8 @@ export const EventCard = observer((props) => {
   const [firstPictureUrl, setFirstPictureUrl] = useState(null);
 
   const getFirstPictureUrl = async () => {
-    if (event.pictures[0]) {
-      const res = await getPictureUrl(event.pictures[0], "events");
-      setFirstPictureUrl(res);
-    } else if (event.externalPicture) {
-      setFirstPictureUrl(event.externalPicture);
-    } else if (event.location === 1) {
-      //TODO create function for this, and use it in event page
-      setFirstPictureUrl(kitkatPlaceholder);
-    } else if (event.location === 8) {
-      setFirstPictureUrl(insomniaPlaceholder);
-    } else {
-      setFirstPictureUrl(eventPlaceholder);
-    }
+    const picture = await pictureOrPlaceholder(event);
+    setFirstPictureUrl(picture);
   };
 
   useEffect(() => {
@@ -108,8 +93,9 @@ export const EventCard = observer((props) => {
     <div
       key={event._id}
       id={`eventContainer${event._id}`}
-      className={`event__Container ${pageStore.selectedTheme === "light" ? "event__black" : "event__white"
-        }`}
+      className={`event__Container ${
+        pageStore.selectedTheme === "light" ? "event__black" : "event__white"
+      }`}
       onClick={handleEventContainerClick}
     >
       <div className="event__date">

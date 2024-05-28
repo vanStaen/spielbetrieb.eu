@@ -2,9 +2,10 @@ import React, { useEffect, useState, useRef } from "react";
 import { observer } from "mobx-react";
 
 import { pageStore } from "../../../../../store/pageStore/pageStore";
-import eventPlaceholder from "../../../../../img/artworks/eventPlaceholder.jpg";
+import { spielplanStore } from "../../../../../store/spielplanStore/spielplanStore";
 
 import "./EventPageArtwork.less";
+import { pictureOrPlaceholder } from "../../../Spielplan/EventCard/pictureOrPlaceholder";
 
 // the required distance between touchStart and touchEnd to be detected as a swipe
 const MIN_SWIPE_DISTANCE = 20;
@@ -71,10 +72,14 @@ export const EventPageArtwork = observer((props) => {
     );
   });
 
+  const placeholderPic = pictureOrPlaceholder(spielplanStore.selectedEvent);
+  console.log(placeholderPic);
+
   return pageStore.picturesUrls ? (
     <div className="eventpage__artworkCol">
       <div
         className="eventpage__artworkContainer"
+        style={{ cursor: "pointer" }}
         ref={props.ref1}
         onClick={() => {
           pageStore.setShowOverlayGallery(true);
@@ -95,7 +100,7 @@ export const EventPageArtwork = observer((props) => {
   ) : (
     <div className="eventpage__artworkCol">
       <div className="eventpage__artworkContainer" ref={props.ref1}>
-        <img src={eventPlaceholder} className="eventpage__artwork" />
+        <img src={placeholderPic} className="eventpage__artwork" />
       </div>
     </div>
   );
