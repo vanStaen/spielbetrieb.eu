@@ -1,5 +1,6 @@
 import { action, makeObservable, observable } from "mobx";
 
+import { pageStore } from "../pageStore/pageStore.js";
 import { getUserInfo } from "./getUserInfo.js";
 import { updateSettings } from "./updateSettings.js";
 import defaultEmailSettings from "./defaultEmailSettings.json";
@@ -247,7 +248,7 @@ export class UserStore {
       }
       const userData = await getUserInfo();
       if (userData) {
-        console.log("userData", userData);
+        // console.log("userData", userData);
         this.set_id(parseInt(userData._id));
         this.setIsAdmin(userData.isAdmin);
         this.setEmail(userData.email);
@@ -285,6 +286,10 @@ export class UserStore {
           this.setEmailSettings(JSON.parse(userData.emailSettings));
           this.setProfilSettings(JSON.parse(userData.profilSettings));
         }
+        const notificationsCount = userData.notifications.length;
+        pageStore.setNotificationsCount(notificationsCount);
+        const unSeenNotificationsCount = userData.notifications.filter((notif) => notif.seen === false).length;
+        pageStore.setUnseenNotificationsCount(unSeenNotificationsCount);
       }
       this.setIsLoading(false);
     } catch (error) {

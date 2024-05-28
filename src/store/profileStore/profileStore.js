@@ -124,7 +124,6 @@ export class ProfileStore {
   };
 
   fetchProfileData = async (userName, loader = true) => {
-    // console.log(">>> Fetching profile data");
     try {
       if (loader) {
         this.setIsLoading(true);
@@ -132,6 +131,7 @@ export class ProfileStore {
       if (userName) {
         this.setUserName(userName);
         const profileData = await getProfileInfo(userName);
+        // TODO
         const pendingData = await postFremdPending(parseInt(profileData._id));
         if (profileData && pendingData) {
           const friendsNotPending = profileData.friends.filter((friend) => {

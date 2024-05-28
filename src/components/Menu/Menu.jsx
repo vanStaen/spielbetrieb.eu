@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
-import { Avatar, Spin } from "antd";
+import { Avatar, Badge, Spin } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
@@ -18,6 +18,7 @@ import { pageStore } from "../../store/pageStore/pageStore";
 import { authStore } from "../../store/authStore/authStore";
 import { AddToHomeScreen } from "../AddToHomeScreen/AddToHomeScreen";
 import { getPictureUrl } from "../../helpers/picture/getPictureUrl";
+import { ConditionalWrapper } from "../../helpers/dev/ConditionalWrapper";
 
 import "./Menu.less";
 
@@ -104,23 +105,29 @@ export const Menu = observer(() => {
   return (
     <>
       <div className={`menu__containerAvatar`} onClick={avatarClickhandle}>
-        <Avatar
-          shape="square"
-          src={
-            avatarPic ? (
-              <img src={avatarPic} />
-            ) : (
-              <UserOutlined className="menu__icon" />
-            )
-          }
-          icon={
-            userStore.isLoading && (
-              <Spin className="menu__spinner" indicator={spinIcon} />
-            )
-          }
-          className="menu__avatar"
-          size={48}
-        />
+        <Badge
+          size="small"
+          count={pageStore.unseenNotificationsCount}
+          offset={[-45, 45]}
+        >
+          <Avatar
+            shape="square"
+            src={
+              avatarPic ? (
+                <img src={avatarPic} />
+              ) : (
+                <UserOutlined className="menu__icon" />
+              )
+            }
+            icon={
+              userStore.isLoading && (
+                <Spin className="menu__spinner" indicator={spinIcon} />
+              )
+            }
+            className="menu__avatar"
+            size={48}
+          />
+        </Badge>
       </div>
       {pageStore.showMenu && (
         <>
@@ -146,12 +153,20 @@ export const Menu = observer(() => {
             </div>
             <div className="menu__spacer"></div>
             <div
-              className="link menu__element"
+              className={pageStore.notificationsCount === 0 ? 'menu__elementDisabled' : 'link menu__element'}
               onClick={notificationsClickHandler}
             >
-              <NotificationOutlined
-                style={{ position: "relative", bottom: "-2px" }}
-              />
+              <ConditionalWrapper
+                condition={pageStore.unseenNotificationsCount}
+                wrap={(children) =>
+                  <Badge dot className="menu__badgeDot">
+                    {children}
+                  </ Badge>
+                }>
+                <NotificationOutlined
+                  style={{ position: "relative", bottom: "-2px" }}
+                />
+              </ConditionalWrapper>
               &nbsp; Notifications
             </div>
             <div className="menu__whiteline"></div>

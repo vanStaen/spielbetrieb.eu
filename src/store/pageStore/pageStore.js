@@ -19,6 +19,7 @@ export class PageStore {
   picturesUrls = [];
   pictureSelected = 0;
   notifications = [];
+  notificationsCount = 0;
   unseenNotificationsCount = 0;
 
   constructor() {
@@ -39,8 +40,8 @@ export class PageStore {
       setPicturesUrls: action,
       pictureSelected: observable,
       setPictureSelected: action,
-      notifications: observable,
-      setNotifications: action,
+      notificationsCount: observable,
+      setNotificationsCount: action,
       unseenNotificationsCount: observable,
       setUnseenNotificationsCount: action,
     });
@@ -87,23 +88,12 @@ export class PageStore {
     this.pictureSelected = pictureSelected;
   };
 
-  setNotifications = (notifications) => {
-    this.notifications = notifications;
+  setNotificationsCount = (notificationsCount) => {
+    this.notificationsCount = notificationsCount;
   };
 
   setUnseenNotificationsCount = (unseenNotificationsCount) => {
     this.unseenNotificationsCount = unseenNotificationsCount;
-  };
-
-  fetchNotifications = async () => {
-    try {
-      const result = await getNotifications();
-      this.setNotifications(result);
-      const unSeenCount = result.filter((notif) => notif.seen === false).length;
-      this.setUnseenNotificationsCount(unSeenCount);
-    } catch (e) {
-      console.log("error loading notification: ", e);
-    }
   };
 }
 

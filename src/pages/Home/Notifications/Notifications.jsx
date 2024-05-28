@@ -15,8 +15,7 @@ export const Notifications = observer(() => {
 
   useEffect(() => {
     postNotificationSeen();
-    // TODO: badge showing new notifications
-    // pageStore.setUnseenNotificationsCount(0);
+    pageStore.setUnseenNotificationsCount(0);
   }, []);
 
   const notificationsFormated = userStore.notifications.map(
