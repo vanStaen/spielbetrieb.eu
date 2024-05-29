@@ -97,8 +97,10 @@ export const UserQueries = `
 export const UserMutations = `
     addUser(userInput: UserInputData!): User!
     addFollow(followedId: ID!): Boolean!
+    addFriendRequest(requestedId: ID!): Boolean!
     updateUser(userInput: UserInputData!): User!
     updateUserAsAdmin(userId: ID!, userInput: UserInputDataAdmin!): User!
     deleteUserAsAdmin(userId: ID!): Boolean!
     deleteFollow(followedId: ID!): Boolean!
+    deleteFriendRequest(requestedId: ID!): Boolean!
 `;

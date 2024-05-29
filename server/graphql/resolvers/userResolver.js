@@ -10,6 +10,7 @@ import { Notification } from "../../models/Notification.js";
 import { Photo } from "../../models/Photo.js";
 import { Visitor } from "../../models/Visitor.js";
 import { Usersfollower } from "../../models/Usersfollower.js";
+import { Usersfriend } from "../../models/Usersfriend.js";
 
 export const userResolver = {
   async getUser(args, req) {
@@ -25,9 +26,9 @@ export const userResolver = {
         Notification,
         Photo,
         Visitor,
-        "friends",
         "followers",
         "following",
+        "friends",
       ],
       order: [[Notification, "_id", "DESC"]],
     });
@@ -262,4 +263,50 @@ export const userResolver = {
     );
     return true;
   },
+
+  // addFriendRequest(requestedId: ID!): Boolean!
+  async addFriendRequest(args, req) {
+    try {
+      const newFriend = new Usersfriend({
+        user_id: parseInt(req.userId),
+        friend_id: parseInt(args.requestedId),
+      });
+      await newFriend.save();
+      const newFriend2 = new Usersfriend({
+        friend_id: parseInt(req.userId),
+        user_id: parseInt(args.requestedId),
+      });
+      await newFriend2.save();
+      /* await notificationService.createNotificationNewFriendRequest(
+        req.userId,
+        args.requestedId,
+      ); */
+      return true;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  // deleteFriendRequest(requestedId: ID!): Boolean!
+  async deleteFriendRequest(args, req) {
+    await Usersfriend.destroy({
+      where: {
+        user_id: req.userId,
+        friend_id: args.requestedId,
+      },
+    });
+    await Usersfriend.destroy({
+      where: {
+        friend_id: req.userId,
+        user_id: args.requestedId,
+      },
+    });
+    /* await notificationService.deleteNotificationNewFriendRequest(
+      req.userId,
+      args.requestedId,
+    ); */
+    return true;
+  },
+
+
 };

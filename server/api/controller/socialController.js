@@ -2,19 +2,6 @@ import { Router } from "express";
 import { friendService } from "../service/friendService.js";
 const router = Router();
 
-router.get("/friends", async (req, res) => {
-  try {
-    const friends = await friendService.getFriends(req.userId);
-    res.status(200).json({
-      friends,
-    });
-  } catch (err) {
-    res.status(400).json({
-      error: `${err}`,
-    });
-  }
-});
-
 router.get("/friendspending", async (req, res) => {
   try {
     const pending = await friendService.getFriendsPending(req.userId);
