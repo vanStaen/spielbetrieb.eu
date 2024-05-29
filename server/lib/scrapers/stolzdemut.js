@@ -117,12 +117,12 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
         .replaceAll("&amp;", "&");
       const links = [dataEvent.link];
 
-      const hasDresscode = dataEvent.dresscode.length;
+      const hasDresscode = 2; //Strict dresscode
       const dresscodeDoTags = dataEvent.dresscode
         ? dataEvent.dresscode
           .map((dresscode) => {
             const result = dresscodeData.filter(
-              (data) => nameParser(data.name, "en") === dresscode,
+              (data) => nameParser(data.name, "de") === dresscode,
             );
             if (result.length === 1) {
               return result[0].id;
@@ -132,6 +132,8 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
           })
           .filter(Boolean)
         : [];
+
+      dresscodeDoTags.push(20);
 
       const dataEventNew = {
         ...dataEvent,

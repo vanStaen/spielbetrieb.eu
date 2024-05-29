@@ -6,6 +6,9 @@ import { getAllPublicEvents } from "./getAllPublicEvents.js";
 import { getAllEventtypes } from "./getAllEventtypes.js";
 import { getTags } from "./getTags.js";
 import { getLocations } from "./getLocations.js";
+import { getArtists } from "./getArtists.js";
+import { getEquipments } from "./getEquipments.js";
+import { getDresscodes } from "./getDresscodes.js";
 import { pageStore } from "../pageStore/pageStore.js";
 
 const cookies = new Cookies();
@@ -71,30 +74,6 @@ export class SpielplanStore {
     this.events = events;
   };
 
-  setArtists = (artists) => {
-    this.artists = artists;
-  };
-
-  setEquipments = (equipments) => {
-    this.equipments = equipments;
-  };
-
-  setDresscodes = (dresscodes) => {
-    this.dresscodes = dresscodes;
-  };
-
-  setSelectedEvent = (selectedEvent) => {
-    this.selectedEvent = selectedEvent;
-  };
-
-  setIsLoadingEvent = (isLoadingEvent) => {
-    this.isLoadingEvent = isLoadingEvent;
-  };
-
-  setIsLoadingData = (isLoadingData) => {
-    this.isLoadingData = isLoadingData;
-  };
-
   fetchEvents = async () => {
     this.setIsLoadingEvent(true);
     let fromUnixDateStartOf;
@@ -112,9 +91,59 @@ export class SpielplanStore {
       fromUnixDateStartOf,
       untilUnixDateEndOf,
     );
+
     // console.log("events", events);
     this.setEvents(events);
     this.setIsLoadingEvent(false);
+  };
+
+  fetchAllBaseData = async () => {
+    if (!this.eventtypes) { await this.fetchEventtypes() }
+    if (!this.tags) { await this.fetchTags() }
+    if (!this.locations) { await this.fetchLocations() }
+    await this.fetchDresscodes()
+    if (!this.equipments) { await this.fetchEquipments() }
+    if (!this.artists) { await this.fetchArtists() }
+  }
+
+  setArtists = (artists) => {
+    this.artists = artists;
+  };
+
+  fetchArtists = async () => {
+    const artists = await getArtists();
+    this.setArtists(artists);
+  };
+
+  setEquipments = (equipments) => {
+    this.equipments = equipments;
+  };
+
+  fetchEquipments = async () => {
+    const equipments = await getEquipments();
+    this.setEquipments(equipments);
+  };
+
+  setDresscodes = (dresscodes) => {
+    this.dresscodes = dresscodes;
+    console.log()
+  };
+
+  fetchDresscodes = async () => {
+    const dresscodes = await getDresscodes();
+    this.setDresscodes(dresscodes);
+  };
+
+  setSelectedEvent = (selectedEvent) => {
+    this.selectedEvent = selectedEvent;
+  };
+
+  setIsLoadingEvent = (isLoadingEvent) => {
+    this.isLoadingEvent = isLoadingEvent;
+  };
+
+  setIsLoadingData = (isLoadingData) => {
+    this.isLoadingData = isLoadingData;
   };
 
   setEventtypes = (eventtypes) => {

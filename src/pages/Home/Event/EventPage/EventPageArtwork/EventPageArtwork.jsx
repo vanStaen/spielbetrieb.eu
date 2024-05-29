@@ -73,7 +73,6 @@ export const EventPageArtwork = observer((props) => {
   });
 
   const placeholderPic = pictureOrPlaceholder(spielplanStore.selectedEvent);
-  console.log(placeholderPic);
 
   return pageStore.picturesUrls ? (
     <div className="eventpage__artworkCol">
