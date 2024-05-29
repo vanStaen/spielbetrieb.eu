@@ -74,3 +74,4 @@ AI bilder
 - [ ] Convert social REST endpoint to GraphQL
 - [ ] clean theme.less (use less --var)
 - [ ] Spielplan: lazy loading with pagination
+- [ ] Spielplan filter : only filter from the data set shown

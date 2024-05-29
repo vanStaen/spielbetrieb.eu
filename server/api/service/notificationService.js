@@ -29,6 +29,7 @@ export const notificationService = {
           userId,
           actionData: followerId,
           userLinkId: followerId,
+          type: 2,
         },
       });
       return true;
@@ -37,7 +38,6 @@ export const notificationService = {
     }
   },
 
-  // TODO: check this
   async createNotificationNewFriendRequest(requestingId, requestedId) {
     try {
       const requesting = await User.findOne({
@@ -57,6 +57,24 @@ export const notificationService = {
       console.log(err);
     }
   },
+
+
+  async deleteNotificationNewFriendRequest(requestingId, requestedId) {
+    try {
+      await Notification.destroy({
+        where: {
+          userId: requestedId,
+          actionData: requestingId,
+          userLinkId: requestingId,
+          type: 1,
+        },
+      });
+      return true;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
 
   // TODO: check this
   async createNotificationNewFriend(userId, friendId) {

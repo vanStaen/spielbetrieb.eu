@@ -272,15 +272,10 @@ export const userResolver = {
         friend_id: parseInt(args.requestedId),
       });
       await newFriend.save();
-      const newFriend2 = new Usersfriend({
-        friend_id: parseInt(req.userId),
-        user_id: parseInt(args.requestedId),
-      });
-      await newFriend2.save();
-      /* await notificationService.createNotificationNewFriendRequest(
+      await notificationService.createNotificationNewFriendRequest(
         req.userId,
         args.requestedId,
-      ); */
+      );
       return true;
     } catch (err) {
       console.log(err);
@@ -295,16 +290,10 @@ export const userResolver = {
         friend_id: args.requestedId,
       },
     });
-    await Usersfriend.destroy({
-      where: {
-        friend_id: req.userId,
-        user_id: args.requestedId,
-      },
-    });
-    /* await notificationService.deleteNotificationNewFriendRequest(
+    await notificationService.deleteNotificationNewFriendRequest(
       req.userId,
       args.requestedId,
-    ); */
+    );
     return true;
   },
 

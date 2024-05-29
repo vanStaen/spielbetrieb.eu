@@ -178,16 +178,7 @@ export const Notification = observer((props) => {
   };
 
   const notificationClickHandler = async () => {
-    // Friend request
-    if (type === 1 || type === 17) {
-      navigate(`/user/${data}`);
-    }
-    // New Follower
-    else if (type === 2) {
-      navigate(`/user/${data}`);
-    }
-    // Friend new avatar
-    else if (type === 14) {
+    if (type === 1 || type === 2 || type === 61) {
       navigate(`/user/${data}`);
     }
   };
@@ -226,22 +217,13 @@ export const Notification = observer((props) => {
           onClick={() => notificationClickHandler()}
         >
           <div className="notification__title">
+            {/* TODO: check all this, and make a function for it */}
             {type === 1 && <>{linkToUserPage} sent you a friend request!</>}
             {type === 2 && <>{linkToUserPage} started following you!</>}
             {type === 3 && <>You got mail from ${linkToUserPage}!</>}
-            {type === 4 && (
-              <>{linkToUserPage} added a new item to the garderobe</>
-            )}
-            {type === 5 && (
-              <>{linkToUserPage} added a new look to the garderobe</>
-            )}
-            {type === 6 && <>{linkToUserPage} shared an item with you</>}
-            {type === 12 && <>{linkToUserPage} liked this Item</>}
-            {type === 13 && <>{linkToUserPage} liked this Look</>}
-            {type === 14 && <>{linkToUserPage} added a new profile picture</>}
-            {type === 15 && <>{linkToUserPage} disliked this Item</>}
-            {type === 16 && <>{linkToUserPage} disliked this Look</>}
-            {type === 17 && <>{linkToUserPage} accepted your friend request!</>}
+            {type === 11 && <>{linkToUserPage} accepted your friend request!</>}
+            {type === 12 && <>{linkToUserPage} refused your friend request!</>}
+            {type === 61 && <>{linkToUserPage} added a new profile picture</>}
             &nbsp;
             <span className="notifications__dateMobile">{notificationAge}</span>
           </div>
