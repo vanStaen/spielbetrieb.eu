@@ -98,13 +98,23 @@ export class SpielplanStore {
   };
 
   fetchAllBaseData = async () => {
-    if (!this.eventtypes) { await this.fetchEventtypes() }
-    if (!this.tags) { await this.fetchTags() }
-    if (!this.locations) { await this.fetchLocations() }
-    await this.fetchDresscodes()
-    if (!this.equipments) { await this.fetchEquipments() }
-    if (!this.artists) { await this.fetchArtists() }
-  }
+    if (!this.eventtypes) {
+      await this.fetchEventtypes();
+    }
+    if (!this.tags) {
+      await this.fetchTags();
+    }
+    if (!this.locations) {
+      await this.fetchLocations();
+    }
+    await this.fetchDresscodes();
+    if (!this.equipments) {
+      await this.fetchEquipments();
+    }
+    if (!this.artists) {
+      await this.fetchArtists();
+    }
+  };
 
   setArtists = (artists) => {
     this.artists = artists;
@@ -126,7 +136,7 @@ export class SpielplanStore {
 
   setDresscodes = (dresscodes) => {
     this.dresscodes = dresscodes;
-    console.log()
+    console.log();
   };
 
   fetchDresscodes = async () => {

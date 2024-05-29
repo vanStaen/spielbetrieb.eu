@@ -153,16 +153,21 @@ export const Menu = observer(() => {
             </div>
             <div className="menu__spacer"></div>
             <div
-              className={pageStore.notificationsCount === 0 ? 'menu__elementDisabled' : 'link menu__element'}
+              className={
+                pageStore.notificationsCount === 0
+                  ? "menu__elementDisabled"
+                  : "link menu__element"
+              }
               onClick={notificationsClickHandler}
             >
               <ConditionalWrapper
                 condition={pageStore.unseenNotificationsCount}
-                wrap={(children) =>
+                wrap={(children) => (
                   <Badge dot className="menu__badgeDot">
                     {children}
-                  </ Badge>
-                }>
+                  </Badge>
+                )}
+              >
                 <NotificationOutlined
                   style={{ position: "relative", bottom: "-2px" }}
                 />

@@ -35,24 +35,31 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
   const page = await browser.newPage();
 
   // Navigate the page to a URL
-  await page.goto("https://joyclub.com/de/party/veranstaltungen/2838983.stolz_und_demut.html", {
-    waitUntil: "domcontentloaded",
-  });
+  await page.goto(
+    "https://joyclub.com/de/party/veranstaltungen/2838983.stolz_und_demut.html",
+    {
+      waitUntil: "domcontentloaded",
+    },
+  );
 
   // wait until selector appears
   await page.waitForSelector(".event_list");
 
   // Get page data
   const links = await page.evaluate(() => {
-    const events = document.querySelectorAll(
-      ".event_list > li",
-    );
+    const events = document.querySelectorAll(".event_list > li");
     const array = [];
 
     // Every 2nd Li should have a link
     for (let i = 0; i < events.length; i++) {
-      const link = events[i].querySelector(".panel-body > .event_picture")?.querySelector("a")?.href;
-      const title = events[i].querySelector(".panel-body > .event_content > .spacer_ribbon > .event_name")?.querySelector("a")?.innerHTML;
+      const link = events[i]
+        .querySelector(".panel-body > .event_picture")
+        ?.querySelector("a")?.href;
+      const title = events[i]
+        .querySelector(
+          ".panel-body > .event_content > .spacer_ribbon > .event_name",
+        )
+        ?.querySelector("a")?.innerHTML;
       link && array.push({ link, title });
     }
     return array;
@@ -67,15 +74,22 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
     });
 
     const event = await page.evaluate(() => {
-      const fromDate = document.querySelector(".event-time").innerHTML.split("<br>")[0];
-      const description = document.querySelector(".event_description").innerHTML;
-      const dresscode = document.querySelectorAll(".event_info_section")[1].querySelector("p").innerHTML.replaceAll(/ /g, "").split(",");
+      const fromDate = document
+        .querySelector(".event-time")
+        .innerHTML.split("<br>")[0];
+      const description =
+        document.querySelector(".event_description").innerHTML;
+      const dresscode = document
+        .querySelectorAll(".event_info_section")[1]
+        .querySelector("p")
+        .innerHTML.replaceAll(/ /g, "")
+        .split(",");
       return { fromDate, description, dresscode };
     });
 
-    let link = links[i].link;
-    let title = links[i].title;
-    let externalId = links[i].link.split("/")[4].split('.')[0];
+    const link = links[i].link;
+    const title = links[i].title;
+    const externalId = links[i].link.split("/")[4].split(".")[0];
     events.push({ ...event, link, title, externalId });
   }
 
@@ -99,7 +113,6 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
   // Add event into db
   for (const dataEvent of events) {
     if (dataEvent.fromDate) {
-
       const dateCleaned = dataEvent.fromDate.split(/ /g);
       const day = dateCleaned[1] < 10 ? `0${dateCleaned[1]}` : dateCleaned[1];
       const month = months[dateCleaned[2]];
@@ -117,20 +130,20 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
         .replaceAll("&amp;", "&");
       const links = [dataEvent.link];
 
-      const hasDresscode = 2; //Strict dresscode
+      const hasDresscode = 2; // Strict dresscode
       const dresscodeDoTags = dataEvent.dresscode
         ? dataEvent.dresscode
-          .map((dresscode) => {
-            const result = dresscodeData.filter(
-              (data) => nameParser(data.name, "de") === dresscode,
-            );
-            if (result.length === 1) {
-              return result[0].id;
-            } else {
-              return undefined;
-            }
-          })
-          .filter(Boolean)
+            .map((dresscode) => {
+              const result = dresscodeData.filter(
+                (data) => nameParser(data.name, "de") === dresscode,
+              );
+              if (result.length === 1) {
+                return result[0].id;
+              } else {
+                return undefined;
+              }
+            })
+            .filter(Boolean)
         : [];
 
       dresscodeDoTags.push(20);

@@ -29,9 +29,7 @@ export const userResolver = {
         "followers",
         "following",
       ],
-      order: [
-        [Notification, "_id", "DESC"]
-      ]
+      order: [[Notification, "_id", "DESC"]],
     });
   },
 
