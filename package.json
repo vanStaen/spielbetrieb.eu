@@ -14,7 +14,7 @@
     "prebuild": "rm -rf ./build",
     "build": "webpack --config webpack.config.prod.cjs --mode production",
     "predeploy": "npm run build",
-    "deploy": "npm i; heroku git:remote -a spielbetrieb; git push heroku master; npm run backup; npm run scrapekitty; npm run scrapeinso",
+    "deploy": "npm i; heroku git:remote -a spielbetrieb; git push heroku master; npm run backup; npm run scrapekitty; npm run scraper",
     "postdeploy": "rm -rf ./build",
     "log": "heroku logs --tail",
     "version": "heroku --version; git --version",
@@ -22,8 +22,10 @@
     "backup": "cd server/lib/; node createDatabaseBackUpFile.js; npm run pushbackup; cd ../../",
     "pushbackup": "cd ../database-backups; git pull origin master; git add -A; git commit -m 'Spielbetrieb - database backup files'; git push;",
     "lint": "eslint -c ./.eslintrc.json '**/*.js' '**/*.jsx' --fix",
+    "scraper": "npm run scrapeinso; npm run scrapekitty; npm run stolzdemut",
     "scrapeinso": "cd server/lib/scrapers; node insomnia.js/; cd ../../../",
-    "scrapekitty": "cd server/lib/scrapers; node kitkatclub.js/; cd ../../../"
+    "scrapekitty": "cd server/lib/scrapers; node kitkatclub.js/; cd ../../../",
+    "stolzdemut": "cd server/lib/scrapers; node stolzdemut.js/; cd ../../../"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.533.0",

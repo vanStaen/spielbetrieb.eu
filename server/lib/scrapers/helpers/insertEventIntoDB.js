@@ -50,6 +50,7 @@ export default async function insertEventIntoDB(dataObject) {
       eventTags: dataObject.eventTags,
       hasDresscode: dataObject.hasDresscode,
       dresscodeDontTags: dataObject.dresscodeDontTags,
+      dresscodeDoTags: dataObject.dresscodeDoTags,
       prices: dataObject.prices,
       lineUp: dataObject.lineUp,
       equipment: dataObject.equipment,
