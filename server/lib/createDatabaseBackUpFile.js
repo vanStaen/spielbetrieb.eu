@@ -210,6 +210,15 @@ const writeBackupFile = async () => {
       JSON.stringify(databaseContentUsersfriends),
     );
 
+    const databaseContentUsersfriendrequests = await fetchDatabaseContent(
+      "usersfriendrequests",
+    );
+    const filenameUsersfriendrequests = `${day}-${month}-${year}_spielbetrieb_usersfriendrequests.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameUsersfriendrequests}`,
+      JSON.stringify(databaseContentUsersfriendrequests),
+    );
+
     const databaseContentVisitors = await fetchDatabaseContent("visitors");
     const filenameVisitors = `${day}-${month}-${year}_spielbetrieb_visitors.json`;
     fs.writeFileSync(

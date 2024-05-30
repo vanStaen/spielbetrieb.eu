@@ -31,6 +31,7 @@ type User {
     photos: [Photo]
     visitors: [Visitor] 
     friends: [User]
+    friendrequests: [User]
     followers: [User]
     following: [User]
     language: String!

@@ -4,21 +4,21 @@ import { Usersfriend } from "../../models/Usersfriend.js";
 export const friendService = {
   async getFriends(userId) {
     const foundFollowers = await Usersfriend.findAll({
-      where: { user_id: userId, pending: false },
+      where: { user_id: userId },
     });
     return foundFollowers;
   },
 
   async getFriendsPending(userId) {
     const foundPending = await Usersfriend.findAll({
-      where: { user_id: userId, pending: true },
+      where: { user_id: userId },
     });
     return foundPending;
   },
 
   async getFriendsRequest(userId) {
     const foundRequest = await Usersfriend.findAll({
-      where: { friend_id: userId, pending: true },
+      where: { friend_id: userId },
     });
     return foundRequest;
   },
@@ -42,19 +42,15 @@ export const friendService = {
 
   async validateFriendRequest(userId, friendId) {
     try {
-      await Usersfriend.update(
-        { pending: false },
-        {
-          where: {
-            user_id: parseInt(friendId),
-            friend_id: parseInt(userId),
-          },
+      await Usersfriend.update({
+        where: {
+          user_id: parseInt(friendId),
+          friend_id: parseInt(userId),
         },
-      );
+      });
       const newFriend = new Usersfriend({
         user_id: parseInt(userId),
         friend_id: parseInt(friendId),
-        pending: false,
       });
       await newFriend.save();
       // await notificationService.createNotificationNewFriend(userId, friendId);

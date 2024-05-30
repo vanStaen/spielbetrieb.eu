@@ -11,6 +11,7 @@ import { Photo } from "../../models/Photo.js";
 import { Visitor } from "../../models/Visitor.js";
 import { Usersfollower } from "../../models/Usersfollower.js";
 import { Usersfriend } from "../../models/Usersfriend.js";
+import { Usersfriendrequest } from "../../models/Usersfriendrequest.js";
 
 export const userResolver = {
   async getUser(args, req) {
@@ -29,6 +30,7 @@ export const userResolver = {
         "followers",
         "following",
         "friends",
+        "friendrequests",
       ],
       order: [[Notification, "_id", "DESC"]],
     });
@@ -199,14 +201,14 @@ export const userResolver = {
   async getProfileByName(args, req) {
     return await User.findOne({
       where: { userName: args.userName },
-      include: ["friends", "followers", "following"],
+      include: ["friends", "followers", "following", "friendrequests"],
     });
   },
 
   async getProfileById(args, req) {
     return await User.findOne({
       where: { _id: args._id },
-      include: ["friends", "followers", "following"],
+      include: ["friends", "followers", "following", "friendrequests"],
     });
   },
 
@@ -267,9 +269,9 @@ export const userResolver = {
   // addFriendRequest(requestedId: ID!): Boolean!
   async addFriendRequest(args, req) {
     try {
-      const newFriend = new Usersfriend({
-        user_id: parseInt(req.userId),
-        friend_id: parseInt(args.requestedId),
+      const newFriend = new Usersfriendrequest({
+        requesting_id: parseInt(req.userId),
+        requested_id: parseInt(args.requestedId),
       });
       await newFriend.save();
       await notificationService.createNotificationNewFriendRequest(
@@ -284,10 +286,10 @@ export const userResolver = {
 
   // deleteFriendRequest(requestedId: ID!): Boolean!
   async deleteFriendRequest(args, req) {
-    await Usersfriend.destroy({
+    await Usersfriendrequest.destroy({
       where: {
-        user_id: req.userId,
-        friend_id: args.requestedId,
+        requesting_id: req.userId,
+        requested_id: args.requestedId,
       },
     });
     await notificationService.deleteNotificationNewFriendRequest(
@@ -296,6 +298,4 @@ export const userResolver = {
     );
     return true;
   },
-
-
 };

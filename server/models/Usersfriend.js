@@ -7,20 +7,12 @@ export const Usersfriend = sequelize.sequelize.define("usersfriend", {
     autoIncrement: true,
     primaryKey: true,
   },
-  friend_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
   user_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  pending: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: true,
-  },
-  status: {
+  friend_id: {
     type: DataTypes.INTEGER,
-    defaultValue: 0,
+    allowNull: false,
   },
 });
