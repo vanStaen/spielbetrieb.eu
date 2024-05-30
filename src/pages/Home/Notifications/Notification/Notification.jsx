@@ -21,6 +21,7 @@ import { pageStore } from "../../../../store/pageStore/pageStore";
 import { deleteNotification } from "./deleteNotification";
 import { addFollow } from "../../Profile/ProfileActions/addFollow";
 import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
+import { NotificationTitle } from "./NotificationTitle";
 
 import "./Notification.less";
 
@@ -110,6 +111,7 @@ export const Notification = observer((props) => {
       `deleteButtonIcon${id}`,
     );
     const newHeight = `${elementNotification.offsetHeight}px`;
+    elementDeleteButtonIcon.style.color = "white";
     elementDeleteButtonIcon.style.height = newHeight;
     elementDeleteButtonIcon.style.background = "rgba(160, 0, 0, 0.5)";
     elementNotification.style.left = "-50px";
@@ -123,6 +125,7 @@ export const Notification = observer((props) => {
     element.style.left = "0";
     setTimeout(() => {
       elementDeleteButtonIcon.style.background = "transparent";
+      elementDeleteButtonIcon.style.color = "transparent";
     }, "300");
   };
 
@@ -217,15 +220,7 @@ export const Notification = observer((props) => {
           onClick={() => notificationClickHandler()}
         >
           <div className="notification__title">
-            {/* TODO: check all this, and make a function for it */}
-            {type === 1 && <>{linkToUserPage} sent you a friend request!</>}
-            {type === 2 && <>{linkToUserPage} started following you!</>}
-            {type === 3 && <>You got mail from ${linkToUserPage}!</>}
-            {type === 11 && <>{linkToUserPage} accepted your friend request!</>}
-            {type === 12 && <>{linkToUserPage} refused your friend request!</>}
-            {type === 61 && <>{linkToUserPage} added a new profile picture</>}
-            &nbsp;
-            <span className="notifications__dateMobile">{notificationAge}</span>
+            <NotificationTitle type={type} linkToUserPage={linkToUserPage} />
           </div>
           {!userStore.isLoading &&
             type === 1 &&

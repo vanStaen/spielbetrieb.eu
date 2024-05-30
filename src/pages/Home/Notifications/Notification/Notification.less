@@ -54,16 +54,9 @@
 
       .notifications__date {
         font-size: 12px;
-        color: rgba(0, 0, 0, .3);
         display: block;
         color: rgba(white, .75);
         line-height: 20px;
-      }
-
-      .notifications__dateMobile {
-        font-size: 12px;
-        display: none;
-        color: rgba(white, .75);
       }
 
       .notification__icon {
@@ -112,7 +105,7 @@
 
   .notification__actionsButtonsMobile {
     display: none;
-    padding-top: 5px;
+    padding-top: 0px;
     width: 100%;
 
     .actionsButton {
@@ -126,12 +119,12 @@
 
     .icon {
       position: absolute;
-      right: 0;
+      right: 20px;
       font-size: 22px;
       width: 50px;
       height: 50px;
       background: transparent;
-      color: white;
+      color: transparent;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -147,7 +140,7 @@
     .notification__subContainer {
       .notifications__notification {
         .notifications__rightSide {
-          width: calc(100% - 50px);
+          //width: calc(100% - 50px);
 
           .notification__icon {
             display: none;
@@ -155,14 +148,6 @@
 
           .notification__actionsButtons {
             display: none;
-          }
-
-          .notifications__date {
-            display: none;
-          }
-
-          .notifications__dateMobile {
-            display: inline-block;
           }
         }
       }
