@@ -58,7 +58,6 @@ export const notificationService = {
     }
   },
 
-
   async deleteNotificationNewFriendRequest(requestingId, requestedId) {
     try {
       await Notification.destroy({

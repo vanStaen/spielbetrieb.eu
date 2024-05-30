@@ -100,9 +100,11 @@ export const UserMutations = `
     addFollow(followedId: ID!): Boolean!
     addFriendRequest(requestedId: ID!): Boolean!
     acceptFriendRequest(requestingId: ID!): Boolean!
+    declineFriendRequest(requestingId: ID!): Boolean!
     updateUser(userInput: UserInputData!): User!
     updateUserAsAdmin(userId: ID!, userInput: UserInputDataAdmin!): User!
     deleteUserAsAdmin(userId: ID!): Boolean!
     deleteFollow(followedId: ID!): Boolean!
     deleteFriendRequest(requestedId: ID!): Boolean!
+    deleteFriendship(friendId: ID!): Boolean!
 `;

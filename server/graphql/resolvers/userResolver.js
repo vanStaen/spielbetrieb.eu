@@ -328,4 +328,44 @@ export const userResolver = {
     }
   },
 
+  // declineFriendRequest(requestingId: ID!): Boolean!
+  async declineFriendRequest(args, req) {
+    try {
+      await Usersfriendrequest.destroy({
+        where: {
+          requesting_id: args.requestingId,
+          requested_id: req.userId,
+        },
+      });
+      /* await notificationService.createNotificationFriendRequestRefused(
+        req.userId,
+        args.requestingId,
+      ); */
+      return true;
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
+  // deleteFriendship(friendId: ID!): Boolean!
+  async deleteFriendship(args, req) {
+    try {
+      await Usersfriend.destroy({
+        where: {
+          user_id: args.friendId,
+          friend_id: req.userId,
+        },
+      });
+      await Usersfriend.destroy({
+        where: {
+          user_id: req.userId,
+          friend_id: args.friendId,
+        },
+      });
+      return true;
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
 };
