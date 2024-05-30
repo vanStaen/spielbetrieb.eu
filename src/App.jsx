@@ -20,7 +20,7 @@ import { Home } from "./pages/Home/Home";
 import { Legal } from "./pages/Legal/Legal";
 import { Admin } from "./pages/Admin/Admin";
 import { Newsletter } from "./pages/Newsletter/Newsletter";
-import { Dark } from "./pages/Dark/Dark";
+import { DarkSingle } from "./pages/DarkSingle/DarkSingle";
 import { Impressum } from "./components/Impressum/Impressum";
 
 import "./lib/i18n";
@@ -93,7 +93,7 @@ const App = observer(() => {
             <Route path="login/" element={<LoginPage />} />
             <Route path="basket/" element={<Home page="basket" />} />
             <Route path="dark/" element={<Home page="dark" />} />
-            <Route path="dark/:issue" element={<Dark />} />
+            <Route path="dark/:issue" element={<DarkSingle />} />
             <Route path="partner/:username" element={<Home page="partner" />} />
             <Route path="user/:username" element={<Home page="profile" />} />
             <Route path="profile/" element={<Home page="profile" />} />
