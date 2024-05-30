@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 
@@ -7,11 +7,19 @@ import { Notification } from "./Notification/Notification";
 import { pageStore } from "../../../store/pageStore/pageStore";
 import { postNotificationSeen } from "./postNotificationSeen";
 import { userStore } from "../../../store/userStore/userStore";
+import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
 
 import "./Notifications.less";
 
 export const Notifications = observer(() => {
   const { t } = useTranslation();
+  const [notificationsCount, setNotificationsCount] = useState(
+    userStore.notifications.length,
+  );
+
+  useEffect(() => {
+    setNotificationsCount(userStore.notifications.length);
+  }, [userStore.notifications]);
 
   useEffect(() => {
     postNotificationSeen();
@@ -24,6 +32,8 @@ export const Notifications = observer(() => {
         <Notification
           key={`notification${index}`}
           notification={notification}
+          notificationsCount={notificationsCount}
+          setNotificationsCount={setNotificationsCount}
         />
       );
     },
@@ -31,8 +41,12 @@ export const Notifications = observer(() => {
 
   return (
     <div className="notifications__container">
-      {userStore.notifications.length === 0 ? (
-        <div className="notification__nothing">
+      {userStore.isLoading ? (
+        <div className="notification__center">
+          <CustomSpinner text={t("general.loading")} />
+        </div>
+      ) : notificationsCount === 0 ? (
+        <div className="notification__center">
           <img
             src={errorLogo}
             width="50px"

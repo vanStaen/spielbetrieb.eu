@@ -40,6 +40,8 @@ export const Notification = observer((props) => {
 
   // console.log("notification", props.notification);
 
+  const { notification, notificationsCount, setNotificationsCount } = props;
+
   const {
     _id,
     type,
@@ -51,7 +53,7 @@ export const Notification = observer((props) => {
     photoLinkId,
     userLinkId,
     eventLinkId,
-  } = props.notification;
+  } = notification;
 
   const notFollowingYet =
     userStore.following.findIndex(
@@ -114,7 +116,7 @@ export const Notification = observer((props) => {
     elementDeleteButtonIcon.style.color = "white";
     elementDeleteButtonIcon.style.height = newHeight;
     elementDeleteButtonIcon.style.background = "rgba(160, 0, 0, 0.5)";
-    elementNotification.style.left = "-50px";
+    elementNotification.style.left = "-53px";
   };
 
   const hideMobileDeleteHandler = (id) => {
@@ -135,6 +137,7 @@ export const Notification = observer((props) => {
     setTimeout(() => {
       element.style.display = "none";
       deleteNotification(id);
+      setNotificationsCount(notificationsCount - 1);
     }, 300);
   };
 
@@ -142,6 +145,7 @@ export const Notification = observer((props) => {
     const subContainer = document.getElementById(`subContainer${id}`);
     subContainer.style.display = "none";
     deleteNotification(id);
+    setNotificationsCount(notificationsCount - 1);
   };
 
   const followBackHandler = async (event) => {
