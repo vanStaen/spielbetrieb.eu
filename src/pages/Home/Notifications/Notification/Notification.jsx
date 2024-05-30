@@ -218,12 +218,10 @@ export const Notification = observer((props) => {
         onTouchMove={onTouchMove}
         onTouchEnd={() => onTouchEnd(_id)}
       >
-        {pictureLoading ? <div className="profilFriendAvatar__loader">
-          <LoadingOutlined
-            className="profilFriendAvatar__loaderSpinner"
-            spin
-          />
-        </div> :
+        {pictureLoading ?
+          <div className="notifications__leftSide">
+            <LoadingOutlined spin className="notifications__leftSideSpinner" />
+          </div> :
           <div
             className={"notifications__leftSide"}
             onClick={() => notificationClickHandler()}
