@@ -270,8 +270,8 @@ export const userResolver = {
   async addFriendRequest(args, req) {
     try {
       const newFriend = new Usersfriendrequest({
-        requesting_id: parseInt(req.userId),
-        requested_id: parseInt(args.requestedId),
+        requesting_id: req.userId,
+        requested_id: args.requestedId,
       });
       await newFriend.save();
       await notificationService.createNotificationNewFriendRequest(
@@ -298,4 +298,34 @@ export const userResolver = {
     );
     return true;
   },
+
+  // acceptFriendRequest(requestingId: ID!): Boolean!
+  async acceptFriendRequest(args, req) {
+    try {
+      const newFriendFirst = new Usersfriend({
+        user_id: req.userId,
+        friend_id: args.requestedId,
+      });
+      await newFriendFirst.save();
+      const newFriendSecond = new Usersfriend({
+        user_id: req.userId,
+        friend_id: args.requestedId,
+      });
+      await newFriendSecond.save();
+      await Usersfriendrequest.destroy({
+        where: {
+          requesting_id: args.requestingId,
+          requested_id: req.userId,
+        },
+      });
+      await notificationService.createNotificationNewFriend(
+        req.userId,
+        args.requestingId,
+      );
+      return true;
+    } catch (err) {
+      console.log(err)
+    }
+  },
+
 };

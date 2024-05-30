@@ -76,19 +76,18 @@ export const notificationService = {
   },
 
 
-  // TODO: check this
-  async createNotificationNewFriend(userId, friendId) {
+  async createNotificationNewFriend(requestedId, requestingId) {
     try {
-      const user = await User.findOne({
-        where: { _id: userId },
+      const userRequested = await User.findOne({
+        where: { _id: requestedId },
       });
       const newNotification = new Notification({
-        userId: friendId,
-        mediaUrl: user.avatar,
-        type: 17,
-        data: user.userName,
-        action_data: userId,
-        userLinkId: userId,
+        userId: requestingId,
+        mediaUrl: userRequested.avatar,
+        type: 11,
+        data: userRequested.userName,
+        action_data: requestedId,
+        userLinkId: requestedId,
       });
       await newNotification.save();
       return true;
@@ -97,20 +96,7 @@ export const notificationService = {
     }
   },
 
-  // TODO: check this
-  async deleteNotificatioFriendRequest(requestingId, requestedId) {
-    try {
-      return await Notification.destroy({
-        where: {
-          user_id: requestedId,
-          action_data: requestingId,
-          type: 1,
-        },
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  },
+  // TODO: createNotificationFriendRequestRefused
 
   // TODO: check this
   async createNotificationBasic(

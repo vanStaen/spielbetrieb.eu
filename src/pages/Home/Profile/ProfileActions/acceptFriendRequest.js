@@ -1,7 +1,7 @@
-export async function deleteFriendRequest(id) {
+export async function acceptFriendRequest(id) {
   const graphqlQuery = {
     query: `mutation ( $id: ID! ) {
-              deleteFriendRequest ( requestedId: $id ) 
+              acceptFriendRequest ( requestingId: $id ) 
                 }`,
     variables: {
       id,
@@ -21,10 +21,10 @@ export async function deleteFriendRequest(id) {
   };
 
   const response = await fetch(endpoint, options);
-  const data = await response.json();
+  const res = await response.json();
 
-  if (data.errors) {
-    return data.errors[0];
+  if (res.errors) {
+    return res.errors[0];
   }
-  return data.deleteFriendRequest;
+  return res.data.acceptFriendRequest;
 }

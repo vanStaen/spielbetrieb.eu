@@ -11,12 +11,10 @@ import {
 
 import { profileStore } from "../../../../store/profileStore/profileStore";
 import { userStore } from "../../../../store/userStore/userStore";
-// import { ProfileFriends } from "../ProfileFriends/ProfileFriends";
-import { deleteFriend } from "./deleteFriend";
 import { deleteFollow } from "./deleteFollow";
 import { deleteFriendRequest } from "./deleteFriendRequest";
 import { addFollow } from "./addFollow";
-import { postFriendRequest } from "./postFriendRequest";
+import { addFriendRequest } from "./addFriendRequest";
 
 import "./ProfileActions.less";
 
@@ -26,30 +24,30 @@ export const ProfileActions = observer(() => {
   const [isFollowing, setIsFollowing] = useState(
     userStore.following
       ? !(
-          userStore.following.findIndex(
-            (following) => parseInt(following._id) === profileStore._id,
-          ) < 0
-        )
+        userStore.following.findIndex(
+          (following) => parseInt(following._id) === profileStore._id,
+        ) < 0
+      )
       : false,
   );
 
   const [isFriend, setIsFriend] = useState(
     userStore.friends
       ? !(
-          userStore.friends.findIndex(
-            (friend) => parseInt(friend._id) === profileStore._id,
-          ) < 0
-        )
+        userStore.friends.findIndex(
+          (friend) => parseInt(friend._id) === profileStore._id,
+        ) < 0
+      )
       : false,
   );
 
   const [isPending, setIsPending] = useState(
     userStore.friendsPending
       ? !(
-          userStore.friendsPending.findIndex(
-            (pending) => parseInt(pending.friend_id) === profileStore._id,
-          ) < 0
-        )
+        userStore.friendsPending.findIndex(
+          (pending) => parseInt(pending.friend_id) === profileStore._id,
+        ) < 0
+      )
       : false,
   );
 
@@ -62,13 +60,13 @@ export const ProfileActions = observer(() => {
         await deleteFollow(profileStore._id);
         setIsFollowing(false);
       } else if (action === "request") {
-        await postFriendRequest(profileStore._id);
+        await addFriendRequest(profileStore._id);
         setIsPending(true);
       } else if (action === "unrequest") {
         await deleteFriendRequest(profileStore._id);
         setIsPending(false);
       } else if (action === "unfriend") {
-        await deleteFriend(profileStore._id);
+        // await deleteFriend(profileStore._id);
         setIsPending(false);
         setIsFriend(false);
       }
