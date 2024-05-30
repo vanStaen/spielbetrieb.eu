@@ -3,10 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { observer } from "mobx-react";
 import { Button } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
-import * as dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
 import {
+  LoadingOutlined,
   CameraOutlined,
   CloseOutlined,
   DeleteFilled,
@@ -16,6 +14,8 @@ import {
   PictureOutlined,
   MailOutlined,
 } from "@ant-design/icons";
+import * as dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 
 import { userStore } from "../../../../store/userStore/userStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
@@ -218,17 +218,19 @@ export const Notification = observer((props) => {
         onTouchMove={onTouchMove}
         onTouchEnd={() => onTouchEnd(_id)}
       >
-        {pictureLoading ?
+        {pictureLoading ? (
           <div className="notifications__leftSide">
             <LoadingOutlined spin className="notifications__leftSideSpinner" />
-          </div> :
+          </div>
+        ) : (
           <div
             className={"notifications__leftSide"}
             onClick={() => notificationClickHandler()}
             style={{
               background: `url(${picture}) center center / cover no-repeat`,
             }}
-          ></div>}
+          ></div>
+        )}
         <div
           className="notifications__rightSide"
           onClick={() => notificationClickHandler()}

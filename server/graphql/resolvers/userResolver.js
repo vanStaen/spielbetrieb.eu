@@ -324,7 +324,7 @@ export const userResolver = {
       );
       return true;
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   },
 
@@ -343,7 +343,7 @@ export const userResolver = {
       ); */
       return true;
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   },
 
@@ -364,8 +364,7 @@ export const userResolver = {
       });
       return true;
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   },
-
 };

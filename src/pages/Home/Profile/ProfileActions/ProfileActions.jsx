@@ -15,7 +15,7 @@ import { userStore } from "../../../../store/userStore/userStore";
 import { acceptFriendRequest } from "./acceptFriendRequest";
 import { addFollow } from "./addFollow";
 import { addFriendRequest } from "./addFriendRequest";
-import { declineFriendRequest } from "./declineFriendRequest"
+import { declineFriendRequest } from "./declineFriendRequest";
 import { deleteFollow } from "./deleteFollow";
 import { deleteFriendRequest } from "./deleteFriendRequest";
 import { deleteFriendship } from "./deleteFriendship";
@@ -28,20 +28,20 @@ export const ProfileActions = observer(() => {
   const [isFollowing, setIsFollowing] = useState(
     userStore.following
       ? !(
-        userStore.following.findIndex(
-          (following) => parseInt(following._id) === profileStore._id,
-        ) < 0
-      )
+          userStore.following.findIndex(
+            (following) => parseInt(following._id) === profileStore._id,
+          ) < 0
+        )
       : false,
   );
 
   const [isFriend, setIsFriend] = useState(
     userStore.friends
       ? !(
-        userStore.friends.findIndex(
-          (friend) => parseInt(friend._id) === profileStore._id,
-        ) < 0
-      )
+          userStore.friends.findIndex(
+            (friend) => parseInt(friend._id) === profileStore._id,
+          ) < 0
+        )
       : false,
   );
 
@@ -49,16 +49,16 @@ export const ProfileActions = observer(() => {
   const [isPending, setIsPending] = useState(
     userStore.friendrequests
       ? !(
-        userStore.friendrequests.findIndex(
-          (pending) => parseInt(pending.friend_id) === profileStore._id,
-        ) < 0
-      )
+          userStore.friendrequests.findIndex(
+            (pending) => parseInt(pending.friend_id) === profileStore._id,
+          ) < 0
+        )
       : false,
   );
 
-  console.log('isFollowing', isFollowing);
-  console.log('isFriend', isFriend);
-  console.log('isPending', isPending);
+  console.log("isFollowing", isFollowing);
+  console.log("isFriend", isFriend);
+  console.log("isPending", isPending);
 
   const handleClick = async (action) => {
     try {

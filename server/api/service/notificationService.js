@@ -74,7 +74,6 @@ export const notificationService = {
     }
   },
 
-
   async createNotificationNewFriend(requestedId, requestingId) {
     try {
       const userRequested = await User.findOne({
