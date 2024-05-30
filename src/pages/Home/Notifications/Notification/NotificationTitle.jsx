@@ -2,20 +2,19 @@ import React from "react";
 
 export const NotificationTitle = (props) => {
   const { type, linkToUserPage } = props;
-
   switch (type) {
     case 1:
-      return <>{linkToUserPage} sent you a friend request!</>;
+      return <div className="notification__title">{linkToUserPage} sent you a friend request!</div>;
     case 2:
-      return <>{linkToUserPage} started following you!</>;
+      return <div className="notification__title">{linkToUserPage} started following you!</div>;
     case 3:
-      return <>You got mail from ${linkToUserPage}!</>;
+      return <div className="notification__title">You got mail from ${linkToUserPage}!</div>;
     case 11:
-      return <>{linkToUserPage} accepted your friend request!</>;
+      return <div className="notification__title">{linkToUserPage} accepted your friend request!</div>;
     case 12:
-      return <>{linkToUserPage} refused your friend request!</>;
+      return <div className="notification__title">{linkToUserPage} refused your friend request!</div>;
     case 61:
-      return <>{linkToUserPage} added a new profile picture</>;
+      return <div className="notification__title">{linkToUserPage} added a new profile picture</div>;
     default:
       console.log("Notification Type unknown!");
   }
