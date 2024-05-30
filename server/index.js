@@ -16,7 +16,6 @@ import { router as UserRouter } from "./api/controller/userController.js";
 import { router as MailRouter } from "./api/controller/mailController.js";
 import { router as UploadRouter } from "./api/controller/uploadController.js";
 import { router as NewsletterRouter } from "./api/controller/newsletterController.js";
-import { router as SocialRouter } from "./api/controller/socialController.js";
 
 import "./lib/loadEnv.js";
 
@@ -71,7 +70,6 @@ app.use("/user", UserRouter);
 app.use("/mail", MailRouter);
 app.use("/upload", UploadRouter);
 app.use("/newsletter", NewsletterRouter);
-app.use("/social", SocialRouter);
 
 // Start DB
 db.sequelize.sync().then((req) => {

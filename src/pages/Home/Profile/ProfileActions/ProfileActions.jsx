@@ -11,10 +11,14 @@ import {
 
 import { profileStore } from "../../../../store/profileStore/profileStore";
 import { userStore } from "../../../../store/userStore/userStore";
-import { deleteFollow } from "./deleteFollow";
-import { deleteFriendRequest } from "./deleteFriendRequest";
+
+import { acceptFriendRequest } from "./acceptFriendRequest";
 import { addFollow } from "./addFollow";
 import { addFriendRequest } from "./addFriendRequest";
+import { declineFriendRequest } from "./declineFriendRequest"
+import { deleteFollow } from "./deleteFollow";
+import { deleteFriendRequest } from "./deleteFriendRequest";
+import { deleteFriendship } from "./deleteFriendship";
 
 import "./ProfileActions.less";
 
@@ -41,15 +45,20 @@ export const ProfileActions = observer(() => {
       : false,
   );
 
+  // TODO: Check this
   const [isPending, setIsPending] = useState(
-    userStore.friendsPending
+    userStore.friendrequests
       ? !(
-        userStore.friendsPending.findIndex(
+        userStore.friendrequests.findIndex(
           (pending) => parseInt(pending.friend_id) === profileStore._id,
         ) < 0
       )
       : false,
   );
+
+  console.log('isFollowing', isFollowing);
+  console.log('isFriend', isFriend);
+  console.log('isPending', isPending);
 
   const handleClick = async (action) => {
     try {
@@ -66,7 +75,7 @@ export const ProfileActions = observer(() => {
         await deleteFriendRequest(profileStore._id);
         setIsPending(false);
       } else if (action === "unfriend") {
-        // await deleteFriend(profileStore._id);
+        await deleteFriendship(profileStore._id);
         setIsPending(false);
         setIsFriend(false);
       }
@@ -84,6 +93,7 @@ export const ProfileActions = observer(() => {
         </div>
         {
           // Friend/Unfriend action
+          // TODO: pending
           isPending ? (
             <div
               className={"profil__action"}

@@ -1,7 +1,6 @@
 import { action, makeObservable, observable } from "mobx";
 
 import { getProfileInfo } from "./getProfileInfo.js";
-import { postFremdPending } from "./postFremdPending.js";
 
 export class ProfileStore {
   isLoading = true;
@@ -13,7 +12,7 @@ export class ProfileStore {
   lastName = null;
   gender = null;
   friends = [];
-  friendsPending = [];
+  friendrequests = [];
   followers = [];
   following = [];
   lastActive = null;
@@ -32,7 +31,7 @@ export class ProfileStore {
       lastName: observable,
       gender: observable,
       friends: observable,
-      friendsPending: observable,
+      friendrequests: observable,
       followers: observable,
       following: observable,
       lastActive: observable,
@@ -48,7 +47,7 @@ export class ProfileStore {
       setLastName: action,
       setGender: action,
       setFriends: action,
-      setFriendsPending: action,
+      setFriendrequests: action,
       setFollowers: action,
       setFollowing: action,
       setLastActive: action,
@@ -95,8 +94,8 @@ export class ProfileStore {
     this.friends = friends;
   };
 
-  setFriendsPending = (friendsPending) => {
-    this.friendsPending = friendsPending;
+  setFriendrequests = (friendrequests) => {
+    this.friendrequests = friendrequests;
   };
 
   setFollowers = (followers) => {
@@ -131,24 +130,13 @@ export class ProfileStore {
       if (userName) {
         this.setUserName(userName);
         const profileData = await getProfileInfo(userName);
-        // TODO
-        const pendingData = await postFremdPending(parseInt(profileData._id));
-        if (profileData && pendingData) {
-          const friendsNotPending = profileData.friends.filter((friend) => {
-            const isPending = pendingData.findIndex(
-              (pending) => pending.friend_id === parseInt(friend._id),
-            );
-            if (isPending === -1) {
-              return true;
-            }
-            return false;
-          });
+        if (profileData) {
           this.set_id(parseInt(profileData._id));
           this.setAvatar(profileData.avatar);
           this.setFirstName(profileData.firstName);
           this.setLastName(profileData.lastName);
-          this.setFriends(friendsNotPending);
-          this.setFriendsPending(pendingData);
+          this.setFriends(profileData.friends);
+          this.setFriendrequests(profileData.friendrequests);
           this.setFollowers(profileData.followers);
           this.setFollowing(profileData.following);
           this.setGender(profileData.gender);

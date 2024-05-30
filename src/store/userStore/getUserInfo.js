@@ -70,6 +70,11 @@ export const getUserInfo = async () => {
                     _id,
                     userName,
                     avatar,
+                },
+                friendrequests {
+                    _id,
+                    userName,
+                    avatar,
                 }
               }
             }

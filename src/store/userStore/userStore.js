@@ -30,6 +30,7 @@ export class UserStore {
   usernameChange = null;
   language = null;
   friends = [];
+  friendrequests = [];
   followers = [];
   following = [];
   comments = [];
@@ -100,6 +101,8 @@ export class UserStore {
       setVisitors: action,
       friends: observable,
       setFriends: action,
+      friendrequests: observable,
+      setFriendrequests: action,
       followers: observable,
       setFollowers: action,
       following: observable,
@@ -189,6 +192,10 @@ export class UserStore {
     this.friends = friends;
   };
 
+  setFriendrequests = (friendrequests) => {
+    this.friendrequests = friendrequests;
+  };
+
   setVerifiedIdentity = (verifiedIdentity) => {
     this.verifiedIdentity = verifiedIdentity;
   };
@@ -248,7 +255,7 @@ export class UserStore {
       }
       const userData = await getUserInfo();
       if (userData) {
-        // console.log("userData", userData);
+        console.log("userData", userData);
         this.set_id(parseInt(userData._id));
         this.setIsAdmin(userData.isAdmin);
         this.setEmail(userData.email);
@@ -256,8 +263,8 @@ export class UserStore {
         this.setAvatar(userData.avatar);
         this.setFirstName(userData.firstName);
         this.setLastName(userData.lastName);
-        this.setFriends(userData.friends);
         this.setDescription(userData.description);
+        this.setFriends(userData.friends);
         this.setFollowers(userData.followers);
         this.setFollowing(userData.following);
         this.setLastActive(userData.lastActive);
