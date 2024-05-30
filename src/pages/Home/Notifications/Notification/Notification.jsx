@@ -32,16 +32,13 @@ dayjs.extend(relativeTime);
 
 export const Notification = observer((props) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const throttling = useRef(false);
+  const [pictureLoading, setPictureLoading] = useState(true);
   const [picture, setPicture] = useState(null);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
-  const throttling = useRef(false);
-  const { t } = useTranslation();
-
-  // console.log("notification", props.notification);
-
   const { notification, notificationsCount, setNotificationsCount } = props;
-
   const {
     _id,
     type,
@@ -74,8 +71,16 @@ export const Notification = observer((props) => {
   );
 
   const getPicture = async () => {
-    const res = await getPictureUrl(mediaUrl, "users");
-    setPicture(res);
+    const pictureUrl = await getPictureUrl(mediaUrl, "users");
+    setPicture(pictureUrl);
+    const isloaded = new Promise((resolve, reject) => {
+      const loadImg = new Image();
+      loadImg.src = pictureUrl;
+      loadImg.onload = () => resolve(pictureUrl);
+      loadImg.onerror = (err) => reject(err);
+    });
+    await isloaded;
+    setPictureLoading(false);
   };
 
   useEffect(() => {
@@ -212,20 +217,24 @@ export const Notification = observer((props) => {
         onTouchMove={onTouchMove}
         onTouchEnd={() => onTouchEnd(_id)}
       >
-        <div
-          className={"notifications__leftSide"}
-          onClick={() => notificationClickHandler()}
-          style={{
-            background: `url(${picture}) center center / cover no-repeat`,
-          }}
-        ></div>
+        {pictureLoading ? <div className="profilFriendAvatar__loader">
+          <LoadingOutlined
+            className="profilFriendAvatar__loaderSpinner"
+            spin
+          />
+        </div> :
+          <div
+            className={"notifications__leftSide"}
+            onClick={() => notificationClickHandler()}
+            style={{
+              background: `url(${picture}) center center / cover no-repeat`,
+            }}
+          ></div>}
         <div
           className="notifications__rightSide"
           onClick={() => notificationClickHandler()}
         >
-          <div className="notification__title">
-            <NotificationTitle type={type} linkToUserPage={linkToUserPage} />
-          </div>
+          <NotificationTitle type={type} linkToUserPage={linkToUserPage} />
           {!userStore.isLoading &&
             type === 1 &&
             (isNotFriend ? (
