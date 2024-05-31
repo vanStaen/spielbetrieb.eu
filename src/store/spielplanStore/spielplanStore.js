@@ -84,20 +84,20 @@ export class SpielplanStore {
     } else if (this.timeSpan === "week") {
       fromUnixDateStartOf = this.filterDateFrom
         .startOf("week")
-        .add(1, 'day')
+        .add(1, "day")
         .valueOf();
       untilUnixDateEndOf = this.filterDateFrom
         .endOf("week")
-        .add(1, 'day')
+        .add(1, "day")
         .valueOf();
     } else {
       fromUnixDateStartOf = this.filterDateFrom
         .startOf(this.timeSpan)
         .valueOf();
-      untilUnixDateEndOf = this.filterDateFrom
-        .endOf(this.timeSpan)
-        .valueOf();
+      untilUnixDateEndOf = this.filterDateFrom.endOf(this.timeSpan).valueOf();
     }
+    console.log("getAllPublicEvents from", fromUnixDateStartOf);
+    console.log("getAllPublicEvents until", untilUnixDateEndOf);
     const events = await getAllPublicEvents(
       fromUnixDateStartOf,
       untilUnixDateEndOf,
