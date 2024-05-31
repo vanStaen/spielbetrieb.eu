@@ -47,9 +47,10 @@ export const eventResolver = {
 
   // getAllPublicEvents
   async getAllPublicEvents(args, req) {
-    let fromDate = args.fromDate;
+    // Be sure to not filter out the event of the day, even if they have started yet
+    let fromDate = dayjs(args.fromDate).startOf('day').valueOf();
     if (args.fromDate < dayjs().valueOf()) {
-      fromDate = dayjs().valueOf();
+      fromDate = dayjs().startOf('day').valueOf();
     }
     return await Event.findAll({
       where: {
