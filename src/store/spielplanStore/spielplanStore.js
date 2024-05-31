@@ -81,18 +81,27 @@ export class SpielplanStore {
     if (this.timeSpan === "all") {
       fromUnixDateStartOf = this.filterDateFrom.startOf("day").valueOf();
       untilUnixDateEndOf = this.filterDateFrom.endOf("year").valueOf();
+    } else if (this.timeSpan === "week") {
+      fromUnixDateStartOf = this.filterDateFrom
+        .startOf("week")
+        .add(1, 'day')
+        .valueOf();
+      untilUnixDateEndOf = this.filterDateFrom
+        .endOf("week")
+        .add(1, 'day')
+        .valueOf();
     } else {
       fromUnixDateStartOf = this.filterDateFrom
         .startOf(this.timeSpan)
         .valueOf();
-      untilUnixDateEndOf = this.filterDateFrom.endOf(this.timeSpan).valueOf();
+      untilUnixDateEndOf = this.filterDateFrom
+        .endOf(this.timeSpan)
+        .valueOf();
     }
     const events = await getAllPublicEvents(
       fromUnixDateStartOf,
       untilUnixDateEndOf,
     );
-
-    // console.log("events", events);
     this.setEvents(events);
     this.setIsLoadingEvent(false);
   };
