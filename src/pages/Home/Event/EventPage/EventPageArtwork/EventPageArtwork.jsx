@@ -5,7 +5,7 @@ import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { spielplanStore } from "../../../../../store/spielplanStore/spielplanStore";
 
 import "./EventPageArtwork.less";
-import { pictureOrPlaceholder } from "../../../Spielplan/EventCard/pictureOrPlaceholder";
+import { pictureOrPlaceholder } from "../../../../../helpers/picture/pictureOrPlaceholder";
 
 // the required distance between touchStart and touchEnd to be detected as a swipe
 const MIN_SWIPE_DISTANCE = 20;

@@ -9,7 +9,7 @@ import dayjs from "dayjs";
 import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinner";
-import { pictureOrPlaceholder } from "./pictureOrPlaceholder";
+import { pictureOrPlaceholder } from "../../../../helpers/picture/pictureOrPlaceholder";
 
 import "./EventCard.less";
 
@@ -93,9 +93,8 @@ export const EventCard = observer((props) => {
     <div
       key={event._id}
       id={`eventContainer${event._id}`}
-      className={`event__Container ${
-        pageStore.selectedTheme === "light" ? "event__black" : "event__white"
-      }`}
+      className={`event__Container ${pageStore.selectedTheme === "light" ? "event__black" : "event__white"
+        }`}
       onClick={handleEventContainerClick}
     >
       <div className="event__date">
