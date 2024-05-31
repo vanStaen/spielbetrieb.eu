@@ -5,14 +5,8 @@ import { observer } from "mobx-react";
 import { Button } from "antd";
 import {
   LoadingOutlined,
-  CameraOutlined,
   CloseOutlined,
   DeleteFilled,
-  LikeOutlined,
-  DislikeOutlined,
-  UserAddOutlined,
-  PictureOutlined,
-  MailOutlined,
 } from "@ant-design/icons";
 import * as dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -21,6 +15,8 @@ import { userStore } from "../../../../store/userStore/userStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { deleteNotification } from "./deleteNotification";
 import { addFollow } from "../../Profile/ProfileActions/addFollow";
+import { acceptFriendRequest } from "../../Profile/ProfileActions/acceptFriendRequest";
+import { declineFriendRequest } from "../../Profile/ProfileActions/declineFriendRequest";
 import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
 import { NotificationTitle } from "./NotificationTitle";
 
@@ -139,9 +135,11 @@ export const Notification = observer((props) => {
 
   const closeNotificationHandler = (id) => {
     const element = document.getElementById(`notification${id}`);
+    const subContainer = document.getElementById(`subContainer${id}`);
     element.style.left = "100vw";
     setTimeout(() => {
       element.style.display = "none";
+      subContainer.style.display = "none";
       deleteNotification(id);
       setNotificationsCount(notificationsCount - 1);
     }, 300);
@@ -174,8 +172,26 @@ export const Notification = observer((props) => {
   const acceptRequestHandler = async (event) => {
     event.stopPropagation();
     try {
-      // TODO: await postAcceptRequest(actionData);
+      await acceptFriendRequest(actionData);
       userStore.fetchUserData(false);
+      const element = document.getElementById(`acceptRequest${_id}`);
+      const elementMobile = document.getElementById(
+        `acceptRequestMobile${_id}`,
+      );
+      element.style.opacity = 0;
+      elementMobile.style.opacity = 0;
+      setTimeout(() => {
+        elementMobile.style.display = "none";
+      }, 300);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const declineRequestHandler = async (event) => {
+    event.stopPropagation();
+    try {
+      await declineFriendRequest(actionData);
       const element = document.getElementById(`acceptRequest${_id}`);
       const elementMobile = document.getElementById(
         `acceptRequestMobile${_id}`,
@@ -219,12 +235,12 @@ export const Notification = observer((props) => {
         onTouchEnd={() => onTouchEnd(_id)}
       >
         {pictureLoading ? (
-          <div className="notifications__leftSide">
-            <LoadingOutlined spin className="notifications__leftSideSpinner" />
+          <div className="notifications__media">
+            <LoadingOutlined spin className="notifications__mediaSpinner" />
           </div>
         ) : (
           <div
-            className={"notifications__leftSide"}
+            className={"notifications__media"}
             onClick={() => notificationClickHandler()}
             style={{
               background: `url(${picture}) center center / cover no-repeat`,
@@ -232,14 +248,29 @@ export const Notification = observer((props) => {
           ></div>
         )}
         <div
-          className="notifications__rightSide"
+          className="notifications__text"
           onClick={() => notificationClickHandler()}
         >
           <NotificationTitle type={type} linkToUserPage={linkToUserPage} />
-          {!userStore.isLoading &&
-            type === 1 &&
-            (isNotFriend ? (
-              <div className="notification__actionsButtons">
+          <div className="notifications__date"> {notificationAge}</div>
+        </div>
+        {!userStore.isLoading &&
+          type === 1 &&
+          (isNotFriend ? (
+            <div className="notification__actionsButtons">
+              <div className="actionsButton">
+                <Button
+                  type="default"
+                  className={`declineButton`}
+                  onClick={(e) => {
+                    declineRequestHandler(e);
+                    closeNotificationHandler(_id)
+                  }}
+                >
+                  Decline
+                </Button>
+              </div>
+              <div className="actionsButton">
                 <Button
                   className={
                     pageStore.selectedTheme === "light"
@@ -252,47 +283,37 @@ export const Notification = observer((props) => {
                   Accept
                 </Button>
               </div>
-            ) : (
-              <div className="notification__actionsButtons">
-                <Button disabled type="primary">
-                  Accepted
-                </Button>
-              </div>
-            ))}
-          {!userStore.isLoading &&
-            type === 2 &&
-            (notFollowingYet ? (
-              <div className="notification__actionsButtons">
-                <Button
-                  className={
-                    pageStore.selectedTheme === "light"
-                      ? "lightColorTheme__Button"
-                      : "darkColorTheme__Button"
-                  }
-                  type="primary"
-                  onClick={(e) => followBackHandler(e)}
-                >
-                  Follow Back
-                </Button>
-              </div>
-            ) : (
-              <div className="notification__actionsButtons">
-                <Button type="primary" disabled>
-                  Following back
-                </Button>
-              </div>
-            ))}
-          <div className="notification__icon">
-            {type === 3 && <MailOutlined />}
-            {type === 5 && <CameraOutlined />}
-            {type === 12 && <LikeOutlined />}
-            {type === 13 && <LikeOutlined />}
-            {type === 14 && <PictureOutlined />}
-            {type === 15 && <DislikeOutlined />}
-            {type === 16 && <UserAddOutlined />}
-          </div>
-          <div className="notifications__date"> {notificationAge}</div>
-        </div>
+            </div>
+          ) : (
+            <div className="notification__actionsButtons">
+              <Button disabled type="primary">
+                Accepted
+              </Button>
+            </div>
+          ))}
+        {!userStore.isLoading &&
+          type === 2 &&
+          (notFollowingYet ? (
+            <div className="notification__actionsButtons">
+              <Button
+                className={
+                  pageStore.selectedTheme === "light"
+                    ? "lightColorTheme__Button"
+                    : "darkColorTheme__Button"
+                }
+                type="primary"
+                onClick={(e) => followBackHandler(e)}
+              >
+                Follow Back
+              </Button>
+            </div>
+          ) : (
+            <div className="notification__actionsButtons">
+              <Button type="primary" disabled>
+                Following back
+              </Button>
+            </div>
+          ))}
         <div
           className="closeDelete"
           onClick={() => closeNotificationHandler(_id)}
@@ -300,38 +321,48 @@ export const Notification = observer((props) => {
           <CloseOutlined />
         </div>
       </div>
-      <div className="notification__actionsButtonsMobile">
-        {!userStore.isLoading && type === 1 && isNotFriend && (
-          <div
-            className="notification__actionsButtons"
-            id={`acceptRequestMobile${_id}`}
+      {!userStore.isLoading && type === 1 && isNotFriend && (
+        <div
+          className="notification__actionsButtonsDoubleMobile"
+          id={`acceptRequestMobile${_id}`}
+        >
+          <Button
+            type="default"
+            className={`actionsButton declineButton`}
+            block={true}
+            onClick={(e) => {
+              declineRequestHandler(e);
+              closeNotificationHandlerMobile(_id)
+            }}
           >
-            <Button
-              type="primary"
-              className={`actionsButton ${pageStore.selectedTheme === "light" ? "lightColorTheme__Button" : "darkColorTheme__Button"}`}
-              block={true}
-              onClick={(e) => acceptRequestHandler(e)}
-            >
-              Accept
-            </Button>
-          </div>
-        )}
-        {!userStore.isLoading && type === 2 && notFollowingYet && (
-          <div
-            className="notification__actionsButtons"
-            id={`followbackMobile${_id}`}
+            Decline
+          </Button>
+
+          <Button
+            type="primary"
+            className={`actionsButton ${pageStore.selectedTheme === "light" ? "lightColorTheme__Button" : "darkColorTheme__Button"}`}
+            block={true}
+            onClick={(e) => acceptRequestHandler(e)}
           >
-            <Button
-              type="primary"
-              className={`actionsButton ${pageStore.selectedTheme === "light" ? "lightColorTheme__Button" : "darkColorTheme__Button"}`}
-              block={true}
-              onClick={(e) => followBackHandler(e)}
-            >
-              Follow Back
-            </Button>
-          </div>
-        )}
-      </div>
+            Accept
+          </Button>
+        </div>
+      )}
+      {!userStore.isLoading && type === 2 && notFollowingYet && (
+        <div
+          className="notification__actionsButtonsMobile"
+          id={`followbackMobile${_id}`}
+        >
+          <Button
+            type="primary"
+            block={true}
+            className={`actionsButton ${pageStore.selectedTheme === "light" ? "lightColorTheme__Button" : "darkColorTheme__Button"}`}
+            onClick={(e) => followBackHandler(e)}
+          >
+            Follow Back
+          </Button>
+        </div>
+      )}
     </div>
   );
 });

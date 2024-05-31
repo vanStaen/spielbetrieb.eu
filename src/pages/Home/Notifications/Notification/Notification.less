@@ -26,7 +26,7 @@
       background-color: rgba(var(--themeBlackOrWhiteColor), .15);
     }
 
-    .notifications__leftSide {
+    .notifications__media {
       display: inline-block;
       vertical-align: top;
       width: 60px;
@@ -35,7 +35,7 @@
       cursor: pointer;
       border-radius: 3px 0 0 3px;
 
-      .notifications__leftSideSpinner {
+      .notifications__mediaSpinner {
         width: 50px;
         min-height: 60px;
         display: flex;
@@ -47,10 +47,9 @@
       }
     }
 
-    .notifications__rightSide {
+    .notifications__text {
       width: 100%;
       padding: 5px 15px;
-
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -66,64 +65,70 @@
       .notifications__date {
         font-size: 12px;
         display: block;
-        color: rgba(white, .75);
+        color: rgba(var(--themeBlackOrWhiteColor), .75);
         line-height: 20px;
       }
+    }
 
-      .notification__icon {
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 40px;
-        font-size: 30px;
-        color: white;
+    .notification__actionsButtons {
+      position: absolute;
+      top: 14px;
+      right: 45px;
+      transition: opacity .3s ease;
+      display: inline-block;
+
+      .actionsButton {
+        letter-spacing: 3px;
+        display: inline-block;
+
+        &:first-child {
+          margin-right: 8px !important;
+        }
+
+        .declineButton {
+          background-color: rgba(var(--themeFontColor), .25);
+          color: rgba(var(--themeFontColor), .8);
+          border: 1px solid rgba(var(--themeFontColor), .1);
+
+          &:hover {
+            background-color: rgba(var(--themeFontColor), .2);
+            color: rgba(var(--themeFontColor), 1);
+            border: 1px solid rgba(var(--themeFontColor), .2);
+          }
+        }
       }
+    }
 
-      .notification__actionsButtons {
-        position: absolute;
-        top: 0;
-        right: 45px;
-        min-height: 50px;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: opacity .3s ease;
+    .closeDelete {
+      position: relative;
+      z-index: 5;
+      top: 22px;
+      right: 0;
+      font-size: 17px;
+      width: 30px;
+      color: rgba(var(--themeFontColor), 1);
+      margin-right: 8px;
+      cursor: pointer;
+      height: 20px;
+
+      &:hover {
+        color: rgba(var(--themeFontColor), .75);
       }
     }
   }
 
-  .closeDelete {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 5;
-    top: 0px;
-    right: 0px;
-    font-size: 17px;
-    width: 30px;
-    color: rgba(var(--themeFontColor), 1);
-    margin-right: 10px;
-    cursor: pointer;
-
-    &:hover {
-      color: rgba(var(--themeFontColor), .75);
-    }
-  }
-
-  .notification__actionsButtonsMobile {
+  .notification__actionsButtonsMobile,
+  .notification__actionsButtonsDoubleMobile {
     display: none;
-    padding-top: 0px;
-    width: 100%;
 
-    .actionsButton {
-      text-transform: uppercase;
-      letter-spacing: 3px;
+    .declineButton {
+      opacity: .75;
+      background-color: rgba(var(--themeFontColor), .25);
+      color: rgba(var(--themeFontColor), 1);
+      border: 1px solid rgba(var(--themeFontColor), .25);
     }
   }
+
 
   .notification__deleteButton {
     display: none;
@@ -150,30 +155,47 @@
   .notifications__container {
     .notification__subContainer {
       .notifications__notification {
-        .notifications__rightSide {
+        .notifications__text {
           width: calc(100% - 50px);
+        }
 
-          .notification__icon {
-            display: none;
-          }
+        .notification__actionsButtons {
+          display: none;
+        }
 
-          .notification__actionsButtons {
-            display: none;
-          }
+        .closeDelete {
+          display: none;
         }
       }
 
       .notification__actionsButtonsMobile {
         display: block;
+        padding-top: 4px;
+        width: 100%;
 
-        .ant-btn {
-          border-top-left-radius: 0 !important;
-          border-top-right-radius: 0 !important;
+        .actionsButton {
+          text-transform: uppercase;
+          letter-spacing: 3px;
         }
       }
 
-      .closeDelete {
-        display: none;
+      .notification__actionsButtonsDoubleMobile {
+        display: block;
+        padding-top: 4px;
+        width: 100%;
+
+        .actionsButton {
+          text-transform: uppercase;
+          letter-spacing: 3px;
+        }
+
+        .ant-btn-block {
+          width: calc(50% - 2px) !important;
+
+          &:first-child {
+            margin-right: 4px !important;
+          }
+        }
       }
 
       .notification__deleteButton {
