@@ -215,7 +215,10 @@ export const BrowseFilter = observer((props) => {
               className={`browseFilter__menuElement menu__element ${spielplanStore.timeSpan === "day" && "menu__elementSelected"}`}
               onClick={() => timeSpanChange("day")}
             >
-              {dayjs(spielplanStore.filterDateFrom).format(DATE_FORMAT_DAY)}
+              {dayjs(spielplanStore.filterDateFrom).valueOf() <
+              dayjs().valueOf()
+                ? dayjs().startOf("day").format(DATE_FORMAT_DAY)
+                : dayjs(spielplanStore.filterDateFrom).format(DATE_FORMAT_DAY)}
             </div>
             <div className="menu__whiteline"></div>
             <div
