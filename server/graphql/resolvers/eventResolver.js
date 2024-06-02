@@ -49,16 +49,19 @@ export const eventResolver = {
   async getAllPublicEvents(args, req) {
     // Be sure to not filter out the event of the day, even if they have started yet
     let fromDate = dayjs(args.fromDate).startOf("day").valueOf();
+    const untilDate = dayjs(args.untilDate).endOf("day").valueOf();
     if (args.fromDate < dayjs().valueOf()) {
       fromDate = dayjs().startOf("day").valueOf();
     }
+    console.log(args.fromDate, fromDate);
+    console.log(args.untilDate, untilDate);
     return await Event.findAll({
       where: {
         private: false,
         isDraft: false,
         validated: true,
         fromDate: {
-          [Op.between]: [fromDate, args.untilDate],
+          [Op.between]: [fromDate, untilDate],
         },
       },
       include: User,
