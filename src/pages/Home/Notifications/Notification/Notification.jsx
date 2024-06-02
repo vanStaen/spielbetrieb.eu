@@ -264,7 +264,7 @@ export const Notification = observer((props) => {
                   className={`declineButton`}
                   onClick={(e) => {
                     declineRequestHandler(e);
-                    closeNotificationHandler(_id)
+                    closeNotificationHandler(_id);
                   }}
                 >
                   Decline
@@ -332,7 +332,7 @@ export const Notification = observer((props) => {
             block={true}
             onClick={(e) => {
               declineRequestHandler(e);
-              closeNotificationHandlerMobile(_id)
+              closeNotificationHandlerMobile(_id);
             }}
           >
             Decline

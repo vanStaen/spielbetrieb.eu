@@ -8,21 +8,35 @@ import gegen from "../../img/artworks/gegen.png";
 import piepshow from "../../img/artworks/piepshow.png";
 import nachspiel from "../../img/artworks/nachspiel.png";
 
-
 export function pictureOrPlaceholder(event) {
   if (event.pictures[0]) {
     return getPictureUrl(event.pictures[0], "events");
   } else if (event.externalPicture) {
     return event.externalPicture;
-  } else if (event.location === 1 && event.title.toLowerCase().includes('symbiotikka')) {
+  } else if (
+    event.location === 1 &&
+    event.title.toLowerCase().includes("symbiotikka")
+  ) {
     return symbiotikka;
-  } else if (event.location === 1 && event.title.toLowerCase().includes('electric monday')) {
+  } else if (
+    event.location === 1 &&
+    event.title.toLowerCase().includes("electric monday")
+  ) {
     return electricmonday;
-  } else if (event.location === 1 && event.title.toLowerCase().includes('gegen')) {
+  } else if (
+    event.location === 1 &&
+    event.title.toLowerCase().includes("gegen")
+  ) {
     return gegen;
-  } else if (event.location === 1 && event.title.toLowerCase().includes('piepshow')) {
+  } else if (
+    event.location === 1 &&
+    event.title.toLowerCase().includes("piepshow")
+  ) {
     return piepshow;
-  } else if (event.location === 1 && event.title.toLowerCase().includes('nachspiel')) {
+  } else if (
+    event.location === 1 &&
+    event.title.toLowerCase().includes("nachspiel")
+  ) {
     return nachspiel;
   } else if (event.location === 1) {
     return kitkatPlaceholder;
