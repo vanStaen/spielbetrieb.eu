@@ -82,14 +82,8 @@ export class SpielplanStore {
       fromUnixDateStartOf = this.filterDateFrom.startOf("day").valueOf();
       untilUnixDateEndOf = this.filterDateFrom.endOf("year").valueOf();
     } else if (this.timeSpan === "week") {
-      fromUnixDateStartOf = this.filterDateFrom
-        .startOf("week")
-        .add(1, "day")
-        .valueOf();
-      untilUnixDateEndOf = this.filterDateFrom
-        .endOf("week")
-        .add(1, "day")
-        .valueOf();
+      fromUnixDateStartOf = this.filterDateFrom.startOf("week").valueOf();
+      untilUnixDateEndOf = this.filterDateFrom.endOf("week").valueOf();
     } else {
       fromUnixDateStartOf = this.filterDateFrom
         .startOf(this.timeSpan)
