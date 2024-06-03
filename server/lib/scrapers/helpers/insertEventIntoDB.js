@@ -14,8 +14,8 @@ export default async function insertEventIntoDB(dataObject) {
           isNewValue[key] = value;
         }
       }
+      delete isNewValue.validated;
       if (Object.keys(isNewValue).length) {
-        isNewValue.validated = false;
         try {
           await Event.update(isNewValue, {
             where: {
@@ -62,7 +62,7 @@ export default async function insertEventIntoDB(dataObject) {
       allowAnonymous: dataObject.allowAnonymous,
       isPartnerEvent: dataObject.isPartnerEvent,
       isDraft: false,
-      validated: false,
+      validated: dataObject.validated,
       admin: [17, 1],
     });
 

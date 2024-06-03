@@ -70,7 +70,12 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
     const event = await page.evaluate(() => {
       const title = document.querySelector(".party_head > .h2").innerHTML.split('</div>')[1];
       const fromTime = document.querySelectorAll(".panel-body")[6].innerHTML.split('ab')[1].replaceAll(/ /g, "").replace("Uhr</h3>", "");
-      return { title, fromTime };
+      const description = document.querySelectorAll(".teaserbox")[1].innerHTML
+        .split('<div class="clear"></div>')[1]
+        .replaceAll("</div>", "")
+        .replaceAll("<br>", " ")
+        .replaceAll("&amp;", "&");;
+      return { title, fromTime, description };
     });
 
     const externalId = data[i].externalId;
@@ -135,6 +140,7 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
       locationCoordinates: LOCATION_COORDINATES,
       links,
       eventTags,
+      validated: true,
     };
 
     delete dataEventNew.tags;
