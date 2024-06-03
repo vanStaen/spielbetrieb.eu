@@ -40,7 +40,6 @@ const App = observer(() => {
   const { i18n } = useTranslation();
 
   useLayoutEffect(() => {
-    // Define variable height
     defineVariableHeight();
   }, []);
 

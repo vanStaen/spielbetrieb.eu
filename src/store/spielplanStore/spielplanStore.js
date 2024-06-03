@@ -85,8 +85,6 @@ export class SpielplanStore {
       const firstDayOfWeek = new Intl.Locale(navigator.language).weekInfo
         .firstDay;
       console.log("first day of week", firstDayOfWeek);
-      console.log("getAllPublicEvents from", fromUnixDateStartOf);
-      console.log("getAllPublicEvents until", untilUnixDateEndOf);
       if (firstDayOfWeek === 1) {
         fromUnixDateStartOf = this.filterDateFrom
           .startOf("week")
@@ -106,6 +104,9 @@ export class SpielplanStore {
         .valueOf();
       untilUnixDateEndOf = this.filterDateFrom.endOf(this.timeSpan).valueOf();
     }
+
+    console.log("getAllPublicEvents from", fromUnixDateStartOf);
+    console.log("getAllPublicEvents until", untilUnixDateEndOf);
 
     const events = await getAllPublicEvents(
       fromUnixDateStartOf,
