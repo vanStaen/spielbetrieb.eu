@@ -35,8 +35,8 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
     for (let i = 0; i < events.length; i++) {
       const externalId = events[i].querySelector("a").href.split("id=")[1];
       const externalPicture = events[i].querySelector("img").src;
-      const title = events[i].querySelector("img").alt.split(" @")[0];
-      const link = events[i].querySelector("a").href;
+      // const title = events[i].querySelector("img").alt.split(" @")[0];
+      const link = events[i].querySelector("a").href.replace('lang=en', 'lang=de');
       const tags = events[i]
         .querySelector("img")
         .alt.split(" @")[1]
@@ -50,7 +50,6 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
       array.push({
         externalId,
         externalPicture,
-        title,
         tags,
         fromDate,
         link,
@@ -59,10 +58,34 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
     return array;
   });
 
+
+  const events = [];
+  // Iterate through the data
+  for (let i = 0; i < data.length; i++) {
+    // Open link
+    await page.goto(data[i].link + '&lang=de', {
+      waitUntil: "domcontentloaded",
+    });
+
+    const event = await page.evaluate(() => {
+      const title = document.querySelector(".party_head > .h2").innerHTML.split('</div>')[1];
+      const fromTime = document.querySelectorAll(".panel-body")[6].innerHTML.split('ab')[1].replaceAll(/ /g, "").replace("Uhr</h3>", "");
+      return { title, fromTime };
+    });
+
+    const externalId = data[i].externalId;
+    const externalPicture = data[i].externalPicture;
+    const link = data[i].link;
+    const tags = data[i].tags;
+    const fromDate = data[i].fromDate;
+    events.push({ ...event, externalId, externalPicture, link, tags, fromDate });
+  }
+
+
   // Export results to Json file
-  const content = JSON.stringify(data);
+  const content = JSON.stringify(events);
   fs.writeFile(
-    `./exports/${dayjs().format("MM_DD")}_insomia.json`,
+    `./exports/${dayjs().format("MM_DD")}_insomnia.json`,
     content,
     (err) => {
       if (err) {
@@ -77,26 +100,27 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
   const tagData = await getTags();
 
   // Add event into db
-  for (const dataEvent of data) {
+  for (const dataEvent of events) {
     const links = [dataEvent.link];
     const eventTags = dataEvent.tags
       ? dataEvent.tags
-          .map((tag) => {
-            const result = tagData.filter(
-              (data) => nameParser(data.name, "en") === tag,
-            );
-            if (result.length === 1) {
-              return result[0].id;
-            } else {
-              return undefined;
-            }
-          })
-          .filter(Boolean)
+        .map((tag) => {
+          const result = tagData.filter(
+            (data) => nameParser(data.name, "en") === tag,
+          );
+          if (result.length === 1) {
+            return result[0].id;
+          } else {
+            return undefined;
+          }
+        })
+        .filter(Boolean)
       : [];
 
     const fromDateSplit = dataEvent.fromDate.split(".");
+    const fromTime = dataEvent.fromTime;
     const dateBerlinUTC = new Date(
-      `2024-${fromDateSplit[1]}-${fromDateSplit[0]}T00:00:00.000+02:00`,
+      `2024-${fromDateSplit[1]}-${fromDateSplit[0]}T${fromTime}:00.000+02:00`,
     );
     const fromDateNew = new Date(dateBerlinUTC);
 
