@@ -81,14 +81,32 @@ export class SpielplanStore {
     if (this.timeSpan === "all") {
       fromUnixDateStartOf = this.filterDateFrom.startOf("day").valueOf();
       untilUnixDateEndOf = this.filterDateFrom.endOf("year").valueOf();
+    } else if (this.timeSpan === "week") {
+      const firstDayOfWeek = new Intl.Locale(navigator.language).weekInfo
+        .firstDay;
+      console.log("first day of week", firstDayOfWeek);
+      console.log("getAllPublicEvents from", fromUnixDateStartOf);
+      console.log("getAllPublicEvents until", untilUnixDateEndOf);
+      if (firstDayOfWeek === 1) {
+        fromUnixDateStartOf = this.filterDateFrom
+          .startOf("week")
+          .add(1, "day")
+          .valueOf();
+        untilUnixDateEndOf = this.filterDateFrom
+          .endOf("week")
+          .add(1, "day")
+          .valueOf();
+      } else {
+        fromUnixDateStartOf = this.filterDateFrom.startOf("week").valueOf();
+        untilUnixDateEndOf = this.filterDateFrom.endOf("week").valueOf();
+      }
     } else {
       fromUnixDateStartOf = this.filterDateFrom
         .startOf(this.timeSpan)
         .valueOf();
       untilUnixDateEndOf = this.filterDateFrom.endOf(this.timeSpan).valueOf();
     }
-    console.log("getAllPublicEvents from", fromUnixDateStartOf);
-    console.log("getAllPublicEvents until", untilUnixDateEndOf);
+
     const events = await getAllPublicEvents(
       fromUnixDateStartOf,
       untilUnixDateEndOf,
