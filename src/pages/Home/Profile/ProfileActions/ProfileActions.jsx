@@ -45,20 +45,15 @@ export const ProfileActions = observer(() => {
       : false,
   );
 
-  // TODO: Check this
   const [isPending, setIsPending] = useState(
     userStore.friendrequests
       ? !(
           userStore.friendrequests.findIndex(
-            (pending) => parseInt(pending.friend_id) === profileStore._id,
+            (pending) => parseInt(pending._id) === profileStore._id,
           ) < 0
         )
       : false,
   );
-
-  console.log("isFollowing", isFollowing);
-  console.log("isFriend", isFriend);
-  console.log("isPending", isPending);
 
   const handleClick = async (action) => {
     try {
@@ -93,7 +88,6 @@ export const ProfileActions = observer(() => {
         </div>
         {
           // Friend/Unfriend action
-          // TODO: pending
           isPending ? (
             <div
               className={"profil__action"}

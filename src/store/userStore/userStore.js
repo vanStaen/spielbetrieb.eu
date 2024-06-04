@@ -266,6 +266,7 @@ export class UserStore {
         this.setDescription(userData.description);
         this.setFriends(userData.friends);
         this.setFollowers(userData.followers);
+        this.setFriendrequests(userData.friendrequests);
         this.setFollowing(userData.following);
         this.setLastActive(userData.lastActive);
         this.setLanguage(userData.language);
