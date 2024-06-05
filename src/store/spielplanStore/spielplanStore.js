@@ -99,9 +99,7 @@ export class SpielplanStore {
         untilUnixDateEndOf = this.filterDateFrom.endOf("week").valueOf();
       }
     } else if (this.timeSpan === "day") {
-      if (dayjs(spielplanStore.filterDateFrom).valueOf() <
-        dayjs().valueOf()
-      ) {
+      if (dayjs(spielplanStore.filterDateFrom).valueOf() < dayjs().valueOf()) {
         fromUnixDateStartOf = dayjs().startOf("day").valueOf();
         untilUnixDateEndOf = dayjs().endOf("day").valueOf();
       } else {

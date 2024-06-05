@@ -7,6 +7,7 @@ import electricmonday from "../../img/artworks/electricmonday.png";
 import gegen from "../../img/artworks/gegen.png";
 import piepshow from "../../img/artworks/piepshow.png";
 import nachspiel from "../../img/artworks/nachspiel.png";
+import somnambulberlin from "../../img/artworks/somnambulberlin.png";
 
 export function pictureOrPlaceholder(event) {
   if (event.pictures[0]) {
@@ -38,6 +39,11 @@ export function pictureOrPlaceholder(event) {
     event.title.toLowerCase().includes("nachspiel")
   ) {
     return nachspiel;
+  } else if (
+    event.location === 1 &&
+    event.title.toLowerCase().includes("somnambul")
+  ) {
+    return somnambulberlin;
   } else if (event.location === 1) {
     return kitkatPlaceholder;
   } else if (event.location === 8) {

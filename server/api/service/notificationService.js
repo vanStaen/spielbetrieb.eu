@@ -58,7 +58,6 @@ export const notificationService = {
     }
   },
 
-
   async createNotificationFriendRequestDeclined(requestingId, requestedId) {
     try {
       const userRequested = await User.findOne({
