@@ -6,6 +6,7 @@
   "showGender": true,
   "showAge": true,
   "showLocation": true,
+  "showSexualOrientation": false,
   "showFriendListToStrangers": true,
   "showFriendListToFriends": true,
   "showFollowingListToStrangers": true,

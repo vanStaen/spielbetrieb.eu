@@ -7,6 +7,7 @@ import { userStore } from "../../../store/userStore/userStore";
 import { authStore } from "../../../store/authStore/authStore";
 import { updateLanguage } from "./updateLanguage";
 import { updateGender } from "./updateGender";
+import { updateOrientation } from "./updateOrientation";
 import { UserNameUpdate } from "./UserNameUpdate/UserNameUpdate";
 import { DeleteAccountButton } from "./DeleteAccountButton/DeleteAccountButton";
 import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
@@ -51,6 +52,12 @@ export const Settings = observer(() => {
     updateGender(value);
   };
 
+  const changeOrientationHandler = (event) => {
+    const value = parseInt(event.target.value);
+    userStore.setOrientation(value);
+    updateOrientation(value);
+  };
+
   return (
     <div className="EditSettings__main">
       {userStore.isLoading ? (
@@ -65,8 +72,8 @@ export const Settings = observer(() => {
             {t("settings.accountSettings")}
           </Divider>
 
-          <div className="EditSettings__singleSetting">
-            <div className="EditSettings__centerDiv">
+          <div className="EditSettings__flexContainer">
+            <div className="EditSettings__centerDiv EditSettings__radio">
               <Radio.Group
                 defaultValue={String(userStore.gender)}
                 buttonStyle="solid"
@@ -77,12 +84,25 @@ export const Settings = observer(() => {
                 <Radio.Button value="3">{t("gender.other")}</Radio.Button>
               </Radio.Group>
             </div>
-          </div>
 
-          <div className="EditSettings__spacerDiv" />
+            <div className="EditSettings__spacerDiv" />
 
-          <div className="EditSettings__singleSetting">
-            <div className="EditSettings__centerDiv">
+            <div className="EditSettings__centerDiv EditSettings__radio">
+              <Radio.Group
+                defaultValue={String(userStore.orientation)}
+                buttonStyle="solid"
+                onChange={changeOrientationHandler}
+              >
+                <Radio.Button value="1">Hetero</Radio.Button>
+                <Radio.Button value="2">Homo</Radio.Button>
+                <Radio.Button value="3">Bi</Radio.Button>
+                <Radio.Button value="4">Other</Radio.Button>
+              </Radio.Group>
+            </div>
+
+            <div className="EditSettings__spacerDiv" />
+
+            <div className="EditSettings__centerDiv EditSettings__radio">
               <Radio.Group
                 defaultValue={initLanguage}
                 buttonStyle="solid"
@@ -93,10 +113,6 @@ export const Settings = observer(() => {
               </Radio.Group>
             </div>
           </div>
-
-          <div className="EditSettings__spacerDiv" />
-
-          <UserNameUpdate />
 
           <div className="EditSettings__spacerDiv" />
           <Divider plain className="EditSettings__divider">
@@ -123,12 +139,42 @@ export const Settings = observer(() => {
             setting={"showFirstName"}
             value={userStore.profilSettings.showFirstName}
           />
+          {userStore.profilSettings.showFirstName && (
+            <SettingElementSwitch
+              title={t("settings.showLastName")}
+              type={"profilSettings"}
+              setting={"showLastName"}
+              value={userStore.profilSettings.showLastName}
+              dependOnPrevious={true}
+            />
+          )}
 
           <SettingElementSwitch
-            title={t("settings.showLastName")}
+            title={t("settings.showGender")}
             type={"profilSettings"}
-            setting={"showLastName"}
-            value={userStore.profilSettings.showLastName}
+            setting={"showGender"}
+            value={userStore.profilSettings.showGender}
+          />
+
+          <SettingElementSwitch
+            title={t("settings.showSexualOrientation")}
+            type={"profilSettings"}
+            setting={"showSexualOrientation"}
+            value={userStore.profilSettings.showSexualOrientation}
+          />
+
+          <SettingElementSwitch
+            title={t("settings.showAge")}
+            type={"profilSettings"}
+            setting={"showAge"}
+            value={userStore.profilSettings.showAge}
+          />
+
+          <SettingElementSwitch
+            title={t("settings.showLocation")}
+            type={"profilSettings"}
+            setting={"showLocation"}
+            value={userStore.profilSettings.showLocation}
           />
 
           <SettingElementSwitch
@@ -208,9 +254,9 @@ export const Settings = observer(() => {
             {t("settings.dangerZone")}
           </Divider>
 
-          <div className="EditSettings__centerDiv">
-            <DeleteAccountButton />
-          </div>
+          <UserNameUpdate />
+          <div className="EditSettings__spacerDiv" />
+          <DeleteAccountButton />
         </div>
       )}
       <HelpButtons />

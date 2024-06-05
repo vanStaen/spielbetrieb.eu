@@ -70,7 +70,7 @@ export const User = sequelize.sequelize.define("user", {
     allowNull: true,
   },
   orientation: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     allowNull: true,
   },
   wishes: {

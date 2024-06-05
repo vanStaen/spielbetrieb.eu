@@ -283,7 +283,11 @@
 		"showFollowingListToStrangers": "Alle können sehen wer ich folge",
 		"showFollowingListToFriends": "Freunden können sehen wer ich folge",
 		"sendEmailPartnerEvent": "Mich per eMail bescheid geben, wenn eine Veranstalter die ich folge, eine Neue event hinzufügt.",
-		"sendEmailNotification": "Mich per eMail bescheid geben, wenn ich eine neue Benachrichtigung bekomme"
+		"sendEmailNotification": "Mich per eMail bescheid geben, wenn ich eine neue Benachrichtigung bekomme",
+		"showAge": "Alter in deinem Profile anzeigen",
+		"showGender": "Geschlecht in deinem Profile anzeigen",
+		"showLocation": "Standort in deinem Profile anzeigen",
+		"showSexualOrientation": "Sexuelle Orientation in deinem Profile anzeigen"
 	},
 	"gender": {
 		"male": "Männlich",

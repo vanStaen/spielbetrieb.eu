@@ -11,12 +11,20 @@ export const ProfileDetails = observer(() => {
   const [showLastSeenOnline, setShowLastSeenOnline] = useState(false);
   const [showLastName, setShowLastName] = useState(false);
   const [showFirstName, setShowFirstName] = useState(false);
+  const [showAge, setShowAge] = useState(false);
+  const [showLocation, setShowLocation] = useState(false);
+  const [showGender, setShowGender] = useState(false);
+  const [showSexualOrientation, setShowSexualOrientation] = useState(false);
 
   useEffect(() => {
     if (!profileStore.isLoading && profileStore.profilSettings) {
       setShowLastSeenOnline(profileStore.profilSettings.showLastSeenOnline);
       setShowLastName(profileStore.profilSettings.showLastName);
       setShowFirstName(profileStore.profilSettings.showFirstName);
+      setShowGender(profileStore.profilSettings.showGender);
+      setShowSexualOrientation(profileStore.profilSettings.showSexualOrientation);
+      setShowLocation(profileStore.profilSettings.showLocation);
+      setShowAge(profileStore.profilSettings.showAge);
     }
   }, [profileStore.isLoading, profileStore.profilSettings]);
 
@@ -26,10 +34,15 @@ export const ProfileDetails = observer(() => {
     <div className="profil__detailsContainer">
       <div className="profil__hello">
         <div>
-          {showFirstName && ` ${profileStore.firstName}`}
+          {showFirstName && profileStore.firstName}
           {showLastName && ` ${profileStore.lastName}`}
         </div>
         <div className="profil__username">@{profileStore.userName}</div>
+        <div className="profil__username">
+          {showGender && `${profileStore.gender}`}
+          {showAge && ` ${profileStore.age}`}
+          {showSexualOrientation && ` ${profileStore.orientation}`}
+        </div>
         {showLastSeenOnline && (
           <div className="profil__lastSeenOnline">
             {t("profile.lastSeenOnline")} <br />{" "}

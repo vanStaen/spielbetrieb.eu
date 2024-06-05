@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { authStore } from "../../../../store/authStore/authStore.js";
 import { archiveAccount } from "./archiveAccount.js";
 
-import "./DeleteAccountButton.css";
+import "./DeleteAccountButton.less";
 
 export const DeleteAccountButton = () => {
   const { t } = useTranslation();
@@ -49,12 +49,16 @@ export const DeleteAccountButton = () => {
 
   return (
     <div className="EditSettings__singleSetting">
+      <div className="EditSettings__title {">
+        {t("settings.deleteAccount")}
+      </div>
       <Button
         block
         className="deleteButton"
         icon={<DeleteOutlined />}
         onClick={areYouSureHandler}
         type="primary"
+        disabled={showAreYouSureButton}
       >
         {t("settings.deleteAccount")}
       </Button>
