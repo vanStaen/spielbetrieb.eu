@@ -9,10 +9,12 @@ import * as dresscodeResolver from "./resolvers/dresscodeResolver.js";
 import * as equipmentResolver from "./resolvers/equipmentResolver.js";
 import * as eventResolver from "./resolvers/eventResolver.js";
 import * as eventtypeResolver from "./resolvers/eventtypeResolver.js";
+import * as genderResolver from "./resolvers/genderResolver.js";
 import * as partnertypeResolver from "./resolvers/partnertypeResolver.js";
 import * as locationResolver from "./resolvers/locationResolver.js";
 import * as messageResolver from "./resolvers/messageResolver.js";
 import * as notificationResolver from "./resolvers/notificationResolver.js";
+import * as orientationResolver from "./resolvers/orientationResolver.js";
 import * as photoResolver from "./resolvers/photoResolver.js";
 import * as partnerResolver from "./resolvers/partnerResolver.js";
 import * as subscriberResolver from "./resolvers/subscriberResolver.js";
@@ -33,15 +35,17 @@ export default {
   ...commentResolver.commentResolver,
   ...eventResolver.eventResolver,
   ...eventtypeResolver.eventtypeResolver,
+  ...genderResolver.genderResolver,
   ...partnertypeResolver.partnertypeResolver,
   ...locationResolver.locationResolver,
   ...messageResolver.messageResolver,
+  ...notificationResolver.notificationResolver,
+  ...orientationResolver.orientationResolver,
   ...photoResolver.photoResolver,
   ...partnerResolver.partnerResolver,
   ...subscriberResolver.subscriberResolver,
   ...userResolver.userResolver,
   ...visitorResolver.visitorResolver,
-  ...notificationResolver.notificationResolver,
   ...tagResolver.tagResolver,
   ...translationResolver.translationResolver,
 };

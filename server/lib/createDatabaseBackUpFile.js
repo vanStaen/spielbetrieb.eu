@@ -107,6 +107,13 @@ const writeBackupFile = async () => {
       JSON.stringify(databaseContentEventtypes),
     );
 
+    const databaseContentGender = await fetchDatabaseContent("genders");
+    const filenameGender = `${day}-${month}-${year}_spielbetrieb_genders.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameGender}`,
+      JSON.stringify(databaseContentGender),
+    );
+
     const databaseContentLocations = await fetchDatabaseContent("locations");
     const filenameLocations = `${day}-${month}-${year}_spielbetrieb_locations.json`;
     fs.writeFileSync(
@@ -134,6 +141,13 @@ const writeBackupFile = async () => {
     fs.writeFileSync(
       `../../../database-backups/spielbetrieb/${filenameNotifications}`,
       JSON.stringify(databaseContentNotifications),
+    );
+
+    const databaseContentOrientations = await fetchDatabaseContent("orientations");
+    const filenameOrientations = `${day}-${month}-${year}_spielbetrieb_orientations.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenameOrientations}`,
+      JSON.stringify(databaseContentOrientations),
     );
 
     const databaseContentPartners = await fetchDatabaseContent("partners");

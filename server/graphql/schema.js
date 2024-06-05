@@ -11,11 +11,13 @@ import * as dresscodeSchema from "./schemas/dresscodeSchema.js";
 import * as equipmentSchema from "./schemas/equipmentSchema.js";
 import * as eventSchema from "./schemas/eventSchema.js";
 import * as eventtypeSchema from "./schemas/eventtypeSchema.js";
+import * as genderSchema from "./schemas/genderSchema.js";
 import * as partnertypeSchema from "./schemas/partnertypeSchema.js";
 import * as partnerSchema from "./schemas/partnerSchema.js";
 import * as locationSchema from "./schemas/locationSchema.js";
 import * as messageSchema from "./schemas/messageSchema.js";
 import * as notificationSchema from "./schemas/notificationSchema.js";
+import * as orientationSchema from "./schemas/orientationSchema.js";
 import * as photoSchema from "./schemas/photoSchema.js";
 import * as userSchema from "./schemas/userSchema.js";
 import * as visitorSchema from "./schemas/visitorSchema.js";
@@ -36,11 +38,13 @@ export default buildSchema(`
     ${equipmentSchema.Equipment}
     ${eventSchema.Event}
     ${eventtypeSchema.Eventtype}
+    ${genderSchema.Gender}
     ${partnertypeSchema.Partnertype}
     ${partnerSchema.Partner}
     ${locationSchema.Location}
     ${messageSchema.Message}
     ${notificationSchema.Notification}
+    ${orientationSchema.Orientation}
     ${photoSchema.Photo}
     ${userSchema.User}
     ${visitorSchema.Visitor}
@@ -59,10 +63,12 @@ export default buildSchema(`
     ${equipmentSchema.EquipmentInputData}
     ${eventSchema.EventInputData}
     ${eventtypeSchema.EventtypeInputData}
+    ${genderSchema.GenderInputData}
     ${partnertypeSchema.PartnertypeInputData}
     ${partnerSchema.PartnerInputData}
     ${locationSchema.LocationInputData}
     ${messageSchema.MessageInputData}
+    ${orientationSchema.OrientationInputData}
     ${photoSchema.PhotoInputData}
     ${userSchema.UserInputData}
     ${userSchema.UserInputDataAdmin}
@@ -82,11 +88,13 @@ export default buildSchema(`
         ${equipmentSchema.EquipmentQueries}
         ${eventSchema.EventQueries}
         ${eventtypeSchema.EventtypeQueries}
+        ${genderSchema.GenderQueries}
         ${partnertypeSchema.PartnertypeQueries}
         ${partnerSchema.PartnerQueries}
         ${locationSchema.LocationQueries}
         ${messageSchema.MessageQueries}
         ${notificationSchema.NotificationQueries}
+        ${orientationSchema.OrientationQueries}
         ${photoSchema.PhotoQueries}
         ${userSchema.UserQueries}
         ${visitorSchema.VisitorQueries}
@@ -107,11 +115,13 @@ export default buildSchema(`
         ${equipmentSchema.EquipmentMutations}
         ${eventSchema.EventMutations}
         ${eventtypeSchema.EventtypeMutations}
+        ${genderSchema.GenderMutations}
         ${partnertypeSchema.PartnertypeMutations}
         ${partnerSchema.PartnerMutations}
         ${locationSchema.LocationMutations}
         ${messageSchema.MessageMutations}
         ${notificationSchema.NotificationMutations}
+        ${orientationSchema.OrientationMutations}
         ${photoSchema.PhotoMutations}
         ${userSchema.UserMutations}
         ${visitorSchema.VisitorMutations}
