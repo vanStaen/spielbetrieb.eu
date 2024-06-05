@@ -58,6 +58,27 @@ export const notificationService = {
     }
   },
 
+
+  async createNotificationFriendRequestDeclined(requestingId, requestedId) {
+    try {
+      const userRequested = await User.findOne({
+        where: { _id: requestedId },
+      });
+      const newNotification = new Notification({
+        userId: requestingId,
+        mediaUrl: userRequested.avatar,
+        type: 12,
+        data: userRequested.userName,
+        action_data: requestedId,
+        userLinkId: requestedId,
+      });
+      await newNotification.save();
+      return true;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
   async deleteNotificationNewFriendRequest(requestingId, requestedId) {
     try {
       await Notification.destroy({
@@ -93,8 +114,6 @@ export const notificationService = {
       console.log(err);
     }
   },
-
-  // TODO: createNotificationFriendRequestRefused
 
   // TODO: check this
   async createNotificationBasic(

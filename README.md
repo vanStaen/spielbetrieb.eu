@@ -91,7 +91,7 @@ The notifications have a specific type, which influence how they are rendered in
 0. Fallback
 1. New Friend request
 11. (your sent) Friend requested accepted
-12. (your sent) Friend requested refused
+12. (your sent) Friend requested declined
 2. New Follower
 3. New Message
 41. (an) Event invite received 

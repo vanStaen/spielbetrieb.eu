@@ -304,12 +304,12 @@ export const userResolver = {
     try {
       const newFriendFirst = new Usersfriend({
         user_id: req.userId,
-        friend_id: args.requestedId,
+        friend_id: args.requestingId,
       });
       await newFriendFirst.save();
       const newFriendSecond = new Usersfriend({
-        user_id: req.userId,
-        friend_id: args.requestedId,
+        friend_id: req.userId,
+        user_id: args.requestingId,
       });
       await newFriendSecond.save();
       await Usersfriendrequest.destroy({
@@ -337,10 +337,10 @@ export const userResolver = {
           requested_id: req.userId,
         },
       });
-      /* await notificationService.createNotificationFriendRequestRefused(
-        req.userId,
+      await notificationService.createNotificationFriendRequestDeclined(
         args.requestingId,
-      ); */
+        req.userId,
+      );
       return true;
     } catch (err) {
       console.log(err);
