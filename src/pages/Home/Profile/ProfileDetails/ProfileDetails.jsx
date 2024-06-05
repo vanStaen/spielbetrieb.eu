@@ -22,7 +22,9 @@ export const ProfileDetails = observer(() => {
       setShowLastName(profileStore.profilSettings.showLastName);
       setShowFirstName(profileStore.profilSettings.showFirstName);
       setShowGender(profileStore.profilSettings.showGender);
-      setShowSexualOrientation(profileStore.profilSettings.showSexualOrientation);
+      setShowSexualOrientation(
+        profileStore.profilSettings.showSexualOrientation,
+      );
       setShowLocation(profileStore.profilSettings.showLocation);
       setShowAge(profileStore.profilSettings.showAge);
     }

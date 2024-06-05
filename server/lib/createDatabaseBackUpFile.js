@@ -143,7 +143,8 @@ const writeBackupFile = async () => {
       JSON.stringify(databaseContentNotifications),
     );
 
-    const databaseContentOrientations = await fetchDatabaseContent("orientations");
+    const databaseContentOrientations =
+      await fetchDatabaseContent("orientations");
     const filenameOrientations = `${day}-${month}-${year}_spielbetrieb_orientations.json`;
     fs.writeFileSync(
       `../../../database-backups/spielbetrieb/${filenameOrientations}`,
