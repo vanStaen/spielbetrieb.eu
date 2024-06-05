@@ -98,6 +98,16 @@ export class SpielplanStore {
         fromUnixDateStartOf = this.filterDateFrom.startOf("week").valueOf();
         untilUnixDateEndOf = this.filterDateFrom.endOf("week").valueOf();
       }
+    } else if (this.timeSpan === "day") {
+      if (dayjs(spielplanStore.filterDateFrom).valueOf() <
+        dayjs().valueOf()
+      ) {
+        fromUnixDateStartOf = dayjs().startOf("day").valueOf();
+        untilUnixDateEndOf = dayjs().endOf("day").valueOf();
+      } else {
+        fromUnixDateStartOf = this.filterDateFrom.startOf("day").valueOf();
+        untilUnixDateEndOf = this.filterDateFrom.endOf("day").valueOf();
+      }
     } else {
       fromUnixDateStartOf = this.filterDateFrom
         .startOf(this.timeSpan)

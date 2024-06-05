@@ -98,7 +98,12 @@ export const BrowseFilter = observer((props) => {
         </>
       );
     } else if (newtimeSpan === "day") {
-      browseFilterText = newFilterDateFrom.format(DATE_FORMAT_DAY);
+      if (dayjs(spielplanStore.filterDateFrom).valueOf() <
+        dayjs().valueOf()) {
+        browseFilterText = dayjs().format(DATE_FORMAT_DAY);
+      } else {
+        browseFilterText = newFilterDateFrom.format(DATE_FORMAT_DAY);
+      }
     } else if (newtimeSpan === "all") {
       browseFilterText = t("spielplan.pickaDate");
     }
@@ -216,7 +221,7 @@ export const BrowseFilter = observer((props) => {
               onClick={() => timeSpanChange("day")}
             >
               {dayjs(spielplanStore.filterDateFrom).valueOf() <
-              dayjs().valueOf()
+                dayjs().valueOf()
                 ? dayjs().startOf("day").format(DATE_FORMAT_DAY)
                 : dayjs(spielplanStore.filterDateFrom).format(DATE_FORMAT_DAY)}
             </div>
