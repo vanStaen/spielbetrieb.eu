@@ -24,6 +24,7 @@ export const getUserInfo = async () => {
                 orientation,
                 location
                 wishes,
+                birthday,
                 interests,
                 lastActive,
                 archived,

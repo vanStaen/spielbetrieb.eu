@@ -30,6 +30,7 @@ export class UserStore {
   archived = null;
   usernameChange = null;
   language = null;
+  birthday = null;
   friends = [];
   friendrequests = [];
   followers = [];
@@ -66,6 +67,8 @@ export class UserStore {
       setDescription: action,
       avatar: observable,
       setAvatar: action,
+      birthday: observable,
+      setBirthday: action,
       emailSettings: observable,
       setEmailSettings: action,
       profilSettings: observable,
@@ -149,6 +152,10 @@ export class UserStore {
 
   setAvatar = (avatar) => {
     this.avatar = avatar;
+  };
+
+  setBirthday = (birthday) => {
+    this.birthday = birthday;
   };
 
   setDescription = (description) => {
@@ -268,6 +275,7 @@ export class UserStore {
         this.setEmail(userData.email);
         this.setUserName(userData.userName);
         this.setAvatar(userData.avatar);
+        this.setBirthday(userData.birthday);
         this.setFirstName(userData.firstName);
         this.setLastName(userData.lastName);
         this.setDescription(userData.description);

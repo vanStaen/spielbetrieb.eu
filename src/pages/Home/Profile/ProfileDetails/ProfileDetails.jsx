@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 
 import { profileStore } from "../../../../store/profileStore/profileStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { nameParser } from "../../../../helpers/dev/nameParser";
 
 import "./ProfileDetails.less";
+
+const rounding = Math.floor; // default is Math.round
+dayjs.extend(relativeTime, {
+  rounding,
+});
+
+dayjs.extend(relativeTime);
 
 export const ProfileDetails = observer(() => {
   const { t } = useTranslation();
@@ -26,6 +35,7 @@ export const ProfileDetails = observer(() => {
       ).name,
       pageStore.selectedLanguage,
     );
+
   const orientationText =
     profileStore.orientationId &&
     nameParser(
@@ -37,11 +47,13 @@ export const ProfileDetails = observer(() => {
     );
   const detailsArray = [];
 
+  const ageFromBirthday = dayjs(profileStore.birthday).fromNow(true);
+
   if (showGender && !!profileStore.genderId) {
     detailsArray.push(genderText);
   }
-  if (showAge && !!profileStore.age) {
-    detailsArray.push(profileStore.age);
+  if (showAge && !!profileStore.birthday) {
+    detailsArray.push(ageFromBirthday);
   }
   if (showSexualOrientation && !!profileStore.orientationId) {
     detailsArray.push(orientationText);
