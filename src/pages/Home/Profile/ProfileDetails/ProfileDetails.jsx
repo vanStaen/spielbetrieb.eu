@@ -41,15 +41,24 @@ export const ProfileDetails = observer(() => {
         </div>
         <div className="profil__username">@{profileStore.userName}</div>
         <div className="profil__username">
-          {showGender && `${profileStore.gender}`}
-          {showAge && ` ${profileStore.age}`}
-          {showSexualOrientation && ` ${profileStore.orientation}`}
+          {showGender && !!profileStore.gender && `${profileStore.gender}`}
+          {showAge && !!profileStore.age && ` ${profileStore.age}`}
+          {showSexualOrientation &&
+            !!profileStore.orientation &&
+            ` ${profileStore.orientation}`}
+          {showLocation &&
+            !!profileStore.location &&
+            `, ${profileStore.location}`}
         </div>
         {showLastSeenOnline && (
           <div className="profil__lastSeenOnline">
             {t("profile.lastSeenOnline")} <br />{" "}
-            {dateLastActive.toLocaleDateString()} {t("profile.at")}{" "}
-            {dateLastActive.toLocaleTimeString()}
+            {dateLastActive.toLocaleDateString(undefined, {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+            })}{" "}
+            {t("profile.at")} {dateLastActive.toLocaleTimeString()}
           </div>
         )}
       </div>

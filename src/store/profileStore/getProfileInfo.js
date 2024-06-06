@@ -22,6 +22,7 @@ export const getProfileInfo = async (username) => {
                 language,
                 gender,
                 orientation,
+                location,
                 wishes,
                 interests,
                 lastActive,

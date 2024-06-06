@@ -73,6 +73,10 @@ export const User = sequelize.sequelize.define("user", {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
+  location: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   wishes: {
     type: DataTypes.ARRAY(DataTypes.STRING),
     defaultValue: [],

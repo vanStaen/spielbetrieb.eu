@@ -23,6 +23,7 @@ export class UserStore {
   verifiedIdentity = null;
   gender = null;
   orientation = null;
+  location = null;
   wishes = null;
   interests = null;
   lastActive = null;
@@ -77,6 +78,8 @@ export class UserStore {
       setGender: action,
       orientation: observable,
       setOrientation: action,
+      location: observable,
+      setLocation: action,
       wishes: observable,
       setWishes: action,
       interests: observable,
@@ -180,6 +183,10 @@ export class UserStore {
     this.orientation = orientation;
   };
 
+  setLocation = (location) => {
+    this.location = location;
+  };
+
   setWishes = (wishes) => {
     this.wishes = wishes;
   };
@@ -272,6 +279,7 @@ export class UserStore {
         this.setLanguage(userData.language);
         this.setGender(userData.gender);
         this.setOrientation(userData.orientation);
+        this.setLocation(userData.location);
         this.setWishes(userData.wishes);
         this.setInterests(userData.interests);
         this.setUsernameChange(userData.usernameChange);

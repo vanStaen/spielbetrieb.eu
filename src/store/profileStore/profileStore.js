@@ -12,6 +12,7 @@ export class ProfileStore {
   lastName = null;
   gender = null;
   orientation = null;
+  location = null;
   friends = [];
   friendrequests = [];
   followers = [];
@@ -32,6 +33,7 @@ export class ProfileStore {
       lastName: observable,
       gender: observable,
       orientation: observable,
+      location: observable,
       friends: observable,
       friendrequests: observable,
       followers: observable,
@@ -49,6 +51,7 @@ export class ProfileStore {
       setLastName: action,
       setGender: action,
       setOrientation: action,
+      setLocation: action,
       setFriends: action,
       setFriendrequests: action,
       setFollowers: action,
@@ -97,6 +100,10 @@ export class ProfileStore {
     this.orientation = orientation;
   };
 
+  setLocation = (location) => {
+    this.location = location;
+  };
+
   setFriends = (friends) => {
     this.friends = friends;
   };
@@ -138,6 +145,7 @@ export class ProfileStore {
         this.setUserName(userName);
         const profileData = await getProfileInfo(userName);
         if (profileData) {
+          console.log(profileData);
           this.set_id(parseInt(profileData._id));
           this.setAvatar(profileData.avatar);
           this.setFirstName(profileData.firstName);
@@ -148,6 +156,7 @@ export class ProfileStore {
           this.setFollowing(profileData.following);
           this.setGender(profileData.gender);
           this.setOrientation(profileData.orientation);
+          this.setLocation(profileData.location);
           this.setIsPartner(profileData.isPartner);
           this.setLastActive(profileData.lastActive);
           this.setProfilSettings(JSON.parse(profileData.profilSettings));

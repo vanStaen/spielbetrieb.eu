@@ -19,6 +19,7 @@ type User {
     birthday: Float
     gender: Int
     orientation: Int
+    location: String
     wishes: [String]
     interests: [String]
     archived: Boolean
@@ -55,6 +56,7 @@ input UserInputData {
     birthday: Float
     gender: Int
     orientation: Int
+    location: String
     wishes: [String]
     interests: [String]
     archived: Boolean
@@ -76,6 +78,7 @@ input UserInputDataAdmin {
     birthday: Float
     gender: Int
     orientation: Int
+    location: String
     wishes: [String]
     interests: [String]
     archived: Boolean
