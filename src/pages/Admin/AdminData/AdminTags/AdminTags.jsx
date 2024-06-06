@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 
 import { EditableCell } from "../../EditableCell";
-import { getTags } from "../../../../store/spielplanStore/getTags";
+import { getTags } from "../../../../store/pageStore/getTags";
 import { deleteTag } from "./deleteTag";
 import { updateTag } from "./updateTag";
 import { addTag } from "./addTag";
@@ -185,9 +185,9 @@ export const AdminTags = () => {
         record,
         inputType:
           col.dataIndex === "validated" ||
-          col.dataIndex === "isPictureTag" ||
-          col.dataIndex === "isEventTag" ||
-          col.dataIndex === "isUserTag"
+            col.dataIndex === "isPictureTag" ||
+            col.dataIndex === "isEventTag" ||
+            col.dataIndex === "isUserTag"
             ? "boolean"
             : "text",
         dataIndex: col.dataIndex,

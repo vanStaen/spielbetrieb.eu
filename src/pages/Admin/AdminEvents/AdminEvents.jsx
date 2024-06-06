@@ -16,7 +16,7 @@ import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
 import { getAllEvents } from "./getAllEvents";
 import { deleteEvent } from "./deleteEvent";
 import { getAllEventtypes } from "../../../store/spielplanStore/getAllEventtypes";
-import { getTags } from "../../../store/spielplanStore/getTags";
+import { getTags } from "../../../store/pageStore/getTags";
 import { getUserNames } from "./getUserNames";
 import { nameParser } from "../../../helpers/dev/nameParser";
 import { userStore } from "../../../store/userStore/userStore";

@@ -1,6 +1,10 @@
 import { action, makeObservable, observable } from "mobx";
 import Cookies from "universal-cookie";
 
+import { getGenders } from "./getGenders.js";
+import { getOrientations } from "./getOrientations.js";
+import { getTags } from "./getTags.js";
+
 const cookies = new Cookies();
 
 export class PageStore {
@@ -13,6 +17,8 @@ export class PageStore {
   isLoadingEvent = true;
   eventtypes = [];
   tags = [];
+  genders = [];
+  orientations = [];
   locations = [];
   showOverlayGallery = false;
   picturesUrls = [];
@@ -93,6 +99,33 @@ export class PageStore {
 
   setUnseenNotificationsCount = (unseenNotificationsCount) => {
     this.unseenNotificationsCount = unseenNotificationsCount;
+  };
+
+
+  fetchData = async () => {
+    try {
+      const dataGenders = await getGenders();
+      const dataTags = await getTags();
+      const dataOrientations = await getOrientations();
+      this.setGenders(dataGenders);
+      this.setTags(dataTags);
+      this.setOrientations(dataOrientations);
+    } catch (e) {
+      console.error(e);
+    }
+
+  }
+
+  setTags = (tags) => {
+    this.tags = tags;
+  };
+
+  setGenders = (genders) => {
+    this.genders = genders;
+  };
+
+  setOrientations = (orientations) => {
+    this.orientations = orientations;
   };
 }
 

@@ -14,7 +14,7 @@ import { InfoForm } from "./EventFormSteps/InfoForm/InfoForm";
 import { OptionForm } from "./EventFormSteps/OptionForm/OptionForm";
 import { PublishForm } from "./EventFormSteps/PublishForm/PublishForm";
 import { getLocations } from "../../../../store/spielplanStore/getLocations";
-import { getTags } from "../../../../store/spielplanStore/getTags";
+import { getTags } from "../../../../store/pageStore/getTags";
 import { getDresscodes } from "../../../../store/spielplanStore/getDresscodes";
 import { getEquipments } from "../../../../store/spielplanStore/getEquipments";
 import { getArtists } from "../../../../store/spielplanStore/getArtists";

@@ -4,7 +4,7 @@ import Cookies from "universal-cookie";
 
 import { getAllPublicEvents } from "./getAllPublicEvents.js";
 import { getAllEventtypes } from "./getAllEventtypes.js";
-import { getTags } from "./getTags.js";
+import { getTags } from "../pageStore/getTags.js";
 import { getLocations } from "./getLocations.js";
 import { getArtists } from "./getArtists.js";
 import { getEquipments } from "./getEquipments.js";
