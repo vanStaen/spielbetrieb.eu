@@ -19,6 +19,7 @@
 }
 
 .event__Container {
+    position: relative;
     transition: all .3s !important;
     width: calc(100% - 40px); // - padding
     margin: 20px 0 0 0;
@@ -132,6 +133,19 @@
             }
         }
     }
+
+    .event__delete {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 5;
+        font-size: 14px;
+        opacity: .5;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
 }
 
 @media only screen and (max-width: 675px) {
@@ -217,5 +231,9 @@
         .event__artworkLoading {
             width: 100%;
         }
+    }
+
+    .event__delete {
+        display: block;
     }
 }

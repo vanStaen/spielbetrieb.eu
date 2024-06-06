@@ -1,8 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Tag } from "antd";
+import { Tag, Popconfirm } from "antd";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { ClockCircleOutlined, EnvironmentOutlined } from "@ant-design/icons";
+import {
+  ClockCircleOutlined,
+  EnvironmentOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 import { observer } from "mobx-react";
 import dayjs from "dayjs";
 
@@ -10,8 +14,10 @@ import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore"
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinner";
 import { pictureOrPlaceholder } from "../../../../helpers/picture/pictureOrPlaceholder";
+import { deleteEvent } from "../../../Admin/AdminEvents/deleteEvent";
 
 import "./EventCard.less";
+import { userStore } from "../../../../store/userStore/userStore";
 
 export const EventCard = observer((props) => {
   const { t } = useTranslation();
@@ -20,6 +26,11 @@ export const EventCard = observer((props) => {
   const isInThePast = event.fromDate < dayjs();
   const isShownHidden = useRef(isInThePast);
   const [firstPictureUrl, setFirstPictureUrl] = useState(null);
+
+  const handleDeleteEvent = async () => {
+    await deleteEvent(event._id);
+    spielplanStore.fetchEvents();
+  };
 
   const getFirstPictureUrl = async () => {
     const picture = await pictureOrPlaceholder(event);
@@ -34,7 +45,6 @@ export const EventCard = observer((props) => {
         show number of attending
         Mark attending event 
         buy a ticket Ticket
-        picture loader
     */
 
   const handleTagClick = (index, id) => {
@@ -157,6 +167,19 @@ export const EventCard = observer((props) => {
         </div>
         <div className="event__tags">{tagsFormatted}</div>
       </div>
+      {userStore.isAdmin && (
+        <div className="event__delete">
+          <div onClick={(e) => e.stopPropagation()}>
+            <Popconfirm
+              title={`Delete this event?`}
+              style={{ marginRight: 8 }}
+              onConfirm={handleDeleteEvent}
+            >
+              <DeleteOutlined className="event__deleteLogo" />
+            </Popconfirm>
+          </div>
+        </div>
+      )}
     </div>
   );
 });

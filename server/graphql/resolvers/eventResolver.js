@@ -172,6 +172,12 @@ export const eventResolver = {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
+    const foundUser = await User.findOne({
+      where: { _id: req.userId },
+    });
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("events")) {
+      throw new Error("Unauthorized!");
+    }
     // TODO : Delete all event pictures
     await Event.destroy({
       where: {
