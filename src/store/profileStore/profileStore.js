@@ -145,7 +145,7 @@ export class ProfileStore {
         this.setUserName(userName);
         const profileData = await getProfileInfo(userName);
         if (profileData) {
-          console.log(profileData);
+          // console.log(profileData);
           this.set_id(parseInt(profileData._id));
           this.setAvatar(profileData.avatar);
           this.setFirstName(profileData.firstName);

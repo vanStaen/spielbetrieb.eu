@@ -18,18 +18,23 @@ export const ProfileDetails = observer(() => {
   const [showGender, setShowGender] = useState(false);
   const [showSexualOrientation, setShowSexualOrientation] = useState(false);
 
-  const genderText = nameParser(
-    pageStore.genders.find(
-      (gender) => parseInt(gender._id) === profileStore.genderId,
-    ).name,
-    pageStore.selectedLanguage,
-  );
-  const orientationText = nameParser(
-    pageStore.orientations.find(
-      (orientation) => parseInt(orientation._id) === profileStore.orientationId,
-    ).name,
-    pageStore.selectedLanguage,
-  );
+  const genderText =
+    profileStore.genderId &&
+    nameParser(
+      pageStore.genders.find(
+        (gender) => parseInt(gender._id) === profileStore.genderId,
+      ).name,
+      pageStore.selectedLanguage,
+    );
+  const orientationText =
+    profileStore.orientationId &&
+    nameParser(
+      pageStore.orientations.find(
+        (orientation) =>
+          parseInt(orientation._id) === profileStore.orientationId,
+      ).name,
+      pageStore.selectedLanguage,
+    );
   const detailsArray = [];
 
   if (showGender && !!profileStore.genderId) {
@@ -44,8 +49,6 @@ export const ProfileDetails = observer(() => {
   if (showLocation && !!profileStore.location) {
     detailsArray.push(profileStore.location);
   }
-
-  console.log("detailsArray", detailsArray);
 
   useEffect(() => {
     if (!profileStore.isLoading && profileStore.profilSettings) {
