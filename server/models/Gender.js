@@ -1,6 +1,6 @@
 import { sequelize, DataTypes } from "../lib/sequelizedb.js";
 
-export const Dresscode = sequelize.sequelize.define("dresscode", {
+export const Gender = sequelize.sequelize.define("gender", {
   _id: {
     type: DataTypes.INTEGER,
     field: "_id",
