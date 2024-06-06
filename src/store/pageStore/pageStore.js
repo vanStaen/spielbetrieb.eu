@@ -101,7 +101,6 @@ export class PageStore {
     this.unseenNotificationsCount = unseenNotificationsCount;
   };
 
-
   fetchData = async () => {
     try {
       const dataGenders = await getGenders();
@@ -113,8 +112,7 @@ export class PageStore {
     } catch (e) {
       console.error(e);
     }
-
-  }
+  };
 
   setTags = (tags) => {
     this.tags = tags;

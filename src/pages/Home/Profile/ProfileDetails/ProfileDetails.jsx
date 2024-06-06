@@ -18,16 +18,34 @@ export const ProfileDetails = observer(() => {
   const [showGender, setShowGender] = useState(false);
   const [showSexualOrientation, setShowSexualOrientation] = useState(false);
 
-  const genderText = nameParser(pageStore.genders.find(gender => parseInt(gender._id) === profileStore.genderId).name, pageStore.selectedLanguage);
-  const orientationText = nameParser(pageStore.orientations.find(orientation => parseInt(orientation._id) === profileStore.orientationId).name, pageStore.selectedLanguage);
-  let detailsArray = [];
+  const genderText = nameParser(
+    pageStore.genders.find(
+      (gender) => parseInt(gender._id) === profileStore.genderId,
+    ).name,
+    pageStore.selectedLanguage,
+  );
+  const orientationText = nameParser(
+    pageStore.orientations.find(
+      (orientation) => parseInt(orientation._id) === profileStore.orientationId,
+    ).name,
+    pageStore.selectedLanguage,
+  );
+  const detailsArray = [];
 
-  if (showGender && !!profileStore.genderId) { detailsArray.push(genderText) }
-  if (showAge && !!profileStore.age) { detailsArray.push(profileStore.age) }
-  if (showSexualOrientation && !!profileStore.orientationId) { detailsArray.push(orientationText) }
-  if (showLocation && !!profileStore.location) { detailsArray.push(profileStore.location) }
+  if (showGender && !!profileStore.genderId) {
+    detailsArray.push(genderText);
+  }
+  if (showAge && !!profileStore.age) {
+    detailsArray.push(profileStore.age);
+  }
+  if (showSexualOrientation && !!profileStore.orientationId) {
+    detailsArray.push(orientationText);
+  }
+  if (showLocation && !!profileStore.location) {
+    detailsArray.push(profileStore.location);
+  }
 
-  console.log('detailsArray', detailsArray);
+  console.log("detailsArray", detailsArray);
 
   useEffect(() => {
     if (!profileStore.isLoading && profileStore.profilSettings) {
@@ -53,9 +71,7 @@ export const ProfileDetails = observer(() => {
           {showFirstName && profileStore.firstName}
           {showLastName && ` ${profileStore.lastName}`}
         </div>
-        <div className="profil__details">
-          {detailsArray.join(' - ')}
-        </div>
+        <div className="profil__details">{detailsArray.join(" - ")}</div>
         {showLastSeenOnline && (
           <div className="profil__lastSeenOnline">
             {t("profile.lastSeenOnline")} <br />{" "}

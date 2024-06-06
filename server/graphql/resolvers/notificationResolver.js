@@ -38,7 +38,7 @@ export const notificationResolver = {
       throw new Error("Unauthorized!");
     }
     try {
-      const updatedNotification = await Notification.update(
+      await Notification.update(
         { seen: true },
         {
           where: {
@@ -48,8 +48,6 @@ export const notificationResolver = {
           plain: true,
         },
       );
-      // updatedNotification[0]: number or row udpated
-      // updatedNotification[1]: rows updated
       return true;
     } catch (err) {
       console.log(err);
