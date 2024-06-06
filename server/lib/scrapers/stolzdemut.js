@@ -162,7 +162,7 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
         hasDresscode,
         dresscodeDoTags,
         links,
-        validated: false,
+        validated: true,
       };
 
       delete dataEventNew.dresscode;

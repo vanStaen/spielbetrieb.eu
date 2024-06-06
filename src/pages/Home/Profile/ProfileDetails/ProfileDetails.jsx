@@ -32,7 +32,7 @@ export const ProfileDetails = observer(() => {
     nameParser(
       pageStore.genders.find(
         (gender) => parseInt(gender._id) === profileStore.genderId,
-      ).name,
+      )?.name,
       pageStore.selectedLanguage,
     );
 
@@ -42,7 +42,7 @@ export const ProfileDetails = observer(() => {
       pageStore.orientations.find(
         (orientation) =>
           parseInt(orientation._id) === profileStore.orientationId,
-      ).name,
+      )?.name,
       pageStore.selectedLanguage,
     );
   const detailsArray = [];

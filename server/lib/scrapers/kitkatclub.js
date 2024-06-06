@@ -127,7 +127,7 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
         externalId,
         title: titleCleaned,
         description: descriptionCleaned,
-        validated: false,
+        validated: true,
       };
 
       delete dataEventNew.datum;
