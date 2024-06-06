@@ -284,6 +284,25 @@ export const userResolver = {
     }
   },
 
+  // isRequested(requestingId: ID!): Boolean!
+  async isRequested(args, req) {
+    try {
+      if (!req.isAuth) {
+        throw new Error("Unauthorized!");
+      }
+      const res = await Usersfriendrequest.findOne({
+        where: {
+          requested_id: req.userId,
+          requesting_id: args.requestingId,
+        },
+      });
+      console.log(res);
+      return !!res;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
   // deleteFriendRequest(requestedId: ID!): Boolean!
   async deleteFriendRequest(args, req) {
     await Usersfriendrequest.destroy({

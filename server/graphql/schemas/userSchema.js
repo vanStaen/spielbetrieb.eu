@@ -93,6 +93,7 @@ export const UserQueries = `
     getUsersAsAdmin: [User]
     getProfileByName(userName: String): User
     getProfileById(_id: ID!): User
+    isRequested(requestingId: ID!): Boolean!
 `;
 
 export const UserMutations = `
