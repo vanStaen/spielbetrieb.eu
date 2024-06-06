@@ -5,7 +5,7 @@ export const genderResolver = {
   // getGenders: [Gender]
   async getGenders() {
     return await Gender.findAll({
-      order: [["name", "ASC"]],
+      order: [["_id", "ASC"]],
     });
   },
 

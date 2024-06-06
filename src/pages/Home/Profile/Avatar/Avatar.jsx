@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 
 import { userStore } from "../../../../store/userStore/userStore";
 import { profileStore } from "../../../../store/profileStore/profileStore";
+import { pageStore } from "../../../../store/pageStore/pageStore";
 import { postPicture } from "../../../../helpers/picture/postPicture";
 import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
 import { updateAvatar } from "./updateAvatar";
@@ -84,7 +85,7 @@ export const Avatar = observer(() => {
         </div>
       ) : (
         <div
-          className="avatar__avatar"
+          className={`avatar__avatar ${pageStore.selectedTheme === "light" ? "avatar__light" : "avatar__dark"}`}
           style={
             avatarPic && {
               backgroundImage: "url(" + avatarPic + ")",

@@ -16,7 +16,9 @@ import { AdminTags } from "./AdminTags/AdminTags";
 import { AdminArtists } from "./AdminArtists/AdminArtists";
 import { AdminDresscodes } from "./AdminDresscodes/AdminDresscodes";
 import { AdminEquipments } from "./AdminEquipments/AdminEquipments";
+import { AdminGenders } from "./AdminGenders/AdminGenders";
 import { AdminEventtypes } from "./AdminEventtypes/AdminEventtypes";
+import { AdminOrientations } from "./AdminOrientations/AdminOrientations";
 import { AdminLocations } from "./AdminLocations/AdminLocations";
 import { AdminPartnertypes } from "./AdminPartnertypes/AdminPartnertypes";
 
@@ -92,8 +94,7 @@ export const AdminData = () => {
           <WomanOutlined /> Genders
         </>
       ),
-      children: "",
-      disabled: true,
+      children: <AdminGenders />,
     },
     {
       key: "9",
@@ -102,8 +103,7 @@ export const AdminData = () => {
           <ApiOutlined /> Orientations
         </>
       ),
-      children: "",
-      disabled: true,
+      children: <AdminOrientations />,
     },
   ];
 

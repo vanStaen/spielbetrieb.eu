@@ -5,7 +5,7 @@ export const orientationResolver = {
   // getOrientations: [Orientation]
   async getOrientations() {
     return await Orientation.findAll({
-      order: [["name", "ASC"]],
+      order: [["_id", "ASC"]],
     });
   },
 
