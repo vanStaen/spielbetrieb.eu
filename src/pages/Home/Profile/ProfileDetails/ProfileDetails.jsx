@@ -3,6 +3,8 @@ import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 
 import { profileStore } from "../../../../store/profileStore/profileStore";
+import { pageStore } from "../../../../store/pageStore/pageStore";
+import { nameParser } from "../../../../helpers/dev/nameParser";
 
 import "./ProfileDetails.less";
 
@@ -15,6 +17,17 @@ export const ProfileDetails = observer(() => {
   const [showLocation, setShowLocation] = useState(false);
   const [showGender, setShowGender] = useState(false);
   const [showSexualOrientation, setShowSexualOrientation] = useState(false);
+
+  const genderText = nameParser(pageStore.genders.find(gender => parseInt(gender._id) === profileStore.genderId).name, pageStore.selectedLanguage);
+  const orientationText = nameParser(pageStore.orientations.find(orientation => parseInt(orientation._id) === profileStore.orientationId).name, pageStore.selectedLanguage);
+  let detailsArray = [];
+
+  if (showGender && !!profileStore.genderId) { detailsArray.push(genderText) }
+  if (showAge && !!profileStore.age) { detailsArray.push(profileStore.age) }
+  if (showSexualOrientation && !!profileStore.orientationId) { detailsArray.push(orientationText) }
+  if (showLocation && !!profileStore.location) { detailsArray.push(profileStore.location) }
+
+  console.log('detailsArray', detailsArray);
 
   useEffect(() => {
     if (!profileStore.isLoading && profileStore.profilSettings) {
@@ -35,20 +48,13 @@ export const ProfileDetails = observer(() => {
   return (
     <div className="profil__detailsContainer">
       <div className="profil__hello">
+        <div className="profil__username">@{profileStore.userName}</div>
         <div>
           {showFirstName && profileStore.firstName}
           {showLastName && ` ${profileStore.lastName}`}
         </div>
-        <div className="profil__username">@{profileStore.userName}</div>
-        <div className="profil__username">
-          {showGender && !!profileStore.gender && `${profileStore.gender}`}
-          {showAge && !!profileStore.age && ` ${profileStore.age}`}
-          {showSexualOrientation &&
-            !!profileStore.orientation &&
-            ` ${profileStore.orientation}`}
-          {showLocation &&
-            !!profileStore.location &&
-            `, ${profileStore.location}`}
+        <div className="profil__details">
+          {detailsArray.join(' - ')}
         </div>
         {showLastSeenOnline && (
           <div className="profil__lastSeenOnline">

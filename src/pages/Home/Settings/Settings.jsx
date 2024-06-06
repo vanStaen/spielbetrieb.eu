@@ -75,7 +75,7 @@ export const Settings = observer(() => {
           <div className="EditSettings__flexContainer">
             <div className="EditSettings__centerDiv EditSettings__radio">
               <Radio.Group
-                defaultValue={String(userStore.gender)}
+                defaultValue={String(userStore.genderId)}
                 buttonStyle="solid"
                 onChange={changeGenderHandler}
               >

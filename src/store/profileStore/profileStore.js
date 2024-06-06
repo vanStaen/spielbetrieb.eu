@@ -10,8 +10,8 @@ export class ProfileStore {
   avatar = null;
   firstName = null;
   lastName = null;
-  gender = null;
-  orientation = null;
+  genderId = null;
+  orientationId = null;
   location = null;
   friends = [];
   friendrequests = [];
@@ -31,8 +31,8 @@ export class ProfileStore {
       avatar: observable,
       firstName: observable,
       lastName: observable,
-      gender: observable,
-      orientation: observable,
+      genderId: observable,
+      orientationId: observable,
       location: observable,
       friends: observable,
       friendrequests: observable,
@@ -49,8 +49,8 @@ export class ProfileStore {
       setAvatar: action,
       setFirstName: action,
       setLastName: action,
-      setGender: action,
-      setOrientation: action,
+      setGenderId: action,
+      setOrientationId: action,
       setLocation: action,
       setFriends: action,
       setFriendrequests: action,
@@ -92,12 +92,12 @@ export class ProfileStore {
     this.lastName = lastName;
   };
 
-  setGender = (gender) => {
-    this.gender = gender;
+  setGenderId = (genderId) => {
+    this.genderId = genderId;
   };
 
-  setOrientation = (orientation) => {
-    this.orientation = orientation;
+  setOrientationId = (orientationId) => {
+    this.orientationId = orientationId;
   };
 
   setLocation = (location) => {
@@ -154,8 +154,8 @@ export class ProfileStore {
           this.setFriendrequests(profileData.friendrequests);
           this.setFollowers(profileData.followers);
           this.setFollowing(profileData.following);
-          this.setGender(profileData.gender);
-          this.setOrientation(profileData.orientation);
+          this.setGenderId(profileData.gender);
+          this.setOrientationId(profileData.orientation);
           this.setLocation(profileData.location);
           this.setIsPartner(profileData.isPartner);
           this.setLastActive(profileData.lastActive);

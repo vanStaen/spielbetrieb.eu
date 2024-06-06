@@ -21,8 +21,8 @@ export class UserStore {
   emailSettings = null;
   profilSettings = null;
   verifiedIdentity = null;
-  gender = null;
-  orientation = null;
+  genderId = null;
+  orientationId = null;
   location = null;
   wishes = null;
   interests = null;
@@ -74,10 +74,10 @@ export class UserStore {
       setVerifiedIdentity: action,
       language: observable,
       setLanguage: action,
-      gender: observable,
-      setGender: action,
-      orientation: observable,
-      setOrientation: action,
+      genderId: observable,
+      setGenderId: action,
+      orientationId: observable,
+      setOrientationId: action,
       location: observable,
       setLocation: action,
       wishes: observable,
@@ -175,12 +175,12 @@ export class UserStore {
     this.language = language;
   };
 
-  setGender = (gender) => {
-    this.gender = gender;
+  setGenderId = (genderId) => {
+    this.genderId = genderId;
   };
 
-  setOrientation = (orientation) => {
-    this.orientation = orientation;
+  setOrientationId = (orientationId) => {
+    this.orientationId = orientationId;
   };
 
   setLocation = (location) => {
@@ -277,8 +277,8 @@ export class UserStore {
         this.setFollowing(userData.following);
         this.setLastActive(userData.lastActive);
         this.setLanguage(userData.language);
-        this.setGender(userData.gender);
-        this.setOrientation(userData.orientation);
+        this.setGenderId(userData.gender);
+        this.setOrientationId(userData.orientation);
         this.setLocation(userData.location);
         this.setWishes(userData.wishes);
         this.setInterests(userData.interests);
