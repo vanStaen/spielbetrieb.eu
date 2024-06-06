@@ -36,18 +36,8 @@ export const Notification = observer((props) => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const { notification, notificationsCount, setNotificationsCount } = props;
-  const {
-    _id,
-    type,
-    seen,
-    data,
-    actionData,
-    createdAt,
-    mediaUrl,
-    photoLinkId,
-    userLinkId,
-    eventLinkId,
-  } = notification;
+  const { _id, type, seen, data, actionData, createdAt, mediaUrl, userLinkId } =
+    notification;
 
   const notFollowingYet =
     userStore.following.findIndex(
@@ -267,7 +257,7 @@ export const Notification = observer((props) => {
                     closeNotificationHandler(_id);
                   }}
                 >
-                  Decline
+                  {t("notifications.decline")}
                 </Button>
               </div>
               <div className="actionsButton">
@@ -280,14 +270,14 @@ export const Notification = observer((props) => {
                   type="primary"
                   onClick={(e) => acceptRequestHandler(e)}
                 >
-                  Accept
+                  {t("notifications.accept")}
                 </Button>
               </div>
             </div>
           ) : (
             <div className="notification__actionsButtons">
               <Button disabled type="primary">
-                Accepted
+                {t("notifications.accepted")}
               </Button>
             </div>
           ))}
@@ -304,13 +294,13 @@ export const Notification = observer((props) => {
                 type="primary"
                 onClick={(e) => followBackHandler(e)}
               >
-                Follow Back
+                {t("notifications.followBack")}
               </Button>
             </div>
           ) : (
             <div className="notification__actionsButtons">
               <Button type="primary" disabled>
-                Following back
+                {t("notifications.followingBack")}
               </Button>
             </div>
           ))}
@@ -335,7 +325,7 @@ export const Notification = observer((props) => {
               closeNotificationHandlerMobile(_id);
             }}
           >
-            Decline
+            {t("notifications.decline")}
           </Button>
 
           <Button
@@ -344,7 +334,7 @@ export const Notification = observer((props) => {
             block={true}
             onClick={(e) => acceptRequestHandler(e)}
           >
-            Accept
+            {t("notifications.accept")}
           </Button>
         </div>
       )}
@@ -359,7 +349,7 @@ export const Notification = observer((props) => {
             className={`actionsButton ${pageStore.selectedTheme === "light" ? "lightColorTheme__Button" : "darkColorTheme__Button"}`}
             onClick={(e) => followBackHandler(e)}
           >
-            Follow Back
+            {t("notifications.followBack")}
           </Button>
         </div>
       )}

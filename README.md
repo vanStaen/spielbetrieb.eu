@@ -100,6 +100,7 @@ The notifications have a specific type, which influence how they are rendered in
 51. New Event from followed partner 
 52. New Shop article from followed partner
 61. New Avatar from friends/followed
+62. New picture from friends/followed
 71. New blog article
 72. New Dark issue
 9. Spielbetrieb anouncement

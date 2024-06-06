@@ -294,5 +294,18 @@
 		"male": "Männlich",
 		"female": "Weiblich",
 		"other": "Diverse"
+	},
+	"notifications": {
+		"decline": "Ablehnen",
+		"accept": "Annehmen",
+		"accepted": "Angenommen",
+		"followBack": "Zurück folgen",
+		"followingBack": "Zurück verfolgt",
+		"sentYouFriendRequest": "hat dir eine Freundschaftsanfrage geschickt!",
+		"youGotMailFrom": " Du hast Post bekommen von",
+		"acceptedYourFriendRequest": " hat deine Freundschaftsanfrage angenommen!",
+		"declinedYourFriendRequest": " hat deine Freundschaftsanfrage abgelehnt!",
+		"addedNewProfilePicture": "hat ein neues Profilbild hinzugefügt",
+		"uploadedNewPicture": "hat ein neues bild hochgeladet"
 	}
 }

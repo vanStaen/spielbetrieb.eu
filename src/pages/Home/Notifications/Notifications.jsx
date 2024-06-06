@@ -52,7 +52,7 @@ export const Notifications = observer(() => {
             width="50px"
             className="notification__nothingImg invertColorTheme"
           />
-          No notifications for now
+          {t("notifications.noNotification")}
         </div>
       ) : (
         notificationsFormated
