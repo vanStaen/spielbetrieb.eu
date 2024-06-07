@@ -25,7 +25,8 @@
     "scraper": "npm run scrapekitty; npm run scrapestolzdemut; npm run scrapeinso",
     "scrapeinso": "cd server/lib/scrapers; node insomnia.js/; cd ../../../",
     "scrapekitty": "cd server/lib/scrapers; node kitkatclub.js/; cd ../../../",
-    "scrapestolzdemut": "cd server/lib/scrapers; node stolzdemut.js/; cd ../../../"
+    "scrapestolzdemut": "cd server/lib/scrapers; node stolzdemut.js/; cd ../../../",
+    "klubverboten": "cd server/lib/scrapers; node klubverboten.js/; cd ../../../"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.533.0",
