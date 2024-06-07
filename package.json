@@ -22,11 +22,11 @@
     "backup": "cd server/lib/; node createDatabaseBackUpFile.js; npm run pushbackup; cd ../../",
     "pushbackup": "cd ../database-backups; git pull origin master; git add -A; git commit -m 'Spielbetrieb - database backup files'; git push;",
     "lint": "eslint -c ./.eslintrc.json '**/*.js' '**/*.jsx' --fix",
-    "scraper": "npm run scrapekitty; npm run scrapestolzdemut; npm run scrapeinso",
+    "scraper": "npm run scrapekitty; npm run scrapestolzdemut; npm run scrapeinso; npm run scrapeklubverboten",
     "scrapeinso": "cd server/lib/scrapers; node insomnia.js/; cd ../../../",
     "scrapekitty": "cd server/lib/scrapers; node kitkatclub.js/; cd ../../../",
     "scrapestolzdemut": "cd server/lib/scrapers; node stolzdemut.js/; cd ../../../",
-    "klubverboten": "cd server/lib/scrapers; node klubverboten.js/; cd ../../../"
+    "scrapeklubverboten": "cd server/lib/scrapers; node klubverboten.js/; cd ../../../"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.533.0",

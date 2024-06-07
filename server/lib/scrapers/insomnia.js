@@ -64,7 +64,7 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
   // Iterate through the data
   for (let i = 0; i < data.length; i++) {
     // Open link
-    await page.goto(data[i].link, {
+    await page.goto(data[i].link + "&lang=de", {
       waitUntil: "domcontentloaded",
     });
 
@@ -159,6 +159,7 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
 
     delete dataEventNew.tags;
     delete dataEventNew.link;
+    delete dataEventNew.fromTime;
 
     await insertEventIntoDB(dataEventNew);
   }

@@ -23,6 +23,8 @@ export default async function insertEventIntoDB(dataObject) {
             },
           });
           console.log("Event updated", "id:", dataObject.externalId);
+          console.log("--> New value(s):", isNewValue);
+
           return true;
         } catch (err) {
           console.log(err);
@@ -34,7 +36,7 @@ export default async function insertEventIntoDB(dataObject) {
     }
 
     const event = new Event({
-      userId: 17, // Bot
+      userId: 17, // Spielbetrieb
       externalId: dataObject.externalId,
       externalPicture: dataObject.externalPicture,
       title: dataObject.title,
