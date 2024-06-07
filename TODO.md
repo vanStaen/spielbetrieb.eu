@@ -27,10 +27,6 @@
   - [ ] Elypsis on event description
   - [ ] Make responsive
   - [ ] Elipisis 'more' translate
-- [x] Event Model
-  - [x] event info (age, dresscode) as standart 
-  - [x] Price (als array of price: [{ price: 15, desc: 'EarlyBird'}, { price: 22, desc: 'online ticket'}, { price: 25, desc: 'AtTheDoor'}])
-  - [x] Currency
 - [ ] Line up Model (artist + artwork + link)
   - [ ] Same as location, store some recuring artists, and make them searchable
 - [ ] Translate all in form Event
@@ -57,11 +53,10 @@ AI bilder
 - [ ] Get rid of Axios, and use fetch();
 - [ ] FrontEnd : Update all packages
 - [ ] Tracking/Analytics
-- [ ] Smooth transition for language and theme menu
 - [ ] Use List of forbidden usernames
 - [ ] Use List of forbidden words
 - [ ] Filter event based on city/geolocation
-- [ ] Valid form with enter, cancel with esc
+- [ ] Valid all form with enter, cancel with esc
 - [ ] Get own google api key
   - [ ] https://developers.google.com/maps/documentation/geocoding/overview
   - [ ] https://developers.google.com/maps/documentation/javascript
@@ -71,7 +66,7 @@ AI bilder
   - eg: An error happened! Please restart the process (subscriberverify)
 - [ ] Why resized picture are bigger than original (_m and _t)
 - [ ] Check if user is online, and react if not (with custom error) (https://react.dev/learn/reusing-logic-with-custom-hooks)
-- [ ] Convert social REST endpoint to GraphQL
-- [ ] clean theme.less (use less --var)
+- [ ] clean theme.less (use .less --var)
 - [ ] Spielplan: lazy loading with pagination
-- [ ] Spielplan filter : only filter from the data set shown
+- [ ] Spielplan filter : only filter from the data set should be shown
+- [ ] if user settings === do not display name etc, it should not be sent from the backend (or with empty value)

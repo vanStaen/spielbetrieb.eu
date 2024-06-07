@@ -26,41 +26,52 @@ export const ProfileDetails = observer(() => {
   const [showLocation, setShowLocation] = useState(false);
   const [showGender, setShowGender] = useState(false);
   const [showSexualOrientation, setShowSexualOrientation] = useState(false);
+  const [detailsArray, setDetailsArray] = useState([]);
 
-  const genderText =
-    profileStore.genderId &&
-    nameParser(
+  useEffect(() => {
+    const genderText = nameParser(
       pageStore.genders.find(
         (gender) => parseInt(gender._id) === profileStore.genderId,
       )?.name,
       pageStore.selectedLanguage,
     );
 
-  const orientationText =
-    profileStore.orientationId &&
-    nameParser(
+    const orientationText = nameParser(
       pageStore.orientations.find(
         (orientation) =>
           parseInt(orientation._id) === profileStore.orientationId,
       )?.name,
       pageStore.selectedLanguage,
     );
-  const detailsArray = [];
 
-  const ageFromBirthday = dayjs(profileStore.birthday).fromNow(true);
+    const ageFromBirthday = dayjs(profileStore.birthday).fromNow(true);
 
-  if (showGender && !!profileStore.genderId) {
-    detailsArray.push(genderText);
-  }
-  if (showAge && !!profileStore.birthday) {
-    detailsArray.push(ageFromBirthday);
-  }
-  if (showSexualOrientation && !!profileStore.orientationId) {
-    detailsArray.push(orientationText);
-  }
-  if (showLocation && !!profileStore.location) {
-    detailsArray.push(profileStore.location);
-  }
+    const detailsArrayTemp = [];
+    if (showGender && genderText && !!profileStore.genderId) {
+      detailsArrayTemp.push(genderText);
+    }
+    if (showAge && !!profileStore.birthday) {
+      detailsArrayTemp.push(ageFromBirthday);
+    }
+    if (
+      showSexualOrientation &&
+      orientationText &&
+      !!profileStore.orientationId
+    ) {
+      detailsArrayTemp.push(orientationText);
+    }
+    if (showLocation && !!profileStore.location) {
+      detailsArrayTemp.push(profileStore.location);
+    }
+    setDetailsArray(detailsArrayTemp);
+  }, [
+    profileStore,
+    pageStore,
+    showGender,
+    showAge,
+    showSexualOrientation,
+    showLocation,
+  ]);
 
   useEffect(() => {
     if (!profileStore.isLoading && profileStore.profilSettings) {
@@ -77,6 +88,8 @@ export const ProfileDetails = observer(() => {
   }, [profileStore.isLoading, profileStore.profilSettings]);
 
   const dateLastActive = new Date(parseInt(profileStore.lastActive));
+
+  console.log("detailsArray", detailsArray);
 
   return (
     <div className="profil__detailsContainer">
