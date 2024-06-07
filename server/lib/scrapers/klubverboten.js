@@ -14,7 +14,7 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
 (async () => {
   // Launch the browser and open a new blank page
   const browser = await puppeteer.launch({
-    headless: true,
+    headless: false,
     defaultViewport: null,
   });
   const page = await browser.newPage();
@@ -48,7 +48,7 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
   for (let i = 0; i < data.length; i++) {
     // Launch the browser and open a new blank page
     const browser = await puppeteer.launch({
-      headless: true,
+      headless: false,
       defaultViewport: null,
     });
     const page = await browser.newPage();
