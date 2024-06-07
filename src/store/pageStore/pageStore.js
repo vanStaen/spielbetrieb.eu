@@ -49,6 +49,11 @@ export class PageStore {
       setNotificationsCount: action,
       unseenNotificationsCount: observable,
       setUnseenNotificationsCount: action,
+      genders: observable,
+      setGenders: action,
+      orientations: observable,
+      setOrientations: action,
+      fetchData: action,
     });
   }
 

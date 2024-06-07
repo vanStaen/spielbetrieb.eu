@@ -44,8 +44,8 @@ const App = observer(() => {
   }, []);
 
   useEffect(() => {
-    authStore.checkAccess();
     pageStore.fetchData();
+    authStore.checkAccess();
   }, []);
 
   useEffect(() => {

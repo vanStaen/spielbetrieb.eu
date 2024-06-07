@@ -66,7 +66,8 @@ export const ProfileDetails = observer(() => {
     setDetailsArray(detailsArrayTemp);
   }, [
     profileStore,
-    pageStore,
+    pageStore.genders,
+    pageStore.orientations,
     showGender,
     showAge,
     showSexualOrientation,
@@ -88,8 +89,6 @@ export const ProfileDetails = observer(() => {
   }, [profileStore.isLoading, profileStore.profilSettings]);
 
   const dateLastActive = new Date(parseInt(profileStore.lastActive));
-
-  console.log("detailsArray", detailsArray);
 
   return (
     <div className="profil__detailsContainer">
