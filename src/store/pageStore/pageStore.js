@@ -4,6 +4,7 @@ import Cookies from "universal-cookie";
 import { getGenders } from "./getGenders.js";
 import { getOrientations } from "./getOrientations.js";
 import { getTags } from "./getTags.js";
+import { getPartnertypes } from "./getPartnertypes.js";
 
 const cookies = new Cookies();
 
@@ -15,11 +16,10 @@ export class PageStore {
   showMenuMobile = false;
   events = [];
   isLoadingEvent = true;
-  eventtypes = [];
   tags = [];
   genders = [];
   orientations = [];
-  locations = [];
+  partnertypes = [];
   showOverlayGallery = false;
   picturesUrls = [];
   pictureSelected = 0;
@@ -53,6 +53,8 @@ export class PageStore {
       setGenders: action,
       orientations: observable,
       setOrientations: action,
+      partnertypes: observable,
+      setPartnertypes: action,
       fetchData: action,
     });
   }
@@ -111,9 +113,11 @@ export class PageStore {
       const dataGenders = await getGenders();
       const dataTags = await getTags();
       const dataOrientations = await getOrientations();
+      const dataPartnertypes = await getPartnertypes();
       this.setGenders(dataGenders);
       this.setTags(dataTags);
       this.setOrientations(dataOrientations);
+      this.setPartnertypes(dataPartnertypes);
     } catch (e) {
       console.error(e);
     }
@@ -129,6 +133,10 @@ export class PageStore {
 
   setOrientations = (orientations) => {
     this.orientations = orientations;
+  };
+
+  setPartnertypes = (partnertypes) => {
+    this.partnertypes = partnertypes;
   };
 }
 

@@ -22,6 +22,7 @@ export class ProfileStore {
   profilSettings = null;
   filterIsPopingUp = false;
   isPartner = null;
+  partnertypeId = null;
 
   constructor() {
     makeObservable(this, {
@@ -43,6 +44,7 @@ export class ProfileStore {
       lastActive: observable,
       profilSettings: observable,
       isPartner: observable,
+      partnertypeId: observable,
       filterIsPopingUp: observable,
       setIsLoading: action,
       setError: action,
@@ -62,6 +64,7 @@ export class ProfileStore {
       setLastActive: action,
       setProfilSettings: action,
       setIsPartner: action,
+      setPartnertypeId: action,
       setFilterIsPopingUp: action,
       fetchProfileData: action,
     });
@@ -139,6 +142,10 @@ export class ProfileStore {
     this.isPartner = isPartner;
   };
 
+  setPartnertypeId = (partnertypeId) => {
+    this.partnertypeId = partnertypeId;
+  };
+
   setFilterIsPopingUp = (filterIsPopingUp) => {
     this.filterIsPopingUp = filterIsPopingUp;
   };
@@ -166,6 +173,7 @@ export class ProfileStore {
           this.setOrientationId(profileData.orientation);
           this.setLocation(profileData.location);
           this.setIsPartner(profileData.isPartner);
+          this.setPartnertypeId(profileData.partnertype);
           this.setLastActive(profileData.lastActive);
           this.setProfilSettings(JSON.parse(profileData.profilSettings));
         }

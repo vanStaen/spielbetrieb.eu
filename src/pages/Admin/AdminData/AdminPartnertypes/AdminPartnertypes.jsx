@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 
 import { EditableCell } from "../../EditableCell";
-import { getPartnertypes } from "./getPartnertypes";
+import { getPartnertypes } from "../../../../store/pageStore/getPartnertypes";
 import { deletePartnertype } from "./deletePartnertype";
 import { updatePartnertype } from "./updatePartnertype";
 import { addPartnertype } from "./addPartnertype";

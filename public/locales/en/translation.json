@@ -306,6 +306,7 @@
 		"acceptedYourFriendRequest": "accepted your friend request!",
 		"declinedYourFriendRequest": "declined your friend request!",
 		"addedNewProfilePicture": "added a new profile picture",
-		"uploadedNewPicture": "uploaded a new picture"
+		"uploadedNewPicture": "uploaded a new picture",
+		"startedFollowingYou": "started following you"
 	}
 }

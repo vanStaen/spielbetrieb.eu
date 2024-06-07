@@ -306,6 +306,7 @@
 		"acceptedYourFriendRequest": " hat deine Freundschaftsanfrage angenommen!",
 		"declinedYourFriendRequest": " hat deine Freundschaftsanfrage abgelehnt!",
 		"addedNewProfilePicture": "hat ein neues Profilbild hinzugefügt",
-		"uploadedNewPicture": "hat ein neues bild hochgeladet"
+		"uploadedNewPicture": "hat ein neues bild hochgeladet",
+		"startedFollowingYou": "folgt dir jetzt"
 	}
 }

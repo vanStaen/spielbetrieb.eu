@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { notification, Modal, Button, Form, Select, Switch } from "antd";
 
 import { updateUserAsAdmin } from "../updateUserAsAdmin";
-import { getPartnertypes } from "../../AdminData/AdminPartnertypes/getPartnertypes";
+import { getPartnertypes } from "../../../../store/pageStore/getPartnertypes";
 import { nameParser } from "../../../../helpers/dev/nameParser";
 import { userStore } from "../../../../store/userStore/userStore";
 
