@@ -1,24 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
-import { Divider, Radio } from "antd";
+import { Segmented } from "antd";
 import { useTranslation } from "react-i18next";
 
 import { userStore } from "../../../store/userStore/userStore";
 import { authStore } from "../../../store/authStore/authStore";
-import { updateLanguage } from "./updateLanguage";
-import { updateGender } from "./updateGender";
-import { updateOrientation } from "./updateOrientation";
-import { UserNameUpdate } from "./UserNameUpdate/UserNameUpdate";
-import { DeleteAccountButton } from "./DeleteAccountButton/DeleteAccountButton";
 import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
-import { SettingElementSwitch } from "./SettingElement/SettingElementSwitch";
 import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
+
+import { DangerZone } from "./DangerZone";
+import { EmailSettings } from "./EmailSettings";
+import { ProfileSettings } from "./ProfileSettings";
+import { AccountSettings } from "./AccountSettings";
 
 import "./Settings.less";
 
 export const Settings = observer(() => {
-  const { i18n, t } = useTranslation();
-  const initLanguage = i18n.language.slice(0, 2);
+  const { t } = useTranslation();
+  const [pageSelected, setPageSelected] = useState(1);
 
   const redirectIfNotLoggedIn = async () => {
     if (!authStore.hasAccess) {
@@ -34,28 +33,31 @@ export const Settings = observer(() => {
     userStore.isLoading && userStore.fetchUserData();
   }, []);
 
-  const changeLanguageHandler = (event) => {
-    const value = event.target.value;
-    if (value === "en") {
-      i18n.changeLanguage("en-US");
-    } else if (value === "fr") {
-      i18n.changeLanguage("fr-FR");
-    } else if (value === "de") {
-      i18n.changeLanguage("de-DE");
+  const settingsOption = [
+    { value: 1, label: t("settings.accountSettings"), },
+    { value: 2, label: t("settings.profileSettings"), },
+    { value: 3, label: t("settings.emailSettings"), },
+    { value: 4, label: t("settings.dangerZone"), },
+  ]
+
+  const segmentedChangeHandler = (e) => {
+    console.log(e);
+    setPageSelected(e);
+  };
+
+  const renderSwitch = (settingPage) => {
+    switch (settingPage) {
+      case 1:
+        return <AccountSettings />;
+      case 2:
+        return <ProfileSettings />;
+      case 3:
+        return <EmailSettings />;
+      case 4:
+        return <DangerZone />;
+      default:
+        return "Error";
     }
-    updateLanguage(value);
-  };
-
-  const changeGenderHandler = (event) => {
-    const value = parseInt(event.target.value);
-    userStore.setGender(value);
-    updateGender(value);
-  };
-
-  const changeOrientationHandler = (event) => {
-    const value = parseInt(event.target.value);
-    userStore.setOrientation(value);
-    updateOrientation(value);
   };
 
   return (
@@ -67,197 +69,15 @@ export const Settings = observer(() => {
           />
         </div>
       ) : (
-        <div className="EditSettings__container">
-          <Divider plain className="EditSettings__divider">
-            {t("settings.accountSettings")}
-          </Divider>
-
-          <div className="EditSettings__flexContainer">
-            <div className="EditSettings__centerDiv EditSettings__radio">
-              <Radio.Group
-                defaultValue={String(userStore.genderId)}
-                buttonStyle="solid"
-                onChange={changeGenderHandler}
-              >
-                <Radio.Button value="1">{t("gender.male")}</Radio.Button>
-                <Radio.Button value="2">{t("gender.female")}</Radio.Button>
-                <Radio.Button value="3">{t("gender.other")}</Radio.Button>
-              </Radio.Group>
-            </div>
-
-            <div className="EditSettings__spacerDiv" />
-
-            <div className="EditSettings__centerDiv EditSettings__radio">
-              <Radio.Group
-                defaultValue={String(userStore.orientation)}
-                buttonStyle="solid"
-                onChange={changeOrientationHandler}
-              >
-                <Radio.Button value="1">Hetero</Radio.Button>
-                <Radio.Button value="2">Homo</Radio.Button>
-                <Radio.Button value="3">Bi</Radio.Button>
-                <Radio.Button value="4">Other</Radio.Button>
-              </Radio.Group>
-            </div>
-
-            <div className="EditSettings__spacerDiv" />
-
-            <div className="EditSettings__centerDiv EditSettings__radio">
-              <Radio.Group
-                defaultValue={initLanguage}
-                buttonStyle="solid"
-                onChange={changeLanguageHandler}
-              >
-                <Radio.Button value="en">English</Radio.Button>
-                <Radio.Button value="de">Deutsch</Radio.Button>
-              </Radio.Group>
-            </div>
-          </div>
-
+        <>
+          <Segmented
+            className="EditSettings__segmented"
+            onChange={segmentedChangeHandler}
+            options={settingsOption}
+          />
           <div className="EditSettings__spacerDiv" />
-          <Divider plain className="EditSettings__divider">
-            {t("settings.profileSettings")}
-          </Divider>
-
-          <SettingElementSwitch
-            title={t("settings.settingShowLastOnline")}
-            type={"profilSettings"}
-            setting={"showLastSeenOnline"}
-            value={userStore.profilSettings.showLastSeenOnline}
-          />
-
-          <SettingElementSwitch
-            title={t("settings.hideProfilToStrangers")}
-            type={"profilSettings"}
-            setting={"hideProfilToStrangers"}
-            value={userStore.profilSettings.hideProfilToStrangers}
-          />
-
-          <SettingElementSwitch
-            title={t("settings.showFirstName")}
-            type={"profilSettings"}
-            setting={"showFirstName"}
-            value={userStore.profilSettings.showFirstName}
-          />
-          {userStore.profilSettings.showFirstName && (
-            <SettingElementSwitch
-              title={t("settings.showLastName")}
-              type={"profilSettings"}
-              setting={"showLastName"}
-              value={userStore.profilSettings.showLastName}
-              dependOnPrevious={true}
-            />
-          )}
-
-          <SettingElementSwitch
-            title={t("settings.showGender")}
-            type={"profilSettings"}
-            setting={"showGender"}
-            value={userStore.profilSettings.showGender}
-          />
-
-          <SettingElementSwitch
-            title={t("settings.showSexualOrientation")}
-            type={"profilSettings"}
-            setting={"showSexualOrientation"}
-            value={userStore.profilSettings.showSexualOrientation}
-          />
-
-          <SettingElementSwitch
-            title={t("settings.showAge")}
-            type={"profilSettings"}
-            setting={"showAge"}
-            value={userStore.profilSettings.showAge}
-          />
-
-          <SettingElementSwitch
-            title={t("settings.showLocation")}
-            type={"profilSettings"}
-            setting={"showLocation"}
-            value={userStore.profilSettings.showLocation}
-          />
-
-          <SettingElementSwitch
-            title={t("settings.showFriendListToStrangers")}
-            type={"profilSettings"}
-            setting={"showFriendListToStrangers"}
-            value={userStore.profilSettings.showFriendListToStrangers}
-          />
-          {!userStore.profilSettings.showFriendListToStrangers && (
-            <SettingElementSwitch
-              title={t("settings.showFriendListToFriends")}
-              type={"profilSettings"}
-              setting={"showFriendListToFriends"}
-              value={userStore.profilSettings.showFriendListToFriends}
-              dependOnPrevious={true}
-            />
-          )}
-
-          <SettingElementSwitch
-            title={t("settings.showFollowingListToStrangers")}
-            type={"profilSettings"}
-            setting={"showFollowingListToStrangers"}
-            value={userStore.profilSettings.showFollowingListToStrangers}
-          />
-          {!userStore.profilSettings.showFollowingListToStrangers && (
-            <SettingElementSwitch
-              title={t("settings.showFollowingListToFriends")}
-              type={"profilSettings"}
-              setting={"showFollowingListToFriends"}
-              value={userStore.profilSettings.showFollowingListToFriends}
-              dependOnPrevious={true}
-            />
-          )}
-
-          <div className="EditSettings__spacerDiv" />
-          <Divider plain className="EditSettings__divider">
-            {t("settings.emailSettings")}
-          </Divider>
-
-          <SettingElementSwitch
-            title={t("settings.sendEmailOnFriendRequest")}
-            type={"emailSettings"}
-            setting={"sendEmailFriendRequest"}
-            value={userStore.emailSettings.sendEmailFriendRequest}
-          />
-
-          <SettingElementSwitch
-            title={t("settings.sendEmailWhenNewMessage")}
-            type={"emailSettings"}
-            setting={"sendEmailNewMessage"}
-            value={userStore.emailSettings.sendEmailNewMessage}
-          />
-
-          <SettingElementSwitch
-            title={t("settings.sendEmailNotification")}
-            type={"emailSettings"}
-            setting={"sendEmailNotification"}
-            value={userStore.emailSettings.sendEmailNotification}
-          />
-
-          <SettingElementSwitch
-            title={t("settings.sendEmailPartnerEvent")}
-            type={"emailSettings"}
-            setting={"sendEmailPartnerEvent"}
-            value={userStore.emailSettings.sendEmailPartnerEvent}
-          />
-
-          <SettingElementSwitch
-            title={t("settings.keepMeInformedAboutSielbetrieb")}
-            type={"emailSettings"}
-            setting={"sendEmailMarketing"}
-            value={userStore.emailSettings.sendEmailMarketing}
-          />
-
-          <div className="EditSettings__spacerDiv" />
-          <Divider plain className="EditSettings__divider">
-            {t("settings.dangerZone")}
-          </Divider>
-
-          <UserNameUpdate />
-          <div className="EditSettings__spacerDiv" />
-          <DeleteAccountButton />
-        </div>
+          {renderSwitch(pageSelected)}
+        </>
       )}
       <HelpButtons />
     </div>
