@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 import { Segmented } from "antd";
 import { useTranslation } from "react-i18next";
+import {
+  UserOutlined,
+  SettingOutlined,
+  WarningOutlined,
+  MailOutlined,
+} from "@ant-design/icons";
 
 import { userStore } from "../../../store/userStore/userStore";
 import { authStore } from "../../../store/authStore/authStore";
@@ -34,14 +40,25 @@ export const Settings = observer(() => {
   }, []);
 
   const settingsOption = [
-    { value: 1, label: t("settings.accountSettings"), },
-    { value: 2, label: t("settings.profileSettings"), },
-    { value: 3, label: t("settings.emailSettings"), },
-    { value: 4, label: t("settings.dangerZone"), },
+    {
+      value: 1, label: t("settings.accountSettings"),
+      icon: <UserOutlined />,
+    },
+    {
+      value: 2, label: t("settings.profileSettings"),
+      icon: <SettingOutlined />,
+    },
+    {
+      value: 3, label: t("settings.emailSettings"),
+      icon: <MailOutlined />,
+    },
+    {
+      value: 4, label: t("settings.dangerZone"),
+      icon: <WarningOutlined />,
+    },
   ]
 
   const segmentedChangeHandler = (e) => {
-    console.log(e);
     setPageSelected(e);
   };
 
@@ -70,11 +87,13 @@ export const Settings = observer(() => {
         </div>
       ) : (
         <>
-          <Segmented
-            className="EditSettings__segmented"
-            onChange={segmentedChangeHandler}
-            options={settingsOption}
-          />
+          <div className="EditSettings__segmentedContainer">
+            <Segmented
+              className="EditSettings__segmented"
+              onChange={segmentedChangeHandler}
+              options={settingsOption}
+            />
+          </div>
           <div className="EditSettings__spacerDiv" />
           {renderSwitch(pageSelected)}
         </>

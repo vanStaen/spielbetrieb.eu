@@ -14,6 +14,33 @@
     height: calc(var(--vh, 1vh) * 100 - 70px - 70px); // 70px is the header
   }
 
+  .EditSettings__segmentedContainer {
+    margin: 40px 8vw;
+    max-width: 1200px;
+    text-align: center;
+    vertical-align: top;
+
+    .ant-segmented {
+      background: rgba(white, .15);
+      color: rgba(var(--themeFontColor), .75);
+    }
+
+    .ant-segmented-item-label {
+      &:hover {
+        color: rgba(var(--themeBlackOrWhiteColor), 1);
+      }
+    }
+
+    .ant-segmented-thumb {
+      background-color: rgba(var(--themeFontColor), .25) !important;
+    }
+
+    .ant-segmented-item-selected {
+      background-color: rgba(var(--themeFontColor), 1) !important;
+      color: rgba(var(--themeFontColorInvert), 1) !important;
+    }
+  }
+
   .EditSettings__container {
     margin: 40px 8vw;
     max-width: 1200px;

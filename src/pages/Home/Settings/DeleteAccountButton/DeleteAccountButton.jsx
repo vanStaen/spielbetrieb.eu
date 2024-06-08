@@ -49,7 +49,7 @@ export const DeleteAccountButton = () => {
 
   return (
     <div className="EditSettings__singleSetting">
-      <div className="EditSettings__title {">{t("settings.deleteAccount")}</div>
+      <div className="EditSettings__title">{t("settings.deleteAccount")}</div>
       <Button
         block
         className="deleteButton"
