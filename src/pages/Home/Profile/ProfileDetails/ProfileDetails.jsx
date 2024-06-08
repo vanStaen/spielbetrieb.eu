@@ -32,29 +32,34 @@ export const ProfileDetails = observer(() => {
   const [ageFromBirthday, setAgeFromBirthday] = useState(null);
   const [partnerTypeText, setPartnerTypeText] = useState(null);
 
-
   useEffect(() => {
-    setGenderText(nameParser(
-      pageStore.genders.find(
-        (gender) => parseInt(gender._id) === profileStore.genderId,
-      )?.name,
-      pageStore.selectedLanguage,
-    ));
-    setOrientationText(nameParser(
-      pageStore.orientations.find(
-        (orientation) =>
-          parseInt(orientation._id) === profileStore.orientationId,
-      )?.name,
-      pageStore.selectedLanguage,
-    ));
+    setGenderText(
+      nameParser(
+        pageStore.genders.find(
+          (gender) => parseInt(gender._id) === profileStore.genderId,
+        )?.name,
+        pageStore.selectedLanguage,
+      ),
+    );
+    setOrientationText(
+      nameParser(
+        pageStore.orientations.find(
+          (orientation) =>
+            parseInt(orientation._id) === profileStore.orientationId,
+        )?.name,
+        pageStore.selectedLanguage,
+      ),
+    );
     setAgeFromBirthday(dayjs(profileStore.birthday).fromNow(true));
-    setPartnerTypeText(nameParser(
-      pageStore.partnertypes.find(
-        (partnertype) =>
-          parseInt(partnertype._id) === profileStore.partnertypeId,
-      )?.name,
-      pageStore.selectedLanguage,
-    ));
+    setPartnerTypeText(
+      nameParser(
+        pageStore.partnertypes.find(
+          (partnertype) =>
+            parseInt(partnertype._id) === profileStore.partnertypeId,
+        )?.name,
+        pageStore.selectedLanguage,
+      ),
+    );
   }, [
     profileStore.genderId,
     profileStore.orientationId,
@@ -124,9 +129,11 @@ export const ProfileDetails = observer(() => {
           {showFirstName && profileStore.firstName}
           {showLastName && ` ${profileStore.lastName}`}
         </div>
-        {profileStore.isPartner ?
-          <div className="profil__details">Partner {partnerTypeText}</div> :
-          <div className="profil__details">{detailsArray.join(" - ")}</div>}
+        {profileStore.isPartner ? (
+          <div className="profil__details">Partner {partnerTypeText}</div>
+        ) : (
+          <div className="profil__details">{detailsArray.join(" - ")}</div>
+        )}
         {showLastSeenOnline && (
           <div className="profil__lastSeenOnline">
             {t("profile.lastSeenOnline")} <br />{" "}
