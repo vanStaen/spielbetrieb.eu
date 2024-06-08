@@ -6,7 +6,7 @@ import { observer } from "mobx-react";
 
 import { postSubscriberVerified } from "./postSubscriberVerified";
 import { CustomSpinner } from "../../components/CustomSpinner/CustomSpinner";
-import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
+import SpielbetriebLogo from "../../img/logos/spielbetriebLogoNew.png";
 import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
 import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 import { pageStore } from "../../store/pageStore/pageStore";
