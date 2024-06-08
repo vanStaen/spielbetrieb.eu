@@ -1,6 +1,6 @@
 import React from "react";
 
-import SpielbetriebLogo from "../../../img/logos/spielbetriebLogoNew.png";
+import SpielbetriebLogo from "../../../img/logos/spielbetriebLogo.png";
 
 import "./AdminCustomSpinner.less";
 

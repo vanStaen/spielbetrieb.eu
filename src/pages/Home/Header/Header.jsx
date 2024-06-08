@@ -8,7 +8,7 @@ import { Menu } from "../../../components/Menu/Menu";
 import { QuickActions } from "../../../components/QuickActions/QuickActions";
 import { HeaderElement } from "./HeaderElement/HeaderElement";
 import { HeaderMenuMobile } from "./HeaderMenuMobile/HeaderMenuMobile";
-import SpielbetriebLogo from "../../../img/logos/spielbetriebLogoInvertedNew.png";
+import SpielbetriebLogo from "../../../img/logos/spielbetriebLogoInverted.png";
 
 import "./Header.less";
 

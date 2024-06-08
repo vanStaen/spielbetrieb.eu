@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react";
 
-import SpielbetriebLogo from "../../img/logos/spielbetriebLogoNew.png";
+import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { pageStore } from "../../store/pageStore/pageStore";
 
 import "./CustomSpinner.less";

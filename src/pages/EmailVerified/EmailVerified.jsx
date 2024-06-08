@@ -9,7 +9,7 @@ import { postEmailVerified } from "./postEmailVerified";
 import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
 import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 import { CustomSpinner } from "../../components/CustomSpinner/CustomSpinner";
-import SpielbetriebLogo from "../../img/logos/spielbetriebLogoNew.png";
+import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { pageStore } from "../../store/pageStore/pageStore";
 
 import "./EmailVerified.less";

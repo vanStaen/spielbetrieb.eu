@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Tooltip } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
-import SpielbetriebLogo from "../../img/logos/spielbetriebLogoNew.png";
+import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
 import { HelpButtons } from "../../components/HelpButtons/HelpButtons";

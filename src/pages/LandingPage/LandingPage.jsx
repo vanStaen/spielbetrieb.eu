@@ -9,7 +9,7 @@ import {
   NotificationOutlined,
 } from "@ant-design/icons";
 
-import SpielbetriebLogo from "../../img/logos/spielbetriebLogoNew.png";
+import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { Phone } from "../../components/Phone/Phone";
 import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
