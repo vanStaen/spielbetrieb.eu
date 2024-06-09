@@ -13,6 +13,7 @@ import { userStore } from "../../../store/userStore/userStore";
 import { authStore } from "../../../store/authStore/authStore";
 import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
 import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
+import { isMobileCheck } from "../../../helpers/dev/checkMobileTablet";
 
 import { DangerZone } from "./DangerZone";
 import { EmailSettings } from "./EmailSettings";
@@ -24,6 +25,8 @@ import "./Settings.less";
 export const Settings = observer(() => {
   const { t } = useTranslation();
   const [pageSelected, setPageSelected] = useState(1);
+
+  const isMobile = isMobileCheck();
 
   const redirectIfNotLoggedIn = async () => {
     if (!authStore.hasAccess) {
@@ -41,19 +44,23 @@ export const Settings = observer(() => {
 
   const settingsOption = [
     {
-      value: 1, label: t("settings.accountSettings"),
+      value: 1,
+      label: !isMobile && t("settings.accountSettings"),
       icon: <UserOutlined />,
     },
     {
-      value: 2, label: t("settings.profileSettings"),
+      value: 2,
+      label: !isMobile && t("settings.profileSettings"),
       icon: <SettingOutlined />,
     },
     {
-      value: 3, label: t("settings.emailSettings"),
+      value: 3,
+      label: !isMobile && t("settings.emailSettings"),
       icon: <MailOutlined />,
     },
     {
-      value: 4, label: t("settings.dangerZone"),
+      value: 4,
+      label: !isMobile && t("settings.dangerZone"),
       icon: <WarningOutlined />,
     },
   ]
@@ -89,6 +96,7 @@ export const Settings = observer(() => {
         <>
           <div className="EditSettings__segmentedContainer">
             <Segmented
+              size={isMobile && "large"}
               className="EditSettings__segmented"
               onChange={segmentedChangeHandler}
               options={settingsOption}
