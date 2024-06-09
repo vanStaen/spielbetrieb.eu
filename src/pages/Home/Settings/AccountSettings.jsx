@@ -39,49 +39,56 @@ export const AccountSettings = observer(() => {
 
   return (
     <div className="EditSettings__container">
+      <div className="EditSettings__title EditSettings__centerDiv">
+        {t("settings.selectGender")}
+      </div>
+      <div className="EditSettings__centerDiv EditSettings__radio">
+        <Radio.Group
+          defaultValue={String(userStore.genderId)}
+          buttonStyle="solid"
+          onChange={changeGenderHandler}
+        >
+          <Radio.Button value="1">{t("gender.male")}</Radio.Button>
+          <Radio.Button value="2">{t("gender.female")}</Radio.Button>
+          <Radio.Button value="3">{t("gender.other")}</Radio.Button>
+        </Radio.Group>
+      </div>
 
+      <div className="EditSettings__spacerDiv" />
+      <div className="EditSettings__title EditSettings__centerDiv">
+        {t("settings.selectSexualOrientation")}
+      </div>
+
+      <div className="EditSettings__centerDiv EditSettings__radio">
+        <Radio.Group
+          defaultValue={String(userStore.orientation)}
+          buttonStyle="solid"
+          onChange={changeOrientationHandler}
+        >
+          <Radio.Button value="1">Hetero</Radio.Button>
+          <Radio.Button value="2">Homo</Radio.Button>
+          <Radio.Button value="3">Bi</Radio.Button>
+          <Radio.Button value="4">Other</Radio.Button>
+        </Radio.Group>
+      </div>
+
+      <div className="EditSettings__spacerDiv" />
       <UserNameUpdate />
 
-      <div className="EditSettings__flexContainer">
-        <div className="EditSettings__centerDiv EditSettings__radio">
-          <Radio.Group
-            defaultValue={String(userStore.genderId)}
-            buttonStyle="solid"
-            onChange={changeGenderHandler}
-          >
-            <Radio.Button value="1">{t("gender.male")}</Radio.Button>
-            <Radio.Button value="2">{t("gender.female")}</Radio.Button>
-            <Radio.Button value="3">{t("gender.other")}</Radio.Button>
-          </Radio.Group>
-        </div>
+      <div className="EditSettings__spacerDiv" />
+      <div className="EditSettings__title EditSettings__centerDiv">
+        {t("settings.selectLanguage")}
+      </div>
 
-        <div className="EditSettings__spacerDiv" />
-
-        <div className="EditSettings__centerDiv EditSettings__radio">
-          <Radio.Group
-            defaultValue={String(userStore.orientation)}
-            buttonStyle="solid"
-            onChange={changeOrientationHandler}
-          >
-            <Radio.Button value="1">Hetero</Radio.Button>
-            <Radio.Button value="2">Homo</Radio.Button>
-            <Radio.Button value="3">Bi</Radio.Button>
-            <Radio.Button value="4">Other</Radio.Button>
-          </Radio.Group>
-        </div>
-
-        <div className="EditSettings__spacerDiv" />
-
-        <div className="EditSettings__centerDiv EditSettings__radio">
-          <Radio.Group
-            defaultValue={initLanguage}
-            buttonStyle="solid"
-            onChange={changeLanguageHandler}
-          >
-            <Radio.Button value="en">English</Radio.Button>
-            <Radio.Button value="de">Deutsch</Radio.Button>
-          </Radio.Group>
-        </div>
+      <div className="EditSettings__centerDiv EditSettings__radio">
+        <Radio.Group
+          defaultValue={initLanguage}
+          buttonStyle="solid"
+          onChange={changeLanguageHandler}
+        >
+          <Radio.Button value="en">English</Radio.Button>
+          <Radio.Button value="de">Deutsch</Radio.Button>
+        </Radio.Group>
       </div>
 
     </div>

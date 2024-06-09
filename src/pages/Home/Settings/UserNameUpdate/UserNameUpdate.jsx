@@ -66,10 +66,11 @@ export const UserNameUpdate = () => {
       notification.open({
         message: (
           <>
-            {t("settings.yourNewUserName")} <b>{newUserName}</b>{" "}
+            {t("settings.yourNewUserName")} <i>{newUserName}</i>{" "}
             {t("settings.hasBeenSaved")}
           </>
         ),
+        className: "customNotification",
         placement: "bottomRight",
       });
       setNewUserName(null);
@@ -77,20 +78,23 @@ export const UserNameUpdate = () => {
     setUserNameIsValidating(false);
   };
 
+  const usernameChangeLeft = MAX_USERNAME_CHANGE_ALLOWED - userStore.usernameChange > 0 ? MAX_USERNAME_CHANGE_ALLOWED - userStore.usernameChange : 0;
+
   return (
     <div className="UserNameUpdate__container">
-      <div className="UserNameUpdate__title">
+      <div className="UserNameUpdate__title EditSettings__centerDiv">
         {t("settings.changeUserName")}
       </div>
       <Input
         placeholder={userStore.userName}
         className="UserNameUpdate__input"
+        disabled={usernameChangeLeft === 0}
         prefix={<UserOutlined className="site-form-item-icon" />}
         suffix={
           <Tooltip
             title={
               <>
-                {MAX_USERNAME_CHANGE_ALLOWED - userStore.usernameChange}{" "}
+                {usernameChangeLeft}{" "}
                 {t("settings.changesLeft")}
               </>
             }
@@ -109,7 +113,7 @@ export const UserNameUpdate = () => {
           icon={<ArrowRightOutlined />}
           loading={userNameIsValidating}
           disabled={
-            MAX_USERNAME_CHANGE_ALLOWED - userStore.usernameChange === 0 ||
+            usernameChangeLeft === 0 ||
             !userNameAvailable
           }
         />

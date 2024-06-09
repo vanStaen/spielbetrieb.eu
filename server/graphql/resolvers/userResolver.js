@@ -104,6 +104,7 @@ export const userResolver = {
     const updatableFields = [
       "firstName",
       "lastName",
+      "userName",
       "email",
       "description",
       "avatar",
@@ -159,6 +160,7 @@ export const userResolver = {
     const updatableFields = [
       "firstName",
       "lastName",
+      "userName",
       "email",
       "description",
       "avatar",
