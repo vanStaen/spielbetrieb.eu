@@ -63,7 +63,7 @@ export const Settings = observer(() => {
       label: !isMobile && t("settings.dangerZone"),
       icon: <WarningOutlined />,
     },
-  ]
+  ];
 
   const segmentedChangeHandler = (e) => {
     setPageSelected(e);

@@ -2,14 +2,7 @@ import puppeteer from "puppeteer";
 import fs from "fs";
 import dayjs from "dayjs";
 
-import insertEventIntoDB from "./helpers/insertEventIntoDB.js";
-import getTags from "./helpers/getTags.js";
-import nameParser from "./helpers/nameParser.js";
-
-const LOCATION_ID = 8;
-const LOCATION_NAME = "Insomnia";
-const LOCATION_ADDRESS = "Alt-Tempelhof 17-19, 12099 Berlin";
-const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
+// import insertEventIntoDB from "./helpers/insertEventIntoDB.js";
 
 (async () => {
   // Launch the browser and open a new blank page
@@ -26,12 +19,14 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
 
   // Get page data
   const data = await page.evaluate(() => {
-    const events = document.querySelectorAll(".EventParts__EventBlock-sc-db999af1-9");
+    const events = document.querySelectorAll(
+      ".EventParts__EventBlock-sc-db999af1-9",
+    );
     const array = [];
 
     for (let i = 0; i < events.length; i++) {
       const link = events[i].querySelector("a").href;
-      const externalId = link.split('dice.fm/event/')[1].split('-')[0];
+      const externalId = link.split("dice.fm/event/")[1].split("-")[0];
       // Add event to array
       array.push({
         link,
@@ -59,13 +54,22 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
     });
 
     const event = await page.evaluate(async () => {
-      const title = document.querySelector(".EventDetailsTitle__Container-sc-8ebcf47a-5 > .EventDetailsTitle__Title-sc-8ebcf47a-0").innerHTML;
-      const externalPicture = document.querySelector(".EventDetailsImage__Container-sc-869461fe-0 > img").srcset.split(' 1x')[0];
-      const fromDate = document.querySelector(".EventDetailsTitle__Date-sc-8ebcf47a-2").innerHTML;
-      const readmore = document.querySelector(".TruncatedMarkdown__MoreButton-sc-3744924d-1");
+      const title = document.querySelector(
+        ".EventDetailsTitle__Container-sc-8ebcf47a-5 > .EventDetailsTitle__Title-sc-8ebcf47a-0",
+      ).innerHTML;
+      const externalPicture = document
+        .querySelector(".EventDetailsImage__Container-sc-869461fe-0 > img")
+        .srcset.split(" 1x")[0];
+      const fromDate = document.querySelector(
+        ".EventDetailsTitle__Date-sc-8ebcf47a-2",
+      ).innerHTML;
+      const readmore = document.querySelector(
+        ".TruncatedMarkdown__MoreButton-sc-3744924d-1",
+      );
       await readmore.click();
-      const description = document.querySelector(".EventDetailsAbout__Container-sc-6411bf4-2").innerHTML
-        .replaceAll("</div>", "")
+      const description = document
+        .querySelector(".EventDetailsAbout__Container-sc-6411bf4-2")
+        .innerHTML.replaceAll("</div>", "")
         .replaceAll("<br>", " ")
         .replaceAll("&amp;", "&")
         .replaceAll("<p>", "")
@@ -95,7 +99,6 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
       }
     },
   );
-
 
   // Add event into db
   /* 

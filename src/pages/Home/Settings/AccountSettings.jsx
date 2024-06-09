@@ -90,7 +90,6 @@ export const AccountSettings = observer(() => {
           <Radio.Button value="de">Deutsch</Radio.Button>
         </Radio.Group>
       </div>
-
     </div>
   );
 });

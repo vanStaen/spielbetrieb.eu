@@ -78,7 +78,10 @@ export const UserNameUpdate = () => {
     setUserNameIsValidating(false);
   };
 
-  const usernameChangeLeft = MAX_USERNAME_CHANGE_ALLOWED - userStore.usernameChange > 0 ? MAX_USERNAME_CHANGE_ALLOWED - userStore.usernameChange : 0;
+  const usernameChangeLeft =
+    MAX_USERNAME_CHANGE_ALLOWED - userStore.usernameChange > 0
+      ? MAX_USERNAME_CHANGE_ALLOWED - userStore.usernameChange
+      : 0;
 
   return (
     <div className="UserNameUpdate__container">
@@ -94,8 +97,7 @@ export const UserNameUpdate = () => {
           <Tooltip
             title={
               <>
-                {usernameChangeLeft}{" "}
-                {t("settings.changesLeft")}
+                {usernameChangeLeft} {t("settings.changesLeft")}
               </>
             }
           >
@@ -112,10 +114,7 @@ export const UserNameUpdate = () => {
           className="UserNameUpdate__button"
           icon={<ArrowRightOutlined />}
           loading={userNameIsValidating}
-          disabled={
-            usernameChangeLeft === 0 ||
-            !userNameAvailable
-          }
+          disabled={usernameChangeLeft === 0 || !userNameAvailable}
         />
       </Tooltip>
     </div>

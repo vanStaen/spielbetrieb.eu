@@ -11,7 +11,6 @@ export const EmailSettings = observer(() => {
 
   return (
     <div className="EditSettings__container">
-
       <Divider plain className="EditSettings__divider">
         Interaction with users
       </Divider>

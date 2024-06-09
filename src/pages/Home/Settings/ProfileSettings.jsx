@@ -11,7 +11,6 @@ export const ProfileSettings = observer(() => {
 
   return (
     <div className="EditSettings__container">
-
       <Divider plain className="EditSettings__divider">
         Anonymosity
       </Divider>
