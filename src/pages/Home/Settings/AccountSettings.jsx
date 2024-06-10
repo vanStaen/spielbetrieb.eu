@@ -9,6 +9,7 @@ import { updateLanguage } from "./updateLanguage";
 import { updateGender } from "./updateGender";
 import { updateOrientation } from "./updateOrientation";
 import { UserNameUpdate } from "./UserNameUpdate/UserNameUpdate";
+import { LocationUpdate } from "./LocationUpdate/LocationUpdate";
 import { nameParser } from "../../../helpers/dev/nameParser";
 
 export const AccountSettings = observer(() => {
@@ -166,6 +167,9 @@ export const AccountSettings = observer(() => {
       <Divider orientation="left" plain className="EditSettings__divider">
         Keep it steady
       </Divider>
+
+      <LocationUpdate />
+      <div className="EditSettings__spacerDiv" />
       <UserNameUpdate />
     </div>
   );
