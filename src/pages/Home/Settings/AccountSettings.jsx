@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { observer } from "mobx-react";
 import { Radio, Divider } from "antd";
 import { useTranslation } from "react-i18next";
 
 import { userStore } from "../../../store/userStore/userStore";
+import { pageStore } from "../../../store/pageStore/pageStore";
 import { updateLanguage } from "./updateLanguage";
 import { updateGender } from "./updateGender";
 import { updateOrientation } from "./updateOrientation";
 import { UserNameUpdate } from "./UserNameUpdate/UserNameUpdate";
+import { nameParser } from "../../../helpers/dev/nameParser";
 
 export const AccountSettings = observer(() => {
   const { i18n, t } = useTranslation();
   const initLanguage = i18n.language.slice(0, 2);
+  const [showAllGenders, setShowAllGenders] = useState(false);
+  const [showAllOrientations, setShowAllOrientations] = useState(false);
+
 
   const changeLanguageHandler = (event) => {
     const value = event.target.value;
@@ -27,15 +32,54 @@ export const AccountSettings = observer(() => {
 
   const changeGenderHandler = (event) => {
     const value = parseInt(event.target.value);
-    userStore.setGender(value);
-    updateGender(value);
+    if (value === 0) {
+      setShowAllGenders(true);
+    } else {
+      userStore.setGenderId(value);
+      updateGender(value);
+    }
   };
 
   const changeOrientationHandler = (event) => {
     const value = parseInt(event.target.value);
-    userStore.setOrientation(value);
-    updateOrientation(value);
+    if (value === 0) {
+      setShowAllOrientations(true);
+    } else {
+      userStore.setOrientationId(value);
+      updateOrientation(value);
+    }
   };
+
+  //genders options
+  const gendersOptionsShort = pageStore.genders.map(gender => {
+    if (gender._id > 3) { return; }
+    return <Radio.Button value={gender._id}>{nameParser(gender.name, pageStore.selectedLanguage)}</Radio.Button>
+  })
+  if (userStore.genderId > 3) {
+    const genderName = pageStore.genders.find(gender => parseInt(gender._id) === parseInt(userStore.genderId))?.name;
+    gendersOptionsShort.push(<Radio.Button value={userStore.genderId}>{nameParser(genderName, pageStore.selectedLanguage)}</Radio.Button>)
+  }
+  gendersOptionsShort.push(<Radio.Button value={0}>...</Radio.Button>)
+  const gendersOptionsFull = pageStore.genders.map(gender => {
+    return <Radio.Button value={gender._id}>{nameParser(gender.name, pageStore.selectedLanguage)}</Radio.Button>
+  })
+
+  //orientations options
+  const orientationsOptionsShort = pageStore.orientations.map(orientation => {
+    if (orientation._id > 3) { return; }
+    return <Radio.Button value={parseInt(orientation._id)}>{nameParser(orientation.name, pageStore.selectedLanguage)}</Radio.Button>
+  })
+  if (userStore.orientationId > 3) {
+    const orientationName = pageStore.orientations.find(orientation => parseInt(orientation._id) === parseInt(userStore.orientationId))?.name;
+    orientationsOptionsShort.push(<Radio.Button value={userStore.orientationId}>{nameParser(orientationName, pageStore.selectedLanguage)}</Radio.Button>)
+  }
+  orientationsOptionsShort.push(<Radio.Button value={0}>...</Radio.Button>)
+  const orientationsOptionsFull = pageStore.orientations.map(orientation => {
+    return <Radio.Button value={parseInt(orientation._id)}>{nameParser(orientation.name, pageStore.selectedLanguage)}</Radio.Button>
+  })
+
+  console.log(userStore.orientationId);
+  console.log(orientationsOptionsShort);
 
   return (
     <div className="EditSettings__container">
@@ -49,13 +93,11 @@ export const AccountSettings = observer(() => {
       </div>
       <div className="EditSettings__centerDiv EditSettings__radio">
         <Radio.Group
-          defaultValue={String(userStore.genderId)}
+          defaultValue={userStore.genderId}
           buttonStyle="solid"
           onChange={changeGenderHandler}
         >
-          <Radio.Button value="1">{t("gender.male")}</Radio.Button>
-          <Radio.Button value="2">{t("gender.female")}</Radio.Button>
-          <Radio.Button value="3">{t("gender.other")}</Radio.Button>
+          {showAllGenders ? gendersOptionsFull : gendersOptionsShort}
         </Radio.Group>
       </div>
 
@@ -66,14 +108,11 @@ export const AccountSettings = observer(() => {
 
       <div className="EditSettings__centerDiv EditSettings__radio">
         <Radio.Group
-          defaultValue={String(userStore.orientation)}
+          defaultValue={userStore.orientationId}
           buttonStyle="solid"
           onChange={changeOrientationHandler}
         >
-          <Radio.Button value="1">Hetero</Radio.Button>
-          <Radio.Button value="2">Homo</Radio.Button>
-          <Radio.Button value="3">Bi</Radio.Button>
-          <Radio.Button value="4">Other</Radio.Button>
+          {showAllOrientations ? orientationsOptionsFull : orientationsOptionsShort}
         </Radio.Group>
       </div>
 
