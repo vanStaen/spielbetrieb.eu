@@ -1,6 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { Radio } from "antd";
+import { Radio, Divider } from "antd";
 import { useTranslation } from "react-i18next";
 
 import { userStore } from "../../../store/userStore/userStore";
@@ -39,6 +39,11 @@ export const AccountSettings = observer(() => {
 
   return (
     <div className="EditSettings__container">
+
+      <Divider orientation="left" plain className="EditSettings__divider">
+        Change as you wish
+      </Divider>
+
       <div className="EditSettings__title EditSettings__centerDiv">
         {t("settings.selectGender")}
       </div>
@@ -73,9 +78,6 @@ export const AccountSettings = observer(() => {
       </div>
 
       <div className="EditSettings__spacerDiv" />
-      <UserNameUpdate />
-
-      <div className="EditSettings__spacerDiv" />
       <div className="EditSettings__title EditSettings__centerDiv">
         {t("settings.selectLanguage")}
       </div>
@@ -90,6 +92,12 @@ export const AccountSettings = observer(() => {
           <Radio.Button value="de">Deutsch</Radio.Button>
         </Radio.Group>
       </div>
+
+      <div className="EditSettings__spacerDiv" />
+      <Divider orientation="left" plain className="EditSettings__divider">
+        Keep it steady
+      </Divider>
+      <UserNameUpdate />
     </div>
   );
 });

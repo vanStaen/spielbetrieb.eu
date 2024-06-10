@@ -11,7 +11,7 @@ export const EmailSettings = observer(() => {
 
   return (
     <div className="EditSettings__container">
-      <Divider plain className="EditSettings__divider">
+      <Divider orientation="left" plain className="EditSettings__divider">
         Interaction with users
       </Divider>
 
@@ -36,7 +36,7 @@ export const EmailSettings = observer(() => {
         value={userStore.emailSettings.sendEmailNotification}
       />
 
-      <Divider plain className="EditSettings__divider">
+      <Divider orientation="left" plain className="EditSettings__divider">
         Interaction with partners
       </Divider>
 

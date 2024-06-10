@@ -4,7 +4,7 @@ export async function addOrientation(dataObject) {
                 $dataObject: OrientationInputData!,
                 ) {
                 addOrientation (
-                  OrientationInput: $dataObject,
+                  orientationInput: $dataObject,
                 ) {
                   _id
                 }

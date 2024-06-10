@@ -4,7 +4,7 @@ export async function addGender(dataObject) {
                 $dataObject: GenderInputData!,
                 ) {
                 addGender (
-                  GenderInput: $dataObject,
+                  genderInput: $dataObject,
                 ) {
                   _id
                 }

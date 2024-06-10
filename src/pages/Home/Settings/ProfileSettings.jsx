@@ -11,7 +11,7 @@ export const ProfileSettings = observer(() => {
 
   return (
     <div className="EditSettings__container">
-      <Divider plain className="EditSettings__divider">
+      <Divider orientation="left" plain className="EditSettings__divider">
         Anonymosity
       </Divider>
 
@@ -29,7 +29,7 @@ export const ProfileSettings = observer(() => {
         value={userStore.profilSettings.hideProfilToStrangers}
       />
 
-      <Divider plain className="EditSettings__divider">
+      <Divider orientation="left" plain className="EditSettings__divider">
         Personal data
       </Divider>
 
@@ -77,7 +77,7 @@ export const ProfileSettings = observer(() => {
         value={userStore.profilSettings.showLocation}
       />
 
-      <Divider plain className="EditSettings__divider">
+      <Divider orientation="left" plain className="EditSettings__divider">
         Social connections
       </Divider>
 
