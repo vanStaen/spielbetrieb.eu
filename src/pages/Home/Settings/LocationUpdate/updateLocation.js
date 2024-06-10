@@ -1,10 +1,10 @@
-export async function updateGender(gender) {
+export async function updateLocation(location) {
   const graphqlQuery = {
     query: `
-    mutation ($gender: Int!){
+    mutation ($location: Int!){
       updateUser(
         userInput: {          
-          gender: $gender,
+          location: $location,
         }
       ) {
         _id,
@@ -12,7 +12,7 @@ export async function updateGender(gender) {
     }
     `,
     variables: {
-      gender,
+      location,
     },
   };
 

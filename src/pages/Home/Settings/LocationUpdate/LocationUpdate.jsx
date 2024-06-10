@@ -1,7 +1,8 @@
 import React from 'react';
 import { Input } from "antd";
-import { AimOutlined } from '@ant-design/icons';
 import { useTranslation } from "react-i18next";
+
+import { userStore } from '../../../../store/userStore/userStore';
 
 export const LocationUpdate = () => {
     const { t } = useTranslation();
@@ -16,8 +17,7 @@ export const LocationUpdate = () => {
                 {t("settings.changeLocation")}
             </div>
             <Input
-                placeholder={null}
-                prefix={<AimOutlined className="site-form-item-icon" />}
+                placeholder={userStore.location}
                 onChange={changeLocationHandler}
             />
         </div>

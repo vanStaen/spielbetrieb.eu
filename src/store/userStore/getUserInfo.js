@@ -22,7 +22,7 @@ export const getUserInfo = async () => {
                 language,
                 gender,
                 orientation,
-                location
+                location,
                 wishes,
                 birthday,
                 interests,

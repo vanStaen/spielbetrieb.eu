@@ -1,10 +1,7 @@
-import axios from "axios";
-import { notification } from "antd";
-
 export async function updateLanguage(language) {
-  const requestBody = {
+  const graphqlQuery = {
     query: `
-    mutation ($language: String!){
+    mutation ($language: Int!){
       updateUser(
         userInput: {          
           language: $language,
@@ -19,17 +16,23 @@ export async function updateLanguage(language) {
     },
   };
 
-  const response = await axios({
-    url: process.env.API_URL + "/graphql",
+  const headers = {
+    "content-type": "application/json",
+  };
+
+  const endpoint = process.env.API_URL + "/graphql";
+
+  const options = {
     method: "POST",
-    data: requestBody,
-  });
-  if ((response.status !== 200) & (response.status !== 201)) {
-    notification.error({
-      message: "Unauthenticated!",
-      placement: "bottomRight",
-    });
-    throw new Error("Unauthenticated!");
+    headers,
+    body: JSON.stringify(graphqlQuery),
+  };
+
+  const response = await fetch(endpoint, options);
+  const data = await response.json();
+
+  if (data.errors) {
+    return data.errors[0];
   }
-  return true;
+  return data.data.updateUser;
 }
