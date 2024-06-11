@@ -1,5 +1,31 @@
-.UserNameUpdate__container {
-    .UserNameUpdate__button {
+.locationUpdate__container {
+
+    .locationUpdate__title {
+        width: 100%;
+        margin-bottom: 8px;
+        font-weight: 300;
+    }
+
+    .locationUpdate__googlemap {
+        margin: 0;
+        height: 0;
+        transition: height .3s;
+    }
+
+    .locationUpdate__aimLogo {
+        cursor: pointer;
+        color: rgba(black, 1);
+    }
+
+    .locationUpdate__coordinates {
+        color: rgba(black, .25);  
+    }
+
+    .locationUpdate__input {
+        width: calc(100% - 40px);
+    }
+
+    .locationUpdate__button {
         border: 1px solid red !important;
         margin-left: 8px !important;
         border: 1px solid rgba(var(--themeFontColor), .05) !important;
@@ -12,26 +38,11 @@
                 background-color: rgba(var(--themeFontColor), .25) !important;
             }
         }
+
         &:hover {
             background-color: rgba(SeaGreen, .75) !important;
         }
+
     }
 
-    .UserNameUpdate__title {
-        width: 100%;
-        margin-bottom: 8px;
-        font-weight: 300;
-    }
-
-    .UserNameUpdate__input {
-        width: calc(100% - 40px);
-    }
-}
-
-@media (max-width: 800px) {
-    .UserNameUpdate__container {
-        .UserNameUpdate__input {
-            width: calc(100% - 40px);
-        }
-    }
 }

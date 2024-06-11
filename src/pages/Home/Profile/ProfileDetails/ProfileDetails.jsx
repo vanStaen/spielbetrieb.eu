@@ -85,9 +85,6 @@ export const ProfileDetails = observer(() => {
     ) {
       detailsArrayTemp.push(orientationText);
     }
-    if (showLocation && !!profileStore.location) {
-      detailsArrayTemp.push(profileStore.location);
-    }
     setDetailsArray(detailsArrayTemp);
   }, [
     profileStore.genderId,
@@ -99,7 +96,6 @@ export const ProfileDetails = observer(() => {
     showGender,
     showAge,
     showSexualOrientation,
-    showLocation,
     genderText,
     ageFromBirthday,
     orientationText,
@@ -133,6 +129,9 @@ export const ProfileDetails = observer(() => {
           <div className="profil__details">Partner {partnerTypeText}</div>
         ) : (
           <div className="profil__details">{detailsArray.join(" - ")}</div>
+        )}
+        {showLocation && (
+          <div className="profil__details">{profileStore.location}</div>
         )}
         {showLastSeenOnline && (
           <div className="profil__lastSeenOnline">

@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { eventFormStore } from "../../eventFormStore";
 import { updateEvent } from "../../../../../Admin/AdminEvents/updateEvent";
 import { spielplanStore } from "../../../../../../store/spielplanStore/spielplanStore";
-import { GoogleMap } from "./GoogleMap";
+import { GoogleMap } from "../../../../../../components/GoogleMap/GoogleMap";
 
 const MAP_HEIGHT = "30vh";
 

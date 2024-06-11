@@ -1,10 +1,12 @@
-export async function updateLocation(location) {
+export async function updateCoordinates(coordinates) {
+  console.log("coordinates", coordinates);
+
   const graphqlQuery = {
     query: `
-    mutation ($location: String!){
+    mutation ($coordinates: String!){
       updateUser(
         userInput: {          
-          location: $location,
+          coordinates: $coordinates,
         }
       ) {
         _id,
@@ -12,7 +14,7 @@ export async function updateLocation(location) {
     }
     `,
     variables: {
-      location,
+      coordinates,
     },
   };
 

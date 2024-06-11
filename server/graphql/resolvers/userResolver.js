@@ -114,7 +114,7 @@ export const userResolver = {
       "birthday",
       "gender",
       "orientation",
-      "lcoation",
+      "location",
       "interests",
       "wishes",
       "archived",

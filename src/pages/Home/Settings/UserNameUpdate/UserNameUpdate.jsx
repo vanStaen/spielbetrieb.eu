@@ -4,7 +4,7 @@ import { Tooltip, notification, Button, Input } from "antd";
 import {
   InfoCircleOutlined,
   UserOutlined,
-  ArrowRightOutlined,
+  CheckOutlined,
 } from "@ant-design/icons";
 
 import { userStore } from "../../../../store/userStore/userStore";
@@ -112,7 +112,7 @@ export const UserNameUpdate = () => {
           shape="circle"
           onClick={onChangeUserNameHandler}
           className="UserNameUpdate__button"
-          icon={<ArrowRightOutlined />}
+          icon={<CheckOutlined />}
           loading={userNameIsValidating}
           disabled={usernameChangeLeft === 0 || !userNameAvailable}
         />
