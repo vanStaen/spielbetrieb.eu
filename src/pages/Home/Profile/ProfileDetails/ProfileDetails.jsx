@@ -126,7 +126,15 @@ export const ProfileDetails = observer(() => {
           {showLastName && ` ${profileStore.lastName}`}
         </div>
         {profileStore.isPartner ? (
-          <div className="profil__details">Partner {partnerTypeText}</div>
+          <>
+            <div className="profil__details">Partner {partnerTypeText}</div>
+            {showAge && (
+              <div>
+                {t("profile.since")}{" "}
+                {dayjs(profileStore.birthday).format("YYYY")}
+              </div>
+            )}
+          </>
         ) : (
           <div className="profil__details">{detailsArray.join(" - ")}</div>
         )}
