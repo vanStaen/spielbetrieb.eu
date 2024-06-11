@@ -14,6 +14,7 @@ export const BirthdayUpdate = observer(() => {
   const { t } = useTranslation();
   const [birthday, setBirthday] = useState(userStore.birthday);
   const throttling = useRef(false);
+  const isPartner = userStore.isPartner;
 
   const keyDownHandler = (event) => {
     const keyPressed = event.key?.toLowerCase();
@@ -51,12 +52,14 @@ export const BirthdayUpdate = observer(() => {
   return (
     <div className="birthdayUpdate__container">
       <div className="birthdayUpdate__title EditSettings__centerDiv">
-        {t("settings.changeBirthday")}
+        {isPartner
+          ? t("settings.changeStartDate")
+          : t("settings.changeBirthday")}
       </div>
       <DatePicker
         defaultValue={dayjs(birthday)}
         format={"DD MMMM YYYY"}
-        maxDate={dayjs().subtract(18, "year")}
+        maxDate={!isPartner && dayjs().subtract(18, "year")}
         onChange={changeBirthdayHandler}
         className="birthdayUpdate__input"
       />

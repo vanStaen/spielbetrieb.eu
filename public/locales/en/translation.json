@@ -294,7 +294,9 @@
 		"selectLanguage": "Select your preferred language",
 		"changeLocation": "Change your location",
 		"selectYourLocation": "Select a location",
-		"changeBirthday": "Update your birthday"
+		"changeBirthday": "Update your birthday",
+		"notPartnerRelevant": "Not relevant for partners",
+		"changeStartDate": "Update the starting date of your project"
 	},
 	"gender": {
 		"male": "Male",
