@@ -295,8 +295,9 @@
 		"changeLocation": " Ändern Sie Ihren Standort",
 		"selectYourLocation": "Ort auswählen",
 		"changeBirthday": "Aktualisieren Sie Ihren Geburtstag",
-		"notPartnerRelevant": "Für Partner nicht relevant",
-		"changeStartDate": "Aktualisieren Sie das Startdatum Ihres Projekts"
+		"notPartnerRelevant": "für Partner nicht relevant",
+		"changeStartDate": "Aktualisieren Sie das Startdatum Ihres Projekts",
+		"showProjectStartDate": "Das Startdatum Ihres Projekts anzeigen"
 	},
 	"gender": {
 		"male": "Männlich",

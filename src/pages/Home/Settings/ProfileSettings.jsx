@@ -69,7 +69,11 @@ export const ProfileSettings = observer(() => {
       />
 
       <SettingElementSwitch
-        title={t("settings.showAge")}
+        title={
+          userStore.isPartner
+            ? t("settings.showProjectStartDate")
+            : t("settings.showAge")
+        }
         type={"profilSettings"}
         setting={"showAge"}
         value={userStore.profilSettings.showAge}
