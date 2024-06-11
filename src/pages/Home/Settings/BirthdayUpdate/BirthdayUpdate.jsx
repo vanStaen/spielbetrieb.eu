@@ -37,7 +37,7 @@ export const BirthdayUpdate = observer(() => {
   }, [keyDownHandler]);
 
   const changeBirthdayHandler = (event) => {
-    setBirthday(event.valueOf());
+    event ? setBirthday(event.valueOf()) : setBirthday(null);
   };
 
   const saveBirthdayHandler = () => {
@@ -58,7 +58,7 @@ export const BirthdayUpdate = observer(() => {
       </div>
       <DatePicker
         // defaultValue={dayjs(birthday)}
-        // format={"DD MMMM YYYY"}
+        format={"DD MMMM YYYY"}
         // maxDate={!isPartner && dayjs().subtract(18, "year")}
         onChange={changeBirthdayHandler}
         className="birthdayUpdate__input"
