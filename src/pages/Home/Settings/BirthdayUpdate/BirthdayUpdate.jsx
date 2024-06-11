@@ -57,9 +57,9 @@ export const BirthdayUpdate = observer(() => {
           : t("settings.changeBirthday")}
       </div>
       <DatePicker
-        defaultValue={dayjs(birthday)}
+        // defaultValue={dayjs(birthday)}
         // format={"DD MMMM YYYY"}
-        maxDate={!isPartner && dayjs().subtract(18, "year")}
+        // maxDate={!isPartner && dayjs().subtract(18, "year")}
         onChange={changeBirthdayHandler}
         className="birthdayUpdate__input"
       />
