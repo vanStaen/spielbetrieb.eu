@@ -288,7 +288,13 @@
 		"showAge": "Display my age in my profile",
 		"showGender": "Display my gender in my profile",
 		"showLocation": "Display my location in my profile",
-		"showSexualOrientation": "Display my sexual orientation in my profile"
+		"showSexualOrientation": "Display my sexual orientation in my profile",
+		"selectGender": "Select your gender",
+		"selectSexualOrientation": "Select your sexual orientation",
+		"selectLanguage": "Select your preferred language",
+		"changeLocation": "Change your location",
+		"selectYourLocation": "Select a location",
+		"changeBirthday": "Update your birthday"
 	},
 	"gender": {
 		"male": "Male",

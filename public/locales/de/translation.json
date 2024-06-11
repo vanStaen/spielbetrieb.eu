@@ -288,7 +288,13 @@
 		"showAge": "Alter in deinem Profile anzeigen",
 		"showGender": "Geschlecht in deinem Profile anzeigen",
 		"showLocation": "Standort in deinem Profile anzeigen",
-		"showSexualOrientation": "Sexuelle Orientation in deinem Profile anzeigen"
+		"showSexualOrientation": "Sexuelle Orientation in deinem Profile anzeigen",
+		"selectGender": "Wählen Sie Ihre Geschlecht",
+		"selectSexualOrientation": "Wählen Sie Ihre sexuelle Orientierung",
+		"selectLanguage": "Wählen Sie Ihre bevorzugte Sprache",
+		"changeLocation": " Ändern Sie Ihren Standort",
+		"selectYourLocation": "Ort auswählen",
+		"changeBirthday": "Aktualisieren Sie Ihren Geburtstag"
 	},
 	"gender": {
 		"male": "Männlich",

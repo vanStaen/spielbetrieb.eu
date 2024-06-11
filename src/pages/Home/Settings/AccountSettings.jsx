@@ -10,6 +10,7 @@ import { updateGender } from "./updateGender";
 import { updateOrientation } from "./updateOrientation";
 import { UserNameUpdate } from "./UserNameUpdate/UserNameUpdate";
 import { LocationUpdate } from "./LocationUpdate/LocationUpdate";
+import { BirthdayUpdate } from "./BirthdayUpdate/BirthdayUpdate";
 import { nameParser } from "../../../helpers/dev/nameParser";
 
 export const AccountSettings = observer(() => {
@@ -148,10 +149,12 @@ export const AccountSettings = observer(() => {
       </div>
 
       <div className="EditSettings__spacerDiv" />
+      <LocationUpdate />
+
+      <div className="EditSettings__spacerDiv" />
       <div className="EditSettings__title EditSettings__centerDiv">
         {t("settings.selectLanguage")}
       </div>
-
       <div className="EditSettings__centerDiv EditSettings__radio">
         <Radio.Group
           defaultValue={initLanguage}
@@ -168,7 +171,7 @@ export const AccountSettings = observer(() => {
         Keep it steady
       </Divider>
 
-      <LocationUpdate />
+      <BirthdayUpdate />
       <div className="EditSettings__spacerDiv" />
       <UserNameUpdate />
     </div>

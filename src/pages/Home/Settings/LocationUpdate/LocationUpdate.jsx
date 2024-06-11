@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
-import { Button, Input } from "antd";
+import { Button, Input, message } from "antd";
 import { AimOutlined, CheckOutlined } from "@ant-design/icons";
 
 import { userStore } from "../../../../store/userStore/userStore";
@@ -18,15 +18,40 @@ export const LocationUpdate = observer(() => {
   const [showMap, setShowMap] = useState(false);
   const [location, setLocation] = useState(userStore.location);
   const [coordinates, setCoordinates] = useState(null);
+  const throttling = useRef(false);
 
   const changeLocationHandler = (event) => {
     setLocation(event.target.value);
   };
 
   const saveLocationHandler = () => {
+    if (!location || location === userStore.location) {
+      return;
+    }
     updateLocation(location);
     userStore.setLocation(location);
+    message.info("Location updated!");
   };
+
+  const keyDownHandler = (event) => {
+    const keyPressed = event.key.toLowerCase();
+    if (throttling.current === false) {
+      throttling.current = true;
+      if (keyPressed === "enter") {
+        saveLocationHandler();
+      }
+    }
+    setTimeout(() => {
+      throttling.current = false;
+    }, 100);
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", keyDownHandler);
+    return () => {
+      document.removeEventListener("keydown", keyDownHandler);
+    };
+  }, [keyDownHandler]);
 
   const showMapHandler = (value) => {
     const divmap = document.getElementById("mapdiv");
