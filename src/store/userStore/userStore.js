@@ -24,6 +24,7 @@ export class UserStore {
   genderId = null;
   orientationId = null;
   location = null;
+  coordinates = null;
   wishes = null;
   interests = null;
   lastActive = null;
@@ -83,6 +84,8 @@ export class UserStore {
       setOrientationId: action,
       location: observable,
       setLocation: action,
+      coordinates: observable,
+      setCoordinates: action,
       wishes: observable,
       setWishes: action,
       interests: observable,
@@ -194,6 +197,10 @@ export class UserStore {
     this.location = location;
   };
 
+  setCoordinates = (coordinates) => {
+    this.coordinates = coordinates;
+  };
+
   setWishes = (wishes) => {
     this.wishes = wishes;
   };
@@ -288,6 +295,7 @@ export class UserStore {
         this.setGenderId(userData.gender);
         this.setOrientationId(userData.orientation);
         this.setLocation(userData.location);
+        this.setCoordinates(userData.coordinates);
         this.setWishes(userData.wishes);
         this.setInterests(userData.interests);
         this.setUsernameChange(userData.usernameChange);

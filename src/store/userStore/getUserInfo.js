@@ -23,6 +23,7 @@ export const getUserInfo = async () => {
                 gender,
                 orientation,
                 location,
+                coordinates,
                 wishes,
                 birthday,
                 interests,

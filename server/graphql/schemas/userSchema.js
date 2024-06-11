@@ -20,6 +20,7 @@ type User {
     gender: Int
     orientation: Int
     location: String
+    coordinates: String
     wishes: [String]
     interests: [String]
     archived: Boolean
@@ -57,6 +58,7 @@ input UserInputData {
     gender: Int
     orientation: Int
     location: String
+    coordinates: String
     wishes: [String]
     interests: [String]
     archived: Boolean
@@ -79,6 +81,7 @@ input UserInputDataAdmin {
     gender: Int
     orientation: Int
     location: String
+    coordinates: String
     wishes: [String]
     interests: [String]
     archived: Boolean

@@ -38,8 +38,10 @@ export const LocationUpdate = observer(() => {
   };
 
   useState(() => {
+    showMapHandler(false);
     if ("geolocation" in navigator) {
-      if (userStore.location === null) {
+      if (userStore.coordinates === null) {
+        console.log("run");
         navigator.geolocation.getCurrentPosition((position) => {
           setCoordinates(
             `${position.coords.latitude}, ${position.coords.longitude}`,
@@ -50,10 +52,6 @@ export const LocationUpdate = observer(() => {
         });
       }
     }
-  }, []);
-
-  useState(() => {
-    showMapHandler(false);
   }, [showMap]);
 
   return (
