@@ -37,7 +37,7 @@ export const BirthdayUpdate = observer(() => {
   }, [keyDownHandler]);
 
   const changeBirthdayHandler = (event) => {
-    setBirthday(event.valueOf());
+    event ? setBirthday(event.valueOf()) : setBirthday(null);
   };
 
   const saveBirthdayHandler = () => {

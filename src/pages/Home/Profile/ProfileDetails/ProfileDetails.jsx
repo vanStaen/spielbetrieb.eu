@@ -128,8 +128,8 @@ export const ProfileDetails = observer(() => {
         {profileStore.isPartner ? (
           <>
             <div className="profil__details">Partner {partnerTypeText}</div>
-            {showAge && (
-              <div>
+            {showAge && dayjs(profileStore.birthday).isValid() && (
+              <div className="profil__details">
                 {t("profile.since")}{" "}
                 {dayjs(profileStore.birthday).format("YYYY")}
               </div>
