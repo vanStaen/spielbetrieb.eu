@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
-import { profileStore } from "../../../../store/profileStore/profileStore";
-import { pageStore } from "../../../../store/pageStore/pageStore";
-import { nameParser } from "../../../../helpers/dev/nameParser";
+import { profileStore } from "../../../../../store/profileStore/profileStore";
+import { pageStore } from "../../../../../store/pageStore/pageStore";
+import { nameParser } from "../../../../../helpers/dev/nameParser";
 
 import "./ProfileDetails.less";
 

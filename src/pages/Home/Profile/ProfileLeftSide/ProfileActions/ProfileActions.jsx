@@ -9,8 +9,8 @@ import {
   EyeInvisibleOutlined,
 } from "@ant-design/icons";
 
-import { profileStore } from "../../../../store/profileStore/profileStore";
-import { userStore } from "../../../../store/userStore/userStore";
+import { profileStore } from "../../../../../store/profileStore/profileStore";
+import { userStore } from "../../../../../store/userStore/userStore";
 
 import { acceptFriendRequest } from "./acceptFriendRequest";
 import { addFollow } from "./addFollow";

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Tooltip } from "antd";
 import { LoadingOutlined, UserOutlined } from "@ant-design/icons";
 
-import { getPictureUrl } from "../../../../../helpers/picture/getPictureUrl";
-import { profileStore } from "../../../../../store/profileStore/profileStore";
+import { getPictureUrl } from "../../../../../../helpers/picture/getPictureUrl";
+import { profileStore } from "../../../../../../store/profileStore/profileStore";
 
 import "./ProfileFriendAvatar.less";
 

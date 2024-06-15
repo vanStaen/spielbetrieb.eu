@@ -4,11 +4,11 @@ import { notification } from "antd";
 import { UserOutlined, EditOutlined, LoadingOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
-import { userStore } from "../../../../store/userStore/userStore";
-import { profileStore } from "../../../../store/profileStore/profileStore";
-import { pageStore } from "../../../../store/pageStore/pageStore";
-import { postPicture } from "../../../../helpers/picture/postPicture";
-import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
+import { userStore } from "../../../../../store/userStore/userStore";
+import { profileStore } from "../../../../../store/profileStore/profileStore";
+import { pageStore } from "../../../../../store/pageStore/pageStore";
+import { postPicture } from "../../../../../helpers/picture/postPicture";
+import { getPictureUrl } from "../../../../../helpers/picture/getPictureUrl";
 import { updateAvatar } from "./updateAvatar";
 
 import "./Avatar.less";

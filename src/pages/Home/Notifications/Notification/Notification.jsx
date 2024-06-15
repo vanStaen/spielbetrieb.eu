@@ -14,9 +14,9 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { userStore } from "../../../../store/userStore/userStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { deleteNotification } from "./deleteNotification";
-import { addFollow } from "../../Profile/ProfileActions/addFollow";
-import { acceptFriendRequest } from "../../Profile/ProfileActions/acceptFriendRequest";
-import { declineFriendRequest } from "../../Profile/ProfileActions/declineFriendRequest";
+import { addFollow } from "../../Profile/ProfileLeftSide/ProfileActions/addFollow";
+import { acceptFriendRequest } from "../../Profile/ProfileLeftSide/ProfileActions/acceptFriendRequest";
+import { declineFriendRequest } from "../../Profile/ProfileLeftSide/ProfileActions/declineFriendRequest";
 import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
 import { NotificationTitle } from "./NotificationTitle";
 

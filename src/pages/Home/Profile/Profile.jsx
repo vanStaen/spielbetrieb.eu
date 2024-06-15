@@ -8,13 +8,13 @@ import { useTranslation } from "react-i18next";
 import { userStore } from "../../../store/userStore/userStore";
 import { profileStore } from "../../../store/profileStore/profileStore";
 import { authStore } from "../../../store/authStore/authStore";
-import { Avatar } from "./Avatar/Avatar";
+import { Avatar } from "./ProfileLeftSide/Avatar/Avatar";
 import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
 import { ProfileMain } from "./ProfileMain/ProfileMain";
 import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
-import { ProfileFriends } from "./ProfileFriends/ProfileFriends";
-import { ProfileDetails } from "./ProfileDetails/ProfileDetails";
-import { ProfileActions } from "./ProfileActions/ProfileActions";
+import { ProfileFriends } from "./ProfileLeftSide/ProfileFriends/ProfileFriends";
+import { ProfileDetails } from "./ProfileLeftSide/ProfileDetails/ProfileDetails";
+import { ProfileActions } from "./ProfileLeftSide/ProfileActions/ProfileActions";
 
 import "./Profile.less";
 
