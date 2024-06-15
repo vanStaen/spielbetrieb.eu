@@ -463,20 +463,19 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Querry: getUser",
+			"name": "GraphQL Query: getUser",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4",
-						"type": "text"
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4"
 					}
 				],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getUser {\n    _id,\n    isAdmin,\n    adminRoles,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    emailSettings,\n    profilSettings,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    interests,\n    lastActive,\n    archived,\n    usernameChange,\n    comments {\n        _id,\n    },\n    events {\n        _id,\n    },\n    messages {\n        _id,\n    },\n    notifications {\n        _id,\n    },\n    photos {\n        _id,\n    },\n    visitors {\n        _id,\n    },\n    friends {\n        userName,\n        avatar,\n        pending,\n    },\n    followers {\n        userName,\n        avatar,\n    },\n    following {\n        userName,\n        avatar,\n    }\n  }\n}",
+						"query": "query {\n  getUser {\n    _id,\n    isAdmin,\n    adminRoles,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    emailSettings,\n    profilSettings,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    interests,\n    lastActive,\n    archived,\n    usernameChange,\n    comments {\n        _id,\n    },\n    events {\n        _id,\n    },\n    messages {\n        _id,\n    },\n    notifications {\n        _id,\n    },\n    photos {\n        _id,\n    },\n    visitors {\n        _id,\n    },\n    friends {\n        userName,\n        avatar,\n    },\n    friendrequests {\n        userName,\n        avatar,\n    },\n    followers {\n        userName,\n        avatar,\n    },\n    following {\n        userName,\n        avatar,\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -527,7 +526,7 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Querry: getProfileByName",
+			"name": "GraphQL Query: getProfileByName",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -559,7 +558,7 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Querry: getProfileById",
+			"name": "GraphQL Query: getProfileById",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -572,7 +571,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getProfileById (_id: 5) {\n    _id,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    interests,\n    comments {\n        _id,\n    }\n    events {\n        _id,\n    }\n    messages {\n        _id,\n    }\n    notifications {\n        _id,\n    }\n    photos {\n        _id,\n    }\n    visitors {\n        _id,\n    }\n    friends {\n        userName,\n        avatar,\n    },\n    followers {\n        userName,\n        avatar,\n    },\n    followed {\n        userName,\n        avatar,\n    },\n  }\n}",
+						"query": "query {\n  getProfileById (_id: 17) {\n    _id,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    events {\n        _id,\n    }, \n    reviews {\n        _id,\n    }\n    interests,\n    comments {\n        _id,\n    }\n    events {\n        _id,\n    }\n    messages {\n        _id,\n    }\n    notifications {\n        _id,\n    }\n    photos {\n        _id,\n    }\n    visitors {\n        _id,\n    }\n    friends {\n        userName,\n        avatar,\n    },\n    friendrequests {\n        userName,\n        avatar,\n    },\n    followers {\n        userName,\n        avatar,\n    },\n    following {\n        userName,\n        avatar,\n    },\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2695,6 +2694,82 @@
 			"response": []
 		},
 		{
+			"name": "GraphQL Mutation: addGender",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  addGender (\n    genderInput: {\n        name: \"{\\\"en\\\":\\\"Female\\\", \\\"de\\\":\\\"Weiblich\\\"}\",\n        validated: true,\n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: addOrientation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  addEquipment (\n    equipmentInput: {\n        name: \"{\\\"en\\\":\\\"Gyn chair\\\", \\\"de\\\":\\\"Gyn-Stuhl\\\"}\",\n        validated: true,\n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
 			"name": "GraphQL Query: getTranslations",
 			"request": {
 				"method": "POST",
@@ -2841,6 +2916,44 @@
 			"response": []
 		},
 		{
+			"name": "GraphQL Mutation: updateDark",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n   updateDark (\n    darkId: \"1\",\n    darkInput: { \n        link: \"https://online.fliphtml5.com/gdfru/hbap/\", \n        }\n  ) {\n    _id\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
 			"name": "GraphQL Query: getBugs",
 			"request": {
 				"method": "POST",
@@ -2943,7 +3056,7 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Mutation: updateDark",
+			"name": "GraphQL Mutation: deleteNotification",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -2961,7 +3074,43 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n   updateDark (\n    darkId: \"1\",\n    darkInput: { \n        link: \"https://online.fliphtml5.com/gdfru/hbap/\", \n        }\n  ) {\n    _id\n  }\n}",
+						"query": "mutation {\n  deleteNotification (\n    notificationId: 1\n  )\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: updateNotification",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  updateNotificationSeen\n}",
 						"variables": ""
 					}
 				},
@@ -2987,14 +3136,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4",
-						"type": "text"
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4"
 					}
 				],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getNotifications {\n    _id,\n    userId,\n    notification,\n    photoLinkId,\n    userLinkId,\n    eventLinkId,\n    mediaUrl,\n    actionData,\n    type,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "query {\n  getNotifications {\n    _id,\n    userId,\n    photoLinkId,\n    userLinkId,\n    eventLinkId,\n    mediaUrl,\n    data,\n    actionData,\n    type,\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -3019,14 +3167,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4",
-						"type": "text"
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4"
 					}
 				],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getAllNotifications {\n    _id,\n    userId,\n    notification,\n    photoLinkId,\n    userLinkId,\n    eventLinkId,\n    mediaUrl,\n    actionData,\n    type,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "query {\n  getAllNotifications {\n    _id,\n    userId,\n    photoLinkId,\n    userLinkId,\n    eventLinkId,\n    mediaUrl,\n    data,\n    actionData,\n    type,\n    seen,\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -3045,25 +3192,23 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Mutation: updateNotification",
+			"name": "GraphQL Mutation: addFriendRequest",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
 						"value": "application/json"
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer 123456789",
-						"type": "text"
+						"value": "Bearer 123456789"
 					}
 				],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateNotification (\n    notificationId: 1,\n    seen: true,\n  ) {\n      _id,\n  }\n}",
+						"query": "mutation {\n  addFriendRequest (\n    requestedId: \"1\"\n  )\n}",
 						"variables": ""
 					}
 				},
@@ -3083,25 +3228,131 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Mutation: deleteNotification",
+			"name": "GraphQL Mutation: isRequested",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
 						"value": "application/json"
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer 123456789",
-						"type": "text"
+						"value": "Bearer 123456789"
 					}
 				],
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  deleteNotification (\n    notificationId: 1\n  )\n}",
+						"query": "query {\n  isRequested (\n    requestingId: \"1\"\n  )\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: deleteFriendRequest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  deleteFriendRequest (\n    requestedId: \"1\"\n  )\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: addFollow",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  addFollow (\n    followedId: \"1\"\n  )\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: deleteFollow",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  deleteFollow (\n    followedId: \"1\"\n  )\n}",
 						"variables": ""
 					}
 				},
