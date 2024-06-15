@@ -10,7 +10,7 @@ export const ProfileReviews = observer(() => {
   const { t } = useTranslation();
   return (
     <div className="profileReviews__container">
-      <div className="profileReviews__title">
+      <div className="profileMain__title">
         {t("profile.reviews")} ({profileStore.reviews?.length})
       </div>
     </div>

@@ -10,7 +10,7 @@ export const ProfilePhotos = observer(() => {
   const { t } = useTranslation();
   return (
     <div className="profilePhotos__container">
-      <div className="profilePhotos__title">
+      <div className="profileMain__title">
         {t("profile.photos")} ({profileStore.photos?.length})
       </div>
     </div>

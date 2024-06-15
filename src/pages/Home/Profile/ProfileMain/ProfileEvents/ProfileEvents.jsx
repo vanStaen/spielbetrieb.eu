@@ -10,7 +10,7 @@ export const ProfileEvents = observer(() => {
   const { t } = useTranslation();
   return (
     <div className="profileEvents__container">
-      <div className="profileEvents__title">
+      <div className="profileMain__title">
         {t("profile.events")} ({profileStore.events?.length})
       </div>
     </div>
