@@ -28,6 +28,7 @@ type User {
     lastActive: String!
     comments: [Comment]
     events: [Event]
+    reviews: [Review]
     messages: [Message]
     notifications: [Notification]
     photos: [Photo]

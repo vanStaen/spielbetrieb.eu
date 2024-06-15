@@ -19,6 +19,7 @@ import * as messageSchema from "./schemas/messageSchema.js";
 import * as notificationSchema from "./schemas/notificationSchema.js";
 import * as orientationSchema from "./schemas/orientationSchema.js";
 import * as photoSchema from "./schemas/photoSchema.js";
+import * as reviewSchema from "./schemas/reviewSchema.js";
 import * as userSchema from "./schemas/userSchema.js";
 import * as visitorSchema from "./schemas/visitorSchema.js";
 import * as subscriberSchema from "./schemas/subscriberSchema.js";
@@ -46,6 +47,7 @@ export default buildSchema(`
     ${notificationSchema.Notification}
     ${orientationSchema.Orientation}
     ${photoSchema.Photo}
+    ${reviewSchema.Review}
     ${userSchema.User}
     ${visitorSchema.Visitor}
     ${subscriberSchema.Subscriber}
@@ -70,6 +72,7 @@ export default buildSchema(`
     ${messageSchema.MessageInputData}
     ${orientationSchema.OrientationInputData}
     ${photoSchema.PhotoInputData}
+    ${reviewSchema.ReviewInputData}
     ${userSchema.UserInputData}
     ${userSchema.UserInputDataAdmin}
     ${subscriberSchema.SubscriberInputData}
@@ -96,6 +99,7 @@ export default buildSchema(`
         ${notificationSchema.NotificationQueries}
         ${orientationSchema.OrientationQueries}
         ${photoSchema.PhotoQueries}
+        ${reviewSchema.ReviewQueries}
         ${userSchema.UserQueries}
         ${visitorSchema.VisitorQueries}
         ${subscriberSchema.SubscriberQueries}
@@ -123,6 +127,7 @@ export default buildSchema(`
         ${notificationSchema.NotificationMutations}
         ${orientationSchema.OrientationMutations}
         ${photoSchema.PhotoMutations}
+        ${reviewSchema.ReviewMutations}
         ${userSchema.UserMutations}
         ${visitorSchema.VisitorMutations}
         ${subscriberSchema.SubscriberMutations}

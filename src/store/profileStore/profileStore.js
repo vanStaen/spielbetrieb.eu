@@ -23,6 +23,13 @@ export class ProfileStore {
   filterIsPopingUp = false;
   isPartner = null;
   partnertypeId = null;
+  photos = [];
+  reviews = [];
+  tags = [];
+  events = [];
+  interest = [];
+  wishes = [];
+  description = null;
 
   constructor() {
     makeObservable(this, {
@@ -46,6 +53,13 @@ export class ProfileStore {
       isPartner: observable,
       partnertypeId: observable,
       filterIsPopingUp: observable,
+      photos: observable,
+      reviews: observable,
+      tags: observable,
+      events: observable,
+      interest: observable,
+      wishes: observable,
+      description: observable,
       setIsLoading: action,
       setError: action,
       set_id: action,
@@ -67,6 +81,13 @@ export class ProfileStore {
       setPartnertypeId: action,
       setFilterIsPopingUp: action,
       fetchProfileData: action,
+      setPhotos: action,
+      setReviews: action,
+      setTags: action,
+      setEvents: action,
+      setInterest: action,
+      setWishes: action,
+      setDescription: action,
     });
   }
 
@@ -150,6 +171,34 @@ export class ProfileStore {
     this.filterIsPopingUp = filterIsPopingUp;
   };
 
+  setPhotos = (photos) => {
+    this.photos = photos;
+  };
+
+  setReviews = (reviews) => {
+    this.reviews = reviews;
+  };
+
+  setTags = (tags) => {
+    this.tags = tags;
+  };
+
+  setEvents = (events) => {
+    this.events = events;
+  };
+
+  setInterest = (interest) => {
+    this.interest = interest;
+  };
+
+  setWishes = (wishes) => {
+    this.wishes = wishes;
+  };
+
+  setDescription = (description) => {
+    this.description = description;
+  };
+
   fetchProfileData = async (userName, loader = true) => {
     try {
       if (loader) {
@@ -176,6 +225,13 @@ export class ProfileStore {
           this.setPartnertypeId(profileData.partnertype);
           this.setLastActive(profileData.lastActive);
           this.setProfilSettings(JSON.parse(profileData.profilSettings));
+          this.setPhotos(profileData.photos);
+          this.setReviews(profileData.reviews);
+          this.setTags(profileData.userTags);
+          this.setEvents(profileData.events);
+          this.setInterest(profileData.interest);
+          this.setWishes(profileData.wishes);
+          this.setDescription(profileData.description);
         }
         this.setError(null);
         this.setIsLoading(false);

@@ -89,6 +89,10 @@ export const User = sequelize.sequelize.define("user", {
     type: DataTypes.ARRAY(DataTypes.STRING),
     defaultValue: [],
   },
+  userTags: {
+    type: DataTypes.ARRAY(DataTypes.INTEGER),
+    defaultValue: [],
+  },
   archived: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
