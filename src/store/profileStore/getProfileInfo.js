@@ -27,8 +27,12 @@ export const getProfileInfo = async (username) => {
                 userTags,
                 birthday,
                 interests,
-                reviews,
-                events,
+                reviews {
+                    _id,
+                },
+                events {
+                    _id,
+                },
                 lastActive,
                 archived,
                 usernameChange,

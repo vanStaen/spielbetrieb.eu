@@ -11,7 +11,7 @@ export const ProfileInterests = observer(() => {
   return (
     <div className="profileInterests__container">
       <div className="profileInterests__title">
-        {t("profile.interests")} ({profileStore.interests?.length})
+        {t("profile.interests")} ({profileStore.interests.length})
       </div>
     </div>
   );

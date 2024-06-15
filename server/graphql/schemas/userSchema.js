@@ -23,6 +23,7 @@ type User {
     coordinates: String
     wishes: [String]
     interests: [String]
+    userTags: [Int]
     archived: Boolean
     usernameChange: Int
     lastActive: String!
@@ -62,6 +63,7 @@ input UserInputData {
     coordinates: String
     wishes: [String]
     interests: [String]
+    userTags: [Int]
     archived: Boolean
     usernameChange: Int
     language: String
@@ -85,6 +87,7 @@ input UserInputDataAdmin {
     coordinates: String
     wishes: [String]
     interests: [String]
+    userTags: [Int]
     archived: Boolean
     usernameChange: Int
     language: String

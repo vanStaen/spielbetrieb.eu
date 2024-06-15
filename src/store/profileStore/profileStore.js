@@ -27,7 +27,7 @@ export class ProfileStore {
   reviews = [];
   tags = [];
   events = [];
-  interest = [];
+  interests = [];
   wishes = [];
   description = null;
 
@@ -57,7 +57,7 @@ export class ProfileStore {
       reviews: observable,
       tags: observable,
       events: observable,
-      interest: observable,
+      interests: observable,
       wishes: observable,
       description: observable,
       setIsLoading: action,
@@ -85,7 +85,7 @@ export class ProfileStore {
       setReviews: action,
       setTags: action,
       setEvents: action,
-      setInterest: action,
+      setInterests: action,
       setWishes: action,
       setDescription: action,
     });
@@ -187,8 +187,8 @@ export class ProfileStore {
     this.events = events;
   };
 
-  setInterest = (interest) => {
-    this.interest = interest;
+  setInterests = (interests) => {
+    this.interests = interests;
   };
 
   setWishes = (wishes) => {
@@ -229,7 +229,7 @@ export class ProfileStore {
           this.setReviews(profileData.reviews);
           this.setTags(profileData.userTags);
           this.setEvents(profileData.events);
-          this.setInterest(profileData.interest);
+          this.setInterests(profileData.interests);
           this.setWishes(profileData.wishes);
           this.setDescription(profileData.description);
         }
