@@ -49,6 +49,12 @@ export const BirthdayUpdate = observer(() => {
     message.info("Birthday updated!");
   };
 
+  const dateFormat = "DD MMMM YYYY";
+  const birthdayFormated = dayjs(birthday).format(dateFormat);
+  console.log("birthday", birthday);
+  console.log("dayjs(birthday)", dayjs(birthday));
+  console.log("birthdayFormated", birthdayFormated);
+
   return (
     <div className="birthdayUpdate__container">
       <div className="birthdayUpdate__title EditSettings__centerDiv">
@@ -57,8 +63,8 @@ export const BirthdayUpdate = observer(() => {
           : t("settings.changeBirthday")}
       </div>
       <DatePicker
-        // defaultValue={dayjs(birthday)}
-        format={"DD MMMM YYYY"}
+        defaultValue={dayjs(birthday)}
+        format={dateFormat}
         maxDate={!isPartner && dayjs().subtract(18, "year")}
         onChange={changeBirthdayHandler}
         className="birthdayUpdate__input"
