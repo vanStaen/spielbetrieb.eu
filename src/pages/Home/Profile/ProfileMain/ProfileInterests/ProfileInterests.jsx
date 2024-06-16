@@ -2,6 +2,7 @@ import React from "react";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 
+import { ProfileMainTitle } from "../Components/ProfileMainTitle/ProfileMaintitle";
 import { profileStore } from "../../../../../store/profileStore/profileStore";
 
 import "./ProfileInterests.less";
@@ -10,9 +11,10 @@ export const ProfileInterests = observer(() => {
   const { t } = useTranslation();
   return (
     <div className="profileInterests__container">
-      <div className="profileMain__title">
-        {t("profile.interests")} ({profileStore.interests.length})
-      </div>
+      <ProfileMainTitle
+        title={t("profile.interests")}
+        value={profileStore.interests.length}
+      />
     </div>
   );
 });
