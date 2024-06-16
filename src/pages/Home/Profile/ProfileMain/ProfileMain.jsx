@@ -9,18 +9,20 @@ import { ProfileWishes } from "./ProfileWishes/ProfileWishes";
 import { ProfilePhotos } from "./ProfilePhotos/ProfilePhotos";
 import { ProfileReviews } from "./ProfileReviews/ProfileReviews";
 
+import { profileStore } from "../../../../store/profileStore/profileStore";
+
 import "./ProfileMain.less";
 
 export const ProfileMain = observer((props) => {
   return (
     <div className="profil__mainContainer">
       <ProfileDescription />
-      <ProfileWishes />
-      <ProfileInterests />
+      {!profileStore.isPartner && <ProfileWishes />}
+      {!profileStore.isPartner && <ProfileInterests />}
       <ProfilePhotos />
       <ProfileEvents />
       <ProfileTags />
-      <ProfileReviews />
+      {profileStore.isPartner && <ProfileReviews />}
     </div>
   );
 });

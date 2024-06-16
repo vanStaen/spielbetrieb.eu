@@ -14,6 +14,7 @@ export const ProfilePhotos = observer(() => {
       <ProfileMainTitle
         title={t("profile.photos")}
         value={profileStore.photos?.length}
+        addPhoto={true}
       />
     </div>
   );

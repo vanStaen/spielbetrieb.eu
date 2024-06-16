@@ -14,6 +14,7 @@ export const ProfileReviews = observer(() => {
       <ProfileMainTitle
         title={t("profile.reviews")}
         value={profileStore.reviews?.length}
+        editable={false}
       />
     </div>
   );
