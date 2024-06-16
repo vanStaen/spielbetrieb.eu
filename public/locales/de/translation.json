@@ -212,8 +212,8 @@
 		"dresscode": "Dresscode",
 		"dresscodeAllowed": "Dresscode erlaubt",
 		"dresscodeVerboten": "Dresscode verboten",
-		"tags": "Tags",
-		"pleaseSelectTags": "Bitte Tags auswählen ",
+		"tags": "Hashtags",
+		"pleaseSelectTags": "Bitte Hashtags auswählen ",
 		"links": "Links",
 		"addLinks": "Links zum Veranstalltung hinzufügen",
 		"prices": "Preisen",
@@ -250,7 +250,14 @@
 		"lastSeenOnline": "Zuletzt online gesehen der",
 		"at": "um",
 		"acceptfriendRequest": "Freundschaftsanfrage annehmen",
-		"since": "Seit"
+		"since": "Seit",
+		"description": "Über mich",
+		"wishes": "Wünsche",
+		"interests": "Interesse",
+		"photos": "Bilder",
+		"events": "Veranstalltungen",
+		"tags": "Hashtags",
+		"reviews": "Bewertungen"
 	},
 	"scene": {
 		"fetish": "Fetisch",

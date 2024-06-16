@@ -250,7 +250,14 @@
 		"lastSeenOnline": "Last seen online the",
 		"at": "at",
 		"acceptfriendRequest": "Accept friend request",
-		"since": "Since"
+		"since": "Since",
+		"description": "About me",
+		"wishes": "Wishes",
+		"interests": "Interests",
+		"photos": "Photos",
+		"events": "Events",
+		"tags": "Tags",
+		"reviews": "Reviews"
 	},
 	"scene": {
 		"fetish": "Fetish",

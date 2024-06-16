@@ -9,11 +9,13 @@ import "./ProfileEvents.less";
 
 export const ProfileEvents = observer(() => {
   const { t } = useTranslation();
+
   return (
     <div className="profileEvents__container">
       <ProfileMainTitle
         title={t("profile.events")}
         value={profileStore.events?.length}
+        addEvent={true}
       />
     </div>
   );
