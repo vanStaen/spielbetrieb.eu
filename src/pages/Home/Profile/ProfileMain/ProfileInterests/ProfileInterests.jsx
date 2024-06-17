@@ -15,6 +15,13 @@ export const ProfileInterests = observer(() => {
         title={t("profile.interests")}
         value={profileStore.interests.length}
       />
+      <div className="profileDescription__main">
+        {!profileStore.interests.length && (
+          <div className="profileDescription__empty">
+            {t("profile.nothingYet")}
+          </div>
+        )}
+      </div>
     </div>
   );
 });

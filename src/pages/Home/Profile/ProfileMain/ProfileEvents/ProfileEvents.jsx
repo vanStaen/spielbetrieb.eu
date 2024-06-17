@@ -17,6 +17,13 @@ export const ProfileEvents = observer(() => {
         value={profileStore.events?.length}
         addEvent={true}
       />
+      <div className="profileDescription__main">
+        {!profileStore.events && (
+          <div className="profileDescription__empty">
+            {t("profile.nothingYet")}
+          </div>
+        )}
+      </div>
     </div>
   );
 });

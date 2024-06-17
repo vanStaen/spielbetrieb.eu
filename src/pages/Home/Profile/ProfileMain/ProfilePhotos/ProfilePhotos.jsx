@@ -16,6 +16,13 @@ export const ProfilePhotos = observer(() => {
         value={profileStore.photos?.length}
         addPhoto={true}
       />
+      <div className="profileDescription__main">
+        {!profileStore.photos && (
+          <div className="profileDescription__empty">
+            {t("profile.nothingYet")}
+          </div>
+        )}
+      </div>
     </div>
   );
 });

@@ -15,6 +15,13 @@ export const ProfileWishes = observer(() => {
         title={t("profile.wishes")}
         value={profileStore.wishes?.length}
       />
+      <div className="profileDescription__main">
+        {!profileStore.wishes.length && (
+          <div className="profileDescription__empty">
+            {t("profile.nothingYet")}
+          </div>
+        )}
+      </div>
     </div>
   );
 });

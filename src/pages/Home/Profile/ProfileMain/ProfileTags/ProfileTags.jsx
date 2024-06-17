@@ -15,6 +15,13 @@ export const ProfileTags = observer(() => {
         title={t("profile.tags")}
         value={profileStore.tags?.length}
       />
+      <div className="profileDescription__main">
+        {!profileStore.tags.length && (
+          <div className="profileDescription__empty">
+            {t("profile.nothingYet")}
+          </div>
+        )}
+      </div>
     </div>
   );
 });
