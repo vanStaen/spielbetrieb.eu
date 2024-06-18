@@ -75,16 +75,15 @@ export const EventForm = observer(() => {
   const fetchTags = async () => {
     const results = await getTags();
     spielplanStore.setTags(results);
-    const tagsOptionsResult = results.map((tag) => {
-      if (tag.eventTag === false) {
-        return null;
-      }
-      return {
-        value: parseInt(tag._id),
-        label: `${nameParser(tag.name, language)}${!tag.validated ? ` (${t("general.pendingReview")})` : ""}`,
-        disabled: !tag.validated,
-      };
-    });
+    const tagsOptionsResult = results
+      .filter((tag) => tag.isEventTag)
+      .map((tag) => {
+        return {
+          value: parseInt(tag._id),
+          label: `${nameParser(tag.name, language)}${!tag.validated ? ` (${t("general.pendingReview")})` : ""}`,
+          disabled: !tag.validated,
+        };
+      });
     setTagsOptions(tagsOptionsResult);
   };
 
