@@ -4,7 +4,7 @@ import { observer } from "mobx-react";
 import { profileStore } from "../../../../../store/profileStore/profileStore";
 import { ProfileMainTitle } from "../Components/ProfileMainTitle/ProfileMaintitle";
 import { useTranslation } from "react-i18next";
-import { EditDescriptionModal } from "./EditDescriptionModal/EditDescriptionModal";
+import { EditDescriptionModal } from "./EditDescriptionModal/EditTagsModal";
 
 import "./ProfileDescription.less";
 
