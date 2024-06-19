@@ -120,6 +120,7 @@ export const userResolver = {
       "interests",
       "wishes",
       "archived",
+      "userTags",
       "usernameChange",
       "language",
     ];
@@ -177,6 +178,7 @@ export const userResolver = {
       "interests",
       "wishes",
       "archived",
+      "userTags",
       "usernameChange",
       "language",
       "suspended",

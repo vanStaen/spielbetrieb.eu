@@ -4,27 +4,23 @@ import { Modal, Button, message, Select } from "antd";
 
 import { useTranslation } from "react-i18next";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
+import { profileStore } from "../../../../../../store/profileStore/profileStore";
 import { nameParser } from "../../../../../../helpers/dev/nameParser";
+import { updateTags } from "./updateTags";
 
 import "./EditTagsModal.less";
 
 export const EditTagsModal = observer((props) => {
   const { t } = useTranslation();
-  const {
-    defaultValue,
-    titleValue,
-    showTagsModal,
-    setShowTagsModal,
-    updateDataBase,
-    updateProfileStore,
-  } = props;
-  const [tagValue, setTagValue] = useState(defaultValue);
+  const { showTagsModal, setShowTagsModal } = props;
+  const [userTagValue, setUserTagValue] = useState(profileStore.tags);
 
-  const changeHandler = (event) => {
-    setTagValue(event.target.value);
+  const changeHandler = (value) => {
+    console.log(value);
+    setUserTagValue(value);
   };
 
-  const tagsOptions = pageStore.tags
+  const userTagsOptions = pageStore.tags
     .filter((tag) => tag.isUserTag)
     .map((tag) => {
       return {
@@ -34,13 +30,11 @@ export const EditTagsModal = observer((props) => {
       };
     });
 
-  console.log("tagsOptions", tagsOptions);
-
   const saveHandler = async () => {
     try {
-      await updateDataBase(tagValue);
-      updateProfileStore(tagValue);
-      message.info("Tags updated!");
+      await updateTags(userTagValue);
+      profileStore.setTags(userTagValue);
+      message.info("User tags updated!");
       setShowTagsModal(false);
     } catch (e) {
       console.error(e);
@@ -49,7 +43,7 @@ export const EditTagsModal = observer((props) => {
 
   return (
     <Modal
-      title={<div className="modal__title">{titleValue}</div>}
+      title={<div className="modal__title">Edit user tags</div>}
       open={showTagsModal}
       onCancel={() => setShowTagsModal(false)}
       footer={
@@ -68,9 +62,9 @@ export const EditTagsModal = observer((props) => {
           allowClear
           style={{ width: "100%" }}
           placeholder={t("eventform.pleaseSelectTags")}
-          options={tagsOptions}
+          options={userTagsOptions}
           onChange={changeHandler}
-          value={defaultValue}
+          value={userTagValue}
           filterOption={(inputValue, option) =>
             option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
           }
