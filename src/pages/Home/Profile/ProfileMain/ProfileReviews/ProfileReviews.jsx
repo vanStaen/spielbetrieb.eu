@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 
 import { profileStore } from "../../../../../store/profileStore/profileStore";
-import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMaintitle"
+import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMainTitle"
 
 import "./ProfileReviews.less";
 
