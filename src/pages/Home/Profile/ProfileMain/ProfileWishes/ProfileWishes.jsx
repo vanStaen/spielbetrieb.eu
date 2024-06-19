@@ -3,7 +3,8 @@ import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 
 import { profileStore } from "../../../../../store/profileStore/profileStore";
-import { ProfileMainTitle } from "../ProfileMainTitle/ProfileMaintitle";
+import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMaintitle";
+import { EditTextModal } from "../profileComponents/EditTextModal/EditTextModal";
 
 import "./ProfileWishes.less";
 
@@ -13,15 +14,22 @@ export const ProfileWishes = observer(() => {
 
   return (
     <>
+      <EditTextModal
+        field="wishes"
+        profileStoreSet={profileStore.setWishes}
+        showModal={showWishesModal}
+        setShowModal={setShowWishesModal}
+      />
       <div className="profileWishes__container">
         <ProfileMainTitle
           title={t("profile.wishes")}
-          value={profileStore.wishes?.length}
           showEdit={showWishesModal}
           setShowEdit={setShowWishesModal}
         />
         <div className="profileDescription__main">
-          {!profileStore.wishes.length && (
+          {profileStore.wishes ? (
+            <div>{profileStore.wishes}</div>
+          ) : (
             <div className="profileDescription__empty">
               {t("profile.nothingYet")}
             </div>

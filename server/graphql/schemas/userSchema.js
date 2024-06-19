@@ -21,8 +21,8 @@ type User {
     orientation: Int
     location: String
     coordinates: String
-    wishes: [String]
-    interests: [String]
+    wishes: String
+    interests: String
     userTags: [Int]
     archived: Boolean
     usernameChange: Int
@@ -61,8 +61,8 @@ input UserInputData {
     orientation: Int
     location: String
     coordinates: String
-    wishes: [String]
-    interests: [String]
+    wishes: String
+    interests: String
     userTags: [Int]
     archived: Boolean
     usernameChange: Int
@@ -85,8 +85,8 @@ input UserInputDataAdmin {
     orientation: Int
     location: String
     coordinates: String
-    wishes: [String]
-    interests: [String]
+    wishes: String
+    interests: String
     userTags: [Int]
     archived: Boolean
     usernameChange: Int

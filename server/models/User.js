@@ -82,12 +82,12 @@ export const User = sequelize.sequelize.define("user", {
     allowNull: true,
   },
   wishes: {
-    type: DataTypes.ARRAY(DataTypes.STRING),
-    defaultValue: [],
+    type: DataTypes.STRING,
+    allowNull: true,
   },
   interests: {
-    type: DataTypes.ARRAY(DataTypes.STRING),
-    defaultValue: [],
+    type: DataTypes.STRING,
+    allowNull: true,
   },
   userTags: {
     type: DataTypes.ARRAY(DataTypes.INTEGER),

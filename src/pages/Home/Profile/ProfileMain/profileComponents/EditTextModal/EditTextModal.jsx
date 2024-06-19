@@ -5,26 +5,26 @@ import { Modal, Button, message, Input } from "antd";
 import { useTranslation } from "react-i18next";
 import { profileStore } from "../../../../../../store/profileStore/profileStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
+import { updateText } from "./updateText";
 
-import "./EditDescriptionModal.less";
-import { updateDescription } from "./updateDescription";
+import "./EditTextModal.less";
 
-export const EditDescriptionModal = observer((props) => {
+export const EditTextModal = observer((props) => {
   const { t } = useTranslation();
-  const { showDescriptionModal, setShowDescriptionModal } = props;
+  const { field, profileStoreSet, showModal, setShowModal } = props;
+  const [textValue, setTextValue] = useState(profileStore[field]);
   const { TextArea } = Input;
-  const [descValue, setDescValue] = useState(profileStore.description);
 
   const changeHandler = (event) => {
-    setDescValue(event.target.value);
+    setTextValue(event.target.value);
   };
 
   const saveHandler = async () => {
     try {
-      await updateDescription(descValue);
-      profileStore.setDescription(descValue);
-      message.info("Description updated!");
-      setShowDescriptionModal(false);
+      await updateText(field, textValue);
+      profileStoreSet(textValue);
+      message.info(t(`profile.${field}Updated`));
+      setShowModal(false);
     } catch (e) {
       console.error(e);
     }
@@ -32,9 +32,9 @@ export const EditDescriptionModal = observer((props) => {
 
   return (
     <Modal
-      title={<div className="modal__title">Edit description</div>}
-      open={showDescriptionModal}
-      onCancel={() => setShowDescriptionModal(false)}
+      title={<div className="modal__title">{t(`profile.${field}Edit`)}</div>}
+      open={showModal}
+      onCancel={() => setShowModal(false)}
       footer={
         <div className="modal__footerContainer">
           <Button onClick={saveHandler} className="modal__footerButton">
@@ -47,7 +47,7 @@ export const EditDescriptionModal = observer((props) => {
     >
       <div className="modal__select">
         <TextArea
-          defaultValue={descValue}
+          defaultValue={textValue}
           rows={8}
           maxLength={1024}
           onChange={changeHandler}

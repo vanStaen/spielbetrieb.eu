@@ -3,8 +3,8 @@ import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 
 import { profileStore } from "../../../../../store/profileStore/profileStore";
-import { ProfileMainTitle } from "../ProfileMainTitle/ProfileMaintitle";
-import { EditDescriptionModal } from "./EditDescriptionModal/EditTagsModal";
+import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMaintitle";
+import { EditTextModal } from "../profileComponents/EditTextModal/EditTextModal";
 
 import "./ProfileDescription.less";
 
@@ -14,9 +14,11 @@ export const ProfileDescription = observer(() => {
 
   return (
     <>
-      <EditDescriptionModal
-        showDescriptionModal={showDescriptionModal}
-        setShowDescriptionModal={setShowDescriptionModal}
+      <EditTextModal
+        field="description"
+        profileStoreSet={profileStore.setDescription}
+        showModal={showDescriptionModal}
+        setShowModal={setShowDescriptionModal}
       />
       <div className="profileDescription__container">
         <ProfileMainTitle

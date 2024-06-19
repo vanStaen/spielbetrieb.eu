@@ -1,10 +1,10 @@
-export async function updateDescription(desc) {
+export async function updateText(field, value) {
   const graphqlQuery = {
     query: `
-    mutation ($desc: String!){
+    mutation ($value: String!){
       updateUser(
         userInput: {          
-          description: $desc,
+          ${field}: $value,
         }
       ) {
         _id,
@@ -12,7 +12,7 @@ export async function updateDescription(desc) {
     }
     `,
     variables: {
-      desc,
+      value,
     },
   };
 
