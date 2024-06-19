@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 
-import { ProfileMainTitle } from "../Components/ProfileMainTitle/ProfileMaintitle";
+import { ProfileMainTitle } from "../ProfileMainTitle/ProfileMaintitle";
 import { profileStore } from "../../../../../store/profileStore/profileStore";
 
 import "./ProfileEvents.less";

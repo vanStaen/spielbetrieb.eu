@@ -34,7 +34,7 @@ export const EditTagsModal = observer((props) => {
     try {
       await updateTags(userTagValue);
       profileStore.setTags(userTagValue);
-      message.info("User tags updated!");
+      message.info("Usertags updated!");
       setShowTagsModal(false);
     } catch (e) {
       console.error(e);

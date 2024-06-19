@@ -5,7 +5,7 @@ import { Tag } from "antd";
 
 import { profileStore } from "../../../../../store/profileStore/profileStore";
 import { pageStore } from "../../../../../store/pageStore/pageStore";
-import { ProfileMainTitle } from "../Components/ProfileMainTitle/ProfileMaintitle";
+import { ProfileMainTitle } from "../ProfileMainTitle/ProfileMaintitle";
 import { EditTagsModal } from "./EditTagsModal/EditTagsModal";
 import { nameParser } from "../../../../../helpers/dev/nameParser";
 
