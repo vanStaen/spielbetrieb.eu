@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 
 import { profileStore } from "../../../../../store/profileStore/profileStore";
-import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMainTitle"
+import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMainTitle";
 
 import "./ProfilePhotos.less";
 
@@ -17,7 +17,7 @@ export const ProfilePhotos = observer(() => {
         addPhoto={true}
       />
       <div className="profileDescription__main">
-        {!profileStore.photos && (
+        {!profileStore.photos.length && (
           <div className="profileDescription__empty">
             {t("profile.nothingYet")}
           </div>

@@ -211,14 +211,28 @@ export const userResolver = {
   async getProfileByName(args, req) {
     return await User.findOne({
       where: { userName: args.userName },
-      include: ["friends", "followers", "following", "friendrequests"],
+      include: [
+        Event,
+        Photo,
+        "friends",
+        "followers",
+        "following",
+        "friendrequests",
+      ],
     });
   },
 
   async getProfileById(args, req) {
     return await User.findOne({
       where: { _id: args._id },
-      include: ["friends", "followers", "following", "friendrequests"],
+      include: [
+        Event,
+        Photo,
+        "friends",
+        "followers",
+        "following",
+        "friendrequests",
+      ],
     });
   },
 

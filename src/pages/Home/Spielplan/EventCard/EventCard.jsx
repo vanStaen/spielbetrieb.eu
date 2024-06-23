@@ -163,7 +163,7 @@ export const EventCard = observer((props) => {
           <span className="event__organizedBy">
             {t("spielplan.eventOrganisedBy")}{" "}
           </span>
-          {event.user.userName}
+          {event.user?.userName}
         </div>
         <div className="event__tags">{tagsFormatted}</div>
       </div>
