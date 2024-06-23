@@ -26,8 +26,8 @@ export const ProfileMain = observer((props) => {
       {(profileStore.interests || thisIsMe) && !profileStore.isPartner && (
         <ProfileInterests />
       )}
-      {(profileStore.photos || thisIsMe) && <ProfilePhotos />}
-      {(profileStore.events || thisIsMe) && <ProfileEvents />}
+      {(profileStore.photos.length || thisIsMe) && <ProfilePhotos />}
+      {(profileStore.events.length || thisIsMe) && <ProfileEvents />}
       {(profileStore.tags.length || thisIsMe) && <ProfileTags />}
       {(profileStore.reviews || thisIsMe) && profileStore.isPartner && (
         <ProfileReviews />

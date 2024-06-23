@@ -19,7 +19,7 @@ export const ProfileEvents = observer(() => {
         addEvent={true}
       />
       <div className="profileDescription__main">
-        {profileStore.events ? (
+        {profileStore.events.length ? (
           profileStore.events.map((event) => {
             return <EventCard key={event._id} event={event} />;
           })
