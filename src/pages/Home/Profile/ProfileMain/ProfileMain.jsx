@@ -17,8 +17,6 @@ import "./ProfileMain.less";
 export const ProfileMain = observer((props) => {
   const thisIsMe = userStore._id === profileStore._id;
 
-  console.log("profileStore.tags", profileStore.tags);
-
   return (
     <div className="profil__mainContainer">
       {(profileStore.description || thisIsMe) && <ProfileDescription />}
