@@ -132,7 +132,7 @@ export const EventCard = observer((props) => {
           <img src={firstPictureUrl} />
         </div>
       ) : (
-        <div className="event__artworkLoading">
+        <div className={profileCard ? "event__artworkLoadingProfile" : "event__artworkLoading"} >
           <CustomSpinner />
         </div>
       )}

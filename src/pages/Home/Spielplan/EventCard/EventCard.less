@@ -19,15 +19,15 @@
 }
 
 .event__containerMarginTop {
-    margin: 30px 0 0 0 !important;
+    margin: 20px 0 0 0 !important;
 }
 
 .event__Container {
     position: relative;
     transition: all .3s !important;
     width: calc(100% - 40px); // - padding
-    padding: 10px 20px 0 20px;
-    margin: 8px 0 0 0;
+    padding: 0 20px;
+    margin: 12px 0 0 0;
     border-radius: 1px;
     letter-spacing: 3px;
     text-align: left;
@@ -75,11 +75,19 @@
         }
     }
 
+    .event__artworkLoading {
+        padding-top: 60px;
+        display: inline-block;
+        vertical-align: top;
+        text-align: center;
+        width: 150px;
+        height: 140px;
+    }
 
     .event__artworkProfile {
         display: inline-block;
         vertical-align: top;
-        width: 80px;
+        width: 90px;
         height: 120px;
 
         img {
@@ -89,13 +97,13 @@
         }
     }
 
-    .event__artworkLoading {
-        padding-top: 60px;
+    .event__artworkLoadingProfile {
+        padding-top: 30px;
         display: inline-block;
         vertical-align: top;
         text-align: center;
-        width: 150px;
-        height: 140px;
+        width: 90px;
+        height: 90px;
     }
 
     .event__main {
@@ -127,11 +135,15 @@
 
         .event__tagsProfile {
             padding-top: 10px;
+            height: 32px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
 
             .ant-tag-borderless {
                 font-size: 10px !important;
-                border-color: transparent;
-                background: rgba(255, 255, 255, .75);
+                border-color: rgba(var(--themeFontColor), .2);
+                color: rgba(var(--themeFontColor), 1);
                 margin: 0 3px 3px 0;
             }
         }
