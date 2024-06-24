@@ -37,7 +37,6 @@ export const EventForm = observer(() => {
   const [eventtypesOptions, setEventtypesOptions] = useState(null);
   const [dresscodesOptions, setDresscodesOptions] = useState(null);
   const [equipmentsOptions, setEquipmentsOptions] = useState(null);
-  const [showDraftModal, setShowDraftModal] = useState(false);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -167,7 +166,7 @@ export const EventForm = observer(() => {
         tempStatusSteps[eventFormStore.formStep] = "finish";
       }
     } else if (eventFormStore.formStep === 1) {
-      if (eventFormStore.artworks.length === 0) {
+      if (eventFormStore.artworks?.length === 0) {
         eventFormStore.setArtworksError(t("eventform.errorEventArtwork"));
         tempStatusSteps[eventFormStore.formStep] = "error";
       } else {
@@ -175,8 +174,8 @@ export const EventForm = observer(() => {
       }
     } else if (eventFormStore.formStep === 2) {
       if (
-        eventFormStore.dresscodeDoTags.length === 0 &&
-        eventFormStore.dresscodeDontTags.length === 0 &&
+        eventFormStore.dresscodeDoTags?.length === 0 &&
+        eventFormStore.dresscodeDontTags?.length === 0 &&
         eventFormStore.hasDresscode
       ) {
         eventFormStore.setDresscodeErrors(t("eventform.errorEventDresscode"));
@@ -187,7 +186,7 @@ export const EventForm = observer(() => {
     }
     // newStep (=value)
     if (value === 3) {
-      if (eventFormStore.artworks.length === 0) {
+      if (eventFormStore.artworks?.length === 0) {
         eventFormStore.setArtworksError(t("eventform.errorEventArtwork"));
         tempStatusSteps[1] = "error";
         tempStatusSteps[3] = "error";
@@ -202,8 +201,8 @@ export const EventForm = observer(() => {
         tempStatusSteps[3] = "process";
       }
       if (
-        eventFormStore.dresscodeDoTags.length === 0 &&
-        eventFormStore.dresscodeDontTags.length === 0 &&
+        eventFormStore.dresscodeDoTags?.length === 0 &&
+        eventFormStore.dresscodeDontTags?.length === 0 &&
         eventFormStore.hasDresscode
       ) {
         eventFormStore.setDresscodeErrors(t("eventform.errorEventDresscode"));
@@ -213,7 +212,7 @@ export const EventForm = observer(() => {
         tempStatusSteps[2] = "finish";
       }
     } else if (value === 2) {
-      if (eventFormStore.artworks.length === 0) {
+      if (eventFormStore.artworks?.length === 0) {
         eventFormStore.setArtworksError(t("eventform.errorEventArtwork"));
         tempStatusSteps[1] = "error";
       } else {
@@ -231,8 +230,6 @@ export const EventForm = observer(() => {
   ) : (
     <>
       <EventFormDraftModal
-        showDraftModal={showDraftModal}
-        setShowDraftModal={setShowDraftModal}
         eventtypesOptions={eventtypesOptions}
       />
       <HelpButtons setStartTour={setStartTour} />
@@ -282,7 +279,7 @@ export const EventForm = observer(() => {
           )}
           {eventFormStore.formStep === 3 && <PublishForm />}
 
-          {authStore.hasAccess && !showDraftModal && (
+          {authStore.hasAccess && !eventFormStore.showDraftModal && (
             <EventFormNavigation onStepsChange={onStepsChange} />
           )}
         </div>

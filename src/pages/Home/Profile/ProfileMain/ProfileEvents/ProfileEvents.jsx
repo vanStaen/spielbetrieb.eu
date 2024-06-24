@@ -24,12 +24,12 @@ export const ProfileEvents = observer(() => {
       <div className="profileDescription__main">
         {profileStore.events.length ? (
           profileStore.events.map((event) => {
-
             const eventTags = event.eventTags.map((tagId) => {
               return {
                 name: nameParser(
-                  spielplanStore.tags.filter((tag) => parseInt(tag._id) === tagId)[0]
-                    ?.name,
+                  spielplanStore.tags.filter(
+                    (tag) => parseInt(tag._id) === tagId,
+                  )[0]?.name,
                   pageStore.selectedLanguage?.toLowerCase(),
                 ),
                 id: tagId,
@@ -50,7 +50,7 @@ export const ProfileEvents = observer(() => {
               <EventCard
                 key={event._id}
                 event={event}
-                userName={profileStore.userName}
+                eventUser={{ user: profileStore.user, _id: profileStore._id }}
                 profileCard={true}
                 tags={eventTags}
               />

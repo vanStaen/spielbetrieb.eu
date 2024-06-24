@@ -37,6 +37,7 @@ export class EventFormStore {
   dresscodeErrors = null;
   links = [];
   deactivateNav = false;
+  showDraftModal = false;
 
   constructor() {
     makeObservable(this, {
@@ -111,6 +112,8 @@ export class EventFormStore {
       deactivateNav: observable,
       setDeactivateNav: action,
       resetEventForm: action,
+      showDraftModal: observable,
+      setShowDraftModal: action,
     });
   }
 
@@ -253,6 +256,10 @@ export class EventFormStore {
 
   setDeactivateNav = (deactivateNav) => {
     this.deactivateNav = deactivateNav;
+  };
+
+  setShowDraftModal = (showDraftModal) => {
+    this.showDraftModal = showDraftModal;
   };
 
   resetEventForm = () => {

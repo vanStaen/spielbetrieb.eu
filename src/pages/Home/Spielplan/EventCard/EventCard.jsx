@@ -6,6 +6,7 @@ import {
   ClockCircleOutlined,
   EnvironmentOutlined,
   DeleteOutlined,
+  EditOutlined,
 } from "@ant-design/icons";
 import { observer } from "mobx-react";
 import dayjs from "dayjs";
@@ -14,18 +15,22 @@ import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore"
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinner";
 import { pictureOrPlaceholder } from "../../../../helpers/picture/pictureOrPlaceholder";
+import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
 import { deleteEvent } from "../../../Admin/AdminEvents/deleteEvent";
 import { userStore } from "../../../../store/userStore/userStore";
+import { eventFormStore } from "../../Event/EventForm/eventFormStore";
 
 import "./EventCard.less";
 
 export const EventCard = observer((props) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { event, tags, userName, profileCard } = props;
+  const { event, tags, eventUser, profileCard } = props;
   const isInThePast = event.fromDate < dayjs();
   const isShownHidden = useRef(isInThePast);
   const [firstPictureUrl, setFirstPictureUrl] = useState(null);
+
+  const isMyEvent = eventUser?._id === userStore?._id;
 
   const handleDeleteEvent = async () => {
     await deleteEvent(event._id);
@@ -97,6 +102,43 @@ export const EventCard = observer((props) => {
     }
   };
 
+  const getUrlsFromPicturePath = async (pictures) => {
+    const urls = await Promise.all(
+      pictures.map((picture) => {
+        return getPictureUrl(picture, "events");
+      }),
+    );
+    return urls;
+  };
+
+
+  const handleEditEvent = async (e) => {
+    e.stopPropagation();
+    navigate("/event/add");
+    await eventFormStore.setEventId(event._id);
+    await eventFormStore.setTitle(event.title);
+    await eventFormStore.setEventtype(event.eventtype);
+    await eventFormStore.setDescription(event.description);
+    await eventFormStore.setLocationId(event.location);
+    await eventFormStore.setLocationName(event.locationName);
+    await eventFormStore.setLocationAddress(event.locationAddress);
+    await eventFormStore.setArtworks(event.pictures);
+    await eventFormStore.setEventTags(event.eventTags);
+    await eventFormStore.setLineUp(event.lineUp);
+    await eventFormStore.setLinks(event.links);
+    await eventFormStore.setAgeMin(event.ageMin);
+    await eventFormStore.setIsPrivate(event.private);
+    await eventFormStore.setForwardable(event.forwardable);
+    await eventFormStore.setHasDresscode(event.hasDresscode);
+    await eventFormStore.setDresscodeDoTags(event.dresscodeDoTags);
+    await eventFormStore.setDresscodeDontTags(event.dresscodeDontTags);
+    await eventFormStore.setEquipment(event.equipment);
+    await eventFormStore.setArtworksUrl(await getUrlsFromPicturePath(event.pictures));
+    event.fromDate && await eventFormStore.setFromDate(dayjs(event.fromDate));
+    event.untilDate && await eventFormStore.setUntilDate(dayjs(event.untilDate));
+    event.prices?.length && await eventFormStore.setPrices(JSON.parse(event.prices));
+  }
+
   const fromUntilDateAreTheSame =
     dayjs(event.fromDate).valueOf === dayjs(event.untilDate).valueOf;
 
@@ -132,11 +174,19 @@ export const EventCard = observer((props) => {
       </div>
 
       {firstPictureUrl ? (
-        <div className={profileCard ? 'event__artworkProfile' : 'event__artwork'}>
+        <div
+          className={profileCard ? "event__artworkProfile" : "event__artwork"}
+        >
           <img src={firstPictureUrl} />
         </div>
       ) : (
-        <div className={profileCard ? "event__artworkLoadingProfile" : "event__artworkLoading"} >
+        <div
+          className={
+            profileCard
+              ? "event__artworkLoadingProfile"
+              : "event__artworkLoading"
+          }
+        >
           <CustomSpinner />
         </div>
       )}
@@ -174,14 +224,22 @@ export const EventCard = observer((props) => {
             <span className="event__organizedBy">
               {t("spielplan.eventOrganisedBy")}{" "}
             </span>
-            {userName}
+            {eventUser?.userName}
           </div>
         )}
-        <div className={profileCard ? "event__tagsProfile" : "event__tags"} > {tagsFormatted}</div>
+        <div className={profileCard ? "event__tagsProfile" : "event__tags"}>
+          {" "}
+          {tagsFormatted}
+        </div>
       </div>
-      {
-        userStore.isAdmin && (
-          <div className="event__delete">
+      <div className="event__actions">
+        {isMyEvent && (
+          <div className="event__action" onClick={handleEditEvent}>
+            <EditOutlined />
+          </div>
+        )}
+        {userStore.isAdmin && (
+          <div className="event__action">
             <div onClick={(e) => e.stopPropagation()}>
               <Popconfirm
                 title={`Delete this event?`}
@@ -192,8 +250,8 @@ export const EventCard = observer((props) => {
               </Popconfirm>
             </div>
           </div>
-        )
-      }
-    </div >
+        )}
+      </div>
+    </div>
   );
 });

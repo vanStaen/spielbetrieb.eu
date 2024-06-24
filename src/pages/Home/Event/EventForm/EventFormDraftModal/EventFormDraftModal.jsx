@@ -16,7 +16,7 @@ import "./EventFormDraftModal.less";
 
 export const EventFormDraftModal = observer((props) => {
   const { t } = useTranslation();
-  const { showDraftModal, setShowDraftModal, eventtypesOptions } = props;
+  const { eventtypesOptions } = props;
   const [drafts, setDrafts] = useState([]);
   const [draftIdToDelete, setDraftIdToDelete] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
@@ -25,7 +25,7 @@ export const EventFormDraftModal = observer((props) => {
     setIsLoading(true);
     const drafts = await getAllDraftEvents();
     setDrafts(drafts);
-    setShowDraftModal(!!drafts.length);
+    eventFormStore.setShowDraftModal(!!drafts.length);
     setIsLoading(false);
   };
 
@@ -78,11 +78,13 @@ export const EventFormDraftModal = observer((props) => {
     draft.untilDate && eventFormStore.setUntilDate(dayjs(draft.untilDate));
     draft.prices.length && eventFormStore.setPrices(JSON.parse(draft.prices));
     setIsLoading(false);
-    setShowDraftModal(false);
+    eventFormStore.setShowDraftModal(false);
   };
 
   useEffect(() => {
-    fetchDrafts();
+    if (eventFormStore.title === null) {
+      fetchDrafts();
+    }
   }, []);
 
   const draftElement =
@@ -130,8 +132,8 @@ export const EventFormDraftModal = observer((props) => {
   return (
     <Modal
       title={<div className="draftmodal__title">Resume work on a draft?</div>}
-      open={showDraftModal}
-      onCancel={() => setShowDraftModal(false)}
+      open={eventFormStore.showDraftModal}
+      onCancel={() => eventFormStore.setShowDraftModal(false)}
       footer={
         <div className="draftmodal__footerContainer">
           <div className="draftmodal__footerOr">
@@ -140,7 +142,7 @@ export const EventFormDraftModal = observer((props) => {
             <div className="draftmodal__footerOrLine"></div>
           </div>
           <Button
-            onClick={() => setShowDraftModal(false)}
+            onClick={() => eventFormStore.setShowDraftModal(false)}
             className="draftmodal__footerButton"
           >
             Create a New Event
