@@ -229,9 +229,7 @@ export const EventForm = observer(() => {
     </div>
   ) : (
     <>
-      <EventFormDraftModal
-        eventtypesOptions={eventtypesOptions}
-      />
+      <EventFormDraftModal eventtypesOptions={eventtypesOptions} />
       <HelpButtons setStartTour={setStartTour} />
       {authStore.hasAccess ? (
         <div className="eventform__container">

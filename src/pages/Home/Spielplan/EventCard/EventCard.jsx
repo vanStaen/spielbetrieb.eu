@@ -111,7 +111,6 @@ export const EventCard = observer((props) => {
     return urls;
   };
 
-
   const handleEditEvent = async (e) => {
     e.stopPropagation();
     navigate("/event/add");
@@ -133,11 +132,15 @@ export const EventCard = observer((props) => {
     await eventFormStore.setDresscodeDoTags(event.dresscodeDoTags);
     await eventFormStore.setDresscodeDontTags(event.dresscodeDontTags);
     await eventFormStore.setEquipment(event.equipment);
-    await eventFormStore.setArtworksUrl(await getUrlsFromPicturePath(event.pictures));
-    event.fromDate && await eventFormStore.setFromDate(dayjs(event.fromDate));
-    event.untilDate && await eventFormStore.setUntilDate(dayjs(event.untilDate));
-    event.prices?.length && await eventFormStore.setPrices(JSON.parse(event.prices));
-  }
+    await eventFormStore.setArtworksUrl(
+      await getUrlsFromPicturePath(event.pictures),
+    );
+    event.fromDate && (await eventFormStore.setFromDate(dayjs(event.fromDate)));
+    event.untilDate &&
+      (await eventFormStore.setUntilDate(dayjs(event.untilDate)));
+    event.prices?.length &&
+      (await eventFormStore.setPrices(JSON.parse(event.prices)));
+  };
 
   const fromUntilDateAreTheSame =
     dayjs(event.fromDate).valueOf === dayjs(event.untilDate).valueOf;
