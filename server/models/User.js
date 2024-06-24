@@ -89,6 +89,10 @@ export const User = sequelize.sequelize.define("user", {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  links: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: true,
+  },
   userTags: {
     type: DataTypes.ARRAY(DataTypes.INTEGER),
     defaultValue: [],
