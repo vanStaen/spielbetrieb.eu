@@ -21,7 +21,14 @@ export const ProfileEvents = observer(() => {
       <div className="profileDescription__main">
         {profileStore.events.length ? (
           profileStore.events.map((event) => {
-            return <EventCard key={event._id} event={event} />;
+            return (
+              <EventCard
+                key={event._id}
+                event={event}
+                userName={profileStore.userName}
+                profileCard={true}
+              />
+            );
           })
         ) : (
           <div className="profileDescription__empty">

@@ -22,7 +22,7 @@ import { userStore } from "../../../../store/userStore/userStore";
 export const EventCard = observer((props) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { event, tags } = props;
+  const { event, tags, userName, profileCard } = props;
   const isInThePast = event.fromDate < dayjs();
   const isShownHidden = useRef(isInThePast);
   const [firstPictureUrl, setFirstPictureUrl] = useState(null);
@@ -46,6 +46,8 @@ export const EventCard = observer((props) => {
         Mark attending event 
         buy a ticket Ticket
     */
+
+  console.log("event", event);
 
   const handleTagClick = (index, id) => {
     if (index === 0) {
@@ -103,9 +105,11 @@ export const EventCard = observer((props) => {
     <div
       key={event._id}
       id={`eventContainer${event._id}`}
-      className={`event__Container ${
-        pageStore.selectedTheme === "light" ? "event__black" : "event__white"
-      }`}
+      className={`
+        event__Container 
+        ${pageStore.selectedTheme === "light" ? "event__black" : "event__white"}
+        ${!profileCard && "event__containerMarginTop"}
+        `}
       onClick={handleEventContainerClick}
     >
       <div className="event__date">
@@ -126,7 +130,7 @@ export const EventCard = observer((props) => {
       </div>
 
       {firstPictureUrl ? (
-        <div className="event__artwork">
+        <div className={profileCard ? 'event__artworkProfile' : 'event__artwork'}>
           <img src={firstPictureUrl} />
         </div>
       ) : (
@@ -136,9 +140,12 @@ export const EventCard = observer((props) => {
       )}
       <div className="event__main">
         <div className="event__titleLocation">
-          <div className="event__location">{event.locationName} </div>
+          <div className="event__location">{event.locationName}</div>
           <div
-            className={`event__title ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
+            className={`
+              ${profileCard ? "event__titleProfile" : "event__title"}
+              ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}
+              `}
           >
             {event.title}
           </div>
@@ -157,14 +164,17 @@ export const EventCard = observer((props) => {
           )}
         </div>
         <div className="event__location">
-          <EnvironmentOutlined /> {event.locationAddress}
+          <EnvironmentOutlined />{" "}
+          {event.locationAddress ? event.locationAddress : "tba"}
         </div>
-        <div className="event__promoter">
-          <span className="event__organizedBy">
-            {t("spielplan.eventOrganisedBy")}{" "}
-          </span>
-          {event.user?.userName}
-        </div>
+        {!profileCard && (
+          <div className="event__promoter">
+            <span className="event__organizedBy">
+              {t("spielplan.eventOrganisedBy")}{" "}
+            </span>
+            {userName}
+          </div>
+        )}
         <div className="event__tags">{tagsFormatted}</div>
       </div>
       {userStore.isAdmin && (

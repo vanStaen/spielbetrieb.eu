@@ -127,6 +127,7 @@ export const Spielplan = observer(() => {
           event={event}
           color={eventColor}
           tags={eventTags}
+          userName={event.user.userName}
         />
       </div>
     ) : (
@@ -135,6 +136,7 @@ export const Spielplan = observer(() => {
         event={event}
         color={eventColor}
         tags={eventTags}
+        userName={event.user.userName}
       />
     );
   });

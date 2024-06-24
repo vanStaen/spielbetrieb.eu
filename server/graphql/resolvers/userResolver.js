@@ -32,7 +32,10 @@ export const userResolver = {
         "friends",
         "friendrequests",
       ],
-      order: [[Notification, "_id", "DESC"]],
+      order: [
+        [Notification, "_id", "DESC"],
+        [Event, "fromDate", "ASC"],
+      ],
     });
   },
 
@@ -219,6 +222,7 @@ export const userResolver = {
         "following",
         "friendrequests",
       ],
+      order: [[Event, "fromDate", "ASC"]],
     });
   },
 
@@ -233,6 +237,7 @@ export const userResolver = {
         "following",
         "friendrequests",
       ],
+      order: [[Event, "fromDate", "ASC"]],
     });
   },
 
