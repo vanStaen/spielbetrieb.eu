@@ -15,9 +15,9 @@ import { pageStore } from "../../../../store/pageStore/pageStore";
 import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinner";
 import { pictureOrPlaceholder } from "../../../../helpers/picture/pictureOrPlaceholder";
 import { deleteEvent } from "../../../Admin/AdminEvents/deleteEvent";
+import { userStore } from "../../../../store/userStore/userStore";
 
 import "./EventCard.less";
-import { userStore } from "../../../../store/userStore/userStore";
 
 export const EventCard = observer((props) => {
   const { t } = useTranslation();
@@ -46,8 +46,6 @@ export const EventCard = observer((props) => {
         Mark attending event 
         buy a ticket Ticket
     */
-
-  console.log("event", event);
 
   const handleTagClick = (index, id) => {
     if (index === 0) {
@@ -175,21 +173,23 @@ export const EventCard = observer((props) => {
             {userName}
           </div>
         )}
-        <div className="event__tags">{tagsFormatted}</div>
+        <div className={profileCard ? "event__tagsProfile" : "event__tags"} > {tagsFormatted}</div>
       </div>
-      {userStore.isAdmin && (
-        <div className="event__delete">
-          <div onClick={(e) => e.stopPropagation()}>
-            <Popconfirm
-              title={`Delete this event?`}
-              style={{ marginRight: 8 }}
-              onConfirm={handleDeleteEvent}
-            >
-              <DeleteOutlined className="event__deleteLogo" />
-            </Popconfirm>
+      {
+        userStore.isAdmin && (
+          <div className="event__delete">
+            <div onClick={(e) => e.stopPropagation()}>
+              <Popconfirm
+                title={`Delete this event?`}
+                style={{ marginRight: 8 }}
+                onConfirm={handleDeleteEvent}
+              >
+                <DeleteOutlined className="event__deleteLogo" />
+              </Popconfirm>
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )
+      }
+    </div >
   );
 });

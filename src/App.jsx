@@ -22,6 +22,7 @@ import { Admin } from "./pages/Admin/Admin";
 import { Newsletter } from "./pages/Newsletter/Newsletter";
 import { DarkSingle } from "./pages/DarkSingle/DarkSingle";
 import { Impressum } from "./components/Impressum/Impressum";
+import { spielplanStore } from "./store/spielplanStore/spielplanStore";
 
 import "./lib/i18n";
 
@@ -45,6 +46,8 @@ const App = observer(() => {
 
   useEffect(() => {
     pageStore.fetchData();
+    spielplanStore.fetchTags();
+    spielplanStore.fetchEventtypes();
     authStore.checkAccess();
   }, []);
 
