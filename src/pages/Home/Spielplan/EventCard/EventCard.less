@@ -199,10 +199,13 @@
 }
 
 @media only screen and (max-width: 675px) {
+    .event__containerMarginTop {
+        margin: 10px 20px 20px 20px !important;
+    }
+
     .event__Container {
         width: calc(100% - 40px);
-        margin: 10px 20px 20px 20px;
-        padding: 0px;
+        padding: 0;
 
         .event__date {
             width: 100%;
@@ -283,7 +286,7 @@
         }
     }
 
-    .event__delete {
-        display: block;
+    .event__actions {
+        display: none;
     }
 }
