@@ -48,18 +48,22 @@ export const EventCard = observer((props) => {
     */
 
   const handleTagClick = (index, id) => {
-    if (index === 0) {
-      if (!spielplanStore.filterEventtypes.includes(String(id))) {
-        const newArrayFilterEventtypes =
-          spielplanStore.filterEventtypes.slice();
-        newArrayFilterEventtypes.push(String(id));
-        spielplanStore.setFilterEventtypes(newArrayFilterEventtypes);
-      }
+    if (profileCard) {
+      handleEventContainerClick();
     } else {
-      if (!spielplanStore.filterTags.includes(String(id))) {
-        const newArrayFilterTags = spielplanStore.filterTags.slice();
-        newArrayFilterTags.push(String(id));
-        spielplanStore.setFilterTags(newArrayFilterTags);
+      if (index === 0) {
+        if (!spielplanStore.filterEventtypes.includes(String(id))) {
+          const newArrayFilterEventtypes =
+            spielplanStore.filterEventtypes.slice();
+          newArrayFilterEventtypes.push(String(id));
+          spielplanStore.setFilterEventtypes(newArrayFilterEventtypes);
+        }
+      } else {
+        if (!spielplanStore.filterTags.includes(String(id))) {
+          const newArrayFilterTags = spielplanStore.filterTags.slice();
+          newArrayFilterTags.push(String(id));
+          spielplanStore.setFilterTags(newArrayFilterTags);
+        }
       }
     }
   };
