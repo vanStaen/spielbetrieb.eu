@@ -218,7 +218,7 @@ export const EventCard = observer((props) => {
             "tba"
           )}
         </div>
-        <div className="event__location">
+        <div className={`event__location ${!event.locationAddress && 'event__lowOpacity'}`}>
           <EnvironmentOutlined />{" "}
           {event.locationAddress ? event.locationAddress : "tba"}
         </div>
