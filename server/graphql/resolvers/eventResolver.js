@@ -40,6 +40,7 @@ export const eventResolver = {
       where: {
         userId: req.userId,
         isDraft: true,
+        archived: { [Op.or]: [false, null] },
       },
       order: [["_id", "ASC"]],
     });
@@ -53,13 +54,14 @@ export const eventResolver = {
     if (args.fromDate < dayjs().valueOf()) {
       fromDate = dayjs().startOf("day").valueOf();
     }
-    console.log(args.fromDate, fromDate);
-    console.log(args.untilDate, untilDate);
+    //console.log(args.fromDate, fromDate);
+    //console.log(args.untilDate, untilDate);
     return await Event.findAll({
       where: {
         private: false,
         isDraft: false,
         validated: true,
+        archived: { [Op.or]: [false, null] },
         fromDate: {
           [Op.between]: [fromDate, untilDate],
         },
@@ -165,6 +167,24 @@ export const eventResolver = {
     } catch (err) {
       console.log(err);
     }
+  },
+
+  // archiveEvent(id: ID!): Boolean!
+  async archiveEvent(args, req) {
+    if (!req.isAuth) {
+      throw new Error("Unauthorized!");
+    }
+    await Event.update(
+      { archived: true },
+      {
+        where: {
+          _id: args.eventId,
+        },
+        returning: true,
+        plain: true,
+      },
+    );
+    return true;
   },
 
   // deleteEvent(id: ID!): Boolean!

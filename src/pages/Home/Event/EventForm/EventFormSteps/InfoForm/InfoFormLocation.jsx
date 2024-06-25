@@ -33,7 +33,7 @@ export const InfoFormLocation = observer(() => {
     )[0];
     if (selectedLocation === undefined) {
       eventFormStore.setLocationId(null);
-      //eventFormStore.setLocationAddress(null);
+      // eventFormStore.setLocationAddress(null);
       value && eventFormStore.setIsNewLocation(true);
       value && showMapHandler(true);
       eventFormStore.eventId &&

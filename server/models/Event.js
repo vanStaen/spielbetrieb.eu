@@ -132,6 +132,10 @@ export const Event = sequelize.sequelize.define("event", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
+  archived: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 User.hasMany(Event);

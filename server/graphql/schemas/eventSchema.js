@@ -80,5 +80,6 @@ export const EventQueries = `
 export const EventMutations = `
     addEvent(eventInput: EventInputData!): Event!
     updateEvent(eventId: ID!, eventInput: EventInputData!): Event!
+    archiveEvent(eventId: ID!): Boolean!
     deleteEvent(eventId: ID!): Boolean!
 `;

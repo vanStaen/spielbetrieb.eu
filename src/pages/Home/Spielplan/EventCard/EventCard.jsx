@@ -16,7 +16,7 @@ import { pageStore } from "../../../../store/pageStore/pageStore";
 import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinner";
 import { pictureOrPlaceholder } from "../../../../helpers/picture/pictureOrPlaceholder";
 import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
-import { deleteEvent } from "../../../Admin/AdminEvents/deleteEvent";
+import { archiveEvent } from "./archiveEvent";
 import { userStore } from "../../../../store/userStore/userStore";
 import { eventFormStore } from "../../Event/EventForm/eventFormStore";
 
@@ -32,8 +32,8 @@ export const EventCard = observer((props) => {
 
   const isMyEvent = eventUser?._id === userStore?._id;
 
-  const handleDeleteEvent = async () => {
-    await deleteEvent(event._id);
+  const handleArchiveEvent = async () => {
+    await archiveEvent(event._id);
     spielplanStore.fetchEvents();
   };
 
@@ -218,7 +218,9 @@ export const EventCard = observer((props) => {
             "tba"
           )}
         </div>
-        <div className={`event__location ${!event.locationAddress && 'event__lowOpacity'}`}>
+        <div
+          className={`event__location ${!event.locationAddress && "event__lowOpacity"}`}
+        >
           <EnvironmentOutlined />{" "}
           {event.locationAddress ? event.locationAddress : "tba"}
         </div>
@@ -241,19 +243,21 @@ export const EventCard = observer((props) => {
             <EditOutlined />
           </div>
         )}
-        {userStore.isAdmin && (
-          <div className="event__action">
-            <div onClick={(e) => e.stopPropagation()}>
-              <Popconfirm
-                title={`Delete this event?`}
-                style={{ marginRight: 8 }}
-                onConfirm={handleDeleteEvent}
-              >
-                <DeleteOutlined className="event__deleteLogo" />
-              </Popconfirm>
+        {
+          isMyEvent && (
+            <div className="event__action">
+              <div onClick={(e) => e.stopPropagation()}>
+                <Popconfirm
+                  title={`Archive this event?`}
+                  style={{ marginRight: 8 }}
+                  onConfirm={handleArchiveEvent}
+                >
+                  <DeleteOutlined className="event__deleteLogo" />
+                </Popconfirm>
+              </div>
             </div>
-          </div>
-        )}
+          )
+        }
       </div>
     </div>
   );
