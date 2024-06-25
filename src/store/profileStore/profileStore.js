@@ -29,6 +29,7 @@ export class ProfileStore {
   events = [];
   interests = [];
   wishes = [];
+  links = [];
   description = null;
 
   constructor() {
@@ -60,6 +61,7 @@ export class ProfileStore {
       interests: observable,
       wishes: observable,
       description: observable,
+      links: observable,
       setIsLoading: action,
       setError: action,
       set_id: action,
@@ -88,6 +90,7 @@ export class ProfileStore {
       setInterests: action,
       setWishes: action,
       setDescription: action,
+      setLinks: action,
     });
   }
 
@@ -199,6 +202,10 @@ export class ProfileStore {
     this.description = description;
   };
 
+  setLinks = (links) => {
+    this.links = links;
+  };
+
   fetchProfileData = async (userName, loader = true) => {
     try {
       if (loader) {
@@ -232,6 +239,7 @@ export class ProfileStore {
           this.setInterests(profileData.interests);
           this.setWishes(profileData.wishes);
           this.setDescription(profileData.description);
+          this.setLinks(profileData.links);
         }
         this.setError(null);
         this.setIsLoading(false);

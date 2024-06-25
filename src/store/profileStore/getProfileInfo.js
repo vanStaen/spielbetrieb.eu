@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export const getProfileInfo = async (username) => {
-  const requestBody = {
-    query: `
+    const requestBody = {
+        query: `
         {
             getProfileByName (userName: "${username}"){
               _id,
@@ -27,6 +27,7 @@ export const getProfileInfo = async (username) => {
                 userTags,
                 birthday,
                 interests,
+                links,
                 reviews {
                     _id,
                 },
@@ -96,17 +97,17 @@ export const getProfileInfo = async (username) => {
             }
           }
           `,
-  };
+    };
 
-  const response = await axios({
-    url: process.env.API_URL + "/graphql",
-    method: "POST",
-    data: requestBody,
-  });
+    const response = await axios({
+        url: process.env.API_URL + "/graphql",
+        method: "POST",
+        data: requestBody,
+    });
 
-  if ((response.status !== 200) & (response.status !== 201)) {
-    throw new Error("Unauthenticated!");
-  }
+    if ((response.status !== 200) & (response.status !== 201)) {
+        throw new Error("Unauthenticated!");
+    }
 
-  return response.data.data.getProfileByName;
+    return response.data.data.getProfileByName;
 };

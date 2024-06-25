@@ -48,11 +48,11 @@ export const ProfileTags = observer(() => {
           showEdit={showTagsModal}
           setShowEdit={setShowTagsModal}
         />
-        <div className="profileDescription__main">
+        <div className="profileTags__main">
           {profileStore.tags.length ? (
             <div>{userTags()}</div>
           ) : (
-            <div className="profileDescription__empty">
+            <div className="profileTags__empty">
               {t("profile.nothingYet")}
             </div>
           )}

@@ -243,21 +243,19 @@ export const EventCard = observer((props) => {
             <EditOutlined />
           </div>
         )}
-        {
-          isMyEvent && (
-            <div className="event__action">
-              <div onClick={(e) => e.stopPropagation()}>
-                <Popconfirm
-                  title={`Archive this event?`}
-                  style={{ marginRight: 8 }}
-                  onConfirm={handleArchiveEvent}
-                >
-                  <DeleteOutlined className="event__deleteLogo" />
-                </Popconfirm>
-              </div>
+        {isMyEvent && (
+          <div className="event__action">
+            <div onClick={(e) => e.stopPropagation()}>
+              <Popconfirm
+                title={`Archive this event?`}
+                style={{ marginRight: 8 }}
+                onConfirm={handleArchiveEvent}
+              >
+                <DeleteOutlined className="event__deleteLogo" />
+              </Popconfirm>
             </div>
-          )
-        }
+          </div>
+        )}
       </div>
     </div>
   );

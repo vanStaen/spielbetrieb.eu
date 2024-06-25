@@ -54,8 +54,8 @@ export const eventResolver = {
     if (args.fromDate < dayjs().valueOf()) {
       fromDate = dayjs().startOf("day").valueOf();
     }
-    //console.log(args.fromDate, fromDate);
-    //console.log(args.untilDate, untilDate);
+    // console.log(args.fromDate, fromDate);
+    // console.log(args.untilDate, untilDate);
     return await Event.findAll({
       where: {
         private: false,

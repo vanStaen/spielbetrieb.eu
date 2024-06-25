@@ -3,6 +3,7 @@ import { observer } from "mobx-react";
 
 import { ProfileEvents } from "./ProfileEvents/ProfileEvents";
 import { ProfileTags } from "./ProfileTags/ProfileTags";
+import { ProfileLinks } from "./ProfileLinks/ProfileLinks";
 import { ProfileDescription } from "./ProfileDescription/ProfileDescription";
 import { ProfileInterests } from "./ProfileInterests/ProfileInterests";
 import { ProfileWishes } from "./ProfileWishes/ProfileWishes";
@@ -29,6 +30,7 @@ export const ProfileMain = observer((props) => {
       {(profileStore.photos.length || thisIsMe) && <ProfilePhotos />}
       {(profileStore.events.length || thisIsMe) && <ProfileEvents />}
       {(profileStore.tags.length || thisIsMe) && <ProfileTags />}
+      {(profileStore.link?.length || thisIsMe) && <ProfileLinks />}
       {(profileStore.reviews || thisIsMe) && profileStore.isPartner && (
         <ProfileReviews />
       )}
