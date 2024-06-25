@@ -215,7 +215,11 @@ export const userResolver = {
     return await User.findOne({
       where: { userName: args.userName },
       include: [
-        { model: Event, where: { archived: false } },
+        {
+          model: Event,
+          required: false,
+          where: { archived: false }
+        },
         Photo,
         "friends",
         "followers",
@@ -230,7 +234,11 @@ export const userResolver = {
     return await User.findOne({
       where: { _id: args._id },
       include: [
-        { model: Event, where: { archived: false } },
+        {
+          model: Event,
+          required: false,
+          where: { archived: false }
+        },
         Photo,
         "friends",
         "followers",

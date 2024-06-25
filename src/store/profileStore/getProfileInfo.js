@@ -5,7 +5,7 @@ export const getProfileInfo = async (username) => {
         query: `
         {
             getProfileByName (userName: "${username}"){
-              _id,
+                _id,
                 isAdmin,
                 adminRoles,
                 isPartner,
