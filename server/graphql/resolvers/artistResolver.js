@@ -33,12 +33,14 @@ export const artistResolver = {
     }
     try {
       const artist = new Artist({
+        userId: req.userId,
         name: args.artistInput.name,
+        description: args.artistInput.description,
         pictures: args.artistInput.pictures,
         links: args.artistInput.links,
-        validated,
         reviews: args.artistInput.reviews,
         artistType: args.artistInput.artistType,
+        validated,
       });
       return await artist.save();
     } catch (err) {
@@ -51,6 +53,39 @@ export const artistResolver = {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
+    const updateFields = [];
+    const updatableFields = [
+      "pictures",
+      "description",
+      "links",
+      "reviews",
+    ];
+    updatableFields.forEach((field) => {
+      if (field in args.artistInput) {
+        updateFields[field] = args.artistInput[field];
+      }
+    });
+    try {
+      const updatedArtist = await Artist.update(updateFields, {
+        where: {
+          _id: args.artistId,
+        },
+        returning: true,
+        plain: true,
+      });
+      // updatedArtist[0]: number or row udpated
+      // updatedArtist[1]: rows updated
+      return updatedArtist[1];
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  // updateArtistAsAdmin(artistId: ID!, artistInput: ArtistInputData!): Artist!
+  async updateArtistAsAdmin(args, req) {
+    if (!req.isAuth) {
+      throw new Error("Unauthorized!");
+    }
     const foundUser = await User.findOne({
       where: { _id: req.userId },
     });
@@ -59,7 +94,9 @@ export const artistResolver = {
     }
     const updateFields = [];
     const updatableFields = [
+      "userId",
       "name",
+      "description",
       "pictures",
       "links",
       "validated",
@@ -71,6 +108,7 @@ export const artistResolver = {
         updateFields[field] = args.artistInput[field];
       }
     });
+    console.log(updateFields);
     try {
       const updatedArtist = await Artist.update(updateFields, {
         where: {

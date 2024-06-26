@@ -1,10 +1,10 @@
-export async function updateArtist(id, dataObject) {
+export async function updateArtistAsAdmin(id, dataObject) {
   const graphqlQuery = {
     query: `mutation ( 
                 $id: ID!,
                 $dataObject: ArtistInputData!,
                 ) {
-                updateArtist (
+                  updateArtistAsAdmin (
                   artistId: $id,
                   artistInput: $dataObject,
                 ) {
@@ -35,5 +35,5 @@ export async function updateArtist(id, dataObject) {
   if (data.errors) {
     return data.errors[0];
   }
-  return data.updateArtist;
+  return data.updateArtistAsAdmin;
 }

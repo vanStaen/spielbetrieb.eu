@@ -22,7 +22,7 @@ export const ProfileEvents = observer(() => {
         addEvent={true}
       />
       <div className="profileDescription__main">
-        {profileStore.events.length ? (
+        {profileStore.events?.length ? (
           profileStore.events.map((event) => {
             const eventTags = event.eventTags.map((tagId) => {
               return {

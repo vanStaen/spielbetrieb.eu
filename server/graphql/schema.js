@@ -56,6 +56,7 @@ export default buildSchema(`
 
     ${admincontactSchema.AdmincontactInputData}
     ${adminlinkSchema.AdminlinkInputData}
+    ${artistSchema.ArtistAdminInputData}
     ${artistSchema.ArtistInputData}
     ${bugSchema.BugInputData}
     ${chatSchema.ChatInputData}

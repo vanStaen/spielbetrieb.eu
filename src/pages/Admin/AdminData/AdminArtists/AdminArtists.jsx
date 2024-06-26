@@ -10,7 +10,7 @@ import {
 import { EditableCell } from "../../EditableCell";
 import { getArtists } from "../../../../store/spielplanStore/getArtists";
 import { deleteArtist } from "./deleteArtist";
-import { updateArtist } from "./updateArtist";
+import { updateArtistAsAdmin } from "./updateArtistAsAdmin";
 import { addArtist } from "./addArtist";
 import { AdminCustomSpinner } from "../../AdminCustomSpinner/AdminCustomSpinner";
 
@@ -64,7 +64,7 @@ export const AdminArtists = () => {
       if (isNewRow) {
         await addArtist(dataObjectNew);
       } else {
-        await updateArtist(id, dataObjectNew);
+        await updateArtistAsAdmin(id, dataObjectNew);
       }
       await fetchArtists();
       setEditingId("");
@@ -177,9 +177,9 @@ export const AdminArtists = () => {
         record,
         inputType:
           col.dataIndex === "validated" ||
-          col.dataIndex === "isPictureArtist" ||
-          col.dataIndex === "isEventArtist" ||
-          col.dataIndex === "isUserArtist"
+            col.dataIndex === "isPictureArtist" ||
+            col.dataIndex === "isEventArtist" ||
+            col.dataIndex === "isUserArtist"
             ? "boolean"
             : "text",
         dataIndex: col.dataIndex,

@@ -27,9 +27,9 @@ export const ProfileMain = observer((props) => {
       {(profileStore.interests || thisIsMe) && !profileStore.isPartner && (
         <ProfileInterests />
       )}
-      {(profileStore.photos.length || thisIsMe) && <ProfilePhotos />}
-      {(profileStore.events.length || thisIsMe) && <ProfileEvents />}
-      {(profileStore.tags.length || thisIsMe) && <ProfileTags />}
+      {(profileStore.photos?.length || thisIsMe) && <ProfilePhotos />}
+      {(profileStore.events?.length || thisIsMe) && <ProfileEvents />}
+      {(profileStore.tags?.length || thisIsMe) && <ProfileTags />}
       {(profileStore.link?.length || thisIsMe) && <ProfileLinks />}
       {(profileStore.reviews || thisIsMe) && profileStore.isPartner && (
         <ProfileReviews />

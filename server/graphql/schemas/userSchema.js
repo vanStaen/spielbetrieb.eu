@@ -28,6 +28,7 @@ type User {
     archived: Boolean
     usernameChange: Int
     lastActive: String!
+    artists: [Artist]
     comments: [Comment]
     events: [Event]
     reviews: [Review]

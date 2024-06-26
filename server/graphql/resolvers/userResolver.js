@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import { mailService } from "../../api/service/mailService.js";
 import { notificationService } from "../../api/service/notificationService.js";
 
+import { Artist } from "../../models/Artist.js";
 import { User } from "../../models/User.js";
 import { Comment } from "../../models/Comment.js";
 import { Event } from "../../models/Event.js";
@@ -21,6 +22,7 @@ export const userResolver = {
     return await User.findOne({
       where: { _id: req.userId },
       include: [
+        Artist,
         Comment,
         Event,
         Message,
