@@ -57,7 +57,7 @@ export const notificationResolver = {
 
 
   // updateAllNotificationSeen: Boolean!
-  async updateNotificationSeen(_, req) {
+  async updateAllNotificationSeen(_, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
