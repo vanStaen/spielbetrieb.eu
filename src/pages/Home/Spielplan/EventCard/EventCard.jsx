@@ -243,7 +243,7 @@ export const EventCard = observer((props) => {
             <EditOutlined />
           </div>
         )}
-        {isMyEvent && (
+        {(isMyEvent || userStore.isAdmin) && (
           <div className="event__action">
             <div onClick={(e) => e.stopPropagation()}>
               <Popconfirm
