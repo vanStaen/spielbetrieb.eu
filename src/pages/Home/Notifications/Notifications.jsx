@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import errorLogo from "../../../img/logos/errorLogo.png";
 import { Notification } from "./Notification/Notification";
 import { pageStore } from "../../../store/pageStore/pageStore";
-import { postNotificationSeen } from "./postNotificationSeen";
 import { userStore } from "../../../store/userStore/userStore";
 import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
 
@@ -22,7 +21,6 @@ export const Notifications = observer(() => {
   }, [userStore.notifications]);
 
   useEffect(() => {
-    postNotificationSeen();
     pageStore.setUnseenNotificationsCount(0);
   }, []);
 

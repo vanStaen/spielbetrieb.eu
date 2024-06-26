@@ -70,3 +70,7 @@ AI bilder
 - [ ] Spielplan: lazy loading with pagination
 - [ ] Spielplan filter : only filter from the data set should be shown
 - [ ] if user settings === do not display name etc, it should not be sent from the backend (or with empty value)
+- [ ] Split 'getProfile' resolver funciton into smaller function
+  - [ ] Separate call for pictures
+  - [ ] Separate call for events
+  - [ ] Separate call for artists

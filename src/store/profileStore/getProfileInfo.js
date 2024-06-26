@@ -65,9 +65,6 @@ export const getProfileInfo = async (username) => {
                 messages {
                     _id,
                 },
-                notifications {
-                    _id,
-                },
                 photos {
                     _id,
                 },

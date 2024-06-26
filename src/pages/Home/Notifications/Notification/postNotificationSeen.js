@@ -1,8 +1,11 @@
-export async function postNotificationSeen() {
+export async function postNotificationSeen(id) {
   const graphqlQuery = {
-    query: `mutation {
-                updateNotificationSeen
+    query: `mutation ( $id: ID! ) {
+                  updateNotificationSeen ( notificationId: $id ) 
                 }`,
+    variables: {
+      id,
+    },
   };
 
   const headers = {

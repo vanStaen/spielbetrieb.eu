@@ -32,11 +32,36 @@ export const notificationResolver = {
     });
   },
 
-  // updateNotificationSeen: Notification!
+  // updateNotificationSeen(notificationId: ID!): Boolean!
+  async updateNotificationSeen(args, req) {
+    if (!req.isAuth) {
+      throw new Error("Unauthorized!");
+    }
+    try {
+      await Notification.update(
+        { seen: true },
+        {
+          where: {
+            _id: args.notificationId,
+            userId: req.userId,
+          },
+          returning: true,
+          plain: true,
+        },
+      );
+      return true;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+
+  // updateAllNotificationSeen: Boolean!
   async updateNotificationSeen(_, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
+    console.log(args.notificationId);
     try {
       await Notification.update(
         { seen: true },
@@ -54,7 +79,7 @@ export const notificationResolver = {
     }
   },
 
-  // deleteNotification(tagId: ID!): Boolean!
+  // deleteNotification(notificationId: ID!): Boolean!
   async deleteNotification(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
