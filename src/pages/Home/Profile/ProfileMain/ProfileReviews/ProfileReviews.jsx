@@ -16,11 +16,9 @@ export const ProfileReviews = observer(() => {
         value={profileStore.reviews?.length}
         editable={false}
       />
-      <div className="profileDescription__main">
+      <div className="profileReviews__main">
         {!profileStore.reviews && (
-          <div className="profileDescription__empty">
-            {t("profile.nothingYet")}
-          </div>
+          <div className="profileReviews__empty">{t("profile.nothingYet")}</div>
         )}
       </div>
     </div>

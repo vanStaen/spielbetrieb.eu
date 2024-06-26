@@ -220,7 +220,7 @@ export const userResolver = {
         {
           model: Event,
           required: false,
-          where: { archived: false }
+          where: { archived: false },
         },
         Photo,
         "friends",
@@ -239,7 +239,7 @@ export const userResolver = {
         {
           model: Event,
           required: false,
-          where: { archived: false }
+          where: { archived: false },
         },
         Photo,
         "friends",

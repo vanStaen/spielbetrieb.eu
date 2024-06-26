@@ -52,9 +52,7 @@ export const ProfileTags = observer(() => {
           {profileStore.tags.length ? (
             <div>{userTags()}</div>
           ) : (
-            <div className="profileTags__empty">
-              {t("profile.nothingYet")}
-            </div>
+            <div className="profileTags__empty">{t("profile.nothingYet")}</div>
           )}
         </div>
       </div>

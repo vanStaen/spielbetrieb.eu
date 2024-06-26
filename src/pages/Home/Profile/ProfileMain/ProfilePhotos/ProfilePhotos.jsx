@@ -16,11 +16,9 @@ export const ProfilePhotos = observer(() => {
         value={profileStore.photos?.length}
         addPhoto={true}
       />
-      <div className="profileDescription__main">
+      <div className="profilePhotos__main">
         {!profileStore.photos.length && (
-          <div className="profileDescription__empty">
-            {t("profile.nothingYet")}
-          </div>
+          <div className="profilePhotos__empty">{t("profile.nothingYet")}</div>
         )}
       </div>
     </div>

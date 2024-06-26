@@ -36,9 +36,7 @@ export const ProfileLinks = observer(() => {
           {profileStore.links?.length ? (
             <div>{userLinks}</div>
           ) : (
-            <div className="profileLinks__empty">
-              {t("profile.nothingYet")}
-            </div>
+            <div className="profileLinks__empty">{t("profile.nothingYet")}</div>
           )}
         </div>
       </div>

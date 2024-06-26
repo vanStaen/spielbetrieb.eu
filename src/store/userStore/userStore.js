@@ -42,6 +42,7 @@ export class UserStore {
   notifications = [];
   photos = [];
   visitors = [];
+  artists = [];
   _id = null;
 
   constructor() {
@@ -118,6 +119,8 @@ export class UserStore {
       setFollowing: action,
       _id: observable,
       set_id: action,
+      artists: observable,
+      setArtists: action,
     });
   }
 
@@ -269,6 +272,10 @@ export class UserStore {
     this.comments = comments;
   };
 
+  setArtists = (artists) => {
+    this.artists = artists;
+  };
+
   fetchUserData = async (loader = true) => {
     try {
       if (loader) {
@@ -298,6 +305,7 @@ export class UserStore {
         this.setCoordinates(userData.coordinates);
         this.setWishes(userData.wishes);
         this.setInterests(userData.interests);
+        this.setArtists(userData.artists);
         this.setUsernameChange(userData.usernameChange);
         this.setNotifications(userData.notifications);
         this.setArchived(userData.archived);

@@ -258,7 +258,9 @@
 		"events": "Veranstalltungen",
 		"tags": "Hashtags",
 		"reviews": "Bewertungen",
-		"nothingYet": "Noch nichts da"
+		"nothingYet": "Noch nichts da",
+		"links": "Links",
+		"artists": "Künstler"
 	},
 	"scene": {
 		"fetish": "Fetisch",

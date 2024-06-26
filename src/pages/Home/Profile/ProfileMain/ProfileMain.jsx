@@ -9,6 +9,7 @@ import { ProfileInterests } from "./ProfileInterests/ProfileInterests";
 import { ProfileWishes } from "./ProfileWishes/ProfileWishes";
 import { ProfilePhotos } from "./ProfilePhotos/ProfilePhotos";
 import { ProfileReviews } from "./ProfileReviews/ProfileReviews";
+import { ProfileArtists } from "./ProfileArtists/ProfileArtists";
 
 import { profileStore } from "../../../../store/profileStore/profileStore";
 import { userStore } from "../../../../store/userStore/userStore";
@@ -31,7 +32,8 @@ export const ProfileMain = observer((props) => {
       {(profileStore.events?.length || thisIsMe) && <ProfileEvents />}
       {(profileStore.tags?.length || thisIsMe) && <ProfileTags />}
       {(profileStore.link?.length || thisIsMe) && <ProfileLinks />}
-      {(profileStore.reviews || thisIsMe) && profileStore.isPartner && (
+      {thisIsMe && <ProfileArtists />}
+      {profileStore.reviews?.length && profileStore.isPartner && (
         <ProfileReviews />
       )}
     </div>

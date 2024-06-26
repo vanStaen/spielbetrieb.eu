@@ -54,12 +54,7 @@ export const artistResolver = {
       throw new Error("Unauthorized!");
     }
     const updateFields = [];
-    const updatableFields = [
-      "pictures",
-      "description",
-      "links",
-      "reviews",
-    ];
+    const updatableFields = ["pictures", "description", "links", "reviews"];
     updatableFields.forEach((field) => {
       if (field in args.artistInput) {
         updateFields[field] = args.artistInput[field];

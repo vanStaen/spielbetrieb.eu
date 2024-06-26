@@ -258,7 +258,9 @@
 		"events": "Events",
 		"tags": "Tags",
 		"reviews": "Reviews",
-		"nothingYet": "Nothing yet"
+		"nothingYet": "Nothing yet",
+		"links": "Links",
+		"artists": "Artist page"
 	},
 	"scene": {
 		"fetish": "Fetish",

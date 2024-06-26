@@ -26,11 +26,11 @@ export const ProfileWishes = observer(() => {
           showEdit={showWishesModal}
           setShowEdit={setShowWishesModal}
         />
-        <div className="profileDescription__main">
+        <div className="profileWishes__main">
           {profileStore.wishes ? (
             <div>{profileStore.wishes}</div>
           ) : (
-            <div className="profileDescription__empty">
+            <div className="profileWishes__empty">
               {t("profile.nothingYet")}
             </div>
           )}

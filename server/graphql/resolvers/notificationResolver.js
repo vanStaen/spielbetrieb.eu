@@ -55,7 +55,6 @@ export const notificationResolver = {
     }
   },
 
-
   // updateAllNotificationSeen: Boolean!
   async updateAllNotificationSeen(_, req) {
     if (!req.isAuth) {
