@@ -41,6 +41,8 @@ export const ProfileTags = observer(() => {
     setUserTags(createUserTags());
   }, [profileStore.tags]);
 
+  // TODO: Pending tags
+
   return (
     <>
       <EditTagsModal
