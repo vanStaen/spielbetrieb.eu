@@ -14,7 +14,6 @@ export class UserStore {
   firstName = null;
   lastName = null;
   userName = null;
-  description = null;
   avatar = null;
   emailSettings = null;
   profilSettings = null;
@@ -23,8 +22,6 @@ export class UserStore {
   orientationId = null;
   location = null;
   coordinates = null;
-  wishes = null;
-  interests = null;
   lastActive = null;
   archived = null;
   usernameChange = null;
@@ -34,13 +31,9 @@ export class UserStore {
   friendrequests = [];
   followers = [];
   following = [];
-  comments = [];
-  events = [];
   messages = [];
   notifications = [];
-  photos = [];
   visitors = [];
-  artists = [];
   _id = null;
 
   constructor() {
@@ -59,8 +52,6 @@ export class UserStore {
       setLastName: action,
       userName: observable,
       setUserName: action,
-      description: observable,
-      setDescription: action,
       avatar: observable,
       setAvatar: action,
       birthday: observable,
@@ -81,26 +72,16 @@ export class UserStore {
       setLocation: action,
       coordinates: observable,
       setCoordinates: action,
-      wishes: observable,
-      setWishes: action,
-      interests: observable,
-      setInterests: action,
       lastActive: observable,
       setLastActive: action,
       archived: observable,
       setArchived: action,
       usernameChange: observable,
       setUsernameChange: action,
-      comments: observable,
-      setComments: action,
-      events: observable,
-      setEvents: action,
       messages: observable,
       setMessages: action,
       notifications: observable,
       setNotifications: action,
-      photos: observable,
-      setPhotos: action,
       visitors: observable,
       setVisitors: action,
       friends: observable,
@@ -113,8 +94,6 @@ export class UserStore {
       setFollowing: action,
       _id: observable,
       set_id: action,
-      artists: observable,
-      setArtists: action,
     });
   }
 
@@ -148,10 +127,6 @@ export class UserStore {
 
   setBirthday = (birthday) => {
     this.birthday = birthday;
-  };
-
-  setDescription = (description) => {
-    this.description = description;
   };
 
   setFirstName = (firstName) => {
@@ -188,14 +163,6 @@ export class UserStore {
 
   setCoordinates = (coordinates) => {
     this.coordinates = coordinates;
-  };
-
-  setWishes = (wishes) => {
-    this.wishes = wishes;
-  };
-
-  setInterests = (interests) => {
-    this.interests = interests;
   };
 
   setFriends = (friends) => {
@@ -238,10 +205,6 @@ export class UserStore {
     this.visitors = visitors;
   };
 
-  setPhotos = (photos) => {
-    this.photos = photos;
-  };
-
   setNotifications = (notifications) => {
     this.notifications = notifications;
   };
@@ -250,17 +213,6 @@ export class UserStore {
     this.messages = messages;
   };
 
-  setEvents = (events) => {
-    this.events = events;
-  };
-
-  setComments = (comments) => {
-    this.comments = comments;
-  };
-
-  setArtists = (artists) => {
-    this.artists = artists;
-  };
 
   fetchUserData = async (loader = true) => {
     try {
@@ -278,7 +230,6 @@ export class UserStore {
         this.setBirthday(userData.birthday);
         this.setFirstName(userData.firstName);
         this.setLastName(userData.lastName);
-        this.setDescription(userData.description);
         this.setFriends(userData.friends);
         this.setFollowers(userData.followers);
         this.setFriendrequests(userData.friendrequests);
@@ -289,9 +240,6 @@ export class UserStore {
         this.setOrientationId(userData.orientation);
         this.setLocation(userData.location);
         this.setCoordinates(userData.coordinates);
-        this.setWishes(userData.wishes);
-        this.setInterests(userData.interests);
-        this.setArtists(userData.artists);
         this.setUsernameChange(userData.usernameChange);
         this.setNotifications(userData.notifications);
         this.setArchived(userData.archived);

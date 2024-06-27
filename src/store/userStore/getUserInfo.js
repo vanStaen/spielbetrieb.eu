@@ -12,7 +12,6 @@ export const getUserInfo = async () => {
                 lastName,
                 userName,
                 email,
-                description,
                 avatar,
                 emailSettings,
                 profilSettings,
@@ -22,18 +21,10 @@ export const getUserInfo = async () => {
                 orientation,
                 location,
                 coordinates,
-                wishes,
                 birthday,
-                interests,
                 lastActive,
                 archived,
                 usernameChange,
-                comments {
-                    _id,
-                },
-                events {
-                    _id,
-                },
                 messages {
                     _id,
                 },
@@ -51,9 +42,6 @@ export const getUserInfo = async () => {
                   createdAt,
                   updatedAt,
                 }
-                photos {
-                    _id,
-                },
                 visitors {
                     _id,
                 },

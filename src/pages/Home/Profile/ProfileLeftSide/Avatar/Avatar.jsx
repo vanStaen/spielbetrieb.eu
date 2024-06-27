@@ -35,9 +35,7 @@ export const Avatar = observer(() => {
   };
 
   useEffect(() => {
-    isStranger
-      ? getAvatarUrl(profileStore.avatar)
-      : getAvatarUrl(userStore.avatar);
+    getAvatarUrl(profileStore.avatar);
   }, []);
 
   const fileSelectHandler = async (event) => {
