@@ -74,3 +74,5 @@ AI bilder
   - [ ] Separate call for pictures
   - [ ] Separate call for events
   - [ ] Separate call for artists
+- Separate BD for partner event and user event
+- Separate bd for userFollower and partnerFollowers

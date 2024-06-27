@@ -1,15 +1,13 @@
 import axios from "axios";
 
 export const getProfileInfo = async (username) => {
-  const requestBody = {
-    query: `
+    const requestBody = {
+        query: `
         {
             getProfileByName (userName: "${username}"){
                 _id,
                 isAdmin,
                 adminRoles,
-                isPartner,
-                partnertype,
                 firstName,
                 lastName,
                 userName,
@@ -30,6 +28,9 @@ export const getProfileInfo = async (username) => {
                 links,
                 reviews {
                     _id,
+                },
+                partners {
+                  _id,
                 },
                 events {
                   _id,
@@ -74,37 +75,33 @@ export const getProfileInfo = async (username) => {
                 friends {
                     userName,
                     avatar,
-                    isPartner,
                 },
                 friendrequests {
                     userName,
                     avatar,
-                    isPartner,
                 },
                 followers {
                     userName,
                     avatar,
-                    isPartner,
                 },
                 following {
                     userName,
                     avatar,
-                    isPartner,
                 }
             }
           }
           `,
-  };
+    };
 
-  const response = await axios({
-    url: process.env.API_URL + "/graphql",
-    method: "POST",
-    data: requestBody,
-  });
+    const response = await axios({
+        url: process.env.API_URL + "/graphql",
+        method: "POST",
+        data: requestBody,
+    });
 
-  if ((response.status !== 200) & (response.status !== 201)) {
-    throw new Error("Unauthenticated!");
-  }
+    if ((response.status !== 200) & (response.status !== 201)) {
+        throw new Error("Unauthenticated!");
+    }
 
-  return response.data.data.getProfileByName;
+    return response.data.data.getProfileByName;
 };

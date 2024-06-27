@@ -8,8 +8,6 @@ export const getUserInfo = async () => {
                 _id,
                 isAdmin,
                 adminRoles,
-                isPartner,
-                partnerRoles,
                 firstName,
                 lastName,
                 userName,
@@ -30,16 +28,6 @@ export const getUserInfo = async () => {
                 lastActive,
                 archived,
                 usernameChange,
-                artists {
-                    _id
-                    name
-                    pictures
-                    description
-                    links
-                    reviews
-                    artistType
-                    validated
-                }
                 comments {
                     _id,
                 },

@@ -21,8 +21,6 @@ export class ProfileStore {
   lastActive = null;
   profilSettings = null;
   filterIsPopingUp = false;
-  isPartner = null;
-  partnertypeId = null;
   photos = [];
   reviews = [];
   tags = [];
@@ -31,6 +29,7 @@ export class ProfileStore {
   wishes = [];
   links = [];
   description = null;
+  partner = [];
 
   constructor() {
     makeObservable(this, {
@@ -51,8 +50,6 @@ export class ProfileStore {
       following: observable,
       lastActive: observable,
       profilSettings: observable,
-      isPartner: observable,
-      partnertypeId: observable,
       filterIsPopingUp: observable,
       photos: observable,
       reviews: observable,
@@ -62,6 +59,8 @@ export class ProfileStore {
       wishes: observable,
       description: observable,
       links: observable,
+      partner: observable,
+      setPartner: action,
       setIsLoading: action,
       setError: action,
       set_id: action,
@@ -79,8 +78,6 @@ export class ProfileStore {
       setFollowing: action,
       setLastActive: action,
       setProfilSettings: action,
-      setIsPartner: action,
-      setPartnertypeId: action,
       setFilterIsPopingUp: action,
       fetchProfileData: action,
       setPhotos: action,
@@ -162,14 +159,6 @@ export class ProfileStore {
     this.profilSettings = profilSettings;
   };
 
-  setIsPartner = (isPartner) => {
-    this.isPartner = isPartner;
-  };
-
-  setPartnertypeId = (partnertypeId) => {
-    this.partnertypeId = partnertypeId;
-  };
-
   setFilterIsPopingUp = (filterIsPopingUp) => {
     this.filterIsPopingUp = filterIsPopingUp;
   };
@@ -206,6 +195,10 @@ export class ProfileStore {
     this.links = links;
   };
 
+  setPartner = (partner) => {
+    this.partner = partner;
+  };
+
   fetchProfileData = async (userName, loader = true) => {
     try {
       if (loader) {
@@ -228,8 +221,6 @@ export class ProfileStore {
           this.setGenderId(profileData.gender);
           this.setOrientationId(profileData.orientation);
           this.setLocation(profileData.location);
-          this.setIsPartner(profileData.isPartner);
-          this.setPartnertypeId(profileData.partnertype);
           this.setLastActive(profileData.lastActive);
           this.setProfilSettings(JSON.parse(profileData.profilSettings));
           this.setPhotos(profileData.photos);
@@ -240,6 +231,7 @@ export class ProfileStore {
           this.setWishes(profileData.wishes);
           this.setDescription(profileData.description);
           this.setLinks(profileData.links);
+          this.setPartner(profileData.partners);
         }
         this.setError(null);
         this.setIsLoading(false);

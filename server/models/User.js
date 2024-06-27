@@ -117,18 +117,6 @@ export const User = sequelize.sequelize.define("user", {
     type: DataTypes.ARRAY(DataTypes.STRING),
     defaultValue: [],
   },
-  isPartner: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  },
-  partnerRoles: {
-    type: DataTypes.ARRAY(DataTypes.STRING),
-    defaultValue: [],
-  },
-  partnertype: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-  },
   language: {
     type: DataTypes.STRING,
     defaultValue: "en",

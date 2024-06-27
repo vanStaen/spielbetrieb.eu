@@ -1,5 +1,4 @@
 import { sequelize, DataTypes } from "../lib/sequelizedb.js";
-import { User } from "./User.js";
 
 export const Artist = sequelize.sequelize.define("artist", {
   _id: {
@@ -37,6 +36,3 @@ export const Artist = sequelize.sequelize.define("artist", {
     defaultValue: false,
   },
 });
-
-User.hasMany(Artist);
-Artist.belongsTo(User);

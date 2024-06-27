@@ -2,8 +2,8 @@ import bcrypt from "bcryptjs";
 import { mailService } from "../../api/service/mailService.js";
 import { notificationService } from "../../api/service/notificationService.js";
 
-import { Artist } from "../../models/Artist.js";
 import { User } from "../../models/User.js";
+import { Partner } from "../../models/Partner.js";
 import { Comment } from "../../models/Comment.js";
 import { Event } from "../../models/Event.js";
 import { Message } from "../../models/Message.js";
@@ -22,7 +22,6 @@ export const userResolver = {
     return await User.findOne({
       where: { _id: req.userId },
       include: [
-        Artist,
         Comment,
         Event,
         Message,
@@ -187,9 +186,6 @@ export const userResolver = {
       "usernameChange",
       "language",
       "suspended",
-      "isPartner",
-      "partnerRoles",
-      "partnertype",
       "verifiedIdentity",
     ];
     updatableFields.forEach((field) => {
@@ -213,6 +209,7 @@ export const userResolver = {
     }
   },
 
+  // TODO make extra call for Partner, for Event, for Photos
   async getProfileByName(args, req) {
     return await User.findOne({
       where: { userName: args.userName },

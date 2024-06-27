@@ -1,7 +1,6 @@
 export const Artist = `
 type Artist {
     _id: ID! 
-    userId: Int!
     name: String!
     description: String
     pictures: [String]
@@ -15,7 +14,6 @@ type Artist {
 
 export const ArtistAdminInputData = `
 input ArtistAdminInputData {
-    userId: Int
     name: String
     description: String
     pictures: [String]

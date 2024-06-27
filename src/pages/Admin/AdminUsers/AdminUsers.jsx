@@ -6,7 +6,10 @@ import { getUsersAsAdmin } from "./getUsersAsAdmin";
 import { updateUserAsAdmin } from "./updateUserAsAdmin";
 import { deleteUserAsAdmin } from "./deleteUserAsAdmin";
 import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
-import { PartnerForm } from "./PartnerForm/PartnerForm";
+
+// TODO: show archived account
+// TODO: Delete vs archive?
+// TODO: On delete, delete all connected data (eg friends, picture, followers ...)
 
 export const AdminUsers = () => {
   const [users, setUsers] = useState([]);
@@ -91,6 +94,7 @@ export const AdminUsers = () => {
     {
       title: "Email",
       dataIndex: "email",
+      width: "150px",
       sorter: (a, b) => a.email.length - b.email.length,
       key: "email",
     },
@@ -118,48 +122,6 @@ export const AdminUsers = () => {
       align: "center",
       width: "70px",
       render: (_, { verifiedIdentity }) => (verifiedIdentity ? "✅" : "✖️"),
-    },
-    {
-      title: "Partner",
-      dataIndex: "isPartner",
-      key: "isPartner",
-      align: "center",
-      width: "70px",
-      sorter: (a, b) => a.isPartner - b.isPartner,
-      render: (_, record) => (
-        <div
-          onClick={() => setSelectedPartner(record)}
-          style={{ cursor: "pointer" }}
-        >
-          {record.isPartner ? (
-            <>
-              <Tooltip
-                placement="left"
-                overlayStyle={{ maxWidth: "700px" }}
-                title={
-                  <>
-                    💼&nbsp;
-                    <span style={{ color: "#666" }}>
-                      Partner roles:&nbsp;&nbsp;
-                    </span>
-                    {record.partnerRoles?.map((role) => {
-                      return (
-                        <Tag color="#333" key={role} bordered={false}>
-                          {role}
-                        </Tag>
-                      );
-                    })}
-                  </>
-                }
-              >
-                ✅
-              </Tooltip>
-            </>
-          ) : (
-            "✖️"
-          )}
-        </div>
-      ),
     },
     {
       title: "Suspended",

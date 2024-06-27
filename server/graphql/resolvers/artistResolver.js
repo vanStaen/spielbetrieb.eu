@@ -33,7 +33,6 @@ export const artistResolver = {
     }
     try {
       const artist = new Artist({
-        userId: req.userId,
         name: args.artistInput.name,
         description: args.artistInput.description,
         pictures: args.artistInput.pictures,
@@ -89,7 +88,6 @@ export const artistResolver = {
     }
     const updateFields = [];
     const updatableFields = [
-      "userId",
       "name",
       "description",
       "pictures",
