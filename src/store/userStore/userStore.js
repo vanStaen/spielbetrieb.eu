@@ -213,7 +213,6 @@ export class UserStore {
     this.messages = messages;
   };
 
-
   fetchUserData = async (loader = true) => {
     try {
       if (loader) {

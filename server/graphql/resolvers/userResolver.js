@@ -3,16 +3,16 @@ import { mailService } from "../../api/service/mailService.js";
 import { notificationService } from "../../api/service/notificationService.js";
 
 import { User } from "../../models/User.js";
-// import { Partner } from "../../models/Partner.js";
 import { Comment } from "../../models/Comment.js";
 import { Event } from "../../models/Event.js";
 import { Message } from "../../models/Message.js";
 import { Notification } from "../../models/Notification.js";
-import { Photo } from "../../models/Photo.js";
 import { Visitor } from "../../models/Visitor.js";
 import { Usersfollower } from "../../models/Usersfollower.js";
 import { Usersfriend } from "../../models/Usersfriend.js";
 import { Usersfriendrequest } from "../../models/Usersfriendrequest.js";
+// import { Partner } from "../../models/Partner.js";
+// import { Photo } from "../../models/Photo.js";
 
 export const userResolver = {
   async getUser(args, req) {
@@ -31,9 +31,7 @@ export const userResolver = {
         "friends",
         "friendrequests",
       ],
-      order: [
-        [Notification, "_id", "DESC"],
-      ],
+      order: [[Notification, "_id", "DESC"]],
     });
   },
 

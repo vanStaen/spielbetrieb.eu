@@ -13,7 +13,6 @@ import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
 
 export const AdminUsers = () => {
   const [users, setUsers] = useState([]);
-  const [selectedPartner, setSelectedPartner] = useState(null);
 
   const fetchAllUsers = async () => {
     const results = await getUsersAsAdmin();
