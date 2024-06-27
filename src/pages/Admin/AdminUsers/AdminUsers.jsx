@@ -206,13 +206,6 @@ export const AdminUsers = () => {
         </div>
       ) : (
         <>
-          {selectedPartner && (
-            <PartnerForm
-              selectedPartner={selectedPartner}
-              setSelectedPartner={setSelectedPartner}
-              fetchAllUsers={fetchAllUsers}
-            />
-          )}
           <Table
             className="admin__table"
             dataSource={users}

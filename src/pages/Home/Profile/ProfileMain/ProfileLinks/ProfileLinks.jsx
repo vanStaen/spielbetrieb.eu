@@ -4,10 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Tag } from "antd";
 
 import { profileStore } from "../../../../../store/profileStore/profileStore";
-import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMainTitle";
-import { EditLinksModal } from "./EditLinksModal/EditLinksModal";
-import { nameParser } from "../../../../../helpers/dev/nameParser";
 
 import "./ProfileLinks.less";
 

@@ -23,7 +23,9 @@ export const ProfilePartners = observer(() => {
           {
             // TODO: make a nice partner card
             profileStore.partners?.length ? (
-              <div>{profileStore.partners.map((partners) => partners.name)}</div>
+              <div>
+                {profileStore.partners.map((partners) => partners.name)}
+              </div>
             ) : (
               <div className="profilePartners__empty">
                 {t("profile.nothingYet")}

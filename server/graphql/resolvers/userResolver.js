@@ -3,7 +3,7 @@ import { mailService } from "../../api/service/mailService.js";
 import { notificationService } from "../../api/service/notificationService.js";
 
 import { User } from "../../models/User.js";
-import { Partner } from "../../models/Partner.js";
+// import { Partner } from "../../models/Partner.js";
 import { Comment } from "../../models/Comment.js";
 import { Event } from "../../models/Event.js";
 import { Message } from "../../models/Message.js";
@@ -23,10 +23,8 @@ export const userResolver = {
       where: { _id: req.userId },
       include: [
         Comment,
-        Event,
         Message,
         Notification,
-        Photo,
         Visitor,
         "followers",
         "following",
@@ -35,7 +33,6 @@ export const userResolver = {
       ],
       order: [
         [Notification, "_id", "DESC"],
-        [Event, "fromDate", "ASC"],
       ],
     });
   },
@@ -219,7 +216,8 @@ export const userResolver = {
           required: false,
           where: { archived: false },
         },
-        Photo,
+        // Partner
+        // Photo,
         "friends",
         "followers",
         "following",
@@ -238,7 +236,8 @@ export const userResolver = {
           required: false,
           where: { archived: false },
         },
-        Photo,
+        // Partner
+        // Photo,
         "friends",
         "followers",
         "following",
