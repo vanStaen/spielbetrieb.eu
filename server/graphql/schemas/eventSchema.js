@@ -29,7 +29,7 @@ type Event {
     forwardable: Boolean!
     allowAnonymous: Boolean!
     isDraft: Boolean!
-    isPartnerEvent: Boolean!
+    partnerId: Int
     validated: Boolean!
     createdAt: Float!
     updatedAt: Float!
@@ -66,7 +66,6 @@ input EventInputData {
     forwardable: Boolean
     allowAnonymous: Boolean
     isDraft: Boolean
-    isPartnerEvent: Boolean
     validated: Boolean
 }`;
 

@@ -12,6 +12,10 @@ export const Event = sequelize.sequelize.define("event", {
     type: DataTypes.STRING,
     allowNull: true,
   },
+  partnerId: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   eventtype: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -123,10 +127,6 @@ export const Event = sequelize.sequelize.define("event", {
   isDraft: {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
-  },
-  isPartnerEvent: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
   },
   validated: {
     type: DataTypes.BOOLEAN,

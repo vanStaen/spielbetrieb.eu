@@ -102,7 +102,8 @@ export const eventResolver = {
         forwardable: args.eventInput.forwardable,
         allowAnonymous: args.eventInput.allowAnonymous,
         isDraft: args.eventInput.isDraft,
-        isPartnerEvent: args.eventInput.isPartnerEvent,
+        // TODO: event form, choose partner if any
+        partnerId: args.eventInput.partnerId,
         validated: args.eventInput.validated,
         admin: [req.userId],
       });
@@ -145,7 +146,6 @@ export const eventResolver = {
       "forwardable",
       "allowAnonymous",
       "isDraft",
-      "isPartnerEvent",
       "validated",
     ];
     updatableFields.forEach((field) => {

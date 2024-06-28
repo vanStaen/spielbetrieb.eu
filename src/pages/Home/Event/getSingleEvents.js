@@ -35,7 +35,7 @@ export async function getSingleEvents(id) {
                   createdAt,
                   updatedAt,
                   validated,
-                  isPartnerEvent,
+                  partnerId,
                   user {
                     _id,
                     userName,
