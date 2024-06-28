@@ -1,5 +1,6 @@
 import { sequelize, DataTypes } from "../lib/sequelizedb.js";
 import { User } from "./User.js";
+import { Partnersfollower } from "./Partnersfollower.js";
 
 export const Partner = sequelize.sequelize.define("partner", {
   _id: {
@@ -57,3 +58,9 @@ export const Partner = sequelize.sequelize.define("partner", {
 
 User.hasMany(Partner);
 Partner.belongsTo(User);
+
+User.belongsToMany(Partner, {
+  as: "partnerfollowers",
+  foreignKey: "userfollower_id",
+  through: Partnersfollower,
+});
