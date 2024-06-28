@@ -18,7 +18,7 @@ export const tagResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
@@ -43,7 +43,7 @@ export const tagResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
@@ -64,7 +64,7 @@ export const tagResolver = {
     try {
       const updatedTag = await Tag.update(updateFields, {
         where: {
-          _id: args.tagId,
+          id: args.tagId,
         },
         returning: true,
         plain: true,
@@ -83,14 +83,14 @@ export const tagResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
     }
     await Tag.destroy({
       where: {
-        _id: args.tagId,
+        id: args.tagId,
       },
     });
     return true;

@@ -3,7 +3,7 @@ export async function getAllDraftEvents() {
     query: `
             {
               getAllDraftEvents { 
-                _id,
+                id,
                 eventtype,
                 title,
                 description,

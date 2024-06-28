@@ -7,7 +7,7 @@ export async function updateText(field, value) {
           ${field}: $value,
         }
       ) {
-        _id,
+        id,
       }
     }
     `,

@@ -6,7 +6,7 @@ export async function addBug(dataObject) {
                 addBug (
                   bugInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

@@ -8,6 +8,6 @@ export default async function getTags() {
     ],
   });
   return result.map((tag) => {
-    return { id: tag.dataValues._id, name: tag.dataValues.name };
+    return { id: tag.dataValues.id, name: tag.dataValues.name };
   });
 }

@@ -5,7 +5,7 @@ export const orientationResolver = {
   // getOrientations: [Orientation]
   async getOrientations() {
     return await Orientation.findAll({
-      order: [["_id", "ASC"]],
+      order: [["id", "ASC"]],
     });
   },
 
@@ -15,7 +15,7 @@ export const orientationResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     let validated = args.orientationInput.validated;
     if (!foundUser.isAdmin) {
@@ -38,7 +38,7 @@ export const orientationResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
@@ -53,7 +53,7 @@ export const orientationResolver = {
     try {
       const updatedOrientation = await Orientation.update(updateFields, {
         where: {
-          _id: args.orientationId,
+          id: args.orientationId,
         },
         returning: true,
         plain: true,
@@ -72,14 +72,14 @@ export const orientationResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
     }
     await Orientation.destroy({
       where: {
-        _id: args.orientationId,
+        id: args.orientationId,
       },
     });
     return true;

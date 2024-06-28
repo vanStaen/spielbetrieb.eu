@@ -3,7 +3,7 @@ export async function getLinks() {
     query: `
             {
               getAllAdminlinks {
-                _id,
+                id,
                 shortDesc,
                 category,
                 link,

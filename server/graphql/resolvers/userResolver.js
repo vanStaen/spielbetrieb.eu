@@ -20,7 +20,7 @@ export const userResolver = {
       throw new Error("Unauthorized!");
     }
     return await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
       include: [
         Comment,
         Message,
@@ -31,7 +31,7 @@ export const userResolver = {
         "friends",
         "friendrequests",
       ],
-      order: [[Notification, "_id", "DESC"]],
+      order: [[Notification, "id", "DESC"]],
     });
   },
 
@@ -40,13 +40,13 @@ export const userResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
       throw new Error("Unauthorized!");
     }
     return await User.findAll({
-      order: [["_id", "ASC"]],
+      order: [["id", "ASC"]],
     });
   },
 
@@ -95,7 +95,7 @@ export const userResolver = {
     }
   },
 
-  // updateUser(_id: ID!, userInput: UserInputData!): User!
+  // updateUser(id: ID!, userInput: UserInputData!): User!
   async updateUser(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
@@ -134,7 +134,7 @@ export const userResolver = {
     try {
       const updatedUser = await User.update(updateFields, {
         where: {
-          _id: req.userId,
+          id: req.userId,
         },
         returning: true,
         plain: true,
@@ -147,13 +147,13 @@ export const userResolver = {
     }
   },
 
-  // updateUser(_id: ID!, userInput: UserInputData!): User!
+  // updateUser(id: ID!, userInput: UserInputData!): User!
   async updateUserAsAdmin(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
       throw new Error("Unauthorized!");
@@ -191,7 +191,7 @@ export const userResolver = {
     try {
       const updatedUser = await User.update(updateFields, {
         where: {
-          _id: args.userId,
+          id: args.userId,
         },
         returning: true,
         plain: true,
@@ -227,7 +227,7 @@ export const userResolver = {
 
   async getProfileById(args, req) {
     return await User.findOne({
-      where: { _id: args._id },
+      where: { id: args.id },
       include: [
         {
           model: Event,
@@ -245,20 +245,20 @@ export const userResolver = {
     });
   },
 
-  // deleteUser(_id: ID!): Boolean!
+  // deleteUser(id: ID!): Boolean!
   async deleteUserAsAdmin(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
       throw new Error("Unauthorized!");
     }
     await User.destroy({
       where: {
-        _id: args.userId,
+        id: args.userId,
       },
     });
     req.session = null;
@@ -269,8 +269,8 @@ export const userResolver = {
   async addFollow(args, req) {
     try {
       const newFollow = new Usersfollower({
-        follower_id: req.userId,
-        followed_id: args.followedId,
+        followerid: req.userId,
+        followedid: args.followedId,
       });
       await newFollow.save();
       await notificationService.createNotificationNewFollower(
@@ -288,8 +288,8 @@ export const userResolver = {
   async deleteFollow(args, req) {
     await Usersfollower.destroy({
       where: {
-        follower_id: req.userId,
-        followed_id: args.followedId,
+        followerid: req.userId,
+        followedid: args.followedId,
       },
     });
     await notificationService.deleteNotificationNewFollower(
@@ -303,8 +303,8 @@ export const userResolver = {
   async addFriendRequest(args, req) {
     try {
       const newFriend = new Usersfriendrequest({
-        requesting_id: req.userId,
-        requested_id: args.requestedId,
+        requestingid: req.userId,
+        requestedid: args.requestedId,
       });
       await newFriend.save();
       await notificationService.createNotificationNewFriendRequest(
@@ -325,8 +325,8 @@ export const userResolver = {
       }
       const res = await Usersfriendrequest.findOne({
         where: {
-          requested_id: req.userId,
-          requesting_id: args.requestingId,
+          requestedid: req.userId,
+          requestingid: args.requestingId,
         },
       });
       console.log(res);
@@ -340,8 +340,8 @@ export const userResolver = {
   async deleteFriendRequest(args, req) {
     await Usersfriendrequest.destroy({
       where: {
-        requesting_id: req.userId,
-        requested_id: args.requestedId,
+        requestingid: req.userId,
+        requestedid: args.requestedId,
       },
     });
     await notificationService.deleteNotificationNewFriendRequest(
@@ -355,19 +355,19 @@ export const userResolver = {
   async acceptFriendRequest(args, req) {
     try {
       const newFriendFirst = new Usersfriend({
-        user_id: req.userId,
-        friend_id: args.requestingId,
+        userid: req.userId,
+        friendid: args.requestingId,
       });
       await newFriendFirst.save();
       const newFriendSecond = new Usersfriend({
-        friend_id: req.userId,
-        user_id: args.requestingId,
+        friendid: req.userId,
+        userid: args.requestingId,
       });
       await newFriendSecond.save();
       await Usersfriendrequest.destroy({
         where: {
-          requesting_id: args.requestingId,
-          requested_id: req.userId,
+          requestingid: args.requestingId,
+          requestedid: req.userId,
         },
       });
       await notificationService.createNotificationNewFriend(
@@ -385,8 +385,8 @@ export const userResolver = {
     try {
       await Usersfriendrequest.destroy({
         where: {
-          requesting_id: args.requestingId,
-          requested_id: req.userId,
+          requestingid: args.requestingId,
+          requestedid: req.userId,
         },
       });
       await notificationService.createNotificationFriendRequestDeclined(
@@ -404,14 +404,14 @@ export const userResolver = {
     try {
       await Usersfriend.destroy({
         where: {
-          user_id: args.friendId,
-          friend_id: req.userId,
+          userid: args.friendId,
+          friendid: req.userId,
         },
       });
       await Usersfriend.destroy({
         where: {
-          user_id: req.userId,
-          friend_id: args.friendId,
+          userid: req.userId,
+          friendid: args.friendId,
         },
       });
       return true;

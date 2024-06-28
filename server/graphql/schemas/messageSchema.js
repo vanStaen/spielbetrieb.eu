@@ -1,6 +1,6 @@
 export const Message = `
 type Message {
-    _id: ID! 
+    id: ID! 
     userId: Int!
     chatId: Int!
     message: String!

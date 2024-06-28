@@ -8,7 +8,7 @@ export async function updatePartnertype(id, dataObject) {
                     partnertypeId: $id,
                     partnertypeInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

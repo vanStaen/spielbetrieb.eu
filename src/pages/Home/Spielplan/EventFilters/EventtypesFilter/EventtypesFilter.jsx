@@ -12,7 +12,7 @@ import "./EventtypesFilter.less";
 export const EventtypesFilter = observer(() => {
   const eventTypesOptions = spielplanStore.eventtypes.map((eventtype) => {
     return {
-      value: eventtype._id,
+      value: eventtype.id,
       label: nameParser(eventtype.name, pageStore.selectedLanguage),
     };
   });

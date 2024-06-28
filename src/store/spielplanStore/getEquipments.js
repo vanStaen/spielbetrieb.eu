@@ -3,7 +3,7 @@ export async function getEquipments() {
     query: `
             {
               getEquipments { 
-                _id,
+                id,
                 name,
                 media,
                 validated,

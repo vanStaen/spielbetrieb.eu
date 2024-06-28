@@ -3,7 +3,7 @@ export async function getAllEvents() {
     query: `
             {
               getAllEvents { 
-                _id,
+                id,
                 eventtype,
                 title,
                 description,

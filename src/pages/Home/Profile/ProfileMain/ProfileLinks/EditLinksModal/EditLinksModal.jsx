@@ -24,7 +24,7 @@ export const EditLinksModal = observer((props) => {
     .filter((link) => link.isUserLink)
     .map((link) => {
       return {
-        value: parseInt(link._id),
+        value: parseInt(link.id),
         label: `${nameParser(link.name, pageStore.selectedLanguage)}${!link.validated ? ` (${t("general.pendingReview")})` : ""}`,
         disabled: !link.validated,
       };

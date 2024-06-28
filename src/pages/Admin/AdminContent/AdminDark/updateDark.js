@@ -8,7 +8,7 @@ export async function updateDark(id, dataObject) {
                   darkId: $id,
                   darkInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

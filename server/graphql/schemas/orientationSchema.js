@@ -1,6 +1,6 @@
 export const Orientation = `
 type Orientation {
-    _id: ID! 
+    id: ID! 
     name: String!
     media: String
     validated: Boolean

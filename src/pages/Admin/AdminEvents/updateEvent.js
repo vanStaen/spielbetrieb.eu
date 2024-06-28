@@ -8,7 +8,7 @@ export async function updateEvent(id, dataObject) {
                   eventId: $id,
                   eventInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

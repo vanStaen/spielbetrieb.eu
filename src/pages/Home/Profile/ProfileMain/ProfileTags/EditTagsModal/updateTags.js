@@ -7,7 +7,7 @@ export async function updateTags(tags) {
           userTags: $tags,
         }
       ) {
-        _id,
+        id,
       }
     }
     `,

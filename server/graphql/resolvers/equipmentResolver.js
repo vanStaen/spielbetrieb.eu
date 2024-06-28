@@ -15,7 +15,7 @@ export const equipmentResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     let validated = args.equipmentInput.validated;
     if (!foundUser.isAdmin) {
@@ -39,7 +39,7 @@ export const equipmentResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
@@ -54,7 +54,7 @@ export const equipmentResolver = {
     try {
       const updatedEquipment = await Equipment.update(updateFields, {
         where: {
-          _id: args.equipmentId,
+          id: args.equipmentId,
         },
         returning: true,
         plain: true,
@@ -73,14 +73,14 @@ export const equipmentResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
     }
     await Equipment.destroy({
       where: {
-        _id: args.equipmentId,
+        id: args.equipmentId,
       },
     });
     return true;

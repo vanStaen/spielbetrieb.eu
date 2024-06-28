@@ -24,7 +24,7 @@ export const EditTagsModal = observer((props) => {
     .filter((tag) => tag.isUserTag)
     .map((tag) => {
       return {
-        value: parseInt(tag._id),
+        value: parseInt(tag.id),
         label: `${nameParser(tag.name, pageStore.selectedLanguage)}${!tag.validated ? ` (${t("general.pendingReview")})` : ""}`,
         disabled: !tag.validated,
       };

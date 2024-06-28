@@ -55,7 +55,7 @@ export const EventFormDraftModal = observer((props) => {
 
   const selectDraftHandler = async (draft) => {
     setIsLoading(true);
-    eventFormStore.setEventId(draft._id);
+    eventFormStore.setEventId(draft.id);
     eventFormStore.setTitle(draft.title);
     eventFormStore.setEventtype(draft.eventtype);
     eventFormStore.setDescription(draft.description);
@@ -90,7 +90,7 @@ export const EventFormDraftModal = observer((props) => {
   const draftElement =
     drafts.length > 0 &&
     drafts?.map((draft) => {
-      const { _id, title, eventtype, createdAt } = draft;
+      const { id, title, eventtype, createdAt } = draft;
       const created = dayjs(createdAt).format("DD/MM/YYYY, HH:mm");
       const eventtypeString = eventtypesOptions.filter(
         (e) => e.value === eventtype,
@@ -99,9 +99,9 @@ export const EventFormDraftModal = observer((props) => {
         <div
           onClick={() => selectDraftHandler(draft)}
           className="draftmodal__element"
-          key={_id}
+          key={id}
         >
-          {draftIdToDelete === _id && (
+          {draftIdToDelete === id && (
             <div
               className="darftmodal__confirmDeleteTextOver"
               onClick={(event) => {
@@ -122,7 +122,7 @@ export const EventFormDraftModal = observer((props) => {
             className="draftmodal__delete"
             onClick={(event) => {
               event.stopPropagation();
-              deleteDraftHandler(_id);
+              deleteDraftHandler(id);
             }}
           />
         </div>

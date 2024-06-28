@@ -8,7 +8,7 @@ export async function updateLocation(id, dataObject) {
                   locationId: $id,
                   locationInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

@@ -8,7 +8,7 @@ export async function updateUserAsAdmin(id, dataObject) {
                   userId: $id,
                   userInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

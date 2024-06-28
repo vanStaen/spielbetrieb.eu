@@ -5,7 +5,7 @@ import { getProfileInfo } from "./getProfileInfo.js";
 export class ProfileStore {
   isLoading = true;
   error = null;
-  _id = null;
+  id = null;
   userName = null;
   avatar = null;
   birthday = null;
@@ -35,7 +35,7 @@ export class ProfileStore {
     makeObservable(this, {
       isLoading: observable,
       error: observable,
-      _id: observable,
+      id: observable,
       userName: observable,
       avatar: observable,
       birthday: observable,
@@ -63,7 +63,7 @@ export class ProfileStore {
       setPartner: action,
       setIsLoading: action,
       setError: action,
-      set_id: action,
+      setid: action,
       setUserName: action,
       setAvatar: action,
       setBirthday: action,
@@ -99,8 +99,8 @@ export class ProfileStore {
     this.error = error;
   };
 
-  set_id = (_id) => {
-    this._id = _id;
+  setid = (id) => {
+    this.id = id;
   };
 
   setUserName = (userName) => {
@@ -209,7 +209,7 @@ export class ProfileStore {
         const profileData = await getProfileInfo(userName);
         if (profileData) {
           // console.log(profileData);
-          this.set_id(parseInt(profileData._id));
+          this.setid(parseInt(profileData.id));
           this.setAvatar(profileData.avatar);
           this.setBirthday(profileData.birthday);
           this.setFirstName(profileData.firstName);

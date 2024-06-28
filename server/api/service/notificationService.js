@@ -5,7 +5,7 @@ export const notificationService = {
   async createNotificationNewFollower(userId, followerId) {
     try {
       const follower = await User.findOne({
-        where: { _id: followerId },
+        where: { id: followerId },
       });
       const newNotification = new Notification({
         userId,
@@ -41,7 +41,7 @@ export const notificationService = {
   async createNotificationNewFriendRequest(requestingId, requestedId) {
     try {
       const requesting = await User.findOne({
-        where: { _id: requestingId },
+        where: { id: requestingId },
       });
       const newNotification = new Notification({
         userId: requestedId,
@@ -61,7 +61,7 @@ export const notificationService = {
   async createNotificationFriendRequestDeclined(requestingId, requestedId) {
     try {
       const userRequested = await User.findOne({
-        where: { _id: requestedId },
+        where: { id: requestedId },
       });
       const newNotification = new Notification({
         userId: requestingId,
@@ -97,7 +97,7 @@ export const notificationService = {
   async createNotificationNewFriend(requestedId, requestingId) {
     try {
       const userRequested = await User.findOne({
-        where: { _id: requestedId },
+        where: { id: requestedId },
       });
       const newNotification = new Notification({
         userId: requestingId,
@@ -123,21 +123,21 @@ export const notificationService = {
   ) {
     try {
       const user = await User.findOne({
-        where: { _id: userId },
+        where: { id: userId },
         include: ["friends", "followers"],
       });
       const username = user.userName;
       const listOfFriendsAndFollowersId = [];
       user.friends.forEach((friend) => {
-        listOfFriendsAndFollowersId.push(friend._id);
+        listOfFriendsAndFollowersId.push(friend.id);
       });
       user.followers.forEach((follower) => {
-        listOfFriendsAndFollowersId.push(follower._id);
+        listOfFriendsAndFollowersId.push(follower.id);
       });
       const listOfUniqueId = [...new Set(listOfFriendsAndFollowersId)];
       for (const id of listOfUniqueId) {
         const newNotification = new Notification({
-          user_id: id,
+          userid: id,
           media_url: mediaUrl,
           title: username,
           type: notificationType,
@@ -161,11 +161,11 @@ export const notificationService = {
   ) {
     try {
       const user = await User.findOne({
-        where: { _id: userId },
+        where: { id: userId },
       });
       const username = user.userName;
       const newNotification = new Notification({
-        user_id: userNotifiedId,
+        userid: userNotifiedId,
         media_url: mediaUrl,
         title: username,
         type: notificationType,

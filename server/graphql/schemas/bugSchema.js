@@ -1,6 +1,6 @@
 export const Bug = `
 type Bug {
-    _id: ID! 
+    id: ID! 
     userId: Int!
     user: User
     category: Int!

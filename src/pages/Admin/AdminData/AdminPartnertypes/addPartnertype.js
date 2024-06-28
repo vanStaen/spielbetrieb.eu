@@ -6,7 +6,7 @@ export async function addPartnertype(dataObject) {
                 addPartnertype (
                   partnertypeInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

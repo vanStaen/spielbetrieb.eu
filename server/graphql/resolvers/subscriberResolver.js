@@ -9,7 +9,7 @@ export const subscriberResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("newsletter")) {
       throw new Error("Unauthorized!");
@@ -70,7 +70,7 @@ export const subscriberResolver = {
     try {
       const updatedSubscriber = await Subscriber.update(updateFields, {
         where: {
-          _id: args.subscriberId,
+          id: args.subscriberId,
         },
         returning: true,
         plain: true,
@@ -83,11 +83,11 @@ export const subscriberResolver = {
     }
   },
 
-  // deleteSubscriber(_id: ID!): Boolean!
+  // deleteSubscriber(id: ID!): Boolean!
   async deleteSubscriber(args, req) {
     await Subscriber.destroy({
       where: {
-        _id: args.subscriberId,
+        id: args.subscriberId,
       },
     });
     req.session = null;

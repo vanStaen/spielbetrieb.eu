@@ -3,7 +3,7 @@ export async function getTags() {
     query: `
             {
               getTags { 
-                _id,
+                id,
                 name,
                 isUserTag,
                 isEventTag,

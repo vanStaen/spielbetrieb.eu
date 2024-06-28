@@ -5,7 +5,7 @@ export async function getSingleEvents(id) {
                 getEvent (
                     eventId: ${parseInt(id)}, 
                   ) { 
-                  _id,
+                  id,
                   eventtype,
                   title,
                   description,
@@ -37,7 +37,7 @@ export async function getSingleEvents(id) {
                   validated,
                   partnerId,
                   user {
-                    _id,
+                    id,
                     userName,
                   }
                 }

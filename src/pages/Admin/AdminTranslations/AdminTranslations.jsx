@@ -29,13 +29,13 @@ export const AdminTranslations = () => {
     fetchTranslations();
   }, []);
 
-  const isEditing = (record) => record._id === editingId;
+  const isEditing = (record) => record.id === editingId;
 
   const edit = (record) => {
     form.setFieldsValue({
       ...record,
     });
-    setEditingId(record._id);
+    setEditingId(record.id);
   };
 
   const cancel = async () => {
@@ -110,7 +110,7 @@ export const AdminTranslations = () => {
   const columns = [
     {
       title: "id",
-      dataIndex: "_id",
+      dataIndex: "id",
       key: "id",
       align: "center",
       width: "50px",
@@ -181,7 +181,7 @@ export const AdminTranslations = () => {
             }
           >
             <Typography.Link
-              onClick={() => save(record._id)}
+              onClick={() => save(record.id)}
               style={{ marginRight: 8 }}
             >
               <CheckCircleOutlined className="admin__saveLogo" />
@@ -221,9 +221,9 @@ export const AdminTranslations = () => {
   });
 
   const handleAdd = () => {
-    const newId = parseInt(translations[translations.length - 1]._id) + 1;
+    const newId = parseInt(translations[translations.length - 1].id) + 1;
     const newRow = {
-      _id: newId,
+      id: newId,
     };
     form.setFieldsValue({
       ...newRow,

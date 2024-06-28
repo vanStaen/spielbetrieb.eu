@@ -1,6 +1,6 @@
 export const Translation = `
 type Translation {
-    _id: ID! 
+    id: ID! 
     category: String!
     key: String!
     en: String

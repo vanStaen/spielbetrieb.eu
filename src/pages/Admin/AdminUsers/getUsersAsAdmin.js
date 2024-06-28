@@ -3,7 +3,7 @@ export async function getUsersAsAdmin() {
     query: `
             {
               getUsersAsAdmin { 
-                _id,
+                id,
                 isAdmin,
                 adminRoles,
                 firstName,

@@ -1,6 +1,6 @@
 export const Partner = `
 type Partner {
-    _id: ID! 
+    id: ID! 
     name: String!
     description: String
     avatar: String

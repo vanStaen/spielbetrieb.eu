@@ -6,7 +6,7 @@ export async function addLink(dataObject) {
                 addAdminlink (
                   adminlinkInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

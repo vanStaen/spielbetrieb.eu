@@ -7,7 +7,7 @@ export async function updateOrientation(orientation) {
           orientation: $orientation,
         }
       ) {
-        _id,
+        id,
       }
     }
     `,

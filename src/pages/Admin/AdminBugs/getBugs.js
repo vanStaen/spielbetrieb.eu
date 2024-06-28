@@ -3,14 +3,14 @@ export async function getBugs() {
     query: `
             {
               getBugs { 
-                _id,
+                id,
                 desc,
                 category,
                 screenshot,
                 isUrgent,
                 isResolved,
                 user {
-                  _id,
+                  id,
                   userName,
                 }
               }

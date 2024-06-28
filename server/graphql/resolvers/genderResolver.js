@@ -5,7 +5,7 @@ export const genderResolver = {
   // getGenders: [Gender]
   async getGenders() {
     return await Gender.findAll({
-      order: [["_id", "ASC"]],
+      order: [["id", "ASC"]],
     });
   },
 
@@ -15,7 +15,7 @@ export const genderResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     let validated = args.genderInput.validated;
     if (!foundUser.isAdmin) {
@@ -38,7 +38,7 @@ export const genderResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
@@ -53,7 +53,7 @@ export const genderResolver = {
     try {
       const updatedGender = await Gender.update(updateFields, {
         where: {
-          _id: args.genderId,
+          id: args.genderId,
         },
         returning: true,
         plain: true,
@@ -72,14 +72,14 @@ export const genderResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
     }
     await Gender.destroy({
       where: {
-        _id: args.genderId,
+        id: args.genderId,
       },
     });
     return true;

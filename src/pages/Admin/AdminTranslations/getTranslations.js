@@ -3,7 +3,7 @@ export async function getTranslations() {
     query: `
             {
               getTranslations { 
-                _id,
+                id,
                 category,
                 key,
                 en,

@@ -5,7 +5,7 @@ export const darkResolver = {
   // getDark(darkId: ID!): Dark
   async getDark(args) {
     return await Dark.findOne({
-      where: { _id: args.darkId },
+      where: { id: args.darkId },
     });
   },
 
@@ -30,7 +30,7 @@ export const darkResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
       throw new Error("Unauthorized!");
@@ -56,7 +56,7 @@ export const darkResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
       throw new Error("Unauthorized!");
@@ -79,7 +79,7 @@ export const darkResolver = {
     try {
       const updatedDark = await Dark.update(updateFields, {
         where: {
-          _id: args.darkId,
+          id: args.darkId,
         },
         returning: true,
         plain: true,
@@ -98,14 +98,14 @@ export const darkResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("content")) {
       throw new Error("Unauthorized!");
     }
     await Dark.destroy({
       where: {
-        _id: args.darkId,
+        id: args.darkId,
       },
     });
     return true;

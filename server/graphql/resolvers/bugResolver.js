@@ -5,7 +5,7 @@ export const bugResolver = {
   // getBugs: [Bug]
   async getBugs() {
     return await Bug.findAll({
-      order: [["_id", "ASC"]],
+      order: [["id", "ASC"]],
     });
   },
 
@@ -15,7 +15,7 @@ export const bugResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
@@ -41,7 +41,7 @@ export const bugResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
@@ -62,7 +62,7 @@ export const bugResolver = {
     try {
       const updatedBug = await Bug.update(updateFields, {
         where: {
-          _id: args.bugId,
+          id: args.bugId,
         },
         returning: true,
         plain: true,
@@ -81,7 +81,7 @@ export const bugResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
@@ -89,7 +89,7 @@ export const bugResolver = {
     // TODO : Delete all bug pictures (screenshots)
     await Bug.destroy({
       where: {
-        _id: args.bugId,
+        id: args.bugId,
       },
     });
     return true;

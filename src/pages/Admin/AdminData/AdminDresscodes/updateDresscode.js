@@ -8,7 +8,7 @@ export async function updateDresscode(id, dataObject) {
                   dresscodeId: $id,
                   dresscodeInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

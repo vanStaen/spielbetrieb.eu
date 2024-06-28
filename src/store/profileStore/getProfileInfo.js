@@ -1,11 +1,11 @@
 import axios from "axios";
 
 export const getProfileInfo = async (username) => {
-  const requestBody = {
-    query: `
+    const requestBody = {
+        query: `
         {
             getProfileByName (userName: "${username}"){
-                _id,
+                id,
                 isAdmin,
                 adminRoles,
                 firstName,
@@ -27,13 +27,13 @@ export const getProfileInfo = async (username) => {
                 interests,
                 links,
                 reviews {
-                    _id,
+                    id,
                 },
                 partners {
-                  _id,
+                  id,
                 },
                 events {
-                  _id,
+                  id,
                   eventtype,
                   title,
                   description,
@@ -58,19 +58,19 @@ export const getProfileInfo = async (username) => {
                 archived,
                 usernameChange,
                 comments {
-                    _id,
+                    id,
                 },
                 events {
-                    _id,
+                    id,
                 },
                 messages {
-                    _id,
+                    id,
                 },
                 photos {
-                    _id,
+                    id,
                 },
                 visitors {
-                    _id,
+                    id,
                 },
                 friends {
                     userName,
@@ -91,17 +91,17 @@ export const getProfileInfo = async (username) => {
             }
           }
           `,
-  };
+    };
 
-  const response = await axios({
-    url: process.env.API_URL + "/graphql",
-    method: "POST",
-    data: requestBody,
-  });
+    const response = await axios({
+        url: process.env.API_URL + "/graphql",
+        method: "POST",
+        data: requestBody,
+    });
 
-  if ((response.status !== 200) & (response.status !== 201)) {
-    throw new Error("Unauthenticated!");
-  }
+    if ((response.status !== 200) & (response.status !== 201)) {
+        throw new Error("Unauthenticated!");
+    }
 
-  return response.data.data.getProfileByName;
+    return response.data.data.getProfileByName;
 };

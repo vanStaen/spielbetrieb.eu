@@ -37,7 +37,7 @@ export const AdminEquipments = () => {
     fetchEquipments();
   }, []);
 
-  const isEditing = (record) => record._id === editingId;
+  const isEditing = (record) => record.id === editingId;
 
   const edit = (record) => {
     form.setFieldsValue({
@@ -45,7 +45,7 @@ export const AdminEquipments = () => {
       validated: false,
       ...record,
     });
-    setEditingId(record._id);
+    setEditingId(record.id);
   };
 
   const cancel = async () => {
@@ -85,7 +85,7 @@ export const AdminEquipments = () => {
   const columns = [
     {
       title: "id",
-      dataIndex: "_id",
+      dataIndex: "id",
       key: "id",
       align: "center",
       width: "50px",
@@ -127,7 +127,7 @@ export const AdminEquipments = () => {
         return editable ? (
           <span>
             <Typography.Link
-              onClick={() => save(record._id)}
+              onClick={() => save(record.id)}
               style={{ marginRight: 8 }}
             >
               <CheckCircleOutlined className="admin__saveLogo" />
@@ -148,7 +148,7 @@ export const AdminEquipments = () => {
             <Popconfirm
               title="Sure to delete?"
               style={{ marginRight: 8 }}
-              onConfirm={() => deleteRow(record._id)}
+              onConfirm={() => deleteRow(record.id)}
             >
               <DeleteOutlined className="admin__editLogo" />
             </Popconfirm>
@@ -175,9 +175,9 @@ export const AdminEquipments = () => {
   });
 
   const handleAdd = () => {
-    const newId = parseInt(equipments[equipments.length - 1]._id) + 1;
+    const newId = parseInt(equipments[equipments.length - 1].id) + 1;
     const newRow = {
-      _id: newId,
+      id: newId,
       name: '{"en": "EVENT_TYPE_EN", "de": "EVENT_TYPE_DE"}',
       validated: true,
     };

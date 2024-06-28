@@ -5,7 +5,7 @@ export const locationResolver = {
   // getLocation(locationId: ID!): Location
   async getLocation(args) {
     return await Location.findOne({
-      where: { _id: args.locationId },
+      where: { id: args.locationId },
     });
   },
 
@@ -32,7 +32,7 @@ export const locationResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     let validated = args.artistInput.validated;
     if (!foundUser.isAdmin) {
@@ -61,7 +61,7 @@ export const locationResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
@@ -85,7 +85,7 @@ export const locationResolver = {
     try {
       const updatedLocation = await Location.update(updateFields, {
         where: {
-          _id: args.locationId,
+          id: args.locationId,
         },
         returning: true,
         plain: true,
@@ -104,14 +104,14 @@ export const locationResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
     }
     await Location.destroy({
       where: {
-        _id: args.locationId,
+        id: args.locationId,
       },
     });
     return true;

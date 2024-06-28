@@ -6,7 +6,7 @@ export const translationResolver = {
   // getTranslations: [Translation]
   async getTranslations() {
     return await Translation.findAll({
-      order: [["_id", "ASC"]],
+      order: [["id", "ASC"]],
     });
   },
 
@@ -16,7 +16,7 @@ export const translationResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
@@ -45,7 +45,7 @@ export const translationResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
@@ -60,7 +60,7 @@ export const translationResolver = {
     try {
       const updatedTranslation = await Translation.update(updateFields, {
         where: {
-          _id: args.translationId,
+          id: args.translationId,
         },
         returning: true,
         plain: true,
@@ -80,14 +80,14 @@ export const translationResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
     }
     await Translation.destroy({
       where: {
-        _id: args.translationId,
+        id: args.translationId,
       },
     });
     return true;

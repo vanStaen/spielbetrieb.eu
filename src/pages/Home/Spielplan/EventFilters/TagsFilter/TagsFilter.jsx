@@ -12,7 +12,7 @@ import "./TagsFilter.less";
 export const TagsFilter = observer(() => {
   const tagOptions = spielplanStore.tags.map((tag) => {
     return {
-      value: tag._id,
+      value: tag.id,
       label: nameParser(tag.name, pageStore.selectedLanguage),
     };
   });

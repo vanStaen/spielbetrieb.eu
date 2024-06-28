@@ -8,7 +8,7 @@ export const admincontactResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("ressources")) {
       throw new Error("Unauthorized!");
@@ -24,7 +24,7 @@ export const admincontactResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("ressources")) {
       throw new Error("Unauthorized!");
@@ -48,7 +48,7 @@ export const admincontactResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("ressources")) {
       throw new Error("Unauthorized!");
@@ -63,7 +63,7 @@ export const admincontactResolver = {
     try {
       const updatedAdmincontact = await Admincontact.update(updateFields, {
         where: {
-          _id: args.admincontactId,
+          id: args.admincontactId,
         },
         returning: true,
         plain: true,
@@ -83,7 +83,7 @@ export const admincontactResolver = {
     }
     await Admincontact.destroy({
       where: {
-        _id: args.admincontactId,
+        id: args.admincontactId,
       },
     });
     return true;

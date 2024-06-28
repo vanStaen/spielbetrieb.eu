@@ -3,7 +3,7 @@ export async function getSubscribers() {
     query: `
             {
               getSubscribers { 
-                _id,
+                id,
                 username,
                 email,
                 language,

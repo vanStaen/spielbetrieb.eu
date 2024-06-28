@@ -1,6 +1,6 @@
 export const Artist = `
 type Artist {
-    _id: ID! 
+    id: ID! 
     name: String!
     description: String
     pictures: [String]

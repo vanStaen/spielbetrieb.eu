@@ -58,7 +58,7 @@ export const photoResolver = {
     try {
       const updatedPhoto = await Photo.update(updateFields, {
         where: {
-          _id: args.photoId,
+          id: args.photoId,
         },
         returning: true,
         plain: true,
@@ -78,7 +78,7 @@ export const photoResolver = {
     }
     await Photo.destroy({
       where: {
-        _id: args.photoId,
+        id: args.photoId,
       },
     });
     return true;

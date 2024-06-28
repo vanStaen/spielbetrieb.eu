@@ -6,7 +6,7 @@ export async function addTag(dataObject) {
                 addTag (
                   tagInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

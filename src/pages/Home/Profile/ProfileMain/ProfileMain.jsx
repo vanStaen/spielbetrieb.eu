@@ -17,7 +17,7 @@ import { userStore } from "../../../../store/userStore/userStore";
 import "./ProfileMain.less";
 
 export const ProfileMain = observer((props) => {
-  const thisIsMe = userStore._id === profileStore._id;
+  const thisIsMe = userStore.id === profileStore.id;
 
   return (
     <div className="profil__mainContainer">

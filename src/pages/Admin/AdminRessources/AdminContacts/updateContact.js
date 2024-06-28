@@ -8,7 +8,7 @@ export async function updateContact(id, dataObject) {
                   admincontactId: $id,
                   admincontactInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

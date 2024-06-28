@@ -1,6 +1,6 @@
 export const Review = `
 type Review {
-    _id: ID! 
+    id: ID! 
     title: String!
     note: Float!
     edited: Boolean

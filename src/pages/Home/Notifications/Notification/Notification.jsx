@@ -37,17 +37,17 @@ export const Notification = observer((props) => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const { notification, notificationsCount, setNotificationsCount } = props;
-  const { _id, type, seen, data, actionData, createdAt, mediaUrl, userLinkId } =
+  const { id, type, seen, data, actionData, createdAt, mediaUrl, userLinkId } =
     notification;
 
   const notFollowingYet =
     userStore.following.findIndex(
-      (userFollowed) => userFollowed._id === String(userLinkId),
+      (userFollowed) => userFollowed.id === String(userLinkId),
     ) === -1;
 
   const isNotFriend =
     userStore.friends.findIndex(
-      (friend) => friend._id === String(userLinkId),
+      (friend) => friend.id === String(userLinkId),
     ) === -1;
 
   const notificationAge = dayjs(createdAt).fromNow();
@@ -148,8 +148,8 @@ export const Notification = observer((props) => {
     try {
       await addFollow(actionData);
       userStore.fetchUserData(false);
-      const element = document.getElementById(`followback${_id}`);
-      const elementMobile = document.getElementById(`followbackMobile${_id}`);
+      const element = document.getElementById(`followback${id}`);
+      const elementMobile = document.getElementById(`followbackMobile${id}`);
       element.style.opacity = 0;
       elementMobile.style.opacity = 0;
       setTimeout(() => {
@@ -165,9 +165,9 @@ export const Notification = observer((props) => {
     try {
       await acceptFriendRequest(actionData);
       userStore.fetchUserData(false);
-      const element = document.getElementById(`acceptRequest${_id}`);
+      const element = document.getElementById(`acceptRequest${id}`);
       const elementMobile = document.getElementById(
-        `acceptRequestMobile${_id}`,
+        `acceptRequestMobile${id}`,
       );
       element.style.opacity = 0;
       elementMobile.style.opacity = 0;
@@ -183,9 +183,9 @@ export const Notification = observer((props) => {
     event.stopPropagation();
     try {
       await declineFriendRequest(actionData);
-      const element = document.getElementById(`acceptRequest${_id}`);
+      const element = document.getElementById(`acceptRequest${id}`);
       const elementMobile = document.getElementById(
-        `acceptRequestMobile${_id}`,
+        `acceptRequestMobile${id}`,
       );
       element.style.opacity = 0;
       elementMobile.style.opacity = 0;
@@ -198,7 +198,7 @@ export const Notification = observer((props) => {
   };
 
   const notificationClickHandler = async () => {
-    await postNotificationSeen(_id);
+    await postNotificationSeen(id);
     if (type === 1 || type === 2 || type === 61) {
       navigate(`/user/${data}`);
     }
@@ -207,24 +207,24 @@ export const Notification = observer((props) => {
   return (
     <div
       className="notification__subContainer"
-      key={`notification${_id}`}
-      id={`subContainer${_id}`}
+      key={`notification${id}`}
+      id={`subContainer${id}`}
     >
       <div className="notification__deleteButton">
         <div
           className="icon"
-          onClick={() => closeNotificationHandlerMobile(_id)}
-          id={`deleteButtonIcon${_id}`}
+          onClick={() => closeNotificationHandlerMobile(id)}
+          id={`deleteButtonIcon${id}`}
         >
           <DeleteFilled />
         </div>
       </div>
       <div
         className={`notifications__notification ${seen && "seen"}`}
-        id={`notification${_id}`}
+        id={`notification${id}`}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
-        onTouchEnd={() => onTouchEnd(_id)}
+        onTouchEnd={() => onTouchEnd(id)}
       >
         {pictureLoading ? (
           <div className="notifications__media">
@@ -256,7 +256,7 @@ export const Notification = observer((props) => {
                   className={`declineButton`}
                   onClick={(e) => {
                     declineRequestHandler(e);
-                    closeNotificationHandler(_id);
+                    closeNotificationHandler(id);
                   }}
                 >
                   {t("notifications.decline")}
@@ -308,7 +308,7 @@ export const Notification = observer((props) => {
           ))}
         <div
           className="closeDelete"
-          onClick={() => closeNotificationHandler(_id)}
+          onClick={() => closeNotificationHandler(id)}
         >
           <CloseOutlined />
         </div>
@@ -316,7 +316,7 @@ export const Notification = observer((props) => {
       {!userStore.isLoading && type === 1 && isNotFriend && (
         <div
           className="notification__actionsButtonsDoubleMobile"
-          id={`acceptRequestMobile${_id}`}
+          id={`acceptRequestMobile${id}`}
         >
           <Button
             type="default"
@@ -324,7 +324,7 @@ export const Notification = observer((props) => {
             block={true}
             onClick={(e) => {
               declineRequestHandler(e);
-              closeNotificationHandlerMobile(_id);
+              closeNotificationHandlerMobile(id);
             }}
           >
             {t("notifications.decline")}
@@ -343,7 +343,7 @@ export const Notification = observer((props) => {
       {!userStore.isLoading && type === 2 && notFollowingYet && (
         <div
           className="notification__actionsButtonsMobile"
-          id={`followbackMobile${_id}`}
+          id={`followbackMobile${id}`}
         >
           <Button
             type="primary"

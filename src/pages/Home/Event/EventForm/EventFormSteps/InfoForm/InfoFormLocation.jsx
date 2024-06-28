@@ -49,7 +49,7 @@ export const InfoFormLocation = observer(() => {
       (location) => location.name === value,
     )[0];
     eventFormStore.setIsNewLocation(false);
-    eventFormStore.setLocationId(selectedLocation._id);
+    eventFormStore.setLocationId(selectedLocation.id);
     eventFormStore.setLocationName(selectedLocation.name);
     eventFormStore.setLocationAddress(selectedLocation.address);
     eventFormStore.eventId &&

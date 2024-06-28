@@ -29,7 +29,7 @@ export const AdminContacts = () => {
     fetchContacts();
   }, []);
 
-  const isEditing = (record) => record._id === editingId;
+  const isEditing = (record) => record.id === editingId;
 
   const edit = (record) => {
     form.setFieldsValue({
@@ -39,7 +39,7 @@ export const AdminContacts = () => {
       archived: false,
       ...record,
     });
-    setEditingId(record._id);
+    setEditingId(record.id);
   };
 
   const cancel = async () => {
@@ -71,13 +71,13 @@ export const AdminContacts = () => {
   const columns = [
     {
       title: "id",
-      dataIndex: "_id",
+      dataIndex: "id",
       key: "id",
       align: "center",
       width: "50px",
-      render: (_, { _id, archived }) => (
+      render: (_, { id, archived }) => (
         <Typography.Text delete={archived} disabled={archived}>
-          {_id}
+          {id}
         </Typography.Text>
       ),
     },
@@ -145,7 +145,7 @@ export const AdminContacts = () => {
         return editable ? (
           <span>
             <Typography.Link
-              onClick={() => save(record._id)}
+              onClick={() => save(record.id)}
               style={{ marginRight: 8 }}
             >
               <CheckCircleOutlined className="admin__saveLogo" />
@@ -174,7 +174,7 @@ export const AdminContacts = () => {
               <Popconfirm
                 title="Sure to delete?"
                 style={{ marginRight: 8 }}
-                onConfirm={() => deleteRow(record._id)}
+                onConfirm={() => deleteRow(record.id)}
               >
                 <DeleteOutlined className="admin__editLogo" />
               </Popconfirm>
@@ -203,9 +203,9 @@ export const AdminContacts = () => {
   });
 
   const handleAdd = () => {
-    const newId = parseInt(contacts[contacts.length - 1]._id) + 1;
+    const newId = parseInt(contacts[contacts.length - 1].id) + 1;
     const newRow = {
-      _id: newId,
+      id: newId,
       name: "",
       email: "",
       details: "",

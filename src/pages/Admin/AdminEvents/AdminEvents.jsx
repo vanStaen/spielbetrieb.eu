@@ -80,19 +80,19 @@ export const AdminEvents = () => {
   const columns = [
     {
       title: "id",
-      dataIndex: "_id",
+      dataIndex: "id",
       key: "id",
       align: "center",
       width: "50px",
-      sorter: (a, b) => a._id - b._id,
-      render: (_, { _id }) => <Link to={`../event/${_id}`}>{_id}</Link>,
+      sorter: (a, b) => a.id - b.id,
+      render: (_, { id }) => <Link to={`../event/${id}`}>{id}</Link>,
     },
     {
       title: "Title",
       dataIndex: "title",
       key: "title",
-      render: (_, { title, _id }) => (
-        <Link to={`../event/${_id}`}>{title}</Link>
+      render: (_, { title, id }) => (
+        <Link to={`../event/${id}`}>{title}</Link>
       ),
     },
     {
@@ -118,7 +118,7 @@ export const AdminEvents = () => {
       key: "eventtype",
       render: (_, { eventtype }) =>
         nameParser(
-          eventtypes?.filter((e) => parseInt(e._id) === eventtype)[0]?.name,
+          eventtypes?.filter((e) => parseInt(e.id) === eventtype)[0]?.name,
           userStore.language.toLowerCase(),
         ),
     },
@@ -168,7 +168,7 @@ export const AdminEvents = () => {
               <Tag key={admin} bordered={false}>
                 {
                   // TODO link to user profile
-                  userNames?.filter((user) => parseInt(user._id) === admin)[0]
+                  userNames?.filter((user) => parseInt(user.id) === admin)[0]
                     ?.userName
                 }
               </Tag>
@@ -187,7 +187,7 @@ export const AdminEvents = () => {
             return (
               <Tag key={tag} bordered={false}>
                 {nameParser(
-                  tags?.filter((t) => parseInt(t._id) === tag)[0]?.name,
+                  tags?.filter((t) => parseInt(t.id) === tag)[0]?.name,
                   userStore.language.toLowerCase(),
                 )}
               </Tag>
@@ -234,12 +234,12 @@ export const AdminEvents = () => {
       key: "validated",
       align: "center",
       width: "80px",
-      render: (_, { validated, isDraft, _id, admin }) =>
+      render: (_, { validated, isDraft, id, admin }) =>
         (!isDraft || admin.includes(17)) && (
           <Tooltip title="Double click to toggle this value">
             <div
               style={{ cursor: "pointer" }}
-              onDoubleClick={() => toggleValidated(_id, validated)}
+              onDoubleClick={() => toggleValidated(id, validated)}
             >
               {validated ? "✅" : "❌"}
             </div>
@@ -255,7 +255,7 @@ export const AdminEvents = () => {
           <Popconfirm
             title="Sure to delete?"
             style={{ marginRight: 8 }}
-            onConfirm={() => deleteRow(record._id)}
+            onConfirm={() => deleteRow(record.id)}
           >
             <DeleteOutlined className="admin__editLogo" />
           </Popconfirm>

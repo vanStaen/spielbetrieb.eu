@@ -3,7 +3,7 @@ export async function getPartnertypes() {
     query: `
             {
               getPartnertypes { 
-                _id,
+                id,
                 name,
               }
             }

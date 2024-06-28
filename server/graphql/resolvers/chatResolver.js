@@ -41,7 +41,7 @@ export const chatResolver = {
         { archived: true },
         {
           where: {
-            _id: args.chatId,
+            id: args.chatId,
           },
           returning: true,
           plain: true,

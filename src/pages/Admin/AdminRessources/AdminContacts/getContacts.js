@@ -3,13 +3,13 @@ export async function getContacts() {
     query: `
             {
               getAllAdmincontacts {
-                _id,
+                id,
                 name,
                 email,
                 details,
                 archived,
                 user {
-                    _id,
+                    id,
                     userName,
                 }
               }

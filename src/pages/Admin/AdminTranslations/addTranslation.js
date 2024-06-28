@@ -6,7 +6,7 @@ export async function addTranslation(dataObject) {
                   addTranslation (
                   translationInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

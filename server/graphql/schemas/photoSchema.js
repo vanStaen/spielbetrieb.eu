@@ -1,6 +1,6 @@
 export const Photo = `
 type Photo {
-    _id: ID! 
+    id: ID! 
     userId: Int!
     photoUrl: String!
     photoUrlThumb: String!

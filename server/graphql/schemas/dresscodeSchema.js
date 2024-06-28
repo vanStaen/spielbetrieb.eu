@@ -1,6 +1,6 @@
 export const Dresscode = `
 type Dresscode {
-    _id: ID! 
+    id: ID! 
     name: String!
     media: String
     validated: Boolean

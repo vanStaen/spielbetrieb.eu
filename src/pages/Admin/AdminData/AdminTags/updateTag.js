@@ -8,7 +8,7 @@ export async function updateTag(id, dataObject) {
                   tagId: $id,
                   tagInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

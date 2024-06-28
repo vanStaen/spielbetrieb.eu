@@ -8,7 +8,7 @@ export async function updateLink(id, dataObject) {
                   adminlinkId: $id,
                   adminlinkInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

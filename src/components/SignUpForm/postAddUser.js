@@ -28,7 +28,7 @@ export const postAddUser = async (
                         language: $language,
                         }
                     ) {
-                    _id
+                    id
                     email
                     }
                 }`,

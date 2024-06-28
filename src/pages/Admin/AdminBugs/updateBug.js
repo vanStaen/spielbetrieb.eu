@@ -8,7 +8,7 @@ export async function updateBug(id, dataObject) {
                   bugId: $id,
                   bugInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

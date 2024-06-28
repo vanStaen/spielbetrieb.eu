@@ -1,6 +1,6 @@
 export const Subscriber = `
 type Subscriber {
-    _id: ID! 
+    id: ID! 
     username: String
     email: String!
     about: String

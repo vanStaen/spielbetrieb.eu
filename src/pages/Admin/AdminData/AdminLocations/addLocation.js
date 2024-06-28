@@ -6,7 +6,7 @@ export async function addLocation(dataObject) {
                 addLocation (
                   locationInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

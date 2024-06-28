@@ -7,7 +7,7 @@ export async function updateBirthday(birthday) {
           birthday: $birthday,
         }
       ) {
-        _id,
+        id,
       }
     }
     `,

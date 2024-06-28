@@ -6,7 +6,7 @@ export async function addDresscode(dataObject) {
                 addDresscode (
                   dresscodeInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

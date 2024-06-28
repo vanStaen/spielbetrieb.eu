@@ -3,7 +3,7 @@ export async function getPublicDarks() {
     query: `
             {
               getPublicDarks {
-                _id,
+                id,
                 number,
                 title,
                 description,

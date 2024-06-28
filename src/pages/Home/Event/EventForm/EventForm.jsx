@@ -58,7 +58,7 @@ export const EventForm = observer(() => {
         return null;
       }
       return {
-        value: parseInt(type._id),
+        value: parseInt(type.id),
         label: nameParser(type.name, language),
         usage: type.usage,
       };
@@ -78,7 +78,7 @@ export const EventForm = observer(() => {
       .filter((tag) => tag.isEventTag)
       .map((tag) => {
         return {
-          value: parseInt(tag._id),
+          value: parseInt(tag.id),
           label: `${nameParser(tag.name, language)}${!tag.validated ? ` (${t("general.pendingReview")})` : ""}`,
           disabled: !tag.validated,
         };
@@ -91,7 +91,7 @@ export const EventForm = observer(() => {
     spielplanStore.setDresscodes(results);
     const dresscodesOptionsResult = results.map((dresscode) => {
       return {
-        value: parseInt(dresscode._id),
+        value: parseInt(dresscode.id),
         label: `${nameParser(dresscode.name, language)}${!dresscode.validated ? ` (${t("general.pendingReview")})` : ""}`,
         disabled: !dresscode.validated,
       };
@@ -104,7 +104,7 @@ export const EventForm = observer(() => {
     spielplanStore.setEquipments(results);
     const equipementsOptionsResult = results?.map((equipement) => {
       return {
-        value: parseInt(equipement._id),
+        value: parseInt(equipement.id),
         label: `${nameParser(equipement.name, language)}${!equipement.validated ? ` (${t("general.pendingReview")})` : ""}`,
         disabled: !equipement.validated,
       };
@@ -117,7 +117,7 @@ export const EventForm = observer(() => {
     spielplanStore.setArtists(results);
     const artists = results.map((artist) => {
       return {
-        value: parseInt(artist._id),
+        value: parseInt(artist.id),
         label: `${artist.name} ${!artist.validated ? ` (${t("general.pendingReview")})` : ""}`,
         disabled: !artist.validated,
       };

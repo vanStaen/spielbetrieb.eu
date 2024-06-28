@@ -7,7 +7,7 @@ export async function updateLinks(links) {
           userLinks: $links,
         }
       ) {
-        _id,
+        id,
       }
     }
     `,

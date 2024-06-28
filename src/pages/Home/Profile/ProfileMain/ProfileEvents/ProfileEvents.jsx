@@ -28,7 +28,7 @@ export const ProfileEvents = observer(() => {
               return {
                 name: nameParser(
                   spielplanStore.tags.filter(
-                    (tag) => parseInt(tag._id) === tagId,
+                    (tag) => parseInt(tag.id) === tagId,
                   )[0]?.name,
                   pageStore.selectedLanguage?.toLowerCase(),
                 ),
@@ -36,21 +36,21 @@ export const ProfileEvents = observer(() => {
               };
             });
             const eventType = spielplanStore.eventtypes.filter(
-              (et) => parseInt(et._id) === event.eventtype,
+              (et) => parseInt(et.id) === event.eventtype,
             )[0];
             eventTags.splice(0, 0, {
               name: nameParser(
                 eventType?.name,
                 pageStore.selectedLanguage?.toLowerCase(),
               ),
-              id: eventType?._id,
+              id: eventType?.id,
             });
 
             return (
               <EventCard
-                key={event._id}
+                key={event.id}
                 event={event}
-                eventUser={{ user: profileStore.user, _id: profileStore._id }}
+                eventUser={{ user: profileStore.user, id: profileStore.id }}
                 profileCard={true}
                 tags={eventTags}
               />

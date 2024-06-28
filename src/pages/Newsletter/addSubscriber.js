@@ -21,7 +21,7 @@ export async function addSubscriber(values) {
                   interests: $interests,
                   }
               ) {
-                _id
+                id
               }
             }
             `,

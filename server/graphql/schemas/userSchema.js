@@ -1,6 +1,6 @@
 export const User = `
 type User {
-    _id: ID! 
+    id: ID! 
     isAdmin: Boolean!
     adminRoles: [String]
     firstName: String!
@@ -101,7 +101,7 @@ export const UserQueries = `
     getUser: User
     getUsersAsAdmin: [User]
     getProfileByName(userName: String): User
-    getProfileById(_id: ID!): User
+    getProfileById(id: ID!): User
     isRequested(requestingId: ID!): Boolean!
 `;
 

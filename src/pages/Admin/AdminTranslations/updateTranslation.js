@@ -8,7 +8,7 @@ export async function updateTranslation(id, dataObject) {
                   translationId: $id,
                   translationInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

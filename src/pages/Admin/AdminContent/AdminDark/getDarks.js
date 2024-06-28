@@ -3,7 +3,7 @@ export async function getDarks() {
     query: `
             {
               getDarks {
-                _id,
+                id,
                 number,
                 title,
                 description,

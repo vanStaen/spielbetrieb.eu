@@ -1,6 +1,6 @@
 export const Tag = `
 type Tag {
-    _id: ID! 
+    id: ID! 
     name: String!
     isUserTag: Boolean
     isEventTag: Boolean

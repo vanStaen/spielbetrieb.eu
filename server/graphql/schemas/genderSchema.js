@@ -1,6 +1,6 @@
 export const Gender = `
 type Gender {
-    _id: ID! 
+    id: ID! 
     name: String!
     validated: Boolean
     createdAt: Float!

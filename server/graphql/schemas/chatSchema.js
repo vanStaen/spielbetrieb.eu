@@ -1,6 +1,6 @@
 export const Chat = `
 type Chat {
-    _id: ID! 
+    id: ID! 
     userlist: [Int]!
     archived: Boolean
     createdAt: Float!

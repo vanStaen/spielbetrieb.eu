@@ -24,7 +24,7 @@ export const AdminUsers = () => {
   }, []);
 
   const blockUser = async (id) => {
-    const suspended = users.filter((user) => user._id === id)[0].suspended;
+    const suspended = users.filter((user) => user.id === id)[0].suspended;
     await updateUserAsAdmin(id, { suspended: !suspended });
     fetchAllUsers();
   };
@@ -37,11 +37,11 @@ export const AdminUsers = () => {
   const columns = [
     {
       title: "id",
-      dataIndex: "_id",
+      dataIndex: "id",
       key: "id",
       align: "center",
       width: "50px",
-      sorter: (a, b) => a._id - b._id,
+      sorter: (a, b) => a.id - b.id,
     },
     {
       title: "Username",
@@ -151,7 +151,7 @@ export const AdminUsers = () => {
                   <Typography.Link
                     disabled={record.isAdmin}
                     style={{ marginRight: 8 }}
-                    onClick={() => blockUser(record._id)}
+                    onClick={() => blockUser(record.id)}
                   >
                     <StopOutlined
                       className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`}
@@ -173,7 +173,7 @@ export const AdminUsers = () => {
                   <Typography.Link
                     disabled={record.isAdmin}
                     style={{ marginRight: 8 }}
-                    onClick={() => blockUser(record._id)}
+                    onClick={() => blockUser(record.id)}
                   >
                     <StopOutlined
                       className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`}
@@ -184,7 +184,7 @@ export const AdminUsers = () => {
                   <Popconfirm
                     title="Sure to delete for ever this user?"
                     style={{ marginRight: 8 }}
-                    onConfirm={() => deleteUser(record._id)}
+                    onConfirm={() => deleteUser(record.id)}
                   >
                     <DeleteOutlined className="admin__editLogo" />
                   </Popconfirm>

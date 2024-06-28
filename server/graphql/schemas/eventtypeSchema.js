@@ -1,6 +1,6 @@
 export const Eventtype = `
 type Eventtype {
-    _id: ID! 
+    id: ID! 
     name: String!
     usage: String!
     validated: Boolean

@@ -1,6 +1,6 @@
 export const Dark = `
 type Dark {
-    _id: ID! 
+    id: ID! 
     number: Int!
     title: String!
     description: String!

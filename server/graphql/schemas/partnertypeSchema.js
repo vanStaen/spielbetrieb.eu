@@ -1,6 +1,6 @@
 export const Partnertype = `
 type Partnertype {
-    _id: ID! 
+    id: ID! 
     name: String!
     createdAt: Float!
     udpatedAt: Float!

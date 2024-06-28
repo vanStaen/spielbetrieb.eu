@@ -8,7 +8,7 @@ export async function updateEquipment(id, dataObject) {
                   equipmentId: $id,
                   equipmentInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

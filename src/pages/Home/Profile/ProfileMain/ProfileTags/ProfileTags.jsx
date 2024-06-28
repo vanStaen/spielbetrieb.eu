@@ -19,7 +19,7 @@ export const ProfileTags = observer(() => {
     const userTags = profileStore.tags?.map((tagId) => {
       return {
         name: nameParser(
-          pageStore.tags.find((tag) => parseInt(tag._id) === tagId)?.name,
+          pageStore.tags.find((tag) => parseInt(tag.id) === tagId)?.name,
           pageStore.selectedLanguage.toLowerCase(),
         ),
         id: tagId,

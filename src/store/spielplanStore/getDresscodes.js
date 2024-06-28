@@ -3,7 +3,7 @@ export async function getDresscodes() {
     query: `
             {
               getDresscodes { 
-                _id,
+                id,
                 name,
                 media,
                 validated,

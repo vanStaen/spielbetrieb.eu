@@ -8,7 +8,7 @@ export const partnertypeResolver = {
       throw new Error("Unauthorized!");
     }
     return await Partnertype.findAll({
-      order: [["_id", "ASC"]],
+      order: [["id", "ASC"]],
     });
   },
 
@@ -18,7 +18,7 @@ export const partnertypeResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("data")) {
       throw new Error("Unauthorized!");
@@ -39,7 +39,7 @@ export const partnertypeResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("data")) {
       throw new Error("Unauthorized!");
@@ -54,7 +54,7 @@ export const partnertypeResolver = {
     try {
       const updatedPartnertype = await Partnertype.update(updateFields, {
         where: {
-          _id: args.partnertypeId,
+          id: args.partnertypeId,
         },
         returning: true,
         plain: true,
@@ -73,14 +73,14 @@ export const partnertypeResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("data")) {
       throw new Error("Unauthorized!");
     }
     await Partnertype.destroy({
       where: {
-        _id: args.partnertypeId,
+        id: args.partnertypeId,
       },
     });
     return true;

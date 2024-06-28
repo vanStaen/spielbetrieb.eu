@@ -26,7 +26,7 @@ export const PartnerForm = (props) => {
         return null;
       }
       return {
-        value: parseInt(type._id),
+        value: parseInt(type.id),
         label: nameParser(type.name, userStore.language.toLowerCase()),
       };
     });
@@ -40,7 +40,7 @@ export const PartnerForm = (props) => {
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      await updateUserAsAdmin(selectedPartner._id, {
+      await updateUserAsAdmin(selectedPartner.id, {
         isPartner: values.isPartner,
         partnerRoles: values.isPartner ? values.roles : null,
         partnertype: values.isPartner ? values.partnertype : null,

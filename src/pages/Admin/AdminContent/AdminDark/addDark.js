@@ -6,7 +6,7 @@ export async function addDark(dataObject) {
                 addDark (
                   darkInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

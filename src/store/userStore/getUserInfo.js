@@ -5,7 +5,7 @@ export const getUserInfo = async () => {
     query: `
             {
               getUser {
-                _id,
+                id,
                 isAdmin,
                 adminRoles,
                 firstName,
@@ -26,10 +26,10 @@ export const getUserInfo = async () => {
                 archived,
                 usernameChange,
                 messages {
-                    _id,
+                    id,
                 },
                 notifications {
-                  _id,
+                  id,
                   userId,
                   photoLinkId,
                   userLinkId,
@@ -43,25 +43,25 @@ export const getUserInfo = async () => {
                   updatedAt,
                 }
                 visitors {
-                    _id,
+                    id,
                 },
                 friends {
-                    _id,
+                    id,
                     userName,
                     avatar,
                 },
                 followers {
-                    _id
+                    id
                     userName,
                     avatar,
                 },
                 following {
-                    _id,
+                    id,
                     userName,
                     avatar,
                 },
                 friendrequests {
-                    _id,
+                    id,
                     userName,
                     avatar,
                 }

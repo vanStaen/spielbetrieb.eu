@@ -28,7 +28,7 @@ export const EventPageDescInfos = observer((props) => {
     const eventTags = event?.eventTags?.map((tagId) => {
       return {
         name: nameParser(
-          spielplanStore.tags.filter((tag) => parseInt(tag._id) === tagId)[0]
+          spielplanStore.tags.filter((tag) => parseInt(tag.id) === tagId)[0]
             ?.name,
           pageStore.selectedLanguage?.toLowerCase(),
         ),
@@ -55,7 +55,7 @@ export const EventPageDescInfos = observer((props) => {
       return {
         name: nameParser(
           spielplanStore.dresscodes.filter(
-            (tag) => parseInt(tag._id) === tagId,
+            (tag) => parseInt(tag.id) === tagId,
           )[0]?.name,
           pageStore.selectedLanguage?.toLowerCase(),
         ),
@@ -78,7 +78,7 @@ export const EventPageDescInfos = observer((props) => {
       return {
         name: nameParser(
           spielplanStore.dresscodes.filter(
-            (tag) => parseInt(tag._id) === tagId,
+            (tag) => parseInt(tag.id) === tagId,
           )[0]?.name,
           pageStore.selectedLanguage?.toLowerCase(),
         ),
@@ -113,7 +113,7 @@ export const EventPageDescInfos = observer((props) => {
           <div className="eventpage__subInfo">
             <ClockCircleOutlined className="eventpage__infoIcon" />{" "}
             {dayjs(event.fromDate).format("dddd") ===
-            dayjs(event.untilDate).format("dddd") ? (
+              dayjs(event.untilDate).format("dddd") ? (
               <>
                 {dayjs(event.fromDate).format("HH:mm")}
                 {!fromUntilDateAreTheSame && (

@@ -8,6 +8,6 @@ export default async function getDresscodes() {
     ],
   });
   return result.map((dresscode) => {
-    return { id: dresscode.dataValues._id, name: dresscode.dataValues.name };
+    return { id: dresscode.dataValues.id, name: dresscode.dataValues.name };
   });
 }

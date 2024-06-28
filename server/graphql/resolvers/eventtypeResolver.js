@@ -18,7 +18,7 @@ export const eventtypeResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("data")) {
       throw new Error("Unauthorized!");
@@ -41,7 +41,7 @@ export const eventtypeResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("data")) {
       throw new Error("Unauthorized!");
@@ -56,7 +56,7 @@ export const eventtypeResolver = {
     try {
       const updatedEventtype = await Eventtype.update(updateFields, {
         where: {
-          _id: args.eventtypeId,
+          id: args.eventtypeId,
         },
         returning: true,
         plain: true,
@@ -75,14 +75,14 @@ export const eventtypeResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("data")) {
       throw new Error("Unauthorized!");
     }
     await Eventtype.destroy({
       where: {
-        _id: args.eventtypeId,
+        id: args.eventtypeId,
       },
     });
     return true;

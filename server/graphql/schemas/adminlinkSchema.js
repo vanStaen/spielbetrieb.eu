@@ -1,6 +1,6 @@
 export const Adminlink = `
 type Adminlink {
-    _id: ID! 
+    id: ID! 
     shortDesc: String!
     category: String!
     link: String!

@@ -55,7 +55,7 @@ export const Profile = observer((props) => {
     }
   }, [profileStore.isPartner]);
 
-  const thisIsMe = userStore._id === profileStore._id;
+  const thisIsMe = userStore.id === profileStore.id;
 
   return (
     <>

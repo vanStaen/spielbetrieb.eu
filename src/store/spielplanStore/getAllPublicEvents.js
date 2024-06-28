@@ -6,7 +6,7 @@ export async function getAllPublicEvents(fromDate, untilDate) {
                     fromDate: ${fromDate}, 
                     untilDate: ${untilDate},
                   ) { 
-                  _id,
+                  id,
                   eventtype,
                   title,
                   description,

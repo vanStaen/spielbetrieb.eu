@@ -7,7 +7,7 @@ export async function updateLocation(location) {
           location: $location,
         }
       ) {
-        _id,
+        id,
       }
     }
     `,

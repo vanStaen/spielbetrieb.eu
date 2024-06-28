@@ -30,10 +30,10 @@ export const EventCard = observer((props) => {
   const isShownHidden = useRef(isInThePast);
   const [firstPictureUrl, setFirstPictureUrl] = useState(null);
 
-  const isMyEvent = eventUser?._id === userStore?._id;
+  const isMyEvent = eventUser?.id === userStore?.id;
 
   const handleArchiveEvent = async () => {
-    await archiveEvent(event._id);
+    await archiveEvent(event.id);
     spielplanStore.fetchEvents();
   };
 
@@ -91,13 +91,13 @@ export const EventCard = observer((props) => {
   const handleEventContainerClick = () => {
     if (isShownHidden.current === true) {
       const elementContainer = document.getElementById(
-        `eventContainer${event._id}`,
+        `eventContainer${event.id}`,
       );
       elementContainer.style.maxHeight = "400px";
       elementContainer.classList.remove("event__ContainerPast");
       isShownHidden.current = false;
     } else {
-      navigate(`/event/${event._id}`, { relative: "path" });
+      navigate(`/event/${event.id}`, { relative: "path" });
       spielplanStore.setSelectedEvent(event);
     }
   };
@@ -114,7 +114,7 @@ export const EventCard = observer((props) => {
   const handleEditEvent = async (e) => {
     e.stopPropagation();
     navigate("/event/add");
-    await eventFormStore.setEventId(event._id);
+    await eventFormStore.setEventId(event.id);
     await eventFormStore.setTitle(event.title);
     await eventFormStore.setEventtype(event.eventtype);
     await eventFormStore.setDescription(event.description);
@@ -150,8 +150,8 @@ export const EventCard = observer((props) => {
 
   return (
     <div
-      key={event._id}
-      id={`eventContainer${event._id}`}
+      key={event.id}
+      id={`eventContainer${event.id}`}
       className={`
         event__Container 
         ${pageStore.selectedTheme === "light" ? "event__black" : "event__white"}

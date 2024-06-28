@@ -1,6 +1,6 @@
 export const Location = `
 type Location {
-    _id: ID! 
+    id: ID! 
     name: String!
     description: String
     pictures: [String]

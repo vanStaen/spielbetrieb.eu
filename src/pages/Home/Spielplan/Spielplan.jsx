@@ -75,12 +75,12 @@ export const Spielplan = observer(() => {
 
   const eventsFormatted = spielplanStore.events?.map((event, index) => {
     const eventColor = spielplanStore.eventtypes?.filter(
-      (et) => parseInt(et._id) === event.eventtype,
+      (et) => parseInt(et.id) === event.eventtype,
     )[0]?.color;
     const eventTags = event.eventTags.map((tagId) => {
       return {
         name: nameParser(
-          spielplanStore.tags.filter((tag) => parseInt(tag._id) === tagId)[0]
+          spielplanStore.tags.filter((tag) => parseInt(tag.id) === tagId)[0]
             ?.name,
           pageStore.selectedLanguage?.toLowerCase(),
         ),
@@ -88,14 +88,14 @@ export const Spielplan = observer(() => {
       };
     });
     const eventType = spielplanStore.eventtypes.filter(
-      (et) => parseInt(et._id) === event.eventtype,
+      (et) => parseInt(et.id) === event.eventtype,
     )[0];
     eventTags.splice(0, 0, {
       name: nameParser(
         eventType?.name,
         pageStore.selectedLanguage?.toLowerCase(),
       ),
-      id: eventType?._id,
+      id: eventType?.id,
     });
 
     if (spielplanStore.filterLocations.length) {
@@ -123,7 +123,7 @@ export const Spielplan = observer(() => {
     return index === 0 ? (
       <div ref={ref3}>
         <EventCard
-          key={`eventCard${event._id}`}
+          key={`eventCard${event.id}`}
           event={event}
           color={eventColor}
           tags={eventTags}
@@ -132,7 +132,7 @@ export const Spielplan = observer(() => {
       </div>
     ) : (
       <EventCard
-        key={`eventCard${event._id}`}
+        key={`eventCard${event.id}`}
         event={event}
         color={eventColor}
         tags={eventTags}

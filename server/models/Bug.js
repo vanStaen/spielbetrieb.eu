@@ -2,9 +2,9 @@ import { sequelize, DataTypes } from "../lib/sequelizedb.js";
 import { User } from "./User.js";
 
 export const Bug = sequelize.sequelize.define("bug", {
-  _id: {
+  id: {
     type: DataTypes.INTEGER,
-    field: "_id",
+    field: "id",
     autoIncrement: true,
     primaryKey: true,
   },

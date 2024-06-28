@@ -8,7 +8,7 @@ export async function updateOrientation(id, dataObject) {
                   orientationId: $id,
                   orientationInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

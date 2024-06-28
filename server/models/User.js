@@ -4,9 +4,9 @@ import { Usersfollower } from "./Usersfollower.js";
 import { Usersfriendrequest } from "./Usersfriendrequest.js";
 
 export const User = sequelize.sequelize.define("user", {
-  _id: {
+  id: {
     type: DataTypes.INTEGER,
-    field: "_id",
+    field: "id",
     autoIncrement: true,
     primaryKey: true,
   },

@@ -9,18 +9,18 @@ export const addOption = async (option, usecase) => {
       isEventTag: true,
     };
     const res = await addTag(dataObjectTag);
-    return parseInt(res._id);
+    return parseInt(res.id);
   } else if (usecase === "artist") {
     const dataObjectArtist = {
       name: option,
     };
     const res = await addArtist(dataObjectArtist);
-    return parseInt(res._id);
+    return parseInt(res.id);
   } else if (usecase === "dresscode") {
     const dataObjectDresscodeTag = {
       name: `{"en":"${option}", "de":"${option}"}`,
     };
     const res = await addDresscode(dataObjectDresscodeTag);
-    return parseInt(res._id);
+    return parseInt(res.id);
   }
 };

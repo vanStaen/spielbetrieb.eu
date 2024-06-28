@@ -6,7 +6,7 @@ export async function addEvent(dataObject) {
                 addEvent (
                   eventInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

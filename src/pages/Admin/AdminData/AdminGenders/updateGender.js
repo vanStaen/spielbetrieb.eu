@@ -8,7 +8,7 @@ export async function updateGender(id, dataObject) {
                   genderId: $id,
                   genderInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

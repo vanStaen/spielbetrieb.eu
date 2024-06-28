@@ -3,9 +3,9 @@ import { User } from "./User.js";
 import { Photo } from "./Photo.js";
 
 export const Comment = sequelize.sequelize.define("comment", {
-  _id: {
+  id: {
     type: DataTypes.INTEGER,
-    field: "_id",
+    field: "id",
     autoIncrement: true,
     primaryKey: true,
   },

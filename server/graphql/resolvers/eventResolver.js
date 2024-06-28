@@ -8,7 +8,7 @@ export const eventResolver = {
   async getEvent(args, req) {
     return await Event.findOne({
       where: {
-        _id: args.eventId,
+        id: args.eventId,
       },
       include: User,
     });
@@ -20,14 +20,14 @@ export const eventResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("events")) {
       throw new Error("Unauthorized!");
     }
     return await Event.findAll({
       include: User,
-      order: [["_id", "ASC"]],
+      order: [["id", "ASC"]],
     });
   },
 
@@ -42,7 +42,7 @@ export const eventResolver = {
         isDraft: true,
         archived: { [Op.or]: [false, null] },
       },
-      order: [["_id", "ASC"]],
+      order: [["id", "ASC"]],
     });
   },
 
@@ -156,7 +156,7 @@ export const eventResolver = {
     try {
       const updatedEvent = await Event.update(updateFields, {
         where: {
-          _id: args.eventId,
+          id: args.eventId,
         },
         returning: true,
         plain: true,
@@ -178,7 +178,7 @@ export const eventResolver = {
       { archived: true },
       {
         where: {
-          _id: args.eventId,
+          id: args.eventId,
         },
         returning: true,
         plain: true,
@@ -193,7 +193,7 @@ export const eventResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("events")) {
       throw new Error("Unauthorized!");
@@ -201,7 +201,7 @@ export const eventResolver = {
     // TODO : Delete all event pictures
     await Event.destroy({
       where: {
-        _id: args.eventId,
+        id: args.eventId,
       },
     });
     return true;

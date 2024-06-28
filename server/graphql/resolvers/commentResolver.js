@@ -41,7 +41,7 @@ export const commentResolver = {
     try {
       const updatedComment = await Comment.update(updateFields, {
         where: {
-          _id: args.commentId,
+          id: args.commentId,
         },
         returning: true,
         plain: true,
@@ -54,11 +54,11 @@ export const commentResolver = {
     }
   },
 
-  // deleteComment(_id: ID!): Boolean!
+  // deleteComment(id: ID!): Boolean!
   async deleteComment(args, req) {
     await Comment.destroy({
       where: {
-        _id: args.commentId,
+        id: args.commentId,
       },
     });
     return true;

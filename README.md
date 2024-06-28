@@ -64,7 +64,7 @@ Possible admin roles are:
 9. `ressources`: some internal ressources for the admins only
 
 SQL update script exemple: 
-``` UPDATE public.users SET "isAdmin"=true, "adminRoles"='{newsletter,events,users,partners,content,analytics,translation,data,ressources,bugs}' WHERE _id=1; ```
+``` UPDATE public.users SET "isAdmin"=true, "adminRoles"='{newsletter,events,users,partners,content,analytics,translation,data,ressources,bugs}' WHERE id=1; ```
 
 ### Table user | Partner
 

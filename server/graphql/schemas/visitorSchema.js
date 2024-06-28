@@ -1,6 +1,6 @@
 export const Visitor = `
 type Visitor {
-    _id: ID! 
+    id: ID! 
     userId: Int!
     visitedId: Int!
     visitorId: Int!

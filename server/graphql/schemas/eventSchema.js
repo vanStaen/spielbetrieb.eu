@@ -1,6 +1,6 @@
 export const Event = `
 type Event {
-    _id: ID! 
+    id: ID! 
     eventtype: Int!
     title: String!
     description: String

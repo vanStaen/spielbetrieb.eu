@@ -6,7 +6,7 @@ export async function addEquipment(dataObject) {
                 addEquipment (
                   equipmentInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

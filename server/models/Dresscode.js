@@ -1,9 +1,9 @@
 import { sequelize, DataTypes } from "../lib/sequelizedb.js";
 
 export const Dresscode = sequelize.sequelize.define("dresscode", {
-  _id: {
+  id: {
     type: DataTypes.INTEGER,
-    field: "_id",
+    field: "id",
     autoIncrement: true,
     primaryKey: true,
   },

@@ -4,7 +4,7 @@ import { Partner } from "../../models/Partner.js";
 export const partnerResolver = {
   async getPartner(args, req) {
     return await Partner.findOne({
-      where: { _id: args.partnerId },
+      where: { id: args.partnerId },
       include: [User],
     });
   },
@@ -14,13 +14,13 @@ export const partnerResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
       throw new Error("Unauthorized!");
     }
     return await Partner.findAll({
-      order: [["_id", "ASC"]],
+      order: [["id", "ASC"]],
       include: [User],
     });
   },
@@ -30,7 +30,7 @@ export const partnerResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
       throw new Error("Unauthorized!");
@@ -80,7 +80,7 @@ export const partnerResolver = {
     try {
       const updatedPartner = await Partner.update(updateFields, {
         where: {
-          _id: args.partnerId,
+          id: args.partnerId,
         },
         returning: true,
         plain: true,
@@ -93,13 +93,13 @@ export const partnerResolver = {
     }
   },
 
-  // updateUser(_id: ID!, userInput: UserInputData!): User!
+  // updateUser(id: ID!, userInput: UserInputData!): User!
   async updatePartnerAsAdmin(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
       throw new Error("Unauthorized!");
@@ -125,7 +125,7 @@ export const partnerResolver = {
     try {
       const updatedPartner = await Partner.update(updateFields, {
         where: {
-          _id: args.partnerId,
+          id: args.partnerId,
         },
         returning: true,
         plain: true,
@@ -143,14 +143,14 @@ export const partnerResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await Partner.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
       throw new Error("Unauthorized!");
     }
     await Partner.destroy({
       where: {
-        _id: args.partnerId,
+        id: args.partnerId,
       },
     });
     req.session = null;

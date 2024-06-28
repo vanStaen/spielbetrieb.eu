@@ -47,12 +47,12 @@ export const EventPage = observer((props) => {
     if (id) {
       await spielplanStore.fetchAllBaseData();
       const eventFound = await getSingleEvents(id);
-      if (userStore.isAdmin || eventFound.user._id === userStore._id) {
+      if (userStore.isAdmin || eventFound.user.id === userStore.id) {
         setIsNotValidated(false);
       } else {
         setIsNotValidated(!eventFound.validated);
       }
-      setCanEdit(userStore.isAdmin || userStore._id === eventFound.user._id);
+      setCanEdit(userStore.isAdmin || userStore.id === eventFound.user.id);
       spielplanStore.setSelectedEvent(eventFound);
     }
   };
@@ -149,11 +149,10 @@ export const EventPage = observer((props) => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${
-                    pageStore.selectedTheme === "light"
-                      ? "lightColorTheme__Text"
-                      : "darkColorTheme__Text"
-                  }`}
+                  ${pageStore.selectedTheme === "light"
+            ? "lightColorTheme__Text"
+            : "darkColorTheme__Text"
+          }`}
       >
         <ArrowLeftOutlined />
       </div>

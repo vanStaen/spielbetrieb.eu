@@ -9,7 +9,7 @@ export async function updateCoordinates(coordinates) {
           coordinates: $coordinates,
         }
       ) {
-        _id,
+        id,
       }
     }
     `,

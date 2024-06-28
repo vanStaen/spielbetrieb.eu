@@ -20,7 +20,7 @@ export const EventPageDesc = observer((props) => {
 
   const eventTypeName = nameParser(
     spielplanStore.eventtypes.filter(
-      (eventtype) => parseInt(eventtype._id) === event?.eventtype,
+      (eventtype) => parseInt(eventtype.id) === event?.eventtype,
     )[0]?.name,
     pageStore.selectedLanguage?.toLowerCase(),
   );

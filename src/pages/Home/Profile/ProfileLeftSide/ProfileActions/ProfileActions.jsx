@@ -28,36 +28,36 @@ export const ProfileActions = observer(() => {
   const [isFollowing, setIsFollowing] = useState(
     userStore.following
       ? !(
-          userStore.following.findIndex(
-            (following) => parseInt(following._id) === profileStore._id,
-          ) < 0
-        )
+        userStore.following.findIndex(
+          (following) => parseInt(following.id) === profileStore.id,
+        ) < 0
+      )
       : false,
   );
 
   const [isFriend, setIsFriend] = useState(
     userStore.friends
       ? !(
-          userStore.friends.findIndex(
-            (friend) => parseInt(friend._id) === profileStore._id,
-          ) < 0
-        )
+        userStore.friends.findIndex(
+          (friend) => parseInt(friend.id) === profileStore.id,
+        ) < 0
+      )
       : false,
   );
 
   const [isPending, setIsPending] = useState(
     userStore.friendrequests
       ? !(
-          userStore.friendrequests.findIndex(
-            (pending) => parseInt(pending._id) === profileStore._id,
-          ) < 0
-        )
+        userStore.friendrequests.findIndex(
+          (pending) => parseInt(pending.id) === profileStore.id,
+        ) < 0
+      )
       : false,
   );
 
   const [requested, setRequested] = useState(false);
   const fetchRequested = async () => {
-    const res = await isRequested(profileStore._id);
+    const res = await isRequested(profileStore.id);
     setRequested(res);
   };
 
@@ -68,23 +68,23 @@ export const ProfileActions = observer(() => {
   const handleClick = async (action) => {
     try {
       if (action === "follow") {
-        await addFollow(profileStore._id);
+        await addFollow(profileStore.id);
         setIsFollowing(true);
       } else if (action === "unfollow") {
-        await deleteFollow(profileStore._id);
+        await deleteFollow(profileStore.id);
         setIsFollowing(false);
       } else if (action === "request") {
-        await addFriendRequest(profileStore._id);
+        await addFriendRequest(profileStore.id);
         setIsPending(true);
       } else if (action === "unrequest") {
-        await deleteFriendRequest(profileStore._id);
+        await deleteFriendRequest(profileStore.id);
         setIsPending(false);
       } else if (action === "unfriend") {
-        await deleteFriendship(profileStore._id);
+        await deleteFriendship(profileStore.id);
         setIsPending(false);
         setIsFriend(false);
       } else if (action === "acceptrequest") {
-        await acceptFriendRequest(profileStore._id);
+        await acceptFriendRequest(profileStore.id);
         setIsPending(false);
         setRequested(false);
         setIsFriend(true);
@@ -105,35 +105,35 @@ export const ProfileActions = observer(() => {
         {
           // Partner store can not have friends
           !(profileStore.isPartner || userStore.isPartner) &&
-            (requested ? (
-              <div
-                className={"profil__action"}
-                onClick={() => handleClick("acceptrequest")}
-              >
-                <UserAddOutlined /> {t("profile.acceptfriendRequest")}
-              </div>
-            ) : isPending ? (
-              <div
-                className={"profil__action"}
-                onClick={() => handleClick("unrequest")}
-              >
-                <UserDeleteOutlined /> {t("profile.deletePendingRequest")}
-              </div>
-            ) : isFriend ? (
-              <div
-                className={"profil__action"}
-                onClick={() => handleClick("unfriend")}
-              >
-                <UserDeleteOutlined /> {t("profile.unfriendRequest")}
-              </div>
-            ) : (
-              <div
-                className={"profil__action"}
-                onClick={() => handleClick("request")}
-              >
-                <UserAddOutlined /> {t("profile.sendFriendRequest")}
-              </div>
-            ))
+          (requested ? (
+            <div
+              className={"profil__action"}
+              onClick={() => handleClick("acceptrequest")}
+            >
+              <UserAddOutlined /> {t("profile.acceptfriendRequest")}
+            </div>
+          ) : isPending ? (
+            <div
+              className={"profil__action"}
+              onClick={() => handleClick("unrequest")}
+            >
+              <UserDeleteOutlined /> {t("profile.deletePendingRequest")}
+            </div>
+          ) : isFriend ? (
+            <div
+              className={"profil__action"}
+              onClick={() => handleClick("unfriend")}
+            >
+              <UserDeleteOutlined /> {t("profile.unfriendRequest")}
+            </div>
+          ) : (
+            <div
+              className={"profil__action"}
+              onClick={() => handleClick("request")}
+            >
+              <UserAddOutlined /> {t("profile.sendFriendRequest")}
+            </div>
+          ))
         }
         {
           // Follow/Unfollow action

@@ -9,7 +9,7 @@ import "./LocationsFilter.less";
 
 export const LocationsFilter = observer(() => {
   const locationOptions = spielplanStore.locations.map((location) => {
-    return { value: location._id, label: location.name };
+    return { value: location.id, label: location.name };
   });
 
   const locationOptionsInclCity = [

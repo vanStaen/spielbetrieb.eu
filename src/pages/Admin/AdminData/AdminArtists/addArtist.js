@@ -6,7 +6,7 @@ export async function addArtist(dataObject) {
                 addArtist (
                   artistInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {

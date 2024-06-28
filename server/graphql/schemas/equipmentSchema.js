@@ -1,6 +1,6 @@
 export const Equipment = `
 type Equipment {
-    _id: ID! 
+    id: ID! 
     name: String!
     media: String
     validated: Boolean

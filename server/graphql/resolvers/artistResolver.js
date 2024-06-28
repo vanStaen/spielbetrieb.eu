@@ -5,7 +5,7 @@ export const artistResolver = {
   // getArtist(artistId: ID!): Artist
   async getArtist(args) {
     return await Artist.findOne({
-      where: { _id: args.artistId },
+      where: { id: args.artistId },
     });
   },
 
@@ -25,7 +25,7 @@ export const artistResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     let validated = args.artistInput.validated;
     if (!foundUser.isAdmin) {
@@ -62,7 +62,7 @@ export const artistResolver = {
     try {
       const updatedArtist = await Artist.update(updateFields, {
         where: {
-          _id: args.artistId,
+          id: args.artistId,
         },
         returning: true,
         plain: true,
@@ -81,7 +81,7 @@ export const artistResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
@@ -105,7 +105,7 @@ export const artistResolver = {
     try {
       const updatedArtist = await Artist.update(updateFields, {
         where: {
-          _id: args.artistId,
+          id: args.artistId,
         },
         returning: true,
         plain: true,
@@ -124,14 +124,14 @@ export const artistResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
     }
     await Artist.destroy({
       where: {
-        _id: args.artistId,
+        id: args.artistId,
       },
     });
     return true;

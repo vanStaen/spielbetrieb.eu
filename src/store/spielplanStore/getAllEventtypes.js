@@ -3,7 +3,7 @@ export async function getAllEventtypes(usage) {
     query: `
             {
               getAllEventtypes { 
-                _id,
+                id,
                 name,
                 usage,
                 validated,

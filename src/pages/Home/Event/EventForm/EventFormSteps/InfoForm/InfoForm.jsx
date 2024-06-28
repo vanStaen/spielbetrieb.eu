@@ -44,7 +44,7 @@ export const InfoForm = observer((props) => {
 
     try {
       const res = await addEvent(dataObject);
-      eventFormStore.setEventId(res._id);
+      eventFormStore.setEventId(res.id);
       message.success("Draft saved!");
     } catch (e) {
       notification.error({
@@ -59,11 +59,10 @@ export const InfoForm = observer((props) => {
 
   return (
     <div
-      className={`infoform__container  ${
-        pageStore.selectedTheme === "light"
+      className={`infoform__container  ${pageStore.selectedTheme === "light"
           ? "lightColorTheme__Text"
           : "darkColorTheme__Text"
-      }`}
+        }`}
     >
       <InfoFormEventtype
         eventtypesOptions={eventtypesOptions}

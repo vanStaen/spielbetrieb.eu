@@ -18,7 +18,7 @@ export const dresscodeResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     let validated = args.dresscodeInput.validated;
     if (!foundUser.isAdmin) {
@@ -42,7 +42,7 @@ export const dresscodeResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
@@ -57,7 +57,7 @@ export const dresscodeResolver = {
     try {
       const updatedDresscode = await Dresscode.update(updateFields, {
         where: {
-          _id: args.dresscodeId,
+          id: args.dresscodeId,
         },
         returning: true,
         plain: true,
@@ -76,14 +76,14 @@ export const dresscodeResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
     }
     await Dresscode.destroy({
       where: {
-        _id: args.dresscodeId,
+        id: args.dresscodeId,
       },
     });
     return true;

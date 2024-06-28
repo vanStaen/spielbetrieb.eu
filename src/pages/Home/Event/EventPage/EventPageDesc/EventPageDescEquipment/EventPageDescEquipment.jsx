@@ -19,7 +19,7 @@ export const EventPageDescEquipment = observer((props) => {
       return {
         name: nameParser(
           spielplanStore.equipments.filter(
-            (equipment) => parseInt(equipment._id) === equipementId,
+            (equipment) => parseInt(equipment.id) === equipementId,
           )[0]?.name,
           pageStore.selectedLanguage?.toLowerCase(),
         ),

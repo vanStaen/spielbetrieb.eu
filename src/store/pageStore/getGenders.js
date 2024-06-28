@@ -3,7 +3,7 @@ export async function getGenders() {
     query: `
             {
               getGenders { 
-                _id,
+                id,
                 name,
                 validated,
               }

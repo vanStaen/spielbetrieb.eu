@@ -1,6 +1,6 @@
 export const Admincontact = `
 type Admincontact {
-    _id: ID! 
+    id: ID! 
     name: String!
     email: String!
     details: String

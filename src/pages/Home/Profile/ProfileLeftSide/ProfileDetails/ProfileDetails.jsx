@@ -36,7 +36,7 @@ export const ProfileDetails = observer(() => {
     setGenderText(
       nameParser(
         pageStore.genders.find(
-          (gender) => parseInt(gender._id) === profileStore.genderId,
+          (gender) => parseInt(gender.id) === profileStore.genderId,
         )?.name,
         pageStore.selectedLanguage,
       ),
@@ -45,7 +45,7 @@ export const ProfileDetails = observer(() => {
       nameParser(
         pageStore.orientations.find(
           (orientation) =>
-            parseInt(orientation._id) === profileStore.orientationId,
+            parseInt(orientation.id) === profileStore.orientationId,
         )?.name,
         pageStore.selectedLanguage,
       ),
@@ -55,7 +55,7 @@ export const ProfileDetails = observer(() => {
       nameParser(
         pageStore.partnertypes.find(
           (partnertype) =>
-            parseInt(partnertype._id) === profileStore.partnertypeId,
+            parseInt(partnertype.id) === profileStore.partnertypeId,
         )?.name,
         pageStore.selectedLanguage,
       ),

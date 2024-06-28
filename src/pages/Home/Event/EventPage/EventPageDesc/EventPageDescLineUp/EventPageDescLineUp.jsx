@@ -13,7 +13,7 @@ export const EventPageDescLineUp = observer((props) => {
 
   const artistFormated = (artistId) => {
     const artistData = spielplanStore.artists.filter(
-      (artist) => parseInt(artist._id) === artistId,
+      (artist) => parseInt(artist.id) === artistId,
     )[0];
     return artistData;
   };

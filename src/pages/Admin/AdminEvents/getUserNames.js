@@ -3,7 +3,7 @@ export async function getUserNames() {
     query: `
             {
               getUsersAsAdmin { 
-                _id,
+                id,
                 userName,
               }
             }

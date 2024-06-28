@@ -3,7 +3,7 @@ export async function getOrientations() {
     query: `
             {
               getOrientations { 
-                _id,
+                id,
                 name,
                 validated,
               }

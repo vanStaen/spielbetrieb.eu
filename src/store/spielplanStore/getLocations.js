@@ -3,7 +3,7 @@ export async function getLocations(onlyValidated = false) {
     query: `
             {
               getLocations(onlyValidated: ${onlyValidated}) {
-                _id,
+                id,
                 name,
                 description,
                 links,

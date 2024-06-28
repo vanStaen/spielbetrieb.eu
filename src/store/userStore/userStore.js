@@ -34,7 +34,7 @@ export class UserStore {
   messages = [];
   notifications = [];
   visitors = [];
-  _id = null;
+  id = null;
 
   constructor() {
     makeObservable(this, {
@@ -92,8 +92,8 @@ export class UserStore {
       setFollowers: action,
       following: observable,
       setFollowing: action,
-      _id: observable,
-      set_id: action,
+      id: observable,
+      setid: action,
     });
   }
 
@@ -101,8 +101,8 @@ export class UserStore {
     this.isLoading = isLoading;
   };
 
-  set_id = (_id) => {
-    this._id = _id;
+  setid = (id) => {
+    this.id = id;
   };
 
   setIsAdmin = (isAdmin) => {
@@ -221,7 +221,7 @@ export class UserStore {
       const userData = await getUserInfo();
       if (userData) {
         // console.log("userData", userData);
-        this.set_id(parseInt(userData._id));
+        this.setid(parseInt(userData.id));
         this.setIsAdmin(userData.isAdmin);
         this.setEmail(userData.email);
         this.setUserName(userData.userName);

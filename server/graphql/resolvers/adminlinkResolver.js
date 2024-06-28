@@ -8,7 +8,7 @@ export const adminlinkResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("ressources")) {
       throw new Error("Unauthorized!");
@@ -24,7 +24,7 @@ export const adminlinkResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("ressources")) {
       throw new Error("Unauthorized!");
@@ -49,7 +49,7 @@ export const adminlinkResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("ressources")) {
       throw new Error("Unauthorized!");
@@ -65,7 +65,7 @@ export const adminlinkResolver = {
     try {
       const updatedAdminlink = await Adminlink.update(updateFields, {
         where: {
-          _id: args.adminlinkId,
+          id: args.adminlinkId,
         },
         returning: true,
         plain: true,
@@ -85,7 +85,7 @@ export const adminlinkResolver = {
     }
     await Adminlink.destroy({
       where: {
-        _id: args.adminlinkId,
+        id: args.adminlinkId,
       },
     });
     return true;

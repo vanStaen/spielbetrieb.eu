@@ -8,7 +8,7 @@ export const notificationResolver = {
       throw new Error("Unauthorized!");
     }
     const foundUser = await User.findOne({
-      where: { _id: req.userId },
+      where: { id: req.userId },
     });
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
@@ -28,7 +28,7 @@ export const notificationResolver = {
         userId: req.userId,
       },
       include: User,
-      order: [["_id", "ASC"]],
+      order: [["id", "ASC"]],
     });
   },
 
@@ -42,7 +42,7 @@ export const notificationResolver = {
         { seen: true },
         {
           where: {
-            _id: args.notificationId,
+            id: args.notificationId,
             userId: req.userId,
           },
           returning: true,
@@ -85,7 +85,7 @@ export const notificationResolver = {
     }
     await Notification.destroy({
       where: {
-        _id: args.notificationId,
+        id: args.notificationId,
       },
     });
     return true;

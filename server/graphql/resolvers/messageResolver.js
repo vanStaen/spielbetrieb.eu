@@ -41,7 +41,7 @@ export const messageResolver = {
     }
     await Message.destroy({
       where: {
-        _id: args.messageId,
+        id: args.messageId,
       },
     });
     return true;

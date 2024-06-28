@@ -3,7 +3,7 @@ export async function getArtists() {
     query: `
             {
               getArtists { 
-                _id,
+                id,
                 name,
                 links,
                 pictures,

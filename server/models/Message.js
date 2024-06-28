@@ -3,9 +3,9 @@ import { User } from "./User.js";
 import { Chat } from "./Chat.js";
 
 export const Message = sequelize.sequelize.define("message", {
-  _id: {
+  id: {
     type: DataTypes.INTEGER,
-    field: "_id",
+    field: "id",
     autoIncrement: true,
     primaryKey: true,
   },

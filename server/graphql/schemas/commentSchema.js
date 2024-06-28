@@ -1,6 +1,6 @@
 export const Comment = `
 type Comment {
-    _id: ID! 
+    id: ID! 
     userId: Int!
     photoId: Int!
     comment: String!

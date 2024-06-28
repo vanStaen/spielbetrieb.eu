@@ -6,7 +6,7 @@ export async function addContact(dataObject) {
                 addAdmincontact (
                   admincontactInput: $dataObject,
                 ) {
-                  _id
+                  id
                 }
                 }`,
     variables: {
