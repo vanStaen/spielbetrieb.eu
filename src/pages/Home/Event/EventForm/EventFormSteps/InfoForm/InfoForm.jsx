@@ -59,10 +59,11 @@ export const InfoForm = observer((props) => {
 
   return (
     <div
-      className={`infoform__container  ${pageStore.selectedTheme === "light"
+      className={`infoform__container  ${
+        pageStore.selectedTheme === "light"
           ? "lightColorTheme__Text"
           : "darkColorTheme__Text"
-        }`}
+      }`}
     >
       <InfoFormEventtype
         eventtypesOptions={eventtypesOptions}

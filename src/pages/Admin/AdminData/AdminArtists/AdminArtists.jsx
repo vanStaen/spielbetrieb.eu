@@ -177,9 +177,9 @@ export const AdminArtists = () => {
         record,
         inputType:
           col.dataIndex === "validated" ||
-            col.dataIndex === "isPictureArtist" ||
-            col.dataIndex === "isEventArtist" ||
-            col.dataIndex === "isUserArtist"
+          col.dataIndex === "isPictureArtist" ||
+          col.dataIndex === "isEventArtist" ||
+          col.dataIndex === "isUserArtist"
             ? "boolean"
             : "text",
         dataIndex: col.dataIndex,

@@ -158,6 +158,14 @@ const writeBackupFile = async () => {
       JSON.stringify(databaseContentPartners),
     );
 
+    const databaseContentPartnersFollowers =
+      await fetchDatabaseContent("partnersfollowers");
+    const filenamePartnersFollowers = `${day}-${month}-${year}_spielbetrieb_partnersfollowers.json`;
+    fs.writeFileSync(
+      `../../../database-backups/spielbetrieb/${filenamePartnersFollowers}`,
+      JSON.stringify(databaseContentPartnersFollowers),
+    );
+
     const databaseContentPartnertypes =
       await fetchDatabaseContent("partnertypes");
     const filenamePartnertypes = `${day}-${month}-${year}_spielbetrieb_partnertypes.json`;

@@ -166,9 +166,7 @@ export const Notification = observer((props) => {
       await acceptFriendRequest(actionData);
       userStore.fetchUserData(false);
       const element = document.getElementById(`acceptRequest${id}`);
-      const elementMobile = document.getElementById(
-        `acceptRequestMobile${id}`,
-      );
+      const elementMobile = document.getElementById(`acceptRequestMobile${id}`);
       element.style.opacity = 0;
       elementMobile.style.opacity = 0;
       setTimeout(() => {
@@ -184,9 +182,7 @@ export const Notification = observer((props) => {
     try {
       await declineFriendRequest(actionData);
       const element = document.getElementById(`acceptRequest${id}`);
-      const elementMobile = document.getElementById(
-        `acceptRequestMobile${id}`,
-      );
+      const elementMobile = document.getElementById(`acceptRequestMobile${id}`);
       element.style.opacity = 0;
       elementMobile.style.opacity = 0;
       setTimeout(() => {

@@ -91,9 +91,7 @@ export const AdminEvents = () => {
       title: "Title",
       dataIndex: "title",
       key: "title",
-      render: (_, { title, id }) => (
-        <Link to={`../event/${id}`}>{title}</Link>
-      ),
+      render: (_, { title, id }) => <Link to={`../event/${id}`}>{title}</Link>,
     },
     {
       title: "From",
