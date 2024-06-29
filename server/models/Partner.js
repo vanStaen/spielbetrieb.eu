@@ -54,10 +54,11 @@ export const Partner = sequelize.sequelize.define("partner", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
+  admin: {
+    type: DataTypes.ARRAY(DataTypes.INTEGER),
+    allowNull: false,
+  }
 });
-
-User.hasMany(Partner);
-Partner.belongsTo(User);
 
 User.belongsToMany(Partner, {
   as: "partnerfollowers",

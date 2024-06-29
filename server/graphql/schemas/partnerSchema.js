@@ -12,7 +12,7 @@ type Partner {
     lastActive: Float!
     archived: Boolean
     suspended: Boolean
-    user: User
+    admin: [Int]
     createdAt: Float!
     updatedAt: Float!
 }`;
@@ -29,6 +29,7 @@ input PartnerInputData {
     partnerRoles: Int
     archived: Boolean
     suspended: Boolean
+    admin: [Int]
 }`;
 
 export const PartnerQueries = `
@@ -42,3 +43,5 @@ export const PartnerMutations = `
     updatePartnerAsAdmin(partnerId: ID!, partnerInput: PartnerInputData!): Partner!
     deletePartnerAsAdmin(partnerId: ID!): Boolean!
 `;
+
+//TODO: Creat partner resolver
