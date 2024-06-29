@@ -265,16 +265,16 @@ export const userResolver = {
     return true;
   },
 
-  // addFollow(followedId: ID!): Boolean!
+  // addFollow(followed_id: ID!): Boolean!
   async addFollow(args, req) {
     try {
       const newFollow = new Usersfollower({
-        followerid: req.userId,
-        followedid: args.followedId,
+        follower_id: req.userId,
+        followed_id: args.followed_id,
       });
       await newFollow.save();
       await notificationService.createNotificationNewFollower(
-        args.followedId,
+        args.followed_id,
         req.userId,
       );
       return true;
@@ -284,32 +284,32 @@ export const userResolver = {
     }
   },
 
-  // deleteFollow(followedId: ID!): Boolean!
+  // deleteFollow(followed_id: ID!): Boolean!
   async deleteFollow(args, req) {
     await Usersfollower.destroy({
       where: {
-        followerid: req.userId,
-        followedid: args.followedId,
+        follower_id: req.userId,
+        followed_id: args.followed_id,
       },
     });
     await notificationService.deleteNotificationNewFollower(
-      args.followedId,
+      args.followed_id,
       req.userId,
     );
     return true;
   },
 
-  // addFriendRequest(requestedId: ID!): Boolean!
+  // addFriendRequest(requested_id: ID!): Boolean!
   async addFriendRequest(args, req) {
     try {
       const newFriend = new Usersfriendrequest({
-        requestingid: req.userId,
-        requestedid: args.requestedId,
+        requesting_id: req.userId,
+        requested_id: args.requested_id,
       });
       await newFriend.save();
       await notificationService.createNotificationNewFriendRequest(
         req.userId,
-        args.requestedId,
+        args.requested_id,
       );
       return true;
     } catch (err) {
@@ -317,7 +317,7 @@ export const userResolver = {
     }
   },
 
-  // isRequested(requestingId: ID!): Boolean!
+  // isRequested(requesting_id: ID!): Boolean!
   async isRequested(args, req) {
     try {
       if (!req.isAuth) {
@@ -325,8 +325,8 @@ export const userResolver = {
       }
       const res = await Usersfriendrequest.findOne({
         where: {
-          requestedid: req.userId,
-          requestingid: args.requestingId,
+          requested_id: req.userId,
+          requesting_id: args.requesting_id,
         },
       });
       console.log(res);
@@ -336,43 +336,43 @@ export const userResolver = {
     }
   },
 
-  // deleteFriendRequest(requestedId: ID!): Boolean!
+  // deleteFriendRequest(requested_id: ID!): Boolean!
   async deleteFriendRequest(args, req) {
     await Usersfriendrequest.destroy({
       where: {
-        requestingid: req.userId,
-        requestedid: args.requestedId,
+        requesting_id: req.userId,
+        requested_id: args.requested_id,
       },
     });
     await notificationService.deleteNotificationNewFriendRequest(
       req.userId,
-      args.requestedId,
+      args.requested_id,
     );
     return true;
   },
 
-  // acceptFriendRequest(requestingId: ID!): Boolean!
+  // acceptFriendRequest(requesting_id: ID!): Boolean!
   async acceptFriendRequest(args, req) {
     try {
       const newFriendFirst = new Usersfriend({
-        userid: req.userId,
-        friendid: args.requestingId,
+        user_id: req.userId,
+        friend_id: args.requesting_id,
       });
       await newFriendFirst.save();
       const newFriendSecond = new Usersfriend({
-        friendid: req.userId,
-        userid: args.requestingId,
+        friend_id: req.userId,
+        user_id: args.requesting_id,
       });
       await newFriendSecond.save();
       await Usersfriendrequest.destroy({
         where: {
-          requestingid: args.requestingId,
-          requestedid: req.userId,
+          requesting_id: args.requesting_id,
+          requested_id: req.userId,
         },
       });
       await notificationService.createNotificationNewFriend(
         req.userId,
-        args.requestingId,
+        args.requesting_id,
       );
       return true;
     } catch (err) {
@@ -380,17 +380,17 @@ export const userResolver = {
     }
   },
 
-  // declineFriendRequest(requestingId: ID!): Boolean!
+  // declineFriendRequest(requesting_id: ID!): Boolean!
   async declineFriendRequest(args, req) {
     try {
       await Usersfriendrequest.destroy({
         where: {
-          requestingid: args.requestingId,
-          requestedid: req.userId,
+          requesting_id: args.requesting_id,
+          requested_id: req.userId,
         },
       });
       await notificationService.createNotificationFriendRequestDeclined(
-        args.requestingId,
+        args.requesting_id,
         req.userId,
       );
       return true;
@@ -399,19 +399,19 @@ export const userResolver = {
     }
   },
 
-  // deleteFriendship(friendId: ID!): Boolean!
+  // deleteFriendship(friend_id: ID!): Boolean!
   async deleteFriendship(args, req) {
     try {
       await Usersfriend.destroy({
         where: {
-          userid: args.friendId,
-          friendid: req.userId,
+          user_id: args.friend_id,
+          friend_id: req.userId,
         },
       });
       await Usersfriend.destroy({
         where: {
-          userid: req.userId,
-          friendid: args.friendId,
+          user_id: req.userId,
+          friend_id: args.friend_id,
         },
       });
       return true;

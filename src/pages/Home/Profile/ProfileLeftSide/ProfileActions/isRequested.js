@@ -1,7 +1,7 @@
 export async function isRequested(id) {
   const graphqlQuery = {
     query: `query ( $id: ID! ) {
-              isRequested ( requestingId: $id ) 
+              isRequested ( requesting_id: $id ) 
                 }`,
     variables: {
       id,

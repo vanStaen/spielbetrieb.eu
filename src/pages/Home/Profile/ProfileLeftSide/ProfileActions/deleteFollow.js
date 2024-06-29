@@ -1,7 +1,7 @@
 export async function deleteFollow(id) {
   const graphqlQuery = {
     query: `mutation ( $id: ID! ) {
-                deleteFollow ( followedId: $id ) 
+                deleteFollow ( followed_id: $id ) 
                 }`,
     variables: {
       id,

@@ -1,7 +1,7 @@
 export async function addFollow(id) {
   const graphqlQuery = {
     query: `mutation ( $id: ID! ) {
-                addFollow ( followedId: $id ) 
+                addFollow ( followed_id: $id ) 
                 }`,
     variables: {
       id,

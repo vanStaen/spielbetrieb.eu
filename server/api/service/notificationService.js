@@ -2,17 +2,17 @@ import { Notification } from "../../models/Notification.js";
 import { User } from "../../models/User.js";
 
 export const notificationService = {
-  async createNotificationNewFollower(userId, followerId) {
+  async createNotificationNewFollower(userId, follower_id) {
     try {
       const follower = await User.findOne({
-        where: { id: followerId },
+        where: { id: follower_id },
       });
       const newNotification = new Notification({
         userId,
-        userLinkId: followerId,
+        userLinkId: follower_id,
         mediaUrl: follower.avatar,
         data: follower.userName,
-        actionData: followerId,
+        actionData: follower_id,
         type: 2,
       });
       await newNotification.save();
@@ -22,13 +22,13 @@ export const notificationService = {
     }
   },
 
-  async deleteNotificationNewFollower(userId, followerId) {
+  async deleteNotificationNewFollower(userId, follower_id) {
     try {
       await Notification.destroy({
         where: {
           userId,
-          actionData: followerId,
-          userLinkId: followerId,
+          actionData: follower_id,
+          userLinkId: follower_id,
           type: 2,
         },
       });
@@ -38,18 +38,18 @@ export const notificationService = {
     }
   },
 
-  async createNotificationNewFriendRequest(requestingId, requestedId) {
+  async createNotificationNewFriendRequest(requesting_id, requested_id) {
     try {
       const requesting = await User.findOne({
-        where: { id: requestingId },
+        where: { id: requesting_id },
       });
       const newNotification = new Notification({
-        userId: requestedId,
+        userId: requested_id,
         mediaUrl: requesting.avatar,
         type: 1,
         data: requesting.userName,
-        actionData: requestingId,
-        userLinkId: requestingId,
+        actionData: requesting_id,
+        userLinkId: requesting_id,
       });
       await newNotification.save();
       return true;
@@ -58,18 +58,18 @@ export const notificationService = {
     }
   },
 
-  async createNotificationFriendRequestDeclined(requestingId, requestedId) {
+  async createNotificationFriendRequestDeclined(requesting_id, requested_id) {
     try {
       const userRequested = await User.findOne({
-        where: { id: requestedId },
+        where: { id: requested_id },
       });
       const newNotification = new Notification({
-        userId: requestingId,
+        userId: requesting_id,
         mediaUrl: userRequested.avatar,
         type: 12,
         data: userRequested.userName,
-        action_data: requestedId,
-        userLinkId: requestedId,
+        action_data: requested_id,
+        userLinkId: requested_id,
       });
       await newNotification.save();
       return true;
@@ -78,13 +78,13 @@ export const notificationService = {
     }
   },
 
-  async deleteNotificationNewFriendRequest(requestingId, requestedId) {
+  async deleteNotificationNewFriendRequest(requesting_id, requested_id) {
     try {
       await Notification.destroy({
         where: {
-          userId: requestedId,
-          actionData: requestingId,
-          userLinkId: requestingId,
+          userId: requested_id,
+          actionData: requesting_id,
+          userLinkId: requesting_id,
           type: 1,
         },
       });
@@ -94,18 +94,18 @@ export const notificationService = {
     }
   },
 
-  async createNotificationNewFriend(requestedId, requestingId) {
+  async createNotificationNewFriend(requested_id, requesting_id) {
     try {
       const userRequested = await User.findOne({
-        where: { id: requestedId },
+        where: { id: requested_id },
       });
       const newNotification = new Notification({
-        userId: requestingId,
+        userId: requesting_id,
         mediaUrl: userRequested.avatar,
         type: 11,
         data: userRequested.userName,
-        action_data: requestedId,
-        userLinkId: requestedId,
+        action_data: requested_id,
+        userLinkId: requested_id,
       });
       await newNotification.save();
       return true;
@@ -137,7 +137,7 @@ export const notificationService = {
       const listOfUniqueId = [...new Set(listOfFriendsAndFollowersId)];
       for (const id of listOfUniqueId) {
         const newNotification = new Notification({
-          userid: id,
+          userId: id,
           media_url: mediaUrl,
           title: username,
           type: notificationType,
@@ -165,7 +165,7 @@ export const notificationService = {
       });
       const username = user.userName;
       const newNotification = new Notification({
-        userid: userNotifiedId,
+        userId: userNotifiedId,
         media_url: mediaUrl,
         title: username,
         type: notificationType,

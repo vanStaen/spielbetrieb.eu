@@ -3208,7 +3208,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addFriendRequest (\n    requestedId: \"1\"\n  )\n}",
+						"query": "mutation {\n  addFriendRequest (\n    requested_id: \"1\"\n  )\n}",
 						"variables": ""
 					}
 				},
@@ -3244,7 +3244,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  isRequested (\n    requestingId: \"1\"\n  )\n}",
+						"query": "query {\n  isRequested (\n    requesting_id: \"1\"\n  )\n}",
 						"variables": ""
 					}
 				},
@@ -3280,7 +3280,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  deleteFriendRequest (\n    requestedId: \"1\"\n  )\n}",
+						"query": "mutation {\n  deleteFriendRequest (\n    requested_id: \"1\"\n  )\n}",
 						"variables": ""
 					}
 				},
@@ -3316,7 +3316,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addFollow (\n    followedId: \"1\"\n  )\n}",
+						"query": "mutation {\n  addFollow (\n    followed_id: \"1\"\n  )\n}",
 						"variables": ""
 					}
 				},
@@ -3352,7 +3352,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  deleteFollow (\n    followedId: \"1\"\n  )\n}",
+						"query": "mutation {\n  deleteFollow (\n    followed_id: \"1\"\n  )\n}",
 						"variables": ""
 					}
 				},

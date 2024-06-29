@@ -102,19 +102,19 @@ export const UserQueries = `
     getUsersAsAdmin: [User]
     getProfileByName(userName: String): User
     getProfileById(id: ID!): User
-    isRequested(requestingId: ID!): Boolean!
+    isRequested(requesting_id: ID!): Boolean!
 `;
 
 export const UserMutations = `
     addUser(userInput: UserInputData!): User!
-    addFollow(followedId: ID!): Boolean!
-    addFriendRequest(requestedId: ID!): Boolean!
-    acceptFriendRequest(requestingId: ID!): Boolean!
-    declineFriendRequest(requestingId: ID!): Boolean!
+    addFollow(followed_id: ID!): Boolean!
+    addFriendRequest(requested_id: ID!): Boolean!
+    acceptFriendRequest(requesting_id: ID!): Boolean!
+    declineFriendRequest(requesting_id: ID!): Boolean!
     updateUser(userInput: UserInputData!): User!
     updateUserAsAdmin(userId: ID!, userInput: UserInputDataAdmin!): User!
     deleteUserAsAdmin(userId: ID!): Boolean!
-    deleteFollow(followedId: ID!): Boolean!
-    deleteFriendRequest(requestedId: ID!): Boolean!
-    deleteFriendship(friendId: ID!): Boolean!
+    deleteFollow(followed_id: ID!): Boolean!
+    deleteFriendRequest(requested_id: ID!): Boolean!
+    deleteFriendship(friend_id: ID!): Boolean!
 `;

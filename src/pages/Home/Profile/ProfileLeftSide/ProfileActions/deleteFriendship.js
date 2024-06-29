@@ -1,7 +1,7 @@
 export async function deleteFriendship(id) {
   const graphqlQuery = {
     query: `mutation ( $id: ID! ) {
-              deleteFriendship ( friendId: $id ) 
+              deleteFriendship ( friend_id: $id ) 
                 }`,
     variables: {
       id,

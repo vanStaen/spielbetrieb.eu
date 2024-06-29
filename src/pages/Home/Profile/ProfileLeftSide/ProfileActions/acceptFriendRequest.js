@@ -1,7 +1,7 @@
 export async function acceptFriendRequest(id) {
   const graphqlQuery = {
     query: `mutation ( $id: ID! ) {
-              acceptFriendRequest ( requestingId: $id ) 
+              acceptFriendRequest ( requesting_id: $id ) 
                 }`,
     variables: {
       id,
