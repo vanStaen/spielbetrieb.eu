@@ -30,7 +30,6 @@ export const ProfileDetails = observer(() => {
   const [genderText, setGenderText] = useState(null);
   const [orientationText, setOrientationText] = useState(null);
   const [ageFromBirthday, setAgeFromBirthday] = useState(null);
-  const [partnerTypeText, setPartnerTypeText] = useState(null);
 
   useEffect(() => {
     setGenderText(
@@ -51,19 +50,9 @@ export const ProfileDetails = observer(() => {
       ),
     );
     setAgeFromBirthday(dayjs(profileStore.birthday).fromNow(true));
-    setPartnerTypeText(
-      nameParser(
-        pageStore.partnertypes.find(
-          (partnertype) =>
-            parseInt(partnertype.id) === profileStore.partnertypeId,
-        )?.name,
-        pageStore.selectedLanguage,
-      ),
-    );
   }, [
     profileStore.genderId,
     profileStore.orientationId,
-    profileStore.partnertypeId,
     profileStore.birthday,
     pageStore.genders,
     pageStore.orientations,

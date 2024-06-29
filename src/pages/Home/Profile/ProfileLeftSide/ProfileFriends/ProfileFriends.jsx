@@ -48,10 +48,12 @@ export const ProfileFriends = observer(() => {
             {t("profile.friends")} ({profileStore.friends.length})
           </div>
           {friendsFormatted}
-          {//TODO: If user has more than 8 friends, show 7 +x
-          /* <div className="profilFriends__followersAvatar profilFriends__followersCounterContainer">
+          {
+            // TODO: If user has more than 8 friends, show 7 +x
+            /* <div className="profilFriends__followersAvatar profilFriends__followersCounterContainer">
           <div className="profilFriends__followersCounter"> +8</div>
-        </div> */}
+        </div> */
+          }
         </div>
       )}
       {!!profileStore.followers.length && (

@@ -102,7 +102,7 @@ export const Menu = observer(() => {
     navigate("/notifications");
   };
 
-  //TODO: like insta with multi, can switch from user to partner account
+  // TODO: like insta with multi, can switch from user to partner account
 
   return (
     <>

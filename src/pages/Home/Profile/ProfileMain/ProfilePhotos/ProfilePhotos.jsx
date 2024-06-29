@@ -10,9 +10,9 @@ import "./ProfilePhotos.less";
 export const ProfilePhotos = observer(() => {
   const { t } = useTranslation();
 
-  //TODO: add photo form
-  //TODO: use gallery overlay to show the pictures
-  //TODO: add a comment feature to the gallery overlay(?)
+  // TODO: add photo form
+  // TODO: use gallery overlay to show the pictures
+  // TODO: add a comment feature to the gallery overlay(?)
   return (
     <div className="profilePhotos__container">
       <ProfileMainTitle

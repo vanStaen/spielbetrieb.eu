@@ -75,10 +75,10 @@ export const Home = observer((props) => {
       case "dark":
         return <Dark />;
       case "partner":
-        //TODO: make a partner component
+        // TODO: make a partner component
         return <Profile />;
       case "profile":
-        //TODO: First check if profile can be shown (in setting, show to friend or not). The check should happen in the backend as the api should not return data if it is the case.
+        // TODO: First check if profile can be shown (in setting, show to friend or not). The check should happen in the backend as the api should not return data if it is the case.
         return <Profile />;
       case "settings":
         return <Settings />;

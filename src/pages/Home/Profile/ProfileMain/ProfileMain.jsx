@@ -22,21 +22,17 @@ export const ProfileMain = observer((props) => {
   return (
     <div className="profil__mainContainer">
       {(profileStore.description || thisIsMe) && <ProfileDescription />}
-      {(profileStore.wishes || thisIsMe) && (
-        <ProfileWishes />
-      )}
-      {(profileStore.interests || thisIsMe) && (
-        <ProfileInterests />
-      )}
+      {(profileStore.wishes || thisIsMe) && <ProfileWishes />}
+      {(profileStore.interests || thisIsMe) && <ProfileInterests />}
       {(profileStore.photos?.length || thisIsMe) && <ProfilePhotos />}
       {(profileStore.events?.length || thisIsMe) && <ProfileEvents />}
       {(profileStore.tags?.length || thisIsMe) && <ProfileTags />}
       {(profileStore.link?.length || thisIsMe) && <ProfileLinks />}
       {(profileStore.partners?.length || thisIsMe) && <ProfilePartners />}
-      { //TODO: get rid of review for user. Only Partner can get reviews.
-        profileStore.reviews?.length && (
-          <ProfileReviews />
-        )}
+      {
+        // TODO: get rid of review for user. Only Partner can get reviews.
+        profileStore.reviews?.length && <ProfileReviews />
+      }
     </div>
   );
 });

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { Notification } from "../../models/Notification.js";
 import { User } from "../../models/User.js";
 

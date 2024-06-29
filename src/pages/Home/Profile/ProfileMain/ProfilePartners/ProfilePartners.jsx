@@ -11,7 +11,7 @@ export const ProfilePartners = observer(() => {
   const [showPartnersModal, setShowPartnersModal] = useState(false);
   const { t } = useTranslation();
 
-  //TODO: add partner form
+  // TODO: add partner form
 
   return (
     <>

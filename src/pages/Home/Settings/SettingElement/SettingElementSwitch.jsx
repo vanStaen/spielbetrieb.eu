@@ -1,7 +1,6 @@
 import React from "react";
 import { Switch } from "antd";
 import { CloseOutlined, CheckOutlined, EnterOutlined } from "@ant-design/icons";
-import { useTranslation } from "react-i18next";
 
 import { updateSettings } from "./updateSettings";
 import { userStore } from "../../../../store/userStore/userStore";
@@ -9,9 +8,7 @@ import { userStore } from "../../../../store/userStore/userStore";
 import "./SettingElement.less";
 
 export const SettingElementSwitch = (props) => {
-  const { t } = useTranslation();
-  const { title, value, setting, type, dependOnPrevious, } =
-    props;
+  const { title, value, setting, type, dependOnPrevious } = props;
 
   const changeSettingsHandler = () => {
     const tempSettings = userStore[type];
@@ -47,10 +44,11 @@ export const SettingElementSwitch = (props) => {
         />
       </div>
       <div
-        className={`${dependOnPrevious
-          ? "settingElement__titleContainerDepend"
-          : "settingElement__titleContainer"
-          }`}
+        className={`${
+          dependOnPrevious
+            ? "settingElement__titleContainerDepend"
+            : "settingElement__titleContainer"
+        }`}
       >
         {title}
       </div>

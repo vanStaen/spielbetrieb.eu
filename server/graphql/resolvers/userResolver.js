@@ -329,7 +329,6 @@ export const userResolver = {
           requesting_id: args.requesting_id,
         },
       });
-      console.log(res);
       return !!res;
     } catch (err) {
       console.log(err);

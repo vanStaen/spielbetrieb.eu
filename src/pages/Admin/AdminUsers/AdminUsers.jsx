@@ -139,7 +139,8 @@ export const AdminUsers = () => {
       render: (_, record) => {
         return (
           <span>
-            {//TODO: check if has partner is working
+            {
+              // TODO: check if has partner is working
               record.isAdmin || record.partner ? (
                 <>
                   <Tooltip
@@ -191,7 +192,8 @@ export const AdminUsers = () => {
                     </Popconfirm>
                   </Tooltip>
                 </>
-              )}
+              )
+            }
           </span>
         );
       },
