@@ -147,6 +147,7 @@ export const eventResolver = {
       "allowAnonymous",
       "isDraft",
       "validated",
+      "partnerId",
     ];
     updatableFields.forEach((field) => {
       if (field in args.eventInput) {

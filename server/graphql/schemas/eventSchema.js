@@ -67,6 +67,7 @@ input EventInputData {
     allowAnonymous: Boolean
     isDraft: Boolean
     validated: Boolean
+    partnerId: Int
 }`;
 
 export const EventQueries = `

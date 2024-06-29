@@ -14,7 +14,7 @@ export const Event = sequelize.sequelize.define("event", {
   },
   partnerId: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   eventtype: {
     type: DataTypes.INTEGER,
