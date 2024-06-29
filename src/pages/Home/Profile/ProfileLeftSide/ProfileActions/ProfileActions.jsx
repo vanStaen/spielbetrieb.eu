@@ -95,10 +95,12 @@ export const ProfileActions = observer(() => {
     }
   };
 
+  //TODO: add message functionality
+
   return (
     <>
       <div className="profil__actionContainer">
-        <div className={"profil__action"}>
+        <div className={"profil__actionDisabled"}>
           <MailOutlined /> {t("profile.sendMessage")}
         </div>
         {requested ? (
