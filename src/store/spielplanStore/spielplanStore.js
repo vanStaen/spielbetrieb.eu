@@ -78,6 +78,7 @@ export class SpielplanStore {
     this.setIsLoadingEvent(true);
     let fromUnixDateStartOf;
     let untilUnixDateEndOf;
+    // TODO: Fix date value, probably sending iso without timezone.
     if (this.timeSpan === "all") {
       fromUnixDateStartOf = this.filterDateFrom.startOf("day").valueOf();
       untilUnixDateEndOf = this.filterDateFrom.endOf("year").valueOf();

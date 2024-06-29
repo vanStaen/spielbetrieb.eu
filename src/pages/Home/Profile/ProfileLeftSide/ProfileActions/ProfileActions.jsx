@@ -28,30 +28,30 @@ export const ProfileActions = observer(() => {
   const [isFollowing, setIsFollowing] = useState(
     userStore.following
       ? !(
-          userStore.following.findIndex(
-            (following) => parseInt(following.id) === profileStore.id,
-          ) < 0
-        )
+        userStore.following.findIndex(
+          (following) => parseInt(following.id) === profileStore.id,
+        ) < 0
+      )
       : false,
   );
 
   const [isFriend, setIsFriend] = useState(
     userStore.friends
       ? !(
-          userStore.friends.findIndex(
-            (friend) => parseInt(friend.id) === profileStore.id,
-          ) < 0
-        )
+        userStore.friends.findIndex(
+          (friend) => parseInt(friend.id) === profileStore.id,
+        ) < 0
+      )
       : false,
   );
 
   const [isPending, setIsPending] = useState(
     userStore.friendrequests
       ? !(
-          userStore.friendrequests.findIndex(
-            (pending) => parseInt(pending.id) === profileStore.id,
-          ) < 0
-        )
+        userStore.friendrequests.findIndex(
+          (pending) => parseInt(pending.id) === profileStore.id,
+        ) < 0
+      )
       : false,
   );
 
@@ -101,39 +101,35 @@ export const ProfileActions = observer(() => {
         <div className={"profil__action"}>
           <MailOutlined /> {t("profile.sendMessage")}
         </div>
-
-        {
-          // Partner store can not have friends
-          !(profileStore.isPartner || userStore.isPartner) &&
-            (requested ? (
-              <div
-                className={"profil__action"}
-                onClick={() => handleClick("acceptrequest")}
-              >
-                <UserAddOutlined /> {t("profile.acceptfriendRequest")}
-              </div>
-            ) : isPending ? (
-              <div
-                className={"profil__action"}
-                onClick={() => handleClick("unrequest")}
-              >
-                <UserDeleteOutlined /> {t("profile.deletePendingRequest")}
-              </div>
-            ) : isFriend ? (
-              <div
-                className={"profil__action"}
-                onClick={() => handleClick("unfriend")}
-              >
-                <UserDeleteOutlined /> {t("profile.unfriendRequest")}
-              </div>
-            ) : (
-              <div
-                className={"profil__action"}
-                onClick={() => handleClick("request")}
-              >
-                <UserAddOutlined /> {t("profile.sendFriendRequest")}
-              </div>
-            ))
+        {requested ? (
+          <div
+            className={"profil__action"}
+            onClick={() => handleClick("acceptrequest")}
+          >
+            <UserAddOutlined /> {t("profile.acceptfriendRequest")}
+          </div>
+        ) : isPending ? (
+          <div
+            className={"profil__action"}
+            onClick={() => handleClick("unrequest")}
+          >
+            <UserDeleteOutlined /> {t("profile.deletePendingRequest")}
+          </div>
+        ) : isFriend ? (
+          <div
+            className={"profil__action"}
+            onClick={() => handleClick("unfriend")}
+          >
+            <UserDeleteOutlined /> {t("profile.unfriendRequest")}
+          </div>
+        ) : (
+          <div
+            className={"profil__action"}
+            onClick={() => handleClick("request")}
+          >
+            <UserAddOutlined /> {t("profile.sendFriendRequest")}
+          </div>
+        )
         }
         {
           // Follow/Unfollow action

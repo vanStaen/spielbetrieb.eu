@@ -44,6 +44,7 @@ export const Header = observer((props) => {
         />
         <HeaderElement
           title="Dark Magazin"
+          disabled
           page="dark"
           selected={selected === "dark"}
         />

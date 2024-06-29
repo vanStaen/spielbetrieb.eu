@@ -102,6 +102,8 @@ export const Menu = observer(() => {
     navigate("/notifications");
   };
 
+  //TODO: like insta with multi, can switch from user to partner account
+
   return (
     <>
       <div className={`menu__containerAvatar`} onClick={avatarClickhandle}>

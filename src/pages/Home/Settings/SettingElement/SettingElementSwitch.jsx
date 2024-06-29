@@ -10,7 +10,7 @@ import "./SettingElement.less";
 
 export const SettingElementSwitch = (props) => {
   const { t } = useTranslation();
-  const { title, value, setting, type, dependOnPrevious, partnerDisabled } =
+  const { title, value, setting, type, dependOnPrevious, } =
     props;
 
   const changeSettingsHandler = () => {
@@ -43,18 +43,16 @@ export const SettingElementSwitch = (props) => {
           onChange={() => {
             changeSettingsHandler();
           }}
-          checked={partnerDisabled ? false : value}
-          disabled={partnerDisabled}
+          checked={value}
         />
       </div>
       <div
-        className={`${
-          dependOnPrevious
-            ? "settingElement__titleContainerDepend"
-            : "settingElement__titleContainer"
-        } ${partnerDisabled && "settingElement__partnerDisabled"}`}
+        className={`${dependOnPrevious
+          ? "settingElement__titleContainerDepend"
+          : "settingElement__titleContainer"
+          }`}
       >
-        {title} {partnerDisabled && `(${t("settings.notPartnerRelevant")})`}
+        {title}
       </div>
     </div>
   );

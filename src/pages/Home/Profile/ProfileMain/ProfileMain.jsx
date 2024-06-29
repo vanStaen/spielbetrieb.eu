@@ -22,10 +22,10 @@ export const ProfileMain = observer((props) => {
   return (
     <div className="profil__mainContainer">
       {(profileStore.description || thisIsMe) && <ProfileDescription />}
-      {(profileStore.wishes || thisIsMe) && !profileStore.isPartner && (
+      {(profileStore.wishes || thisIsMe) && (
         <ProfileWishes />
       )}
-      {(profileStore.interests || thisIsMe) && !profileStore.isPartner && (
+      {(profileStore.interests || thisIsMe) && (
         <ProfileInterests />
       )}
       {(profileStore.photos?.length || thisIsMe) && <ProfilePhotos />}
@@ -33,9 +33,10 @@ export const ProfileMain = observer((props) => {
       {(profileStore.tags?.length || thisIsMe) && <ProfileTags />}
       {(profileStore.link?.length || thisIsMe) && <ProfileLinks />}
       {(profileStore.partners?.length || thisIsMe) && <ProfilePartners />}
-      {profileStore.reviews?.length && profileStore.isPartner && (
-        <ProfileReviews />
-      )}
+      { //TODO: get rid of review for user. Only Partner can get reviews.
+        profileStore.reviews?.length && (
+          <ProfileReviews />
+        )}
     </div>
   );
 });

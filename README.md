@@ -68,13 +68,15 @@ SQL update script exemple:
 
 ### Table user | Partner
 
-`isPartner` is a flag set to identify a Partner and `partnerRoles` is an Array listing what feature a partner can access from their partner page. Hence only an integer is saved in those column, as an Id to the right data. 
+In the user table, an association to the table `partner` is made so that one user can have several Partner. A partner can also be shared between several users. `partnerRoles` is an Array listing what feature a partner can access from their partner page. 
 
 Possible partner roles are:
 1. `events`: overview/management of events for the spielplan
 2. `tickets`: overview/management of tickets for their events
 3. `sales`: overview/management of shop listings for their store
 4. `analytics`: special access to some more data regarding their page/events/tickets sale.
+
+The possible partner types are listed in the database of the same name: this is a simply classification of the partners into type to facilitate the search and filtering in the UI.
 
 ### Table Event | Dynamical parameters
 

@@ -8,7 +8,6 @@ import { SettingElementSwitch } from "./SettingElement/SettingElementSwitch";
 
 export const EmailSettings = observer(() => {
   const { t } = useTranslation();
-  const partnerDisabled = userStore.isPartner;
 
   return (
     <div className="EditSettings__container">
@@ -21,7 +20,6 @@ export const EmailSettings = observer(() => {
         type={"emailSettings"}
         setting={"sendEmailFriendRequest"}
         value={userStore.emailSettings.sendEmailFriendRequest}
-        partnerDisabled={partnerDisabled}
       />
 
       <SettingElementSwitch

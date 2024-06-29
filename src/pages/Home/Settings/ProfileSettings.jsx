@@ -8,7 +8,6 @@ import { SettingElementSwitch } from "./SettingElement/SettingElementSwitch";
 
 export const ProfileSettings = observer(() => {
   const { t } = useTranslation();
-  const partnerDisabled = userStore.isPartner;
 
   return (
     <div className="EditSettings__container">
@@ -28,7 +27,6 @@ export const ProfileSettings = observer(() => {
         type={"profilSettings"}
         setting={"hideProfilToStrangers"}
         value={userStore.profilSettings.hideProfilToStrangers}
-        partnerDisabled={partnerDisabled}
       />
 
       <Divider orientation="left" plain className="EditSettings__divider">
@@ -40,9 +38,8 @@ export const ProfileSettings = observer(() => {
         type={"profilSettings"}
         setting={"showFirstName"}
         value={userStore.profilSettings.showFirstName}
-        partnerDisabled={partnerDisabled}
       />
-      {!partnerDisabled && userStore.profilSettings.showFirstName && (
+      {userStore.profilSettings.showFirstName && (
         <SettingElementSwitch
           title={t("settings.showLastName")}
           type={"profilSettings"}
@@ -57,7 +54,6 @@ export const ProfileSettings = observer(() => {
         type={"profilSettings"}
         setting={"showGender"}
         value={userStore.profilSettings.showGender}
-        partnerDisabled={partnerDisabled}
       />
 
       <SettingElementSwitch
@@ -65,15 +61,10 @@ export const ProfileSettings = observer(() => {
         type={"profilSettings"}
         setting={"showSexualOrientation"}
         value={userStore.profilSettings.showSexualOrientation}
-        partnerDisabled={partnerDisabled}
       />
 
       <SettingElementSwitch
-        title={
-          userStore.isPartner
-            ? t("settings.showProjectStartDate")
-            : t("settings.showAge")
-        }
+        title={t("settings.showAge")}
         type={"profilSettings"}
         setting={"showAge"}
         value={userStore.profilSettings.showAge}
@@ -95,18 +86,16 @@ export const ProfileSettings = observer(() => {
         type={"profilSettings"}
         setting={"showFriendListToStrangers"}
         value={userStore.profilSettings.showFriendListToStrangers}
-        partnerDisabled={partnerDisabled}
       />
-      {!partnerDisabled &&
-        !userStore.profilSettings.showFriendListToStrangers && (
-          <SettingElementSwitch
-            title={t("settings.showFriendListToFriends")}
-            type={"profilSettings"}
-            setting={"showFriendListToFriends"}
-            value={userStore.profilSettings.showFriendListToFriends}
-            dependOnPrevious={true}
-          />
-        )}
+      {!userStore.profilSettings.showFriendListToStrangers && (
+        <SettingElementSwitch
+          title={t("settings.showFriendListToFriends")}
+          type={"profilSettings"}
+          setting={"showFriendListToFriends"}
+          value={userStore.profilSettings.showFriendListToFriends}
+          dependOnPrevious={true}
+        />
+      )}
 
       <SettingElementSwitch
         title={t("settings.showFollowingListToStrangers")}

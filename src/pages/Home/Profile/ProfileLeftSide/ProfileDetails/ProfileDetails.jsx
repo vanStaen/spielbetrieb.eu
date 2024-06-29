@@ -125,19 +125,7 @@ export const ProfileDetails = observer(() => {
           {showFirstName && profileStore.firstName}
           {showLastName && ` ${profileStore.lastName}`}
         </div>
-        {profileStore.isPartner ? (
-          <>
-            <div className="profil__details">Partner {partnerTypeText}</div>
-            {showAge && dayjs(profileStore.birthday).isValid() && (
-              <div className="profil__details">
-                {t("profile.since")}{" "}
-                {dayjs(profileStore.birthday).format("YYYY")}
-              </div>
-            )}
-          </>
-        ) : (
-          <div className="profil__details">{detailsArray.join(" - ")}</div>
-        )}
+        <div className="profil__details">{detailsArray.join(" - ")}</div>
         {showLocation && (
           <div className="profil__details">{profileStore.location}</div>
         )}

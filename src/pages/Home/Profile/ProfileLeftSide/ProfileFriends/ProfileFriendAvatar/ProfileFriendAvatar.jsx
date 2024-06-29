@@ -11,7 +11,7 @@ import "./ProfileFriendAvatar.less";
 export const ProfileFriendAvatar = (props) => {
   const [avatarLoading, setAvatarLoading] = useState(true);
   const [avatar, setAvatar] = useState(null);
-  const { userName, path, isPartner } = props;
+  const { userName, path } = props;
 
   const fetchAvatarUrls = async () => {
     if (path) {
@@ -35,7 +35,7 @@ export const ProfileFriendAvatar = (props) => {
   return (
     <Tooltip title={userName}>
       <Link
-        to={`../${isPartner ? "partner" : "user"}/${userName}`}
+        to={`../user/${userName}`}
         onClick={() => {
           profileStore.fetchProfileData(userName);
         }}

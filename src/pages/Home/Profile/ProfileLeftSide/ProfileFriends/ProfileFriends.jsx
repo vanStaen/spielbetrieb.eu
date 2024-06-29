@@ -16,7 +16,6 @@ export const ProfileFriends = observer(() => {
         key={`friend${index}`}
         userName={friend.userName}
         path={friend.avatar}
-        isPartner={friend.isPartner}
       />
     );
   });
@@ -27,7 +26,6 @@ export const ProfileFriends = observer(() => {
         key={`follower${index}`}
         userName={follower.userName}
         path={follower.avatar}
-        isPartner={follower.isPartner}
       />
     );
   });
@@ -38,7 +36,6 @@ export const ProfileFriends = observer(() => {
         key={`following${index}`}
         userName={following.userName}
         path={following.avatar}
-        isPartner={following.isPartner}
       />
     );
   });
@@ -51,7 +48,8 @@ export const ProfileFriends = observer(() => {
             {t("profile.friends")} ({profileStore.friends.length})
           </div>
           {friendsFormatted}
-          {/* <div className="profilFriends__followersAvatar profilFriends__followersCounterContainer">
+          {//TODO: If user has more than 8 friends, show 7 +x
+          /* <div className="profilFriends__followersAvatar profilFriends__followersCounterContainer">
           <div className="profilFriends__followersCounter"> +8</div>
         </div> */}
         </div>

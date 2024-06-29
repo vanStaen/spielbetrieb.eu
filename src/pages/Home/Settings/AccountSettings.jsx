@@ -18,7 +18,6 @@ export const AccountSettings = observer(() => {
   const initLanguage = i18n.language.slice(0, 2);
   const [showAllGenders, setShowAllGenders] = useState(false);
   const [showAllOrientations, setShowAllOrientations] = useState(false);
-  const partnerDisabled = userStore.isPartner;
 
   const changeLanguageHandler = (event) => {
     const value = event.target.value;
@@ -119,40 +118,36 @@ export const AccountSettings = observer(() => {
         Change as you wish
       </Divider>
 
-      {!partnerDisabled && (
-        <>
-          <div className="EditSettings__title EditSettings__centerDiv">
-            {t("settings.selectGender")}
-          </div>
-          <div className="EditSettings__centerDiv EditSettings__radio">
-            <Radio.Group
-              defaultValue={userStore.genderId}
-              buttonStyle="solid"
-              onChange={changeGenderHandler}
-            >
-              {showAllGenders ? gendersOptionsFull : gendersOptionsShort}
-            </Radio.Group>
-          </div>
+      <div className="EditSettings__title EditSettings__centerDiv">
+        {t("settings.selectGender")}
+      </div>
+      <div className="EditSettings__centerDiv EditSettings__radio">
+        <Radio.Group
+          defaultValue={userStore.genderId}
+          buttonStyle="solid"
+          onChange={changeGenderHandler}
+        >
+          {showAllGenders ? gendersOptionsFull : gendersOptionsShort}
+        </Radio.Group>
+      </div>
 
-          <div className="EditSettings__spacerDiv" />
-          <div className="EditSettings__title EditSettings__centerDiv">
-            {t("settings.selectSexualOrientation")}
-          </div>
+      <div className="EditSettings__spacerDiv" />
+      <div className="EditSettings__title EditSettings__centerDiv">
+        {t("settings.selectSexualOrientation")}
+      </div>
 
-          <div className="EditSettings__centerDiv EditSettings__radio">
-            <Radio.Group
-              defaultValue={userStore.orientationId}
-              buttonStyle="solid"
-              onChange={changeOrientationHandler}
-            >
-              {showAllOrientations
-                ? orientationsOptionsFull
-                : orientationsOptionsShort}
-            </Radio.Group>
-          </div>
-          <div className="EditSettings__spacerDiv" />
-        </>
-      )}
+      <div className="EditSettings__centerDiv EditSettings__radio">
+        <Radio.Group
+          defaultValue={userStore.orientationId}
+          buttonStyle="solid"
+          onChange={changeOrientationHandler}
+        >
+          {showAllOrientations
+            ? orientationsOptionsFull
+            : orientationsOptionsShort}
+        </Radio.Group>
+      </div>
+      <div className="EditSettings__spacerDiv" />
       <LocationUpdate />
 
       <div className="EditSettings__spacerDiv" />

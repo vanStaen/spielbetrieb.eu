@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 import { observer } from "mobx-react";
 import { MehOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
@@ -20,9 +19,7 @@ import "./Profile.less";
 
 export const Profile = observer((props) => {
   const params = useParams();
-  const navigate = useNavigate();
   const { t } = useTranslation();
-  const { url } = props;
 
   const redirectIfNotLoggedIn = async () => {
     if (!authStore.hasAccess) {
@@ -32,7 +29,6 @@ export const Profile = observer((props) => {
       }
     }
   };
-
   useEffect(() => {
     const username = params.username ? params.username : userStore.userName;
     username && profileStore.fetchProfileData(username);
@@ -44,16 +40,6 @@ export const Profile = observer((props) => {
     // If params.username = true, then check profile settings
     redirectIfNotLoggedIn();
   }, []);
-
-  useEffect(() => {
-    // Redirect to partner URL if user is partner and url is user
-    // or the opposite
-    if (profileStore.isPartner && url === "user") {
-      navigate(`/partner/${params.username}`);
-    } else if (!profileStore.isPartner && url === "partner") {
-      navigate(`/user/${params.username}`);
-    }
-  }, [profileStore.isPartner]);
 
   const thisIsMe = userStore.id === profileStore.id;
 
