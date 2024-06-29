@@ -94,7 +94,7 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
   }
 
   // Export results to Json file
-  const content = JSON.stringify(events);
+  /* const content = JSON.stringify(events);
   fs.writeFile(
     `./exports/${dayjs().format("MM_DD")}_stolzdemut.json`,
     content,
@@ -103,7 +103,7 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
         console.error(err);
       }
     },
-  );
+  ); */
 
   await browser.close();
 
@@ -133,17 +133,17 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
       const hasDresscode = 2; // Strict dresscode
       const dresscodeDoTags = dataEvent.dresscode
         ? dataEvent.dresscode
-            .map((dresscode) => {
-              const result = dresscodeData.filter(
-                (data) => nameParser(data.name, "de") === dresscode,
-              );
-              if (result.length === 1) {
-                return result[0].id;
-              } else {
-                return undefined;
-              }
-            })
-            .filter(Boolean)
+          .map((dresscode) => {
+            const result = dresscodeData.filter(
+              (data) => nameParser(data.name, "de") === dresscode,
+            );
+            if (result.length === 1) {
+              return result[0].id;
+            } else {
+              return undefined;
+            }
+          })
+          .filter(Boolean)
         : [];
 
       dresscodeDoTags.push(20);

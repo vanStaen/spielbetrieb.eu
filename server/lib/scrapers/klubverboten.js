@@ -89,7 +89,7 @@ import dayjs from "dayjs";
   }
 
   // Export results to Json file
-  const content = JSON.stringify(events);
+  /* const content = JSON.stringify(events);
   fs.writeFile(
     `./exports/${dayjs().format("MM_DD")}_klubverboten.json`,
     content,
@@ -98,7 +98,7 @@ import dayjs from "dayjs";
         console.error(err);
       }
     },
-  );
+  ); */
 
   // Add event into db
   /* 

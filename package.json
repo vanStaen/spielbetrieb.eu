@@ -14,7 +14,7 @@
     "prebuild": "rm -rf ./build",
     "build": "webpack --config webpack.config.prod.cjs --mode production",
     "predeploy": "npm run build",
-    "deploy": "npm i; heroku git:remote -a spielbetrieb; git push heroku master; npm run backup;",
+    "deploy": "npm i; heroku git:remote -a spielbetrieb; git push heroku master;  npm runopenprodUi; npm run backup; npm run scraper;",
     "postdeploy": "rm -rf ./build",
     "log": "heroku logs --tail",
     "version": "heroku --version; git --version",
@@ -26,7 +26,8 @@
     "scrapeinso": "cd server/lib/scrapers; node insomnia.js/; cd ../../../",
     "scrapekitty": "cd server/lib/scrapers; node kitkatclub.js/; cd ../../../",
     "scrapestolzdemut": "cd server/lib/scrapers; node stolzdemut.js/; cd ../../../",
-    "scrapeklubverboten": "cd server/lib/scrapers; node klubverboten.js/; cd ../../../"
+    "scrapeklubverboten": "cd server/lib/scrapers; node klubverboten.js/; cd ../../../",
+    "openprodUi": "open https://spielbetrieb.eu"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.533.0",

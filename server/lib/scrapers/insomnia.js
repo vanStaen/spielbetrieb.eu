@@ -102,7 +102,7 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
   }
 
   // Export results to Json file
-  const content = JSON.stringify(events);
+  /* const content = JSON.stringify(events);
   fs.writeFile(
     `./exports/${dayjs().format("MM_DD")}_insomnia.json`,
     content,
@@ -111,7 +111,7 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
         console.error(err);
       }
     },
-  );
+  ); */
 
   await browser.close();
 
@@ -123,17 +123,17 @@ const LOCATION_COORDINATES = "52.46570767175525, 13.386162665015354";
     const links = [dataEvent.link];
     const eventTags = dataEvent.tags
       ? dataEvent.tags
-          .map((tag) => {
-            const result = tagData.filter(
-              (data) => nameParser(data.name, "en") === tag,
-            );
-            if (result.length === 1) {
-              return result[0].id;
-            } else {
-              return undefined;
-            }
-          })
-          .filter(Boolean)
+        .map((tag) => {
+          const result = tagData.filter(
+            (data) => nameParser(data.name, "en") === tag,
+          );
+          if (result.length === 1) {
+            return result[0].id;
+          } else {
+            return undefined;
+          }
+        })
+        .filter(Boolean)
       : [];
 
     const fromDateSplit = dataEvent.fromDate.split(".");

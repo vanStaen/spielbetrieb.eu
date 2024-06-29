@@ -82,7 +82,7 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
   });
 
   // Export results to Json file
-  const content = JSON.stringify(data);
+  /* const content = JSON.stringify(data);
   fs.writeFile(
     `./exports/${dayjs().format("MM_DD")}_kitty.json`,
     content,
@@ -91,7 +91,7 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
         console.error(err);
       }
     },
-  );
+  ); */
 
   await browser.close();
 
