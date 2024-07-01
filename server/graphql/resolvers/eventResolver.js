@@ -102,7 +102,6 @@ export const eventResolver = {
         forwardable: args.eventInput.forwardable,
         allowAnonymous: args.eventInput.allowAnonymous,
         isDraft: args.eventInput.isDraft,
-        // TODO: event form, choose partner if any
         partnerId: args.eventInput.partnerId,
         validated: args.eventInput.validated,
         admin: [req.userId],
