@@ -150,6 +150,7 @@ export const TicketValidation = () => {
               showBackgroundImg={true}
             />
           )}
+          {/*TODO: Here always show event details page */}
           <img
             src="https://www.schwerelos-berlin.com/pathfinder.jpg"
             width="100%"
