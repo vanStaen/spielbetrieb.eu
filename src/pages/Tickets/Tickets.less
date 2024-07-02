@@ -1,0 +1,62 @@
+@schwerelos_pink: #F70069;
+
+.pageTicketContainer {
+    overflow-y: hidden;
+    height: 100vh;
+    width: 100vw;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    background-image: linear-gradient(to bottom left, darken(@schwerelos_pink, 35%), @schwerelos_pink 50%, darken(@schwerelos_pink, 35%));
+
+    .backgroundOpacity {
+        display: block;
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: black;
+        width: 100vw;
+        height: 100vh;
+        opacity: .7;
+    } 
+    
+    .ticketContainer {
+       // width: min(90vw, 1500px);
+    }
+
+    .ticketValidationContainer {
+        // width: min(90vw, 1500px);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        position: absolute;
+
+        .icon {
+            font-size: 50vh;
+        }
+    }
+
+    .ticketId {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        font-size: 2vh;
+        font-weight: 300;
+        letter-spacing: 3px;
+        width: 100vw;
+        text-align: center;
+        padding-bottom: 2vh;
+        
+    }
+}
+
+.pageContainer::-webkit-scrollbar {
+    display: none;
+}

@@ -23,6 +23,8 @@ import { Newsletter } from "./pages/Newsletter/Newsletter";
 import { DarkSingle } from "./pages/DarkSingle/DarkSingle";
 import { Impressum } from "./components/Impressum/Impressum";
 import { spielplanStore } from "./store/spielplanStore/spielplanStore";
+import { TicketValidation } from "./pages/Tickets/TicketValidation/TicketValidation";
+
 
 import "./lib/i18n";
 
@@ -126,6 +128,10 @@ const App = observer(() => {
             <Route path="privacy/" element={<Legal page="privacy" />} />
             <Route path="agb/" element={<Legal page="agb" />} />
             <Route path="impressum/" element={<Legal page="impressum" />} />
+            <Route
+              path="ticket/:event/:ticketId"
+              element={<TicketValidation />}
+            />
             <Route path="beta/" element={<Home page="home" />} />
             <Route path="/" element={<LandingPage />} />
             <Route path="*" element={<FourOfour />} />

@@ -1,0 +1,68 @@
+@schwerelos-green: #2BC487;
+@schwerelos-purple: #9F44D9;
+@schwerelos-pink: #F70069;
+
+.qrCodeMainContainer {    
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: absolute;
+
+    .qrCodeContainer {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 600px;
+        width: 600px;
+        border: 2px solid ;
+        background-color: white;
+    }
+
+    .ticketText {
+        font-size: 15px;
+        color: black;
+        letter-spacing: 3px;    }
+
+    .textTop {
+        padding-top: 20px;
+        padding-bottom: 5px;
+    }
+
+    .schwerelos{
+        text-shadow:  -10px -10px rgba(@schwerelos-green, .2), 5px 5px rgba(@schwerelos-purple, .2), -5px -5px rgba(@schwerelos-pink, .2);
+    }
+
+    .textBottom {
+        padding-top: 20px;
+        padding-bottom: 5px;
+        -moz-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg) ;
+        -o-transform: rotate(180deg) ;
+    }
+
+    .textRight {
+        top: 250px;
+        left: 272px;
+        position: relative;
+        -moz-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg) ;
+        -o-transform: rotate(90deg) ;
+    }
+
+    .textLeft {
+        top: -250px;
+        right: 272px;
+        position: relative;
+        -moz-transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg) ;
+        -o-transform: rotate(-90deg) ;
+    }    
+}

@@ -1,0 +1,85 @@
+@schwerelos-green: #2BC487;
+@schwerelos-purple: #9F44D9;
+@schwerelos-pink: #F70069;
+
+.glitch {
+    z-index: 5;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    text-align: right;
+              
+    @media all and (max-width: 520px) {
+      top: 15px;
+      right: 30px;
+    }
+
+    .overText{
+        opacity: .5;
+        font-family: sans-serif	;
+        font-weight: 100;	
+        letter-spacing: 2px;
+        font-size: 1rem;
+        text-transform: lowercase;
+        @media all and (max-width: 520px) {
+          font-size: .7rem;
+        }
+    }
+
+    .glitchText {
+        display: grid;
+        grid-template-columns: 1fr;
+        text-transform: uppercase;
+      }
+      
+      .glitchText span {
+        font-weight: bold;
+        grid-row-start: 1;
+        grid-column-start: 1;
+        font-size: 2rem;
+        --stack-height: calc(100% / var(--stacks) - 1px);
+        --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+        --clip-top: calc(var(--stack-height) * var(--index));
+        --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+        clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+        animation: stack 750ms cubic-bezier(.46,.29,0,1.24) 1 backwards calc(var(--index) * 120ms), glitch 2s ease infinite 1s alternate-reverse;
+        @media all and (max-width: 520px) {
+          font-size: 1.3rem;
+        }
+      }
+      
+      .glitchText span:nth-child(odd) { --glitch-translate: 8px; }
+      .glitchText span:nth-child(even) { --glitch-translate: -8px; }
+      
+      @keyframes stack {
+        0% {
+          opacity: 0;
+          transform: translateX(-50%);
+          text-shadow: -2px 3px 0 @schwerelos-pink, 2px -3px 0 @schwerelos-green;
+        };
+        60% {
+          opacity: 0.5;
+          transform: translateX(50%);
+        }
+        80% {
+          transform: none;
+          opacity: 1;
+          text-shadow: 2px -3px 0 @schwerelos-pink, -2px 3px 0 @schwerelos-green;
+        }
+        100% {
+          text-shadow: none;
+        }
+      }
+      
+      @keyframes glitch {
+        0% {
+          text-shadow: -2px 3px 0 @schwerelos-pink, 2px -3px 0 @schwerelos-green;
+          transform: translate(var(--glitch-translate));
+        }
+        2% {
+          text-shadow: 2px -3px 0 @schwerelos-pink, -2px 3px 0 @schwerelos-green;
+        }
+        4%, 100% {  text-shadow: none; transform: none; }
+      }
+
+}
