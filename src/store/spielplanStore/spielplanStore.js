@@ -218,7 +218,6 @@ export class SpielplanStore {
       .endOf(this.timeSpan)
       .valueOf();
     if (todayUnixDate > previousEndOfDateFrom) {
-      console.log('here');
       notification.error({
         message: "We don't display past events",
         description: "What is in the past, stays in the past: You can only see all events finishing at the latest today, everything else is hidden forever.",

@@ -18,6 +18,7 @@ export const ProfilePartners = observer(() => {
       <div className="profilePartners__container">
         <ProfileMainTitle
           title={t("profile.partners")}
+          addPartner={true}
           showEdit={showPartnersModal}
           setShowEdit={setShowPartnersModal}
         />
