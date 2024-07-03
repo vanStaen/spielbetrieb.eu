@@ -67,6 +67,11 @@ export const authService = {
 
   async access(req) {
     if (req.isAuth === true) {
+      // Update lastLogin in user table
+      await User.update(
+        { lastActive: Date.now() },
+        { where: { id: req.userId } },
+      );
       // Return true if has access
       return true;
     } else {
