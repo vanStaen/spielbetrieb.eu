@@ -1,6 +1,7 @@
 import { action, makeObservable, observable } from "mobx";
 import dayjs from "dayjs";
 import Cookies from "universal-cookie";
+import { notification } from "antd";
 
 import { getAllPublicEvents } from "./getAllPublicEvents.js";
 import { getAllEventtypes } from "./getAllEventtypes.js";
@@ -114,8 +115,8 @@ export class SpielplanStore {
       untilUnixDateEndOf = this.filterDateFrom.endOf(this.timeSpan).valueOf();
     }
 
-    console.log("getAllPublicEvents from", fromUnixDateStartOf);
-    console.log("getAllPublicEvents until", untilUnixDateEndOf);
+    //console.log("getAllPublicEvents from", fromUnixDateStartOf);
+    //console.log("getAllPublicEvents until", untilUnixDateEndOf);
 
     const events = await getAllPublicEvents(
       fromUnixDateStartOf,
@@ -217,7 +218,13 @@ export class SpielplanStore {
       .endOf(this.timeSpan)
       .valueOf();
     if (todayUnixDate > previousEndOfDateFrom) {
-      // TODO: Inform user that we don't show past event?
+      console.log('here');
+      notification.error({
+        message: "We don't display past events",
+        description: "What is in the past, stays in the past: You can only see all events finishing at the latest today, everything else is hidden forever.",
+        placement: "bottomRight",
+        className: "customNotification",
+      });
     } else {
       this.filterDateFrom = dayjs(filterDateFrom);
     }
