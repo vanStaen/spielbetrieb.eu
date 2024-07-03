@@ -37,7 +37,7 @@
 - [ ] EventPage : handle secret location (id9)
 - [ ] EventForm : Add loader on selects
 - [ ] If draft is set to false, create notification for admins (in BE)
-- [ ] Form should show that it is only 5 pic max (evengt uplaod artwork)
+- [ ] Form should show that it is only 5 pic max (event uplaod artwork)
 - [ ] Partner profile, should not have friends or following, just followers
 - [ ] Report broken link feature 
 
@@ -51,7 +51,6 @@ AI bilder
 
 - [ ] Create deployment pipeline with test env
 - [ ] Get rid of Axios, and use fetch();
-- [ ] FrontEnd : Update all packages
 - [ ] Tracking/Analytics
 - [ ] Use List of forbidden usernames
 - [ ] Use List of forbidden words

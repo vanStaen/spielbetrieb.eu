@@ -1,8 +1,8 @@
-const { sequelize, DataTypes } = require('../helpers/sequelizedb');
+import { sequelize, DataTypes } from "../lib/sequelizedb.js";
 
 // TODO: bitte ergänzen
 // GraphQl endpoint vorbereiten
-const Ticket = sequelize.define("ticket", {
+export const Ticket = sequelize.sequelize.define("ticket", {
   id: {
     type: DataTypes.INTEGER,
     field: "id",
@@ -22,7 +22,3 @@ const Ticket = sequelize.define("ticket", {
     defaultValue: false,
   },
 });
-
-module.exports = {
-  Ticket
-};
