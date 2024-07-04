@@ -6,6 +6,7 @@ import { profileStore } from "../../../../../store/profileStore/profileStore";
 import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMainTitle";
 
 import "./ProfilePartners.less";
+import { CreatePartnerForm } from "./CreatePartnerForm/CreatePartnerForm";
 
 export const ProfilePartners = observer(() => {
   const [showPartnersModal, setShowPartnersModal] = useState(false);
@@ -15,6 +16,10 @@ export const ProfilePartners = observer(() => {
 
   return (
     <>
+      <CreatePartnerForm
+        showModal={showPartnersModal}
+        setShowModal={setShowPartnersModal}
+      />
       <div className="profilePartners__container">
         <ProfileMainTitle
           title={t("profile.partners")}

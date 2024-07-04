@@ -11,8 +11,16 @@ import "./ProfileMainTitle.less";
 
 export const ProfileMainTitle = observer((props) => {
   const navigate = useNavigate();
-  const { value, title, addEvent, addPhoto, addPartner, editable, showEdit, setShowEdit } =
-    props;
+  const {
+    value,
+    title,
+    addEvent,
+    addPhoto,
+    addPartner,
+    editable,
+    showEdit,
+    setShowEdit,
+  } = props;
   const hasValue = value !== undefined && value > 0;
   const thisIsMe = userStore.id === profileStore.id;
   const isNotEditable = editable === false;
@@ -45,7 +53,7 @@ export const ProfileMainTitle = observer((props) => {
         ) : addPartner ? (
           <div className="profileMain__edit">
             <Tooltip title="Create a Partner page">
-              <PlusOutlined onClick={() => console.log("addPartner")} />
+              <PlusOutlined onClick={editHandler} />
             </Tooltip>
           </div>
         ) : (
