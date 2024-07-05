@@ -5,10 +5,12 @@ type Partner {
     description: String
     avatar: String
     pictures: [String]
-    profilSettings: String
+    settings: String
     reviews: [String]
     partnertype: Int
     partnerRoles: Int
+    links: [String]
+    partnerTags: [Int]
     lastActive: Float!
     archived: Boolean
     suspended: Boolean
@@ -23,10 +25,12 @@ input PartnerInputData {
     description: String
     avatar: String
     pictures: [String]
-    profilSettings: String
+    settings: String
     reviews: [String]
     partnertype: Int
     partnerRoles: Int
+    links: [String]
+    partnerTags: [Int]
     archived: Boolean
     suspended: Boolean
     admin: [Int]
@@ -44,4 +48,4 @@ export const PartnerMutations = `
     deletePartnerAsAdmin(partnerId: ID!): Boolean!
 `;
 
-//TODO: Creat partner resolver
+// TODO: Creat partner resolver

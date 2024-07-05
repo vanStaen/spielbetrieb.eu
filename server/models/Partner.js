@@ -25,7 +25,7 @@ export const Partner = sequelize.sequelize.define("partner", {
     type: DataTypes.ARRAY(DataTypes.STRING),
     defaultValue: [],
   },
-  profilSettings: {
+  settings: {
     type: DataTypes.STRING,
     allowNull: true,
     defaultValue: null,
@@ -46,6 +46,14 @@ export const Partner = sequelize.sequelize.define("partner", {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
+  links: {
+    type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: true,
+  },
+  partnerTags: {
+    type: DataTypes.ARRAY(DataTypes.INTEGER),
+    defaultValue: [],
+  },
   archived: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
@@ -57,7 +65,7 @@ export const Partner = sequelize.sequelize.define("partner", {
   admin: {
     type: DataTypes.ARRAY(DataTypes.INTEGER),
     allowNull: false,
-  }
+  },
 });
 
 User.belongsToMany(Partner, {

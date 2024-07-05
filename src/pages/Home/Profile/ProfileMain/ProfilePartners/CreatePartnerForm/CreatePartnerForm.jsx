@@ -4,7 +4,6 @@ import { Form, Modal, Button, message, Select, Input } from "antd";
 
 import { useTranslation } from "react-i18next";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
-import { userStore } from "../../../../../../store/userStore/userStore";
 import { getPartnertypes } from "../../../../../../store/pageStore/getPartnertypes";
 import { nameParser } from "../../../../../../helpers/dev/nameParser";
 
@@ -15,11 +14,13 @@ import "./CreatePartnerForm.less";
     description: String
     avatar: String
     partnertype: Int
+    links: [String]
+    partnerTags: [Int]
 
     -> after moderation
     partnerRoles: Int
     reviews: [String]
-    profilSettings: String
+    settings: String
     pictures: [String]
     admin: [Int]
 */
@@ -27,28 +28,35 @@ import "./CreatePartnerForm.less";
 export const CreatePartnerForm = observer((props) => {
   const { t } = useTranslation();
   const { showModal, setShowModal } = props;
-  const [partnertypes, setPartnertypes] = useState(null);
+  const [partnerTypesOptions, setPartnerTypesOptions] = useState(null);
 
   const fetchPartnertypes = async () => {
     const results = await getPartnertypes();
-    setPartnertypes(results);
+    pageStore.setPartnertypes(results);
   };
 
-  const partnerTypesOptions = partnertypes?.map((type) => {
-    if (type.validated === false) {
-      return null;
-    }
-    return {
-      value: parseInt(type.id),
-      label: nameParser(type.name, userStore.language.toLowerCase()),
-    };
-  });
+  const createPartnerTypesOptions = async () => {
+    const res = await pageStore.partnertypes?.map((type) => {
+      if (type.validated === false) {
+        return null;
+      }
+      return {
+        value: parseInt(type.id),
+        label: nameParser(type.name, pageStore.selectedLanguage.toLowerCase()),
+      };
+    });
+    setPartnerTypesOptions(res);
+  };
 
   useEffect(() => {
-    // if (pageStore.partnertypes.length === 0) {
-    fetchPartnertypes();
-    // }
+    if (pageStore.partnertypes.length === 0) {
+      fetchPartnertypes();
+    }
   }, []);
+
+  useEffect(() => {
+    createPartnerTypesOptions();
+  }, [pageStore.partnertypes, pageStore.selectedLanguage]);
 
   const saveHandler = async () => {
     try {
