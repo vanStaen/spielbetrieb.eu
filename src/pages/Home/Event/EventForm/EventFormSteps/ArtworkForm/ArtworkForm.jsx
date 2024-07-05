@@ -20,6 +20,8 @@ import "./ArtworkForm.less";
 
 const S3_BUCKET = "events";
 
+// TODO: create separate upload form component
+
 export const ArtworkForm = observer(() => {
   const [isUploading, setIsUploading] = useState(false);
   const [isDragDroping, setIsDragDroping] = useState(false);

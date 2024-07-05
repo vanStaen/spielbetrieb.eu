@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
-import { Form, Modal, Button, message, Select, Input } from "antd";
+import { Form, Modal, message, Select, Input, Button, Col, Row } from "antd";
 
 import { useTranslation } from "react-i18next";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
@@ -10,12 +10,7 @@ import { nameParser } from "../../../../../../helpers/dev/nameParser";
 import "./CreatePartnerForm.less";
 
 /* TODO:
-    name: String!
-    description: String
     avatar: String
-    partnertype: Int
-    links: [String]
-    partnerTags: [Int]
 
     -> after moderation
     partnerRoles: Int
@@ -23,12 +18,15 @@ import "./CreatePartnerForm.less";
     settings: String
     pictures: [String]
     admin: [Int]
+    links: [String]
+    partnerTags: [Int]
 */
 
 export const CreatePartnerForm = observer((props) => {
   const { t } = useTranslation();
   const { showModal, setShowModal } = props;
   const [partnerTypesOptions, setPartnerTypesOptions] = useState(null);
+  const { TextArea } = Input;
 
   const fetchPartnertypes = async () => {
     const results = await getPartnertypes();
@@ -58,9 +56,9 @@ export const CreatePartnerForm = observer((props) => {
     createPartnerTypesOptions();
   }, [pageStore.partnertypes, pageStore.selectedLanguage]);
 
-  const saveHandler = async () => {
+  const submitHandler = async () => {
     try {
-      message.info(t(`profile.partnerPageDoneToModeration`));
+      message.info(t(`profile.partnerPageGoneToModeration`));
       setShowModal(false);
     } catch (e) {
       console.error(e);
@@ -74,42 +72,73 @@ export const CreatePartnerForm = observer((props) => {
       }
       open={showModal}
       onCancel={() => setShowModal(false)}
-      footer={
-        <div className="modal__footerContainer">
-          <Button onClick={saveHandler} className="modal__footerButton">
-            Save
-          </Button>
-        </div>
-      }
+      footer={null}
       centered={true}
       className={`form__modal ${pageStore.selectedTheme === "light" ? "modal__backgroundLight" : "modal__backgroundDark"}`}
     >
       <div className="modal__select">
-        <Form.Item
-          name="name"
-          rules={[
-            {
-              required: true,
-              message: t("profile.missingPartnerName"),
-            },
-          ]}
+        <Form
+          name="createPartnerForm"
+          onFinish={submitHandler}
+          style={{ height: "100%" }}
         >
-          <Input placeholder={t("profile.partnerName")} />
-        </Form.Item>
-        <Form.Item
-          name="partner type"
-          rules={[
-            {
-              required: true,
-              message: t("profile.missingPartnerType"),
-            },
-          ]}
-        >
-          <Select
-            placeholder={t("profile.partnerType")}
-            options={partnerTypesOptions}
-          />
-        </Form.Item>
+          <Row>
+            <Col span={6}>
+              <div className="createPartnerForm__addAvatar"></div>
+            </Col>
+            <Col span={18}>
+              <Form.Item
+                name="name"
+                rules={[
+                  {
+                    required: true,
+                    message: t("profile.missingPartnerName"),
+                  },
+                ]}
+              >
+                <Input placeholder={t("profile.partnerName")} />
+              </Form.Item>
+              <Form.Item
+                name="partner type"
+                rules={[
+                  {
+                    required: true,
+                    message: t("profile.missingPartnerType"),
+                  },
+                ]}
+              >
+                <Select
+                  placeholder={t("profile.partnerType")}
+                  options={partnerTypesOptions}
+                />
+              </Form.Item>
+            </Col>
+          </Row>
+
+          <Form.Item
+            name="description"
+            rules={[
+              {
+                required: true,
+                message: t("profile.missingDescription"),
+              },
+            ]}
+          >
+            <TextArea
+              placeholder={t("profile.shortDescription")}
+              rows={3}
+              maxLength={1024}
+              showCount
+            />
+          </Form.Item>
+          <div className="modal__footerContainer">
+            <Form.Item>
+              <Button htmlType="submit" className="modal__footerButton">
+                Save
+              </Button>
+            </Form.Item>
+          </div>
+        </Form>
       </div>
     </Modal>
   );
