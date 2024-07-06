@@ -12,6 +12,6 @@ export const getLastTicketId = async () => {
       headers: {
         "Content-Type": "application/json",
       },
-    }
+    },
   );
 };

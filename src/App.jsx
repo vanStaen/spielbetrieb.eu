@@ -25,7 +25,6 @@ import { Impressum } from "./components/Impressum/Impressum";
 import { spielplanStore } from "./store/spielplanStore/spielplanStore";
 import { TicketValidation } from "./pages/Tickets/TicketValidation/TicketValidation";
 
-
 import "./lib/i18n";
 
 import "./App.less";

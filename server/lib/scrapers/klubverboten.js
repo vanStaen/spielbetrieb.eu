@@ -1,6 +1,4 @@
 import puppeteer from "puppeteer";
-import fs from "fs";
-import dayjs from "dayjs";
 
 // import insertEventIntoDB from "./helpers/insertEventIntoDB.js";
 

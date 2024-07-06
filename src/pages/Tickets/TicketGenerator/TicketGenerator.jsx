@@ -40,7 +40,12 @@ export const TicketGenerator = (props) => {
     try {
       const uuidValue = uuidv4();
       setQrCodeValue(
-        "https://schwerelos-berlin.com/" + route + "/" + event + "/" + uuidValue
+        "https://schwerelos-berlin.com/" +
+          route +
+          "/" +
+          event +
+          "/" +
+          uuidValue,
       );
       saveTicketIdInDatabase(uuidValue);
       downloadQrCode();
@@ -50,9 +55,9 @@ export const TicketGenerator = (props) => {
   };
 
   const downloadQrCode = () => {
-    var ticketElement = document.getElementById("qrCodeGenerated");
+    const ticketElement = document.getElementById("qrCodeGenerated");
     html2canvas(ticketElement, { allowTaint: true }).then((canvas) => {
-      let link = document.createElement("a");
+      const link = document.createElement("a");
       document.body.appendChild(link);
       link.download = `schwerelos_ticket_${event}${formatTicketNumber()}.png`;
       link.href = canvas.toDataURL();

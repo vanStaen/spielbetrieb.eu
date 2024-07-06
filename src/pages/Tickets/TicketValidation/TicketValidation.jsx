@@ -19,7 +19,7 @@ import "../Tickets.less";
 
 // TODO: Adapt for Spielbetrieb
 export const TicketValidation = () => {
-  let { event, ticketId } = useParams();
+  const { event, ticketId } = useParams();
   const [isLoading, setLoading] = useState(true);
   const [secondStepConfirm, setSecondStepConfirm] = useState(false);
   const [isValid, setIsValid] = useState(null);
@@ -150,7 +150,7 @@ export const TicketValidation = () => {
               showBackgroundImg={true}
             />
           )}
-          {/*TODO: Here always show event details page */}
+          {/* TODO: Here always show event details page */}
           <img
             src="https://www.schwerelos-berlin.com/pathfinder.jpg"
             width="100%"

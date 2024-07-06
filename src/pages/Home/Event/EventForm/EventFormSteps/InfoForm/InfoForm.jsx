@@ -57,13 +57,14 @@ export const InfoForm = observer((props) => {
     }
   };
 
-  // TODO: event form, choose partner if any 
+  // TODO: event form, choose partner if any
   return (
     <div
-      className={`infoform__container  ${pageStore.selectedTheme === "light"
-        ? "lightColorTheme__Text"
-        : "darkColorTheme__Text"
-        }`}
+      className={`infoform__container  ${
+        pageStore.selectedTheme === "light"
+          ? "lightColorTheme__Text"
+          : "darkColorTheme__Text"
+      }`}
     >
       <InfoFormEventtype
         eventtypesOptions={eventtypesOptions}

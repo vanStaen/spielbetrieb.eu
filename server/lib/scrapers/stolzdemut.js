@@ -1,6 +1,4 @@
 import puppeteer from "puppeteer";
-import fs from "fs";
-import dayjs from "dayjs";
 
 import insertEventIntoDB from "./helpers/insertEventIntoDB.js";
 import getDresscodes from "./helpers/getDresscodes.js";
@@ -133,17 +131,17 @@ const LOCATION_COORDINATES = "52.51129317759199, 13.41676440644593";
       const hasDresscode = 2; // Strict dresscode
       const dresscodeDoTags = dataEvent.dresscode
         ? dataEvent.dresscode
-          .map((dresscode) => {
-            const result = dresscodeData.filter(
-              (data) => nameParser(data.name, "de") === dresscode,
-            );
-            if (result.length === 1) {
-              return result[0].id;
-            } else {
-              return undefined;
-            }
-          })
-          .filter(Boolean)
+            .map((dresscode) => {
+              const result = dresscodeData.filter(
+                (data) => nameParser(data.name, "de") === dresscode,
+              );
+              if (result.length === 1) {
+                return result[0].id;
+              } else {
+                return undefined;
+              }
+            })
+            .filter(Boolean)
         : [];
 
       dresscodeDoTags.push(20);

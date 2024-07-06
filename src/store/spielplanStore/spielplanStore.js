@@ -115,8 +115,8 @@ export class SpielplanStore {
       untilUnixDateEndOf = this.filterDateFrom.endOf(this.timeSpan).valueOf();
     }
 
-    //console.log("getAllPublicEvents from", fromUnixDateStartOf);
-    //console.log("getAllPublicEvents until", untilUnixDateEndOf);
+    // console.log("getAllPublicEvents from", fromUnixDateStartOf);
+    // console.log("getAllPublicEvents until", untilUnixDateEndOf);
 
     const events = await getAllPublicEvents(
       fromUnixDateStartOf,
@@ -220,7 +220,8 @@ export class SpielplanStore {
     if (todayUnixDate > previousEndOfDateFrom) {
       notification.error({
         message: "We don't display past events",
-        description: "What is in the past, stays in the past: You can only see all events finishing at the latest today, everything else is hidden forever.",
+        description:
+          "What is in the past, stays in the past: You can only see all events finishing at the latest today, everything else is hidden forever.",
         placement: "bottomRight",
         className: "customNotification",
       });
