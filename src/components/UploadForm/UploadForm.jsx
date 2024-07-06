@@ -47,7 +47,7 @@ export const UploadForm = (props) => {
   };
 
   return (
-    <form className="upload__form">
+    <div className="upload__form">
       <input
         type="file"
         className="inputfile"
@@ -105,6 +105,6 @@ export const UploadForm = (props) => {
           )}
         </label>
       )}
-    </form>
+    </div>
   );
 };
