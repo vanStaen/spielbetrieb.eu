@@ -1,0 +1,45 @@
+.upload__form {
+  font-size: 14px;
+  font-weight: 200;
+  width: 100%;
+
+  .inputfile {
+    position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  .inputfile+label {
+    color: rgba(var(--themeFontColor), 1);
+    background: rgba(var(--themeFontColor), .1);
+    border: 1px dashed rgba(var(--themeFontColor), .5);
+    cursor: pointer;
+    transition: border-color 0.3s, background 0.3s, color 0.3s;
+    cursor: pointer;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  .inputfile:focus+label,
+  .inputfile+label:hover {
+    background: rgba(var(--themeFontColor), .25);
+  }
+
+  .uploadIcon,
+  .uploaderSpinner {
+    color: rgba(var(--themeFontColor), 1);
+    font-size: 36px;
+    margin: 0 0 8px 0 !important;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .upload__form {
+    width: calc(100% - 32px);
+    margin: 16px 0;
+  } 
+}

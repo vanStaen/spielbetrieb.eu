@@ -1,20 +1,15 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
 import { Popconfirm, notification, message } from "antd";
+import { DeleteOutlined, BackwardOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import {
-  PictureOutlined,
-  LoadingOutlined,
-  FileAddOutlined,
-  DeleteOutlined,
-  BackwardOutlined,
-} from "@ant-design/icons";
 
 import { eventFormStore } from "../../eventFormStore";
 import { postPicture } from "../../../../../../helpers/picture/postPicture";
 import { deletePicture } from "../../../../../../helpers/picture/deletePicture";
 import { getPictureUrl } from "../../../../../../helpers/picture/getPictureUrl";
 import { arrayMove } from "../../../../../../helpers/manipulation/arrayMove";
+import { UploadForm } from "../../../../../../components/UploadForm/UploadForm";
 
 import "./ArtworkForm.less";
 
@@ -24,11 +19,8 @@ const S3_BUCKET = "events";
 
 export const ArtworkForm = observer(() => {
   const [isUploading, setIsUploading] = useState(false);
-  const [isDragDroping, setIsDragDroping] = useState(false);
-  const [uploadProgress, setUploadProgress] = useState([0, 0]);
-  const { t } = useTranslation();
-
   const hasArtworks = eventFormStore.artworks.length > 0;
+  const { t } = useTranslation();
 
   const fileUploadHandler = async (file) => {
     setIsUploading(true);
@@ -52,38 +44,6 @@ export const ArtworkForm = observer(() => {
       eventFormStore.setArtworksError(null);
     }
     setIsUploading(false);
-  };
-
-  const handleDragEnter = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragDroping(true);
-  };
-
-  const handleDragLeave = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragDroping(false);
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
-
-  const handleDrop = async (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const objectOfFiles = e.dataTransfer.files;
-    const numberOfFiles = objectOfFiles.length;
-    setUploadProgress([0, numberOfFiles]);
-    for (let i = 0; i < numberOfFiles; i++) {
-      setUploadProgress([i, numberOfFiles]);
-      if (objectOfFiles[i]) {
-        await fileUploadHandler(objectOfFiles[i]);
-      }
-    }
-    setUploadProgress([0, 0]);
   };
 
   const deletePictureHandler = async (index) => {
@@ -152,66 +112,16 @@ export const ArtworkForm = observer(() => {
   return (
     <>
       <div className="artworkform__error">{eventFormStore.artworksError}</div>
-      <form className="artwork__form">
-        <input
-          type="file"
-          className="inputfile"
-          name="inputfile"
-          id="file"
-          onChange={(event) => {
-            fileUploadHandler(event.target.files[0]);
-          }}
-        />
-        {isUploading ? (
-          <label
-            htmlFor="file"
-            className={hasArtworks ? "uploadArea" : "uploadAreaFull"}
-          >
-            <LoadingOutlined className="uploaderSpinner" />
-            {uploadProgress[1] ? (
-              <>
-                {uploadProgress[0]} of {uploadProgress[1]}
-              </>
-            ) : (
-              <p className="uploadText">{t("general.loading")}</p>
-            )}
-          </label>
-        ) : (
-          <label
-            htmlFor="file"
-            className={hasArtworks ? "uploadArea" : "uploadAreaFull"}
-            onDrop={handleDrop}
-            onDragOver={(e) => handleDragOver(e)}
-            onDragEnter={(e) => handleDragEnter(e)}
-            onDragLeave={(e) => handleDragLeave(e)}
-          >
-            {!isDragDroping ? (
-              <>
-                <div className="uploadIcon">
-                  <PictureOutlined />
-                </div>
-                <div>
-                  {t("eventform.clickOrDrag")} <br />
-                  <i>
-                    {t("eventform.onlyPhotoFiles")} | {t("eventform.maxFiles")}{" "}
-                    | {t("eventform.maxSize")}
-                  </i>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="uploadIcon">
-                  <FileAddOutlined />
-                </div>
-                <div>
-                  {t("eventform.dropHere")} <br />
-                  <i>{t("eventform.multipleFile")}</i>
-                </div>
-              </>
-            )}
-          </label>
-        )}
-      </form>
+      <UploadForm
+        fileUploadHandler={fileUploadHandler}
+        isUploading={isUploading}
+        width="100vw"
+        height={
+          hasArtworks
+            ? "calc(var(--vh, 1vh) * 60 - 300px) !important"
+            : "calc(var(--vh, 1vh) * 100 - 330px) !important"
+        }
+      />
       <div className="artwork__container">{images}</div>
     </>
   );

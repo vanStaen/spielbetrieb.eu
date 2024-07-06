@@ -1,56 +1,3 @@
-.artwork__form {
-  font-size: 14px;
-  font-weight: 200;
-  width: 100%;
-
-  .inputfile {
-    position: absolute;
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    z-index: -1;
-  }
-
-  .inputfile+label {
-    color: rgba(var(--themeFontColor), 1);
-    background: rgba(var(--themeFontColor), .1);
-    border: 1px dashed rgba(var(--themeFontColor), .5);
-    cursor: pointer;
-    transition: border-color 0.3s, background 0.3s, color 0.3s;
-    cursor: pointer;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-  }
-
-  .inputfile:focus+label,
-  .inputfile+label:hover {
-    background: rgba(var(--themeFontColor), .25);
-  }
-
-  .uploadArea {
-    height: calc(60vh - 300px) !important;
-    /* Fallback for browsers that do not support Custom Properties */
-    height: calc(var(--vh, 1vh) * 60 - 300px) !important;
-    width: 100vw;
-  }
-
-  .uploadAreaFull {
-    height: calc(100vh - 330px) !important;
-    /* Fallback for browsers that do not support Custom Properties */
-    height: calc(var(--vh, 1vh) * 100 - 330px) !important;
-    width: 100vw;
-  }
-
-  .uploadIcon,
-  .uploaderSpinner {
-    color: rgba(var(--themeFontColor), 1);
-    font-size: 36px;
-    margin: 0 0 8px 0 !important;
-  }
-}
-
 .artworkform__error {
   color: firebrick;
   filter: brightness(2);
@@ -125,11 +72,6 @@
 }
 
 @media only screen and (max-width: 720px) {
-  .artwork__form {
-    width: calc(100% - 32px);
-    margin: 16px 0;
-  }
-
   .artwork__container {
     .artwork__imgContainer {
       .artwork__img {
