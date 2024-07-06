@@ -1,0 +1,14 @@
+{
+  "showLastSeenOnline": true,
+  "hideProfilToStrangers": false,
+  "showFirstName": false,
+  "showLastName": false,
+  "showGender": true,
+  "showAge": true,
+  "showLocation": true,
+  "showSexualOrientation": false,
+  "showFriendListToStrangers": true,
+  "showFriendListToFriends": true,
+  "showFollowingListToStrangers": true,
+  "showFollowingListToFriends": true
+}

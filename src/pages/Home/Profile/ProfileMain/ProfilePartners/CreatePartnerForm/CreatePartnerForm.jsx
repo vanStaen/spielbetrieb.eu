@@ -4,11 +4,14 @@ import { Form, Modal, message, Select, Input, Button, Col, Row } from "antd";
 
 import { useTranslation } from "react-i18next";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
+import { partnerStore } from "../../../../../../store/partnerStore/partnerStore";
 import { getPartnertypes } from "../../../../../../store/pageStore/getPartnertypes";
 import { nameParser } from "../../../../../../helpers/dev/nameParser";
+import { UploadForm } from "../../../../../../components/UploadForm/UploadForm";
+import { postPicture } from "../../../../../../helpers/picture/postPicture";
+import { getPictureUrl } from "../../../../../../helpers/picture/getPictureUrl";
 
 import "./CreatePartnerForm.less";
-import { UploadForm } from "../../../../../../components/UploadForm/UploadForm";
 
 /* TODO:
     avatar: String
@@ -27,6 +30,8 @@ export const CreatePartnerForm = observer((props) => {
   const { t } = useTranslation();
   const { showModal, setShowModal } = props;
   const [partnerTypesOptions, setPartnerTypesOptions] = useState(null);
+  const [isPartnerAvatarLoading, setIsPartnerAvatarLoading] = useState(false);
+
   const { TextArea } = Input;
 
   const fetchPartnertypes = async () => {
@@ -66,6 +71,31 @@ export const CreatePartnerForm = observer((props) => {
     }
   };
 
+  const partnerAvatarUploadHandler = async (file) => {
+    setIsPartnerAvatarLoading(true);
+    const formData = new FormData();
+    formData.append("file", file);
+    try {
+      const res = await postPicture(file, "temp");
+      message.success(t("profile.avatarUpdateSuccessTitle"));
+      if (res.path) {
+        const url = await getPictureUrl(res.path, "temp");
+        const isloaded = new Promise((resolve, reject) => {
+          const loadImg = new Image();
+          loadImg.src = url;
+          loadImg.onload = () => resolve(url);
+          loadImg.onerror = (err) => reject(err);
+        });
+        await isloaded;
+        partnerStore.setAvatarUrl(url);
+      }
+    } catch (err) {
+      message.error(t("profile.avatarUpdateFail"));
+      console.log(err);
+    }
+    setIsPartnerAvatarLoading(false);
+  };
+
   return (
     <Modal
       title={
@@ -86,8 +116,8 @@ export const CreatePartnerForm = observer((props) => {
           <Row>
             <Col span={6}>
               <UploadForm
-                fileUploadHandler={null}
-                isUploading={false}
+                fileUploadHandler={partnerAvatarUploadHandler}
+                isUploading={isPartnerAvatarLoading}
                 width={"100px"}
                 height={"90px"}
                 showText={false}
