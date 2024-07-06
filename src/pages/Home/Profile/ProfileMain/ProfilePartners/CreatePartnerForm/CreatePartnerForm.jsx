@@ -14,16 +14,8 @@ import { getPictureUrl } from "../../../../../../helpers/picture/getPictureUrl";
 import "./CreatePartnerForm.less";
 
 /* TODO:
-    avatar: String
-
-    -> after moderation
-    partnerRoles: Int
-    reviews: [String]
-    settings: String
-    pictures: [String]
-    admin: [Int]
-    links: [String]
-    partnerTags: [Int]
+    user can delete avatar 
+    get and submit data
 */
 
 export const CreatePartnerForm = observer((props) => {
@@ -122,13 +114,23 @@ export const CreatePartnerForm = observer((props) => {
         >
           <Row>
             <Col span={6}>
-              <UploadForm
-                fileUploadHandler={partnerAvatarUploadHandler}
-                isUploading={isPartnerAvatarLoading}
-                width={"100px"}
-                height={"90px"}
-                showText={false}
-              />
+              {partnerStore.avatarUrl ? (
+                <div
+                  style={{
+                    background: `url(${partnerStore.avatarUrl}) center center / cover no-repeat`,
+                    width: "100px",
+                    height: "90px",
+                  }}
+                ></div>
+              ) : (
+                <UploadForm
+                  fileUploadHandler={partnerAvatarUploadHandler}
+                  isUploading={isPartnerAvatarLoading}
+                  width={"100px"}
+                  height={"90px"}
+                  showText={false}
+                />
+              )}
             </Col>
             <Col span={18}>
               <Form.Item
