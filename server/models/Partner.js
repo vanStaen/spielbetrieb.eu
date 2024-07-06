@@ -66,6 +66,10 @@ export const Partner = sequelize.sequelize.define("partner", {
     type: DataTypes.ARRAY(DataTypes.INTEGER),
     allowNull: false,
   },
+  pending: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 User.belongsToMany(Partner, {
