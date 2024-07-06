@@ -36,7 +36,7 @@ input PartnerInputData {
 }`;
 
 export const PartnerInputDataAdmin = `
-input PartnerInputData {
+input PartnerInputDataAdmin {
     name: String
     description: String
     avatar: String

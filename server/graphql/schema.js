@@ -69,6 +69,7 @@ export default buildSchema(`
     ${genderSchema.GenderInputData}
     ${partnertypeSchema.PartnertypeInputData}
     ${partnerSchema.PartnerInputData}
+    ${partnerSchema.PartnerInputDataAdmin}
     ${locationSchema.LocationInputData}
     ${messageSchema.MessageInputData}
     ${orientationSchema.OrientationInputData}
