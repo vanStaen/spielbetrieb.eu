@@ -31,6 +31,7 @@ export const CreatePartnerForm = observer((props) => {
   const { showModal, setShowModal } = props;
   const [partnerTypesOptions, setPartnerTypesOptions] = useState(null);
   const [isPartnerAvatarLoading, setIsPartnerAvatarLoading] = useState(false);
+  const [missingAvatarError, setMissingAvatarError] = useState(false);
 
   const { TextArea } = Input;
 
@@ -64,8 +65,13 @@ export const CreatePartnerForm = observer((props) => {
 
   const submitHandler = async () => {
     try {
-      message.info(t(`profile.partnerPageGoneToModeration`));
-      setShowModal(false);
+      if (partnerStore.avatarUrl === null) {
+        setMissingAvatarError(true);
+      } else {
+        // Move avatar from temp to partner
+        message.info(t(`profile.partnerPageGoneToModeration`));
+        setShowModal(false);
+      }
     } catch (e) {
       console.error(e);
     }
@@ -77,7 +83,7 @@ export const CreatePartnerForm = observer((props) => {
     formData.append("file", file);
     try {
       const res = await postPicture(file, "temp");
-      message.success(t("profile.avatarUpdateSuccessTitle"));
+      message.success(t("profile.avatarUploadSuccess"));
       if (res.path) {
         const url = await getPictureUrl(res.path, "temp");
         const isloaded = new Promise((resolve, reject) => {
@@ -88,6 +94,7 @@ export const CreatePartnerForm = observer((props) => {
         });
         await isloaded;
         partnerStore.setAvatarUrl(url);
+        setMissingAvatarError(false);
       }
     } catch (err) {
       message.error(t("profile.avatarUpdateFail"));
@@ -170,6 +177,11 @@ export const CreatePartnerForm = observer((props) => {
           </Form.Item>
           <div className="modal__footerContainer">
             <Form.Item>
+              {missingAvatarError && (
+                <span className="modal__footerError">
+                  {t("profile.missingAvatarError")}
+                </span>
+              )}
               <Button htmlType="submit" className="modal__footerButton">
                 Save
               </Button>
