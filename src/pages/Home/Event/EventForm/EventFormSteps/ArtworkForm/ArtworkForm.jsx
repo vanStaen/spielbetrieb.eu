@@ -115,6 +115,7 @@ export const ArtworkForm = observer(() => {
       <UploadForm
         fileUploadHandler={fileUploadHandler}
         isUploading={isUploading}
+        showText={true}
         width="100vw"
         height={
           hasArtworks

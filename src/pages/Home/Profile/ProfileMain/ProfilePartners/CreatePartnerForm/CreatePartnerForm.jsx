@@ -8,6 +8,7 @@ import { getPartnertypes } from "../../../../../../store/pageStore/getPartnertyp
 import { nameParser } from "../../../../../../helpers/dev/nameParser";
 
 import "./CreatePartnerForm.less";
+import { UploadForm } from "../../../../../../components/UploadForm/UploadForm";
 
 /* TODO:
     avatar: String
@@ -84,7 +85,13 @@ export const CreatePartnerForm = observer((props) => {
         >
           <Row>
             <Col span={6}>
-              <div className="createPartnerForm__addAvatar"></div>
+              <UploadForm
+                fileUploadHandler={null}
+                isUploading={false}
+                width={"100px"}
+                height={"90px"}
+                showText={false}
+              />
             </Col>
             <Col span={18}>
               <Form.Item

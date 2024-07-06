@@ -9,7 +9,7 @@ import {
 import "./UploadForm.less";
 
 export const UploadForm = (props) => {
-  const { fileUploadHandler, isUploading, width, height } = props;
+  const { fileUploadHandler, isUploading, width, height, showText } = props;
   const [isDragDroping, setIsDragDroping] = useState(false);
   const [uploadProgress, setUploadProgress] = useState([0, 0]);
   const { t } = useTranslation();
@@ -65,7 +65,7 @@ export const UploadForm = (props) => {
               {uploadProgress[0]} of {uploadProgress[1]}
             </>
           ) : (
-            <p className="uploadText">{t("general.loading")}</p>
+            showText && <p className="uploadText">{t("general.loading")}</p>
           )}
         </label>
       ) : (
@@ -82,13 +82,15 @@ export const UploadForm = (props) => {
               <div className="uploadIcon">
                 <PictureOutlined />
               </div>
-              <div>
-                {t("eventform.clickOrDrag")} <br />
-                <i>
-                  {t("eventform.onlyPhotoFiles")} | {t("eventform.maxFiles")} |{" "}
-                  {t("eventform.maxSize")}
-                </i>
-              </div>
+              {showText && (
+                <div>
+                  {t("eventform.clickOrDrag")} <br />
+                  <i>
+                    {t("eventform.onlyPhotoFiles")} | {t("eventform.maxFiles")}{" "}
+                    | {t("eventform.maxSize")}
+                  </i>
+                </div>
+              )}
             </>
           ) : (
             <>

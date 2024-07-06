@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
-import { notification } from "antd";
+import { message } from "antd";
 import { UserOutlined, EditOutlined, LoadingOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
@@ -49,21 +49,17 @@ export const Avatar = observer(() => {
     try {
       const res = await postPicture(file, "users");
       await updateAvatar(res.path);
-      notification.open({
-        duration: 5,
-        message: <TitleAvatarUpdateSuccess />,
-        description: <DescAvatarUpdateSuccess />,
-        placement: "bottomRight",
-        className: "customNotification",
+      message.success({
+        content: t("profile.avatarUpdateSuccessTitle"),
+        icon: <UserOutlined />,
       });
       userStore.setAvatar(res.path);
       getAvatarUrl(res.path);
       setIsLoading(false);
     } catch (err) {
-      notification.error({
-        message: t("profile.avatarUpdateFail"),
-        placement: "bottomRight",
-        className: "customNotification",
+      message.error({
+        content: t("profile.avatarUpdateFail"),
+        icon: <UserOutlined />,
       });
       setIsLoading(false);
       console.log(err);
@@ -102,11 +98,11 @@ export const Avatar = observer(() => {
                 <input
                   type="file"
                   className="avatar__inputfile"
-                  name="inputfile"
-                  id="file"
+                  name="inputAvatarFile"
+                  id="inputAvatarFile"
                   onChange={fileSelectHandler}
                 />
-                <label htmlFor="file">
+                <label htmlFor="inputAvatarFile">
                   <EditOutlined />
                 </label>
               </form>
@@ -117,17 +113,3 @@ export const Avatar = observer(() => {
     </div>
   );
 });
-
-const TitleAvatarUpdateSuccess = () => {
-  const { t } = useTranslation();
-  return (
-    <>
-      <UserOutlined /> {t("profile.avatarUpdateSuccessTitle")}
-    </>
-  );
-};
-
-const DescAvatarUpdateSuccess = () => {
-  const { t } = useTranslation();
-  return <>{t("profile.avatarUpdateSuccess")}</>;
-};
