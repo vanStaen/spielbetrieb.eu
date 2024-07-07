@@ -5,7 +5,6 @@ import { Modal, Button, message, Select } from "antd";
 import { useTranslation } from "react-i18next";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import { profileStore } from "../../../../../../store/profileStore/profileStore";
-import { nameParser } from "../../../../../../helpers/dev/nameParser";
 import { updateLinks } from "./updateLinks";
 
 import "./EditLinksModal.less";
@@ -16,25 +15,14 @@ export const EditLinksModal = observer((props) => {
   const [userLinkValue, setUserLinkValue] = useState(profileStore.links);
 
   const changeHandler = (value) => {
-    console.log(value);
     setUserLinkValue(value);
   };
-
-  const userLinksOptions = pageStore.links
-    .filter((link) => link.isUserLink)
-    .map((link) => {
-      return {
-        value: parseInt(link.id),
-        label: `${nameParser(link.name, pageStore.selectedLanguage)}${!link.validated ? ` (${t("general.pendingReview")})` : ""}`,
-        disabled: !link.validated,
-      };
-    });
 
   const saveHandler = async () => {
     try {
       await updateLinks(userLinkValue);
       profileStore.setLinks(userLinkValue);
-      message.info("Userlinks updated!");
+      message.info("Links updated!");
       setShowLinksModal(false);
     } catch (e) {
       console.error(e);
@@ -58,16 +46,11 @@ export const EditLinksModal = observer((props) => {
     >
       <div className="modal__select">
         <Select
-          mode="links"
-          allowClear
+          mode="tags"
           style={{ width: "100%" }}
           placeholder={t("eventform.pleaseSelectLinks")}
-          options={userLinksOptions}
           onChange={changeHandler}
           value={userLinkValue}
-          filterOption={(inputValue, option) =>
-            option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-          }
         />
       </div>
     </Modal>

@@ -115,6 +115,7 @@ export const userResolver = {
       "gender",
       "orientation",
       "location",
+      "links",
       "coordinates",
       "interests",
       "wishes",
@@ -131,6 +132,7 @@ export const userResolver = {
     if (args.userInput.password) {
       updateFields.password = await bcrypt.hash(args.userInput.password, 12);
     }
+    console.log(updateFields, args.userId);
     try {
       const updatedUser = await User.update(updateFields, {
         where: {
@@ -173,6 +175,7 @@ export const userResolver = {
       "gender",
       "orientation",
       "location",
+      "links",
       "coordinates",
       "interests",
       "wishes",

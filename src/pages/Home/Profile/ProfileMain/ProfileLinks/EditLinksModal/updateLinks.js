@@ -4,7 +4,7 @@ export async function updateLinks(links) {
     mutation ($links: [String]){
       updateUser(
         userInput: {          
-          userLinks: $links,
+          links: $links,
         }
       ) {
         id,

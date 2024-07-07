@@ -5,12 +5,23 @@
 
     .profileLinks__main {
         padding-top: 3px;
+        font-size: 14px;
 
         .profileLinks__empty {
             font-style: italic;
             font-weight: 300;
             font-size: 12px;
             opacity: .5;
+        }
+
+        .profileLinks__link {
+            color: rgba(var(--themeFontColor), .8);
+            display: block;
+            padding-bottom: 8px;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }
