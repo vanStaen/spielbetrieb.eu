@@ -40,7 +40,8 @@ export const EditLinksModal = observer((props) => {
     const url = values.linkUrl;
     const text = values.linkText;
     try {
-      const newUserLinkValue = userLinkValue.slice();
+      const newUserLinkValue =
+        userLinkValue === null ? [] : userLinkValue.slice();
       if (isEdit) {
         newUserLinkValue[isEdit - 1] = JSON.stringify({ url, text });
       } else {
