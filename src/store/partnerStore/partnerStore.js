@@ -3,6 +3,7 @@ import { action, makeObservable, observable } from "mobx";
 export class PartnerStore {
   isLoading = true;
   id = null;
+  avatar = null;
   avatarUrl = null;
 
   constructor() {
@@ -22,6 +23,10 @@ export class PartnerStore {
 
   setid = (id) => {
     this.id = id;
+  };
+
+  setAvatar = (avatar) => {
+    this.avatar = avatar;
   };
 
   setAvatarUrl = (avatarUrl) => {

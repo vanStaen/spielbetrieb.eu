@@ -10,6 +10,17 @@ import { updateLinks } from "./updateLinks";
 
 import "./EditLinksModal.less";
 
+// Add custom logo for some sites.
+/* 
+soundcloud
+resident advisor
+facebook
+instagram
+joyclub
+fetlife
+tiktok
+*/
+
 export const EditLinksModal = observer((props) => {
   const { t } = useTranslation();
   const [form] = Form.useForm();

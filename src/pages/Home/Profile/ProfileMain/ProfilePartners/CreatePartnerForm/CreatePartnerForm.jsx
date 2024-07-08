@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 import { Form, Modal, message, Select, Input, Button, Col, Row } from "antd";
+import { DeleteOutlined } from "@ant-design/icons";
 
 import { useTranslation } from "react-i18next";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
@@ -12,6 +13,7 @@ import { postPicture } from "../../../../../../helpers/picture/postPicture";
 import { getPictureUrl } from "../../../../../../helpers/picture/getPictureUrl";
 
 import "./CreatePartnerForm.less";
+import { deletePicture } from "../../../../../../helpers/picture/deletePicture";
 
 /* TODO:
     user can delete avatar 
@@ -80,10 +82,24 @@ export const CreatePartnerForm = observer((props) => {
           loadImg.onerror = (err) => reject(err);
         });
         await isloaded;
+        partnerStore.setAvatar(res.path);
         partnerStore.setAvatarUrl(url);
       }
     } catch (err) {
       message.error(t("profile.avatarUpdateFail"));
+      console.log(err);
+    }
+    setIsPartnerAvatarLoading(false);
+  };
+
+  const deleteAvatarHandler = async () => {
+    setIsPartnerAvatarLoading(true);
+    try {
+      await deletePicture(partnerStore.avatar, "temp");
+      partnerStore.setAvatar(null);
+      partnerStore.setAvatarUrl(null);
+    } catch (err) {
+      message.error(t("profile.avatarDeleteFail"));
       console.log(err);
     }
     setIsPartnerAvatarLoading(false);
@@ -115,7 +131,14 @@ export const CreatePartnerForm = observer((props) => {
                     width: "100px",
                     height: "90px",
                   }}
-                ></div>
+                >
+                  <div
+                    className="modal__deleteAvatar"
+                    onClick={deleteAvatarHandler}
+                  >
+                    <DeleteOutlined />
+                  </div>
+                </div>
               ) : (
                 <UploadForm
                   fileUploadHandler={partnerAvatarUploadHandler}

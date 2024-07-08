@@ -21,7 +21,23 @@
         color: black;
         font-size: 16px;
         max-height: 40vh;
-        overflow: scroll
+        overflow: scroll;
+
+        .modal__deleteAvatar {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: transparent;
+            cursor: pointer;
+
+            &:hover {
+                color: rgba(255,255,255, .75);
+                background-color: rgba(firebrick, .75);
+            }
+        }
     }
 
     .modal__footerContainer {
