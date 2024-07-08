@@ -27,7 +27,7 @@ export const ProfileMain = observer((props) => {
       {(profileStore.photos?.length || thisIsMe) && <ProfilePhotos />}
       {(profileStore.events?.length || thisIsMe) && <ProfileEvents />}
       {(profileStore.tags?.length || thisIsMe) && <ProfileTags />}
-      {(profileStore.link?.length || thisIsMe) && <ProfileLinks />}
+      {(profileStore.links?.length || thisIsMe) && <ProfileLinks />}
       {(profileStore.partners?.length || thisIsMe) && <ProfilePartners />}
       {
         // TODO: get rid of review for user. Only Partner can get reviews.
