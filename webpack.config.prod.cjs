@@ -65,13 +65,13 @@ module.exports = {
         use: ["style-loader", "css-loader", "less-loader"],
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
         type: "asset/resource",
       },
       {
         test: /\.(pdf)$/,
         use: ["file-loader"],
-      }
+      },
     ],
   },
 };
