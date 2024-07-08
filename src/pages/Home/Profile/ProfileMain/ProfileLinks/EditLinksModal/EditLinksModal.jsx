@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 import { Modal, Button, message, Input, Form } from "antd";
 import { LinkOutlined, FontSizeOutlined } from "@ant-design/icons";
@@ -12,20 +12,41 @@ import "./EditLinksModal.less";
 
 export const EditLinksModal = observer((props) => {
   const { t } = useTranslation();
-  const { showLinksModal, setShowLinksModal, isEdit } = props;
+  const [form] = Form.useForm();
+  const { showLinksModal, setShowLinksModal, isEdit, setIsEdit } = props;
   const [userLinkValue, setUserLinkValue] = useState(profileStore.links);
+
+  useEffect(() => {
+    form.resetFields();
+    if (isEdit) {
+      form.setFieldValue("linkUrl", JSON.parse(userLinkValue[isEdit - 1]).url);
+      form.setFieldValue(
+        "linkText",
+        JSON.parse(userLinkValue[isEdit - 1]).text,
+      );
+    } else {
+      form.setFieldValue("linkUrl", null);
+      form.setFieldValue("linkText", null);
+    }
+  }, [showLinksModal]);
 
   const submitHandler = async (values) => {
     const url = values.linkUrl;
     const text = values.linkText;
     try {
       const newUserLinkValue = userLinkValue.slice();
-      newUserLinkValue.push(JSON.stringify({ url, text }));
+      if (isEdit) {
+        newUserLinkValue.splice(isEdit - 1, 1);
+        newUserLinkValue.push(JSON.stringify({ url, text }));
+      } else {
+        newUserLinkValue.push(JSON.stringify({ url, text }));
+      }
       await updateLinks(newUserLinkValue);
       setUserLinkValue(newUserLinkValue);
       profileStore.setLinks(newUserLinkValue);
       message.info("Links updated!");
       setShowLinksModal(false);
+      setIsEdit(0);
     } catch (e) {
       console.error(e);
     }
@@ -42,6 +63,7 @@ export const EditLinksModal = observer((props) => {
     >
       <div className="modal__select">
         <Form
+          form={form}
           name="createPartnerForm"
           onFinish={submitHandler}
           style={{ height: "100%" }}
@@ -83,7 +105,7 @@ export const EditLinksModal = observer((props) => {
           <div className="modal__footerContainer">
             <Form.Item>
               <Button htmlType="submit" className="modal__footerButton">
-                Add link
+                {isEdit ? "Edit link" : "Add link"}
               </Button>
             </Form.Item>
           </div>

@@ -12,14 +12,11 @@ import { updateLinks } from "./EditLinksModal/updateLinks";
 
 import "./ProfileLinks.less";
 
-// TODO: Check if links are broken.
-
 export const ProfileLinks = observer(() => {
   const { t } = useTranslation();
   const [showLinksModal, setShowLinksModal] = useState(false);
+  const [isEdit, setIsEdit] = useState(null);
   const thisIsMe = userStore.id === profileStore.id;
-
-  // console.log(profileStore.links);
 
   const deleteLinkHandler = async (url) => {
     try {
@@ -39,6 +36,8 @@ export const ProfileLinks = observer(() => {
       <EditLinksModal
         showLinksModal={showLinksModal}
         setShowLinksModal={setShowLinksModal}
+        isEdit={isEdit}
+        setIsEdit={setIsEdit}
       />
       <div className="profileLinks__container">
         <ProfileMainTitle
@@ -67,7 +66,13 @@ export const ProfileLinks = observer(() => {
                   </a>
                   {thisIsMe && (
                     <div className="profileLinks__edit">
-                      <div className="profileLinks__action" onClick={null}>
+                      <div
+                        className="profileLinks__action"
+                        onClick={() => {
+                          setIsEdit(index + 1);
+                          setShowLinksModal(true);
+                        }}
+                      >
                         <EditOutlined />
                       </div>
                       <div className="profileLinks__action">
