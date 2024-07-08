@@ -16,6 +16,7 @@ export const ProfileMainTitle = observer((props) => {
     title,
     addEvent,
     addPhoto,
+    addLink,
     addPartner,
     editable,
     showEdit,
@@ -53,6 +54,12 @@ export const ProfileMainTitle = observer((props) => {
         ) : addPartner ? (
           <div className="profileMain__edit">
             <Tooltip title="Create a Partner page">
+              <PlusOutlined onClick={editHandler} />
+            </Tooltip>
+          </div>
+        ) : addLink ? (
+          <div className="profileMain__edit">
+            <Tooltip title="Add a link">
               <PlusOutlined onClick={editHandler} />
             </Tooltip>
           </div>

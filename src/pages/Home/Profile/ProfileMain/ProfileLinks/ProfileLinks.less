@@ -14,14 +14,39 @@
             opacity: .5;
         }
 
+
+        .profileLinks__logo {
+            display: inline-block;
+            padding-right: 4px;
+        }
+        
         .profileLinks__link {
             color: rgba(var(--themeFontColor), .8);
             display: block;
             padding-bottom: 8px;
+            display: inline-block;
+            padding-right: 4px;
 
             &:hover {
                 text-decoration: underline;
             }
         }
+
+        .profileLinks__edit {
+            display: inline-block;
+            font-size: 14px;
+            color: rgba(var(--themeBlackOrWhiteColor), 1);
+
+            .profileLinks__action {
+                display: inline-block;
+                padding: 0 2px;
+                opacity: .5;
+    
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+        
     }
 }

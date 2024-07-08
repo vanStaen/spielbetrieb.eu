@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
-import { Modal, Button, message, Select } from "antd";
+import { Modal, Button, message, Input, Form } from "antd";
+import { LinkOutlined, FontSizeOutlined } from "@ant-design/icons";
 
 import { useTranslation } from "react-i18next";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
@@ -11,17 +12,18 @@ import "./EditLinksModal.less";
 
 export const EditLinksModal = observer((props) => {
   const { t } = useTranslation();
-  const { showLinksModal, setShowLinksModal } = props;
+  const { showLinksModal, setShowLinksModal, isEdit } = props;
   const [userLinkValue, setUserLinkValue] = useState(profileStore.links);
 
-  const changeHandler = (value) => {
-    setUserLinkValue(value);
-  };
-
-  const saveHandler = async () => {
+  const submitHandler = async (values) => {
+    const url = values.linkUrl;
+    const text = values.linkText;
     try {
-      await updateLinks(userLinkValue);
-      profileStore.setLinks(userLinkValue);
+      const newUserLinkValue = userLinkValue.slice();
+      newUserLinkValue.push(JSON.stringify({ url, text }));
+      await updateLinks(newUserLinkValue);
+      setUserLinkValue(newUserLinkValue);
+      profileStore.setLinks(newUserLinkValue);
       message.info("Links updated!");
       setShowLinksModal(false);
     } catch (e) {
@@ -34,24 +36,58 @@ export const EditLinksModal = observer((props) => {
       title={<div className="modal__title">Edit user links</div>}
       open={showLinksModal}
       onCancel={() => setShowLinksModal(false)}
-      footer={
-        <div className="modal__footerContainer">
-          <Button onClick={saveHandler} className="modal__footerButton">
-            Save
-          </Button>
-        </div>
-      }
+      footer={null}
       centered={true}
       className={`eventform__modal ${pageStore.selectedTheme === "light" ? "modal__backgroundLight" : "modal__backgroundDark"}`}
     >
       <div className="modal__select">
-        <Select
-          mode="tags"
-          style={{ width: "100%" }}
-          placeholder={t("eventform.pleaseSelectLinks")}
-          onChange={changeHandler}
-          value={userLinkValue}
-        />
+        <Form
+          name="createPartnerForm"
+          onFinish={submitHandler}
+          style={{ height: "100%" }}
+        >
+          <Form.Item
+            name="linkUrl"
+            rules={[
+              {
+                required: true,
+                message: t("profile.missingLinkUrl"),
+              },
+              {
+                type: "url",
+                message: t("profile.thisShouldBeValidUrl"),
+              },
+            ]}
+          >
+            <Input
+              style={{ width: "100%" }}
+              prefix={<LinkOutlined />}
+              placeholder={t("eventform.addLinkUrl")}
+            />
+          </Form.Item>
+          <Form.Item
+            name="linkText"
+            rules={[
+              {
+                required: true,
+                message: t("profile.missingLinkText"),
+              },
+            ]}
+          >
+            <Input
+              style={{ width: "100%" }}
+              prefix={<FontSizeOutlined />}
+              placeholder={t("eventform.addLinkText")}
+            />
+          </Form.Item>
+          <div className="modal__footerContainer">
+            <Form.Item>
+              <Button htmlType="submit" className="modal__footerButton">
+                Add link
+              </Button>
+            </Form.Item>
+          </div>
+        </Form>
       </div>
     </Modal>
   );
