@@ -10,6 +10,14 @@ import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileM
 import { EditLinksModal } from "./EditLinksModal/EditLinksModal";
 import { updateLinks } from "./EditLinksModal/updateLinks";
 
+import tiktokIco from "../../../../../img/icons/tiktok.ico";
+import fetlifeIco from "../../../../../img/icons/fetlife.ico";
+import joyclubIco from "../../../../../img/icons/joyclub.ico";
+import facebookIco from "../../../../../img/icons/facebook.ico";
+import soundcloudIco from "../../../../../img/icons/soundcloud.ico";
+import instagramIco from "../../../../../img/icons/instagram.png";
+import residentadvisorIco from "../../../../../img/icons/residentadvisor.jpg";
+
 import "./ProfileLinks.less";
 
 export const ProfileLinks = observer(() => {
@@ -28,6 +36,26 @@ export const ProfileLinks = observer(() => {
       message.info("Link deleted!");
     } catch (e) {
       console.error(e);
+    }
+  };
+
+  const getIcon = (url) => {
+    if (url.includes("tiktok.com")) {
+      return <img src={tiktokIco} width="15px" />;
+    } else if (url.includes("fetlife.com")) {
+      return <img src={fetlifeIco} width="15px" />;
+    } else if (url.includes("joyclub.de")) {
+      return <img src={joyclubIco} width="15px" />;
+    } else if (url.includes("ra.co")) {
+      return <img src={residentadvisorIco} width="15px" />;
+    } else if (url.includes("facebook.com")) {
+      return <img src={facebookIco} width="15px" />;
+    } else if (url.includes("soundcloud.com")) {
+      return <img src={soundcloudIco} width="15px" />;
+    } else if (url.includes("instagram.com")) {
+      return <img src={instagramIco} width="15px" />;
+    } else {
+      return <LinkOutlined />;
     }
   };
 
@@ -54,7 +82,7 @@ export const ProfileLinks = observer(() => {
               return (
                 <div className="profileLinks__linkContainer" key={index}>
                   <div className="profileLinks__logo">
-                    <LinkOutlined />
+                    {getIcon(linkJson.url)}
                   </div>
                   <a
                     className="profileLinks__link"
