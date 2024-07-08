@@ -51,7 +51,6 @@ export const EditTextModal = observer((props) => {
           rows={8}
           maxLength={1024}
           onChange={changeHandler}
-          showCount
         />
       </div>
     </Modal>

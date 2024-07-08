@@ -30,14 +30,19 @@ export const EditLinksModal = observer((props) => {
     }
   }, [showLinksModal]);
 
+  const urlChangeHandler = () => {
+    if (form.getFieldValue("linkText") === null) {
+      form.setFieldValue("linkText", form.getFieldValue("linkUrl"));
+    }
+  };
+
   const submitHandler = async (values) => {
     const url = values.linkUrl;
     const text = values.linkText;
     try {
       const newUserLinkValue = userLinkValue.slice();
       if (isEdit) {
-        newUserLinkValue.splice(isEdit - 1, 1);
-        newUserLinkValue.push(JSON.stringify({ url, text }));
+        newUserLinkValue[isEdit - 1] = JSON.stringify({ url, text });
       } else {
         newUserLinkValue.push(JSON.stringify({ url, text }));
       }
@@ -84,6 +89,7 @@ export const EditLinksModal = observer((props) => {
             <Input
               style={{ width: "100%" }}
               prefix={<LinkOutlined />}
+              onChange={urlChangeHandler}
               placeholder={t("eventform.addLinkUrl")}
             />
           </Form.Item>
@@ -99,6 +105,7 @@ export const EditLinksModal = observer((props) => {
             <Input
               style={{ width: "100%" }}
               prefix={<FontSizeOutlined />}
+              allowClear
               placeholder={t("eventform.addLinkText")}
             />
           </Form.Item>

@@ -25,7 +25,7 @@ export const ProfileLinks = observer(() => {
       });
       await updateLinks(cleanedLinkArray);
       profileStore.setLinks(cleanedLinkArray);
-      message.info("Links deleted!");
+      message.info("Link deleted!");
     } catch (e) {
       console.error(e);
     }
