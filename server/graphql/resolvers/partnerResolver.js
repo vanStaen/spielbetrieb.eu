@@ -35,7 +35,7 @@ export const partnerResolver = {
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
       throw new Error("Unauthorized!");
     }
-    const foundPartnerName = await User.findOne({
+    const foundPartnerName = await Partner.findOne({
       where: {
         foundPartnerName: args.partnerInput.name.toLowerCase(),
       },
@@ -46,7 +46,7 @@ export const partnerResolver = {
       );
     }
     try {
-      const partner = new User({
+      const partner = new Partner({
         name: args.partnerInput.name,
         partnertype: args.partnerInput.partnertype,
         partnerRoles: args.partnerInput.partnerRoles,

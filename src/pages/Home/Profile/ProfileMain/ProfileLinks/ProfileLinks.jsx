@@ -15,10 +15,13 @@ import fetlifeIco from "../../../../../img/icons/fetlife.ico";
 import joyclubIco from "../../../../../img/icons/joyclub.ico";
 import facebookIco from "../../../../../img/icons/facebook.ico";
 import soundcloudIco from "../../../../../img/icons/soundcloud.ico";
+import spielbetriebIcoBlue from "../../../../../img/icons/spielbetriebblue.ico";
+import spielbetriebIcoBeige from "../../../../../img/icons/spielbetriebbeige.ico";
 import instagramIco from "../../../../../img/icons/instagram.png";
 import residentadvisorIco from "../../../../../img/icons/residentadvisor.jpg";
 
 import "./ProfileLinks.less";
+import { pageStore } from "../../../../../store/pageStore/pageStore";
 
 export const ProfileLinks = observer(() => {
   const { t } = useTranslation();
@@ -54,6 +57,16 @@ export const ProfileLinks = observer(() => {
       return <img src={soundcloudIco} width="15px" />;
     } else if (url.includes("instagram.com")) {
       return <img src={instagramIco} width="15px" />;
+    } else if (
+      url.includes("spielbetrieb.eu") &&
+      pageStore.selectedTheme === "light"
+    ) {
+      return <img src={spielbetriebIcoBlue} width="15px" />;
+    } else if (
+      url.includes("spielbetrieb.eu") &&
+      pageStore.selectedTheme === "dark"
+    ) {
+      return <img src={spielbetriebIcoBeige} width="15px" />;
     } else {
       return <LinkOutlined />;
     }
