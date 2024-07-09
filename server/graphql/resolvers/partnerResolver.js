@@ -95,6 +95,10 @@ export const partnerResolver = {
     }
   },
 
+
+  // TODO: Move avatar from temp to partner if pending is move from true to false
+  // --> extra mutation? 
+
   // updatePartnerAsAdmin(partnerId: ID!, partnerInput: PartnerInputDataAdmin!): Partner!
   async updatePartnerAsAdmin(args, req) {
     if (!req.isAuth) {

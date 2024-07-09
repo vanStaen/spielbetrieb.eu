@@ -14,18 +14,14 @@ import { getPictureUrl } from "../../../../../../helpers/picture/getPictureUrl";
 
 import "./CreatePartnerForm.less";
 import { deletePicture } from "../../../../../../helpers/picture/deletePicture";
-
-/* TODO:
-    user can delete avatar 
-    get and submit data
-*/
+import { addPartner } from "./addPartner";
 
 export const CreatePartnerForm = observer((props) => {
   const { t } = useTranslation();
   const { showModal, setShowModal } = props;
   const [partnerTypesOptions, setPartnerTypesOptions] = useState(null);
   const [isPartnerAvatarLoading, setIsPartnerAvatarLoading] = useState(false);
-
+  const [form] = Form.useForm();
   const { TextArea } = Input;
 
   const fetchPartnertypes = async () => {
@@ -58,8 +54,12 @@ export const CreatePartnerForm = observer((props) => {
 
   const submitHandler = async () => {
     try {
-      // Move avatar from temp to partner
+      const name = form.getFieldValue("name");
+      const description = form.getFieldValue("description");
+      const partnertype = form.getFieldValue("partnertype");
+      await addPartner(name, description, partnerStore.avatar, partnertype);
       message.info(t(`profile.partnerPageGoneToModeration`));
+      form.resetFields();
       setShowModal(false);
     } catch (e) {
       console.error(e);
@@ -72,7 +72,6 @@ export const CreatePartnerForm = observer((props) => {
     formData.append("file", file);
     try {
       const res = await postPicture(file, "temp");
-      message.success(t("profile.avatarUploadSuccess"));
       if (res.path) {
         const url = await getPictureUrl(res.path, "temp");
         const isloaded = new Promise((resolve, reject) => {
@@ -82,6 +81,7 @@ export const CreatePartnerForm = observer((props) => {
           loadImg.onerror = (err) => reject(err);
         });
         await isloaded;
+        message.success(t("profile.avatarUploadSuccess"));
         partnerStore.setAvatar(res.path);
         partnerStore.setAvatarUrl(url);
       }
@@ -118,6 +118,7 @@ export const CreatePartnerForm = observer((props) => {
     >
       <div className="modal__select">
         <Form
+          form={form}
           name="createPartnerForm"
           onFinish={submitHandler}
           style={{ height: "100%" }}
@@ -162,7 +163,7 @@ export const CreatePartnerForm = observer((props) => {
                 <Input placeholder={t("profile.partnerName")} />
               </Form.Item>
               <Form.Item
-                name="partner type"
+                name="partnertype"
                 rules={[
                   {
                     required: true,
