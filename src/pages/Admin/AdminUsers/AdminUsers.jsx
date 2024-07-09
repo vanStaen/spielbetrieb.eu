@@ -112,7 +112,7 @@ export const AdminUsers = () => {
       key: "verifiedEmail",
       align: "center",
       width: "70px",
-      render: (_, { verifiedEmail }) => (verifiedEmail ? "✅" : "✖️"),
+      render: (_, { verifiedEmail }) => (verifiedEmail && "✅"),
     },
     {
       title: "Verified Identity",
@@ -120,16 +120,16 @@ export const AdminUsers = () => {
       key: "verifiedIdentity",
       align: "center",
       width: "70px",
-      render: (_, { verifiedIdentity }) => (verifiedIdentity ? "✅" : "✖️"),
+      render: (_, { verifiedIdentity }) => (verifiedIdentity && "✅"),
     },
     {
       title: "Suspended",
       dataIndex: "suspended",
       key: "suspended",
       align: "center",
-      width: "100px",
+      width: "70px",
       sorter: (a, b) => a.suspended - b.suspended,
-      render: (_, { suspended }) => (suspended ? "🚫" : "✖️"),
+      render: (_, { suspended }) => (suspended && "🚫"),
     },
     {
       title: <span style={{ opacity: ".2" }}>Edit</span>,
@@ -140,15 +140,10 @@ export const AdminUsers = () => {
         return (
           <span>
             {
-              // TODO: check if has partner is working
-              record.isAdmin || record.partner ? (
+              record.isAdmin ? (
                 <>
                   <Tooltip
-                    title={
-                      record.isAdmin
-                        ? "You can't suspend Admins"
-                        : "Suspend Partner"
-                    }
+                    title={"You can't suspend Admins"}
                   >
                     <Typography.Link
                       disabled={record.isAdmin}
@@ -161,7 +156,7 @@ export const AdminUsers = () => {
                     </Typography.Link>
                   </Tooltip>{" "}
                   <Tooltip
-                    title={`You can't delete ${record.isAdmin ? "Admins" : "Partners"}`}
+                    title={`You can't delete Admins`}
                   >
                     <DeleteOutlined
                       style={{ cursor: "not-allowed" }}
@@ -184,7 +179,7 @@ export const AdminUsers = () => {
                   </Tooltip>{" "}
                   <Tooltip title="Delete User">
                     <Popconfirm
-                      title="Sure to delete for ever this user?"
+                      title="Sure to delete this user?"
                       style={{ marginRight: 8 }}
                       onConfirm={() => deleteUser(record.id)}
                     >

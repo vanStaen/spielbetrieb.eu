@@ -73,7 +73,6 @@ export const AdminEvents = () => {
     } else {
       updateEvent(parseInt(id), { validated: true, isDraft: false });
     }
-
     fetchEvents();
   };
 

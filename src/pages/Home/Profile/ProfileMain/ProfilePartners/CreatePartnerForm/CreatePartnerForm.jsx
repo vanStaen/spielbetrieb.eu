@@ -11,10 +11,12 @@ import { nameParser } from "../../../../../../helpers/dev/nameParser";
 import { UploadForm } from "../../../../../../components/UploadForm/UploadForm";
 import { postPicture } from "../../../../../../helpers/picture/postPicture";
 import { getPictureUrl } from "../../../../../../helpers/picture/getPictureUrl";
-
-import "./CreatePartnerForm.less";
 import { deletePicture } from "../../../../../../helpers/picture/deletePicture";
 import { addPartner } from "./addPartner";
+
+import "./CreatePartnerForm.less";
+
+// TODO : Add partner tags
 
 export const CreatePartnerForm = observer((props) => {
   const { t } = useTranslation();

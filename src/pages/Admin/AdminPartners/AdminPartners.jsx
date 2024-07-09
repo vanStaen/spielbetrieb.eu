@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Popconfirm, Table, Tag, Tooltip, Col, Row } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
+import { Popconfirm, Table, Tag, Tooltip, Col, Row, Typography } from "antd";
+import { StopOutlined, DeleteOutlined } from "@ant-design/icons";
 
 import { getAllPartners } from "./getAllPartners";
 import { updatePartnerAsAdmin } from "./updatePartnerAsAdmin";
@@ -24,6 +24,20 @@ export const AdminPartners = () => {
     fetchAllPartners();
   };
 
+  const validatePartner = async (id) => {
+    await updatePartnerAsAdmin(parseInt(id), { pending: false });
+    fetchAllPartners();
+  };
+
+  const toogleSuspendPartner = async (id, suspended) => {
+    if (suspended) {
+      await updatePartnerAsAdmin(parseInt(id), { suspended: false });
+    } else {
+      await updatePartnerAsAdmin(parseInt(id), { suspended: true });
+    }
+    fetchAllPartners();
+  };
+
   const columns = [
     {
       title: "id",
@@ -38,7 +52,7 @@ export const AdminPartners = () => {
       key: "name",
       sorter: (a, b) => a.name.length - b.name.length,
       render: (_, { name, description, partnerTags, avatar, pending }) => {
-
+        //TODO Add avatar in tooltip
         const avatarUrl = avatar;
         return (
           <div style={{ cursor: 'pointer' }}>
@@ -65,14 +79,6 @@ export const AdminPartners = () => {
           </div>)
       }
     },
-
-    {
-      title: "Pending",
-      dataIndex: "pending",
-      key: "pending",
-      align: "center",
-      render: (_, { pending }) => (pending ? "⌛" : "✖️"),
-    },
     {
       title: "Admin",
       dataIndex: "admin",
@@ -86,6 +92,78 @@ export const AdminPartners = () => {
             </span>
           );
         })
+    },
+    {
+      title: "Suspended",
+      dataIndex: "suspended",
+      key: "suspended",
+      align: "center",
+      width: "100px",
+      sorter: (a, b) => a.suspended - b.suspended,
+      render: (_, { suspended, id }) =>
+      (
+        <Tooltip title="Double click to toggle this value">
+          <div
+            style={{ cursor: "pointer" }}
+            onDoubleClick={() => toogleSuspendPartner(id, suspended)}
+          >
+            {suspended ? "🚫" : <span style={{ filter: 'grayscale(1)', opacity: .25 }}>🚫</span>}
+          </div>
+        </Tooltip>
+      ),
+    },
+    {
+      title: "Pending",
+      dataIndex: "pending",
+      key: "pending",
+      align: "center",
+      render: (_, { pending, id }) =>
+      (
+        <Tooltip title="Double click to validate this Partner">
+          <div
+            style={{ cursor: "pointer" }}
+            onDoubleClick={() => validatePartner(id)}
+          >
+            {pending && "⌛"}
+          </div>
+        </Tooltip>
+      ),
+    },
+    {
+      title: <span style={{ opacity: ".2" }}>Edit</span>,
+      dataIndex: "edit",
+      width: "90px",
+      align: "center",
+      render: (_, record) => {
+        return (
+          <span>
+            {
+              <>
+                <Tooltip title={"Suspend Partner"}>
+                  <Typography.Link
+                    style={{ marginRight: 8 }}
+                    onClick={() => suspendUser(record.id)}
+                  >
+                    <StopOutlined
+                      className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`}
+                    />
+                  </Typography.Link>
+                </Tooltip>{" "}
+                <Tooltip title="Delete Partner">
+                  <Popconfirm
+                    title="Sure to delete this partner forever?"
+                    style={{ marginRight: 8 }}
+                    onConfirm={() => deletePartner(record.id)}
+                  >
+                    <DeleteOutlined className="admin__editLogo" />
+                  </Popconfirm>
+                </Tooltip>
+              </>
+
+            }
+          </span>
+        );
+      },
     },
   ];
 
