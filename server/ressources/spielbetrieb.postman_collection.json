@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postmanid": "cace61da-a4fb-402a-9af3-ef2733c3ae51",
+		"_postman_id": "cace61da-a4fb-402a-9af3-ef2733c3ae51",
 		"name": "Spielbetrieb",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporterid": "9603966"
+		"_exporter_id": "9603966"
 	},
 	"item": [
 		{
@@ -475,7 +475,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getUser {\n    id,\n    isAdmin,\n    adminRoles,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    emailSettings,\n    profilSettings,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    interests,\n    lastActive,\n    archived,\n    usernameChange,\n    comments {\n        id,\n    },\n    events {\n        id,\n    },\n    messages {\n        id,\n    },\n    notifications {\n        id,\n    },\n    photos {\n        id,\n    },\n    visitors {\n        id,\n    },\n    friends {\n        userName,\n        avatar,\n    },\n    friendrequests {\n        userName,\n        avatar,\n    },\n    followers {\n        userName,\n        avatar,\n    },\n    following {\n        userName,\n        avatar,\n    }\n  }\n}",
+						"query": "query {\n  getUser {\n    _id,\n    isAdmin,\n    adminRoles,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    emailSettings,\n    profilSettings,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    interests,\n    lastActive,\n    archived,\n    usernameChange,\n    artists {\n        _id\n        name\n        pictures\n        description\n        links\n        reviews\n        artistType\n        validated\n    }\n    comments {\n        _id,\n    },\n    events {\n        _id,\n    },\n    messages {\n        _id,\n    },\n    notifications {\n        _id,\n    },\n    photos {\n        _id,\n    },\n    visitors {\n        _id,\n    },\n    friends {\n        userName,\n        avatar,\n    },\n    friendrequests {\n        userName,\n        avatar,\n    },\n    followers {\n        userName,\n        avatar,\n    },\n    following {\n        userName,\n        avatar,\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -507,7 +507,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getUsersAsAdmin {\n    id,\n    isPartner,\n    partnerRoles,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    emailSettings,\n    profilSettings,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    interests,\n    lastActive,\n    archived,\n    usernameChange,\n    language,\n    deleted,\n    suspended,\n  }\n}",
+						"query": "query {\n  getUsersAsAdmin {\n    id,\n    adminRoles,\n    isAdmin,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    emailSettings,\n    profilSettings,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    interests,\n    lastActive,\n    archived,\n    usernameChange,\n    language,\n    deleted,\n    suspended,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -539,7 +539,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getProfileByName (userName: \"dieTruhe\") {\n    firstName,\n    avatar,\n    gender,\n    lastActive,\n    profilSettings,\n    items {\n        id,\n        title,\n        mediaUrlMedium,\n        likes, \n        dislikes,\n    },\n    looks {\n        id,\n        title,\n        mediaUrlMedium,\n        likes, \n        dislikes,\n    },\n  }\n}",
+						"query": "query {\n  getProfileByName (userName: \"test\") {\n        _id,\n    isAdmin,\n    adminRoles,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    emailSettings,\n    profilSettings,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    interests,\n    lastActive,\n    archived,\n    usernameChange,\n    comments {\n        _id,\n    },\n    events {\n        _id,\n    },\n    messages {\n        _id,\n    },\n    notifications {\n        _id,\n    },\n    photos {\n        _id,\n    },\n    visitors {\n        _id,\n    },\n    friends {\n        userName,\n        avatar,\n    },\n    friendrequests {\n        userName,\n        avatar,\n    },\n    followers {\n        userName,\n        avatar,\n    },\n    following {\n        userName,\n        avatar,\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -571,7 +571,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getProfileById (id: 17) {\n    id,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    events {\n        id,\n    }, \n    reviews {\n        id,\n    }\n    interests,\n    comments {\n        id,\n    }\n    events {\n        id,\n    }\n    messages {\n        id,\n    }\n    notifications {\n        id,\n    }\n    photos {\n        id,\n    }\n    visitors {\n        id,\n    }\n    friends {\n        userName,\n        avatar,\n    },\n    friendrequests {\n        userName,\n        avatar,\n    },\n    followers {\n        userName,\n        avatar,\n    },\n    following {\n        userName,\n        avatar,\n    },\n  }\n}",
+						"query": "query {\n  getProfileById (_id: 17) {\n    _id,\n    firstName,\n    lastName,\n    userName,\n    email,\n    description,\n    avatar,\n    verifiedEmail,\n    verifiedIdentity,\n    gender,\n    orientation,\n    wishes,\n    events {\n        _id,\n    }, \n    reviews {\n        _id,\n    }\n    interests,\n    comments {\n        _id,\n    }\n    events {\n        _id,\n    }\n    messages {\n        _id,\n    }\n    notifications {\n        _id,\n    }\n    photos {\n        _id,\n    }\n    visitors {\n        _id,\n    }\n    friends {\n        userName,\n        avatar,\n    },\n    friendrequests {\n        userName,\n        avatar,\n    },\n    followers {\n        userName,\n        avatar,\n    },\n    following {\n        userName,\n        avatar,\n    },\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -596,8 +596,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -608,7 +608,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addUser (\n    userInput: { \n        firstName: \"test\", \n        lastName: \"test\", \n        userName: \"test\", \n        email: \"test.test@test.com\", \n        password: \"123456\"\n        }\n  ) {\n    id\n    email\n  }\n}",
+						"query": "mutation {\n  addUser (\n    userInput: { \n        firstName: \"test\", \n        lastName: \"test\", \n        userName: \"test\", \n        email: \"test.test@test.com\", \n        password: \"123456\"\n        }\n  ) {\n    _id\n    email\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -634,8 +634,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -646,7 +646,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateUser (\n      userInput: { \n        gender: \"male\",\n        orientation: \"hetero\", \n        wishes: [\"first\", \"second\", \"third\"],\n        interests: [\"one\", \"two\"]\n        }\n      ) {\n    id,\n    gender,\n    orientation,\n    wishes,\n    interests,\n  }\n}",
+						"query": "mutation {\n  updateUser (\n      userInput: { \n        gender: \"male\",\n        orientation: \"hetero\", \n        wishes: [\"first\", \"second\", \"third\"],\n        interests: [\"one\", \"two\"]\n        }\n      ) {\n    _id,\n    gender,\n    orientation,\n    wishes,\n    interests,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -672,8 +672,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -684,7 +684,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getPhotos {\n    id,\n    photoUrl,\n    photoUrlThumb,\n    photoUrlThumbBlur,\n    flagOver18,\n    tags,\n    likes,\n    private,\n    user {\n        id,\n    },\n    comment {\n        id,\n    }\n  }\n}",
+						"query": "query {\n  getPhotos {\n    _id,\n    photoUrl,\n    photoUrlThumb,\n    photoUrlThumbBlur,\n    flagOver18,\n    tags,\n    likes,\n    private,\n    user {\n        _id,\n    },\n    comment {\n        _id,\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -710,8 +710,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -722,7 +722,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addPhoto (\n    photoInput: { \n        photoUrl: \"some/url\",\n        photoUrlThumb: \"some/url/thumb\",\n        photoUrlThumbBlur: \"some/url/blur\",\n        flagOver18: true,\n        private: true,\n        }\n  ) {\n    id,\n    \n  }\n}",
+						"query": "mutation {\n  addPhoto (\n    photoInput: { \n        photoUrl: \"some/url\",\n        photoUrlThumb: \"some/url/thumb\",\n        photoUrlThumbBlur: \"some/url/blur\",\n        flagOver18: true,\n        private: true,\n        }\n  ) {\n    _id,\n    \n  }\n}",
 						"variables": ""
 					}
 				},
@@ -748,8 +748,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -760,7 +760,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updatePhoto (\n      photoId: 1,\n      photoInput: { \n        private: true,\n        archived: false, \n        tags: [\"first\", \"second\", \"third\"],\n        likes: [1, 2]\n        }\n      ) {\n    id,\n    private,\n    archived,\n    likes,\n    tags,\n  }\n}",
+						"query": "mutation {\n  updatePhoto (\n      photoId: 1,\n      photoInput: { \n        private: true,\n        archived: false, \n        tags: [\"first\", \"second\", \"third\"],\n        likes: [1, 2]\n        }\n      ) {\n    _id,\n    private,\n    archived,\n    likes,\n    tags,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -786,8 +786,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -824,8 +824,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -836,7 +836,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getComments (photoId: 1) {\n    id,\n    comment,\n    likes,\n    dislikes,\n    user {\n        id,\n    },\n    photo {\n        id,\n    }\n  }\n}",
+						"query": "query {\n  getComments (photoId: 1) {\n    _id,\n    comment,\n    likes,\n    dislikes,\n    user {\n        _id,\n    },\n    photo {\n        _id,\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -862,8 +862,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -874,7 +874,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addComment (\n    commentInput: { \n        photoId: 1,\n        comment: \"this is a new comment\",\n        }\n  ) {\n    id,    \n    comment,\n    likes,\n    dislikes,\n  }\n}",
+						"query": "mutation {\n  addComment (\n    commentInput: { \n        photoId: 1,\n        comment: \"this is a new comment\",\n        }\n  ) {\n    _id,    \n    comment,\n    likes,\n    dislikes,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -900,8 +900,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -912,7 +912,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateComment (\n      commentId: 1,\n      commentInput: { \n        comment: \"comment updated\", \n        likes: [1, 2],\n        dislikes: [3, 4],\n        }\n      ) {\n    id,\n    comment,\n    likes,\n    dislikes,\n  }\n}",
+						"query": "mutation {\n  updateComment (\n      commentId: 1,\n      commentInput: { \n        comment: \"comment updated\", \n        likes: [1, 2],\n        dislikes: [3, 4],\n        }\n      ) {\n    _id,\n    comment,\n    likes,\n    dislikes,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -938,8 +938,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -976,8 +976,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1014,8 +1014,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1052,8 +1052,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1064,7 +1064,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getEvent (eventId: 12) {\n    id,\n    eventtype,\n    title,\n    description,\n    pictures,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n    user {\n        id,\n    }\n  }\n}",
+						"query": "query {\n  getEvent (eventId: 12) {\n    _id,\n    eventtype,\n    title,\n    description,\n    pictures,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n    user {\n        _id,\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1100,7 +1100,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getAllEvents {\n    id,\n    eventtype,\n    title,\n    description,\n    pictures,\n    externalPicture,\n    location,\n    locationAddress,\n    locationCoordinates,\n    locationName,\n    fromDate,\n    untilDate,\n    eventTags,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n    user {\n        id,\n    }\n  }\n}",
+						"query": "query {\n  getAllEvents {\n    _id,\n    eventtype,\n    title,\n    description,\n    pictures,\n    externalPicture,\n    location,\n    locationAddress,\n    locationCoordinates,\n    locationName,\n    fromDate,\n    untilDate,\n    eventTags,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n    user {\n        _id,\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1126,8 +1126,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1138,7 +1138,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getAllDraftEvents {\n    id,\n    eventtype,\n    title,\n    description,\n    pictures,\n    location,\n    locationAddress,\n    locationCoordinates,\n    locationName,\n    fromDate,\n    untilDate,\n    eventTags,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "query {\n  getAllDraftEvents {\n    _id,\n    eventtype,\n    title,\n    description,\n    pictures,\n    location,\n    locationAddress,\n    locationCoordinates,\n    locationName,\n    fromDate,\n    untilDate,\n    eventTags,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1164,8 +1164,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1176,7 +1176,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addEvent (\n    eventInput: { \n        eventtype: 1,\n        title: \"This is a cool party\",\n        description: \"This is a cool party, and I am describing it.\",\n        pictures: [\"some/url/to/s3\"],\n        location: 1,\n        admin: [1, 2],\n        private: true,\n        forwardable: false,\n        allowAnonymous: false,\n        }\n  ) {\n    id,\n  }\n}",
+						"query": "mutation {\n  addEvent (\n    eventInput: { \n        eventtype: 1,\n        title: \"This is a cool party\",\n        description: \"This is a cool party, and I am describing it.\",\n        pictures: [\"some/url/to/s3\"],\n        location: 1,\n        admin: [1, 2],\n        private: true,\n        forwardable: false,\n        allowAnonymous: false,\n        }\n  ) {\n    _id,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1202,8 +1202,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1214,7 +1214,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateEvent (\n      eventId: 1,\n      eventInput: { \n        location: \"kreuzberg\",\n        private: false, \n        eventType: \"Data\",\n        title: \"This is now a date \",\n        description: \"This is a cool Date, and I am describing it.\",\n        }\n      ) {\nid,\n    eventType,\n    title,\n    description,\n    picture,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "mutation {\n  updateEvent (\n      eventId: 1,\n      eventInput: { \n        location: \"kreuzberg\",\n        private: false, \n        eventType: \"Data\",\n        title: \"This is now a date \",\n        description: \"This is a cool Date, and I am describing it.\",\n        }\n      ) {\n_id,\n    eventType,\n    title,\n    description,\n    picture,\n    location,\n    fromDate,\n    untilDate,\n    attendees,\n    invited,\n    admin,\n    private,\n    forwardable,\n    allowAnonymous,\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1240,8 +1240,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1278,8 +1278,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1290,7 +1290,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getChats (userId: 1) {\n    id,\n    userlist,\n    archived,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "query {\n  getChats (userId: 1) {\n    _id,\n    userlist,\n    archived,\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1316,8 +1316,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1328,7 +1328,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  createChat (\n    chatInput: { \n        userlist: [1,3],\n        }\n  ) {\n    id,\n    userlist,\n    archived,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "mutation {\n  createChat (\n    chatInput: { \n        userlist: [1,3],\n        }\n  ) {\n    _id,\n    userlist,\n    archived,\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1354,8 +1354,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1366,7 +1366,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  archiveChat (chatId: 1) {\n    id,\n    userlist,\n    archived,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "mutation {\n  archiveChat (chatId: 1) {\n    _id,\n    userlist,\n    archived,\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1392,8 +1392,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1404,7 +1404,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getMessages (chatId: 1) {\n    id,\n    message,\n    attachedPhotoUrl,\n    createdAt,\n    updatedAt,\n    chat {\n        id,\n    }\n  }\n}",
+						"query": "query {\n  getMessages (chatId: 1) {\n    _id,\n    message,\n    attachedPhotoUrl,\n    createdAt,\n    updatedAt,\n    chat {\n        _id,\n    }\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1430,8 +1430,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1442,7 +1442,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addMessage (\n    chatId: 1,\n    messageInput: { \n        message: \"This is a message\",\n        attachedPhotoUrl: \"some/Url\"\n        }\n  ) {\n    id,\n    userId,\n    chatId,\n    message,\n    attachedPhotoUrl,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "mutation {\n  addMessage (\n    chatId: 1,\n    messageInput: { \n        message: \"This is a message\",\n        attachedPhotoUrl: \"some/Url\"\n        }\n  ) {\n    _id,\n    userId,\n    chatId,\n    message,\n    attachedPhotoUrl,\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1468,8 +1468,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1513,7 +1513,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getSubscribers {\n    id,\n    username,\n    email,\n    interests,\n    lists,\n    about,\n    verifiedEmail,\n  }\n}",
+						"query": "query {\n  getSubscribers {\n    _id,\n    username,\n    email,\n    interests,\n    lists,\n    about,\n    verifiedEmail,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1538,8 +1538,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1550,7 +1550,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addSubscriber (\n    subscriberInput: { \n        username: \"test\", \n        email: \"test.test@test.com\", \n        lists: [\"parties\", \"deals\", \"extravaganzas\"],\n        language: \"en\",\n        }\n\n  ) {\n    id\n    name\n  }\n}",
+						"query": "mutation {\n  addSubscriber (\n    subscriberInput: { \n        username: \"test\", \n        email: \"test.test@test.com\", \n        lists: [\"parties\", \"deals\", \"extravaganzas\"],\n        language: \"en\",\n        }\n\n  ) {\n    _id\n    name\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1576,8 +1576,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1588,7 +1588,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateSubscriber (\n      subscriberId: 1,\n      subscriberInput: { \n        name: \"name\",\n        }\n      ) {\n    id,\n  }\n}",
+						"query": "mutation {\n  updateSubscriber (\n      subscriberId: 1,\n      subscriberInput: { \n        name: \"name\",\n        }\n      ) {\n    _id,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1614,8 +1614,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1659,7 +1659,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getEventtypes(usage: 0) {\n    id,\n    name,\n    validated,\n  }\n}",
+						"query": "query {\n  getEventtypes(usage: 0) {\n    _id,\n    name,\n    validated,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1691,7 +1691,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getAllEventtypes {\n    id,\n    name,\n    usage,\n    validated,\n  }\n}",
+						"query": "query {\n  getAllEventtypes {\n    _id,\n    name,\n    usage,\n    validated,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1716,8 +1716,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1728,7 +1728,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addEventType (\n    eventTypeInput: { \n        name: \"delete me\", \n        }\n  ) {\n    id\n    name\n    validated\n  }\n}",
+						"query": "mutation {\n  addEventType (\n    eventTypeInput: { \n        name: \"delete me\", \n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1754,8 +1754,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1766,7 +1766,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateEventType (\n    eventTypeId: \"1\",\n    eventTypeInput: { \n        name: \"{\\\"en\\\": \\\"date\\\", \\\"de\\\": \\\"date\\\"}\",\n        validated: true, \n        }\n  ) {\n    id\n    name\n    validated\n  }\n}",
+						"query": "mutation {\n  updateEventType (\n    eventTypeId: \"1\",\n    eventTypeInput: { \n        name: \"{\\\"en\\\": \\\"date\\\", \\\"de\\\": \\\"date\\\"}\",\n        validated: true, \n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1792,8 +1792,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1837,7 +1837,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getTags {\n    id,\n    name,\n    isUserTag,\n    isEventTag,\n    isPictureTag,\n    validated,\n  }\n}",
+						"query": "query {\n  getTags {\n    _id,\n    name,\n    isUserTag,\n    isEventTag,\n    isPictureTag,\n    validated,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1862,8 +1862,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1874,7 +1874,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addTag (\n    tagInput: { \n        name: \"delete me\", \n        isUserTag: false,\n        isEventTag: true,\n        isPictureTag: true,\n        }\n  ) {\n    id\n    name\n    isUserTag\n    isEventTag\n    isPictureTag\n    validated\n  }\n}",
+						"query": "mutation {\n  addTag (\n    tagInput: { \n        name: \"delete me\", \n        isUserTag: false,\n        isEventTag: true,\n        isPictureTag: true,\n        }\n  ) {\n    _id\n    name\n    isUserTag\n    isEventTag\n    isPictureTag\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1900,8 +1900,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1912,7 +1912,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateTag (\n    tagId: \"1\",\n    tagInput: { \n        name: \"{en:'BDSM', de:'BDSM'}\"\n        validated: true,\n        }\n  ) {\n    id\n    name\n    isUserTag\n    isEventTag\n    isPictureTag\n    validated\n  }\n}",
+						"query": "mutation {\n  updateTag (\n    tagId: \"1\",\n    tagInput: { \n        name: \"{en:'BDSM', de:'BDSM'}\"\n        validated: true,\n        }\n  ) {\n    _id\n    name\n    isUserTag\n    isEventTag\n    isPictureTag\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -1938,8 +1938,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -1983,7 +1983,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getLocation (\n    locationId: \"1\"\n  )\n  {\n    id,\n    name,\n    description,\n    pictures,\n    links,\n    address,\n    coordinates,\n    validated,\n    reviews,\n  }\n}",
+						"query": "query {\n  getLocation (\n    locationId: \"1\"\n  )\n  {\n    _id,\n    name,\n    description,\n    pictures,\n    links,\n    address,\n    coordinates,\n    validated,\n    reviews,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2015,7 +2015,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getLocations(onlyValidated: true) {\n    id,\n    name,\n    description,\n    pictures,\n    links,\n    address,\n    coordinates,\n    validated,\n    reviews,\n  }\n}",
+						"query": "query {\n  getLocations(onlyValidated: true) {\n    _id,\n    name,\n    description,\n    pictures,\n    links,\n    address,\n    coordinates,\n    validated,\n    reviews,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2040,8 +2040,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2052,7 +2052,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addLocation (\n    locationInput: { \n        name: \"delete me\",\n        validated: true \n        }\n  ) {\n    id\n    name\n    description\n    pictures\n    links\n    address\n    coordinates\n    validated\n    reviews\n  }\n}",
+						"query": "mutation {\n  addLocation (\n    locationInput: { \n        name: \"delete me\",\n        validated: true \n        }\n  ) {\n    _id\n    name\n    description\n    pictures\n    links\n    address\n    coordinates\n    validated\n    reviews\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2078,8 +2078,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2090,7 +2090,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateLocation (\n    locationId: \"2\",\n    locationInput: { \n        name: \"delete me\", \n        }\n  ) {\n    id\n    name\n    description\n    pictures\n    links\n    address\n    coordinates\n    validated\n    reviews\n  }\n}",
+						"query": "mutation {\n  updateLocation (\n    locationId: \"2\",\n    locationInput: { \n        name: \"delete me\", \n        }\n  ) {\n    _id\n    name\n    description\n    pictures\n    links\n    address\n    coordinates\n    validated\n    reviews\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2116,8 +2116,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2154,8 +2154,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2166,7 +2166,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addPartnertype (\n    partnertypeInput: { \n        name: \"delete me\", \n        }\n  ) {\n    id\n    name\n  }\n}",
+						"query": "mutation {\n  addPartnertype (\n    partnertypeInput: { \n        name: \"delete me\", \n        }\n  ) {\n    _id\n    name\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2192,8 +2192,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2204,7 +2204,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updatePartnertype (\n    partnertypeId: \"1\",\n    partnertypeInput: { \n        name: \"{\\\"en\\\": \\\"date\\\", \\\"de\\\": \\\"date\\\"}\",\n        }\n  ) {\n    id\n    name\n  }\n}",
+						"query": "mutation {\n  updatePartnertype (\n    partnertypeId: \"1\",\n    partnertypeInput: { \n        name: \"{\\\"en\\\": \\\"date\\\", \\\"de\\\": \\\"date\\\"}\",\n        }\n  ) {\n    _id\n    name\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2237,7 +2237,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getArtist (artistId: 1) {\n    id,\n    name,\n    pictures,\n    links,\n    validated,\n  }\n}",
+						"query": "query {\n  getArtist (artistId: 1) {\n    _id,\n    name,\n    pictures,\n    links,\n    validated,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2269,7 +2269,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getArtists {\n    id,\n    name,\n    pictures,\n    links,\n    validated,\n  }\n}",
+						"query": "query {\n  getArtists {\n    _id,\n    name,\n    pictures,\n    links,\n    validated,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2294,8 +2294,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2306,7 +2306,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addArtist (\n    artistInput: {\n        name: \"artist validated\",\n        validated: true,\n        }\n  ) {\n    id\n    name\n    pictures\n    links\n    validated\n    artistType\n    reviews\n  }\n}",
+						"query": "mutation {\n  addArtist (\n    artistInput: {\n        name: \"artist validated\",\n        validated: true,\n        }\n  ) {\n    _id\n    name\n    pictures\n    links\n    validated\n    artistType\n    reviews\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2326,14 +2326,14 @@
 			"response": []
 		},
 		{
-			"name": "GraphQL Mutation: updateArtist",
+			"name": "GraphQL Mutation: updateArtistAsAdmin",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2344,7 +2344,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateArtist (\n    artistId: \"1\",\n    artistInput: {\n        validated: true,\n        artistType: 1,\n        }\n  ) {\n    id\n    name\n    artistType\n    validated\n  }\n}",
+						"query": "mutation {\n  updateArtistAsAdmin (\n    artistId: 1,\n    artistInput: {\n        validated: true,\n        artistType: 1,\n        }\n  ) {\n    _id\n    name\n    artistType\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2370,8 +2370,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2415,7 +2415,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getDresscodes {\n    id,\n    name,\n    validated,\n  }\n}",
+						"query": "query {\n  getDresscodes {\n    _id,\n    name,\n    validated,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2440,8 +2440,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2452,7 +2452,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addDresscode (\n    dresscodeInput: {\n        name: \"{\\\"en\\\":\\\"Colorful\\\", \\\"de\\\":\\\"Bunt\\\"}\",\n        validated: true,\n        }\n  ) {\n    id\n    name\n    validated\n  }\n}",
+						"query": "mutation {\n  addDresscode (\n    dresscodeInput: {\n        name: \"{\\\"en\\\":\\\"Colorful\\\", \\\"de\\\":\\\"Bunt\\\"}\",\n        validated: true,\n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2478,8 +2478,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2490,7 +2490,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateDresscode (\n    dresscodeId: \"1\",\n    dresscodeInput: {\n        name: \"{en:'latex', de:'latex'}\"\n        }\n  ) {\n    id\n    name\n    validated\n  }\n}",
+						"query": "mutation {\n  updateDresscode (\n    dresscodeId: \"1\",\n    dresscodeInput: {\n        name: \"{en:'latex', de:'latex'}\"\n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2516,8 +2516,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2561,7 +2561,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getEquipments {\n    id,\n    name,\n    validated,\n  }\n}",
+						"query": "query {\n  getEquipments {\n    _id,\n    name,\n    validated,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2586,8 +2586,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2598,7 +2598,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addEquipment (\n    equipmentInput: {\n        name: \"{\\\"en\\\":\\\"Gyn chair\\\", \\\"de\\\":\\\"Gyn-Stuhl\\\"}\",\n        validated: true,\n        }\n  ) {\n    id\n    name\n    validated\n  }\n}",
+						"query": "mutation {\n  addEquipment (\n    equipmentInput: {\n        name: \"{\\\"en\\\":\\\"Gyn chair\\\", \\\"de\\\":\\\"Gyn-Stuhl\\\"}\",\n        validated: true,\n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2624,8 +2624,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2636,7 +2636,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateEquipment (\n    equipmentId: \"6\",\n    equipmentInput: {\n        name: \"{\\\"en\\\":\\\"Slave chair\\\", \\\"de\\\":\\\"Sklavenstuhl\\\"}\",\n        }\n  ) {\n    id\n    name\n    validated\n  }\n}",
+						"query": "mutation {\n  updateEquipment (\n    equipmentId: \"6\",\n    equipmentInput: {\n        name: \"{\\\"en\\\":\\\"Slave chair\\\", \\\"de\\\":\\\"Sklavenstuhl\\\"}\",\n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2662,8 +2662,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2700,8 +2700,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2712,7 +2712,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addGender (\n    genderInput: {\n        name: \"{\\\"en\\\":\\\"Female\\\", \\\"de\\\":\\\"Weiblich\\\"}\",\n        validated: true,\n        }\n  ) {\n    id\n    name\n    validated\n  }\n}",
+						"query": "mutation {\n  addGender (\n    genderInput: {\n        name: \"{\\\"en\\\":\\\"Female\\\", \\\"de\\\":\\\"Weiblich\\\"}\",\n        validated: true,\n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2738,8 +2738,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2750,7 +2750,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addEquipment (\n    equipmentInput: {\n        name: \"{\\\"en\\\":\\\"Gyn chair\\\", \\\"de\\\":\\\"Gyn-Stuhl\\\"}\",\n        validated: true,\n        }\n  ) {\n    id\n    name\n    validated\n  }\n}",
+						"query": "mutation {\n  addEquipment (\n    equipmentInput: {\n        name: \"{\\\"en\\\":\\\"Gyn chair\\\", \\\"de\\\":\\\"Gyn-Stuhl\\\"}\",\n        validated: true,\n        }\n  ) {\n    _id\n    name\n    validated\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2783,7 +2783,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getTranslations {\n    id,\n    category,\n    key,\n    en,\n    de,\n    fr,\n    es,\n    ru,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "query {\n  getTranslations {\n    _id,\n    category,\n    key,\n    en,\n    de,\n    fr,\n    es,\n    ru,\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2808,8 +2808,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2820,7 +2820,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addDark (\n    darkInput: { \n        number: 0, \n        title: \"test\",\n        description: \"test\",\n        link: \"test\",\n        archived: true,\n        }\n  ) {\n    id\n    category\n    key\n    en\n    de\n    fr\n    es\n    ru\n  }\n}",
+						"query": "mutation {\n  addDark (\n    darkInput: { \n        number: 0, \n        title: \"test\",\n        description: \"test\",\n        link: \"test\",\n        archived: true,\n        }\n  ) {\n    _id\n    category\n    key\n    en\n    de\n    fr\n    es\n    ru\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2846,8 +2846,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2858,7 +2858,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  updateTranslation (\n    translationId: \"1\",\n    translationInput: { \n        category: \"test\", \n        key: \"test\",\n        en: \"test en\",\n        de: \"test de\",\n        fr: \"test fr\",\n        ru: \"test ru\",\n        es: \"test es\",\n        }\n  ) {\n    id\n    category\n    key\n    en\n    de\n    fr\n    es\n    ru\n  }\n}",
+						"query": "mutation {\n  updateTranslation (\n    translationId: \"1\",\n    translationInput: { \n        category: \"test\", \n        key: \"test\",\n        en: \"test en\",\n        de: \"test de\",\n        fr: \"test fr\",\n        ru: \"test ru\",\n        es: \"test es\",\n        }\n  ) {\n    _id\n    category\n    key\n    en\n    de\n    fr\n    es\n    ru\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2884,8 +2884,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2922,8 +2922,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -2934,7 +2934,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n   updateDark (\n    darkId: \"1\",\n    darkInput: { \n        link: \"https://online.fliphtml5.com/gdfru/hbap/\", \n        }\n  ) {\n    id\n  }\n}",
+						"query": "mutation {\n   updateDark (\n    darkId: \"1\",\n    darkInput: { \n        link: \"https://online.fliphtml5.com/gdfru/hbap/\", \n        }\n  ) {\n    _id\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2967,7 +2967,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getBugs {\n    id,\n    desc,\n    category,\n    screenshot,\n    isResolved,\n    isUrgent,\n    user {\n        userName,\n    }\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "query {\n  getBugs {\n    _id,\n    desc,\n    category,\n    screenshot,\n    isResolved,\n    isUrgent,\n    user {\n        userName,\n    }\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -2999,7 +2999,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getDarks {\n    id,\n    number,\n    title,\n    link,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "query {\n  getDarks {\n    _id,\n    number,\n    title,\n    link,\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -3024,8 +3024,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -3036,7 +3036,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addTranslation (\n    translationInput: { \n        category: \"to delete\", \n        key: \"test\",\n        en: \"test\",\n        de: \"test\",\n        }\n  ) {\n    id\n    category\n    key\n    en\n    de\n    fr\n    es\n    ru\n  }\n}",
+						"query": "mutation {\n  addTranslation (\n    translationInput: { \n        category: \"to delete\", \n        key: \"test\",\n        en: \"test\",\n        de: \"test\",\n        }\n  ) {\n    _id\n    category\n    key\n    en\n    de\n    fr\n    es\n    ru\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -3062,8 +3062,8 @@
 				"header": [
 					{
 						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "Authorization",
@@ -3142,7 +3142,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getNotifications {\n    id,\n    userId,\n    photoLinkId,\n    userLinkId,\n    eventLinkId,\n    mediaUrl,\n    data,\n    actionData,\n    type,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "query {\n  getNotifications {\n    _id,\n    userId,\n    photoLinkId,\n    userLinkId,\n    eventLinkId,\n    mediaUrl,\n    data,\n    actionData,\n    type,\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -3173,7 +3173,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  getAllNotifications {\n    id,\n    userId,\n    photoLinkId,\n    userLinkId,\n    eventLinkId,\n    mediaUrl,\n    data,\n    actionData,\n    type,\n    seen,\n    createdAt,\n    updatedAt,\n  }\n}",
+						"query": "query {\n  getAllNotifications {\n    _id,\n    userId,\n    photoLinkId,\n    userLinkId,\n    eventLinkId,\n    mediaUrl,\n    data,\n    actionData,\n    type,\n    seen,\n    createdAt,\n    updatedAt,\n  }\n}",
 						"variables": ""
 					}
 				},
@@ -3208,7 +3208,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addFriendRequest (\n    requested_id: \"1\"\n  )\n}",
+						"query": "mutation {\n  addFriendRequest (\n    requestedId: \"1\"\n  )\n}",
 						"variables": ""
 					}
 				},
@@ -3244,7 +3244,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\n  isRequested (\n    requesting_id: \"1\"\n  )\n}",
+						"query": "query {\n  isRequested (\n    requestingId: \"1\"\n  )\n}",
 						"variables": ""
 					}
 				},
@@ -3280,7 +3280,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  deleteFriendRequest (\n    requested_id: \"1\"\n  )\n}",
+						"query": "mutation {\n  deleteFriendRequest (\n    requestedId: \"1\"\n  )\n}",
 						"variables": ""
 					}
 				},
@@ -3316,7 +3316,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  addFollow (\n    followed_id: \"1\"\n  )\n}",
+						"query": "mutation {\n  addFollow (\n    followedId: \"1\"\n  )\n}",
 						"variables": ""
 					}
 				},
@@ -3352,7 +3352,221 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\n  deleteFollow (\n    followed_id: \"1\"\n  )\n}",
+						"query": "mutation {\n  deleteFollow (\n    followedId: \"1\"\n  )\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Query: getPartner",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\n  getPartner (partnerId: 1){\n    id,\n    name,\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Query: getAllPartners",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZjdiNmViMjY3YmMzZDgwY2QxOTNkMGUiLCJlbWFpbCI6ImNsZW1lbnQudmFuc3RhZW5AZ21haWwuY29tIiwiaWF0IjoxNjA1MTkzMDMyLCJleHAiOjE2MDUxOTM5MzJ9.AyoSirRre9Y7Oojc2Cf9orma46CNnfBOAexNj7Spxt4"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\n  getAllPartners{\n    id,\n    name,\n    description,\n    pending,\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: addPartner",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  addPartner (\n    partnerInput: { \n        name: \"test\", \n        description: \"test\", \n        partnertype: 2, \n        }\n  ) {\n    id\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: updatePartner",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  updatePartner (\n    partnerId: 1,    partnerInput: { \n        name: \"test updated\",\n        }\n  ) {\n    id\n    name\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: updatePartnerAsAdmin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  updatePartnerAsAdmin (\n    partnerId: 1,  \n    partnerInput: { \n        name: \"test\", \n        pending: false, \n        partnertype: 3, \n        }\n  ) {\n    id\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5017/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5017",
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Post request : new user (format Json)\nTo localserver on port 5000"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Mutation: deletePartnerAsAdmin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 123456789",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation {\n  deletePartnerAsAdmin (\n    partnerId: 1\n  ) \n}",
 						"variables": ""
 					}
 				},

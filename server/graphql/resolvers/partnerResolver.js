@@ -69,7 +69,6 @@ export const partnerResolver = {
       "pictures",
       "settings",
       "reviews",
-      "partnertype",
       "links",
       "partnerTags",
       "archived",
@@ -150,7 +149,7 @@ export const partnerResolver = {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
-    const foundUser = await Partner.findOne({
+    const foundUser = await User.findOne({
       where: { id: req.userId },
     });
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("partners")) {
