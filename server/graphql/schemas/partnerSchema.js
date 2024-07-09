@@ -11,13 +11,13 @@ type Partner {
     partnerRoles: Int
     links: [String]
     partnerTags: [Int]
-    lastActive: Float!
     archived: Boolean
     suspended: Boolean
     admin: [Int]
     pending: Boolean
     createdAt: Float!
     updatedAt: Float!
+    lastActive: Float!
 }`;
 
 export const PartnerInputData = `
@@ -64,5 +64,3 @@ export const PartnerMutations = `
     updatePartnerAsAdmin(partnerId: ID!, partnerInput: PartnerInputDataAdmin!): Partner!
     deletePartnerAsAdmin(partnerId: ID!): Boolean!
 `;
-
-// TODO: Creat partner resolver

@@ -2,13 +2,14 @@ import { User } from "../../models/User.js";
 import { Partner } from "../../models/Partner.js";
 
 export const partnerResolver = {
+  // getPartner(partnerId: Int): Partner
   async getPartner(args, req) {
     return await Partner.findOne({
       where: { id: args.partnerId },
-      include: [User],
     });
   },
 
+  // getAllPartners: [Partner]
   async getAllPartners(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
@@ -16,28 +17,22 @@ export const partnerResolver = {
     const foundUser = await User.findOne({
       where: { id: req.userId },
     });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("partners")) {
       throw new Error("Unauthorized!");
     }
     return await Partner.findAll({
       order: [["id", "ASC"]],
-      include: [User],
     });
   },
 
+  // addPartner(partnerInput: PartnerInputData!): Partner!
   async addPartner(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
-    const foundUser = await User.findOne({
-      where: { id: req.userId },
-    });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
-      throw new Error("Unauthorized!");
-    }
     const foundPartnerName = await Partner.findOne({
       where: {
-        foundPartnerName: args.partnerInput.name.toLowerCase(),
+        name: args.partnerInput.name.toLowerCase(),
       },
     });
     if (foundPartnerName) {
@@ -48,8 +43,11 @@ export const partnerResolver = {
     try {
       const partner = new Partner({
         name: args.partnerInput.name,
+        description: args.partnerInput.description,
+        avatar: args.partnerInput.avatar,
         partnertype: args.partnerInput.partnertype,
-        partnerRoles: args.partnerInput.partnerRoles,
+        pending: true,
+        admin: [req.userId],
         lastActive: Date.now(),
       });
       return await partner.save();
@@ -58,50 +56,9 @@ export const partnerResolver = {
     }
   },
 
-  // TODO: check that UserId is associated to Partner
+  // updatePartner(partnerId: ID!, partnerInput: PartnerInputData!): Partner!
   async updatePartner(args, req) {
     if (!req.isAuth) {
-      throw new Error("Unauthorized!");
-    }
-    const updateFields = [];
-    const updatableFields = [
-      "description",
-      "avatar",
-      "pictures",
-      "profilSettings",
-      "archived",
-      "suspended",
-    ];
-    updatableFields.forEach((field) => {
-      if (field in args.partnerInput) {
-        updateFields[field] = args.partnerInput[field];
-      }
-    });
-    try {
-      const updatedPartner = await Partner.update(updateFields, {
-        where: {
-          id: args.partnerId,
-        },
-        returning: true,
-        plain: true,
-      });
-      // updatedPartner[0]: number or row udpated
-      // updatedPartner[1]: rows updated
-      return updatedPartner[1];
-    } catch (err) {
-      console.log(err);
-    }
-  },
-
-  // updateUser(id: ID!, userInput: UserInputData!): User!
-  async updatePartnerAsAdmin(args, req) {
-    if (!req.isAuth) {
-      throw new Error("Unauthorized!");
-    }
-    const foundUser = await User.findOne({
-      where: { id: req.userId },
-    });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
       throw new Error("Unauthorized!");
     }
     const updateFields = [];
@@ -110,12 +67,13 @@ export const partnerResolver = {
       "description",
       "avatar",
       "pictures",
-      "profilSettings",
+      "settings",
       "reviews",
       "partnertype",
-      "partnerRoles",
+      "links",
+      "partnerTags",
       "archived",
-      "suspended",
+      "admin",
     ];
     updatableFields.forEach((field) => {
       if (field in args.partnerInput) {
@@ -138,6 +96,56 @@ export const partnerResolver = {
     }
   },
 
+  // updatePartnerAsAdmin(partnerId: ID!, partnerInput: PartnerInputDataAdmin!): Partner!
+  async updatePartnerAsAdmin(args, req) {
+    if (!req.isAuth) {
+      throw new Error("Unauthorized!");
+    }
+    const foundUser = await User.findOne({
+      where: { id: req.userId },
+    });
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("partners")) {
+      throw new Error("Unauthorized!");
+    }
+    const updateFields = [];
+    const updatableFields = [
+      "name",
+      "description",
+      "avatar",
+      "pictures",
+      "settings",
+      "reviews",
+      "partnertype",
+      "links",
+      "partnerTags",
+      "archived",
+      "admin",
+      "partnerRoles",
+      "suspended",
+      "pending",
+    ];
+    updatableFields.forEach((field) => {
+      if (field in args.partnerInput) {
+        updateFields[field] = args.partnerInput[field];
+      }
+    });
+    try {
+      const updatedPartner = await Partner.update(updateFields, {
+        where: {
+          id: args.partnerId,
+        },
+        returning: true,
+        plain: true,
+      });
+      // updatedPartner[0]: number or row udpated
+      // updatedPartner[1]: rows updated
+      return updatedPartner[1];
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  // deletePartnerAsAdmin(partnerId: ID!): Boolean!
   async deletePartnerAsAdmin(args, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
@@ -145,7 +153,7 @@ export const partnerResolver = {
     const foundUser = await Partner.findOne({
       where: { id: req.userId },
     });
-    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("users")) {
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("partners")) {
       throw new Error("Unauthorized!");
     }
     await Partner.destroy({
@@ -153,7 +161,6 @@ export const partnerResolver = {
         id: args.partnerId,
       },
     });
-    req.session = null;
     return true;
   },
 };
