@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 
 import { profileStore } from "../../../../../store/profileStore/profileStore";
 import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMainTitle";
+import { CreatePartnerForm } from "./CreatePartnerForm/CreatePartnerForm";
 
 import "./ProfilePartners.less";
-import { CreatePartnerForm } from "./CreatePartnerForm/CreatePartnerForm";
 
 export const ProfilePartners = observer(() => {
   const [showPartnersModal, setShowPartnersModal] = useState(false);
