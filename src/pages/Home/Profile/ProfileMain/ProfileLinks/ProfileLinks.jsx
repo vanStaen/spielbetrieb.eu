@@ -19,9 +19,9 @@ import spielbetriebIcoBlue from "../../../../../img/icons/spielbetriebblue.ico";
 import spielbetriebIcoBeige from "../../../../../img/icons/spielbetriebbeige.ico";
 import instagramIco from "../../../../../img/icons/instagram.png";
 import residentadvisorIco from "../../../../../img/icons/residentadvisor.jpg";
+import { pageStore } from "../../../../../store/pageStore/pageStore";
 
 import "./ProfileLinks.less";
-import { pageStore } from "../../../../../store/pageStore/pageStore";
 
 export const ProfileLinks = observer(() => {
   const { t } = useTranslation();
