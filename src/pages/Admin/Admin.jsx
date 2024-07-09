@@ -19,6 +19,7 @@ import {
 import { AdminNewsletter } from "./AdminNewsletter/AdminNewsletter";
 import { AdminRessources } from "./AdminRessources/AdminRessources";
 import { AdminUsers } from "./AdminUsers/AdminUsers";
+import { AdminPartners } from "./AdminPartners/AdminPartners";
 import { AdminData } from "./AdminData/AdminData";
 import { AdminContent } from "./AdminContent/AdminContent";
 import { AdminEvents } from "./AdminEvents/AdminEvents";
@@ -54,7 +55,7 @@ export const Admin = observer(() => {
       case "users":
         return <AdminUsers />;
       case "partners":
-        return "partners";
+        return <AdminPartners />;
       case "content":
         return <AdminContent />;
       case "analytics":
@@ -101,7 +102,6 @@ export const Admin = observer(() => {
         label: !isMobile && "Partners",
         value: "partners",
         icon: <ShopOutlined />,
-        disabled: true,
       });
     }
     if (roles.includes("content")) {

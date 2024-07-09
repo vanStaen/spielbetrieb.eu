@@ -57,10 +57,17 @@ export const CreatePartnerForm = observer((props) => {
       const name = form.getFieldValue("name");
       const description = form.getFieldValue("description");
       const partnertype = form.getFieldValue("partnertype");
-      await addPartner(name, description, partnerStore.avatar, partnertype);
-      message.info(t(`profile.partnerPageGoneToModeration`));
-      form.resetFields();
-      setShowModal(false);
+      const res = await addPartner(name, description, partnerStore.avatar, partnertype);
+      console.log(res);
+      if (Object.hasOwn(res, 'errors')) {
+        message.error(res.errors[0].message);
+
+      } else {
+        message.info(t(`profile.partnerPageGoneToModeration`));
+        form.resetFields();
+        setShowModal(false);
+      }
+
     } catch (e) {
       console.error(e);
     }

@@ -8,7 +8,7 @@ type Partner {
     settings: String
     reviews: [String]
     partnertype: Int
-    partnerRoles: Int
+    partnerRoles: [Int]
     links: [String]
     partnerTags: [Int]
     archived: Boolean
@@ -44,7 +44,7 @@ input PartnerInputDataAdmin {
     settings: String
     reviews: [String]
     partnertype: Int
-    partnerRoles: Int
+    partnerRoles: [Int]
     links: [String]
     partnerTags: [Int]
     archived: Boolean

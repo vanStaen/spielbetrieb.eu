@@ -43,7 +43,7 @@ export async function addPartner(name, description, avatar, partnertype) {
   const data = await response.json();
 
   if (data.errors) {
-    return data.errors[0];
+    return data;
   }
   return data.data.addPartner;
 }

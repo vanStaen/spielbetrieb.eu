@@ -1,5 +1,6 @@
 import { User } from "../../models/User.js";
 import { Partner } from "../../models/Partner.js";
+import { Op } from "sequelize";
 
 export const partnerResolver = {
   // getPartner(partnerId: Int): Partner
@@ -32,12 +33,12 @@ export const partnerResolver = {
     }
     const foundPartnerName = await Partner.findOne({
       where: {
-        name: args.partnerInput.name.toLowerCase(),
+        name: { [Op.iLike]: args.partnerInput.name },
       },
     });
     if (foundPartnerName) {
       throw new Error(
-        "This partner name is already associated with an account.",
+        "There is already a partner with this name.",
       );
     }
     try {
