@@ -76,6 +76,8 @@ export const AdminEvents = () => {
     fetchEvents();
   };
 
+  // TODO: Add pictures
+
   const columns = [
     {
       title: "id",
