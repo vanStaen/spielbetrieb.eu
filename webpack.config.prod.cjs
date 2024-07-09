@@ -26,7 +26,12 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: "public/manifest.webmanifest" },
-        { from: "public/icon.png" },
+        { from: "public/favicon.ico" },
+        { from: "public/apple-touch-icon.png" },
+        { from: "public/spielbetrieb_logo_beige_24.png" },
+        { from: "public/spielbetrieb_logo_beige_128.png" },
+        { from: "public/spielbetrieb_logo_beige_256.png" },
+        { from: "public/spielbetrieb_logo_beige_512.png" },
         {
           from: "public/locales/en/translation.json",
           to: "locales/en/translation.json",
@@ -35,10 +40,6 @@ module.exports = {
           from: "public/locales/de/translation.json",
           to: "locales/de/translation.json",
         },
-        { from: "public/spielbetrieb_logo_beige_24.png" },
-        { from: "public/spielbetrieb_logo_beige_128.png" },
-        { from: "public/spielbetrieb_logo_beige_256.png" },
-        { from: "public/spielbetrieb_logo_beige_512.png" },
       ],
     }),
   ],

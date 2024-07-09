@@ -29,7 +29,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: "public/manifest.webmanifest" },
-        { from: "public/icon.png" },
+        { from: "public/favicon.ico" },
+        { from: "public/apple-touch-icon.png" },
         { from: "public/spielbetrieb_logo_beige_24.png" },
         { from: "public/spielbetrieb_logo_beige_128.png" },
         { from: "public/spielbetrieb_logo_beige_256.png" },
