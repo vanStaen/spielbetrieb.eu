@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const getUserInfo = async () => {
-  // TODO: getPartner
+//TODO: getPartner
+export const getPartner = async () => {
   const requestBody = {
     query: `
             {
