@@ -7,6 +7,7 @@ export const getProfilePartners = async (id) => {
             getProfilePartnersById (id: "${id}"){ 
                 id,
                 name,
+                userName,
                 description,
                 avatar,
                 pending,

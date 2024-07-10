@@ -36,9 +36,9 @@ export const Profile = observer((props) => {
   }, [userStore.isLoading, userStore.userName, params.username]);
 
   useEffect(() => {
-    // TODO : Redirect only if own profile.
-    // If params.username = true, then check profile settings
-    redirectIfNotLoggedIn();
+    !params.username && redirectIfNotLoggedIn();
+    // TODO : check if profile can be access wihtout be loged in
+    // TODO : Check if profile can be access by !friends
   }, []);
 
   const thisIsMe = userStore.id === profileStore.id;

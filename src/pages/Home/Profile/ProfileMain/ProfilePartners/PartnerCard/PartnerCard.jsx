@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react";
+import { useNavigate } from "react-router-dom";
+import { Tag, Popconfirm } from "antd";
 import {
     DeleteOutlined,
     EditOutlined,
 } from "@ant-design/icons";
-import { Tag, Popconfirm } from "antd";
 
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import { userStore } from "../../../../../../store/userStore/userStore";
@@ -14,12 +15,13 @@ import { getPictureUrl } from "../../../../../../helpers/picture/getPictureUrl";
 
 import './PartnerCard.less';
 
-// TODO: finish card
+// TODO: add tags
 
 export const PartnerCard = observer((props) => {
-    const { id, name, avatar, description, pending } = props.partner;
+    const { id, name, avatar, description, pending, userName } = props.partner;
     const isMypartner = profileStore.id === userStore?.id;
     const [avatarUrl, setAvatarUrl] = useState(null);
+    const navigate = useNavigate();
 
     const fetchAvatarUrl = async () => {
         const url = await getPictureUrl(`${avatar}_t`, "temp");
@@ -33,9 +35,14 @@ export const PartnerCard = observer((props) => {
         console.log('url', url);
         setAvatarUrl(url);
     }
+
     useEffect(() => {
         fetchAvatarUrl();
     }, [avatar])
+
+    const handlepartnerContainerClick = () => {
+        navigate(`/partner/${userName}`, { relative: "path" });
+    };
 
     return (
         <div
@@ -44,7 +51,7 @@ export const PartnerCard = observer((props) => {
             className={`partner__Container 
                 ${pageStore.selectedTheme === "light" ? "partner__black" : "partner__white"}
             `}
-        //onClick={handlepartnerContainerClick}
+            onClick={handlepartnerContainerClick}
         >
             {avatarUrl ? (
                 <div className="partner__artwork">

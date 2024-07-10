@@ -68,6 +68,9 @@ export const CreatePartnerForm = observer((props) => {
         message.info(t(`profile.partnerPageGoneToModeration`));
         form.resetFields();
         setShowModal(false);
+        setTimeout(() => {
+          profileStore.fetchProfilePartners()
+        }, 3000);
       }
 
     } catch (e) {
@@ -207,7 +210,7 @@ export const CreatePartnerForm = observer((props) => {
           <div className="modal__footerContainer">
             <Form.Item>
               <Button htmlType="submit" className="modal__footerButton">
-                Save
+                Create
               </Button>
             </Form.Item>
           </div>

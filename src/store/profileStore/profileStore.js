@@ -82,6 +82,7 @@ export class ProfileStore {
       setProfilSettings: action,
       setFilterIsPopingUp: action,
       fetchProfileData: action,
+      fetchProfilePartners: action,
       setPhotos: action,
       setReviews: action,
       setTags: action,
@@ -246,6 +247,11 @@ export class ProfileStore {
       this.setError(error);
     }
   };
+
+  fetchProfilePartners = async () => {
+    const partners = await getProfilePartners(this.id);
+    this.setPartners(partners);
+  }
 }
 
 export const profileStore = new ProfileStore();
