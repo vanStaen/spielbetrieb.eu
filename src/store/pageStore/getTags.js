@@ -8,6 +8,7 @@ export async function getTags() {
                 isUserTag,
                 isEventTag,
                 isPictureTag,
+                isPartnerTag,
                 validated,
               }
             }

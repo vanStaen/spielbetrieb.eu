@@ -23,6 +23,10 @@ export const Tag = sequelize.sequelize.define("tag", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
+  isPartnerTag: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
   validated: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,

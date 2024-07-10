@@ -5,6 +5,7 @@ type Tag {
     isUserTag: Boolean
     isEventTag: Boolean
     isPictureTag: Boolean
+    isPartnerTag: Boolean
     validated: Boolean
     createdAt: Float!
     updatedAt: Float!
@@ -16,6 +17,7 @@ input TagInputData {
     isUserTag: Boolean
     isEventTag: Boolean
     isPictureTag: Boolean
+    isPartnerTag: Boolean
     validated: Boolean
 }`;
 

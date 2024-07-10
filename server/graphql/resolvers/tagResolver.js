@@ -29,6 +29,7 @@ export const tagResolver = {
         isUserTag: args.tagInput.isUserTag,
         isEventTag: args.tagInput.isEventTag,
         isPictureTag: args.tagInput.isPictureTag,
+        isPartnerTag: args.tagInput.isPartnerTag,
         validated: args.tagInput.validated,
       });
       return await tag.save();
@@ -54,6 +55,7 @@ export const tagResolver = {
       "isUserTag",
       "isEventTag",
       "isPictureTag",
+      "isPartnerTag",
       "validated",
     ];
     updatableFields.forEach((field) => {

@@ -67,6 +67,7 @@ export const AdminTags = () => {
         isUserTag: dataObject.isUserTag,
         isEventTag: dataObject.isEventTag,
         isPictureTag: dataObject.isPictureTag,
+        isPartnerTag: dataObject.isPartnerTag,
         validated: dataObject.validated,
       };
       if (isNewRow) {
@@ -127,6 +128,14 @@ export const AdminTags = () => {
       render: (_, { isPictureTag }) => isPictureTag && "✖️",
     },
     {
+      title: "Partner tag",
+      dataIndex: "isPartnerTag",
+      key: "isPartnerTag",
+      align: "center",
+      editable: true,
+      render: (_, { isPartnerTag }) => isPartnerTag && "✖️",
+    },
+    {
       title: "Validated",
       dataIndex: "validated",
       key: "validated",
@@ -185,9 +194,10 @@ export const AdminTags = () => {
         record,
         inputType:
           col.dataIndex === "validated" ||
-          col.dataIndex === "isPictureTag" ||
-          col.dataIndex === "isEventTag" ||
-          col.dataIndex === "isUserTag"
+            col.dataIndex === "isPictureTag" ||
+            col.dataIndex === "isEventTag" ||
+            col.dataIndex === "isPartnerTag" ||
+            col.dataIndex === "isUserTag"
             ? "boolean"
             : "text",
         dataIndex: col.dataIndex,
