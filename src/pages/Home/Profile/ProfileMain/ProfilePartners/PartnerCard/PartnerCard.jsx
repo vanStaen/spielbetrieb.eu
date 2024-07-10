@@ -65,7 +65,6 @@ export const PartnerCard = observer((props) => {
             <div className="partner__main">
                 <div className={"partner__name"}>
                     {name}
-                    {pending && <Tag bordered={false}>Pending review </Tag>}
                 </div>
                 <div className={"partner__desc"}>{description}</div>
                 {/* 
@@ -76,6 +75,7 @@ export const PartnerCard = observer((props) => {
             </div>
 
             <div className="partner__actions">
+                {pending && <Tag bordered={false}>Pending review </Tag>}
                 {isMypartner && (
                     <div
                         className="partner__action"

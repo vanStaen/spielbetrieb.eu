@@ -1,5 +1,5 @@
 .partner__white {
-    background: linear-gradient(rgba(white, .05) 0%, transparent 75%);
+    background: linear-gradient(rgba(white, .1) 0%, transparent 75%);
     color: white;
 
     &:hover {
@@ -72,14 +72,6 @@
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
-
-            .ant-tag-borderless {
-                font-size: 10px !important;
-                border-color: rgba(white, .25);
-                background-color: rgba(firebrick, .75);
-                color: rgba(white, 1);
-                margin: 0 3px 0 8px;
-            }
         }
 
         .partner__desc {
@@ -115,12 +107,22 @@
 
         .partner__action {
             display: inline-block;
+            vertical-align: middle;
             padding: 0 2px;
             opacity: .5;
 
             &:hover {
                 opacity: 1;
             }
+        }
+
+        .ant-tag-borderless {
+            font-size: 10px;
+            border-color: rgba(white, .25);
+            background-color: rgba(firebrick, .75);
+            color: rgba(white, 1);
+            margin: 0 4px 0 0 !important;
+            line-height: 17px;
         }
     }
 }

@@ -49,7 +49,8 @@ export const EventCard = observer((props) => {
   /* TODO:
         show number of attending
         Mark attending event 
-        buy a ticket Ticket
+        buy a ticket
+        add draft tag and pending tag (action div)
     */
 
   const handleTagClick = (index, id) => {
