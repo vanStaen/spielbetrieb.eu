@@ -36,7 +36,12 @@ export const partnerResolver = {
         name: { [Op.iLike]: args.partnerInput.name },
       },
     });
-    if (foundPartnerName) {
+    const foundPartnerUserName = await Partner.findOne({
+      where: {
+        userName: { [Op.iLike]: args.partnerInput.replaceAll(' ', '').toLowerCase() },
+      },
+    });
+    if (foundPartnerName || foundPartnerUserName) {
       throw new Error(
         "There is already a partner with this name.",
       );
@@ -44,6 +49,7 @@ export const partnerResolver = {
     try {
       const partner = new Partner({
         name: args.partnerInput.name,
+        userName: args.partnerInput.replaceAll(' ', '').toLowerCase(),
         description: args.partnerInput.description,
         avatar: args.partnerInput.avatar,
         partnertype: args.partnerInput.partnertype,

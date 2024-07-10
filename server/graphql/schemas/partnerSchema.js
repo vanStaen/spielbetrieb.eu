@@ -1,6 +1,7 @@
 export const Partner = `
 type Partner {
     id: ID! 
+    userName: String
     name: String!
     description: String
     avatar: String
@@ -22,6 +23,7 @@ type Partner {
 
 export const PartnerInputData = `
 input PartnerInputData {
+    userName: String
     name: String
     description: String
     avatar: String
@@ -37,6 +39,7 @@ input PartnerInputData {
 
 export const PartnerInputDataAdmin = `
 input PartnerInputDataAdmin {
+    userName: String
     name: String
     description: String
     avatar: String

@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { profileStore } from "../../../../../store/profileStore/profileStore";
 import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMainTitle";
 import { CreatePartnerForm } from "./CreatePartnerForm/CreatePartnerForm";
+import { PartnerCard } from "./PartnerCard/PartnerCard";
 
 import "./ProfilePartners.less";
 
@@ -31,9 +32,9 @@ export const ProfilePartners = observer(() => {
           {
             // TODO: make a nice partner card
             profileStore.partners?.length ? (
-              <div>
-                {profileStore.partners.map((partners) => partners.name)}
-              </div>
+              profileStore.partners.map((partner) => {
+                return <PartnerCard partner={partner} />
+              })
             ) : (
               <div className="profilePartners__empty">
                 {t("profile.nothingYet")}

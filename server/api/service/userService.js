@@ -1,13 +1,23 @@
 import { User } from "../../models/User.js";
+import { Partner } from "../../models/Partner.js";
 import jsonwebtoken from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 export const userService = {
   async taken(username) {
     const foundUser = await User.findOne({
-      where: { userName: username },
+      where: {
+        userName: { [Op.iLike]: username },
+      },
+
     });
-    if (!foundUser) {
+    const foundPartner = await Partner.findOne({
+      where: {
+        userName: { [Op.iLike]: username },
+      },
+
+    });
+    if (!foundUser && !foundPartner) {
       return false;
     } else {
       return true;
