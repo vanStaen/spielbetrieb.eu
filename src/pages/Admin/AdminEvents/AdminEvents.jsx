@@ -19,8 +19,8 @@ import { getAllEventtypes } from "../../../store/spielplanStore/getAllEventtypes
 import { getTags } from "../../../store/pageStore/getTags";
 import { getUserNames } from "./getUserNames";
 import { nameParser } from "../../../helpers/dev/nameParser";
-import { userStore } from "../../../store/userStore/userStore";
 import { updateEvent } from "./updateEvent";
+import { pageStore } from "../../../store/pageStore/pageStore";
 
 export const AdminEvents = () => {
   const [form] = Form.useForm();
@@ -118,7 +118,7 @@ export const AdminEvents = () => {
       render: (_, { eventtype }) =>
         nameParser(
           eventtypes?.filter((e) => parseInt(e.id) === eventtype)[0]?.name,
-          userStore.language.toLowerCase(),
+          pageStore.selectedLanguage.toLowerCase(),
         ),
     },
     {
@@ -187,7 +187,7 @@ export const AdminEvents = () => {
               <Tag key={tag} bordered={false}>
                 {nameParser(
                   tags?.filter((t) => parseInt(t.id) === tag)[0]?.name,
-                  userStore.language.toLowerCase(),
+                  pageStore.selectedLanguage.toLowerCase(),
                 )}
               </Tag>
             );

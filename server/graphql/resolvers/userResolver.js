@@ -407,7 +407,7 @@ export const userResolver = {
   },
 
   // getProfileEventsById(id: ID!): [Event] 
-  async getProfileEventsById(args, req) {
+  async getProfileEventsById(args, _) {
     return await Event.findAll({
       where: { userId: args.id, archived: false },
       order: [["fromDate", "ASC"]],
@@ -415,8 +415,7 @@ export const userResolver = {
   },
 
   // getProfilePartnersById(id: ID!): [Partner] 
-  async getProfilePartnersById(args, req) {
-    console.log(args.id);
+  async getProfilePartnersById(args, _) {
     return await Partner.findAll({
       where: {
         admin: { [Op.contains]: [args.id] },

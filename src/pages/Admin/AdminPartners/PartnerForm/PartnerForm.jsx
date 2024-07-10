@@ -27,7 +27,7 @@ export const PartnerForm = (props) => {
       }
       return {
         value: parseInt(type.id),
-        label: nameParser(type.name, userStore.language.toLowerCase()),
+        label: nameParser(type.name, pageStore.selectedLanguage.toLowerCase()),
       };
     });
     setPartnertypes(partnertypes);

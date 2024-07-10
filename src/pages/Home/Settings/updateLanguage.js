@@ -1,7 +1,7 @@
 export async function updateLanguage(language) {
   const graphqlQuery = {
     query: `
-    mutation ($language: Int!){
+    mutation ($language: String!){
       updateUser(
         userInput: {          
           language: $language,

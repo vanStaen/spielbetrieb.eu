@@ -15,19 +15,21 @@ import { nameParser } from "../../../helpers/dev/nameParser";
 
 export const AccountSettings = observer(() => {
   const { i18n, t } = useTranslation();
-  const initLanguage = i18n.language.slice(0, 2);
+  const initLanguage = userStore.language.slice(0, 2);
   const [showAllGenders, setShowAllGenders] = useState(false);
   const [showAllOrientations, setShowAllOrientations] = useState(false);
 
   const changeLanguageHandler = (event) => {
     const value = event.target.value;
-    if (value === "en") {
+    console.log(value);
+    if (value.includes("en")) {
       i18n.changeLanguage("en-US");
-    } else if (value === "fr") {
+    } else if (value.includes("fr")) {
       i18n.changeLanguage("fr-FR");
-    } else if (value === "de") {
+    } else if (value.includes("de")) {
       i18n.changeLanguage("de-DE");
     }
+    pageStore.setSelectedLanguage(value);
     updateLanguage(value);
   };
 

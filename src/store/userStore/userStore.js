@@ -22,7 +22,6 @@ export class UserStore {
   orientationId = null;
   location = null;
   coordinates = null;
-  lastActive = null;
   archived = null;
   usernameChange = null;
   language = null;
@@ -72,8 +71,6 @@ export class UserStore {
       setLocation: action,
       coordinates: observable,
       setCoordinates: action,
-      lastActive: observable,
-      setLastActive: action,
       archived: observable,
       setArchived: action,
       usernameChange: observable,
@@ -177,10 +174,6 @@ export class UserStore {
     this.verifiedIdentity = verifiedIdentity;
   };
 
-  setLastActive = (lastActive) => {
-    this.lastActive = lastActive;
-  };
-
   setArchived = (archived) => {
     this.archived = archived;
   };
@@ -233,8 +226,6 @@ export class UserStore {
         this.setFollowers(userData.followers);
         this.setFriendrequests(userData.friendrequests);
         this.setFollowing(userData.following);
-        this.setLastActive(userData.lastActive);
-        this.setLanguage(userData.language);
         this.setGenderId(userData.gender);
         this.setOrientationId(userData.orientation);
         this.setLocation(userData.location);
@@ -242,6 +233,10 @@ export class UserStore {
         this.setUsernameChange(userData.usernameChange);
         this.setNotifications(userData.notifications);
         this.setArchived(userData.archived);
+        this.setLanguage(userData.language);
+        if (userData.language) {
+          pageStore.setSelectedLanguage(userData.language);
+        }
         if (userData.isAdmin) {
           this.setAdminRoles(userData.adminRoles);
         }

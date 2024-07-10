@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 import { pageStore } from "../../store/pageStore/pageStore";
+import { authStore } from "../../store/authStore/authStore";
+import { updateLanguage } from "../../pages/Home/Settings/updateLanguage";
 
 import "./LanguageDropDown.less";
 
@@ -12,13 +14,14 @@ export const LanguageDropDown = observer(() => {
 
   const onLanguageChangeHandler = (value) => {
     pageStore.setSelectedLanguage(value);
-    if (value === "en") {
+    if (value.includes("en")) {
       i18n.changeLanguage("en-US");
       setLanguage("en");
-    } else if (value === "de") {
+    } else if (value.includes("de")) {
       i18n.changeLanguage("de-DE");
       setLanguage("de");
     }
+    authStore.hasAccess && updateLanguage(value);
   };
 
   useEffect(() => {
