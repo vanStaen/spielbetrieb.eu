@@ -1,9 +1,11 @@
 import bcrypt from "bcryptjs";
+import { Op } from "sequelize";
 import { mailService } from "../../api/service/mailService.js";
 import { notificationService } from "../../api/service/notificationService.js";
 
 import { User } from "../../models/User.js";
 import { Comment } from "../../models/Comment.js";
+import { Partner } from "../../models/Partner.js";
 import { Event } from "../../models/Event.js";
 import { Message } from "../../models/Message.js";
 import { Notification } from "../../models/Notification.js";
@@ -11,8 +13,6 @@ import { Visitor } from "../../models/Visitor.js";
 import { Usersfollower } from "../../models/Usersfollower.js";
 import { Usersfriend } from "../../models/Usersfriend.js";
 import { Usersfriendrequest } from "../../models/Usersfriendrequest.js";
-// import { Partner } from "../../models/Partner.js";
-// import { Photo } from "../../models/Photo.js";
 
 export const userResolver = {
   async getUser(args, req) {
@@ -206,44 +206,29 @@ export const userResolver = {
     }
   },
 
-  // TODO make extra call for Partner, for Event, for Photos
+  // getProfileByName(userName: String): User
   async getProfileByName(args, req) {
     return await User.findOne({
       where: { userName: args.userName },
       include: [
-        {
-          model: Event,
-          required: false,
-          where: { archived: false },
-        },
-        // Partner
-        // Photo,
         "friends",
         "followers",
         "following",
         "friendrequests",
       ],
-      order: [[Event, "fromDate", "ASC"]],
     });
   },
 
+  // getProfileById(id: ID!): User
   async getProfileById(args, req) {
     return await User.findOne({
       where: { id: args.id },
       include: [
-        {
-          model: Event,
-          required: false,
-          where: { archived: false },
-        },
-        // Partner
-        // Photo,
         "friends",
         "followers",
         "following",
         "friendrequests",
       ],
-      order: [[Event, "fromDate", "ASC"]],
     });
   },
 
@@ -420,4 +405,25 @@ export const userResolver = {
       console.log(err);
     }
   },
+
+  // getProfileEventsById(id: ID!): [Event] 
+  async getProfileEventsById(args, req) {
+    return await Event.findAll({
+      where: { userId: args.id, archived: false },
+      order: [["fromDate", "ASC"]],
+    });
+  },
+
+  // getProfilePartnersById(id: ID!): [Partner] 
+  async getProfilePartnersById(args, req) {
+    console.log(args.id);
+    return await Partner.findAll({
+      where: {
+        admin: { [Op.contains]: [args.id] },
+        archived: false
+      },
+      order: [["id", "ASC"]],
+    });
+  },
+
 };

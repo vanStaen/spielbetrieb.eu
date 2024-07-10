@@ -1,6 +1,8 @@
 import { action, makeObservable, observable } from "mobx";
 
 import { getProfileInfo } from "./getProfileInfo.js";
+import { getProfileEvents } from "./getProfileEvents.js";
+import { getProfilePartners } from "./getProfilePartners.js";
 
 export class ProfileStore {
   isLoading = true;
@@ -29,7 +31,7 @@ export class ProfileStore {
   wishes = [];
   links = [];
   description = null;
-  partner = [];
+  partners = [];
 
   constructor() {
     makeObservable(this, {
@@ -59,8 +61,8 @@ export class ProfileStore {
       wishes: observable,
       description: observable,
       links: observable,
-      partner: observable,
-      setPartner: action,
+      partners: observable,
+      setPartners: action,
       setIsLoading: action,
       setError: action,
       setid: action,
@@ -195,8 +197,8 @@ export class ProfileStore {
     this.links = links;
   };
 
-  setPartner = (partner) => {
-    this.partner = partner;
+  setPartners = (partners) => {
+    this.partners = partners;
   };
 
   fetchProfileData = async (userName, loader = true) => {
@@ -226,12 +228,16 @@ export class ProfileStore {
           this.setPhotos(profileData.photos);
           this.setReviews(profileData.reviews);
           this.setTags(profileData.userTags);
-          this.setEvents(profileData.events);
           this.setInterests(profileData.interests);
           this.setWishes(profileData.wishes);
           this.setDescription(profileData.description);
           this.setLinks(profileData.links);
-          this.setPartner(profileData.partners);
+          let [events, partners] = await Promise.all([
+            getProfileEvents(profileData.id),
+            getProfilePartners(profileData.id),
+          ]);
+          events && this.setEvents(events);
+          partners && this.setPartners(partners);
         }
         this.setError(null);
         this.setIsLoading(false);

@@ -102,6 +102,8 @@ export const UserQueries = `
     getUsersAsAdmin: [User]
     getProfileByName(userName: String): User
     getProfileById(id: ID!): User
+    getProfileEventsById(id: ID!): [Event] 
+    getProfilePartnersById(id: ID!): [Partner]
     isRequested(requesting_id: ID!): Boolean!
 `;
 
