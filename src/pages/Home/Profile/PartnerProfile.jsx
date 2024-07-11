@@ -14,10 +14,11 @@ import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
 import { ProfileFriends } from "./ProfileLeftSide/ProfileFriends/ProfileFriends";
 import { ProfileDetails } from "./ProfileLeftSide/ProfileDetails/ProfileDetails";
 import { ProfileActions } from "./ProfileLeftSide/ProfileActions/ProfileActions";
+import { partnerStore } from "../../../store/partnerStore/partnerStore";
 
 import "./Profile.less";
 
-export const PartnerProfile = observer((props) => {
+export const PartnerProfile = observer(() => {
   const params = useParams();
   const { t } = useTranslation();
 
@@ -30,8 +31,8 @@ export const PartnerProfile = observer((props) => {
     }
   };
   useEffect(() => {
-    const username = params.username ? params.username : userStore.userName;
-    username && profileStore.fetchProfileData(username);
+    const username = params.username // ? params.username : userStore.userName;
+    username && partnerStore.fetchPartnerData(username, true);
     // TODO : Partner doesnt exist
   }, [userStore.isLoading, userStore.userName, params.username]);
 
@@ -44,25 +45,26 @@ export const PartnerProfile = observer((props) => {
   return (
     <>
       <div className="profil__main">
-        {profileStore.isLoading ? (
+        {partnerStore.isLoading ? (
           <div className="profil__spinner">
-            <CustomSpinner text={`${t("general.loading")} (Profile)`} />
+            <CustomSpinner text={`${t("general.loading")} (Partner profile)`} />
           </div>
-        ) : profileStore.error ? (
+        ) : partnerStore.error ? (
           <div className="profil__spinner">
+            {/* TODO: Build error Spinner */}
             <MehOutlined style={{ fontSize: "120px", color: "#b6c8bf" }} />
             <div className="errorText">{t("main.pleaseReload")}</div>
           </div>
         ) : (
           <>
             <div className="profil__containerLeft">
-              <Avatar />
-              <ProfileDetails />
+              <Avatar avatar={partnerStore.avatar} bucket={partnerStore.pending ? 'temp' : 'partners'} />
+              {/*<ProfileDetails />
               {!thisIsMe && <ProfileActions />}
-              <ProfileFriends />
+              <ProfileFriends /> */}
             </div>
             <div className="profil__containerCenter">
-              <ProfileMain />
+              {/* <ProfileMain /> */}
             </div>
           </>
         )}

@@ -241,11 +241,12 @@ export class ProfileStore {
           partners && this.setPartners(partners);
         }
         this.setError(null);
-        this.setIsLoading(false);
       }
     } catch (error) {
       this.setError(error);
+      console.error(error);
     }
+    this.setIsLoading(false);
   };
 
   fetchProfilePartners = async () => {

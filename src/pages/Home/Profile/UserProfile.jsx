@@ -48,7 +48,7 @@ export const UserProfile = observer((props) => {
       <div className="profil__main">
         {profileStore.isLoading ? (
           <div className="profil__spinner">
-            <CustomSpinner text={`${t("general.loading")} (Profile)`} />
+            <CustomSpinner text={`${t("general.loading")} (User profile)`} />
           </div>
         ) : profileStore.error ? (
           <div className="profil__spinner">
@@ -58,7 +58,7 @@ export const UserProfile = observer((props) => {
         ) : (
           <>
             <div className="profil__containerLeft">
-              <Avatar />
+              <Avatar avatar={profileStore.avatar} bucket='users' />
               <ProfileDetails />
               {!thisIsMe && <ProfileActions />}
               <ProfileFriends />

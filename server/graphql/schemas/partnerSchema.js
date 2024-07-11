@@ -57,7 +57,8 @@ input PartnerInputDataAdmin {
 }`;
 
 export const PartnerQueries = `
-    getPartner(partnerId: Int): Partner
+    getPartnerById(partnerId: Int): Partner
+    getPartnerByUserName(partnerUserName: String): Partner
     getAllPartners: [Partner]
     `;
 

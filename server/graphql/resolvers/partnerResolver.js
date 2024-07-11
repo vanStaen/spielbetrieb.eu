@@ -3,15 +3,22 @@ import { Partner } from "../../models/Partner.js";
 import { Op } from "sequelize";
 
 export const partnerResolver = {
-  // getPartner(partnerId: Int): Partner
-  async getPartner(args, req) {
+  // getPartnerById(partnerId: Int): Partner
+  async getPartnerById(args, _) {
     return await Partner.findOne({
       where: { id: args.partnerId },
     });
   },
 
+  // getPartnerByUserName(partnerUserName: String): Partner
+  async getPartnerByUserName(args, _) {
+    return await Partner.findOne({
+      where: { userName: args.partnerUserName },
+    });
+  },
+
   // getAllPartners: [Partner]
-  async getAllPartners(args, req) {
+  async getAllPartners(_, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }

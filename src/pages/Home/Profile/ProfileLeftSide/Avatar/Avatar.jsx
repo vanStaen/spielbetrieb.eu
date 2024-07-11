@@ -13,15 +13,18 @@ import { updateAvatar } from "./updateAvatar";
 
 import "./Avatar.less";
 
-export const Avatar = observer(() => {
+export const Avatar = observer((props) => {
   const { t } = useTranslation();
+  const { avatar, bucket } = props;
   const [isLoading, setIsLoading] = useState(true);
+  // TODO: isStranger for partner: thisIsMe and isStranger as mobx variable.
   const isStranger = userStore.userName !== profileStore.userName;
-  const [avatarPic, setAvatarPic] = useState(null);
+  const [avatarUrl, setAvatarUrl] = useState(null);
 
   const getAvatarUrl = async (path) => {
     if (path) {
-      const url = await getPictureUrl(path, "users");
+      const url = await getPictureUrl(path, bucket);
+      console.log(url);
       const isloaded = new Promise((resolve, reject) => {
         const loadImg = new Image();
         loadImg.src = url;
@@ -29,13 +32,13 @@ export const Avatar = observer(() => {
         loadImg.onerror = (err) => reject(err);
       });
       await isloaded;
-      setAvatarPic(url);
+      setAvatarUrl(url);
     }
     setIsLoading(false);
   };
 
   useEffect(() => {
-    getAvatarUrl(profileStore.avatar);
+    getAvatarUrl(avatar);
   }, []);
 
   const fileSelectHandler = async (event) => {
@@ -81,8 +84,8 @@ export const Avatar = observer(() => {
         <div
           className={`avatar__avatar ${pageStore.selectedTheme === "light" ? "avatar__light" : "avatar__dark"}`}
           style={
-            avatarPic && {
-              backgroundImage: "url(" + avatarPic + ")",
+            avatarUrl && {
+              backgroundImage: "url(" + avatarUrl + ")",
             }
           }
         >
