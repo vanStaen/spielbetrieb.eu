@@ -30,8 +30,6 @@ export const EventCard = observer((props) => {
   const isShownHidden = useRef(isInThePast);
   const [firstPictureUrl, setFirstPictureUrl] = useState(null);
 
-  console.log(event);
-
   const isMyEvent = eventUser?.id === userStore?.id;
 
   const handleArchiveEvent = async () => {
@@ -252,8 +250,8 @@ export const EventCard = observer((props) => {
               Draft
             </Tag>
           ) : (
-            <Tag className="red" bordered={false}>
-              Pending review
+            <Tag className="lightRed" bordered={false}>
+              Pending
             </Tag>
           ))}
         {isMyEvent && (
