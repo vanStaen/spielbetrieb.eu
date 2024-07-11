@@ -9,6 +9,7 @@ import defaultProfilSettings from "./defaultProfilSettings.json";
 export class UserStore {
   isLoading = true;
   isAdmin = false;
+  isPartner = false;
   adminRoles = [];
   email = null;
   firstName = null;
@@ -41,6 +42,8 @@ export class UserStore {
       setIsLoading: action,
       isAdmin: observable,
       setIsAdmin: action,
+      isPartner: observable,
+      setIsPartner: action,
       adminRoles: observable,
       setAdminRoles: action,
       email: observable,
@@ -104,6 +107,10 @@ export class UserStore {
 
   setIsAdmin = (isAdmin) => {
     this.isAdmin = isAdmin;
+  };
+
+  setIsPartner = (isPartner) => {
+    this.isPartner = isPartner;
   };
 
   setAdminRoles = (adminRoles) => {

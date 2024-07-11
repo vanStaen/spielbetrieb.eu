@@ -13,6 +13,7 @@ import { Spielplan } from "./Spielplan/Spielplan";
 import { Basket } from "./Basket/Basket";
 import { Dark } from "./Dark/Dark";
 import { UserProfile } from "./Profile/UserProfile";
+import { PartnerProfile } from "./Profile/PartnerProfile";
 import { Settings } from "./Settings/Settings";
 import { Shop } from "./Shop/Shop";
 import { EventPage } from "./Event/EventPage/EventPage";
@@ -75,8 +76,7 @@ export const Home = observer((props) => {
       case "dark":
         return <Dark />;
       case "partner":
-        // TODO: make a partner component
-        return <UserProfile />;
+        return <PartnerProfile />;
       case "profile":
         // TODO: First check if profile can be shown (in setting, show to friend or not). The check should happen in the backend as the api should not return data if it is the case.
         return <UserProfile />;

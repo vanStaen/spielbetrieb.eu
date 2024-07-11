@@ -4,6 +4,7 @@ export async function getAllPartners() {
             {
               getAllPartners { 
                 id,
+                userName,
                 name,
                 description,
                 avatar,

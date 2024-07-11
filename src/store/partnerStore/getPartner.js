@@ -7,65 +7,27 @@ export const getPartner = async () => {
             {
               getPartner {
                 id,
-                isAdmin,
-                adminRoles,
-                firstName,
-                lastName,
                 userName,
-                email,
+	              name,
+                description,
                 avatar,
-                emailSettings,
-                profilSettings,
-                verifiedIdentity,
-                language,
-                gender,
-                orientation,
-                location,
-                coordinates,
-                birthday,
+                pictures,
+                settings,
+                reviews,
                 lastActive,
+                partnerRoles,
+                partnertype,
+                links,
+                partnerTags,
                 archived,
-                usernameChange,
-                messages {
-                    id,
-                },
-                notifications {
-                  id,
-                  userId,
-                  photoLinkId,
-                  userLinkId,
-                  eventLinkId,
-                  mediaUrl,
-                  data,
-                  actionData,
-                  type,
-                  seen,
-                  createdAt,
-                  updatedAt,
-                }
-                visitors {
-                    id,
-                },
-                friends {
-                    id,
-                    userName,
-                    avatar,
-                },
-                followers {
+                suspended,
+                pending,
+                admin,
+                partnerfollowers {
                     id
                     userName,
                     avatar,
                 },
-                following {
-                    id,
-                    userName,
-                    avatar,
-                },
-                friendrequests {
-                    id,
-                    userName,
-                    avatar,
-                }
               }
             }
           `,
@@ -81,5 +43,5 @@ export const getPartner = async () => {
     throw new Error("Unauthenticated!");
   }
 
-  return response.data.data.getUser;
+  return response.data.data.getPartner;
 };

@@ -77,6 +77,7 @@ export const Partner = sequelize.sequelize.define("partner", {
   },
 });
 
+// TODO: Fix partnerfollowers
 User.belongsToMany(Partner, {
   as: "partnerfollowers",
   foreignKey: "userfollower_id",

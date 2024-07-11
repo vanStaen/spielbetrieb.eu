@@ -6,9 +6,11 @@ import { getAllPartners } from "./getAllPartners";
 import { updatePartnerAsAdmin } from "./updatePartnerAsAdmin";
 import { deletePartnerAsAdmin } from "./deletePartnerAsAdmin";
 import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
+import { useNavigate } from "react-router-dom";
 
 export const AdminPartners = () => {
   const [partners, setPartners] = useState([]);
+  const navigate = useNavigate();
 
   const fetchAllPartners = async () => {
     const results = await getAllPartners();
@@ -51,11 +53,16 @@ export const AdminPartners = () => {
       dataIndex: "name",
       key: "name",
       sorter: (a, b) => a.name.length - b.name.length,
-      render: (_, { name, description, partnerTags, avatar, pending }) => {
+      render: (_, { name, description, partnerTags, avatar, pending, userName }) => {
         //TODO Add avatar in tooltip
         const avatarUrl = avatar;
+
+        const handlePartnerContainerClick = () => {
+          navigate(`/partner/${userName}`, { relative: "path" });
+        };
+
         return (
-          <div style={{ cursor: 'pointer' }}>
+          <div style={{ cursor: 'pointer' }} onClick={handlePartnerContainerClick}>
             <Tooltip
               placement="right"
               overlayStyle={{ maxWidth: "700px" }}
@@ -76,7 +83,8 @@ export const AdminPartners = () => {
             >
               {name}
             </Tooltip>
-          </div>)
+          </div>
+        )
       }
     },
     {
@@ -138,28 +146,15 @@ export const AdminPartners = () => {
         return (
           <span>
             {
-              <>
-                <Tooltip title={"Suspend Partner"}>
-                  <Typography.Link
-                    style={{ marginRight: 8 }}
-                    onClick={() => suspendUser(record.id)}
-                  >
-                    <StopOutlined
-                      className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`}
-                    />
-                  </Typography.Link>
-                </Tooltip>{" "}
-                <Tooltip title="Delete Partner">
-                  <Popconfirm
-                    title="Sure to delete this partner forever?"
-                    style={{ marginRight: 8 }}
-                    onConfirm={() => deletePartner(record.id)}
-                  >
-                    <DeleteOutlined className="admin__editLogo" />
-                  </Popconfirm>
-                </Tooltip>
-              </>
-
+              <Tooltip title="Delete Partner">
+                <Popconfirm
+                  title="Sure to delete this partner forever?"
+                  style={{ marginRight: 8 }}
+                  onConfirm={() => deletePartner(record.id)}
+                >
+                  <DeleteOutlined className="admin__editLogo" />
+                </Popconfirm>
+              </Tooltip>
             }
           </span>
         );
