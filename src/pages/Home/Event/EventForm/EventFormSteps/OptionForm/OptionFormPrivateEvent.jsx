@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { observer } from "mobx-react";
 import { Radio } from "antd";
 import { useTranslation } from "react-i18next";
@@ -31,6 +31,15 @@ export const OptionFormPrivateEvent = observer(() => {
 
   const isEventtypePrivate = eventFormStore.eventtype === 22;
   const isPrivateEvent = isEventtypePrivate ? true : eventFormStore.isPrivate;
+
+  useEffect(() => {
+    if (isEventtypePrivate && eventFormStore.eventId) {
+      eventFormStore.setIsPrivate(true);
+      updateEvent(eventFormStore.eventId, {
+        private: true,
+      });
+    }
+  }, [eventFormStore.eventtype]);
 
   return (
     <>

@@ -23,6 +23,8 @@ export async function getAllPublicEvents(fromDate, untilDate) {
                   attendees,
                   createdAt,
                   updatedAt,
+                  validated,
+                  private,
                   user {
                       userName,
                   }

@@ -31,7 +31,7 @@ export const partnerResolver = {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");
     }
-    const username = args.partnerInput.name.replaceAll(' ', '').toLowerCase()
+    const username = args.partnerInput.name.replaceAll(" ", "").toLowerCase();
     const foundPartnerName = await Partner.findOne({
       where: {
         name: { [Op.iLike]: args.partnerInput.name },
@@ -43,9 +43,7 @@ export const partnerResolver = {
       },
     });
     if (foundPartnerName || foundPartnerUserName) {
-      throw new Error(
-        "There is already a partner with this name.",
-      );
+      throw new Error("There is already a partner with this name.");
     }
     try {
       const partner = new Partner({
@@ -103,9 +101,8 @@ export const partnerResolver = {
     }
   },
 
-
   // TODO: Move avatar from temp to partner if pending is move from true to false
-  // --> extra mutation? 
+  // --> extra mutation?
 
   // updatePartnerAsAdmin(partnerId: ID!, partnerInput: PartnerInputDataAdmin!): Partner!
   async updatePartnerAsAdmin(args, req) {

@@ -30,6 +30,8 @@ export const EventCard = observer((props) => {
   const isShownHidden = useRef(isInThePast);
   const [firstPictureUrl, setFirstPictureUrl] = useState(null);
 
+  console.log(event);
+
   const isMyEvent = eventUser?.id === userStore?.id;
 
   const handleArchiveEvent = async () => {
@@ -239,6 +241,21 @@ export const EventCard = observer((props) => {
         </div>
       </div>
       <div className="event__actions">
+        {event.private && (
+          <Tag className="grey" bordered={false}>
+            Private
+          </Tag>
+        )}
+        {!event.validated &&
+          (event.isDraft ? (
+            <Tag className="gold" bordered={false}>
+              Draft
+            </Tag>
+          ) : (
+            <Tag className="red" bordered={false}>
+              Pending review
+            </Tag>
+          ))}
         {isMyEvent && (
           <div className="event__action" onClick={handleEditEvent}>
             <EditOutlined />

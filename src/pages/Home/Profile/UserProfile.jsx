@@ -17,7 +17,7 @@ import { ProfileActions } from "./ProfileLeftSide/ProfileActions/ProfileActions"
 
 import "./Profile.less";
 
-export const Profile = observer((props) => {
+export const UserProfile = observer((props) => {
   const params = useParams();
   const { t } = useTranslation();
 
