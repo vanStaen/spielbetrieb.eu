@@ -20,6 +20,7 @@ import "./Profile.less";
 export const ProfileUser = observer((props) => {
   const params = useParams();
   const { t } = useTranslation();
+  const { thisIsMine } = props;
 
   const redirectIfNotLoggedIn = async () => {
     if (!authStore.hasAccess) {
@@ -41,8 +42,6 @@ export const ProfileUser = observer((props) => {
     // TODO : Check if profile can be access by !friends
   }, []);
 
-  const thisIsMe = userStore.id === profileStore.id;
-
   return (
     <>
       <div className="profil__main">
@@ -60,7 +59,7 @@ export const ProfileUser = observer((props) => {
             <div className="profil__containerLeft">
               <Avatar isPartner={false} />
               <ProfileDetails isPartner={false} />
-              {!thisIsMe && <ProfileActions />}
+              {!thisIsMine && <ProfileActions />}
               <ProfileFriends />
             </div>
             <div className="profil__containerCenter">

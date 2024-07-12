@@ -4,8 +4,9 @@ import { useTranslation } from "react-i18next";
 import { LinkOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Popconfirm, message } from "antd";
 
+import { partnerStore } from "../../../../../store/partnerStore/partnerStore";
+import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { profileStore } from "../../../../../store/profileStore/profileStore";
-import { userStore } from "../../../../../store/userStore/userStore";
 import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMainTitle";
 import { EditLinksModal } from "./EditLinksModal/EditLinksModal";
 import { updateLinks } from "./EditLinksModal/updateLinks";
@@ -19,15 +20,15 @@ import spielbetriebIcoBlue from "../../../../../img/icons/spielbetriebblue.ico";
 import spielbetriebIcoBeige from "../../../../../img/icons/spielbetriebbeige.ico";
 import instagramIco from "../../../../../img/icons/instagram.png";
 import residentadvisorIco from "../../../../../img/icons/residentadvisor.jpg";
-import { pageStore } from "../../../../../store/pageStore/pageStore";
 
 import "./ProfileLinks.less";
 
-export const ProfileLinks = observer(() => {
+export const ProfileLinks = observer((props) => {
   const { t } = useTranslation();
   const [showLinksModal, setShowLinksModal] = useState(false);
   const [isEdit, setIsEdit] = useState(null);
-  const thisIsMe = userStore.id === profileStore.id;
+  const { thisIsMine, isPartner } = props;
+  const links = isPartner ? partnerStore.links : profileStore.links;
 
   const deleteLinkHandler = async (url) => {
     try {
@@ -83,14 +84,15 @@ export const ProfileLinks = observer(() => {
       <div className="profileLinks__container">
         <ProfileMainTitle
           title={t("profile.links")}
-          value={profileStore.links?.length}
+          value={links}
           showEdit={showLinksModal}
           setShowEdit={setShowLinksModal}
           addLink={true}
+          thisIsMine={thisIsMine}
         />
         <div className="profileLinks__main">
-          {profileStore.links?.length ? (
-            profileStore.links.map((link, index) => {
+          {links?.length ? (
+            links.map((link, index) => {
               const linkJson = JSON.parse(link);
               return (
                 <div className="profileLinks__linkContainer" key={index}>
@@ -105,7 +107,7 @@ export const ProfileLinks = observer(() => {
                   >
                     {linkJson.text}
                   </a>
-                  {thisIsMe && (
+                  {thisIsMine && (
                     <div className="profileLinks__edit">
                       <div
                         className="profileLinks__action"

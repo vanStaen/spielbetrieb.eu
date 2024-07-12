@@ -19,32 +19,29 @@ import { partnerStore } from "../../../../store/partnerStore/partnerStore";
 import "./ProfileMain.less";
 
 export const ProfileMain = observer((props) => {
-  const thisIsMe = userStore.id === profileStore.id;
-  const { isPartner } = props;
-
-  console.log(partnerStore.description);
+  const { isPartner, thisIsMine } = props;
 
   return (
     isPartner ?
       <div className="profil__mainContainer">
         <ProfileName />
-        {(partnerStore.description || thisIsMe) && <ProfileDescription isPartner />}
-        {(partnerStore.photos?.length || thisIsMe) && <ProfilePhotos isPartner />}
-        {(partnerStore.events?.length || thisIsMe) && <ProfileEvents isPartner />}
-        {(partnerStore.tags?.length || thisIsMe) && <ProfileTags isPartner />}
-        {(partnerStore.links?.length || thisIsMe) && <ProfileLinks isPartner />}
+        {(partnerStore.description || thisIsMine) && <ProfileDescription isPartner thisIsMine />}
+        {(partnerStore.photos?.length || thisIsMine) && <ProfilePhotos isPartner thisIsMine />}
+        {(partnerStore.events?.length || thisIsMine) && <ProfileEvents isPartner thisIsMine />}
+        {(partnerStore.tags?.length || thisIsMine) && <ProfileTags isPartner thisIsMine />}
+        {(partnerStore.links?.length || thisIsMine) && <ProfileLinks isPartner thisIsMine />}
         {partnerStore.reviews?.length && <ProfileReviews isPartner />}
       </div>
       :
       <div className="profil__mainContainer">
-        {(profileStore.description || thisIsMe) && <ProfileDescription />}
-        {(profileStore.wishes || thisIsMe) && <ProfileWishes />}
-        {(profileStore.interests || thisIsMe) && <ProfileInterests />}
-        {(profileStore.photos?.length || thisIsMe) && <ProfilePhotos />}
-        {(profileStore.events?.length || thisIsMe) && <ProfileEvents />}
-        {(profileStore.tags?.length || thisIsMe) && <ProfileTags />}
-        {(profileStore.partners?.length || thisIsMe) && <ProfilePartners />}
-        {(profileStore.links?.length || thisIsMe) && <ProfileLinks />}
+        {(profileStore.description || thisIsMine) && <ProfileDescription thisIsMine />}
+        {(profileStore.wishes || thisIsMine) && <ProfileWishes thisIsMine />}
+        {(profileStore.interests || thisIsMine) && <ProfileInterests thisIsMine />}
+        {(profileStore.photos?.length || thisIsMine) && <ProfilePhotos thisIsMine />}
+        {(profileStore.events?.length || thisIsMine) && <ProfileEvents thisIsMine />}
+        {(profileStore.tags?.length || thisIsMine) && <ProfileTags thisIsMine />}
+        {(profileStore.partners?.length || thisIsMine) && <ProfilePartners thisIsMine />}
+        {(profileStore.links?.length || thisIsMine) && <ProfileLinks thisIsMine />}
       </div>
   );
 });

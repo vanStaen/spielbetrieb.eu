@@ -7,7 +7,8 @@ import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileM
 
 import "./ProfilePhotos.less";
 
-export const ProfilePhotos = observer(() => {
+export const ProfilePhotos = observer((props) => {
+  const { thisIsMine } = props;
   const { t } = useTranslation();
 
   // TODO: add photo form
@@ -19,6 +20,7 @@ export const ProfilePhotos = observer(() => {
         title={t("profile.photos")}
         value={profileStore.photos?.length}
         addPhoto={true}
+        thisIsMine={thisIsMine}
       />
       <div className="profilePhotos__main">
         {!profileStore.photos?.length && (

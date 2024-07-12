@@ -12,7 +12,7 @@ import "./ProfileDescription.less";
 export const ProfileDescription = observer((props) => {
   const { t } = useTranslation();
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
-  const { isPartner } = props;
+  const { isPartner, thisIsMine } = props;
   const description = isPartner ? partnerStore.description : profileStore.description;
 
   return (
@@ -28,6 +28,7 @@ export const ProfileDescription = observer((props) => {
           title={isPartner ? t("partner.description") : t("profile.description")}
           showEdit={showDescriptionModal}
           setShowEdit={setShowDescriptionModal}
+          thisIsMine={thisIsMine}
         />
         <div className="profileDescription__main">
           {description ? (

@@ -6,24 +6,28 @@ import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileM
 import { profileStore } from "../../../../../store/profileStore/profileStore";
 import { spielplanStore } from "../../../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../../../store/pageStore/pageStore";
+import { partnerStore } from "../../../../../store/partnerStore/partnerStore";
 import { EventCard } from "../../../Spielplan/EventCard/EventCard";
 import { nameParser } from "../../../../../helpers/dev/nameParser";
 
 import "./ProfileEvents.less";
 
-export const ProfileEvents = observer(() => {
+export const ProfileEvents = observer((props) => {
   const { t } = useTranslation();
+  const { thisIsMine, isPartner } = props;
+  const events = isPartner ? partnerStore.events : profileStore.events;
 
   return (
     <div className="profileEvents__container">
       <ProfileMainTitle
         title={t("profile.events")}
-        value={profileStore.events?.length}
+        value={events?.length}
         addEvent={true}
+        thisIsMine={thisIsMine}
       />
       <div className="profileDescription__main">
-        {profileStore.events?.length ? (
-          profileStore.events.map((event) => {
+        {events?.length ? (
+          events.map((event) => {
             const eventTags = event.eventTags.map((tagId) => {
               return {
                 name: nameParser(

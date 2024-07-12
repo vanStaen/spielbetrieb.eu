@@ -10,13 +10,13 @@ import { PartnerCard } from "./PartnerCard/PartnerCard";
 
 import "./ProfilePartners.less";
 
-export const ProfilePartners = observer(() => {
+export const ProfilePartners = observer((props) => {
   const [showPartnersModal, setShowPartnersModal] = useState(false);
   const { t } = useTranslation();
-  const thisIsMe = userStore.id === profileStore.id;
+  const { thisIsMine } = props;
 
   const partnerCards = profileStore.partners.map((partner) => {
-    if (!partner.pending || thisIsMe || userStore.isAdmin) {
+    if (!partner.pending || thisIsMine || userStore.isAdmin) {
       return <PartnerCard partner={partner} />
     } else {
       return null;
@@ -26,18 +26,19 @@ export const ProfilePartners = observer(() => {
 
   return (
     <>
-      {thisIsMe &&
+      {thisIsMine &&
         <CreatePartnerForm
           showModal={showPartnersModal}
           setShowModal={setShowPartnersModal}
         />}
-      {!!(thisIsMe || partnerCardsCleaned?.length) &&
+      {!!(thisIsMine || partnerCardsCleaned?.length) &&
         <div className="profilePartners__container">
           <ProfileMainTitle
             title={t("profile.partners")}
             addPartner={true}
             showEdit={showPartnersModal}
             setShowEdit={setShowPartnersModal}
+            thisIsMine={thisIsMine}
           />
           <div className="profilePartners__main">
             {

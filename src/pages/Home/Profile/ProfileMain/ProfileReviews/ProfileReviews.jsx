@@ -7,14 +7,17 @@ import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileM
 
 import "./ProfileReviews.less";
 
-export const ProfileReviews = observer(() => {
+export const ProfileReviews = observer((props) => {
+  const { thisIsMine } = props;
   const { t } = useTranslation();
+
   return (
     <div className="profileReviews__container">
       <ProfileMainTitle
         title={t("profile.reviews")}
         value={profileStore.reviews?.length}
         editable={false}
+        thisIsMine={thisIsMine}
       />
       <div className="profileReviews__main">
         {!profileStore.reviews && (

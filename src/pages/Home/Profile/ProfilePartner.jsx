@@ -40,7 +40,8 @@ export const ProfilePartner = observer(() => {
     !params.username && redirectIfNotLoggedIn();
   }, []);
 
-  const thisIsMe = userStore.id === profileStore.id;
+  // TODO: this is Mine for partner
+  const thisIsMine = true // userStore.id === profileStore.id;
 
   return (
     <>
@@ -60,11 +61,11 @@ export const ProfilePartner = observer(() => {
             <div className="profil__containerLeft">
               <Avatar isPartner={true} />
               <ProfileDetails isPartner={true} />
-              {/* !thisIsMe && <ProfileActions />}
+              {/* !thisIsMine && <ProfileActions />}
               <ProfileFriends /> */}
             </div>
             <div className="profil__containerCenter">
-              <ProfileMain isPartner={true} />
+              <ProfileMain isPartner={true} thisIsMine />
             </div>
           </>
         )}

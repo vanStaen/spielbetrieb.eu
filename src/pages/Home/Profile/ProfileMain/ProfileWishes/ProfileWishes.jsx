@@ -8,9 +8,10 @@ import { EditTextModal } from "../profileComponents/EditTextModal/EditTextModal"
 
 import "./ProfileWishes.less";
 
-export const ProfileWishes = observer(() => {
+export const ProfileWishes = observer((props) => {
   const [showWishesModal, setShowWishesModal] = useState(false);
   const { t } = useTranslation();
+  const { thisIsMine } = props;
 
   return (
     <>
@@ -25,6 +26,7 @@ export const ProfileWishes = observer(() => {
           title={t("profile.wishes")}
           showEdit={showWishesModal}
           setShowEdit={setShowWishesModal}
+          thisIsMine={thisIsMine}
         />
         <div className="profileWishes__main">
           {profileStore.wishes ? (

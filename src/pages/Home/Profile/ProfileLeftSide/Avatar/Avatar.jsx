@@ -20,7 +20,7 @@ export const Avatar = observer((props) => {
   const avatar = isPartner ? partnerStore.avatar : profileStore.avatar;
   const bucket = isPartner ? partnerStore.pending ? 'temp' : 'partners' : 'users';
   const [isLoading, setIsLoading] = useState(true);
-  // TODO: isStranger for partner: thisIsMe and isStranger as mobx variable.
+  // TODO: isStranger for partner: thisIsMine and isStranger as mobx variable.
   const isStranger = userStore.userName !== profileStore.userName;
   const [avatarUrl, setAvatarUrl] = useState(null);
 

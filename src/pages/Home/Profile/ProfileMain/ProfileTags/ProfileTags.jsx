@@ -11,9 +11,10 @@ import { nameParser } from "../../../../../helpers/dev/nameParser";
 
 import "./ProfileTags.less";
 
-export const ProfileTags = observer(() => {
+export const ProfileTags = observer((props) => {
   const { t } = useTranslation();
   const [showTagsModal, setShowTagsModal] = useState(false);
+  const { thisIsMine } = props;
 
   const createUserTags = () => {
     const userTags = profileStore.tags?.map((tagId) => {
@@ -55,6 +56,7 @@ export const ProfileTags = observer(() => {
           value={profileStore.tags?.length}
           showEdit={showTagsModal}
           setShowEdit={setShowTagsModal}
+          thisIsMine={thisIsMine}
         />
         <div className="profileTags__main">
           {profileStore.tags.length ? (

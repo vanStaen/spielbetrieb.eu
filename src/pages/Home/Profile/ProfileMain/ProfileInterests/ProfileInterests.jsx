@@ -8,10 +8,11 @@ import { EditTextModal } from "../profileComponents/EditTextModal/EditTextModal"
 
 import "./ProfileInterests.less";
 
-export const ProfileInterests = observer(() => {
+export const ProfileInterests = observer((props) => {
   const [showInterestsModal, setShowInterestsModal] = useState(false);
-
+  const { thisIsMine } = props;
   const { t } = useTranslation();
+
   return (
     <>
       <EditTextModal
@@ -25,6 +26,7 @@ export const ProfileInterests = observer(() => {
           title={t("profile.interests")}
           showEdit={showInterestsModal}
           setShowEdit={setShowInterestsModal}
+          thisIsMine={thisIsMine}
         />
         <div className="profileDescription__main">
           {profileStore.interests ? (

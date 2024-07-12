@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { observer } from "mobx-react";
-import { useTranslation } from "react-i18next";
 
-import { profileStore } from "../../../../../store/profileStore/profileStore";
 import { partnerStore } from "../../../../../store/partnerStore/partnerStore";
-import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMainTitle";
-import { EditTextModal } from "../profileComponents/EditTextModal/EditTextModal";
 
 import "./ProfileName.less";
+
+// TODO: Add civerpic/titlebild? 
 
 export const ProfileName = observer((props) => {
   return (
