@@ -32,17 +32,13 @@ export const ProfileDetailsPartner = observer(() => {
         pageStore.selectedLanguage,
       ),
     );
-  }, [
-    partnerStore.partnertypeId,
-    pageStore.partnertypes
-  ]);
+  }, [partnerStore.partnertypeId, pageStore.partnertypes]);
 
   useEffect(() => {
     if (!partnerStore.isLoading && partnerStore.profilSettings) {
       // TODO: setShowLastSeenOnline(profileStore.profilSettings.showLastSeenOnline);
     }
   }, [partnerStore.isLoading, partnerStore.profilSettings]);
-
 
   const dateLastActive = new Date(parseInt(partnerStore.lastActive));
 
@@ -65,5 +61,4 @@ export const ProfileDetailsPartner = observer(() => {
       </div>
     </div>
   );
-
 });

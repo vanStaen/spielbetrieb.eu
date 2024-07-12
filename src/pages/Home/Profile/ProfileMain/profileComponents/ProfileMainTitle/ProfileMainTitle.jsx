@@ -4,9 +4,6 @@ import { EditOutlined, PlusOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import { useNavigate } from "react-router-dom";
 
-import { userStore } from "../../../../../../store/userStore/userStore";
-import { profileStore } from "../../../../../../store/profileStore/profileStore";
-
 import "./ProfileMainTitle.less";
 
 export const ProfileMainTitle = observer((props) => {
@@ -21,7 +18,7 @@ export const ProfileMainTitle = observer((props) => {
     editable,
     showEdit,
     setShowEdit,
-    thisIsMine
+    thisIsMine,
   } = props;
   const hasValue = value !== undefined && value > 0;
   const isNotEditable = editable === false;

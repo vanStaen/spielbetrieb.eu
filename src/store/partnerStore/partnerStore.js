@@ -1,5 +1,5 @@
 import { action, makeObservable, observable } from "mobx";
-import { getPartnerByUserName } from './getPartnerByUserName.js';
+import { getPartnerByUserName } from "./getPartnerByUserName.js";
 
 export class PartnerStore {
   isLoading = true;

@@ -112,7 +112,7 @@ export const AdminUsers = () => {
       key: "verifiedEmail",
       align: "center",
       width: "70px",
-      render: (_, { verifiedEmail }) => (verifiedEmail && "✅"),
+      render: (_, { verifiedEmail }) => verifiedEmail && "✅",
     },
     {
       title: "Verified Identity",
@@ -120,7 +120,7 @@ export const AdminUsers = () => {
       key: "verifiedIdentity",
       align: "center",
       width: "70px",
-      render: (_, { verifiedIdentity }) => (verifiedIdentity && "✅"),
+      render: (_, { verifiedIdentity }) => verifiedIdentity && "✅",
     },
     {
       title: "Suspended",
@@ -129,7 +129,7 @@ export const AdminUsers = () => {
       align: "center",
       width: "70px",
       sorter: (a, b) => a.suspended - b.suspended,
-      render: (_, { suspended }) => (suspended && "🚫"),
+      render: (_, { suspended }) => suspended && "🚫",
     },
     {
       title: <span style={{ opacity: ".2" }}>Edit</span>,
@@ -139,56 +139,50 @@ export const AdminUsers = () => {
       render: (_, record) => {
         return (
           <span>
-            {
-              record.isAdmin ? (
-                <>
-                  <Tooltip
-                    title={"You can't suspend Admins"}
+            {record.isAdmin ? (
+              <>
+                <Tooltip title={"You can't suspend Admins"}>
+                  <Typography.Link
+                    disabled={record.isAdmin}
+                    style={{ marginRight: 8 }}
+                    onClick={() => blockUser(record.id)}
                   >
-                    <Typography.Link
-                      disabled={record.isAdmin}
-                      style={{ marginRight: 8 }}
-                      onClick={() => blockUser(record.id)}
-                    >
-                      <StopOutlined
-                        className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`}
-                      />
-                    </Typography.Link>
-                  </Tooltip>{" "}
-                  <Tooltip
-                    title={`You can't delete Admins`}
-                  >
-                    <DeleteOutlined
-                      style={{ cursor: "not-allowed" }}
-                      className={"admin__editLogo admin__disabled"}
+                    <StopOutlined
+                      className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`}
                     />
-                  </Tooltip>
-                </>
-              ) : (
-                <>
-                  <Tooltip title={"Suspend User"}>
-                    <Typography.Link
-                      disabled={record.isAdmin}
-                      style={{ marginRight: 8 }}
-                      onClick={() => blockUser(record.id)}
-                    >
-                      <StopOutlined
-                        className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`}
-                      />
-                    </Typography.Link>
-                  </Tooltip>{" "}
-                  <Tooltip title="Delete User">
-                    <Popconfirm
-                      title="Sure to delete this user?"
-                      style={{ marginRight: 8 }}
-                      onConfirm={() => deleteUser(record.id)}
-                    >
-                      <DeleteOutlined className="admin__editLogo" />
-                    </Popconfirm>
-                  </Tooltip>
-                </>
-              )
-            }
+                  </Typography.Link>
+                </Tooltip>{" "}
+                <Tooltip title={`You can't delete Admins`}>
+                  <DeleteOutlined
+                    style={{ cursor: "not-allowed" }}
+                    className={"admin__editLogo admin__disabled"}
+                  />
+                </Tooltip>
+              </>
+            ) : (
+              <>
+                <Tooltip title={"Suspend User"}>
+                  <Typography.Link
+                    disabled={record.isAdmin}
+                    style={{ marginRight: 8 }}
+                    onClick={() => blockUser(record.id)}
+                  >
+                    <StopOutlined
+                      className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`}
+                    />
+                  </Typography.Link>
+                </Tooltip>{" "}
+                <Tooltip title="Delete User">
+                  <Popconfirm
+                    title="Sure to delete this user?"
+                    style={{ marginRight: 8 }}
+                    onConfirm={() => deleteUser(record.id)}
+                  >
+                    <DeleteOutlined className="admin__editLogo" />
+                  </Popconfirm>
+                </Tooltip>
+              </>
+            )}
           </span>
         );
       },

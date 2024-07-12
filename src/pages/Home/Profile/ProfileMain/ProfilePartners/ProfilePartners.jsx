@@ -17,21 +17,22 @@ export const ProfilePartners = observer((props) => {
 
   const partnerCards = profileStore.partners.map((partner) => {
     if (!partner.pending || thisIsMine || userStore.isAdmin) {
-      return <PartnerCard partner={partner} />
+      return <PartnerCard partner={partner} />;
     } else {
       return null;
     }
-  })
+  });
   const partnerCardsCleaned = partnerCards?.filter((partner) => partner);
 
   return (
     <>
-      {thisIsMine &&
+      {thisIsMine && (
         <CreatePartnerForm
           showModal={showPartnersModal}
           setShowModal={setShowPartnersModal}
-        />}
-      {!!(thisIsMine || partnerCardsCleaned?.length) &&
+        />
+      )}
+      {!!(thisIsMine || partnerCardsCleaned?.length) && (
         <div className="profilePartners__container">
           <ProfileMainTitle
             title={t("profile.partners")}
@@ -41,18 +42,16 @@ export const ProfilePartners = observer((props) => {
             thisIsMine={thisIsMine}
           />
           <div className="profilePartners__main">
-            {
-              profileStore.partners?.length ? (
-                partnerCardsCleaned
-              ) : (
-                <div className="profilePartners__empty">
-                  {t("profile.nothingYet")}
-                </div>
-              )
-            }
+            {profileStore.partners?.length ? (
+              partnerCardsCleaned
+            ) : (
+              <div className="profilePartners__empty">
+                {t("profile.nothingYet")}
+              </div>
+            )}
           </div>
         </div>
-      }
+      )}
     </>
   );
 });

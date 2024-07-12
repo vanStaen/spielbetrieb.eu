@@ -4,7 +4,7 @@ import { notification, Modal, Button, Form, Select, Switch } from "antd";
 import { updateUserAsAdmin } from "../updatePartnerAsAdmin";
 import { getPartnertypes } from "../../../../store/pageStore/getPartnertypes";
 import { nameParser } from "../../../../helpers/dev/nameParser";
-import { userStore } from "../../../../store/userStore/userStore";
+import { pageStore } from "../../../../store/pageStore/pageStore";
 
 import "./PartnerForm.less";
 

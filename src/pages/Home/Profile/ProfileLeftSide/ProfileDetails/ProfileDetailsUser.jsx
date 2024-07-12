@@ -9,7 +9,6 @@ import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { nameParser } from "../../../../../helpers/dev/nameParser";
 
 import "./ProfileDetails.less";
-import { partnerStore } from "../../../../../store/partnerStore/partnerStore";
 
 const rounding = Math.floor; // default is Math.round
 dayjs.extend(relativeTime, {

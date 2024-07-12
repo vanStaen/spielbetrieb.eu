@@ -31,7 +31,7 @@ export const ProfilePartner = observer(() => {
     }
   };
   useEffect(() => {
-    const username = params.username // ? params.username : userStore.userName;
+    const username = params.username; // ? params.username : userStore.userName;
     username && partnerStore.fetchPartnerData(username, true);
     // TODO : Partner doesnt exist
   }, [userStore.isLoading, userStore.userName, params.username]);
@@ -41,7 +41,7 @@ export const ProfilePartner = observer(() => {
   }, []);
 
   // TODO: this is Mine for partner
-  const thisIsMine = true // userStore.id === profileStore.id;
+  const thisIsMine = true; // userStore.id === profileStore.id;
 
   return (
     <>

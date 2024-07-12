@@ -15,7 +15,8 @@ import "./PartnerCard.less";
 // TODO: add tags
 
 export const PartnerCard = observer((props) => {
-  const { id, name, avatar, description, pending, userName, suspended } = props.partner;
+  const { id, name, avatar, description, pending, userName, suspended } =
+    props.partner;
   const isMypartner = profileStore.id === userStore?.id;
   const [avatarUrl, setAvatarUrl] = useState(null);
   const navigate = useNavigate();
@@ -69,12 +70,21 @@ export const PartnerCard = observer((props) => {
       </div>
 
       <div className="partner__actions">
-        {suspended ? <Tag className="red" bordered={false}>Suspended</Tag>
-          : pending && <Tag className="lightRed" bordered={false}>Pending</Tag>}
+        {suspended ? (
+          <Tag className="red" bordered={false}>
+            Suspended
+          </Tag>
+        ) : (
+          pending && (
+            <Tag className="lightRed" bordered={false}>
+              Pending
+            </Tag>
+          )
+        )}
         {isMypartner && (
           <div
             className="partner__action"
-          // TODO: onClick={handleEditpartner}
+            // TODO: onClick={handleEditpartner}
           >
             <EditOutlined />
           </div>
@@ -85,7 +95,7 @@ export const PartnerCard = observer((props) => {
               <Popconfirm
                 title={`Archive this partner?`}
                 style={{ marginRight: 8 }}
-              // TODO: onConfirm={handleArchivepartner}
+                // TODO: onConfirm={handleArchivepartner}
               >
                 <DeleteOutlined className="partner__deleteLogo" />
               </Popconfirm>

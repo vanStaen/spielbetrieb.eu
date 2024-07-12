@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export const getProfilePartners = async (id) => {
-    const requestBody = {
-        query: `
+  const requestBody = {
+    query: `
         {
             getProfilePartnersById (id: "${id}"){ 
                 id,
@@ -15,17 +15,17 @@ export const getProfilePartners = async (id) => {
             }
         }
         `,
-    };
+  };
 
-    const response = await axios({
-        url: process.env.API_URL + "/graphql",
-        method: "POST",
-        data: requestBody,
-    });
+  const response = await axios({
+    url: process.env.API_URL + "/graphql",
+    method: "POST",
+    data: requestBody,
+  });
 
-    if ((response.status !== 200) & (response.status !== 201)) {
-        throw new Error("Unauthenticated!");
-    }
+  if ((response.status !== 200) & (response.status !== 201)) {
+    throw new Error("Unauthenticated!");
+  }
 
-    return response.data.data.getProfilePartnersById;
+  return response.data.data.getProfilePartnersById;
 };

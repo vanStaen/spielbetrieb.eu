@@ -53,8 +53,11 @@ export const AdminPartners = () => {
       dataIndex: "name",
       key: "name",
       sorter: (a, b) => a.name.length - b.name.length,
-      render: (_, { name, description, partnerTags, avatar, pending, userName }) => {
-        //TODO Add avatar in tooltip
+      render: (
+        _,
+        { name, description, partnerTags, avatar, pending, userName },
+      ) => {
+        // TODO Add avatar in tooltip
         const avatarUrl = avatar;
 
         const handlePartnerContainerClick = () => {
@@ -62,15 +65,16 @@ export const AdminPartners = () => {
         };
 
         return (
-          <div style={{ cursor: 'pointer' }} onClick={handlePartnerContainerClick}>
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={handlePartnerContainerClick}
+          >
             <Tooltip
               placement="right"
               overlayStyle={{ maxWidth: "700px" }}
               title={
                 <div>
-                  <div>
-                    {description}
-                  </div>
+                  <div>{description}</div>
                   {partnerTags?.map((tag) => {
                     return (
                       <Tag color="#333" key={tag} bordered={false}>
@@ -84,8 +88,8 @@ export const AdminPartners = () => {
               {name}
             </Tooltip>
           </div>
-        )
-      }
+        );
+      },
     },
     {
       title: "Admin",
@@ -94,12 +98,8 @@ export const AdminPartners = () => {
       align: "center",
       render: (_, { admin }) =>
         admin.map((user) => {
-          return (
-            <span key={user}>
-              {user}
-            </span>
-          );
-        })
+          return <span key={user}>{user}</span>;
+        }),
     },
     {
       title: "Suspended",
@@ -108,14 +108,17 @@ export const AdminPartners = () => {
       align: "center",
       width: "100px",
       sorter: (a, b) => a.suspended - b.suspended,
-      render: (_, { suspended, id }) =>
-      (
+      render: (_, { suspended, id }) => (
         <Tooltip title="Double click to toggle this value">
           <div
             style={{ cursor: "pointer" }}
             onDoubleClick={() => toogleSuspendPartner(id, suspended)}
           >
-            {suspended ? "🚫" : <span style={{ filter: 'grayscale(1)', opacity: .25 }}>🚫</span>}
+            {suspended ? (
+              "🚫"
+            ) : (
+              <span style={{ filter: "grayscale(1)", opacity: 0.25 }}>🚫</span>
+            )}
           </div>
         </Tooltip>
       ),
@@ -125,8 +128,7 @@ export const AdminPartners = () => {
       dataIndex: "pending",
       key: "pending",
       align: "center",
-      render: (_, { pending, id }) =>
-      (
+      render: (_, { pending, id }) => (
         <Tooltip title="Double click to validate this Partner">
           <div
             style={{ cursor: "pointer" }}

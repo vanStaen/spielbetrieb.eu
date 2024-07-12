@@ -6,6 +6,7 @@ import { DeleteOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import { partnerStore } from "../../../../../../store/partnerStore/partnerStore";
+import { profileStore } from "../../../../../../store/profileStore/profileStore";
 import { getPartnertypes } from "../../../../../../store/pageStore/getPartnertypes";
 import { nameParser } from "../../../../../../helpers/dev/nameParser";
 import { UploadForm } from "../../../../../../components/UploadForm/UploadForm";
@@ -59,20 +60,23 @@ export const CreatePartnerForm = observer((props) => {
       const name = form.getFieldValue("name");
       const description = form.getFieldValue("description");
       const partnertype = form.getFieldValue("partnertype");
-      const res = await addPartner(name, description, partnerStore.avatar, partnertype);
+      const res = await addPartner(
+        name,
+        description,
+        partnerStore.avatar,
+        partnertype,
+      );
       console.log(res);
-      if (Object.hasOwn(res, 'errors')) {
+      if (Object.hasOwn(res, "errors")) {
         message.error(res.errors[0].message);
-
       } else {
         message.info(t(`profile.partnerPageGoneToModeration`));
         form.resetFields();
         setShowModal(false);
         setTimeout(() => {
-          profileStore.fetchProfilePartners()
+          profileStore.fetchProfilePartners();
         }, 3000);
       }
-
     } catch (e) {
       console.error(e);
     }

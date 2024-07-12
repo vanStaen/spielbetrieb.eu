@@ -233,7 +233,7 @@ export class ProfileStore {
           this.setWishes(profileData.wishes);
           this.setDescription(profileData.description);
           this.setLinks(profileData.links);
-          let [events, partners] = await Promise.all([
+          const [events, partners] = await Promise.all([
             getProfileEvents(profileData.id),
             getProfilePartners(profileData.id),
           ]);
@@ -252,7 +252,7 @@ export class ProfileStore {
   fetchProfilePartners = async () => {
     const partners = await getProfilePartners(this.id);
     this.setPartners(partners);
-  }
+  };
 }
 
 export const profileStore = new ProfileStore();

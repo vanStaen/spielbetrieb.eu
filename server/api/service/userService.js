@@ -2,6 +2,7 @@ import { User } from "../../models/User.js";
 import { Partner } from "../../models/Partner.js";
 import jsonwebtoken from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+import { Op } from "sequelize";
 
 export const userService = {
   async taken(username) {
@@ -9,13 +10,11 @@ export const userService = {
       where: {
         userName: { [Op.iLike]: username },
       },
-
     });
     const foundPartner = await Partner.findOne({
       where: {
         userName: { [Op.iLike]: username },
       },
-
     });
     if (!foundUser && !foundPartner) {
       return false;

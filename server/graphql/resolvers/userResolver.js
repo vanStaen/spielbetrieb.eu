@@ -210,12 +210,7 @@ export const userResolver = {
   async getProfileByName(args, req) {
     return await User.findOne({
       where: { userName: args.userName },
-      include: [
-        "friends",
-        "followers",
-        "following",
-        "friendrequests",
-      ],
+      include: ["friends", "followers", "following", "friendrequests"],
     });
   },
 
@@ -223,12 +218,7 @@ export const userResolver = {
   async getProfileById(args, req) {
     return await User.findOne({
       where: { id: args.id },
-      include: [
-        "friends",
-        "followers",
-        "following",
-        "friendrequests",
-      ],
+      include: ["friends", "followers", "following", "friendrequests"],
     });
   },
 
@@ -406,7 +396,7 @@ export const userResolver = {
     }
   },
 
-  // getProfileEventsById(id: ID!): [Event] 
+  // getProfileEventsById(id: ID!): [Event]
   async getProfileEventsById(args, _) {
     return await Event.findAll({
       where: { userId: args.id, archived: false },
@@ -414,15 +404,14 @@ export const userResolver = {
     });
   },
 
-  // getProfilePartnersById(id: ID!): [Partner] 
+  // getProfilePartnersById(id: ID!): [Partner]
   async getProfilePartnersById(args, _) {
     return await Partner.findAll({
       where: {
         admin: { [Op.contains]: [args.id] },
-        archived: false
+        archived: false,
       },
       order: [["id", "ASC"]],
     });
   },
-
 };

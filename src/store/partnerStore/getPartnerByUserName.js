@@ -28,7 +28,7 @@ export async function getPartnerByUserName(userName) {
             }
             `,
     variables: {
-      userName
+      userName,
     },
   };
 
