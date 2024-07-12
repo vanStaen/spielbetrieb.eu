@@ -3,14 +3,17 @@ import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 
 import { profileStore } from "../../../../../store/profileStore/profileStore";
+import { partnerStore } from "../../../../../store/partnerStore/partnerStore";
 import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMainTitle";
 import { EditTextModal } from "../profileComponents/EditTextModal/EditTextModal";
 
 import "./ProfileDescription.less";
 
-export const ProfileDescription = observer(() => {
+export const ProfileDescription = observer((props) => {
   const { t } = useTranslation();
   const [showDescriptionModal, setShowDescriptionModal] = useState(false);
+  const { isPartner } = props;
+  const description = isPartner ? partnerStore.description : profileStore.description;
 
   return (
     <>
@@ -22,13 +25,13 @@ export const ProfileDescription = observer(() => {
       />
       <div className="profileDescription__container">
         <ProfileMainTitle
-          title={t("profile.description")}
+          title={isPartner ? t("partner.description") : t("profile.description")}
           showEdit={showDescriptionModal}
           setShowEdit={setShowDescriptionModal}
         />
         <div className="profileDescription__main">
-          {profileStore.description ? (
-            <div>{profileStore.description}</div>
+          {description ? (
+            <div>{description}</div>
           ) : (
             <div className="profileDescription__empty">
               {t("profile.nothingYet")}

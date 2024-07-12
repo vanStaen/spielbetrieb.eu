@@ -156,10 +156,11 @@ export class PartnerStore {
         this.setUserName(userName);
         const partnerData = await getPartnerByUserName(userName);
         if (partnerData) {
-          console.log(partnerData);
+          // console.log(partnerData);
           this.setid(parseInt(partnerData.id));
           this.setAvatar(partnerData.avatar);
           this.setName(partnerData.name);
+          this.setDescription(partnerData.description);
           this.setLastActive(partnerData.lastActive);
           this.setSettings(JSON.parse(partnerData.settings));
           this.setPictures(partnerData.pictures);

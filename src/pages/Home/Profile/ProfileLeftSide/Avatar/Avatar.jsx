@@ -25,6 +25,7 @@ export const Avatar = observer((props) => {
   const [avatarUrl, setAvatarUrl] = useState(null);
 
   const getAvatarUrl = async (path) => {
+    setAvatarUrl(null);
     if (path) {
       const url = await getPictureUrl(path, bucket);
       const isloaded = new Promise((resolve, reject) => {

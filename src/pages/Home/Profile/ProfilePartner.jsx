@@ -64,7 +64,7 @@ export const ProfilePartner = observer(() => {
               <ProfileFriends /> */}
             </div>
             <div className="profil__containerCenter">
-              {/* <ProfileMain /> */}
+              <ProfileMain isPartner={true} />
             </div>
           </>
         )}
