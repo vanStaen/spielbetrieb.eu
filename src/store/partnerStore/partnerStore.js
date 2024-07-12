@@ -15,7 +15,7 @@ export class PartnerStore {
   reviews = [];
   lastActive = null;
   partnerRoles = [];
-  partnertype = null;
+  partnertypeId = null;
   links = [];
   partnerTags = [];
   archived = null;
@@ -49,8 +49,8 @@ export class PartnerStore {
       setLastActive: action,
       partnerRoles: observable,
       setPartnerRoles: action,
-      partnertype: observable,
-      setPartnertype: action,
+      partnertypeId: observable,
+      setPartnertypeId: action,
       links: observable,
       setLinks: action,
       partnerTags: observable,
@@ -119,8 +119,8 @@ export class PartnerStore {
     this.partnerRoles = partnerRoles;
   };
 
-  setPartnertype = (partnertype) => {
-    this.partnertype = partnertype;
+  setPartnertypeId = (partnertypeId) => {
+    this.partnertypeId = partnertypeId;
   };
 
   setLinks = (links) => {
@@ -156,7 +156,7 @@ export class PartnerStore {
         this.setUserName(userName);
         const partnerData = await getPartnerByUserName(userName);
         if (partnerData) {
-          // console.log(partnerData);
+          console.log(partnerData);
           this.setid(parseInt(partnerData.id));
           this.setAvatar(partnerData.avatar);
           this.setName(partnerData.name);
@@ -167,6 +167,7 @@ export class PartnerStore {
           this.setPartnerTags(partnerData.partnerTags);
           this.setLinks(partnerData.links);
           this.setPending(partnerData.pending);
+          this.setPartnertypeId(parseInt(partnerData.partnertype));
           /* let [events, partners] = await Promise.all([
             getProfileEvents(profileData.id),
             getProfilePartners(profileData.id),

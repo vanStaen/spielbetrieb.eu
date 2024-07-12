@@ -18,7 +18,7 @@ import { partnerStore } from "../../../store/partnerStore/partnerStore";
 
 import "./Profile.less";
 
-export const PartnerProfile = observer(() => {
+export const ProfilePartner = observer(() => {
   const params = useParams();
   const { t } = useTranslation();
 
@@ -58,9 +58,9 @@ export const PartnerProfile = observer(() => {
         ) : (
           <>
             <div className="profil__containerLeft">
-              <Avatar avatar={partnerStore.avatar} bucket={partnerStore.pending ? 'temp' : 'partners'} />
-              {/*<ProfileDetails />
-              {!thisIsMe && <ProfileActions />}
+              <Avatar isPartner={true} />
+              <ProfileDetails isPartner={true} />
+              {/* !thisIsMe && <ProfileActions />}
               <ProfileFriends /> */}
             </div>
             <div className="profil__containerCenter">

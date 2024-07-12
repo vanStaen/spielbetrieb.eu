@@ -17,7 +17,7 @@ import { ProfileActions } from "./ProfileLeftSide/ProfileActions/ProfileActions"
 
 import "./Profile.less";
 
-export const UserProfile = observer((props) => {
+export const ProfileUser = observer((props) => {
   const params = useParams();
   const { t } = useTranslation();
 
@@ -58,8 +58,8 @@ export const UserProfile = observer((props) => {
         ) : (
           <>
             <div className="profil__containerLeft">
-              <Avatar avatar={profileStore.avatar} bucket='users' />
-              <ProfileDetails />
+              <Avatar isPartner={false} />
+              <ProfileDetails isPartner={false} />
               {!thisIsMe && <ProfileActions />}
               <ProfileFriends />
             </div>

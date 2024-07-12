@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 
 import { userStore } from "../../../../../store/userStore/userStore";
 import { profileStore } from "../../../../../store/profileStore/profileStore";
+import { partnerStore } from "../../../../../store/partnerStore/partnerStore";
 import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { postPicture } from "../../../../../helpers/picture/postPicture";
 import { getPictureUrl } from "../../../../../helpers/picture/getPictureUrl";
@@ -15,7 +16,9 @@ import "./Avatar.less";
 
 export const Avatar = observer((props) => {
   const { t } = useTranslation();
-  const { avatar, bucket } = props;
+  const { isPartner } = props;
+  const avatar = isPartner ? partnerStore.avatar : profileStore.avatar;
+  const bucket = isPartner ? partnerStore.pending ? 'temp' : 'partners' : 'users';
   const [isLoading, setIsLoading] = useState(true);
   // TODO: isStranger for partner: thisIsMe and isStranger as mobx variable.
   const isStranger = userStore.userName !== profileStore.userName;
@@ -24,7 +27,6 @@ export const Avatar = observer((props) => {
   const getAvatarUrl = async (path) => {
     if (path) {
       const url = await getPictureUrl(path, bucket);
-      console.log(url);
       const isloaded = new Promise((resolve, reject) => {
         const loadImg = new Image();
         loadImg.src = url;
