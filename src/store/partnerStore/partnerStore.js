@@ -169,6 +169,7 @@ export class PartnerStore {
           this.setLinks(partnerData.links);
           this.setPending(partnerData.pending);
           this.setPartnertypeId(parseInt(partnerData.partnertype));
+          this.setAdmin(partnerData.admin);
           /* let [events, partners] = await Promise.all([
             getProfileEvents(profileData.id),
             getProfilePartners(profileData.id),

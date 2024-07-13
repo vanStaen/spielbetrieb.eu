@@ -24,43 +24,47 @@ export const ProfileMain = observer((props) => {
     <div className="profil__mainContainer">
       <ProfileName />
       {(partnerStore.description || thisIsMine) && (
-        <ProfileDescription isPartner thisIsMine />
+        <ProfileDescription isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
       {(partnerStore.photos?.length || thisIsMine) && (
-        <ProfilePhotos isPartner thisIsMine />
+        <ProfilePhotos isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
       {(partnerStore.events?.length || thisIsMine) && (
-        <ProfileEvents isPartner thisIsMine />
+        <ProfileEvents isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
       {(partnerStore.tags?.length || thisIsMine) && (
-        <ProfileTags isPartner thisIsMine />
+        <ProfileTags isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
       {(partnerStore.links?.length || thisIsMine) && (
-        <ProfileLinks isPartner thisIsMine />
+        <ProfileLinks isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
-      {partnerStore.reviews?.length && <ProfileReviews isPartner />}
+      {partnerStore.reviews?.length && <ProfileReviews isPartner={isPartner} />}
     </div>
   ) : (
     <div className="profil__mainContainer">
       {(profileStore.description || thisIsMine) && (
-        <ProfileDescription thisIsMine />
+        <ProfileDescription isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
-      {(profileStore.wishes || thisIsMine) && <ProfileWishes thisIsMine />}
+      {(profileStore.wishes || thisIsMine) && (
+        <ProfileWishes isPartner={isPartner} thisIsMine={thisIsMine} />
+      )}
       {(profileStore.interests || thisIsMine) && (
-        <ProfileInterests thisIsMine />
+        <ProfileInterests isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
       {(profileStore.photos?.length || thisIsMine) && (
-        <ProfilePhotos thisIsMine />
+        <ProfilePhotos isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
       {(profileStore.events?.length || thisIsMine) && (
-        <ProfileEvents thisIsMine />
+        <ProfileEvents isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
-      {(profileStore.tags?.length || thisIsMine) && <ProfileTags thisIsMine />}
+      {(profileStore.tags?.length || thisIsMine) && (
+        <ProfileTags isPartner={isPartner} thisIsMine={thisIsMine} />
+      )}
       {(profileStore.partners?.length || thisIsMine) && (
-        <ProfilePartners thisIsMine />
+        <ProfilePartners isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
       {(profileStore.links?.length || thisIsMine) && (
-        <ProfileLinks thisIsMine />
+        <ProfileLinks isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
     </div>
   );

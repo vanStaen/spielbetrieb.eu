@@ -5,7 +5,6 @@ import { MehOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
 import { userStore } from "../../../store/userStore/userStore";
-import { profileStore } from "../../../store/profileStore/profileStore";
 import { authStore } from "../../../store/authStore/authStore";
 import { Avatar } from "./ProfileLeftSide/Avatar/Avatar";
 import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
@@ -32,16 +31,16 @@ export const ProfilePartner = observer(() => {
   };
   useEffect(() => {
     const username = params.username; // ? params.username : userStore.userName;
+    !username && redirectIfNotLoggedIn();
     username && partnerStore.fetchPartnerData(username, true);
     // TODO : Partner doesnt exist
-  }, [userStore.isLoading, userStore.userName, params.username]);
-
-  useEffect(() => {
-    !params.username && redirectIfNotLoggedIn();
   }, []);
 
-  // TODO: this is Mine for partner
-  const thisIsMine = true; // userStore.id === profileStore.id;
+  const thisIsMine = partnerStore.admin.includes(userStore.id);
+
+  // TODO: check why so many rerender
+  // https://www.npmjs.com/package/@welldone-software/why-did-you-render
+  // console.log('rerender');
 
   return (
     <>
@@ -65,7 +64,7 @@ export const ProfilePartner = observer(() => {
               <ProfileFriends /> */}
             </div>
             <div className="profil__containerCenter">
-              <ProfileMain isPartner={true} thisIsMine />
+              <ProfileMain isPartner={true} thisIsMine={thisIsMine} />
             </div>
           </>
         )}

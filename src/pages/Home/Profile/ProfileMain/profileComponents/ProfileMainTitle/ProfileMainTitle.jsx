@@ -15,13 +15,11 @@ export const ProfileMainTitle = observer((props) => {
     addPhoto,
     addLink,
     addPartner,
-    editable,
     showEdit,
     setShowEdit,
     thisIsMine,
   } = props;
   const hasValue = value !== undefined && value > 0;
-  const isNotEditable = editable === false;
 
   const editHandler = () => {
     setShowEdit(!showEdit);
@@ -30,8 +28,7 @@ export const ProfileMainTitle = observer((props) => {
   return (
     <div className="profileMain__title">
       {title} {hasValue && `(${value})`}
-      {!isNotEditable &&
-        thisIsMine &&
+      {thisIsMine &&
         (addEvent ? (
           <div className="profileMain__edit">
             <Tooltip title="Add an event">
