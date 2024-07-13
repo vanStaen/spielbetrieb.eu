@@ -12,6 +12,8 @@ import { nameParser } from "../../../../../helpers/dev/nameParser";
 
 import "./ProfileEvents.less";
 
+// TODO: hide if !thisIsMine && (isPrivate || isDraft)
+
 export const ProfileEvents = observer((props) => {
   const { t } = useTranslation();
   const { thisIsMine, isPartner } = props;
