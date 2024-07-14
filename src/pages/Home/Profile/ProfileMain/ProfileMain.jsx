@@ -20,6 +20,8 @@ import "./ProfileMain.less";
 export const ProfileMain = observer((props) => {
   const { isPartner, thisIsMine } = props;
 
+  // TODO adapt component to work with isPartner
+
   return isPartner ? (
     <div className="profil__mainContainer">
       <ProfileName />
