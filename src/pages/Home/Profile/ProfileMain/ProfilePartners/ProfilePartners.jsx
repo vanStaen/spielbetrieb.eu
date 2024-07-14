@@ -10,6 +10,8 @@ import { PartnerCard } from "./PartnerCard/PartnerCard";
 
 import "./ProfilePartners.less";
 
+// TODO: make responsive
+
 export const ProfilePartners = observer((props) => {
   const [showPartnersModal, setShowPartnersModal] = useState(false);
   const { t } = useTranslation();

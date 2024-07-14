@@ -92,8 +92,7 @@ export const EventCard = observer((props) => {
   const handleEventContainerClick = (e) => {
     if (event.isDraft) {
       handleEditEvent(e);
-    }
-    else if (isShownHidden.current === true) {
+    } else if (isShownHidden.current === true) {
       const elementContainer = document.getElementById(
         `eventContainer${event.id}`,
       );
@@ -151,8 +150,6 @@ export const EventCard = observer((props) => {
 
   const fromUntilDateAreNull =
     dayjs(event.fromDate).format("HH:mm") === "00:00";
-
-  console.log('event', event);
 
   return (
     <>
@@ -252,9 +249,7 @@ export const EventCard = observer((props) => {
           )}
           {!event.validated &&
             (event.isDraft ? (
-              <Tag bordered={false}>
-                Draft
-              </Tag>
+              <Tag bordered={false}>Draft</Tag>
             ) : (
               <Tag className="lightRed" bordered={false}>
                 Pending

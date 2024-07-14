@@ -41,12 +41,18 @@ export const Banner = observer((props) => {
 
   return (
     <>
-      <div id={id} className={`banner__container banner__${color}`} onClick={closeHandler}>
-        <div className="banner__desc">
-          {title}
-        </div>
+      <div
+        id={id}
+        className={`banner__container banner__${color}`}
+        onClick={closeHandler}
+      >
+        <div className="banner__desc">{title}</div>
         <Tooltip title={desc} placement="bottomRight">
-          <div className="banner__action" id={`${id}close`} onClick={closeHandler}>
+          <div
+            className="banner__action"
+            id={`${id}close`}
+            onClick={closeHandler}
+          >
             {closable ? <CloseOutlined /> : <QuestionOutlined />}
           </div>
         </Tooltip>

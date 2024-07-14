@@ -37,8 +37,7 @@ export const ProfilePartner = observer(() => {
     // TODO : Partner doesnt exist
   }, []);
 
-  const thisIsMine =
-    partnerStore.admin.includes(userStore.id);
+  const thisIsMine = partnerStore.admin.includes(userStore.id);
 
   // TODO: check why so many rerender
   // https://www.npmjs.com/package/@welldone-software/why-did-you-render
@@ -46,20 +45,25 @@ export const ProfilePartner = observer(() => {
 
   return (
     <>
-      {partnerStore.suspended ? <Banner
-        title="This profile is suspended"
-        desc="Your partner account is suspended. Other won't be able to see your profile anymore. Please contact us to resove this issue."
-        id={"suspendedPartnerBanner"}
-        show={true}
-        color="red"
-      /> :
-        partnerStore.pending && <Banner
-          title="This profile is pending validation"
-          desc="Your partner account is being reviewed by our team. We will either validate it and/or contact you ASAP."
-          id={"pendingPartnerBanner"}
+      {partnerStore.suspended ? (
+        <Banner
+          title="This profile is suspended"
+          desc="Your partner account is suspended. Other won't be able to see your profile anymore. Please contact us to resove this issue."
+          id={"suspendedPartnerBanner"}
           show={true}
-          color="lightRed"
-        />}
+          color="red"
+        />
+      ) : (
+        partnerStore.pending && (
+          <Banner
+            title="This profile is pending validation"
+            desc="Your partner account is being reviewed by our team. We will either validate it and/or contact you ASAP."
+            id={"pendingPartnerBanner"}
+            show={true}
+            color="lightRed"
+          />
+        )
+      )}
       <div className="profil__main">
         {partnerStore.isLoading ? (
           <div className="profil__spinner">
