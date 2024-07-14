@@ -89,8 +89,11 @@ export const EventCard = observer((props) => {
     );
   });
 
-  const handleEventContainerClick = () => {
-    if (isShownHidden.current === true) {
+  const handleEventContainerClick = (e) => {
+    if (event.isDraft) {
+      handleEditEvent(e);
+    }
+    else if (isShownHidden.current === true) {
       const elementContainer = document.getElementById(
         `eventContainer${event.id}`,
       );
@@ -153,20 +156,6 @@ export const EventCard = observer((props) => {
 
   return (
     <>
-      {/* TODO: event.suspended ? <Banner
-        title="This profile is suspended"
-        desc="Your partner account is suspended. Other won't be able to see your profile anymore. Please contact us to resove this issue."
-        id={"suspendedPartnerBanner"}
-        show={true}
-        color="red"
-      /> :
-        partnerStore.pending && <Banner
-          title="This profile is pending review"
-          desc="Your partner account is being reviewed by our team. We will either validate it and/or contact you ASAP."
-          id={"pendingPartnerBanner"}
-          show={true}
-          color="lightRed"
-  />*/}
       <div
         key={event.id}
         id={`eventContainer${event.id}`}
@@ -257,13 +246,13 @@ export const EventCard = observer((props) => {
         </div>
         <div className="event__actions">
           {event.private && (
-            <Tag className="grey" bordered={false}>
+            <Tag className="gold" bordered={false}>
               Private
             </Tag>
           )}
           {!event.validated &&
             (event.isDraft ? (
-              <Tag className="gold" bordered={false}>
+              <Tag bordered={false}>
                 Draft
               </Tag>
             ) : (

@@ -54,7 +54,7 @@ export const ProfilePartner = observer(() => {
         color="red"
       /> :
         partnerStore.pending && <Banner
-          title="This profile is pending review"
+          title="This profile is pending validation"
           desc="Your partner account is being reviewed by our team. We will either validate it and/or contact you ASAP."
           id={"pendingPartnerBanner"}
           show={true}

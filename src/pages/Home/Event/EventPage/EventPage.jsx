@@ -139,21 +139,35 @@ export const EventPage = observer((props) => {
 
   return (
     <>
-      {/* event.draft ? <Banner
-        title="This profile is suspended"
-        desc="Your partner account is suspended. Other won't be able to see your profile anymore. Please contact us to resove this issue."
-        id={"suspendedPartnerBanner"}
-        show={true}
-        color="red"
-      /> :
-        !event.validated && <Banner
-          title="This profile is pending review"
-          desc="Your partner account is being reviewed by our team. We will either validate it and/or contact you ASAP."
-          id={"pendingPartnerBanner"}
+
+
+      {
+        event?.validated === false ? <Banner
+          title="This event is pending validation"
+          desc="This profile is being reviewed by our team. Until then, only you can access this event page."
+          id={"pendingEventBanner"}
           show={true}
           color="lightRed"
-  /> */}
-      <div className="eventpage__backgroundgradient"></div>
+          closable={false}
+        /> :
+          (event?.private && event?.forwardable) ? <Banner
+            title="This event is set as Private & forwardable"
+            desc="Only the poeple you invited and the people this has been forwarded to, can see this event page."
+            id={"privateForwardableEventBanner"}
+            show={true}
+            color="gold"
+            closable={true}
+          /> : event?.private && <Banner
+            title="This event is set as Private"
+            desc="Only the poeple you invited can see this event page."
+            id={"privateForwardableEventBanner"}
+            show={true}
+            color="gold"
+            closable={true}
+          />
+      }
+
+      < div className="eventpage__backgroundgradient"></div >
       {!isNotValidated && (
         <div
           className="eventpage__backgroundimage"
@@ -161,7 +175,8 @@ export const EventPage = observer((props) => {
             background: `url(${pageStore.picturesUrls && pageStore.picturesUrls[0]}) center center / cover`,
           }}
         ></div>
-      )}
+      )
+      }
       <div
         onClick={() => {
           navigate(-1);
@@ -174,34 +189,35 @@ export const EventPage = observer((props) => {
       >
         <ArrowLeftOutlined />
       </div>
-      {isNotValidated ? (
-        <EventPageInValidation />
-      ) : (
-        <div
-          className={`eventpage__container 
+      {
+        isNotValidated ? (
+          <EventPageInValidation />
+        ) : (
+          <div
+            className={`eventpage__container 
                 ${pageStore.selectedTheme === "light" ? "black" : "white"}`}
-        >
-          {!isLoading ? (
-            <>
-              <EventPageArtwork event={event} ref1={ref1} />
-              <EventPageDesc
-                event={event}
-                canEdit={canEdit}
-                ref2={ref2}
-                ref3={ref3}
-                ref4={ref4}
-                ref5={ref5}
-                ref6={ref6}
-              />
-            </>
-          ) : (
-            <div className="eventpage__spinnerContainer">
-              <CustomSpinner text={`${t("general.loading")} (Events)`} />
-            </div>
-          )}
-          <HelpButtons missingEvent={true} setStartTour={setStartTour} />
-        </div>
-      )}
+          >
+            {!isLoading ? (
+              <>
+                <EventPageArtwork event={event} ref1={ref1} />
+                <EventPageDesc
+                  event={event}
+                  canEdit={canEdit}
+                  ref2={ref2}
+                  ref3={ref3}
+                  ref4={ref4}
+                  ref5={ref5}
+                  ref6={ref6}
+                />
+              </>
+            ) : (
+              <div className="eventpage__spinnerContainer">
+                <CustomSpinner text={`${t("general.loading")} (Events)`} />
+              </div>
+            )}
+            <HelpButtons missingEvent={true} setStartTour={setStartTour} />
+          </div>
+        )}
       <Tour
         open={startTour}
         onClose={() => setStartTour(false)}
