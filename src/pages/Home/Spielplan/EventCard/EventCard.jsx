@@ -14,6 +14,7 @@ import dayjs from "dayjs";
 import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinner";
+import { Banner } from "../../../../components/Banner/Banner";
 import { pictureOrPlaceholder } from "../../../../helpers/picture/pictureOrPlaceholder";
 import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
 import { archiveEvent } from "./archiveEvent";
@@ -50,7 +51,6 @@ export const EventCard = observer((props) => {
         show number of attending
         Mark attending event 
         buy a ticket
-        add draft tag and pending tag (action div)
     */
 
   const handleTagClick = (index, id) => {
@@ -149,130 +149,148 @@ export const EventCard = observer((props) => {
   const fromUntilDateAreNull =
     dayjs(event.fromDate).format("HH:mm") === "00:00";
 
+  console.log('event', event);
+
   return (
-    <div
-      key={event.id}
-      id={`eventContainer${event.id}`}
-      className={`
+    <>
+      {/* TODO: event.suspended ? <Banner
+        title="This profile is suspended"
+        desc="Your partner account is suspended. Other won't be able to see your profile anymore. Please contact us to resove this issue."
+        id={"suspendedPartnerBanner"}
+        show={true}
+        color="red"
+      /> :
+        partnerStore.pending && <Banner
+          title="This profile is pending review"
+          desc="Your partner account is being reviewed by our team. We will either validate it and/or contact you ASAP."
+          id={"pendingPartnerBanner"}
+          show={true}
+          color="lightRed"
+  />*/}
+      <div
+        key={event.id}
+        id={`eventContainer${event.id}`}
+        className={`
         event__Container 
         ${pageStore.selectedTheme === "light" ? "event__black" : "event__white"}
         ${!profileCard && "event__containerMarginTop"}
         `}
-      onClick={handleEventContainerClick}
-    >
-      <div className="event__date">
-        <div className="event__dateYear">
-          {dayjs(event.fromDate).format("YYYY")}
-        </div>
-        <div className="event__dateDayOfWeek">
-          {dayjs(event.fromDate).format("ddd")}
-        </div>
-        <div
-          className={`event__dateDay ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
-        >
-          {dayjs(event.fromDate).format("DD")}
-        </div>
-        <div className="event__dateMonth">
-          {dayjs(event.fromDate).format("MMM")}
-        </div>
-      </div>
-
-      {firstPictureUrl ? (
-        <div
-          className={profileCard ? "event__artworkProfile" : "event__artwork"}
-        >
-          <img src={firstPictureUrl} />
-        </div>
-      ) : (
-        <div
-          className={
-            profileCard
-              ? "event__artworkLoadingProfile"
-              : "event__artworkLoading"
-          }
-        >
-          <CustomSpinner />
-        </div>
-      )}
-      <div className="event__main">
-        <div className="event__titleLocation">
-          <div className="event__location">{event.locationName}</div>
+        onClick={handleEventContainerClick}
+      >
+        <div className="event__date">
+          <div className="event__dateYear">
+            {dayjs(event.fromDate).format("YYYY")}
+          </div>
+          <div className="event__dateDayOfWeek">
+            {dayjs(event.fromDate).format("ddd")}
+          </div>
           <div
-            className={`
+            className={`event__dateDay ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}`}
+          >
+            {dayjs(event.fromDate).format("DD")}
+          </div>
+          <div className="event__dateMonth">
+            {dayjs(event.fromDate).format("MMM")}
+          </div>
+        </div>
+
+        {firstPictureUrl ? (
+          <div
+            className={profileCard ? "event__artworkProfile" : "event__artwork"}
+          >
+            <img src={firstPictureUrl} />
+          </div>
+        ) : (
+          <div
+            className={
+              profileCard
+                ? "event__artworkLoadingProfile"
+                : "event__artworkLoading"
+            }
+          >
+            <CustomSpinner />
+          </div>
+        )}
+        <div className="event__main">
+          <div className="event__titleLocation">
+            <div className="event__location">{event.locationName}</div>
+            <div
+              className={`
               ${profileCard ? "event__titleProfile" : "event__title"}
               ${pageStore.selectedTheme === "light" ? "lightColorTheme__SubText" : "darkColorTheme__SubText"}
               `}
-          >
-            {event.title}
-          </div>
-        </div>
-        <div className="event__time">
-          <ClockCircleOutlined />{" "}
-          {!fromUntilDateAreNull ? (
-            <>
-              {dayjs(event.fromDate).format("HH:mm")}
-              {!fromUntilDateAreTheSame && (
-                <> - {dayjs(event.untilDate).format("HH:mm")}</>
-              )}
-            </>
-          ) : (
-            "tba"
-          )}
-        </div>
-        <div
-          className={`event__location ${!event.locationAddress && "event__lowOpacity"}`}
-        >
-          <EnvironmentOutlined />{" "}
-          {event.locationAddress ? event.locationAddress : "tba"}
-        </div>
-        {!profileCard && (
-          <div className="event__promoter">
-            <span className="event__organizedBy">
-              {t("spielplan.eventOrganisedBy")}{" "}
-            </span>
-            {eventUser?.userName}
-          </div>
-        )}
-        <div className={profileCard ? "event__tagsProfile" : "event__tags"}>
-          {" "}
-          {tagsFormatted}
-        </div>
-      </div>
-      <div className="event__actions">
-        {event.private && (
-          <Tag className="grey" bordered={false}>
-            Private
-          </Tag>
-        )}
-        {!event.validated &&
-          (event.isDraft ? (
-            <Tag className="gold" bordered={false}>
-              Draft
-            </Tag>
-          ) : (
-            <Tag className="lightRed" bordered={false}>
-              Pending
-            </Tag>
-          ))}
-        {isMyEvent && (
-          <div className="event__action" onClick={handleEditEvent}>
-            <EditOutlined />
-          </div>
-        )}
-        {(isMyEvent || userStore.isAdmin) && (
-          <div className="event__action">
-            <div onClick={(e) => e.stopPropagation()}>
-              <Popconfirm
-                title={`Archive this event?`}
-                style={{ marginRight: 8 }}
-                onConfirm={handleArchiveEvent}
-              >
-                <DeleteOutlined className="event__deleteLogo" />
-              </Popconfirm>
+            >
+              {event.title}
             </div>
           </div>
-        )}
+          <div className="event__time">
+            <ClockCircleOutlined />{" "}
+            {!fromUntilDateAreNull ? (
+              <>
+                {dayjs(event.fromDate).format("HH:mm")}
+                {!fromUntilDateAreTheSame && (
+                  <> - {dayjs(event.untilDate).format("HH:mm")}</>
+                )}
+              </>
+            ) : (
+              "tba"
+            )}
+          </div>
+          <div
+            className={`event__location ${!event.locationAddress && "event__lowOpacity"}`}
+          >
+            <EnvironmentOutlined />{" "}
+            {event.locationAddress ? event.locationAddress : "tba"}
+          </div>
+          {!profileCard && (
+            <div className="event__promoter">
+              <span className="event__organizedBy">
+                {t("spielplan.eventOrganisedBy")}{" "}
+              </span>
+              {eventUser?.userName}
+            </div>
+          )}
+          <div className={profileCard ? "event__tagsProfile" : "event__tags"}>
+            {" "}
+            {tagsFormatted}
+          </div>
+        </div>
+        <div className="event__actions">
+          {event.private && (
+            <Tag className="grey" bordered={false}>
+              Private
+            </Tag>
+          )}
+          {!event.validated &&
+            (event.isDraft ? (
+              <Tag className="gold" bordered={false}>
+                Draft
+              </Tag>
+            ) : (
+              <Tag className="lightRed" bordered={false}>
+                Pending
+              </Tag>
+            ))}
+          {isMyEvent && (
+            <div className="event__action" onClick={handleEditEvent}>
+              <EditOutlined />
+            </div>
+          )}
+          {(isMyEvent || userStore.isAdmin) && (
+            <div className="event__action">
+              <div onClick={(e) => e.stopPropagation()}>
+                <Popconfirm
+                  title={`Archive this event?`}
+                  style={{ marginRight: 8 }}
+                  onConfirm={handleArchiveEvent}
+                >
+                  <DeleteOutlined className="event__deleteLogo" />
+                </Popconfirm>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 });

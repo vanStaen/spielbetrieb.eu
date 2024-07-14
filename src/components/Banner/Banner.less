@@ -2,10 +2,29 @@
   position: relative;
   z-index: 5;
   width: 100vw;
-  font-size: 16px;
-  background-color: rgba(DarkRed, .75);
-  transition: max-height 0.5s linear;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: max-height 0.5s ease-in-out, font-size 0.5s ease-in-out;
   visibility: hidden;
+  text-transform: uppercase;
+}
+
+.banner__red {
+  background-color: rgba(DarkRed, .75);
+
+  &:hover {
+    background-color: rgba(DarkRed, 1);
+  }
+
+}
+
+.banner__lightRed {
+  background-color: rgba(LightCoral, .75);
+
+  &:hover {
+    background-color: rgba(LightCoral, 1);
+  }
+
 }
 
 .banner__desc {
@@ -14,12 +33,9 @@
   color: rgba(white, 1);
   cursor: pointer;
 
-  &:hover {
-    background-color: rgba(DarkRed, 1);
-  }
 }
 
-.banner__close {
+.banner__action {
   position: absolute;
   height: calc(100% - 20px);
   width: 36px;
@@ -27,7 +43,7 @@
   z-index: 2;
   right: 0;
   top: 0;
-  color: rgba(white, .5);
+  color: rgba(white, .75);
   cursor: pointer;
   display: flex;
   flex-direction: column;

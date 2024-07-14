@@ -14,6 +14,7 @@ import { userStore } from "../../../../store/userStore/userStore";
 import { getSingleEvents } from "../getSingleEvents";
 import { HelpButtons } from "../../../../components/HelpButtons/HelpButtons";
 import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinner";
+import { Banner } from "../../../../components/Banner/Banner";
 import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
 
 import "./EventPage.less";
@@ -134,8 +135,24 @@ export const EventPage = observer((props) => {
     }
   }, [event]);
 
+  console.log('event', event);
+
   return (
     <>
+      {/* event.draft ? <Banner
+        title="This profile is suspended"
+        desc="Your partner account is suspended. Other won't be able to see your profile anymore. Please contact us to resove this issue."
+        id={"suspendedPartnerBanner"}
+        show={true}
+        color="red"
+      /> :
+        !event.validated && <Banner
+          title="This profile is pending review"
+          desc="Your partner account is being reviewed by our team. We will either validate it and/or contact you ASAP."
+          id={"pendingPartnerBanner"}
+          show={true}
+          color="lightRed"
+  /> */}
       <div className="eventpage__backgroundgradient"></div>
       {!isNotValidated && (
         <div
@@ -150,11 +167,10 @@ export const EventPage = observer((props) => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${
-                    pageStore.selectedTheme === "light"
-                      ? "lightColorTheme__Text"
-                      : "darkColorTheme__Text"
-                  }`}
+                  ${pageStore.selectedTheme === "light"
+            ? "lightColorTheme__Text"
+            : "darkColorTheme__Text"
+          }`}
       >
         <ArrowLeftOutlined />
       </div>
