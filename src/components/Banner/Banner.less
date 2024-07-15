@@ -1,8 +1,8 @@
 .banner__container {
   position: relative;
   z-index: 5;
-  width: calc(100vw - 80px);
-  padding: 12px 40px;
+  width: calc(100vw);
+  max-height: 0;
   font-size: 14px;
   letter-spacing: 1px;
   transition: max-height 0.5s ease-in-out, font-size 0.5s ease-in-out;
@@ -37,8 +37,8 @@
 .banner__title {
   text-align: center;
   color: rgba(white, 1);
-  cursor: pointer;
   font-weight: 500;
+  padding: 12px 40px;
 
   .uppercase {
     text-transform: uppercase;
@@ -49,20 +49,24 @@
     padding-left: 8px;
     color: rgba(white, .5);
     font-weight: 200;
+    cursor: pointer;
 
     &:hover {
       color: rgba(white, .75);
       text-decoration: underline !important;
     }
   }
+
+  .banner__desc {
+    text-align: center;
+    padding-top: 6px;
+    color: rgba(white, .75);
+    font-weight: 200;
+  }
+
 }
 
-.banner__desc {
-  text-align: center;
-  padding-top: 6px;
-  color: rgba(white, .75);
-  font-weight: 200;
-}
+
 
 .banner__action {
   position: absolute;

@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import "./Banner.less";
 
 export const Banner = observer((props) => {
-  const { id, title, desc, show, color, closable } = props;
+  const { id, title, desc, color, closable } = props;
   const [showMore, setShowMore] = useState(false);
   const { t } = useTranslation();
 
@@ -21,23 +21,15 @@ export const Banner = observer((props) => {
 
   useEffect(() => {
     const banner = document.getElementById(id);
-    if (show) {
-      banner.style.maxHeight = 0;
-      banner.style.visibility = "hidden";
-      banner.style.fontSize = 0;
-      setTimeout(() => {
-        banner.style.visibility = "visible";
-        banner.style.maxHeight = "100px";
-        banner.style.fontSize = "14px";
-      }, 2000);
-    } else {
-      banner.style.maxHeight = 0;
-      banner.style.fontSize = 0;
-      setTimeout(() => {
-        banner.style.visibility = "hidden";
-      }, 500);
-    }
-  }, [id, show]);
+    banner.style.maxHeight = 0;
+    banner.style.visibility = "hidden";
+    banner.style.fontSize = 0;
+    setTimeout(() => {
+      banner.style.visibility = "visible";
+      banner.style.maxHeight = "100px";
+      banner.style.fontSize = "14px";
+    }, 2000);
+  }, [id]);
 
   const handleMoreToggleClick = (e) => {
     setShowMore(!showMore);
@@ -51,8 +43,9 @@ export const Banner = observer((props) => {
           <span className="more" onClick={handleMoreToggleClick}>
             {showMore ? t("general.less") : t("general.more")}
           </span>
+          {showMore && <div className="banner__desc">{desc}</div>}
+
         </div>
-        {showMore && <div className="banner__desc">{desc}</div>}
         {closable && (
           <div
             className="banner__action"

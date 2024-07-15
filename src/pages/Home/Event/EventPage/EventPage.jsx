@@ -142,7 +142,6 @@ export const EventPage = observer((props) => {
           title="This event is pending validation"
           desc="This profile is being reviewed by our team. Until then, only you can access this event page."
           id={"pendingEventBanner"}
-          show={true}
           color="lightRed"
           closable={false}
         />
@@ -151,7 +150,6 @@ export const EventPage = observer((props) => {
           title="This event is set as Private & forwardable"
           desc="Only the poeple you invited and the people this has been forwarded to, can see this event page."
           id={"privateForwardableEventBanner"}
-          show={true}
           color="gold"
           closable={true}
         />
@@ -161,7 +159,6 @@ export const EventPage = observer((props) => {
             title="This event is set as Private"
             desc="Only the poeple you invited can see this event page."
             id={"privateForwardableEventBanner"}
-            show={true}
             color="gold"
             closable={true}
           />
@@ -182,11 +179,10 @@ export const EventPage = observer((props) => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${
-                    pageStore.selectedTheme === "light"
-                      ? "lightColorTheme__Text"
-                      : "darkColorTheme__Text"
-                  }`}
+                  ${pageStore.selectedTheme === "light"
+            ? "lightColorTheme__Text"
+            : "darkColorTheme__Text"
+          }`}
       >
         <ArrowLeftOutlined />
       </div>

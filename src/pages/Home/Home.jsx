@@ -100,9 +100,8 @@ export const Home = observer((props) => {
       {process.env.PROD && (
         <Banner
           title="BETA VERSION"
-          desc="This is Beta version. Use this for test only."
+          desc="This is beta version. Use this for only."
           id={"betaBanner"}
-          show={true}
           closable={true}
           color="red"
         />

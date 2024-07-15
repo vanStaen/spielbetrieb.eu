@@ -50,7 +50,6 @@ export const ProfilePartner = observer(() => {
           title="This profile is suspended"
           desc="This partner account is suspended. Other won't be able to see your profile anymore. Please contact us to resove this issue."
           id={"suspendedPartnerBanner"}
-          show={true}
           color="red"
         />
       ) : (
@@ -59,7 +58,6 @@ export const ProfilePartner = observer(() => {
             title="This profile is pending validation"
             desc="This partner account is being reviewed by our team. We will either validate it and/or contact you ASAP."
             id={"pendingPartnerBanner"}
-            show={true}
             color="lightRed"
           />
         )
