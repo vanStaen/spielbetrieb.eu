@@ -1,7 +1,7 @@
 .banner__container {
   position: relative;
   z-index: 5;
-  width: 100vw;
+  width: calc(100vw - 80px);
   padding: 12px 40px;
   font-size: 14px;
   letter-spacing: 1px;
@@ -10,27 +10,27 @@
 }
 
 .banner__red {
-  background-color: rgba(DarkRed, .75);
+  background-color: rgba(DarkRed, 1);
 
   &:hover {
-    background-color: rgba(DarkRed, 1);
+    background-color: rgba(DarkRed, .75);
   }
 }
 
 .banner__lightRed {
-  background-color: rgba(LightCoral, .75);
+  background-color: rgba(LightCoral, 1);
 
   &:hover {
-    background-color: rgba(LightCoral, 1);
+    background-color: rgba(LightCoral, .75);
   }
 }
 
 
 .banner__gold {
-  background-color: rgba(BurlyWood, .75);
+  background-color: rgba(BurlyWood, 1);
 
   &:hover {
-    background-color: rgba(BurlyWood, 1);
+    background-color: rgba(BurlyWood, .75);
   }
 }
 
@@ -70,7 +70,7 @@
   width: 16px;
   padding: 10px;
   z-index: 2;
-  right: 40px;
+  right: 0;
   top: 0;
   color: rgba(white, .75);
   cursor: pointer;

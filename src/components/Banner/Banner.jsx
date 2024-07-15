@@ -11,14 +11,12 @@ export const Banner = observer((props) => {
   const { t } = useTranslation();
 
   const closeHandler = () => {
-    if (closable) {
-      const banner = document.getElementById(props.id);
-      banner.style.maxHeight = 0;
-      banner.style.fontSize = 0;
-      setTimeout(() => {
-        banner.style.visibility = "hidden";
-      }, 500);
-    }
+    const banner = document.getElementById(props.id);
+    banner.style.maxHeight = 0;
+    banner.style.fontSize = 0;
+    setTimeout(() => {
+      banner.style.visibility = "hidden";
+    }, 500);
   };
 
   useEffect(() => {
@@ -50,7 +48,6 @@ export const Banner = observer((props) => {
       <div
         id={id}
         className={`banner__container banner__${color}`}
-        onClick={closeHandler}
       >
         <div className="banner__title">
           <span className="uppercase">{title}</span>
