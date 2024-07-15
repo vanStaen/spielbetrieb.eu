@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { CloseOutlined, QuestionOutlined } from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
+import { CloseOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react";
-import { Tooltip } from "antd";
 
 import "./Banner.less";
 
 export const Banner = observer((props) => {
   const { id, title, desc, show, color, closable } = props;
+  const [showMore, setShowMore] = useState(false);
 
   const closeHandler = () => {
     if (closable) {
@@ -39,6 +39,10 @@ export const Banner = observer((props) => {
     }
   }, [id, show]);
 
+  const handleMoreToggleClick = (e) => {
+    setShowMore(!showMore);
+  }
+
   return (
     <>
       <div
@@ -46,16 +50,20 @@ export const Banner = observer((props) => {
         className={`banner__container banner__${color}`}
         onClick={closeHandler}
       >
-        <div className="banner__desc">{title}</div>
-        <Tooltip title={desc} placement="bottomRight">
-          <div
-            className="banner__action"
-            id={`${id}close`}
-            onClick={closeHandler}
-          >
-            {closable ? <CloseOutlined /> : <QuestionOutlined />}
-          </div>
-        </Tooltip>
+        <div className="banner__title">
+          <span className="uppercase">{title}</span>
+          <span className="more" onClick={handleMoreToggleClick}>
+            {showMore ? 'less' : 'more'}
+          </span>
+        </div>
+        {showMore && <div className="banner__desc">{desc}</div>}
+        {closable && <div
+          className="banner__action"
+          id={`${id}close`}
+          onClick={closeHandler}
+        >
+          <CloseOutlined />
+        </div>}
       </div>
     </>
   );
