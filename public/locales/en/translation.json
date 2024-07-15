@@ -20,7 +20,9 @@
 		"pendingReview": "pending review",
 		"youGotMail": "You got mail!",
 		"language": "Language",
-		"areYouSure": "Are you sure?"
+		"areYouSure": "Are you sure?",
+		"more": "more",
+		"less": "less"
 	},
 	"login": {
 		"loginSuccess": "Login was sucessfull!",

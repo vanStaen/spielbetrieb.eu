@@ -20,7 +20,9 @@
 		"pendingReview": "zur Überprüfung",
 		"youGotMail": "Du hast Post!",
 		"language": "Sprache",
-		"areYouSure": "Absolut sicher?"
+		"areYouSure": "Absolut sicher?",
+		"more": "mehr",
+		"less": "weniger"
 	},
 	"login": {
 		"loginSuccess": "Erfolgreich eingelogt!",
