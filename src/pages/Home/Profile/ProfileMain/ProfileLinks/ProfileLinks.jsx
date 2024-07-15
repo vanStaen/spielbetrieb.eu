@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 import { Popconfirm, message } from "antd";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
 import { partnerStore } from "../../../../../store/partnerStore/partnerStore";
 import { profileStore } from "../../../../../store/profileStore/profileStore";

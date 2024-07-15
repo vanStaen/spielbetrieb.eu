@@ -14,7 +14,6 @@ import dayjs from "dayjs";
 import { spielplanStore } from "../../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
 import { CustomSpinner } from "../../../../components/CustomSpinner/CustomSpinner";
-import { Banner } from "../../../../components/Banner/Banner";
 import { pictureOrPlaceholder } from "../../../../helpers/picture/pictureOrPlaceholder";
 import { getPictureUrl } from "../../../../helpers/picture/getPictureUrl";
 import { archiveEvent } from "./archiveEvent";
