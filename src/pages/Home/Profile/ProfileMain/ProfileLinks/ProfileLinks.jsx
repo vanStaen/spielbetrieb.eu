@@ -9,7 +9,7 @@ import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileM
 import { EditLinksModal } from "./EditLinksModal/EditLinksModal";
 import { updateLinks } from "./EditLinksModal/updateLinks";
 import { updatePartnerLinks } from "./EditLinksModal/updatePartnerLinks";
-import { getIcon } from './getIcon';
+import { getIcon } from "./getIcon";
 
 import "./ProfileLinks.less";
 

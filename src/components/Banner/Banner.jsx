@@ -44,7 +44,6 @@ export const Banner = observer((props) => {
             {showMore ? t("general.less") : t("general.more")}
           </span>
           {showMore && <div className="banner__desc">{desc}</div>}
-
         </div>
         {closable && (
           <div
