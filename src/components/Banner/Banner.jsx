@@ -28,7 +28,7 @@ export const Banner = observer((props) => {
       banner.style.visibility = "visible";
       banner.style.maxHeight = "100px";
       banner.style.fontSize = "14px";
-    }, 2000);
+    }, 1000);
   }, [id]);
 
   const handleMoreToggleClick = (e) => {
