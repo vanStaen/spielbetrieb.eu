@@ -127,7 +127,6 @@ export class PageStore {
 
   setTags = (tags) => {
     this.tags = tags;
-    console.log('tags', tags);
   };
 
   setGenders = (genders) => {

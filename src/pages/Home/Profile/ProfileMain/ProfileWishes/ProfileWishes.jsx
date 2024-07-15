@@ -17,7 +17,7 @@ export const ProfileWishes = observer((props) => {
     <>
       <EditTextModal
         field="wishes"
-        profileStoreSet={profileStore.setWishes}
+        storeSetter={profileStore.setWishes}
         showModal={showWishesModal}
         setShowModal={setShowWishesModal}
       />

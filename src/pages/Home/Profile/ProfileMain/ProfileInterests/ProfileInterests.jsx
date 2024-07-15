@@ -17,7 +17,7 @@ export const ProfileInterests = observer((props) => {
     <>
       <EditTextModal
         field="interests"
-        profileStoreSet={profileStore.setInterests}
+        storeSetter={profileStore.setInterests}
         showModal={showInterestsModal}
         setShowModal={setShowInterestsModal}
       />

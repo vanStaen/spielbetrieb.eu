@@ -5,14 +5,16 @@ import { Modal, Button, message, Input } from "antd";
 import { useTranslation } from "react-i18next";
 import { profileStore } from "../../../../../../store/profileStore/profileStore";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
+import { partnerStore } from "../../../../../../store/partnerStore/partnerStore";
 import { updateText } from "./updateText";
+import { updatePartnerText } from "./updatePartnerText";
 
 import "./EditTextModal.less";
 
 export const EditTextModal = observer((props) => {
   const { t } = useTranslation();
-  const { field, profileStoreSet, showModal, setShowModal } = props;
-  const [textValue, setTextValue] = useState(profileStore[field]);
+  const { field, storeSetter, showModal, setShowModal, isPartner } = props;
+  const [textValue, setTextValue] = useState(isPartner ? partnerStore[field] : profileStore[field]);
   const { TextArea } = Input;
 
   const changeHandler = (event) => {
@@ -21,9 +23,13 @@ export const EditTextModal = observer((props) => {
 
   const saveHandler = async () => {
     try {
-      await updateText(field, textValue);
-      profileStoreSet(textValue);
-      message.info(t(`profile.${field}Updated`));
+      if (isPartner) {
+        await updatePartnerText(partnerStore.id, field, textValue);
+      } else {
+        await updateText(field, textValue);
+      }
+      storeSetter(textValue);
+      message.info(t(`profile.${field} updated`));
       setShowModal(false);
     } catch (e) {
       console.error(e);

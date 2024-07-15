@@ -14,10 +14,9 @@ import "./ProfileTags.less";
 
 export const ProfileTags = observer((props) => {
   const { t } = useTranslation();
-  const [showTagsModal, setShowTagsModal] = useState(false);
   const { thisIsMine, isPartner } = props;
+  const [showTagsModal, setShowTagsModal] = useState(false);
   const [tagValue, setTagValue] = useState(isPartner ? partnerStore.tags : profileStore.tags);
-
 
   const createTags = (tagsCode) => {
     const tagsTemp = tagsCode?.map((tagId) => {
