@@ -4,6 +4,7 @@ import { Modal, Button, message, Select } from "antd";
 
 import { useTranslation } from "react-i18next";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
+import { addTag } from "../../../../../Admin/AdminData/AdminTags/addTag";
 import { profileStore } from "../../../../../../store/profileStore/profileStore";
 import { partnerStore } from "../../../../../../store/partnerStore/partnerStore";
 import { nameParser } from "../../../../../../helpers/dev/nameParser";
@@ -16,8 +17,21 @@ export const EditTagsModal = observer((props) => {
   const { t } = useTranslation();
   const { showTagsModal, setShowTagsModal, isPartner } = props;
   const [tagValue, setTagValue] = useState(isPartner ? partnerStore.tags : profileStore.tags);
+  const [hasNewTag, setHasNewTag] = useState(false);
 
   const changeHandler = (value) => {
+    value.map(async (tag, index) => {
+      if (isNaN(tag)) {
+        setHasNewTag(true);
+        const dataObjectTag = {
+          name: `{"en":"${tag}", "de":"${tag}"}`,
+          isPartnerTag: isPartner,
+          isUserTag: !isPartner,
+        };
+        const res = await addTag(dataObjectTag);
+        value[index] = parseInt(res.id);
+      }
+    });
     setTagValue(value);
   };
 
@@ -27,7 +41,6 @@ export const EditTagsModal = observer((props) => {
       return {
         value: parseInt(tag.id),
         label: `${nameParser(tag.name, pageStore.selectedLanguage)}${!tag.validated ? ` (${t("general.pendingReview")})` : ""}`,
-        disabled: !tag.validated,
       };
     });
 
@@ -37,7 +50,6 @@ export const EditTagsModal = observer((props) => {
       return {
         value: parseInt(tag.id),
         label: `${nameParser(tag.name, pageStore.selectedLanguage)}${!tag.validated ? ` (${t("general.pendingReview")})` : ""}`,
-        disabled: !tag.validated,
       };
     });
 
@@ -53,6 +65,9 @@ export const EditTagsModal = observer((props) => {
         message.info("User tags updated!");
       }
       setShowTagsModal(false);
+      if (hasNewTag) {
+        pageStore.fetchData();
+      }
     } catch (e) {
       console.error(e);
     }

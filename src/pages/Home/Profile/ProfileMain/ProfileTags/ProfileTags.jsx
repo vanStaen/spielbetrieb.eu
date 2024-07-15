@@ -18,19 +18,26 @@ export const ProfileTags = observer((props) => {
   const [showTagsModal, setShowTagsModal] = useState(false);
   const [tagValue, setTagValue] = useState(isPartner ? partnerStore.tags : profileStore.tags);
 
-  const createTags = (tagsCode) => {
+  const createTagLists = (tagsCode) => {
     const tagsTemp = tagsCode?.map((tagId) => {
+      const tagData = pageStore.tags.find((tag) => parseInt(tag.id) === tagId);
       return {
-        name: nameParser(
-          pageStore.tags.find((tag) => parseInt(tag.id) === tagId)?.name,
+        name: `${nameParser(
+          tagData?.name,
           pageStore.selectedLanguage.toLowerCase(),
-        ),
+        )}${!tagData?.validated ? ` (${t("general.pendingReview")})` : ""}`,
         id: tagId,
+        validated: tagData?.validated,
       };
     });
     const tagsFormatted = tagsTemp?.map((tag) => {
       return (
-        <Tag key={tag.id} bordered={false} style={{ opacity: tag.name ? 1 : .25 }}>
+        <Tag
+          key={tag.id}
+          bordered={false}
+          className={tag.validated ? "profileTags__tagActive" : "profileTags__tagPending"}
+          style={{ opacity: tag.name ? 1 : .25 }}
+        >
           #{tag.name ? tag.name : <i> {t('general.loading')}</i>}
         </Tag>
       );
@@ -61,7 +68,7 @@ export const ProfileTags = observer((props) => {
         />
         <div className="profileTags__main">
           {tagValue.length ? (
-            <div>{createTags(tagValue)}</div>
+            <div>{createTagLists(tagValue)}</div>
           ) : (
             <div className="profileTags__empty">{t("profile.nothingYet")}</div>
           )}

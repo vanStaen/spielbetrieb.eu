@@ -14,10 +14,21 @@
         }
 
         .ant-tag-borderless {
-            border-color: transparent;
-            background: rgba(var(--themeFontColor), .95);
             color: rgba(var(--themeFontColorInvert), 1);
             margin: 0 3px;
+        }
+
+        .profileTags__tagActive {
+            border-color: transparent;
+            color: rgba(var(--themeFontColorInvert), 1);
+            background: rgba(var(--themeFontColor), .95);
+        }
+
+        .profileTags__tagPending {
+            border-color: rgba(var(--themeFontColor), .5);
+            color: rgba(var(--themeFontColor), 1);
+            background: tranparent;
+            opacity: .5 !important;
         }
     }
 }

@@ -32,11 +32,7 @@ export const AdminPartners = () => {
   };
 
   const toogleSuspendPartner = async (id, suspended) => {
-    if (suspended) {
-      await updatePartnerAsAdmin(parseInt(id), { suspended: false });
-    } else {
-      await updatePartnerAsAdmin(parseInt(id), { suspended: true });
-    }
+    await updatePartnerAsAdmin(parseInt(id), { suspended });
     fetchAllPartners();
   };
 
@@ -112,7 +108,7 @@ export const AdminPartners = () => {
         <Tooltip title="Double click to toggle this value">
           <div
             style={{ cursor: "pointer" }}
-            onDoubleClick={() => toogleSuspendPartner(id, suspended)}
+            onDoubleClick={() => toogleSuspendPartner(id, !suspended)}
           >
             {suspended ? (
               "🚫"

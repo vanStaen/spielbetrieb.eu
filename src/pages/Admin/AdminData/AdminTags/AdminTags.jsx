@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Table, Typography, Popconfirm, Button } from "antd";
+import { Form, Table, Typography, Popconfirm, Button, Tooltip } from "antd";
 import {
   EditOutlined,
   CloseCircleOutlined,
@@ -14,6 +14,8 @@ import { updateTag } from "./updateTag";
 import { addTag } from "./addTag";
 import { AdminCustomSpinner } from "../../AdminCustomSpinner/AdminCustomSpinner";
 import { nameParser } from "../../../../helpers/dev/nameParser";
+
+// TODO: handle delete tag
 
 export const AdminTags = () => {
   const [form] = Form.useForm();
@@ -56,6 +58,18 @@ export const AdminTags = () => {
 
   const deleteRow = async (id) => {
     await deleteTag(id);
+    await fetchTags();
+  };
+
+  const toogleValidateTag = async (id, validated) => {
+    await updateTag(parseInt(id), { validated });
+    await fetchTags();
+  };
+
+  const toogleFlagTag = async (id, flag, value) => {
+    const newValueObject = {};
+    newValueObject[flag] = value;
+    await updateTag(parseInt(id), newValueObject);
     await fetchTags();
   };
 
@@ -109,7 +123,16 @@ export const AdminTags = () => {
       key: "isUserTag",
       align: "center",
       editable: true,
-      render: (_, { isUserTag }) => isUserTag && "✖️",
+      render: (_, { isUserTag, id }) => (
+        <Tooltip title="Double click to toggle this value">
+          <div
+            style={{ cursor: "pointer" }}
+            onDoubleClick={() => toogleFlagTag(id, 'isUserTag', !isUserTag)}
+          >
+            {isUserTag ? "✖️" : <span style={{ filter: "grayscale(1)", opacity: 0.15 }}>✖️</span>}
+          </div>
+        </Tooltip>
+      ),
     },
     {
       title: "Event tag",
@@ -117,7 +140,16 @@ export const AdminTags = () => {
       key: "isEventTag",
       align: "center",
       editable: true,
-      render: (_, { isEventTag }) => isEventTag && "✖️",
+      render: (_, { isEventTag, id }) => (
+        <Tooltip title="Double click to toggle this value">
+          <div
+            style={{ cursor: "pointer" }}
+            onDoubleClick={() => toogleFlagTag(id, 'isEventTag', !isEventTag)}
+          >
+            {isEventTag ? "✖️" : <span style={{ filter: "grayscale(1)", opacity: 0.15 }}>✖️</span>}
+          </div>
+        </Tooltip>
+      ),
     },
     {
       title: "Picture tag",
@@ -125,7 +157,16 @@ export const AdminTags = () => {
       key: "isPictureTag",
       align: "center",
       editable: true,
-      render: (_, { isPictureTag }) => isPictureTag && "✖️",
+      render: (_, { isPictureTag, id }) => (
+        <Tooltip title="Double click to toggle this value">
+          <div
+            style={{ cursor: "pointer" }}
+            onDoubleClick={() => toogleFlagTag(id, 'isPictureTag', !isPictureTag)}
+          >
+            {isPictureTag ? "✖️" : <span style={{ filter: "grayscale(1)", opacity: 0.15 }}>✖️</span>}
+          </div>
+        </Tooltip>
+      ),
     },
     {
       title: "Partner tag",
@@ -133,7 +174,16 @@ export const AdminTags = () => {
       key: "isPartnerTag",
       align: "center",
       editable: true,
-      render: (_, { isPartnerTag }) => isPartnerTag && "✖️",
+      render: (_, { isPartnerTag, id }) => (
+        <Tooltip title="Double click to toggle this value">
+          <div
+            style={{ cursor: "pointer" }}
+            onDoubleClick={() => toogleFlagTag(id, 'isPartnerTag', !isPartnerTag)}
+          >
+            {isPartnerTag ? "✖️" : <span style={{ filter: "grayscale(1)", opacity: 0.15 }}>✖️</span>}
+          </div>
+        </Tooltip>
+      ),
     },
     {
       title: "Validated",
@@ -141,7 +191,16 @@ export const AdminTags = () => {
       key: "validated",
       align: "center",
       editable: true,
-      render: (_, { validated }) => (validated ? "✅" : " ❌"),
+      render: (_, { validated, id }) => (
+        <Tooltip title="Double click to toggle this value">
+          <div
+            style={{ cursor: "pointer" }}
+            onDoubleClick={() => toogleValidateTag(id, !validated)}
+          >
+            {validated ? "✅" : " ❌"}
+          </div>
+        </Tooltip>
+      ),
     },
     {
       title: <span style={{ opacity: ".2" }}>Edit</span>,
@@ -194,10 +253,10 @@ export const AdminTags = () => {
         record,
         inputType:
           col.dataIndex === "validated" ||
-          col.dataIndex === "isPictureTag" ||
-          col.dataIndex === "isEventTag" ||
-          col.dataIndex === "isPartnerTag" ||
-          col.dataIndex === "isUserTag"
+            col.dataIndex === "isPictureTag" ||
+            col.dataIndex === "isEventTag" ||
+            col.dataIndex === "isPartnerTag" ||
+            col.dataIndex === "isUserTag"
             ? "boolean"
             : "text",
         dataIndex: col.dataIndex,

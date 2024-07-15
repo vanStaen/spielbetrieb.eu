@@ -80,7 +80,6 @@ export const EventForm = observer(() => {
         return {
           value: parseInt(tag.id),
           label: `${nameParser(tag.name, language)}${!tag.validated ? ` (${t("general.pendingReview")})` : ""}`,
-          disabled: !tag.validated,
         };
       });
     setTagsOptions(tagsOptionsResult);
