@@ -10,6 +10,7 @@ import { profileStore } from "../../../../../store/profileStore/profileStore";
 import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMainTitle";
 import { EditLinksModal } from "./EditLinksModal/EditLinksModal";
 import { updateLinks } from "./EditLinksModal/updateLinks";
+import { updatePartnerLinks } from "./EditLinksModal/updatePartnerLinks";
 
 import tiktokIco from "../../../../../img/icons/tiktok.ico";
 import fetlifeIco from "../../../../../img/icons/fetlife.ico";
@@ -32,11 +33,19 @@ export const ProfileLinks = observer((props) => {
 
   const deleteLinkHandler = async (url) => {
     try {
-      const cleanedLinkArray = profileStore.links.filter((link) => {
-        return JSON.parse(link).url !== url;
-      });
-      await updateLinks(cleanedLinkArray);
-      profileStore.setLinks(cleanedLinkArray);
+      if (isPartner) {
+        const cleanedLinkArray = partnerStore.links.filter((link) => {
+          return JSON.parse(link).url !== url;
+        });
+        await updatePartnerLinks(partnerStore.id, cleanedLinkArray);
+        partnerStore.setLinks(cleanedLinkArray);
+      } else {
+        const cleanedLinkArray = profileStore.links.filter((link) => {
+          return JSON.parse(link).url !== url;
+        });
+        await updateLinks(cleanedLinkArray);
+        profileStore.setLinks(cleanedLinkArray);
+      }
       message.info("Link deleted!");
     } catch (e) {
       console.error(e);
@@ -80,6 +89,7 @@ export const ProfileLinks = observer((props) => {
         setShowLinksModal={setShowLinksModal}
         isEdit={isEdit}
         setIsEdit={setIsEdit}
+        isPartner={isPartner}
       />
       <div className="profileLinks__container">
         <ProfileMainTitle

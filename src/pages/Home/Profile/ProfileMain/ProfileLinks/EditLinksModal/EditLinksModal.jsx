@@ -6,23 +6,25 @@ import { LinkOutlined, FontSizeOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import { profileStore } from "../../../../../../store/profileStore/profileStore";
+import { partnerStore } from "../../../../../../store/partnerStore/partnerStore";
 import { updateLinks } from "./updateLinks";
+import { updatePartnerLinks } from "./updatePartnerLinks";
 
 import "./EditLinksModal.less";
 
 export const EditLinksModal = observer((props) => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
-  const { showLinksModal, setShowLinksModal, isEdit, setIsEdit } = props;
-  const [userLinkValue, setUserLinkValue] = useState(profileStore.links);
+  const { showLinksModal, setShowLinksModal, isEdit, setIsEdit, isPartner } = props;
+  const [linkValue, setLinkValue] = useState(isPartner ? partnerStore.links : profileStore.links);
 
   useEffect(() => {
     form.resetFields();
     if (isEdit) {
-      form.setFieldValue("linkUrl", JSON.parse(userLinkValue[isEdit - 1]).url);
+      form.setFieldValue("linkUrl", JSON.parse(linkValue[isEdit - 1]).url);
       form.setFieldValue(
         "linkText",
-        JSON.parse(userLinkValue[isEdit - 1]).text,
+        JSON.parse(linkValue[isEdit - 1]).text,
       );
     } else {
       form.setFieldValue("linkUrl", null);
@@ -40,16 +42,21 @@ export const EditLinksModal = observer((props) => {
     const url = values.linkUrl;
     const text = values.linkText;
     try {
-      const newUserLinkValue =
-        userLinkValue === null ? [] : userLinkValue.slice();
+      const newlinkValue =
+        linkValue === null ? [] : linkValue.slice();
       if (isEdit) {
-        newUserLinkValue[isEdit - 1] = JSON.stringify({ url, text });
+        newlinkValue[isEdit - 1] = JSON.stringify({ url, text });
       } else {
-        newUserLinkValue.push(JSON.stringify({ url, text }));
+        newlinkValue.push(JSON.stringify({ url, text }));
       }
-      await updateLinks(newUserLinkValue);
-      setUserLinkValue(newUserLinkValue);
-      profileStore.setLinks(newUserLinkValue);
+      if (isPartner) {
+        await updatePartnerLinks(partnerStore.id, newlinkValue);
+        partnerStore.setLinks(newlinkValue);
+      } else {
+        await updateLinks(newlinkValue);
+        profileStore.setLinks(newlinkValue);
+      }
+      setLinkValue(newlinkValue);
       message.info("Links updated!");
       setShowLinksModal(false);
       setIsEdit(0);
@@ -90,7 +97,7 @@ export const EditLinksModal = observer((props) => {
             <Input
               style={{ width: "100%" }}
               prefix={<LinkOutlined />}
-              onChange={urlChangeHandler}
+              onBlur={urlChangeHandler}
               placeholder={t("eventform.addLinkUrl")}
             />
           </Form.Item>
