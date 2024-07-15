@@ -21,6 +21,9 @@ import spielbetriebIcoBlue from "../../../../../img/icons/spielbetriebblue.ico";
 import spielbetriebIcoBeige from "../../../../../img/icons/spielbetriebbeige.ico";
 import instagramIco from "../../../../../img/icons/instagram.png";
 import residentadvisorIco from "../../../../../img/icons/residentadvisor.jpg";
+import beatportIco from "../../../../../img/icons/beatport.png";
+import youtubeIco from "../../../../../img/icons/youtube.ico";
+import spotifyIco from "../../../../../img/icons/spotify.png";
 
 import "./ProfileLinks.less";
 
@@ -67,6 +70,12 @@ export const ProfileLinks = observer((props) => {
       return <img src={soundcloudIco} width="15px" />;
     } else if (url.includes("instagram.com")) {
       return <img src={instagramIco} width="15px" />;
+    } else if (url.includes("spotify.com")) {
+      return <img src={spotifyIco} width="15px" />;
+    } else if (url.includes("beatport.com/")) {
+      return <img src={beatportIco} width="15px" />;
+    } else if (url.includes("youtube.com/")) {
+      return <img src={youtubeIco} width="15px" />;
     } else if (
       url.includes("spielbetrieb.eu") &&
       pageStore.selectedTheme === "light"
