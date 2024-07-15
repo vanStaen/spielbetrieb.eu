@@ -15,17 +15,17 @@ import "./EditLinksModal.less";
 export const EditLinksModal = observer((props) => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
-  const { showLinksModal, setShowLinksModal, isEdit, setIsEdit, isPartner } = props;
-  const [linkValue, setLinkValue] = useState(isPartner ? partnerStore.links : profileStore.links);
+  const { showLinksModal, setShowLinksModal, isEdit, setIsEdit, isPartner } =
+    props;
+  const [linkValue, setLinkValue] = useState(
+    isPartner ? partnerStore.links : profileStore.links,
+  );
 
   useEffect(() => {
     form.resetFields();
     if (isEdit) {
       form.setFieldValue("linkUrl", JSON.parse(linkValue[isEdit - 1]).url);
-      form.setFieldValue(
-        "linkText",
-        JSON.parse(linkValue[isEdit - 1]).text,
-      );
+      form.setFieldValue("linkText", JSON.parse(linkValue[isEdit - 1]).text);
     } else {
       form.setFieldValue("linkUrl", null);
       form.setFieldValue("linkText", null);
@@ -42,8 +42,7 @@ export const EditLinksModal = observer((props) => {
     const url = values.linkUrl;
     const text = values.linkText;
     try {
-      const newlinkValue =
-        linkValue === null ? [] : linkValue.slice();
+      const newlinkValue = linkValue === null ? [] : linkValue.slice();
       if (isEdit) {
         newlinkValue[isEdit - 1] = JSON.stringify({ url, text });
       } else {

@@ -16,7 +16,9 @@ export const ProfileTags = observer((props) => {
   const { t } = useTranslation();
   const { thisIsMine, isPartner } = props;
   const [showTagsModal, setShowTagsModal] = useState(false);
-  const [tagValue, setTagValue] = useState(isPartner ? partnerStore.tags : profileStore.tags);
+  const [tagValue, setTagValue] = useState(
+    isPartner ? partnerStore.tags : profileStore.tags,
+  );
 
   const createTagLists = (tagsCode) => {
     const tagsTemp = tagsCode?.map((tagId) => {
@@ -35,10 +37,12 @@ export const ProfileTags = observer((props) => {
         <Tag
           key={tag.id}
           bordered={false}
-          className={tag.validated ? "profileTags__tagActive" : "profileTags__tagPending"}
-          style={{ opacity: tag.name ? 1 : .25 }}
+          className={
+            tag.validated ? "profileTags__tagActive" : "profileTags__tagPending"
+          }
+          style={{ opacity: tag.name ? 1 : 0.25 }}
         >
-          #{tag.name ? tag.name : <i> {t('general.loading')}</i>}
+          #{tag.name ? tag.name : <i> {t("general.loading")}</i>}
         </Tag>
       );
     });
@@ -48,8 +52,6 @@ export const ProfileTags = observer((props) => {
   useEffect(() => {
     setTagValue(isPartner ? partnerStore.tags : profileStore.tags);
   }, [profileStore.tags, partnerStore.tags]);
-
-  // TODO: Pending tags
 
   return (
     <>

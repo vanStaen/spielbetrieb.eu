@@ -127,9 +127,13 @@ export const AdminTags = () => {
         <Tooltip title="Double click to toggle this value">
           <div
             style={{ cursor: "pointer" }}
-            onDoubleClick={() => toogleFlagTag(id, 'isUserTag', !isUserTag)}
+            onDoubleClick={() => toogleFlagTag(id, "isUserTag", !isUserTag)}
           >
-            {isUserTag ? "✖️" : <span style={{ filter: "grayscale(1)", opacity: 0.15 }}>✖️</span>}
+            {isUserTag ? (
+              "✖️"
+            ) : (
+              <span style={{ filter: "grayscale(1)", opacity: 0.15 }}>✖️</span>
+            )}
           </div>
         </Tooltip>
       ),
@@ -144,9 +148,13 @@ export const AdminTags = () => {
         <Tooltip title="Double click to toggle this value">
           <div
             style={{ cursor: "pointer" }}
-            onDoubleClick={() => toogleFlagTag(id, 'isEventTag', !isEventTag)}
+            onDoubleClick={() => toogleFlagTag(id, "isEventTag", !isEventTag)}
           >
-            {isEventTag ? "✖️" : <span style={{ filter: "grayscale(1)", opacity: 0.15 }}>✖️</span>}
+            {isEventTag ? (
+              "✖️"
+            ) : (
+              <span style={{ filter: "grayscale(1)", opacity: 0.15 }}>✖️</span>
+            )}
           </div>
         </Tooltip>
       ),
@@ -161,9 +169,15 @@ export const AdminTags = () => {
         <Tooltip title="Double click to toggle this value">
           <div
             style={{ cursor: "pointer" }}
-            onDoubleClick={() => toogleFlagTag(id, 'isPictureTag', !isPictureTag)}
+            onDoubleClick={() =>
+              toogleFlagTag(id, "isPictureTag", !isPictureTag)
+            }
           >
-            {isPictureTag ? "✖️" : <span style={{ filter: "grayscale(1)", opacity: 0.15 }}>✖️</span>}
+            {isPictureTag ? (
+              "✖️"
+            ) : (
+              <span style={{ filter: "grayscale(1)", opacity: 0.15 }}>✖️</span>
+            )}
           </div>
         </Tooltip>
       ),
@@ -178,9 +192,15 @@ export const AdminTags = () => {
         <Tooltip title="Double click to toggle this value">
           <div
             style={{ cursor: "pointer" }}
-            onDoubleClick={() => toogleFlagTag(id, 'isPartnerTag', !isPartnerTag)}
+            onDoubleClick={() =>
+              toogleFlagTag(id, "isPartnerTag", !isPartnerTag)
+            }
           >
-            {isPartnerTag ? "✖️" : <span style={{ filter: "grayscale(1)", opacity: 0.15 }}>✖️</span>}
+            {isPartnerTag ? (
+              "✖️"
+            ) : (
+              <span style={{ filter: "grayscale(1)", opacity: 0.15 }}>✖️</span>
+            )}
           </div>
         </Tooltip>
       ),
@@ -253,10 +273,10 @@ export const AdminTags = () => {
         record,
         inputType:
           col.dataIndex === "validated" ||
-            col.dataIndex === "isPictureTag" ||
-            col.dataIndex === "isEventTag" ||
-            col.dataIndex === "isPartnerTag" ||
-            col.dataIndex === "isUserTag"
+          col.dataIndex === "isPictureTag" ||
+          col.dataIndex === "isEventTag" ||
+          col.dataIndex === "isPartnerTag" ||
+          col.dataIndex === "isUserTag"
             ? "boolean"
             : "text",
         dataIndex: col.dataIndex,

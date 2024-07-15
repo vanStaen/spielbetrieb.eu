@@ -41,28 +41,27 @@ export const Banner = observer((props) => {
 
   const handleMoreToggleClick = (e) => {
     setShowMore(!showMore);
-  }
+  };
 
   return (
     <>
-      <div
-        id={id}
-        className={`banner__container banner__${color}`}
-      >
+      <div id={id} className={`banner__container banner__${color}`}>
         <div className="banner__title">
           <span className="uppercase">{title}</span>
           <span className="more" onClick={handleMoreToggleClick}>
-            {showMore ? t('general.less') : t('general.more')}
+            {showMore ? t("general.less") : t("general.more")}
           </span>
         </div>
         {showMore && <div className="banner__desc">{desc}</div>}
-        {closable && <div
-          className="banner__action"
-          id={`${id}close`}
-          onClick={closeHandler}
-        >
-          <CloseOutlined />
-        </div>}
+        {closable && (
+          <div
+            className="banner__action"
+            id={`${id}close`}
+            onClick={closeHandler}
+          >
+            <CloseOutlined />
+          </div>
+        )}
       </div>
     </>
   );

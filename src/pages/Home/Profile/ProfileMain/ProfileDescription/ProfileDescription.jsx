@@ -21,7 +21,9 @@ export const ProfileDescription = observer((props) => {
     <>
       <EditTextModal
         field="description"
-        storeSetter={isPartner ? partnerStore.setDescription : profileStore.setDescription}
+        storeSetter={
+          isPartner ? partnerStore.setDescription : profileStore.setDescription
+        }
         showModal={showDescriptionModal}
         setShowModal={setShowDescriptionModal}
         isPartner={isPartner}

@@ -16,7 +16,9 @@ import "./EditTagsModal.less";
 export const EditTagsModal = observer((props) => {
   const { t } = useTranslation();
   const { showTagsModal, setShowTagsModal, isPartner } = props;
-  const [tagValue, setTagValue] = useState(isPartner ? partnerStore.tags : profileStore.tags);
+  const [tagValue, setTagValue] = useState(
+    isPartner ? partnerStore.tags : profileStore.tags,
+  );
   const [hasNewTag, setHasNewTag] = useState(false);
 
   const changeHandler = (value) => {
@@ -75,7 +77,7 @@ export const EditTagsModal = observer((props) => {
 
   const closeHandler = () => {
     setShowTagsModal(false);
-  }
+  };
 
   return (
     <Modal

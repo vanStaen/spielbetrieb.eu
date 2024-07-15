@@ -14,7 +14,9 @@ import "./EditTextModal.less";
 export const EditTextModal = observer((props) => {
   const { t } = useTranslation();
   const { field, storeSetter, showModal, setShowModal, isPartner } = props;
-  const [textValue, setTextValue] = useState(isPartner ? partnerStore[field] : profileStore[field]);
+  const [textValue, setTextValue] = useState(
+    isPartner ? partnerStore[field] : profileStore[field],
+  );
   const { TextArea } = Input;
 
   const changeHandler = (event) => {

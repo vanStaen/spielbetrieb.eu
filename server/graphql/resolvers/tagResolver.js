@@ -12,7 +12,7 @@ export const tagResolver = {
     });
   },
 
-  // TODO: handle duplicate name 
+  // TODO: handle duplicate name
   // check on add if tag exist already, and if yes, return id, and update flags
   // addTag(tagInput: TagInputData!): Tag!
   async addTag(args, req) {
