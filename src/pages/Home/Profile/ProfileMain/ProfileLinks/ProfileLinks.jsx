@@ -1,29 +1,15 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
-import { LinkOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Popconfirm, message } from "antd";
 
 import { partnerStore } from "../../../../../store/partnerStore/partnerStore";
-import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { profileStore } from "../../../../../store/profileStore/profileStore";
 import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMainTitle";
 import { EditLinksModal } from "./EditLinksModal/EditLinksModal";
 import { updateLinks } from "./EditLinksModal/updateLinks";
 import { updatePartnerLinks } from "./EditLinksModal/updatePartnerLinks";
-
-import tiktokIco from "../../../../../img/icons/tiktok.ico";
-import fetlifeIco from "../../../../../img/icons/fetlife.ico";
-import joyclubIco from "../../../../../img/icons/joyclub.ico";
-import facebookIco from "../../../../../img/icons/facebook.ico";
-import soundcloudIco from "../../../../../img/icons/soundcloud.ico";
-import spielbetriebIcoBlue from "../../../../../img/icons/spielbetriebblue.ico";
-import spielbetriebIcoBeige from "../../../../../img/icons/spielbetriebbeige.ico";
-import instagramIco from "../../../../../img/icons/instagram.png";
-import residentadvisorIco from "../../../../../img/icons/residentadvisor.jpg";
-import beatportIco from "../../../../../img/icons/beatport.png";
-import youtubeIco from "../../../../../img/icons/youtube.ico";
-import spotifyIco from "../../../../../img/icons/spotify.png";
+import { getIcon } from './getIcon';
 
 import "./ProfileLinks.less";
 
@@ -52,42 +38,6 @@ export const ProfileLinks = observer((props) => {
       message.info("Link deleted!");
     } catch (e) {
       console.error(e);
-    }
-  };
-
-  const getIcon = (url) => {
-    if (url.includes("tiktok.com")) {
-      return <img src={tiktokIco} width="15px" />;
-    } else if (url.includes("fetlife.com")) {
-      return <img src={fetlifeIco} width="15px" />;
-    } else if (url.includes("joyclub.de")) {
-      return <img src={joyclubIco} width="15px" />;
-    } else if (url.includes("ra.co")) {
-      return <img src={residentadvisorIco} width="15px" />;
-    } else if (url.includes("facebook.com")) {
-      return <img src={facebookIco} width="15px" />;
-    } else if (url.includes("soundcloud.com")) {
-      return <img src={soundcloudIco} width="15px" />;
-    } else if (url.includes("instagram.com")) {
-      return <img src={instagramIco} width="15px" />;
-    } else if (url.includes("spotify.com")) {
-      return <img src={spotifyIco} width="15px" />;
-    } else if (url.includes("beatport.com/")) {
-      return <img src={beatportIco} width="15px" />;
-    } else if (url.includes("youtube.com/")) {
-      return <img src={youtubeIco} width="15px" />;
-    } else if (
-      url.includes("spielbetrieb.eu") &&
-      pageStore.selectedTheme === "light"
-    ) {
-      return <img src={spielbetriebIcoBlue} width="15px" />;
-    } else if (
-      url.includes("spielbetrieb.eu") &&
-      pageStore.selectedTheme === "dark"
-    ) {
-      return <img src={spielbetriebIcoBeige} width="15px" />;
-    } else {
-      return <LinkOutlined />;
     }
   };
 
