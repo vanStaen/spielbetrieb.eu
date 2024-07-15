@@ -55,6 +55,8 @@ export class PageStore {
       setOrientations: action,
       partnertypes: observable,
       setPartnertypes: action,
+      tags: observable,
+      setTags: action,
       fetchData: action,
     });
   }
@@ -125,6 +127,7 @@ export class PageStore {
 
   setTags = (tags) => {
     this.tags = tags;
+    console.log('tags', tags);
   };
 
   setGenders = (genders) => {

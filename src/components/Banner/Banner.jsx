@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { CloseOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react";
+import { useTranslation } from "react-i18next";
 
 import "./Banner.less";
 
 export const Banner = observer((props) => {
   const { id, title, desc, show, color, closable } = props;
   const [showMore, setShowMore] = useState(false);
+  const { t } = useTranslation();
 
   const closeHandler = () => {
     if (closable) {
@@ -53,7 +55,7 @@ export const Banner = observer((props) => {
         <div className="banner__title">
           <span className="uppercase">{title}</span>
           <span className="more" onClick={handleMoreToggleClick}>
-            {showMore ? 'less' : 'more'}
+            {showMore ? t('general.less') : t('general.more')}
           </span>
         </div>
         {showMore && <div className="banner__desc">{desc}</div>}

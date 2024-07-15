@@ -12,7 +12,7 @@ import App from "./App.jsx";
   });
 } */
 
-consoleGreetings();
+process.env.PROD && consoleGreetings();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

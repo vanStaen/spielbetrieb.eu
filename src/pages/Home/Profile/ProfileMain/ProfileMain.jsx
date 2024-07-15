@@ -40,7 +40,9 @@ export const ProfileMain = observer((props) => {
       {(partnerStore.links?.length || thisIsMine) && (
         <ProfileLinks isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
-      {partnerStore.reviews?.length && <ProfileReviews isPartner={isPartner} />}
+      {(partnerStore.reviews?.length || thisIsMine) && (
+        <ProfileReviews isPartner={isPartner} thisIsMine={thisIsMine} />
+      )}
     </div>
   ) : (
     <div className="profil__mainContainer">

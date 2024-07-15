@@ -17,7 +17,7 @@ export class PartnerStore {
   partnerRoles = [];
   partnertypeId = null;
   links = [];
-  partnerTags = [];
+  tags = [];
   archived = null;
   suspended = null;
   pending = null;
@@ -53,8 +53,8 @@ export class PartnerStore {
       setPartnertypeId: action,
       links: observable,
       setLinks: action,
-      partnerTags: observable,
-      setPartnerTags: action,
+      tags: observable,
+      setTags: action,
       archived: observable,
       setArchived: action,
       suspended: observable,
@@ -127,8 +127,8 @@ export class PartnerStore {
     this.links = links;
   };
 
-  setPartnerTags = (partnerTags) => {
-    this.partnerTags = partnerTags;
+  setTags = (tags) => {
+    this.tags = tags;
   };
 
   setArchived = (archived) => {
@@ -165,12 +165,12 @@ export class PartnerStore {
           this.setSettings(JSON.parse(partnerData.settings));
           this.setPictures(partnerData.pictures);
           this.setReviews(partnerData.reviews);
-          this.setPartnerTags(partnerData.partnerTags);
           this.setLinks(partnerData.links);
           this.setPending(partnerData.pending);
           this.setPartnertypeId(parseInt(partnerData.partnertype));
           this.setAdmin(partnerData.admin);
           this.setSuspended(partnerData.suspended);
+          this.setTags(partnerData.partnerTags);
           /* let [events, partners] = await Promise.all([
             getProfileEvents(profileData.id),
             getProfilePartners(profileData.id),

@@ -5,19 +5,20 @@ import { Modal, Button, message, Select } from "antd";
 import { useTranslation } from "react-i18next";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import { profileStore } from "../../../../../../store/profileStore/profileStore";
+import { partnerStore } from "../../../../../../store/partnerStore/partnerStore";
 import { nameParser } from "../../../../../../helpers/dev/nameParser";
 import { updateTags } from "./updateTags";
+import { updatePartnerTags } from "./updatePartnerTags";
 
 import "./EditTagsModal.less";
 
 export const EditTagsModal = observer((props) => {
   const { t } = useTranslation();
-  const { showTagsModal, setShowTagsModal } = props;
-  const [userTagValue, setUserTagValue] = useState(profileStore.tags);
+  const { showTagsModal, setShowTagsModal, isPartner } = props;
+  const [tagValue, setTagValue] = useState(isPartner ? partnerStore.tags : profileStore.tags);
 
   const changeHandler = (value) => {
-    console.log(value);
-    setUserTagValue(value);
+    setTagValue(value);
   };
 
   const userTagsOptions = pageStore.tags
@@ -30,22 +31,42 @@ export const EditTagsModal = observer((props) => {
       };
     });
 
+  const partnerTagsOptions = pageStore.tags
+    .filter((tag) => tag.isPartnerTag)
+    .map((tag) => {
+      return {
+        value: parseInt(tag.id),
+        label: `${nameParser(tag.name, pageStore.selectedLanguage)}${!tag.validated ? ` (${t("general.pendingReview")})` : ""}`,
+        disabled: !tag.validated,
+      };
+    });
+
   const saveHandler = async () => {
     try {
-      await updateTags(userTagValue);
-      profileStore.setTags(userTagValue);
-      message.info("Usertags updated!");
+      if (isPartner) {
+        await updatePartnerTags(partnerStore.id, tagValue);
+        partnerStore.setTags(tagValue);
+        message.info("Partner tags updated!");
+      } else {
+        await updateTags(tagValue);
+        profileStore.setTags(tagValue);
+        message.info("User tags updated!");
+      }
       setShowTagsModal(false);
     } catch (e) {
       console.error(e);
     }
   };
 
+  const closeHandler = () => {
+    setShowTagsModal(false);
+  }
+
   return (
     <Modal
       title={<div className="modal__title">Edit user tags</div>}
       open={showTagsModal}
-      onCancel={() => setShowTagsModal(false)}
+      onCancel={closeHandler}
       footer={
         <div className="modal__footerContainer">
           <Button onClick={saveHandler} className="modal__footerButton">
@@ -62,9 +83,9 @@ export const EditTagsModal = observer((props) => {
           allowClear
           style={{ width: "100%" }}
           placeholder={t("eventform.pleaseSelectTags")}
-          options={userTagsOptions}
+          options={isPartner ? partnerTagsOptions : userTagsOptions}
           onChange={changeHandler}
-          value={userTagValue}
+          value={tagValue}
           filterOption={(inputValue, option) =>
             option.label.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
           }

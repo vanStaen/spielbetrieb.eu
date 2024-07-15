@@ -8,16 +8,19 @@ import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMainTitle";
 import { EditTagsModal } from "./EditTagsModal/EditTagsModal";
 import { nameParser } from "../../../../../helpers/dev/nameParser";
+import { partnerStore } from "../../../../../store/partnerStore/partnerStore";
 
 import "./ProfileTags.less";
 
 export const ProfileTags = observer((props) => {
   const { t } = useTranslation();
   const [showTagsModal, setShowTagsModal] = useState(false);
-  const { thisIsMine } = props;
+  const { thisIsMine, isPartner } = props;
+  const [tagValue, setTagValue] = useState(isPartner ? partnerStore.tags : profileStore.tags);
 
-  const createUserTags = () => {
-    const userTags = profileStore.tags?.map((tagId) => {
+
+  const createTags = (tagsCode) => {
+    const tagsTemp = tagsCode?.map((tagId) => {
       return {
         name: nameParser(
           pageStore.tags.find((tag) => parseInt(tag.id) === tagId)?.name,
@@ -26,21 +29,19 @@ export const ProfileTags = observer((props) => {
         id: tagId,
       };
     });
-    const tagsFormatted = userTags?.map((tag) => {
+    const tagsFormatted = tagsTemp?.map((tag) => {
       return (
-        <Tag key={tag.id} bordered={false}>
-          #{tag.name}
+        <Tag key={tag.id} bordered={false} style={{ opacity: tag.name ? 1 : .25 }}>
+          #{tag.name ? tag.name : <i> {t('general.loading')}</i>}
         </Tag>
       );
     });
     return tagsFormatted;
   };
 
-  const [userTags, setUserTags] = useState(createUserTags());
-
   useEffect(() => {
-    setUserTags(createUserTags());
-  }, [profileStore.tags]);
+    setTagValue(isPartner ? partnerStore.tags : profileStore.tags);
+  }, [profileStore.tags, partnerStore.tags]);
 
   // TODO: Pending tags
 
@@ -49,18 +50,19 @@ export const ProfileTags = observer((props) => {
       <EditTagsModal
         showTagsModal={showTagsModal}
         setShowTagsModal={setShowTagsModal}
+        isPartner={isPartner}
       />
       <div className="profileTags__container">
         <ProfileMainTitle
           title={t("profile.tags")}
-          value={profileStore.tags?.length}
+          value={tagValue?.length}
           showEdit={showTagsModal}
           setShowEdit={setShowTagsModal}
           thisIsMine={thisIsMine}
         />
         <div className="profileTags__main">
-          {profileStore.tags.length ? (
-            <div>{userTags}</div>
+          {tagValue.length ? (
+            <div>{createTags(tagValue)}</div>
           ) : (
             <div className="profileTags__empty">{t("profile.nothingYet")}</div>
           )}

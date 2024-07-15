@@ -124,7 +124,7 @@ export const AdminPartners = () => {
       ),
     },
     {
-      title: "Pending",
+      title: "Validated",
       dataIndex: "pending",
       key: "pending",
       align: "center",
@@ -134,7 +134,7 @@ export const AdminPartners = () => {
             style={{ cursor: "pointer" }}
             onDoubleClick={() => validatePartner(id)}
           >
-            {pending && "⌛"}
+            {pending ? "⌛" : "✅"}
           </div>
         </Tooltip>
       ),
