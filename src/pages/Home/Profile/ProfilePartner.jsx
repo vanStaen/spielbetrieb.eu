@@ -76,8 +76,8 @@ export const ProfilePartner = observer(() => {
         ) : (
           <>
             <div className="profil__containerLeft">
-              <Avatar isPartner={true} />
-              <ProfileDetails isPartner={true} />
+              <Avatar isPartner={true} thisIsMine={thisIsMine} />
+              <ProfileDetails isPartner={true} thisIsMine={thisIsMine} />
               {/* !thisIsMine && <ProfileActions />}
               <ProfileFriends /> */}
             </div>

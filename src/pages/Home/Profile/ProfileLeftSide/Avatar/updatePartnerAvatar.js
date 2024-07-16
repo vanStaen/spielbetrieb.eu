@@ -1,19 +1,19 @@
-import axios from "axios";
-import { notification } from "antd";
-
-export async function updateAvatar(path) {
+export async function updatePartnerAvatar(partnerId, path) {
   const graphqlQuery = {
     query: `
-    mutation ($path: String) {
-      updateUser(
-        userInput: {
+    mutation ($partnerId: ID!, $path: String){
+      updatePartner(
+        partnerId: $partnerId,
+        partnerInput: {          
           avatar: $path,
         }
       ) {
         avatar,
       }
-    }`,
+    }
+    `,
     variables: {
+      partnerId,
       path,
     },
   };
@@ -36,5 +36,5 @@ export async function updateAvatar(path) {
   if (data.errors) {
     return data.errors[0];
   }
-  return data.data.updateUser;
+  return data.data.updatePartner;
 }

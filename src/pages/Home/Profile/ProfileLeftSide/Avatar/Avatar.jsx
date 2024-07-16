@@ -11,12 +11,13 @@ import { pageStore } from "../../../../../store/pageStore/pageStore";
 import { postPicture } from "../../../../../helpers/picture/postPicture";
 import { getPictureUrl } from "../../../../../helpers/picture/getPictureUrl";
 import { updateAvatar } from "./updateAvatar";
+import { updatePartnerAvatar } from "./updatePartnerAvatar";
 
 import "./Avatar.less";
 
 export const Avatar = observer((props) => {
   const { t } = useTranslation();
-  const { isPartner } = props;
+  const { isPartner, thisIsMine } = props;
   const avatar = isPartner ? partnerStore.avatar : profileStore.avatar;
   const bucket = isPartner
     ? partnerStore.pending
@@ -24,8 +25,6 @@ export const Avatar = observer((props) => {
       : "partners"
     : "users";
   const [isLoading, setIsLoading] = useState(true);
-  // TODO: isStranger for partner: thisIsMine and isStranger as mobx variable.
-  const isStranger = userStore.userName !== profileStore.userName;
   const [avatarUrl, setAvatarUrl] = useState(null);
 
   const getAvatarUrl = async (path) => {
@@ -57,13 +56,18 @@ export const Avatar = observer((props) => {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      const res = await postPicture(file, "users");
-      await updateAvatar(res.path);
+      const res = await postPicture(file, bucket);
+      if (isPartner) {
+        await updatePartnerAvatar(partnerStore.id, res.path);
+        partnerStore.setAvatar(res.path);
+      } else {
+        await updateAvatar(res.path);
+        userStore.setAvatar(res.path);
+      }
       message.success({
         content: t("profile.avatarUpdateSuccessTitle"),
         icon: <UserOutlined />,
       });
-      userStore.setAvatar(res.path);
       getAvatarUrl(res.path);
       setIsLoading(false);
     } catch (err) {
@@ -99,7 +103,7 @@ export const Avatar = observer((props) => {
           {!profileStore.avatar && (
             <UserOutlined className="avatar__noAvatar" />
           )}
-          {!isStranger && (
+          {thisIsMine && (
             <div className="avatar__editAvatar">
               <form
                 onSubmit={changeAvatarSubmitHandler}
