@@ -6,6 +6,7 @@ import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileM
 import { profileStore } from "../../../../../store/profileStore/profileStore";
 import { spielplanStore } from "../../../../../store/spielplanStore/spielplanStore";
 import { pageStore } from "../../../../../store/pageStore/pageStore";
+import { userStore } from "../../../../../store/userStore/userStore";
 import { partnerStore } from "../../../../../store/partnerStore/partnerStore";
 import { EventCard } from "../../../Spielplan/EventCard/EventCard";
 import { nameParser } from "../../../../../helpers/dev/nameParser";
@@ -19,6 +20,46 @@ export const ProfileEvents = observer((props) => {
   const { thisIsMine, isPartner } = props;
   const events = isPartner ? partnerStore.events : profileStore.events;
 
+  const eventCards = events.map((event) => {
+    if (event.validated || thisIsMine || userStore.isAdmin) {
+      const eventTags = event.eventTags.map((tagId) => {
+        return {
+          name: nameParser(
+            spielplanStore.tags.filter(
+              (tag) => parseInt(tag.id) === tagId,
+            )[0]?.name,
+            pageStore.selectedLanguage?.toLowerCase(),
+          ),
+          id: tagId,
+        };
+      });
+      const eventType = spielplanStore.eventtypes.filter(
+        (et) => parseInt(et.id) === event.eventtype,
+      )[0];
+      eventTags.splice(0, 0, {
+        name: nameParser(
+          eventType?.name,
+          pageStore.selectedLanguage?.toLowerCase(),
+        ),
+        id: eventType?.id,
+      });
+
+      return (
+        <EventCard
+          key={event.id}
+          event={event}
+          eventUser={{ user: profileStore.user, id: profileStore.id }}
+          profileCard={true}
+          tags={eventTags}
+        />
+      );
+    } else {
+      return null;
+    }
+  })
+
+  const eventCardsCleaned = eventCards?.filter((partner) => partner);
+
   return (
     <div className="profileEvents__container">
       <ProfileMainTitle
@@ -29,45 +70,13 @@ export const ProfileEvents = observer((props) => {
       />
       <div className="profileDescription__main">
         {events?.length ? (
-          events.map((event) => {
-            const eventTags = event.eventTags.map((tagId) => {
-              return {
-                name: nameParser(
-                  spielplanStore.tags.filter(
-                    (tag) => parseInt(tag.id) === tagId,
-                  )[0]?.name,
-                  pageStore.selectedLanguage?.toLowerCase(),
-                ),
-                id: tagId,
-              };
-            });
-            const eventType = spielplanStore.eventtypes.filter(
-              (et) => parseInt(et.id) === event.eventtype,
-            )[0];
-            eventTags.splice(0, 0, {
-              name: nameParser(
-                eventType?.name,
-                pageStore.selectedLanguage?.toLowerCase(),
-              ),
-              id: eventType?.id,
-            });
-
-            return (
-              <EventCard
-                key={event.id}
-                event={event}
-                eventUser={{ user: profileStore.user, id: profileStore.id }}
-                profileCard={true}
-                tags={eventTags}
-              />
-            );
-          })
+          eventCardsCleaned
         ) : (
           <div className="profileDescription__empty">
             {t("profile.nothingYet")}
           </div>
         )}
       </div>
-    </div>
+    </div >
   );
 });
