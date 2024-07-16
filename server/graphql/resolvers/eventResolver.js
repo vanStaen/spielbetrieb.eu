@@ -163,6 +163,7 @@ export const eventResolver = {
       });
       // updatedEvent[0]: number or row udpated
       // updatedEvent[1]: rows updated
+      // TODO: notification if event goes to validation (isDraft choange to false)
       return updatedEvent[1];
     } catch (err) {
       console.log(err);
