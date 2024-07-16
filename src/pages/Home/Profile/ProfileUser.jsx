@@ -63,7 +63,7 @@ export const ProfileUser = observer(() => {
               <Avatar thisIsMine={thisIsMine} isPartner={false} />
               <ProfileDetails isPartner={false} />
               {!thisIsMine && <ProfileActions isPartner={false} />}
-              <ProfileFriends isPartner={false} />
+              <ProfileFriends thisIsMine={thisIsMine} isPartner={false} />
             </div>
             <div className="profil__containerCenter">
               <ProfileMain thisIsMine={thisIsMine} isPartner={false} />

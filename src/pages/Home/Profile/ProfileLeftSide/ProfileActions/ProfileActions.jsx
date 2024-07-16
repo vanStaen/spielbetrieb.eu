@@ -21,77 +21,83 @@ import { deleteFriendship } from "./deleteFriendship";
 import { isRequested } from "./isRequested";
 
 import "./ProfileActions.less";
+import { authStore } from "../../../../../store/authStore/authStore";
 
-export const ProfileActions = observer(() => {
+export const ProfileActions = observer((props) => {
+  const { isPartner } = props;
   const { t } = useTranslation();
 
   const [isFollowing, setIsFollowing] = useState(
     userStore.following
       ? !(
-          userStore.following.findIndex(
-            (following) => parseInt(following.id) === profileStore.id,
-          ) < 0
-        )
+        userStore.following.findIndex(
+          (following) => parseInt(following.id) === profileStore.id,
+        ) < 0
+      )
       : false,
   );
 
   const [isFriend, setIsFriend] = useState(
     userStore.friends
       ? !(
-          userStore.friends.findIndex(
-            (friend) => parseInt(friend.id) === profileStore.id,
-          ) < 0
-        )
+        userStore.friends.findIndex(
+          (friend) => parseInt(friend.id) === profileStore.id,
+        ) < 0
+      )
       : false,
   );
 
   const [isPending, setIsPending] = useState(
     userStore.friendrequests
       ? !(
-          userStore.friendrequests.findIndex(
-            (pending) => parseInt(pending.id) === profileStore.id,
-          ) < 0
-        )
+        userStore.friendrequests.findIndex(
+          (pending) => parseInt(pending.id) === profileStore.id,
+        ) < 0
+      )
       : false,
   );
 
   const [requested, setRequested] = useState(false);
   const fetchRequested = async () => {
-    const res = await isRequested(profileStore.id);
-    setRequested(res);
+    if (authStore.hasAccess) {
+      const res = await isRequested(profileStore.id);
+      setRequested(res);
+    }
   };
 
   useEffect(() => {
-    fetchRequested();
+    authStore.hasAccess && fetchRequested();
   }, []);
 
   const handleClick = async (action) => {
-    try {
-      if (action === "follow") {
-        await addFollow(profileStore.id);
-        setIsFollowing(true);
-      } else if (action === "unfollow") {
-        await deleteFollow(profileStore.id);
-        setIsFollowing(false);
-      } else if (action === "request") {
-        await addFriendRequest(profileStore.id);
-        setIsPending(true);
-      } else if (action === "unrequest") {
-        await deleteFriendRequest(profileStore.id);
-        setIsPending(false);
-      } else if (action === "unfriend") {
-        await deleteFriendship(profileStore.id);
-        setIsPending(false);
-        setIsFriend(false);
-      } else if (action === "acceptrequest") {
-        await acceptFriendRequest(profileStore.id);
-        setIsPending(false);
-        setRequested(false);
-        setIsFriend(true);
+    if (authStore.hasAccess) {
+      try {
+        if (action === "follow") {
+          await addFollow(profileStore.id);
+          setIsFollowing(true);
+        } else if (action === "unfollow") {
+          await deleteFollow(profileStore.id);
+          setIsFollowing(false);
+        } else if (action === "request") {
+          await addFriendRequest(profileStore.id);
+          setIsPending(true);
+        } else if (action === "unrequest") {
+          await deleteFriendRequest(profileStore.id);
+          setIsPending(false);
+        } else if (action === "unfriend") {
+          await deleteFriendship(profileStore.id);
+          setIsPending(false);
+          setIsFriend(false);
+        } else if (action === "acceptrequest") {
+          await acceptFriendRequest(profileStore.id);
+          setIsPending(false);
+          setRequested(false);
+          setIsFriend(true);
+        }
+        profileStore.fetchProfileData(profileStore.userName, false);
+      } catch (e) {
+        console.log("error:", e);
       }
-      profileStore.fetchProfileData(profileStore.userName, false);
-    } catch (e) {
-      console.log("error:", e);
     }
   };
 
@@ -126,7 +132,7 @@ export const ProfileActions = observer(() => {
           </div>
         ) : (
           <div
-            className={"profil__action"}
+            className={authStore.hasAccess ? "profil__action" : "profil__actionDisabled"}
             onClick={() => handleClick("request")}
           >
             <UserAddOutlined /> {t("profile.sendFriendRequest")}
@@ -144,7 +150,7 @@ export const ProfileActions = observer(() => {
             </div>
           ) : (
             <div
-              className={"profil__action"}
+              className={authStore.hasAccess ? "profil__action" : "profil__actionDisabled"}
               onClick={() => handleClick("follow")}
             >
               <EyeOutlined /> {t("profile.follow")} {profileStore.userName}
