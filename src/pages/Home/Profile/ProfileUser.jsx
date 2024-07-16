@@ -30,7 +30,7 @@ export const ProfileUser = observer(() => {
     }
   };
   useEffect(() => {
-    const username = params.username ? params.username : userStore.userName;
+    const username = params.username ? params.username.toLowerCase() : userStore.userName.toLowerCase();
     username && profileStore.fetchProfileData(username);
     // TODO : user doesnt exist
   }, [userStore.isLoading, userStore.userName, params.username]);

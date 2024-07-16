@@ -31,7 +31,7 @@ export const ProfilePartner = observer(() => {
     }
   };
   useEffect(() => {
-    const username = params.username; // ? params.username : userStore.userName;
+    const username = params.username.toLowerCase();
     !username && redirectIfNotLoggedIn();
     username && partnerStore.fetchPartnerData(username, true);
     // TODO : Partner doesnt exist
