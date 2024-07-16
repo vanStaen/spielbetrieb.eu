@@ -1,12 +1,11 @@
 .signup__full {
-  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
   height: calc(var(--vh, 1vh) * 100);
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-} 
+}
 
 .signup__full .signup__form {
   width: 400px;
@@ -64,18 +63,21 @@
     font-size: 14px;
     width: 85%;
   }
+
   .signup__full .signup__form {
     width: 85%;
-  } 
+  }
+
   .signup__full .signup__code {
     display: none;
   }
+
   .signup__full .signup__spacerBirthday {
     display: none;
   }
+
   .signup__full .signup__username {
     width: 100%;
   }
-  
-}
 
+}
