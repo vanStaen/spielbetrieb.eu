@@ -35,6 +35,7 @@ export const tagResolver = {
         validated: args.tagInput.validated,
       });
       return await tag.save();
+      // TODO: Create admin notification tag pending
     } catch (err) {
       console.log(err);
     }

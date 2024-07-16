@@ -64,6 +64,7 @@ export const partnerResolver = {
         lastActive: Date.now(),
       });
       return await partner.save();
+      // TODO: Create admin notification partner pending
     } catch (err) {
       console.log(err);
     }
