@@ -1,16 +1,20 @@
 .impressum__container {
+
     .impressum__link {
-        position: absolute;
-        z-index: 6;
+        position: fixed;
         bottom: 5px;
-        right: 0px;
+        z-index: 10;
+        right: 0;
         margin: 15px 25px;
         font-weight: 300;
         font-size: 12px;
         letter-spacing: 2.5px;
         margin: 15px 25px;
         cursor: pointer;
-        opacity: .5;
+
+        &:hover {
+            opacity: .85;
+        }
     }
 }
 

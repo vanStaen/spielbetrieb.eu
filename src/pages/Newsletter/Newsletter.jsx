@@ -4,8 +4,6 @@ import { useTranslation } from "react-i18next";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react";
 
-import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
-import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 import { NewsletterForm } from "./NewsletterForm";
 import { pageStore } from "../../store/pageStore/pageStore";
 
@@ -22,8 +20,6 @@ export const Newsletter = observer(() => {
           <ArrowLeftOutlined />
         </Link>
       </div>
-      <LanguageDropDown />
-      <DarkModeDropDown />
       <div
         className="newsletter__background invertColorTheme"
         id="background"

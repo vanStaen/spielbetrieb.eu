@@ -11,8 +11,6 @@ import {
 
 import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { Phone } from "../../components/Phone/Phone";
-import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
-import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
 
 import "./Merrier.less";
 import "./LandingPage.less";
@@ -41,8 +39,6 @@ export const LandingPage = () => {
 
   return (
     <>
-      <LanguageDropDown />
-      <DarkModeDropDown />
       <div
         className="landingPage__background invertColorTheme"
         id="background"

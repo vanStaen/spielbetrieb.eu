@@ -6,8 +6,6 @@ import { Tooltip } from "antd";
 import { observer } from "mobx-react";
 
 import { postEmailVerified } from "./postEmailVerified";
-import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
-import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 import { CustomSpinner } from "../../components/CustomSpinner/CustomSpinner";
 import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { pageStore } from "../../store/pageStore/pageStore";
@@ -65,8 +63,6 @@ export const EmailVerified = observer(() => {
 
   return (
     <>
-      <LanguageDropDown />
-      <DarkModeDropDown />
       <div className="background invertColorTheme" id="background"></div>
       <div className="overBackground"></div>
       <div className="verifyEmail__container">

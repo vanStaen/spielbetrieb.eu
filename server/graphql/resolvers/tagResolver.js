@@ -25,7 +25,7 @@ export const tagResolver = {
     }
     const foundTag = await Tag.findOne({
       where: { name: args.tagInput.name },
-    })
+    });
     if (foundTag) {
       return foundTag;
     }

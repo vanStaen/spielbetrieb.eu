@@ -29,7 +29,7 @@ export const DarkModeDropDown = observer(() => {
     if (theme === "dark") {
       document.documentElement.style.setProperty(
         "--themeFontColor",
-        "225, 207, 187",
+        "225, 192, 175",
       );
       document.documentElement.style.setProperty(
         "--themeFontColorInvert",
@@ -46,7 +46,7 @@ export const DarkModeDropDown = observer(() => {
       );
       document.documentElement.style.setProperty(
         "--themeFontColorInvert",
-        "225, 207, 187",
+        "225, 192, 175",
       );
       document.documentElement.style.setProperty(
         "--themeBlackOrWhiteColor",

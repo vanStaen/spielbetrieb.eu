@@ -24,6 +24,8 @@ import { DarkSingle } from "./pages/DarkSingle/DarkSingle";
 import { Impressum } from "./components/Impressum/Impressum";
 import { spielplanStore } from "./store/spielplanStore/spielplanStore";
 import { TicketValidation } from "./pages/Tickets/TicketValidation/TicketValidation";
+import { LanguageDropDown } from "./components/LanguageDropDown/LanguageDropDown";
+import { DarkModeDropDown } from "./components/DarkModeDropDown/DarkModeDropDown";
 
 import "./lib/i18n";
 
@@ -83,8 +85,7 @@ const App = observer(() => {
     <BrowserRouter>
       <div className="App" id="app">
         <AcceptCookies />
-        <div className="main">
-          <Impressum />
+        <div className="app__main">
           <Routes>
             <Route
               path="subscriberverify/:token"
@@ -135,6 +136,11 @@ const App = observer(() => {
             <Route path="/" element={<LandingPage />} />
             <Route path="*" element={<FourOfour />} />
           </Routes>
+        </div>
+        <div className="app__footer">
+          <Impressum />
+          <LanguageDropDown />
+          <DarkModeDropDown />
         </div>
       </div>
     </BrowserRouter>

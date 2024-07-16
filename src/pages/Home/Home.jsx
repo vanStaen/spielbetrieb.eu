@@ -4,8 +4,6 @@ import { MailOutlined, NotificationOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
 
-import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
-import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
 import { HelpButtons } from "../../components/HelpButtons/HelpButtons";
 import { Header } from "./Header/Header";
 import { pageStore } from "../../store/pageStore/pageStore";
@@ -93,8 +91,6 @@ export const Home = observer((props) => {
 
   return (
     <>
-      <LanguageDropDown />
-      <DarkModeDropDown />
       {pageStore.showOverlayGallery && <GalleryOverlay />}
       <Header selected={page} />
       {process.env.PROD && (

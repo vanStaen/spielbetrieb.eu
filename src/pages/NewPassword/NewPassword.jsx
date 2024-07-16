@@ -8,8 +8,6 @@ import { observer } from "mobx-react";
 import { postTokenVerify } from "./postTokenVerify";
 import { postChangePassword } from "./postChangePassword";
 import { CustomSpinner } from "../../components/CustomSpinner/CustomSpinner";
-import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
-import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
 import { pageStore } from "../../store/pageStore/pageStore";
 
 import "./NewPassword.less";
@@ -88,8 +86,6 @@ export const NewPassword = observer(() => {
 
   return (
     <>
-      <LanguageDropDown />
-      <DarkModeDropDown />
       <div className="background invertColorTheme" id="background"></div>
       <div className="overBackground"></div>
       <div className="verifyEmail__container">

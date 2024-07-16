@@ -5,8 +5,6 @@ import { Tooltip } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
 import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
-import { DarkModeDropDown } from "../../components/DarkModeDropDown/DarkModeDropDown";
-import { LanguageDropDown } from "../../components/LanguageDropDown/LanguageDropDown";
 import { HelpButtons } from "../../components/HelpButtons/HelpButtons";
 
 import "./FourOfour.less";
@@ -17,8 +15,6 @@ export const FourOfour = () => {
 
   return (
     <>
-      <LanguageDropDown />
-      <DarkModeDropDown />
       <HelpButtons />
       <div className="fourofour invertColorTheme">
         <div className="fourofour__overBackground"></div>

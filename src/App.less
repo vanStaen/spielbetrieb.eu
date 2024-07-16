@@ -19,10 +19,19 @@ body {
   font-size: min(calc(7px + 2vmin), 25px);
   min-height: calc(var(--vh, 1vh) * 100);
 
-  .main {
+  .app__main {
     position: relative;
     min-height: calc(var(--vh, 1vh) * 100);
     overflow: hidden;
+  }
+
+  .app__footer {
+    z-index: 10;
+    width: 100vw;
+    height: 70px;
+    position: fixed;
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(var(--themeFontColorInvert), 1) 0%, transparent 100%) !important;
   }
 }
 
