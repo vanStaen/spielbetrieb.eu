@@ -99,7 +99,7 @@ export const Home = observer((props) => {
           desc="This is beta version. Use this for tests only."
           id={"betaBanner"}
           closable={true}
-          color="red"
+          color="brown"
         />
       )}
       <div className="background invertColorTheme" id="background"></div>
