@@ -70,7 +70,7 @@ export const notificationService = {
         mediaUrl: userRequested.avatar,
         type: 12,
         data: userRequested.userName,
-        action_data: requested_id,
+        actionData: requested_id,
         userLinkId: requested_id,
       });
       await newNotification.save();
@@ -106,7 +106,7 @@ export const notificationService = {
         mediaUrl: userRequested.avatar,
         type: 11,
         data: userRequested.userName,
-        action_data: requested_id,
+        actionData: requested_id,
         userLinkId: requested_id,
       });
       await newNotification.save();
@@ -119,7 +119,7 @@ export const notificationService = {
   async createNotificationForAdmin(
     adminRole,
     notificationType,
-    actionData,
+    integerData,
     stringData,
   ) {
     try {
@@ -129,12 +129,13 @@ export const notificationService = {
           isAdmin: true,
         },
       });
+      console.log(integerData);
       for (const admin of admins) {
         const newNotification = new Notification({
           userId: admin.id,
           type: notificationType,
-          data: actionData,
-          action_data: stringData,
+          data: integerData,
+          actionData: stringData,
         });
         await newNotification.save();
       }
@@ -145,11 +146,11 @@ export const notificationService = {
     }
   },
 
-  async deleteNotificationForAdmin(notificationType, data) {
+  async deleteNotificationForAdmin(notificationType, integerData) {
     try {
       await Notification.destroy({
         where: {
-          data: data.toString(),
+          actionData: integerData,
           type: parseInt(notificationType),
         },
       });
@@ -187,7 +188,7 @@ export const notificationService = {
           media_url: mediaUrl,
           title: username,
           type: notificationType,
-          action_data: actionData,
+          actionData: actionData,
         });
         await newNotification.save();
       }
@@ -214,7 +215,7 @@ export const notificationService = {
         media_url: mediaUrl,
         title: username,
         type: notificationType,
-        action_data: actionData,
+        actionData: actionData,
       });
       await newNotification.save();
       return true;
