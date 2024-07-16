@@ -16,6 +16,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 
 import { userStore } from "../../../../store/userStore/userStore";
 import { pageStore } from "../../../../store/pageStore/pageStore";
+import { adminStore } from "../../../../store/adminStore/adminStore";
 import { deleteNotification } from "./deleteNotification";
 import { postNotificationSeen } from "./postNotificationSeen";
 import { addFollow } from "../../Profile/ProfileLeftSide/ProfileActions/addFollow";
@@ -202,6 +203,9 @@ export const Notification = observer((props) => {
     if (type === 1 || type === 2 || type === 61) {
       navigate(`/user/${data}`);
     } else if (type === 91 || type === 92 || type === 93) {
+      type === 91 && adminStore.setSelectedPage("events");
+      type === 92 && adminStore.setSelectedPage("partners");
+      type === 93 && adminStore.setSelectedPage("data");
       navigate(`/admin/`);
     }
   };
@@ -240,9 +244,15 @@ export const Notification = observer((props) => {
               background: `url(${picture}) center center / cover no-repeat`,
             }}
           >
-            {!mediaUrl && type === 91 && <CalendarOutlined className="notifications__placeholder" />}
-            {!mediaUrl && type === 92 && <ShopOutlined className="notifications__placeholder" />}
-            {!mediaUrl && type === 93 && <TagOutlined className="notifications__placeholder" />}
+            {!mediaUrl && type === 91 && (
+              <CalendarOutlined className="notifications__placeholder" />
+            )}
+            {!mediaUrl && type === 92 && (
+              <ShopOutlined className="notifications__placeholder" />
+            )}
+            {!mediaUrl && type === 93 && (
+              <TagOutlined className="notifications__placeholder" />
+            )}
           </div>
         )}
         <div
@@ -252,7 +262,7 @@ export const Notification = observer((props) => {
           <NotificationTitle
             type={type}
             linkToUserPage={linkToUserPage}
-            actionData={actionData}
+            data={data}
           />
           <div className="notifications__date"> {notificationAge}</div>
         </div>

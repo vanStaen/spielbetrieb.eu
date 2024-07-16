@@ -40,7 +40,13 @@ export const tagResolver = {
         validated: args.tagInput.validated,
       });
       const newTag = await tag.save();
-      notificationService.createNotificationForAdmin('data', 93, newTag.name, newTag.id);
+      console.log("newTag", newTag.name);
+      notificationService.createNotificationForAdmin(
+        "data",
+        93,
+        newTag.name,
+        newTag.id,
+      );
       return newTag;
     } catch (err) {
       console.log(err);

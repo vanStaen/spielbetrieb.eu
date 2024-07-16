@@ -71,7 +71,7 @@ export const EditTagsModal = observer((props) => {
         setShowTooltip(false);
         setTimeout(() => {
           setShowTagsModal(false);
-        }, 500)
+        }, 500);
       } else {
         setShowTagsModal(false);
       }
@@ -89,9 +89,8 @@ export const EditTagsModal = observer((props) => {
       setShowTooltip(false);
       setTimeout(() => {
         setShowTagsModal(false);
-      }, 500)
-    }
-    else if (originalValue === tagValue) {
+      }, 500);
+    } else if (originalValue === tagValue) {
       setShowTagsModal(false);
     } else {
       setShowTooltip(true);
@@ -105,11 +104,15 @@ export const EditTagsModal = observer((props) => {
       onCancel={closeHandler}
       footer={
         <div className="modal__footerContainer">
-          <Tooltip open={showTooltip} title="Did you forget to click save?" placement="bottom">
+          <Tooltip
+            open={showTooltip}
+            title="Did you forget to click save?"
+            placement="bottom"
+          >
             <Button onClick={saveHandler} className="modal__footerButton">
               Save
             </Button>
-          </ Tooltip>
+          </Tooltip>
         </div>
       }
       centered={true}

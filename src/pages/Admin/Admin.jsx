@@ -44,6 +44,14 @@ export const Admin = observer(() => {
     }
   }, [userStore.adminRoles]);
 
+  useEffect(() => {
+    const footer = document.getElementById("app__footer");
+    footer.style.display = "none";
+    return () => {
+      footer.style.display = "block";
+    };
+  }, []);
+
   const isMobile = isMobileCheck();
 
   const renderSwitch = (adminPage) => {

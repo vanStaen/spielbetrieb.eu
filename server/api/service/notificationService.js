@@ -120,7 +120,7 @@ export const notificationService = {
     adminRole,
     notificationType,
     actionData,
-    newTagId,
+    stringData,
   ) {
     try {
       const admins = await User.findAll({
@@ -133,8 +133,8 @@ export const notificationService = {
         const newNotification = new Notification({
           userId: admin.id,
           type: notificationType,
-          data: newTagId,
-          action_data: actionData,
+          data: actionData,
+          action_data: stringData,
         });
         await newNotification.save();
       }
@@ -145,10 +145,7 @@ export const notificationService = {
     }
   },
 
-  async deleteNotificationForAdmin(
-    notificationType,
-    data,
-  ) {
+  async deleteNotificationForAdmin(notificationType, data) {
     try {
       await Notification.destroy({
         where: {

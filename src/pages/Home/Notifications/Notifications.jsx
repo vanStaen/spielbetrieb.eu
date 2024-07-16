@@ -27,7 +27,7 @@ export const Notifications = observer(() => {
   const markedAllAsSeen = () => {
     pageStore.setUnseenNotificationsCount(0);
     // TODO: Set all as seen
-  }
+  };
 
   const notificationsFormated = userStore.notifications.map(
     (notification, index) => {

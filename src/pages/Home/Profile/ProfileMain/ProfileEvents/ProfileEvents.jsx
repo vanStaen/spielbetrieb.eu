@@ -25,9 +25,8 @@ export const ProfileEvents = observer((props) => {
       const eventTags = event.eventTags.map((tagId) => {
         return {
           name: nameParser(
-            spielplanStore.tags.filter(
-              (tag) => parseInt(tag.id) === tagId,
-            )[0]?.name,
+            spielplanStore.tags.filter((tag) => parseInt(tag.id) === tagId)[0]
+              ?.name,
             pageStore.selectedLanguage?.toLowerCase(),
           ),
           id: tagId,
@@ -56,7 +55,7 @@ export const ProfileEvents = observer((props) => {
     } else {
       return null;
     }
-  })
+  });
 
   const eventCardsCleaned = eventCards?.filter((partner) => partner);
 
@@ -77,6 +76,6 @@ export const ProfileEvents = observer((props) => {
           </div>
         )}
       </div>
-    </div >
+    </div>
   );
 });

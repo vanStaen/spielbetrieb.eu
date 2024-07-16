@@ -137,7 +137,7 @@ const App = observer(() => {
             <Route path="*" element={<FourOfour />} />
           </Routes>
         </div>
-        <div className="app__footer">
+        <div className="app__footer" id="app__footer">
           <Impressum />
           <LanguageDropDown />
           <DarkModeDropDown />

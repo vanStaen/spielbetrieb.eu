@@ -107,9 +107,5 @@ export const AdminData = () => {
     },
   ];
 
-  return (
-    <div>
-      <Tabs defaultActiveKey="1" items={items} className="admin__tabs" />
-    </div>
-  );
+  return <Tabs defaultActiveKey="1" items={items} className="admin__tabs" />;
 };

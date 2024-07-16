@@ -1,6 +1,7 @@
 import isEqual from "lodash.isequal";
 
 import { Event } from "../../../models/Event.js";
+import { notificationService } from "../../../api/service/notificationService.js";
 import getEventByExternalId from "./getEventByExternalId.js";
 
 export default async function insertEventIntoDB(dataObject) {
@@ -67,10 +68,15 @@ export default async function insertEventIntoDB(dataObject) {
       admin: [17, 1],
     });
 
+    const newEvent = await event.save();
     console.log("New Event", "id:", dataObject.externalId);
-    // TODO: notifications new events
-
-    return await event.save();
+    notificationService.createNotificationForAdmin(
+      "events",
+      91,
+      newEvent.name,
+      newEvent.id,
+    );
+    return newEvent;
   } catch (err) {
     console.log(err);
   }

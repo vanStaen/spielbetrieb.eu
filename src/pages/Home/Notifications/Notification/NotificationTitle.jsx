@@ -5,7 +5,7 @@ import { pageStore } from "../../../../store/pageStore/pageStore";
 
 export const NotificationTitle = (props) => {
   const { t } = useTranslation();
-  const { type, linkToUserPage, actionData } = props;
+  const { type, linkToUserPage, data } = props;
 
   switch (type) {
     case 1:
@@ -59,13 +59,17 @@ export const NotificationTitle = (props) => {
     case 92:
       return (
         <div className="notification__title">
-          {t("notifications.newPartnerPending")}: {actionData}
+          {t("notifications.newPartnerPending")}:{" "}
+          <span className="notification__subTitle">{data}</span>
         </div>
       );
     case 93:
       return (
         <div className="notification__title">
-          {t("notifications.newTagPending")}: {nameParser(actionData, pageStore.selectedLanguage)}
+          {t("notifications.newTagPending")}:{" "}
+          <span className="notification__subTitle">
+            {nameParser(data, pageStore.selectedLanguage)}
+          </span>
         </div>
       );
     default:
