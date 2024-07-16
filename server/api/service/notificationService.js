@@ -163,7 +163,7 @@ export const notificationService = {
     }
   },
 
-  // TODO: check and use this
+  /*
   async createNotificationBasic(
     userId,
     mediaUrl,
@@ -200,7 +200,6 @@ export const notificationService = {
     }
   },
 
-  // TODO: check and use this
   async createNotificationSingle(
     userId,
     userNotifiedId,
@@ -227,4 +226,5 @@ export const notificationService = {
       return err;
     }
   },
+  */
 };
