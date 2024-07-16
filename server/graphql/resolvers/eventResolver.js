@@ -1,6 +1,7 @@
 import { Op } from "sequelize";
 import { Event } from "../../models/Event.js";
 import { User } from "../../models/User.js";
+import { notificationService } from "../../api/service/notificationService.js";
 import dayjs from "dayjs";
 
 export const eventResolver = {
@@ -163,7 +164,13 @@ export const eventResolver = {
       });
       // updatedEvent[0]: number or row udpated
       // updatedEvent[1]: rows updated
-      // TODO: notification if event goes to validation (isDraft choange to false)
+      if (
+        updatedEvent[1]._previousDataValues.isDraft === true &&
+        updatedEvent[1].dataValues.isDraft === false
+      ) {
+        const eventId = updatedEvent[1].dataValues.id;
+        notificationService.deleteNotificationForAdmin(91, eventId);
+      }
       return updatedEvent[1];
     } catch (err) {
       console.log(err);
@@ -205,6 +212,7 @@ export const eventResolver = {
         id: args.eventId,
       },
     });
+    notificationService.deleteNotificationForAdmin(91, args.eventId);
     return true;
   },
 };
