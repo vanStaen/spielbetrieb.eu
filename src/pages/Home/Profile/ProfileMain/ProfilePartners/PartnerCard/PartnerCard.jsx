@@ -34,7 +34,7 @@ export const PartnerCard = observer((props) => {
   };
 
   useEffect(() => {
-    fetchAvatarUrl();
+    avatar && fetchAvatarUrl();
   }, [avatar]);
 
   const handlepartnerContainerClick = () => {
@@ -56,17 +56,17 @@ export const PartnerCard = observer((props) => {
         </div>
       ) : (
         <div className="partner__artworkLoading">
-          <CustomSpinner />
+          <CustomSpinner size="small" />
         </div>
       )}
       <div className="partner__main">
         <div className={"partner__name"}>{name}</div>
         <div className={"partner__desc"}>{description}</div>
         {/* 
-                    <div className={"partner__tags"}>
-                    {tagsFormatted}
-                    </div> 
-                */}
+          <div className={"partner__tags"}>
+          {tagsFormatted}
+          </div> 
+        */}
       </div>
 
       <div className="partner__actions">

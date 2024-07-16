@@ -1,6 +1,7 @@
 import { User } from "../../models/User.js";
 import { Partner } from "../../models/Partner.js";
 import { Op } from "sequelize";
+import { notificationService } from "../../api/service/notificationService.js";
 
 export const partnerResolver = {
   // getPartnerById(partnerId: Int): Partner
@@ -63,8 +64,14 @@ export const partnerResolver = {
         admin: [req.userId],
         lastActive: Date.now(),
       });
-      return await partner.save();
-      // TODO: Create admin notification partner pending
+      const newPartner = await partner.save();
+      notificationService.createNotificationForAdmin(
+        "partners",
+        92,
+        newPartner.name,
+        newPartner.id,
+      );
+      return newPartner;
     } catch (err) {
       console.log(err);
     }
@@ -155,6 +162,13 @@ export const partnerResolver = {
       });
       // updatedPartner[0]: number or row udpated
       // updatedPartner[1]: rows updated
+      if (
+        updatedPartner[1]._previousDataValues.pending === true &&
+        updatedPartner[1].dataValues.pending === false
+      ) {
+        const partnerId = updatedPartner[1].dataValues.id;
+        notificationService.deleteNotificationForAdmin(92, partnerId);
+      }
       return updatedPartner[1];
     } catch (err) {
       console.log(err);
@@ -177,6 +191,7 @@ export const partnerResolver = {
         id: args.partnerId,
       },
     });
+    notificationService.deleteNotificationForAdmin(92, args.partnerId);
     return true;
   },
 };

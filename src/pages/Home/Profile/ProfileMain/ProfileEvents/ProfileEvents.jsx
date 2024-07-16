@@ -20,7 +20,7 @@ export const ProfileEvents = observer((props) => {
   const { thisIsMine, isPartner } = props;
   const events = isPartner ? partnerStore.events : profileStore.events;
 
-  const eventCards = events.map((event) => {
+  const eventCards = events?.map((event) => {
     if (event.validated || thisIsMine || userStore.isAdmin) {
       const eventTags = event.eventTags.map((tagId) => {
         return {
