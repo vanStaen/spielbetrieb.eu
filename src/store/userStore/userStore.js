@@ -7,9 +7,10 @@ import defaultEmailSettings from "./defaultEmailSettings.json";
 import defaultProfilSettings from "./defaultProfilSettings.json";
 
 export class UserStore {
-  isLoading = true;
+  isLoading = false;
   isAdmin = false;
   isPartner = false;
+  error = null;
   adminRoles = [];
   email = null;
   firstName = null;
@@ -94,6 +95,8 @@ export class UserStore {
       setFollowing: action,
       id: observable,
       setid: action,
+      error: observable,
+      setError: action,
     });
   }
 
@@ -103,6 +106,10 @@ export class UserStore {
 
   setid = (id) => {
     this.id = id;
+  };
+
+  setError = (error) => {
+    this.error = error;
   };
 
   setIsAdmin = (isAdmin) => {
@@ -214,10 +221,10 @@ export class UserStore {
   };
 
   fetchUserData = async (loader = true) => {
+    if (loader) {
+      this.setIsLoading(true);
+    }
     try {
-      if (loader) {
-        this.setIsLoading(true);
-      }
       const userData = await getUserInfo();
       if (userData) {
         // console.log("userData", userData);
@@ -267,7 +274,9 @@ export class UserStore {
       }
       this.setIsLoading(false);
     } catch (error) {
-      console.log("error", error);
+      this.setIsLoading(false);
+      this.setError(error);
+      console.log("userStore: error", error);
     }
   };
 }

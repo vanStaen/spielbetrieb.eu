@@ -22,7 +22,7 @@ export const Notification = sequelize.sequelize.define("notification", {
   },
   mediaUrl: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   data: {
     type: DataTypes.STRING,

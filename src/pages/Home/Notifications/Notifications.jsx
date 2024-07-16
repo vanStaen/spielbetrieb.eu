@@ -21,8 +21,13 @@ export const Notifications = observer(() => {
   }, [userStore.notifications]);
 
   useEffect(() => {
-    pageStore.setUnseenNotificationsCount(0);
+    userStore.fetchUserData(false);
   }, []);
+
+  const markedAllAsSeen = () => {
+    pageStore.setUnseenNotificationsCount(0);
+    // TODO: Set all as seen
+  }
 
   const notificationsFormated = userStore.notifications.map(
     (notification, index) => {
@@ -41,7 +46,7 @@ export const Notifications = observer(() => {
     <div className="notifications__container">
       {userStore.isLoading ? (
         <div className="notification__center">
-          <CustomSpinner text={t("general.loading")} />
+          <CustomSpinner text={`${t("general.loading")} (Notifications)`} />
         </div>
       ) : notificationsCount === 0 ? (
         <div className="notification__center">

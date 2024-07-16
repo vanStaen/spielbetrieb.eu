@@ -107,7 +107,10 @@ The notifications have a specific type, which influence how they are rendered in
 72. New Dark issue
 9. Spielbetrieb anouncement
 91. Event waiting for review // for admin with role event
-92. New Bug reported // for admin with role bug
+92. Partner waiting for review // for admin with role partner
+93. Tag waiting for review // for admin with role data
+94. Content waiting for review // for admin with role content
+99. New Bug reported // for admin with role bug
 
 
 #### Address and Geocoding

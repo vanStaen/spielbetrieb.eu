@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import { Notification } from "../../models/Notification.js";
 import { User } from "../../models/User.js";
+import { Op } from "sequelize";
 
 export const notificationService = {
   async createNotificationNewFollower(userId, follower_id) {
@@ -98,7 +99,7 @@ export const notificationService = {
   async createNotificationNewFriend(requested_id, requesting_id) {
     try {
       const userRequested = await User.findOne({
-        where: { id: requested_id },
+        where: { adminRoles: requested_id },
       });
       const newNotification = new Notification({
         userId: requesting_id,
@@ -115,7 +116,54 @@ export const notificationService = {
     }
   },
 
-  // TODO: check this
+  async createNotificationForAdmin(
+    adminRole,
+    notificationType,
+    actionData,
+    newTagId,
+  ) {
+    try {
+      const admins = await User.findAll({
+        where: {
+          adminRoles: { [Op.contains]: [adminRole] },
+          isAdmin: true,
+        },
+      });
+      for (const admin of admins) {
+        const newNotification = new Notification({
+          userId: admin.id,
+          type: notificationType,
+          data: newTagId,
+          action_data: actionData,
+        });
+        await newNotification.save();
+      }
+      return true;
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
+  },
+
+  async deleteNotificationForAdmin(
+    notificationType,
+    data,
+  ) {
+    try {
+      await Notification.destroy({
+        where: {
+          data: data.toString(),
+          type: parseInt(notificationType),
+        },
+      });
+      return true;
+    } catch (err) {
+      console.log(err);
+      return err;
+    }
+  },
+
+  // TODO: check and use this
   async createNotificationBasic(
     userId,
     mediaUrl,
@@ -152,7 +200,7 @@ export const notificationService = {
     }
   },
 
-  // TODO: check this
+  // TODO: check and use this
   async createNotificationSingle(
     userId,
     userNotifiedId,

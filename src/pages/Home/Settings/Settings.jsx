@@ -39,7 +39,7 @@ export const Settings = observer(() => {
 
   useEffect(() => {
     redirectIfNotLoggedIn();
-    userStore.isLoading && userStore.fetchUserData();
+    userStore.fetchUserData();
   }, []);
 
   const settingsOption = [

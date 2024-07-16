@@ -7,6 +7,9 @@ import {
   LoadingOutlined,
   CloseOutlined,
   DeleteFilled,
+  TagOutlined,
+  CalendarOutlined,
+  ShopOutlined,
 } from "@ant-design/icons";
 import * as dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -72,7 +75,7 @@ export const Notification = observer((props) => {
   };
 
   useEffect(() => {
-    getPicture();
+    mediaUrl && getPicture();
   }, [mediaUrl]);
 
   const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
@@ -195,8 +198,11 @@ export const Notification = observer((props) => {
 
   const notificationClickHandler = async () => {
     await postNotificationSeen(id);
+    // TODO: fetch query getNotifications and save in userStore
     if (type === 1 || type === 2 || type === 61) {
       navigate(`/user/${data}`);
+    } else if (type === 91 || type === 92 || type === 93) {
+      navigate(`/admin/`);
     }
   };
 
@@ -222,7 +228,7 @@ export const Notification = observer((props) => {
         onTouchMove={onTouchMove}
         onTouchEnd={() => onTouchEnd(id)}
       >
-        {pictureLoading ? (
+        {pictureLoading && mediaUrl ? (
           <div className="notifications__media">
             <LoadingOutlined spin className="notifications__mediaSpinner" />
           </div>
@@ -233,13 +239,21 @@ export const Notification = observer((props) => {
             style={{
               background: `url(${picture}) center center / cover no-repeat`,
             }}
-          ></div>
+          >
+            {!mediaUrl && type === 91 && <CalendarOutlined className="notifications__placeholder" />}
+            {!mediaUrl && type === 92 && <ShopOutlined className="notifications__placeholder" />}
+            {!mediaUrl && type === 93 && <TagOutlined className="notifications__placeholder" />}
+          </div>
         )}
         <div
           className="notifications__text"
           onClick={() => notificationClickHandler()}
         >
-          <NotificationTitle type={type} linkToUserPage={linkToUserPage} />
+          <NotificationTitle
+            type={type}
+            linkToUserPage={linkToUserPage}
+            actionData={actionData}
+          />
           <div className="notifications__date"> {notificationAge}</div>
         </div>
         {!userStore.isLoading &&

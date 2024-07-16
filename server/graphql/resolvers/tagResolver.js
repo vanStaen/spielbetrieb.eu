@@ -1,5 +1,6 @@
 import { Tag } from "../../models/Tag.js";
 import { User } from "../../models/User.js";
+import { notificationService } from "../../api/service/notificationService.js";
 
 export const tagResolver = {
   // getTags: [Tag]
@@ -38,8 +39,9 @@ export const tagResolver = {
         isPartnerTag: args.tagInput.isPartnerTag,
         validated: args.tagInput.validated,
       });
-      return await tag.save();
-      // TODO: Create admin notification tag pending
+      const newTag = await tag.save();
+      notificationService.createNotificationForAdmin('data', 93, newTag.name, newTag.id);
+      return newTag;
     } catch (err) {
       console.log(err);
     }
@@ -80,6 +82,8 @@ export const tagResolver = {
       });
       // updatedTag[0]: number or row udpated
       // updatedTag[1]: rows updated
+      const tagId = updatedTag[1].dataValues.id;
+      notificationService.deleteNotificationForAdmin(93, tagId);
       return updatedTag[1];
     } catch (err) {
       console.log(err);
@@ -102,6 +106,7 @@ export const tagResolver = {
         id: args.tagId,
       },
     });
+    notificationService.deleteNotificationForAdmin(93, args.tagId);
     return true;
   },
 };

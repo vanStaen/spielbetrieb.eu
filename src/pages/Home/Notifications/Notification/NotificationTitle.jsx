@@ -1,9 +1,11 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { nameParser } from "../../../../helpers/dev/nameParser";
+import { pageStore } from "../../../../store/pageStore/pageStore";
 
 export const NotificationTitle = (props) => {
   const { t } = useTranslation();
-  const { type, linkToUserPage } = props;
+  const { type, linkToUserPage, actionData } = props;
 
   switch (type) {
     case 1:
@@ -46,6 +48,24 @@ export const NotificationTitle = (props) => {
       return (
         <div className="notification__title">
           {linkToUserPage} {t("notifications.uploadedNewPicture")}
+        </div>
+      );
+    case 91:
+      return (
+        <div className="notification__title">
+          {t("notifications.newEventPending")}
+        </div>
+      );
+    case 92:
+      return (
+        <div className="notification__title">
+          {t("notifications.newPartnerPending")}: {actionData}
+        </div>
+      );
+    case 93:
+      return (
+        <div className="notification__title">
+          {t("notifications.newTagPending")}: {nameParser(actionData, pageStore.selectedLanguage)}
         </div>
       );
     default:

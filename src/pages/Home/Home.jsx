@@ -27,7 +27,7 @@ import "./Home.less";
 export const Home = observer((props) => {
   const { page } = props;
 
-  const renderSwitch = () => {
+  const renderPage = () => {
     switch (page) {
       case "home":
         return (
@@ -113,7 +113,7 @@ export const Home = observer((props) => {
                 : "rgba(225,195,180,.8)",
           }}
         >
-          {renderSwitch()}
+          {renderPage()}
         </div>
       </div>
     </>

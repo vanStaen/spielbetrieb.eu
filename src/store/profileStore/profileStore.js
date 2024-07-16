@@ -242,11 +242,12 @@ export class ProfileStore {
         }
         this.setError(null);
       }
+      this.setIsLoading(false);
     } catch (error) {
+      this.setIsLoading(false);
       this.setError(error);
-      console.error(error);
+      console.log("userStore: error", error);
     }
-    this.setIsLoading(false);
   };
 
   fetchProfilePartners = async () => {

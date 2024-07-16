@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
-import { Modal, Button, message, Select } from "antd";
+import { Modal, Button, message, Select, Tooltip } from "antd";
 
 import { useTranslation } from "react-i18next";
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
@@ -20,6 +20,7 @@ export const EditTagsModal = observer((props) => {
     isPartner ? partnerStore.tags : profileStore.tags,
   );
   const [hasNewTag, setHasNewTag] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const changeHandler = (value) => {
     value.map(async (tag, index) => {
@@ -66,7 +67,14 @@ export const EditTagsModal = observer((props) => {
         profileStore.setTags(tagValue);
         message.info("User tags updated!");
       }
-      setShowTagsModal(false);
+      if (showTagsModal === true) {
+        setShowTooltip(false);
+        setTimeout(() => {
+          setShowTagsModal(false);
+        }, 500)
+      } else {
+        setShowTagsModal(false);
+      }
       if (hasNewTag) {
         pageStore.fetchData();
       }
@@ -76,7 +84,18 @@ export const EditTagsModal = observer((props) => {
   };
 
   const closeHandler = () => {
-    setShowTagsModal(false);
+    const originalValue = isPartner ? partnerStore.tags : profileStore.tags;
+    if (showTooltip === true) {
+      setShowTooltip(false);
+      setTimeout(() => {
+        setShowTagsModal(false);
+      }, 500)
+    }
+    else if (originalValue === tagValue) {
+      setShowTagsModal(false);
+    } else {
+      setShowTooltip(true);
+    }
   };
 
   return (
@@ -86,9 +105,11 @@ export const EditTagsModal = observer((props) => {
       onCancel={closeHandler}
       footer={
         <div className="modal__footerContainer">
-          <Button onClick={saveHandler} className="modal__footerButton">
-            Save
-          </Button>
+          <Tooltip open={showTooltip} title="Did you forget to click save?" placement="bottom">
+            <Button onClick={saveHandler} className="modal__footerButton">
+              Save
+            </Button>
+          </ Tooltip>
         </div>
       }
       centered={true}

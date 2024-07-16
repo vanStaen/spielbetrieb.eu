@@ -329,6 +329,9 @@
 		"declinedYourFriendRequest": " hat deine Freundschaftsanfrage abgelehnt!",
 		"addedNewProfilePicture": "hat ein neues Profilbild hinzugefügt",
 		"uploadedNewPicture": "hat ein neues bild hochgeladet",
-		"startedFollowingYou": "folgt dir jetzt"
+		"startedFollowingYou": "folgt dir jetzt",
+		"newTagPending": "Neuer Tag wartet auf Moderation",
+		"newPartnerPending": "Neuer Partner wartet auf Moderation",
+		"newEventPending": "Neuer Event wartet auf Moderation"
 	}
 }
