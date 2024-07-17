@@ -70,12 +70,16 @@ export default async function insertEventIntoDB(dataObject) {
 
     const newEvent = await event.save();
     console.log("New Event", "id:", dataObject.externalId);
-    notificationService.createNotificationForAdmin(
-      "events",
-      91,
-      newEvent.name,
-      newEvent.id,
-    );
+
+    if (!dataObject.validated) {
+      notificationService.createNotificationForAdmin(
+        "events",
+        91,
+        newEvent.name,
+        newEvent.id,
+      );
+    }
+
     return newEvent;
   } catch (err) {
     console.log(err);
