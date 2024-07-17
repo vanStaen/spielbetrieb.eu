@@ -104,18 +104,21 @@ export const AdminTags = () => {
       key: "id",
       align: "center",
       width: "50px",
+      sorter: (a, b) => a.id - b.id,
     },
     {
       title: "Name EN",
       dataIndex: "name_en",
       key: "name_en",
       editable: true,
+      sorter: (a, b) => a.name_en.localeCompare(b.name_en),
     },
     {
       title: "Name DE",
       dataIndex: "name_de",
       key: "name_de",
       editable: true,
+      sorter: (a, b) => a.name_de.localeCompare(b.name_de),
     },
     {
       title: "User tag",
@@ -137,6 +140,7 @@ export const AdminTags = () => {
           </div>
         </Tooltip>
       ),
+      sorter: (a, b) => a.isUserTag - b.isUserTag,
     },
     {
       title: "Event tag",
@@ -158,6 +162,7 @@ export const AdminTags = () => {
           </div>
         </Tooltip>
       ),
+      sorter: (a, b) => a.isEventTag - b.isEventTag,
     },
     {
       title: "Picture tag",
@@ -181,6 +186,7 @@ export const AdminTags = () => {
           </div>
         </Tooltip>
       ),
+      sorter: (a, b) => a.isPictureTag - b.isPictureTag,
     },
     {
       title: "Partner tag",
@@ -204,6 +210,7 @@ export const AdminTags = () => {
           </div>
         </Tooltip>
       ),
+      sorter: (a, b) => a.isPartnerTag - b.isPartnerTag,
     },
     {
       title: "Validated",
@@ -221,6 +228,7 @@ export const AdminTags = () => {
           </div>
         </Tooltip>
       ),
+      sorter: (a, b) => a.validated - b.validated,
     },
     {
       title: <span style={{ opacity: ".2" }}>Edit</span>,
@@ -273,10 +281,10 @@ export const AdminTags = () => {
         record,
         inputType:
           col.dataIndex === "validated" ||
-          col.dataIndex === "isPictureTag" ||
-          col.dataIndex === "isEventTag" ||
-          col.dataIndex === "isPartnerTag" ||
-          col.dataIndex === "isUserTag"
+            col.dataIndex === "isPictureTag" ||
+            col.dataIndex === "isEventTag" ||
+            col.dataIndex === "isPartnerTag" ||
+            col.dataIndex === "isUserTag"
             ? "boolean"
             : "text",
         dataIndex: col.dataIndex,
