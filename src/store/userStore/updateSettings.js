@@ -37,5 +37,4 @@ export async function updateSettings(emailSettings, profilSettings) {
     return data.errors[0];
   }
   return data.updateTag;
-
 }

@@ -9,6 +9,9 @@ export const patchTicket = async (uuid) => {
   const options = {
     method: "PATCH",
     headers,
+    body: JSON.stringify({
+      uuid,
+    }),
   };
 
   const response = await fetch(endpoint, options);
@@ -19,7 +22,7 @@ export const patchTicket = async (uuid) => {
     (data.status !== 201) &
     (data.status !== 403)
   ) {
-    if (response.status === 401) {
+    if (data.status === 401) {
       throw new Error(`Error! Unauthorized(401)`);
     } else {
       throw new Error(`Error! Status ${response.status}`);

@@ -1,34 +1,33 @@
-import axios from "axios";
-
-// TODO: Create BE endpoint + get rid of Axios
+// TODO: Create BE endpoint
 export const isTicketValid = async (uuid) => {
-  const apiUrl = process.env.API_URL + "/ticket/valid";
-  const response = await axios(
-    {
-      url: apiUrl,
-      method: "POST",
-      data: {
-        uuid,
-      },
-    },
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    },
-  );
+  const headers = {
+    "content-type": "application/json",
+  };
+
+  const endpoint = process.env.API_URL + "/ticket/valid";
+
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify({
+      uuid,
+    }),
+  };
+
+  const response = await fetch(endpoint, options);
+  const data = await response.json();
 
   if (
-    (response.status !== 200) &
-    (response.status !== 201) &
-    (response.status !== 403)
+    (data.status !== 200) &
+    (data.status !== 201) &
+    (data.status !== 403)
   ) {
-    if (response.status === 401) {
+    if (data.status === 401) {
       throw new Error(`Error! Unauthorized(401)`);
     } else {
       throw new Error(`Error! Status ${response.status}`);
     }
   }
 
-  return response.data;
-};
+  return data.data;
+}
