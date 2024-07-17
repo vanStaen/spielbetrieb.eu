@@ -62,19 +62,23 @@ export const LocationUpdate = observer(() => {
     setShowMap(value);
   };
 
-  useState(() => {
+  useEffect(() => {
     showMapHandler(false);
     if ("geolocation" in navigator) {
       if (userStore.coordinates === null) {
-        console.log("run");
-        navigator.geolocation.getCurrentPosition((position) => {
-          setCoordinates(
-            `${position.coords.latitude}, ${position.coords.longitude}`,
-          );
-          updateCoordinates(
-            `${position.coords.latitude}, ${position.coords.longitude}`,
-          );
-        });
+        try {
+          navigator.geolocation.getCurrentPosition((position) => {
+            setCoordinates(
+              `${position.coords.latitude}, ${position.coords.longitude}`,
+            );
+            updateCoordinates(
+              `${position.coords.latitude}, ${position.coords.longitude}`,
+            );
+          });
+        }
+        catch (e) {
+          console.error('error geolocation', e);
+        }
       }
     }
   }, [showMap]);
@@ -107,6 +111,7 @@ export const LocationUpdate = observer(() => {
         icon={<CheckOutlined />}
         disabled={!location || location === userStore.location}
       />
+      {/* TODO : not working anymore */}
       <div className="locationUpdate__googlemap" id="mapdiv">
         <GoogleMap
           coordinates={coordinates}

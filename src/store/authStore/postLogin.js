@@ -1,5 +1,3 @@
-import axios from "axios";
-
 export const postLogin = async (email, username, password, remind) => {
   const requestBody = {
     email,
@@ -8,17 +6,24 @@ export const postLogin = async (email, username, password, remind) => {
     remind,
   };
 
-  try {
-    const response = await axios({
-      url: process.env.API_URL + "/auth/login/",
-      method: "POST",
-      data: requestBody,
-    });
-    return response.data;
-  } catch (err) {
-    if (err.response.status === 401) {
-      throw new Error("Error! Unauthorized(401)");
-    }
-    return err.response.data;
+  const headers = {
+    "content-type": "application/json",
+  };
+
+  const endpoint = process.env.API_URL + "/auth/login/";
+
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify(requestBody),
+  };
+
+  const response = await fetch(endpoint, options);
+  const data = await response.json();
+
+  if (data.errors) {
+    return data.errors[0];
   }
-};
+  return data.data;
+}
+

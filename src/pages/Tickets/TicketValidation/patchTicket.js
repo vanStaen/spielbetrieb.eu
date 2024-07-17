@@ -1,27 +1,23 @@
-import axios from "axios";
-
-// TODO: Create BE endpoint + get rid of Axios
+// TODO: Create BE endpoint
 export const patchTicket = async (uuid) => {
-  const apiUrl = process.env.API_URL + "/ticket";
-  const response = await axios(
-    {
-      url: apiUrl,
-      method: "PATCH",
-      data: {
-        uuid,
-      },
-    },
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    },
-  );
+  const headers = {
+    "content-type": "application/json",
+  };
+
+  const endpoint = process.env.API_URL + "/ticket/";
+
+  const options = {
+    method: "PATCH",
+    headers,
+  };
+
+  const response = await fetch(endpoint, options);
+  const data = await response.json();
 
   if (
-    (response.status !== 200) &
-    (response.status !== 201) &
-    (response.status !== 403)
+    (data.status !== 200) &
+    (data.status !== 201) &
+    (data.status !== 403)
   ) {
     if (response.status === 401) {
       throw new Error(`Error! Unauthorized(401)`);
@@ -31,4 +27,4 @@ export const patchTicket = async (uuid) => {
   }
 
   return true;
-};
+}

@@ -1,7 +1,5 @@
-import axios from "axios";
-
 export const getProfileEvents = async (id) => {
-  const requestBody = {
+  const graphqlQuery = {
     query: `
         {
             getProfileEventsById (id: "${id}"){  
@@ -33,15 +31,24 @@ export const getProfileEvents = async (id) => {
           `,
   };
 
-  const response = await axios({
-    url: process.env.API_URL + "/graphql",
+  const headers = {
+    "content-type": "application/json",
+  };
+
+  const endpoint = process.env.API_URL + "/graphql";
+
+  const options = {
     method: "POST",
-    data: requestBody,
-  });
+    headers,
+    body: JSON.stringify(graphqlQuery),
+  };
 
-  if ((response.status !== 200) & (response.status !== 201)) {
-    throw new Error("Unauthenticated!");
+  const response = await fetch(endpoint, options);
+  const data = await response.json();
+
+  if (data.errors) {
+    return data.errors[0];
   }
+  return data.data.getProfileEventsById;
+}
 
-  return response.data.data.getProfileEventsById;
-};

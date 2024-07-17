@@ -50,7 +50,6 @@ AI bilder
 ## Tech debt:
 
 - [ ] Create deployment pipeline with test env
-- [ ] Get rid of Axios, and use fetch();
 - [ ] Tracking/Analytics
 - [ ] Use List of forbidden usernames
 - [ ] Use List of forbidden words

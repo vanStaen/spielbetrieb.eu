@@ -1,14 +1,20 @@
-import axios from "axios";
-
 export const deleteLogout = async () => {
-  const response = await axios({
-    url: process.env.API_URL + "/auth/logout/",
+  const headers = {
+    "content-type": "application/json",
+  };
+
+  const endpoint = process.env.API_URL + "/auth/logout/";
+
+  const options = {
     method: "DELETE",
-  });
+    headers,
+  };
 
-  if (response.status !== 200) {
-    throw new Error(`Error on Logout! Status ${response.status}`);
+  const response = await fetch(endpoint, options);
+  const data = await response.json();
+
+  if (data.errors) {
+    return data.errors[0];
   }
-
-  return response.data.success;
-};
+  return data.success;
+}

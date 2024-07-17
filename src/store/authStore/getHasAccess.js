@@ -1,18 +1,22 @@
-import axios from "axios";
-
 export const getHasAccess = async () => {
-  const response = await axios({
-    url: process.env.API_URL + "/auth/access/",
+
+  const headers = {
+    "content-type": "application/json",
+  };
+
+  const endpoint = process.env.API_URL + "/auth/access/";
+
+  const options = {
     method: "GET",
-  });
+    headers,
+  };
 
-  if ((response.status !== 200) & (response.status !== 201)) {
-    if (response.status === 401) {
-      throw new Error("Error! Unauthorized(401)");
-    } else {
-      throw new Error(`Error! Status ${response.status}`);
-    }
+  const response = await fetch(endpoint, options);
+  const data = await response.json();
+
+  if (data.errors) {
+    return data.errors[0];
   }
+  return data.access;
+}
 
-  return response.data.access;
-};

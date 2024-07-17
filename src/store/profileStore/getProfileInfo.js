@@ -1,8 +1,6 @@
-import axios from "axios";
-
 export const getProfileInfo = async (username) => {
-  const requestBody = {
-    query: `
+    const graphqlQuery = {
+        query: `
         {
             getProfileByName (userName: "${username}"){
                 id,
@@ -91,17 +89,25 @@ export const getProfileInfo = async (username) => {
             }
           }
           `,
-  };
+    };
 
-  const response = await axios({
-    url: process.env.API_URL + "/graphql",
-    method: "POST",
-    data: requestBody,
-  });
+    const headers = {
+        "content-type": "application/json",
+    };
 
-  if ((response.status !== 200) & (response.status !== 201)) {
-    throw new Error("Unauthenticated!");
-  }
+    const endpoint = process.env.API_URL + "/graphql";
 
-  return response.data.data.getProfileByName;
-};
+    const options = {
+        method: "POST",
+        headers,
+        body: JSON.stringify(graphqlQuery),
+    };
+
+    const response = await fetch(endpoint, options);
+    const data = await response.json();
+
+    if (data.errors) {
+        return data.errors[0];
+    }
+    return data.data.getProfileByName;
+}
