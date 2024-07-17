@@ -1,6 +1,4 @@
 export async function updateCoordinates(coordinates) {
-  console.log("coordinates", coordinates);
-
   const graphqlQuery = {
     query: `
     mutation ($coordinates: String!){
