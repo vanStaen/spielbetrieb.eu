@@ -9,6 +9,7 @@ import { profileStore } from "../../../store/profileStore/profileStore";
 import { authStore } from "../../../store/authStore/authStore";
 import { Avatar } from "./ProfileLeftSide/Avatar/Avatar";
 import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
+import { CustomError } from "../../../components/CustomError/CustomError";
 import { ProfileMain } from "./ProfileMain/ProfileMain";
 import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
 import { ProfileFriends } from "./ProfileLeftSide/ProfileFriends/ProfileFriends";
@@ -39,7 +40,7 @@ export const ProfileUser = observer(() => {
 
   useEffect(() => {
     !params.username && redirectIfNotLoggedIn();
-    // TODO : check if profile can be access wihtout be loged in
+    // TODO : show message if user is not loggedIn. 
     // TODO : Check if profile can be access by !friends
   }, []);
 
@@ -48,14 +49,13 @@ export const ProfileUser = observer(() => {
   return (
     <>
       <div className="profil__main">
-        {profileStore.isLoading ? (
+        {(profileStore.error || userStore.error) ? (
+          <div className="profil__spinner">
+            <CustomError text={t("main.pleaseReload")} sizw="large" />
+          </div>
+        ) : profileStore.isLoading ? (
           <div className="profil__spinner">
             <CustomSpinner text={`${t("general.loading")} (User profile)`} />
-          </div>
-        ) : profileStore.error ? (
-          <div className="profil__spinner">
-            <MehOutlined style={{ fontSize: "120px", color: "#b6c8bf" }} />
-            <div className="errorText">{t("main.pleaseReload")}</div>
           </div>
         ) : (
           <>

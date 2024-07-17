@@ -8,6 +8,7 @@ import { userStore } from "../../../store/userStore/userStore";
 import { authStore } from "../../../store/authStore/authStore";
 import { Avatar } from "./ProfileLeftSide/Avatar/Avatar";
 import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
+import { CustomError } from "../../../components/CustomError/CustomError";
 import { ProfileMain } from "./ProfileMain/ProfileMain";
 import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
 import { ProfileFriends } from "./ProfileLeftSide/ProfileFriends/ProfileFriends";
@@ -63,15 +64,13 @@ export const ProfilePartner = observer(() => {
         )
       )}
       <div className="profil__main">
-        {partnerStore.isLoading ? (
+        {(partnerStore.error || userStore.error) ? (
+          <div className="profil__spinner">
+            <CustomError text={t("main.pleaseReload")} sizw="large" />
+          </div>
+        ) : partnerStore.isLoading ? (
           <div className="profil__spinner">
             <CustomSpinner text={`${t("general.loading")} (Partner profile)`} />
-          </div>
-        ) : partnerStore.error ? (
-          <div className="profil__spinner">
-            {/* TODO: Build error Spinner */}
-            <MehOutlined style={{ fontSize: "120px", color: "#b6c8bf" }} />
-            <div className="errorText">{t("main.pleaseReload")}</div>
           </div>
         ) : (
           <>
