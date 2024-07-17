@@ -227,7 +227,7 @@ export class UserStore {
     try {
       const userData = await getUserInfo();
       if (userData.id) {
-        console.log("userData", userData);
+        // console.log("userData", userData);
         this.setid(parseInt(userData.id));
         this.setIsAdmin(userData.isAdmin);
         this.setEmail(userData.email);
