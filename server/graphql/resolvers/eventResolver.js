@@ -26,8 +26,15 @@ export const eventResolver = {
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("events")) {
       throw new Error("Unauthorized!");
     }
+    const fromDateToday = dayjs().startOf("day").valueOf();
     return await Event.findAll({
       include: User,
+      where: {
+        archived: { [Op.or]: [false, null] },
+        fromDate: {
+          [Op.gt]: fromDateToday,
+        },
+      },
       order: [["id", "ASC"]],
     });
   },
