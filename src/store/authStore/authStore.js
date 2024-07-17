@@ -22,11 +22,11 @@ export class AuthStore {
       remind = false;
     }
     // Call login endpoint
-    const resultLogIn = await postLogin(email, username, password, remind);
-    if (resultLogIn.success) {
+    const hasAccess = await postLogin(email, username, password, remind);
+    if (hasAccess.success) {
       this.setHasAccess(true);
     } else {
-      return resultLogIn.error;
+      return hasAccess.error;
     }
   };
 

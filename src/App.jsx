@@ -55,7 +55,7 @@ const App = observer(() => {
   }, []);
 
   useEffect(() => {
-    userStore.fetchUserData();
+    authStore.hasAccess && userStore.fetchUserData();
   }, [authStore.hasAccess]);
 
   useEffect(() => {
