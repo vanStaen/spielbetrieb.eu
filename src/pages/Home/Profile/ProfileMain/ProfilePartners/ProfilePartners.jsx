@@ -19,7 +19,7 @@ export const ProfilePartners = observer((props) => {
 
   const partnerCards = profileStore.partners.map((partner) => {
     if (!partner.pending || thisIsMine || userStore.isAdmin) {
-      return <PartnerCard partner={partner} />;
+      return <PartnerCard key={`partnerCard${partner.id}`} partner={partner} />;
     } else {
       return null;
     }

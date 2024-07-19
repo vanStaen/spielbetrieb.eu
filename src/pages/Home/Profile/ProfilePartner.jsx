@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { observer } from "mobx-react";
-import { MehOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
 import { userStore } from "../../../store/userStore/userStore";
@@ -18,7 +17,6 @@ import { partnerStore } from "../../../store/partnerStore/partnerStore";
 import { Banner } from "../../../components/Banner/Banner";
 
 import "./Profile.less";
-
 
 // TODO: add a coverphoto (title bild)
 
@@ -67,7 +65,7 @@ export const ProfilePartner = observer(() => {
         )
       )}
       <div className="profil__main">
-        {(partnerStore.error || userStore.error) ? (
+        {partnerStore.error || userStore.error ? (
           <div className="profil__spinner">
             <CustomError text={t("main.pleaseReload")} sizw="large" />
           </div>

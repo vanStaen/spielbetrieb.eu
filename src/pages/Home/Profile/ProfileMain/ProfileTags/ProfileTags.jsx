@@ -20,19 +20,27 @@ export const ProfileTags = observer((props) => {
     isPartner ? partnerStore.tags : profileStore.tags,
   );
 
+  // Add this tag logic to event form
   const createTagLists = (tagsCode) => {
     const tagsTemp = tagsCode?.map((tagId) => {
       const tagData = pageStore.tags.find((tag) => parseInt(tag.id) === tagId);
+      const tagName = nameParser(
+        tagData?.name,
+        pageStore.selectedLanguage.toLowerCase(),
+      );
+      if (!tagName) {
+        return null;
+      }
       return {
-        name: `${nameParser(
-          tagData?.name,
-          pageStore.selectedLanguage.toLowerCase(),
-        )}${!tagData?.validated ? ` (${t("general.pendingReview")})` : ""}`,
+        name: `${tagName}${!tagData?.validated ? ` (${t("general.pendingReview")})` : ""}`,
         id: tagId,
         validated: tagData?.validated,
       };
     });
     const tagsFormatted = tagsTemp?.map((tag) => {
+      if (!tag) {
+        return null;
+      }
       return (
         <Tag
           key={tag.id}
