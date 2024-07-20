@@ -12,6 +12,7 @@ import "./ReportBugModal.less";
 
 const S3_BUCKET = "bugs";
 
+// TODO: Bug report not working: Tainted canvases may not be exported.
 export const ReportBugModal = (props) => {
   const { showReportBugModal, setShowReportBugModal } = props;
   const { t } = useTranslation();

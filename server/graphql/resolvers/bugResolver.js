@@ -1,5 +1,6 @@
 import { Bug } from "../../models/Bug.js";
 import { User } from "../../models/User.js";
+import { deleteFileFromS3 } from "../../lib/S3/deleteFileFromS3.js";
 
 export const bugResolver = {
   // getBugs: [Bug]
@@ -86,7 +87,12 @@ export const bugResolver = {
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
     }
-    // TODO : Delete all bug pictures (screenshots)
+    const bugToDelete = Bug.findOne({
+      where: {
+        id: args.bugId,
+      },
+    });
+    await deleteFileFromS3(bugToDelete.screenshot, "bugs");
     await Bug.destroy({
       where: {
         id: args.bugId,

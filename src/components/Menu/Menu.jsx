@@ -81,7 +81,11 @@ export const Menu = observer(() => {
 
   const avatarClickhandle = () => {
     if (authStore.hasAccess) {
-      pageStore.setShowMenu(!pageStore.showMenu);
+      if (pageStore.showMenu === true) {
+        handleHideMenu();
+      } else {
+        pageStore.setShowMenu(true);
+      }
       pageStore.setShowMenuMobile(false);
     } else {
       navigate("/login");
@@ -89,16 +93,19 @@ export const Menu = observer(() => {
   };
 
   const profileClickHandler = () => {
+    handleHideMenu();
     userStore.setIsLoading(true);
     navigate("/profile");
   };
 
   const settingsClickHandler = () => {
     userStore.setIsLoading(true);
+    handleHideMenu();
     navigate("/settings");
   };
 
   const notificationsClickHandler = () => {
+    handleHideMenu();
     navigate("/notifications");
   };
 
