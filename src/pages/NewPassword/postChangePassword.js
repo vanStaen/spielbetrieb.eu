@@ -1,25 +1,26 @@
-import axios from "axios";
-
 export const postChangePassword = async (token, password) => {
   const requestBody = {
     token,
     password,
   };
 
-  const response = await axios({
-    url: process.env.API_URL + "/user/changepassword",
+  const headers = {
+    "content-type": "application/json",
+  };
+
+  const endpoint = process.env.API_URL + "/user/changepassword";
+
+  const options = {
     method: "POST",
-    data: requestBody,
-  });
+    headers,
+    body: JSON.stringify(requestBody),
+  };
 
-  if ((response.status !== 200) & (response.status !== 201)) {
-    if (response.status === 401) {
-      throw new Error("Error! Unauthorized(401)");
-    } else {
-      throw new Error(`Error! Status ${response.status}`);
-    }
+  const response = await fetch(endpoint, options);
+  const data = await response.json();
+
+  if (data.errors) {
+    return data.errors[0];
   }
-
-  const changed = response.data.changed;
-  return changed;
+  return data.data.changed;
 };

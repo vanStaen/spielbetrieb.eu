@@ -1,6 +1,6 @@
 export const getProfileInfo = async (username) => {
-    const graphqlQuery = {
-        query: `
+  const graphqlQuery = {
+    query: `
         {
             getProfileByName (userName: "${username}"){
                 id,
@@ -89,25 +89,25 @@ export const getProfileInfo = async (username) => {
             }
           }
           `,
-    };
+  };
 
-    const headers = {
-        "content-type": "application/json",
-    };
+  const headers = {
+    "content-type": "application/json",
+  };
 
-    const endpoint = process.env.API_URL + "/graphql";
+  const endpoint = process.env.API_URL + "/graphql";
 
-    const options = {
-        method: "POST",
-        headers,
-        body: JSON.stringify(graphqlQuery),
-    };
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify(graphqlQuery),
+  };
 
-    const response = await fetch(endpoint, options);
-    const data = await response.json();
+  const response = await fetch(endpoint, options);
+  const data = await response.json();
 
-    if (data.errors) {
-        return data.errors[0];
-    }
-    return data.data.getProfileByName;
-}
+  if (data.errors) {
+    return data.errors[0];
+  }
+  return data.data.getProfileByName;
+};

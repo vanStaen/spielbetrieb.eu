@@ -1,24 +1,26 @@
-import axios from "axios";
-
 export const postSendRecoverLink = async (email, language = "en") => {
   const requestBody = {
     sendto: email,
     language,
   };
 
-  const response = await axios({
-    url: process.env.API_URL + "/mail/recover",
+  const headers = {
+    "content-type": "application/json",
+  };
+
+  const endpoint = process.env.API_URL + "/mail/recover";
+
+  const options = {
     method: "POST",
-    data: requestBody,
-  });
+    headers,
+    body: JSON.stringify(requestBody),
+  };
 
-  if ((response.status !== 200) & (response.status !== 201)) {
-    if (response.status === 401) {
-      throw new Error("Error! Unauthorized(401)");
-    } else {
-      throw new Error(`Error! Status ${response.status}`);
-    }
+  const response = await fetch(endpoint, options);
+  const data = await response.json();
+
+  if (data.errors) {
+    return data.errors[0];
   }
-
   return true;
 };
