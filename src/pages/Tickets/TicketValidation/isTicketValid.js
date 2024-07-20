@@ -1,4 +1,3 @@
-// TODO: Create BE endpoint
 export const isTicketValid = async (uuid) => {
   const headers = {
     "content-type": "application/json",
@@ -17,11 +16,7 @@ export const isTicketValid = async (uuid) => {
   const response = await fetch(endpoint, options);
   const data = await response.json();
 
-  if (
-    (data.status !== 200) &
-    (data.status !== 201) &
-    (data.status !== 403)
-  ) {
+  if ((data.status !== 200) & (data.status !== 201) & (data.status !== 403)) {
     if (data.status === 401) {
       throw new Error(`Error! Unauthorized(401)`);
     } else {
@@ -30,4 +25,4 @@ export const isTicketValid = async (uuid) => {
   }
 
   return data.data;
-}
+};
