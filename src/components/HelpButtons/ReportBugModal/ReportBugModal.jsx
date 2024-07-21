@@ -12,7 +12,6 @@ import "./ReportBugModal.less";
 
 const S3_BUCKET = "bugs";
 
-// TODO: Bug report not working: Tainted canvases may not be exported.
 export const ReportBugModal = (props) => {
   const { showReportBugModal, setShowReportBugModal } = props;
   const { t } = useTranslation();
@@ -49,7 +48,7 @@ export const ReportBugModal = (props) => {
       setIsLoading(true);
       if (addScreenshot) {
         await html2canvas(document.body, {
-          allowTaint: true,
+          allowTaint: false,
           logging: false,
         }).then((canva) => {
           canva.toBlob(async (file) => {
