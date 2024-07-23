@@ -2,6 +2,7 @@ import { Op } from "sequelize";
 import { Event } from "../../models/Event.js";
 import { User } from "../../models/User.js";
 import { notificationService } from "../../api/service/notificationService.js";
+import { deleteFileFromS3 } from "../../lib/S3/deleteFileFromS3.js";
 import dayjs from "dayjs";
 
 export const eventResolver = {
@@ -213,7 +214,18 @@ export const eventResolver = {
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("events")) {
       throw new Error("Unauthorized!");
     }
-    // TODO : Delete all event pictures
+
+    const eventToDelete = await Event.findOne({
+      where: {
+        id: args.eventId,
+      },
+    });
+    const urls = eventToDelete.pictures;
+    if (urls) {
+      urls.forEach((url) => {
+        deleteFileFromS3(url, "events");
+      });
+    }
     await Event.destroy({
       where: {
         id: args.eventId,

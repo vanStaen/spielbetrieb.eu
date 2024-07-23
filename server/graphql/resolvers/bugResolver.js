@@ -87,13 +87,15 @@ export const bugResolver = {
     if (!foundUser.isAdmin) {
       throw new Error("Unauthorized!");
     }
-    const bugToDelete = Bug.findOne({
+    const bugToDelete = await Bug.findOne({
       where: {
         id: args.bugId,
       },
     });
-    const url = bugToDelete.userId + "/" + bugToDelete.screenshot;
-    await deleteFileFromS3(url, "bugs");
+    const url = bugToDelete.screenshot;
+    if (url) {
+      await deleteFileFromS3(url, "bugs");
+    }
     await Bug.destroy({
       where: {
         id: args.bugId,
