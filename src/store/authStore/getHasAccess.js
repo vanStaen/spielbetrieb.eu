@@ -1,5 +1,4 @@
 export const getHasAccess = async () => {
-
   const headers = {
     "content-type": "application/json",
   };
@@ -18,5 +17,4 @@ export const getHasAccess = async () => {
     return data.errors[0];
   }
   return data.access;
-}
-
+};

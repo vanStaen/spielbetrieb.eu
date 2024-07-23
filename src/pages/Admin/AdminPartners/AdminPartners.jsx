@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Popconfirm, Table, Tag, Tooltip, Col, Row, Typography } from "antd";
-import { StopOutlined, DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined } from "@ant-design/icons";
 
 import { getAllPartners } from "./getAllPartners";
+import { updatePendingPartner } from "./updatePendingPartner";
 import { updatePartnerAsAdmin } from "./updatePartnerAsAdmin";
 import { deletePartnerAsAdmin } from "./deletePartnerAsAdmin";
 import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
@@ -27,7 +28,7 @@ export const AdminPartners = () => {
   };
 
   const validatePartner = async (id) => {
-    await updatePartnerAsAdmin(parseInt(id), { pending: false });
+    await updatePendingPartner(parseInt(id));
     fetchAllPartners();
   };
 
@@ -125,14 +126,16 @@ export const AdminPartners = () => {
       key: "pending",
       align: "center",
       render: (_, { pending, id }) => (
-        <Tooltip title="Double click to validate this Partner">
-          <div
-            style={{ cursor: "pointer" }}
-            onDoubleClick={() => validatePartner(id)}
-          >
-            {pending ? "⌛" : "✅"}
-          </div>
-        </Tooltip>
+        pending ?
+          <Tooltip title="Double click to validate this Partner">
+            <div
+              style={{ cursor: "pointer" }}
+              onDoubleClick={() => validatePartner(id)}
+            >
+              ⌛
+            </div>
+          </Tooltip> :
+          <span style={{ filter: "grayscale(1)", opacity: .5 }}>✅</span>
       ),
     },
     {

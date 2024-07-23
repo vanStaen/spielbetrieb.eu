@@ -68,12 +68,16 @@ export const AccountSettings = observer(() => {
       (gender) => parseInt(gender.id) === parseInt(userStore.genderId),
     )?.name;
     gendersOptionsShort.push(
-      <Radio.Button value={userStore.genderId} key={userStore.genderId} >
+      <Radio.Button value={userStore.genderId} key={userStore.genderId}>
         {nameParser(genderName, pageStore.selectedLanguage)}
       </Radio.Button>,
     );
   }
-  gendersOptionsShort.push(<Radio.Button value={0} key='more'>...</Radio.Button>);
+  gendersOptionsShort.push(
+    <Radio.Button value={0} key="more">
+      ...
+    </Radio.Button>,
+  );
   const gendersOptionsFull = pageStore.genders.map((gender, index) => {
     return (
       <Radio.Button value={parseInt(gender.id)} key={gender.id}>
@@ -83,28 +87,37 @@ export const AccountSettings = observer(() => {
   });
 
   // orientations options
-  const orientationsOptionsShort = pageStore.orientations.map((orientation, index) => {
-    if (orientation.id > 3) {
-      return null;
-    }
-    return (
-      <Radio.Button value={parseInt(orientation.id)} key={orientation.id}>
-        {nameParser(orientation.name, pageStore.selectedLanguage)}
-      </Radio.Button>
-    );
-  });
+  const orientationsOptionsShort = pageStore.orientations.map(
+    (orientation, index) => {
+      if (orientation.id > 3) {
+        return null;
+      }
+      return (
+        <Radio.Button value={parseInt(orientation.id)} key={orientation.id}>
+          {nameParser(orientation.name, pageStore.selectedLanguage)}
+        </Radio.Button>
+      );
+    },
+  );
   if (userStore.orientationId > 3) {
     const orientationName = pageStore.orientations.find(
       (orientation) =>
         parseInt(orientation.id) === parseInt(userStore.orientationId),
     )?.name;
     orientationsOptionsShort.push(
-      <Radio.Button value={userStore.orientationId} key={userStore.orientationId}>
+      <Radio.Button
+        value={userStore.orientationId}
+        key={userStore.orientationId}
+      >
         {nameParser(orientationName, pageStore.selectedLanguage)}
       </Radio.Button>,
     );
   }
-  orientationsOptionsShort.push(<Radio.Button value={0} key="more">...</Radio.Button>);
+  orientationsOptionsShort.push(
+    <Radio.Button value={0} key="more">
+      ...
+    </Radio.Button>,
+  );
   const orientationsOptionsFull = pageStore.orientations.map((orientation) => {
     return (
       <Radio.Button value={parseInt(orientation.id)} key={orientation.id}>

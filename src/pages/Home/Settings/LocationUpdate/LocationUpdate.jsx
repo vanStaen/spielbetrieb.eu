@@ -75,9 +75,8 @@ export const LocationUpdate = observer(() => {
               `${position.coords.latitude}, ${position.coords.longitude}`,
             );
           });
-        }
-        catch (e) {
-          console.error('error geolocation', e);
+        } catch (e) {
+          console.error("error geolocation", e);
         }
       }
     }

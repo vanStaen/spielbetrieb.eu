@@ -17,4 +17,4 @@ export const deleteLogout = async () => {
     return data.errors[0];
   }
   return data.success;
-}
+};

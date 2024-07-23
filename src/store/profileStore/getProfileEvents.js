@@ -50,5 +50,4 @@ export const getProfileEvents = async (id) => {
     return data.errors[0];
   }
   return data.data.getProfileEventsById;
-}
-
+};

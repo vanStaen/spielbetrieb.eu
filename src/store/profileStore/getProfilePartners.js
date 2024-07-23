@@ -10,6 +10,7 @@ export const getProfilePartners = async (id) => {
                 avatar,
                 pending,
                 suspended,
+                partnerTags,
             }
         }
         `,
@@ -34,5 +35,4 @@ export const getProfilePartners = async (id) => {
     return data.errors[0];
   }
   return data.data.getProfilePartnersById;
-}
-
+};

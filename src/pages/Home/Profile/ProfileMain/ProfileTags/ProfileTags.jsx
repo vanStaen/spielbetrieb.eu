@@ -20,7 +20,7 @@ export const ProfileTags = observer((props) => {
     isPartner ? partnerStore.tags : profileStore.tags,
   );
 
-  // Add this tag logic to event form
+  // TODO: Add this tag logic to event form
   const createTagLists = (tagsCode) => {
     const tagsTemp = tagsCode?.map((tagId) => {
       const tagData = pageStore.tags.find((tag) => parseInt(tag.id) === tagId);

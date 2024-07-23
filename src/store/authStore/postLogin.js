@@ -24,7 +24,6 @@ export const postLogin = async (email, username, password, remind) => {
   if (data.errors) {
     return data.errors[0];
   }
-  console.log(data)
+  console.log(data);
   return data;
-}
-
+};

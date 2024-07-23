@@ -52,7 +52,6 @@ input PartnerInputDataAdmin {
     partnerTags: [Int]
     archived: Boolean
     suspended: Boolean
-    pending: Boolean
     admin: [Int]
 }`;
 
@@ -66,5 +65,6 @@ export const PartnerMutations = `
     addPartner(partnerInput: PartnerInputData!): Partner!
     updatePartner(partnerId: ID!, partnerInput: PartnerInputData!): Partner!
     updatePartnerAsAdmin(partnerId: ID!, partnerInput: PartnerInputDataAdmin!): Partner!
+    updatePendingPartner(partnerId: ID!): Partner!
     deletePartnerAsAdmin(partnerId: ID!): Boolean!
 `;

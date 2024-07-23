@@ -40,7 +40,7 @@ export const ProfileUser = observer(() => {
 
   useEffect(() => {
     !params.username && redirectIfNotLoggedIn();
-    // TODO : show message if user is not loggedIn. 
+    // TODO : show message if user is not loggedIn.
     // TODO : Check if profile can be access by !friends
   }, []);
 
@@ -49,7 +49,7 @@ export const ProfileUser = observer(() => {
   return (
     <>
       <div className="profil__main">
-        {(profileStore.error || userStore.error) ? (
+        {profileStore.error || userStore.error ? (
           <div className="profil__spinner">
             <CustomError text={t("main.pleaseReload")} sizw="large" />
           </div>

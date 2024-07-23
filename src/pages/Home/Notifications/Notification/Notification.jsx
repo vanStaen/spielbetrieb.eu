@@ -131,7 +131,9 @@ export const Notification = observer((props) => {
   const closeNotificationHandler = async (id) => {
     if (!seen) {
       await postNotificationSeen(id);
-      pageStore.setUnseenNotificationsCount(pageStore.unseenNotificationsCount - 1);
+      pageStore.setUnseenNotificationsCount(
+        pageStore.unseenNotificationsCount - 1,
+      );
     }
     const element = document.getElementById(`notification${id}`);
     const subContainer = document.getElementById(`subContainer${id}`);
@@ -147,7 +149,9 @@ export const Notification = observer((props) => {
   const closeNotificationHandlerMobile = async (id) => {
     if (!seen) {
       await postNotificationSeen(id);
-      pageStore.setUnseenNotificationsCount(pageStore.unseenNotificationsCount - 1);
+      pageStore.setUnseenNotificationsCount(
+        pageStore.unseenNotificationsCount - 1,
+      );
     }
     const subContainer = document.getElementById(`subContainer${id}`);
     subContainer.style.display = "none";
@@ -208,7 +212,9 @@ export const Notification = observer((props) => {
   const notificationClickHandler = async () => {
     if (!seen) {
       await postNotificationSeen(id);
-      pageStore.setUnseenNotificationsCount(pageStore.unseenNotificationsCount - 1);
+      pageStore.setUnseenNotificationsCount(
+        pageStore.unseenNotificationsCount - 1,
+      );
     }
     if (type === 1 || type === 2 || type === 61) {
       navigate(`/user/${data}`);

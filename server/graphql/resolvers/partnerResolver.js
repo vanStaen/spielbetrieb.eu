@@ -2,6 +2,8 @@ import { User } from "../../models/User.js";
 import { Partner } from "../../models/Partner.js";
 import { Op } from "sequelize";
 import { notificationService } from "../../api/service/notificationService.js";
+import { copyFileFromS3 } from "../../lib/S3/copyFileFromS3.js";
+import { deleteFileFromS3 } from "../../lib/S3/deleteFileFromS3.js";
 
 export const partnerResolver = {
   // getPartnerById(partnerId: Int): Partner
@@ -116,8 +118,40 @@ export const partnerResolver = {
     }
   },
 
-  // TODO: Move avatar from temp to partner if pending is move from true to false
-  // --> extra mutation?
+  // updatePendingPartner(partnerId: ID!): Partner!
+  async updatePendingPartner(args, req) {
+    if (!req.isAuth) {
+      throw new Error("Unauthorized!");
+    }
+    const foundUser = await User.findOne({
+      where: { id: req.userId },
+    });
+    if (!foundUser.isAdmin || !foundUser.adminRoles.includes("partners")) {
+      throw new Error("Unauthorized!");
+    }
+    const foundPartner = await Partner.findOne({
+      where: { id: args.partnerId },
+    });
+    try {
+      await copyFileFromS3(foundPartner.avatar, "temp", "partners");
+      await deleteFileFromS3(foundPartner.avatar, "temp");
+      const updatedPartner = await Partner.update(
+        {
+          pending: false,
+        },
+        {
+          where: {
+            id: args.partnerId,
+          },
+          returning: true,
+          plain: true,
+        },
+      );
+      return updatedPartner[1];
+    } catch (err) {
+      console.log(err);
+    }
+  },
 
   // updatePartnerAsAdmin(partnerId: ID!, partnerInput: PartnerInputDataAdmin!): Partner!
   async updatePartnerAsAdmin(args, req) {
@@ -145,7 +179,6 @@ export const partnerResolver = {
       "admin",
       "partnerRoles",
       "suspended",
-      "pending",
     ];
     updatableFields.forEach((field) => {
       if (field in args.partnerInput) {

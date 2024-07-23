@@ -1,20 +1,16 @@
-export async function updateUserName(userName, usernameChange) {
+export async function updatePendingPartner(id) {
   const graphqlQuery = {
-    query: `
-    mutation ($userName: String, $usernameChange: Int){
-      updateUser(
-        userInput: {          
-          userName: $userName,
-          usernameChange: $usernameChange
-        }
-      ) {
-        id,
-      }
-    }
-    `,
+    query: `mutation ( 
+                $id: ID!,
+                ) {
+                  updatePendingPartner (
+                    partnerId: $id,
+                ) {
+                  id
+                }
+                }`,
     variables: {
-      userName,
-      usernameChange,
+      id,
     },
   };
 
@@ -36,5 +32,5 @@ export async function updateUserName(userName, usernameChange) {
   if (data.errors) {
     return data.errors[0];
   }
-  return true;
+  return data.updatePendingPartner;
 }

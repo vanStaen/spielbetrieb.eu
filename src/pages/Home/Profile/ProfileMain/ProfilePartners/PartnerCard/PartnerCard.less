@@ -93,9 +93,21 @@
 
             .ant-tag-borderless {
                 font-size: 10px !important;
-                border-color: rgba(var(--themeFontColor), .2);
-                color: rgba(var(--themeFontColor), 1);
+                letter-spacing: 0 !important;
                 margin: 0 3px 3px 0;
+            }
+
+            .partnerCard__tagActive {
+                border-color: rgba(var(--themeFontColor), .5);
+                color: rgba(var(--themeFontColor), .75);
+                background: rgba(var(--themeFontColorInvert), .5);
+            }
+
+            .partnerCard__tagPending {
+                border-color: rgba(var(--themeFontColor), .5);
+                color: rgba(var(--themeFontColor), 1);
+                background: tranparent;
+                opacity: .33 !important;
             }
         }
     }
