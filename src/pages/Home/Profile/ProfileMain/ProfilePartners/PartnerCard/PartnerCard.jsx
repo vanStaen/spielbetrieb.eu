@@ -15,8 +15,16 @@ import { nameParser } from "../../../../../../helpers/dev/nameParser";
 import "./PartnerCard.less";
 
 export const PartnerCard = observer((props) => {
-  const { id, name, avatar, description, pending, userName, suspended, partnerTags } =
-    props.partner;
+  const {
+    id,
+    name,
+    avatar,
+    description,
+    pending,
+    userName,
+    suspended,
+    partnerTags,
+  } = props.partner;
   const isMypartner = profileStore.id === userStore?.id;
   const [avatarUrl, setAvatarUrl] = useState(null);
   const navigate = useNavigate();
@@ -24,7 +32,10 @@ export const PartnerCard = observer((props) => {
 
   const fetchAvatarUrl = async () => {
     try {
-      const url = await getPictureUrl(`${avatar}_t`, pending ? "temp" : "partners");
+      const url = await getPictureUrl(
+        `${avatar}_t`,
+        pending ? "temp" : "partners",
+      );
       const isloaded = new Promise((resolve, reject) => {
         const loadImg = new Image();
         loadImg.src = url;
@@ -103,9 +114,7 @@ export const PartnerCard = observer((props) => {
       <div className="partner__main">
         <div className={"partner__name"}>{name}</div>
         <div className={"partner__desc"}>{description}</div>
-        <div className={"partner__tags"}>
-          {createTagLists()}
-        </div>
+        <div className={"partner__tags"}>{createTagLists()}</div>
       </div>
 
       <div className="partner__actions">
@@ -123,7 +132,7 @@ export const PartnerCard = observer((props) => {
         {isMypartner && (
           <div
             className="partner__action"
-          // TODO: onClick={handleEditpartner}
+            // TODO: onClick={handleEditpartner}
           >
             <EditOutlined />
           </div>
@@ -134,7 +143,7 @@ export const PartnerCard = observer((props) => {
               <Popconfirm
                 title={`Archive this partner?`}
                 style={{ marginRight: 8 }}
-              // TODO: onConfirm={handleArchivepartner}
+                // TODO: onConfirm={handleArchivepartner}
               >
                 <DeleteOutlined className="partner__deleteLogo" />
               </Popconfirm>

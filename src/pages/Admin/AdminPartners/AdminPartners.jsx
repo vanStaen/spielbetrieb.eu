@@ -125,8 +125,8 @@ export const AdminPartners = () => {
       dataIndex: "pending",
       key: "pending",
       align: "center",
-      render: (_, { pending, id }) => (
-        pending ?
+      render: (_, { pending, id }) =>
+        pending ? (
           <Tooltip title="Double click to validate this Partner">
             <div
               style={{ cursor: "pointer" }}
@@ -134,9 +134,10 @@ export const AdminPartners = () => {
             >
               ⌛
             </div>
-          </Tooltip> :
-          <span style={{ filter: "grayscale(1)", opacity: .5 }}>✅</span>
-      ),
+          </Tooltip>
+        ) : (
+          <span style={{ filter: "grayscale(1)", opacity: 0.5 }}>✅</span>
+        ),
     },
     {
       title: <span style={{ opacity: ".2" }}>Edit</span>,
