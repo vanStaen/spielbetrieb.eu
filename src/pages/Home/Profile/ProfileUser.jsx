@@ -35,13 +35,13 @@ export const ProfileUser = observer(() => {
       ? params.username.toLowerCase()
       : userStore.userName?.toLowerCase();
     username && profileStore.fetchProfileData(username);
-    // TODO : user doesnt exist
+    // TODO1 : user doesnt exist
   }, [userStore.isLoading, userStore.userName, params.username]);
 
   useEffect(() => {
     !params.username && redirectIfNotLoggedIn();
-    // TODO : show message if user is not loggedIn.
-    // TODO : Check if profile can be access by !friends
+    // TODO1 : show message if user is not loggedIn.
+    // TODO1 : Check if profile can be access by !friends
   }, []);
 
   const thisIsMine = userStore.id === profileStore.id;

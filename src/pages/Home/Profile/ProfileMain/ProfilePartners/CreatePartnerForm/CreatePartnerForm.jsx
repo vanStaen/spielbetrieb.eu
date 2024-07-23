@@ -17,8 +17,8 @@ import { addPartner } from "./addPartner";
 
 import "./CreatePartnerForm.less";
 
-// TODO : Add partner tags
-// TODO : Make responsive
+// TODO1 : Add partner tags
+// TODO1 : Make responsive
 
 export const CreatePartnerForm = observer((props) => {
   const { t } = useTranslation();

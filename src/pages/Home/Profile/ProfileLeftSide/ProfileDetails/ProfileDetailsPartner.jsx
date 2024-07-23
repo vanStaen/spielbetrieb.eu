@@ -36,7 +36,7 @@ export const ProfileDetailsPartner = observer(() => {
 
   useEffect(() => {
     if (!partnerStore.isLoading && partnerStore.profilSettings) {
-      // TODO: setShowLastSeenOnline(profileStore.profilSettings.showLastSeenOnline);
+      // 1: setShowLastSeenOnline(profileStore.profilSettings.showLastSeenOnline);
     }
   }, [partnerStore.isLoading, partnerStore.profilSettings]);
 

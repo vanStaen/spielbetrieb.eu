@@ -71,7 +71,7 @@ export const EventPage = observer((props) => {
   const ref5 = useRef(null);
   const ref6 = useRef(null);
 
-  // TODO: extract tour steps from components
+  // TODO1: extract tour steps from components
   const eventPageTourSteps = [
     {
       title: "Artwork of the event",
@@ -179,11 +179,10 @@ export const EventPage = observer((props) => {
           navigate(-1);
         }}
         className={`eventpage__back link 
-                  ${
-                    pageStore.selectedTheme === "light"
-                      ? "lightColorTheme__Text"
-                      : "darkColorTheme__Text"
-                  }`}
+                  ${pageStore.selectedTheme === "light"
+            ? "lightColorTheme__Text"
+            : "darkColorTheme__Text"
+          }`}
       >
         <ArrowLeftOutlined />
       </div>

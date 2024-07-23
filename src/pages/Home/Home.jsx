@@ -76,7 +76,7 @@ export const Home = observer((props) => {
       case "partner":
         return <ProfilePartner />;
       case "profile":
-        // TODO: First check if profile can be shown (in setting, show to friend or not). The check should happen in the backend as the api should not return data if it is the case.
+        // TODO1: First check if profile can be shown (in setting, show to friend or not). The check should happen in the backend as the api should not return data if it is the case.
         return <ProfileUser />;
       case "settings":
         return <Settings />;

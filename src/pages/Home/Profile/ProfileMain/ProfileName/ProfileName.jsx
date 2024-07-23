@@ -5,8 +5,6 @@ import { partnerStore } from "../../../../../store/partnerStore/partnerStore";
 
 import "./ProfileName.less";
 
-// TODO: Add civerpic/titlebild?
-
 export const ProfileName = observer((props) => {
   return (
     <>

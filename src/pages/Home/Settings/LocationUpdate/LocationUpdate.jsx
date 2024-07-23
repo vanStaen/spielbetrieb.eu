@@ -110,7 +110,7 @@ export const LocationUpdate = observer(() => {
         icon={<CheckOutlined />}
         disabled={!location || location === userStore.location}
       />
-      {/* TODO : not working anymore */}
+      {/* 1 : not working anymore */}
       <div className="locationUpdate__googlemap" id="mapdiv">
         <GoogleMap
           coordinates={coordinates}

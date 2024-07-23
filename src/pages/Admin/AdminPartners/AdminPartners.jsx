@@ -54,7 +54,7 @@ export const AdminPartners = () => {
         _,
         { name, description, partnerTags, avatar, pending, userName },
       ) => {
-        // TODO Add avatar in tooltip
+        // TODO1 Add avatar in tooltip
         const avatarUrl = avatar;
 
         const handlePartnerContainerClick = () => {

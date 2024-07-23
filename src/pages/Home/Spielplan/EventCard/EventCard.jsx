@@ -46,7 +46,7 @@ export const EventCard = observer((props) => {
     getFirstPictureUrl();
   }, []);
 
-  /* TODO:
+  /* TODO2:
         show number of attending
         Mark attending event 
         buy a ticket

@@ -13,49 +13,47 @@ import { nameParser } from "../../../../../helpers/dev/nameParser";
 
 import "./ProfileEvents.less";
 
-// TODO: hide if !thisIsMine && (isPrivate || isDraft)
-
 export const ProfileEvents = observer((props) => {
   const { t } = useTranslation();
   const { thisIsMine, isPartner } = props;
   const events = isPartner ? partnerStore.events : profileStore.events;
 
   const eventCards = events?.map((event) => {
-    if (event.validated || thisIsMine || userStore.isAdmin) {
-      const eventTags = event.eventTags.map((tagId) => {
-        const tag = spielplanStore.tags.filter((tag) => parseInt(tag.id) === tagId)[0];
-        return {
-          name: `${nameParser(tag?.name,
-            pageStore.selectedLanguage?.toLowerCase(),
-          )}${!tag.validated ? ` (${t("general.pendingReview")})` : ""}`,
-          id: tagId,
-          validated: tag.validated,
-        };
-      });
-      const eventType = spielplanStore.eventtypes.filter(
-        (et) => parseInt(et.id) === event.eventtype,
-      )[0];
-      eventTags.splice(0, 0, {
-        name: nameParser(
-          eventType?.name,
-          pageStore.selectedLanguage?.toLowerCase(),
-        ),
-        id: eventType?.id,
-        validated: true,
-      });
-
-      return (
-        <EventCard
-          key={event.id}
-          event={event}
-          eventUser={{ user: profileStore.user, id: profileStore.id }}
-          profileCard={true}
-          tags={eventTags}
-        />
-      );
-    } else {
-      return null;
+    if (!thisIsMine && !userStore.isAdmin && (event.isPrivate || !event.validated)) {
+      return null
     }
+
+    const eventTags = event.eventTags.map((tagId) => {
+      const tag = spielplanStore.tags.filter((tag) => parseInt(tag.id) === tagId)[0];
+      return {
+        name: `${nameParser(tag?.name,
+          pageStore.selectedLanguage?.toLowerCase(),
+        )}${!tag.validated ? ` (${t("general.pendingReview")})` : ""}`,
+        id: tagId,
+        validated: tag.validated,
+      };
+    });
+    const eventType = spielplanStore.eventtypes.filter(
+      (et) => parseInt(et.id) === event.eventtype,
+    )[0];
+    eventTags.splice(0, 0, {
+      name: nameParser(
+        eventType?.name,
+        pageStore.selectedLanguage?.toLowerCase(),
+      ),
+      id: eventType?.id,
+      validated: true,
+    });
+
+    return (
+      <EventCard
+        key={event.id}
+        event={event}
+        eventUser={{ user: profileStore.user, id: profileStore.id }}
+        profileCard={true}
+        tags={eventTags}
+      />
+    );
   });
 
   const eventCardsCleaned = eventCards?.filter((partner) => partner);

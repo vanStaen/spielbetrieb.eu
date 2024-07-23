@@ -10,7 +10,7 @@ import { PartnerCard } from "./PartnerCard/PartnerCard";
 
 import "./ProfilePartners.less";
 
-// TODO: make responsive
+// TODO1: make responsive
 
 export const ProfilePartners = observer((props) => {
   const [showPartnersModal, setShowPartnersModal] = useState(false);

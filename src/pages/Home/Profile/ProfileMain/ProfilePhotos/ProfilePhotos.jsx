@@ -11,9 +11,9 @@ export const ProfilePhotos = observer((props) => {
   const { thisIsMine } = props;
   const { t } = useTranslation();
 
-  // TODO: add photo form
-  // TODO: use gallery overlay to show the pictures
-  // TODO: add a comment feature to the gallery overlay(?)
+  // TODO1: add photo form
+  // TODO1: use gallery overlay to show the pictures
+  // TODO1: add a comment feature to the gallery overlay(?)
   return (
     <div className="profilePhotos__container">
       <ProfileMainTitle

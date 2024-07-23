@@ -133,7 +133,7 @@ export const PartnerCard = observer((props) => {
         {isMyPartner && (
           <div
             className="partner__action"
-          // TODO: onClick={handleEditpartner}
+          // TODO1: onClick={handleEditpartner}
           >
             <EditOutlined />
           </div>
@@ -144,7 +144,7 @@ export const PartnerCard = observer((props) => {
               <Popconfirm
                 title={`Archive this partner?`}
                 style={{ marginRight: 8 }}
-              // TODO: onConfirm={handleArchivepartner}
+              // TODO1: onConfirm={handleArchivepartner}
               >
                 <DeleteOutlined className="partner__deleteLogo" />
               </Popconfirm>

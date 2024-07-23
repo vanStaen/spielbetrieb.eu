@@ -18,7 +18,7 @@ import { Banner } from "../../../components/Banner/Banner";
 
 import "./Profile.less";
 
-// TODO: add a coverphoto (title bild)
+// TODO2: add a coverphoto (title bild)
 
 export const ProfilePartner = observer(() => {
   const params = useParams();
@@ -36,7 +36,7 @@ export const ProfilePartner = observer(() => {
     const username = params.username.toLowerCase();
     !username && redirectIfNotLoggedIn();
     username && partnerStore.fetchPartnerData(username, true);
-    // TODO : Partner doesnt exist
+    // TODO1 : Partner doesnt exist
   }, []);
 
   const thisIsMine = partnerStore.admin.includes(userStore.id);
