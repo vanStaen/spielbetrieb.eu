@@ -14,14 +14,11 @@ import "./ProfileTags.less";
 
 export const ProfileTags = observer((props) => {
   const { t } = useTranslation();
-  const { thisIsMine, isPartner } = props;
+  const { thisIsMine, isPartner, numberOfTags } = props;
   const [showTagsModal, setShowTagsModal] = useState(false);
-  const [tagValue, setTagValue] = useState(
-    isPartner ? partnerStore.tags : profileStore.tags,
-  );
 
-  // TODO: Add this tag logic to event form
-  const createTagLists = (tagsCode) => {
+  const createTagLists = () => {
+    const tagsCode = isPartner ? partnerStore.tags : profileStore.tags;
     const tagsTemp = tagsCode?.map((tagId) => {
       const tagData = pageStore.tags.find((tag) => parseInt(tag.id) === tagId);
       const tagName = nameParser(
@@ -41,6 +38,9 @@ export const ProfileTags = observer((props) => {
       if (!tag) {
         return null;
       }
+      if (!thisIsMine && !tag.validated) {
+        return null
+      }
       return (
         <Tag
           key={tag.id}
@@ -57,10 +57,6 @@ export const ProfileTags = observer((props) => {
     return tagsFormatted;
   };
 
-  useEffect(() => {
-    setTagValue(isPartner ? partnerStore.tags : profileStore.tags);
-  }, [profileStore.tags, partnerStore.tags]);
-
   return (
     <>
       <EditTagsModal
@@ -71,14 +67,14 @@ export const ProfileTags = observer((props) => {
       <div className="profileTags__container">
         <ProfileMainTitle
           title={t("profile.tags")}
-          value={tagValue?.length}
+          value={numberOfTags}
           showEdit={showTagsModal}
           setShowEdit={setShowTagsModal}
           thisIsMine={thisIsMine}
         />
         <div className="profileTags__main">
-          {tagValue.length ? (
-            <div>{createTagLists(tagValue)}</div>
+          {numberOfTags ? (
+            <div>{createTagLists()}</div>
           ) : (
             <div className="profileTags__empty">{t("profile.nothingYet")}</div>
           )}

@@ -23,13 +23,13 @@ export const ProfileEvents = observer((props) => {
   const eventCards = events?.map((event) => {
     if (event.validated || thisIsMine || userStore.isAdmin) {
       const eventTags = event.eventTags.map((tagId) => {
+        const tag = spielplanStore.tags.filter((tag) => parseInt(tag.id) === tagId)[0];
         return {
-          name: nameParser(
-            spielplanStore.tags.filter((tag) => parseInt(tag.id) === tagId)[0]
-              ?.name,
+          name: `${nameParser(tag?.name,
             pageStore.selectedLanguage?.toLowerCase(),
-          ),
+          )}${!tag.validated ? ` (${t("general.pendingReview")})` : ""}`,
           id: tagId,
+          validated: tag.validated,
         };
       });
       const eventType = spielplanStore.eventtypes.filter(
@@ -41,6 +41,7 @@ export const ProfileEvents = observer((props) => {
           pageStore.selectedLanguage?.toLowerCase(),
         ),
         id: eventType?.id,
+        validated: true,
       });
 
       return (

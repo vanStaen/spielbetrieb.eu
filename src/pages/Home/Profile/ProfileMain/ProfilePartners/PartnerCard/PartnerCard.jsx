@@ -25,7 +25,7 @@ export const PartnerCard = observer((props) => {
     suspended,
     partnerTags,
   } = props.partner;
-  const isMypartner = profileStore.id === userStore?.id;
+  const isMyPartner = profileStore.id === userStore?.id;
   const [avatarUrl, setAvatarUrl] = useState(null);
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -69,6 +69,7 @@ export const PartnerCard = observer((props) => {
       if (!tag) {
         return null;
       }
+      if (!isMyPartner && !tag.validated) { return null }
       return (
         <Tag
           key={tag.id}
@@ -129,21 +130,21 @@ export const PartnerCard = observer((props) => {
             </Tag>
           )
         )}
-        {isMypartner && (
+        {isMyPartner && (
           <div
             className="partner__action"
-            // TODO: onClick={handleEditpartner}
+          // TODO: onClick={handleEditpartner}
           >
             <EditOutlined />
           </div>
         )}
-        {(isMypartner || userStore.isAdmin) && (
+        {(isMyPartner || userStore.isAdmin) && (
           <div className="partner__action">
             <div onClick={(e) => e.stopPropagation()}>
               <Popconfirm
                 title={`Archive this partner?`}
                 style={{ marginRight: 8 }}
-                // TODO: onConfirm={handleArchivepartner}
+              // TODO: onConfirm={handleArchivepartner}
               >
                 <DeleteOutlined className="partner__deleteLogo" />
               </Popconfirm>

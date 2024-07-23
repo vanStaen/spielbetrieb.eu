@@ -74,10 +74,14 @@ export const EventCard = observer((props) => {
   };
 
   const tagsFormatted = tags?.map((tag, index) => {
+    if (!isMyEvent && !tag.validated) { return null }
     return (
       <Tag
         key={tag.id}
         bordered={false}
+        className={
+          tag.validated ? "event__tagActive" : "event__tagPending"
+        }
         onClick={(event) => {
           event.stopPropagation();
           handleTagClick(index, tag.id);

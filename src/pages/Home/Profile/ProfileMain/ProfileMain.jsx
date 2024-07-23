@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { observer } from "mobx-react";
 
 import { ProfileEvents } from "./ProfileEvents/ProfileEvents";
@@ -14,13 +14,24 @@ import { ProfileName } from "./ProfileName/ProfileName";
 
 import { profileStore } from "../../../../store/profileStore/profileStore";
 import { partnerStore } from "../../../../store/partnerStore/partnerStore";
+import { pageStore } from "../../../../store/pageStore/pageStore";
 
 import "./ProfileMain.less";
 
 export const ProfileMain = observer((props) => {
   const { isPartner, thisIsMine } = props;
 
-  // TODO adapt component to work with isPartner
+  const calcNumberOfTags = () => {
+    if (thisIsMine) {
+      return isPartner ? partnerStore.tags?.length : profileStore.tags?.length
+    } else {
+      const tagsToVerify = isPartner ? partnerStore.tags : profileStore.tags;
+      const allFoundTags = pageStore.tags.filter(tag => tagsToVerify.includes(parseInt(tag.id)));
+      return allFoundTags.filter(tag => tag.validated)?.length;
+    }
+  }
+
+  const [numberOfTags, setNumberOfTags] = useState(calcNumberOfTags());
 
   return isPartner ? (
     <div className="profil__mainContainer">
@@ -34,8 +45,8 @@ export const ProfileMain = observer((props) => {
       {(partnerStore.events?.length || thisIsMine) && (
         <ProfileEvents isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
-      {(partnerStore.tags?.length || thisIsMine) && (
-        <ProfileTags isPartner={isPartner} thisIsMine={thisIsMine} />
+      {(numberOfTags || thisIsMine) && (
+        <ProfileTags isPartner={isPartner} thisIsMine={thisIsMine} numberOfTags={numberOfTags} />
       )}
       {(partnerStore.links?.length || thisIsMine) && (
         <ProfileLinks isPartner={isPartner} thisIsMine={thisIsMine} />
@@ -61,8 +72,8 @@ export const ProfileMain = observer((props) => {
       {(profileStore.events?.length || thisIsMine) && (
         <ProfileEvents isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
-      {(profileStore.tags?.length || thisIsMine) && (
-        <ProfileTags isPartner={isPartner} thisIsMine={thisIsMine} />
+      {(numberOfTags || thisIsMine) && (
+        <ProfileTags isPartner={isPartner} thisIsMine={thisIsMine} numberOfTags={numberOfTags} />
       )}
       {(profileStore.partners?.length || thisIsMine) && (
         <ProfilePartners isPartner={isPartner} thisIsMine={thisIsMine} />
