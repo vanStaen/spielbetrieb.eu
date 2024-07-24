@@ -8,9 +8,9 @@ import { deleteUserAsAdmin } from "./deleteUserAsAdmin";
 import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
 import { getPictureUrl } from "../../../helpers/picture/getPictureUrl";
 
-// TODO1: show archived account
-// TODO1: Delete vs archive?
-// TODO1: On delete, delete all connected data (eg friends, picture, followers ...)
+// TODO2: show archived account
+// TODO2: Delete vs archive?
+// TODO2: On delete, delete all connected data (eg friends, picture, followers ...)
 
 export const AdminUsers = () => {
   const [users, setUsers] = useState([]);

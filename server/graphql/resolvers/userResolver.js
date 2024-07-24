@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import { Op } from "sequelize";
 import { mailService } from "../../api/service/mailService.js";
 import { notificationService } from "../../api/service/notificationService.js";
+import dayjs from "dayjs";
 
 import { User } from "../../models/User.js";
 import { Comment } from "../../models/Comment.js";
@@ -398,8 +399,16 @@ export const userResolver = {
 
   // getProfileEventsById(id: ID!): [Event]
   async getProfileEventsById(args, _) {
+    const fromDateToday = dayjs().startOf("day").valueOf();
     return await Event.findAll({
-      where: { userId: args.id, archived: false },
+      where: {
+        admin: { [Op.contains]: [args.id] },
+        archived: false,
+        fromDate: {
+          [Op.gt]: fromDateToday,
+        },
+      },
+      // where: { userId: args.id, archived: false },
       order: [["fromDate", "ASC"]],
     });
   },
