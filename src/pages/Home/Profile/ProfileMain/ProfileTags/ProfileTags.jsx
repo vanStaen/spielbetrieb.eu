@@ -39,7 +39,7 @@ export const ProfileTags = observer((props) => {
         return null;
       }
       if (!thisIsMine && !tag.validated) {
-        return null
+        return null;
       }
       return (
         <Tag

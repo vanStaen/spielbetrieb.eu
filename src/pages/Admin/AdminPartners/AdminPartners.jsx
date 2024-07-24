@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Popconfirm, Table, Tag, Tooltip, Col, Row, Typography } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
+import { UserOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Link, useNavigate } from "react-router-dom";
 
 import { getAllPartners } from "./getAllPartners";
 import { updatePendingPartner } from "./updatePendingPartner";
 import { updatePartnerAsAdmin } from "./updatePartnerAsAdmin";
 import { deletePartnerAsAdmin } from "./deletePartnerAsAdmin";
 import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
-import { useNavigate } from "react-router-dom";
+import { getPictureUrl } from "../../../helpers/picture/getPictureUrl";
+import { pageStore } from "../../../store/pageStore/pageStore";
+import { nameParser } from "../../../helpers/dev/nameParser";
+import { getUserNames } from "../AdminEvents/getUserNames";
 
 export const AdminPartners = () => {
   const [partners, setPartners] = useState([]);
+  const [partnersAvatarUrls, setPartnersAvatarUrls] = useState([]);
+  const [userNames, setUserNames] = useState(null);
   const navigate = useNavigate();
 
   const fetchAllPartners = async () => {
@@ -18,9 +24,32 @@ export const AdminPartners = () => {
     setPartners(results);
   };
 
+  const fetchUrlsFromPicturePath = async () => {
+    const urls = await Promise.all(
+      partners.map((partner) => {
+        if (!partner.avatar) {
+          return null;
+        }
+        const bucket = partner.pending ? "temp" : "partners";
+        return getPictureUrl(`${partner.avatar}_t`, bucket);
+      }),
+    );
+    setPartnersAvatarUrls(urls);
+  };
+
+  const fetchUserNames = async () => {
+    const userNames = await getUserNames();
+    setUserNames(userNames);
+  };
+
   useEffect(() => {
     fetchAllPartners();
+    fetchUserNames();
   }, []);
+
+  useEffect(() => {
+    fetchUrlsFromPicturePath();
+  }, [partners]);
 
   const deletePartner = async (id) => {
     await deletePartnerAsAdmin(id);
@@ -38,52 +67,79 @@ export const AdminPartners = () => {
   };
 
   const columns = [
-    {
+    /* {
       title: "id",
       dataIndex: "id",
       key: "id",
       align: "center",
-      sorter: (a, b) => a.id - b.id,
-    },
+    }, */
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-      sorter: (a, b) => a.name.length - b.name.length,
-      render: (
-        _,
-        { name, description, partnerTags, avatar, pending, userName },
-      ) => {
-        // TODO1 Add avatar in tooltip
-        const avatarUrl = avatar;
-
+      title: "Avatar",
+      dataIndex: "avatar",
+      key: "avatar",
+      width: "100px",
+      render: (_, { userName }, index) => {
         const handlePartnerContainerClick = () => {
           navigate(`/partner/${userName}`, { relative: "path" });
         };
-
+        if (!partnersAvatarUrls[index]) {
+          return (
+            <div
+              style={{ cursor: "pointer" }}
+              onClick={handlePartnerContainerClick}
+              className="admin__avatarPlaceholder"
+            >
+              <UserOutlined />
+            </div>
+          );
+        }
         return (
           <div
             style={{ cursor: "pointer" }}
             onClick={handlePartnerContainerClick}
           >
-            <Tooltip
-              placement="right"
-              overlayStyle={{ maxWidth: "700px" }}
-              title={
-                <div>
-                  <div>{description}</div>
-                  {partnerTags?.map((tag) => {
-                    return (
-                      <Tag color="#333" key={tag} bordered={false}>
-                        {tag}
-                      </Tag>
-                    );
-                  })}
-                </div>
-              }
-            >
-              {name}
-            </Tooltip>
+            <img
+              src={partnersAvatarUrls[index]}
+              width="100px"
+              height="100px"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+        );
+      },
+    },
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+      render: (_, { name, description, partnerTags, userName }) => {
+        return (
+          <div>
+            <div>
+              <Link to={`../partner/${userName}`}>{name}</Link>
+            </div>
+            <div>{description}</div>
+            <div className="admmin__tags">
+              {partnerTags?.map((tagId) => {
+                const tagData = pageStore.tags.find(
+                  (tag) => parseInt(tag.id) === tagId,
+                );
+                const tagName = `${nameParser(tagData?.name, "en")}${!tagData?.validated ? ` (pending review)` : ""}`;
+                return (
+                  <Tag
+                    key={tagId}
+                    bordered={false}
+                    style={{
+                      background:
+                        !tagData?.validated && "rgba(178, 34, 34, .75)",
+                      color: !tagData?.validated && "white",
+                    }}
+                  >
+                    #{tagName || <i> Loading</i>}
+                  </Tag>
+                );
+              })}
+            </div>
           </div>
         );
       },
@@ -92,11 +148,28 @@ export const AdminPartners = () => {
       title: "Admin",
       dataIndex: "admin",
       key: "admin",
-      align: "center",
-      render: (_, { admin }) =>
-        admin.map((user) => {
-          return <span key={user}>{user}</span>;
-        }),
+      render: (_, { admin }) => (
+        <>
+          {admin.map((admin) => {
+            const adminName = userNames?.filter(
+              (user) => parseInt(user.id) === admin,
+            )[0]?.userName;
+            const handleAdminClick = () => {
+              navigate(`../user/${adminName}`, { relative: "path" });
+            };
+            return (
+              <Tag
+                key={admin}
+                bordered={false}
+                onClick={handleAdminClick}
+                className="admin__tagLink"
+              >
+                {adminName}
+              </Tag>
+            );
+          })}
+        </>
+      ),
     },
     {
       title: "Suspended",
@@ -104,7 +177,6 @@ export const AdminPartners = () => {
       key: "suspended",
       align: "center",
       width: "100px",
-      sorter: (a, b) => a.suspended - b.suspended,
       render: (_, { suspended, id }) => (
         <Tooltip title="Double click to toggle this value">
           <div
@@ -178,6 +250,9 @@ export const AdminPartners = () => {
             columns={columns}
             pagination={false}
             size="small"
+            scroll={{
+              x: 1000,
+            }}
           />
         </>
       )}

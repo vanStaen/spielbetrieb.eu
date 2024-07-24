@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { observer } from "mobx-react";
-import { MehOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
 import { userStore } from "../../../store/userStore/userStore";

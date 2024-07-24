@@ -29,16 +29,20 @@ export const Menu = observer(() => {
   const [avatarPic, setAvatarPic] = useState(null);
 
   const getAvatarUrl = async (path) => {
-    if (path) {
-      const url = await getPictureUrl(path, "users");
-      const isloaded = new Promise((resolve, reject) => {
-        const loadImg = new Image();
-        loadImg.src = url;
-        loadImg.onload = () => resolve(url);
-        loadImg.onerror = (err) => reject(err);
-      });
-      await isloaded;
-      setAvatarPic(url);
+    try {
+      if (path) {
+        const url = await getPictureUrl(path, "users");
+        const isloaded = new Promise((resolve, reject) => {
+          const loadImg = new Image();
+          loadImg.src = url;
+          loadImg.onload = () => resolve(url);
+          loadImg.onerror = (err) => reject(err);
+        });
+        await isloaded;
+        setAvatarPic(url);
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 

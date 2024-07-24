@@ -69,7 +69,9 @@ export const PartnerCard = observer((props) => {
       if (!tag) {
         return null;
       }
-      if (!isMyPartner && !tag.validated) { return null }
+      if (!isMyPartner && !tag.validated) {
+        return null;
+      }
       return (
         <Tag
           key={tag.id}
@@ -133,7 +135,7 @@ export const PartnerCard = observer((props) => {
         {isMyPartner && (
           <div
             className="partner__action"
-          // TODO1: onClick={handleEditpartner}
+            // TODO1: onClick={handleEditpartner}
           >
             <EditOutlined />
           </div>
@@ -144,7 +146,7 @@ export const PartnerCard = observer((props) => {
               <Popconfirm
                 title={`Archive this partner?`}
                 style={{ marginRight: 8 }}
-              // TODO1: onConfirm={handleArchivepartner}
+                // TODO1: onConfirm={handleArchivepartner}
               >
                 <DeleteOutlined className="partner__deleteLogo" />
               </Popconfirm>

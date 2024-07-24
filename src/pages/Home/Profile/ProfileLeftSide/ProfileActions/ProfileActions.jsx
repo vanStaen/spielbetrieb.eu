@@ -31,30 +31,30 @@ export const ProfileActions = observer((props) => {
   const [isFollowing, setIsFollowing] = useState(
     userStore.following
       ? !(
-        userStore.following.findIndex(
-          (following) => parseInt(following.id) === profileStore.id,
-        ) < 0
-      )
+          userStore.following.findIndex(
+            (following) => parseInt(following.id) === profileStore.id,
+          ) < 0
+        )
       : false,
   );
 
   const [isFriend, setIsFriend] = useState(
     userStore.friends
       ? !(
-        userStore.friends.findIndex(
-          (friend) => parseInt(friend.id) === profileStore.id,
-        ) < 0
-      )
+          userStore.friends.findIndex(
+            (friend) => parseInt(friend.id) === profileStore.id,
+          ) < 0
+        )
       : false,
   );
 
   const [isPending, setIsPending] = useState(
     userStore.friendrequests
       ? !(
-        userStore.friendrequests.findIndex(
-          (pending) => parseInt(pending.id) === profileStore.id,
-        ) < 0
-      )
+          userStore.friendrequests.findIndex(
+            (pending) => parseInt(pending.id) === profileStore.id,
+          ) < 0
+        )
       : false,
   );
 

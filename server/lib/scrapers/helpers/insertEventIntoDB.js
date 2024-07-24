@@ -65,7 +65,7 @@ export default async function insertEventIntoDB(dataObject) {
       allowAnonymous: dataObject.allowAnonymous,
       isDraft: false,
       validated: dataObject.validated,
-      admin: [17, 1],
+      admin: [17],
     });
 
     const newEvent = await event.save();

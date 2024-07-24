@@ -84,25 +84,11 @@ export const Admin = observer(() => {
   const Options = () => {
     const options = [];
     const roles = userStore.adminRoles || null;
-    if (roles.includes("newsletter")) {
-      options.push({
-        label: !isMobile && "Newsletter",
-        value: "newsletter",
-        icon: <PicLeftOutlined />,
-      });
-    }
     if (roles.includes("events")) {
       options.push({
         label: !isMobile && "Events",
         value: "events",
         icon: <CalendarOutlined />,
-      });
-    }
-    if (roles.includes("users")) {
-      options.push({
-        label: !isMobile && "Users",
-        value: "users",
-        icon: <UserOutlined />,
       });
     }
     if (roles.includes("partners")) {
@@ -112,11 +98,25 @@ export const Admin = observer(() => {
         icon: <ShopOutlined />,
       });
     }
+    if (roles.includes("users")) {
+      options.push({
+        label: !isMobile && "Users",
+        value: "users",
+        icon: <UserOutlined />,
+      });
+    }
     if (roles.includes("content")) {
       options.push({
         label: !isMobile && "Content",
         value: "content",
         icon: <ReadOutlined />,
+      });
+    }
+    if (roles.includes("newsletter")) {
+      options.push({
+        label: !isMobile && "Newsletter",
+        value: "newsletter",
+        icon: <PicLeftOutlined />,
       });
     }
     if (roles.includes("analytics")) {

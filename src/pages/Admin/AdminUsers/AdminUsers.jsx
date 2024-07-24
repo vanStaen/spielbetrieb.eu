@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Popconfirm, Table, Tag, Tooltip, Typography } from "antd";
-import { StopOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Popconfirm, Table, Tag, Tooltip } from "antd";
+import { UserOutlined, DeleteOutlined } from "@ant-design/icons";
 
 import { getUsersAsAdmin } from "./getUsersAsAdmin";
 import { updateUserAsAdmin } from "./updateUserAsAdmin";
 import { deleteUserAsAdmin } from "./deleteUserAsAdmin";
 import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
+import { getPictureUrl } from "../../../helpers/picture/getPictureUrl";
 
 // TODO1: show archived account
 // TODO1: Delete vs archive?
@@ -13,19 +14,35 @@ import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
 
 export const AdminUsers = () => {
   const [users, setUsers] = useState([]);
+  const [usersAvatarUrls, setUsersAvatarUrls] = useState([]);
 
   const fetchAllUsers = async () => {
     const results = await getUsersAsAdmin();
     setUsers(results);
   };
 
+  const fetchUrlsFromPicturePath = async () => {
+    const urls = await Promise.all(
+      users.map((user) => {
+        if (!user.avatar) {
+          return null;
+        }
+        return getPictureUrl(`${user.avatar}_t`, "users");
+      }),
+    );
+    setUsersAvatarUrls(urls);
+  };
+
   useEffect(() => {
     fetchAllUsers();
   }, []);
 
-  const blockUser = async (id) => {
-    const suspended = users.filter((user) => user.id === id)[0].suspended;
-    await updateUserAsAdmin(id, { suspended: !suspended });
+  useEffect(() => {
+    fetchUrlsFromPicturePath();
+  }, [users]);
+
+  const toogleSuspendPartner = async (id, value) => {
+    await updateUserAsAdmin(id, { suspended: value });
     fetchAllUsers();
   };
 
@@ -36,20 +53,48 @@ export const AdminUsers = () => {
 
   const columns = [
     {
-      title: "id",
-      dataIndex: "id",
-      key: "id",
-      align: "center",
-      width: "50px",
-      sorter: (a, b) => a.id - b.id,
+      title: "Avatar",
+      dataIndex: "avatar",
+      key: "avatar",
+      width: "100px",
+      render: (_, { userName }, index) => {
+        const handlePartnerContainerClick = () => {
+          navigate(`/user/${userName}`, { relative: "path" });
+        };
+        if (!usersAvatarUrls[index]) {
+          return (
+            <div
+              style={{ cursor: "pointer" }}
+              onClick={handlePartnerContainerClick}
+              className="admin__avatarPlaceholder"
+            >
+              <UserOutlined />
+            </div>
+          );
+        }
+        return (
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={handlePartnerContainerClick}
+          >
+            <img
+              src={usersAvatarUrls[index]}
+              width="100px"
+              height="100px"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+        );
+      },
     },
     {
-      title: "Username",
-      dataIndex: "userName",
-      key: "userName",
-      width: "120px",
-      sorter: (a, b) => a.userName.length - b.userName.length,
-      render: (_, { userName, isAdmin, adminRoles }) =>
+      title: "Details",
+      dataIndex: "details",
+      key: "details",
+      render: (
+        _,
+        { userName, isAdmin, adminRoles, firstName, lastName, email },
+      ) =>
         isAdmin ? (
           <>
             <Tooltip
@@ -69,41 +114,38 @@ export const AdminUsers = () => {
                 </>
               }
             >
-              <b>{userName}</b>
+              <div>
+                <b>{userName}</b>
+              </div>
+              <div>
+                {firstName} {lastName}
+              </div>
+              <div>{email}</div>
             </Tooltip>
           </>
         ) : (
-          userName
+          <div>
+            <div>
+              <b>{userName}</b>
+            </div>
+            <div>
+              {firstName} {lastName}
+            </div>
+            <div>{email}</div>
+          </div>
         ),
     },
     {
-      title: "First name",
-      dataIndex: "firstName",
-      key: "firstName",
-      width: "120px",
-      sorter: (a, b) => a.firstName.length - b.firstName.length,
-    },
-    {
-      title: "Last name",
-      dataIndex: "lastName",
-      sorter: (a, b) => a.lastName.length - b.lastName.length,
-      key: "lastName",
-      width: "120px",
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-      width: "150px",
-      sorter: (a, b) => a.email.length - b.email.length,
-      key: "email",
+      title: "id",
+      dataIndex: "id",
+      key: "id",
+      align: "center",
     },
     {
       title: "Language",
       dataIndex: "language",
       key: "language",
       align: "center",
-      width: "100px",
-      sorter: (a, b) => a.language.length - b.language.length,
       render: (_, { language }) => language.toUpperCase(),
     },
     {
@@ -127,61 +169,54 @@ export const AdminUsers = () => {
       dataIndex: "suspended",
       key: "suspended",
       align: "center",
-      width: "70px",
-      sorter: (a, b) => a.suspended - b.suspended,
-      render: (_, { suspended }) => suspended && "🚫",
+      render: (_, { id, suspended, isAdmin }) => {
+        if (isAdmin) {
+          return (
+            <Tooltip title={"You can't suspend Admins"}>
+              <span style={{ filter: "grayscale(1)", opacity: 0.1 }}>🚫</span>
+            </Tooltip>
+          );
+        }
+        return (
+          <Tooltip title="Double click to toggle this value">
+            <div
+              style={{ cursor: "pointer" }}
+              onDoubleClick={() => toogleSuspendPartner(id, !suspended)}
+            >
+              {suspended ? (
+                "🚫"
+              ) : (
+                <span style={{ filter: "grayscale(1)", opacity: 0.3 }}>🚫</span>
+              )}
+            </div>
+          </Tooltip>
+        );
+      },
     },
     {
       title: <span style={{ opacity: ".2" }}>Edit</span>,
       dataIndex: "edit",
-      width: "90px",
       align: "center",
       render: (_, record) => {
         return (
           <span>
             {record.isAdmin ? (
-              <>
-                <Tooltip title={"You can't suspend Admins"}>
-                  <Typography.Link
-                    disabled={record.isAdmin}
-                    style={{ marginRight: 8 }}
-                    onClick={() => blockUser(record.id)}
-                  >
-                    <StopOutlined
-                      className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`}
-                    />
-                  </Typography.Link>
-                </Tooltip>{" "}
-                <Tooltip title={`You can't delete Admins`}>
-                  <DeleteOutlined
-                    style={{ cursor: "not-allowed" }}
-                    className={"admin__editLogo admin__disabled"}
-                  />
-                </Tooltip>
-              </>
+              <Tooltip title={`You can't delete Admins`}>
+                <DeleteOutlined
+                  style={{ cursor: "not-allowed" }}
+                  className={"admin__editLogo admin__disabled"}
+                />
+              </Tooltip>
             ) : (
-              <>
-                <Tooltip title={"Suspend User"}>
-                  <Typography.Link
-                    disabled={record.isAdmin}
-                    style={{ marginRight: 8 }}
-                    onClick={() => blockUser(record.id)}
-                  >
-                    <StopOutlined
-                      className={`admin__editLogo ${!!record.isAdmin && "admin__disabled"}`}
-                    />
-                  </Typography.Link>
-                </Tooltip>{" "}
-                <Tooltip title="Delete User">
-                  <Popconfirm
-                    title="Sure to delete this user?"
-                    style={{ marginRight: 8 }}
-                    onConfirm={() => deleteUser(record.id)}
-                  >
-                    <DeleteOutlined className="admin__editLogo" />
-                  </Popconfirm>
-                </Tooltip>
-              </>
+              <Tooltip title="Delete User">
+                <Popconfirm
+                  title="Sure to delete this user?"
+                  style={{ marginRight: 8 }}
+                  onConfirm={() => deleteUser(record.id)}
+                >
+                  <DeleteOutlined className="admin__editLogo" />
+                </Popconfirm>
+              </Tooltip>
             )}
           </span>
         );
@@ -204,7 +239,7 @@ export const AdminUsers = () => {
             pagination={false}
             size="small"
             scroll={{
-              x: 1400,
+              x: 1000,
             }}
           />
         </>

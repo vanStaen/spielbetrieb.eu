@@ -8,6 +8,7 @@ export async function getAllEvents() {
                 title,
                 description,
                 pictures,
+                externalPicture,
                 location,
                 locationAddress,
                 locationCoordinates,

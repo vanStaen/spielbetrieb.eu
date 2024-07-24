@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Form,
   Table,
@@ -16,18 +16,19 @@ import { AdminCustomSpinner } from "../AdminCustomSpinner/AdminCustomSpinner";
 import { getAllEvents } from "./getAllEvents";
 import { deleteEvent } from "./deleteEvent";
 import { getAllEventtypes } from "../../../store/spielplanStore/getAllEventtypes";
-import { getTags } from "../../../store/pageStore/getTags";
 import { getUserNames } from "./getUserNames";
 import { nameParser } from "../../../helpers/dev/nameParser";
 import { updateEvent } from "./updateEvent";
 import { pageStore } from "../../../store/pageStore/pageStore";
+import { pictureOrPlaceholder } from "../../../helpers/picture/pictureOrPlaceholder";
 
 export const AdminEvents = () => {
   const [form] = Form.useForm();
   const [events, setEvents] = useState([]);
-  const [tags, setTags] = useState(null);
+  const [eventMediaUrls, setEventMediaUrls] = useState([]);
   const [eventtypes, setEventtypes] = useState(null);
   const [userNames, setUserNames] = useState(null);
+  const navigate = useNavigate();
 
   const fetchEvents = async () => {
     const results = await getAllEvents();
@@ -40,14 +41,18 @@ export const AdminEvents = () => {
     setEvents(events);
   };
 
+  const fetchUrlsFromPicturePath = async () => {
+    const urls = await Promise.all(
+      events.map((event) => {
+        return pictureOrPlaceholder(event);
+      }),
+    );
+    setEventMediaUrls(urls);
+  };
+
   const fetchEventtypes = async () => {
     const eventtypes = await getAllEventtypes();
     setEventtypes(eventtypes);
-  };
-
-  const fetchTags = async () => {
-    const tags = await getTags();
-    setTags(tags);
   };
 
   const fetchUserNames = async () => {
@@ -56,8 +61,11 @@ export const AdminEvents = () => {
   };
 
   useEffect(() => {
+    fetchUrlsFromPicturePath();
+  }, [events]);
+
+  useEffect(() => {
     fetchEventtypes();
-    fetchTags();
     fetchUserNames();
     fetchEvents();
   }, []);
@@ -76,43 +84,103 @@ export const AdminEvents = () => {
     fetchEvents();
   };
 
-  // TODO: Add pictures
-
   const columns = [
-    {
+    /* {
       title: "id",
       dataIndex: "id",
       key: "id",
       align: "center",
-      width: "50px",
       sorter: (a, b) => a.id - b.id,
       render: (_, { id }) => <Link to={`../event/${id}`}>{id}</Link>,
+    }, */
+    {
+      title: "Media",
+      dataIndex: "media",
+      key: "media",
+      align: "center",
+      render: (_, { id }, index) => {
+        const handlePartnerContainerClick = () => {
+          navigate(`../event/${id}`, { relative: "path" });
+        };
+        return (
+          <div
+            style={{ cursor: "pointer" }}
+            onClick={handlePartnerContainerClick}
+          >
+            <img
+              src={eventMediaUrls[index]}
+              width="100px"
+              height="100px"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+        );
+      },
     },
     {
-      title: "Title",
-      dataIndex: "title",
-      key: "title",
-      render: (_, { title, id }) => <Link to={`../event/${id}`}>{title}</Link>,
+      title: "Description",
+      dataIndex: "description",
+      key: "description",
+      width: "500px",
+      render: (_, { description, eventTags, title, id }) => (
+        <div>
+          <div>
+            <div>
+              <Link to={`../event/${id}`}>{title}</Link>
+            </div>
+            <Typography.Text style={{ width: 400 }} ellipsis>
+              {description}
+            </Typography.Text>
+          </div>
+          <div className="admmin__tags">
+            <Typography.Text style={{ width: 400 }} ellipsis>
+              {eventTags.map((tagId) => {
+                const tagData = pageStore.tags.find(
+                  (tag) => parseInt(tag.id) === tagId,
+                );
+                const tagName = `${nameParser(tagData?.name, "en")}${!tagData?.validated ? ` (pending review)` : ""}`;
+                return (
+                  <Tag
+                    key={tagId}
+                    bordered={false}
+                    style={{
+                      background:
+                        !tagData.validated && "rgba(178, 34, 34, .75)",
+                      color: !tagData.validated && "white",
+                    }}
+                  >
+                    #{tagName || <i> Loading</i>}
+                  </Tag>
+                );
+              })}
+            </Typography.Text>
+          </div>
+        </div>
+      ),
     },
     {
-      title: "From",
+      title: "Date",
       dataIndex: "fromDate",
       key: "fromDate",
-      width: "60px",
       align: "center",
-      sorter: (a, b) => a.fromDate - b.fromDate,
-      render: (_, { fromDate }) => dayjs(fromDate).format("DD-MM HH:mm"),
+      width: "200px",
+      // sorter: (a, b) => a.fromDate - b.fromDate,
+      render: (_, { fromDate, untilDate }) => {
+        if (fromDate === untilDate) {
+          return dayjs(fromDate).format("DD-MM HH:mm");
+        } else {
+          return (
+            dayjs(fromDate).format("DD-MM") +
+            " " +
+            dayjs(fromDate).format("HH:mm") +
+            " " +
+            dayjs(untilDate).format("HH:mm")
+          );
+        }
+      },
     },
     {
-      title: "Until",
-      dataIndex: "untilDate",
-      key: "untilDate",
-      width: "60px",
-      align: "center",
-      render: (_, { untilDate }) => dayjs(untilDate).format("DD-MM HH:mm"),
-    },
-    {
-      title: "Event type",
+      title: "Type",
       dataIndex: "eventtype",
       key: "eventtype",
       render: (_, { eventtype }) =>
@@ -122,80 +190,57 @@ export const AdminEvents = () => {
         ),
     },
     {
-      title: "Description",
-      dataIndex: "description",
-      key: "description",
-      width: "80px",
-      render: (_, { description }) => (
-        <Typography.Text style={{ width: 200 }} ellipsis>
-          {description}
-        </Typography.Text>
-      ),
-    },
-    {
-      title: "Loc Id",
+      title: "Location",
       dataIndex: "location",
       key: "location",
-      align: "center",
-    },
-    {
-      title: "Location Name",
-      dataIndex: "locationName",
-      key: "locationName",
-    },
-    {
-      title: "Location Address",
-      dataIndex: "locationAddress",
-      key: "locationAddress",
-      width: "150px",
-    },
-    {
-      title: "Location Coordinates",
-      dataIndex: "locationCoordinates",
-      key: "locationCoordinates",
-      width: "150px",
+      render: (
+        _,
+        { locationName, location, locationCoordinates, locationAddress },
+      ) => {
+        // TODO: Click to show location page
+        return (
+          <Tooltip
+            placement="bottom"
+            title={
+              <div>
+                <div style={{ fontWeight: 500 }}>{locationAddress}</div>
+                <div style={{ opacity: 0.5 }}>{locationCoordinates}</div>
+              </div>
+            }
+          >
+            {locationName}
+          </Tooltip>
+        );
+      },
     },
     {
       title: "Admin",
       dataIndex: "admin",
       key: "admin",
-      width: "150px",
       render: (_, { admin }) => (
         <>
           {admin.map((admin) => {
+            const adminName = userNames?.filter(
+              (user) => parseInt(user.id) === admin,
+            )[0]?.userName;
+            const handleAdminClick = () => {
+              navigate(`../user/${adminName}`, { relative: "path" });
+            };
             return (
-              <Tag key={admin} bordered={false}>
-                {
-                  // TODO link to user profile
-                  userNames?.filter((user) => parseInt(user.id) === admin)[0]
-                    ?.userName
-                }
+              <Tag
+                key={admin}
+                bordered={false}
+                onClick={handleAdminClick}
+                className="admin__tagLink"
+              >
+                {adminName}
               </Tag>
             );
           })}
         </>
       ),
     },
-    {
-      title: "Event tags",
-      dataIndex: "eventTags",
-      key: "eventTags",
-      render: (_, { eventTags }) => (
-        <>
-          {eventTags.map((tag) => {
-            return (
-              <Tag key={tag} bordered={false}>
-                {nameParser(
-                  tags?.filter((t) => parseInt(t.id) === tag)[0]?.name,
-                  pageStore.selectedLanguage.toLowerCase(),
-                )}
-              </Tag>
-            );
-          })}
-        </>
-      ),
-    },
-    {
+    /* {
       title: "Private",
       dataIndex: "isPrivate",
       key: "isPrivate",
@@ -218,32 +263,29 @@ export const AdminEvents = () => {
       align: "center",
       width: "80px",
       render: (_, { allowAnonymous }) => allowAnonymous && "✖️",
-    },
-    {
-      title: "Draft",
-      dataIndex: "isDraft",
-      key: "isDraft",
-      align: "center",
-      width: "80px",
-      render: (_, { isDraft }) => isDraft && "✖️",
-    },
+    }, */
     {
       title: "Validated",
       dataIndex: "validated",
       key: "validated",
       align: "center",
       width: "80px",
-      render: (_, { validated, isDraft, id, admin }) =>
-        (!isDraft || admin.includes(17)) && (
-          <Tooltip title="Double click to toggle this value">
-            <div
-              style={{ cursor: "pointer" }}
-              onDoubleClick={() => toggleValidated(id, validated)}
-            >
-              {validated ? "✅" : "❌"}
-            </div>
-          </Tooltip>
-        ),
+      render: (_, { validated, isDraft, id, admin }) => {
+        if (!isDraft || admin.includes(17)) {
+          return (
+            <Tooltip title="Double click to toggle this value">
+              <div
+                style={{ cursor: "pointer" }}
+                onDoubleClick={() => toggleValidated(id, validated)}
+              >
+                {validated ? "✅" : "❌"}
+              </div>
+            </Tooltip>
+          );
+        } else {
+          return <Tooltip title="Still in draft">⌛</Tooltip>;
+        }
+      },
     },
     {
       title: <span style={{ opacity: ".2" }}>Actions</span>,

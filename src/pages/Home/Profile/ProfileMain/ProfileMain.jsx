@@ -23,13 +23,15 @@ export const ProfileMain = observer((props) => {
 
   const calcNumberOfTags = () => {
     if (thisIsMine) {
-      return isPartner ? partnerStore.tags?.length : profileStore.tags?.length
+      return isPartner ? partnerStore.tags?.length : profileStore.tags?.length;
     } else {
       const tagsToVerify = isPartner ? partnerStore.tags : profileStore.tags;
-      const allFoundTags = pageStore.tags.filter(tag => tagsToVerify.includes(parseInt(tag.id)));
-      return allFoundTags.filter(tag => tag.validated)?.length;
+      const allFoundTags = pageStore.tags.filter((tag) =>
+        tagsToVerify.includes(parseInt(tag.id)),
+      );
+      return allFoundTags.filter((tag) => tag.validated)?.length;
     }
-  }
+  };
 
   const [numberOfTags, setNumberOfTags] = useState(calcNumberOfTags());
 
@@ -46,7 +48,11 @@ export const ProfileMain = observer((props) => {
         <ProfileEvents isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
       {(numberOfTags || thisIsMine) && (
-        <ProfileTags isPartner={isPartner} thisIsMine={thisIsMine} numberOfTags={numberOfTags} />
+        <ProfileTags
+          isPartner={isPartner}
+          thisIsMine={thisIsMine}
+          numberOfTags={numberOfTags}
+        />
       )}
       {(partnerStore.links?.length || thisIsMine) && (
         <ProfileLinks isPartner={isPartner} thisIsMine={thisIsMine} />
@@ -73,7 +79,11 @@ export const ProfileMain = observer((props) => {
         <ProfileEvents isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
       {(numberOfTags || thisIsMine) && (
-        <ProfileTags isPartner={isPartner} thisIsMine={thisIsMine} numberOfTags={numberOfTags} />
+        <ProfileTags
+          isPartner={isPartner}
+          thisIsMine={thisIsMine}
+          numberOfTags={numberOfTags}
+        />
       )}
       {(profileStore.partners?.length || thisIsMine) && (
         <ProfilePartners isPartner={isPartner} thisIsMine={thisIsMine} />

@@ -19,14 +19,21 @@ export const ProfileEvents = observer((props) => {
   const events = isPartner ? partnerStore.events : profileStore.events;
 
   const eventCards = events?.map((event) => {
-    if (!thisIsMine && !userStore.isAdmin && (event.isPrivate || !event.validated)) {
-      return null
+    if (
+      !thisIsMine &&
+      !userStore.isAdmin &&
+      (event.isPrivate || !event.validated)
+    ) {
+      return null;
     }
 
     const eventTags = event.eventTags.map((tagId) => {
-      const tag = spielplanStore.tags.filter((tag) => parseInt(tag.id) === tagId)[0];
+      const tag = spielplanStore.tags.filter(
+        (tag) => parseInt(tag.id) === tagId,
+      )[0];
       return {
-        name: `${nameParser(tag?.name,
+        name: `${nameParser(
+          tag?.name,
           pageStore.selectedLanguage?.toLowerCase(),
         )}${!tag.validated ? ` (${t("general.pendingReview")})` : ""}`,
         id: tagId,
