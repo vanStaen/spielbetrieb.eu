@@ -153,7 +153,6 @@ export const AdminUsers = () => {
       dataIndex: "verifiedEmail",
       key: "verifiedEmail",
       align: "center",
-      width: "70px",
       render: (_, { verifiedEmail }) => verifiedEmail && "✅",
     },
     {
@@ -161,7 +160,6 @@ export const AdminUsers = () => {
       dataIndex: "verifiedIdentity",
       key: "verifiedIdentity",
       align: "center",
-      width: "70px",
       render: (_, { verifiedIdentity }) => verifiedIdentity && "✅",
     },
     {
@@ -194,9 +192,10 @@ export const AdminUsers = () => {
       },
     },
     {
-      title: <span style={{ opacity: ".2" }}>Edit</span>,
+      title: ' ',
       dataIndex: "edit",
       align: "center",
+      width: "80px",
       render: (_, record) => {
         return (
           <span>

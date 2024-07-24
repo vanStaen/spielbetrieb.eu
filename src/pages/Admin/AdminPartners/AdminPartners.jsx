@@ -212,7 +212,7 @@ export const AdminPartners = () => {
         ),
     },
     {
-      title: <span style={{ opacity: ".2" }}>Edit</span>,
+      title: ' ',
       dataIndex: "edit",
       width: "90px",
       align: "center",

@@ -269,7 +269,6 @@ export const AdminEvents = () => {
       dataIndex: "validated",
       key: "validated",
       align: "center",
-      width: "80px",
       render: (_, { validated, isDraft, id, admin }) => {
         if (!isDraft || admin.includes(17)) {
           return (
@@ -288,9 +287,10 @@ export const AdminEvents = () => {
       },
     },
     {
-      title: <span style={{ opacity: ".2" }}>Actions</span>,
+      title: ' ',
       dataIndex: "action",
       align: "center",
+      width: "100px",
       render: (_, record) => {
         return (
           <Popconfirm

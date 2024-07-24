@@ -132,21 +132,13 @@ export const PartnerCard = observer((props) => {
             </Tag>
           )
         )}
-        {isMyPartner && (
-          <div
-            className="partner__action"
-            // TODO1: onClick={handleEditpartner}
-          >
-            <EditOutlined />
-          </div>
-        )}
         {(isMyPartner || userStore.isAdmin) && (
           <div className="partner__action">
             <div onClick={(e) => e.stopPropagation()}>
               <Popconfirm
                 title={`Archive this partner?`}
                 style={{ marginRight: 8 }}
-                // TODO1: onConfirm={handleArchivepartner}
+              // TODO1: onConfirm={handleArchivepartner}
               >
                 <DeleteOutlined className="partner__deleteLogo" />
               </Popconfirm>
