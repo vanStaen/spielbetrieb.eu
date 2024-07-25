@@ -408,7 +408,6 @@ export const userResolver = {
           [Op.gt]: fromDateToday,
         },
       },
-      // where: { userId: args.id, archived: false },
       order: [["fromDate", "ASC"]],
     });
   },

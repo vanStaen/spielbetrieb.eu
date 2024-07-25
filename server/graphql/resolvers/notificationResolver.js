@@ -56,7 +56,6 @@ export const notificationResolver = {
   },
 
   // updateAllNotificationSeen: Boolean!
-  // TODO: Create a 'mark all as seen button in UI'
   async updateAllNotificationSeen(_, req) {
     if (!req.isAuth) {
       throw new Error("Unauthorized!");

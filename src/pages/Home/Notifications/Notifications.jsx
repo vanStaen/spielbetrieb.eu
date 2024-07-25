@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
+import { Button } from "antd";
 
 import errorLogo from "../../../img/logos/errorLogo.png";
 import { Notification } from "./Notification/Notification";
 import { pageStore } from "../../../store/pageStore/pageStore";
 import { userStore } from "../../../store/userStore/userStore";
 import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
+import { postAllNotificationSeen } from "./postAllNotificationSeen";
 
 import "./Notifications.less";
 
@@ -24,9 +26,11 @@ export const Notifications = observer(() => {
     userStore.fetchUserData(false);
   }, []);
 
-  const markedAllAsSeen = () => {
+
+  // TODO1: Create a 'mark all as seen button in UI'
+  const markedAllAsSeen = async () => {
+    await postAllNotificationSeen();
     pageStore.setUnseenNotificationsCount(0);
-    // TODO1: Set all as seen
   };
 
   const notificationsFormated = userStore.notifications.map(
@@ -58,7 +62,13 @@ export const Notifications = observer(() => {
           {t("notifications.noNotification")}
         </div>
       ) : (
-        notificationsFormated
+        <>
+          {!!pageStore.unseenNotificationsCount &&
+            (<Button onClick={markedAllAsSeen} >
+              {t('notification.markAllSeen')}
+            </Button>)}
+          {notificationsFormated}
+        </>
       )}
     </div>
   );
