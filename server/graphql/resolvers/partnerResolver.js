@@ -72,6 +72,7 @@ export const partnerResolver = {
         92,
         newPartner.name,
         newPartner.id,
+        newPartner.avatar,
       );
       return newPartner;
     } catch (err) {
@@ -238,17 +239,17 @@ export const partnerResolver = {
     if (!foundUser.isAdmin || !foundUser.adminRoles.includes("partners")) {
       throw new Error("Unauthorized!");
     }
-    await Partner.destroy({
-      where: {
-        id: args.partnerId,
-      },
-    });
     const foundPartner = await Partner.findOne({
       where: { id: args.partnerId },
     });
     try {
       const bucket = foundPartner.pending ? 'temp' : 'partners'
       await deleteFileFromS3(foundPartner.avatar, bucket);
+      await Partner.destroy({
+        where: {
+          id: args.partnerId,
+        },
+      });
       notificationService.deleteNotificationForAdmin(92, parseInt(args.partnerId));
     }
     catch (e) {

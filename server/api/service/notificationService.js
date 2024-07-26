@@ -121,6 +121,7 @@ export const notificationService = {
     notificationType,
     integerData,
     stringData,
+    mediaUrl,
   ) {
     try {
       const admins = await User.findAll({
@@ -136,6 +137,7 @@ export const notificationService = {
           type: notificationType,
           data: integerData,
           actionData: stringData,
+          mediaUrl: mediaUrl,
         });
         await newNotification.save();
       }

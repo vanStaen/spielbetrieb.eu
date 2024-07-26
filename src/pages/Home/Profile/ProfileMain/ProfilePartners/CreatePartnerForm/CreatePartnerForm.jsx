@@ -67,7 +67,6 @@ export const CreatePartnerForm = observer((props) => {
         partnerStore.avatar,
         partnertype,
       );
-      console.log(res);
       if (Object.hasOwn(res, "errors")) {
         message.error(res.errors[0].message);
       } else {
