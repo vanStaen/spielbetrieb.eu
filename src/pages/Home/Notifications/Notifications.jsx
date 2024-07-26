@@ -34,7 +34,7 @@ export const Notifications = observer(() => {
 
   const notificationsFormated = userStore.notifications.map(
     (notification, index) => {
-      console.log('notification', notification);
+      console.log("notification", notification);
       return (
         <Notification
           key={`notification${index}`}

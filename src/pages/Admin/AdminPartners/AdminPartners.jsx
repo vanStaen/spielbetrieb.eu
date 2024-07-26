@@ -72,7 +72,6 @@ export const AdminPartners = () => {
     fetchAllPartners();
   };
 
-
   const columns = [
     /* {
       title: "id",
@@ -200,7 +199,6 @@ export const AdminPartners = () => {
       ),
     },
 
-
     {
       title: "Archived",
       dataIndex: "archived",
@@ -213,7 +211,11 @@ export const AdminPartners = () => {
             style={{ cursor: "pointer" }}
             onDoubleClick={() => toogleArchivedPartner(id, !archived)}
           >
-            {archived ? "☠️" : <span style={{ filter: "grayscale(1)", opacity: 0.25 }}>☠️</span>}
+            {archived ? (
+              "☠️"
+            ) : (
+              <span style={{ filter: "grayscale(1)", opacity: 0.25 }}>☠️</span>
+            )}
           </div>
         </Tooltip>
       ),

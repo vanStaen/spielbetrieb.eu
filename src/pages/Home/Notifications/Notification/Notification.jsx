@@ -63,7 +63,7 @@ export const Notification = observer((props) => {
   );
 
   const getPicture = async () => {
-    const bucket = type === 92 ? 'temp' : 'users';
+    const bucket = type === 92 ? "temp" : "users";
     const pictureUrl = await getPictureUrl(mediaUrl, bucket);
     setPicture(pictureUrl);
     const isloaded = new Promise((resolve, reject) => {

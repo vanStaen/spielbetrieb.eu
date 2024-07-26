@@ -137,7 +137,7 @@ export const notificationService = {
           type: notificationType,
           data: integerData,
           actionData: stringData,
-          mediaUrl: mediaUrl,
+          mediaUrl,
         });
         await newNotification.save();
       }

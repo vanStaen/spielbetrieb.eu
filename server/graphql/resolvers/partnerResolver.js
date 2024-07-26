@@ -148,7 +148,10 @@ export const partnerResolver = {
           plain: true,
         },
       );
-      notificationService.deleteNotificationForAdmin(92, parseInt(args.partnerId));
+      notificationService.deleteNotificationForAdmin(
+        92,
+        parseInt(args.partnerId),
+      );
       return updatedPartner[1];
     } catch (err) {
       console.log(err);
@@ -178,7 +181,6 @@ export const partnerResolver = {
       console.log(err);
     }
   },
-
 
   // updatePartnerAsAdmin(partnerId: ID!, partnerInput: PartnerInputDataAdmin!): Partner!
   async updatePartnerAsAdmin(args, req) {
@@ -243,16 +245,18 @@ export const partnerResolver = {
       where: { id: args.partnerId },
     });
     try {
-      const bucket = foundPartner.pending ? 'temp' : 'partners'
+      const bucket = foundPartner.pending ? "temp" : "partners";
       await deleteFileFromS3(foundPartner.avatar, bucket);
       await Partner.destroy({
         where: {
           id: args.partnerId,
         },
       });
-      notificationService.deleteNotificationForAdmin(92, parseInt(args.partnerId));
-    }
-    catch (e) {
+      notificationService.deleteNotificationForAdmin(
+        92,
+        parseInt(args.partnerId),
+      );
+    } catch (e) {
       console.error(e);
     }
     return true;

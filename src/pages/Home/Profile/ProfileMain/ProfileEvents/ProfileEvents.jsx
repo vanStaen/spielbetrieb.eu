@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 
@@ -13,17 +13,24 @@ import { nameParser } from "../../../../../helpers/dev/nameParser";
 
 import "./ProfileEvents.less";
 
+// TODO: translation
+
 export const ProfileEvents = observer((props) => {
   const { t } = useTranslation();
   const { thisIsMine, isPartner } = props;
   const events = isPartner ? partnerStore.events : profileStore.events;
+  const [showEventCount, setShowEventsCount] = useState(3);
 
-  const eventCards = events?.map((event) => {
+  const eventCards = events?.map((event, index) => {
     if (
       !thisIsMine &&
       !userStore.isAdmin &&
       (event.isPrivate || !event.validated)
     ) {
+      return null;
+    }
+
+    if (index >= showEventCount) {
       return null;
     }
 
@@ -73,11 +80,27 @@ export const ProfileEvents = observer((props) => {
         addEvent={true}
         thisIsMine={thisIsMine}
       />
-      <div className="profileDescription__main">
+      <div className="profileEvents__main">
         {events?.length ? (
-          eventCardsCleaned
+          <>
+            <div>{eventCardsCleaned}</div>
+            <div className="profileEvents__showMore">
+              {events.length >= showEventCount && (
+                <span className="profileEvents__showMoreAction"
+                  onClick={() => setShowEventsCount(showEventCount + 3)}>
+                  [{t("profile.showMoreEvent")}]
+                </span>
+              )}
+              {events.length >= showEventCount && (
+                <span className="profileEvents__showMoreAction"
+                  onClick={() => setShowEventsCount(events.length)}>
+                  [{t("profile.showAllEvent")}]
+                </span>
+              )}
+            </div>
+          </>
         ) : (
-          <div className="profileDescription__empty">
+          <div className="profileEvents__empty">
             {t("profile.nothingYet")}
           </div>
         )}

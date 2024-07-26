@@ -3,7 +3,25 @@
     color: rgba(var(--themeFontColor), 1);
     margin-bottom: 16px;
 
-    .profileDescription__main {
+    .profileEvents__main {
+
+        .profileEvents__showMore {
+            text-align: center;
+            padding-top: 12px;
+            font-size: 12px;
+            color: rgba(var(--themeBlackOrWhiteColor), 1);
+
+            .profileEvents__showMoreAction {
+                padding: 0 8px;
+                opacity: .5;
+                cursor: pointer;
+
+                &:hover {
+                    opacity: .75;
+                    text-decoration: underline;
+                }
+            }
+        }
 
         .profileDescription__empty {
             font-style: italic;
