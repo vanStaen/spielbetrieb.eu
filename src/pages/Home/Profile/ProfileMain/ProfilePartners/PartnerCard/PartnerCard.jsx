@@ -11,6 +11,7 @@ import { profileStore } from "../../../../../../store/profileStore/profileStore"
 import { CustomSpinner } from "../../../../../../components/CustomSpinner/CustomSpinner";
 import { getPictureUrl } from "../../../../../../helpers/picture/getPictureUrl";
 import { nameParser } from "../../../../../../helpers/dev/nameParser";
+import { archivePartner } from "../../../../../Admin/AdminPartners/archivePartner";
 
 import "./PartnerCard.less";
 
@@ -88,13 +89,18 @@ export const PartnerCard = observer((props) => {
     return tagsFormatted;
   };
 
-  useEffect(() => {
-    avatar && fetchAvatarUrl();
-  }, [avatar]);
-
   const handlepartnerContainerClick = () => {
     navigate(`/partner/${userName}`, { relative: "path" });
   };
+
+  const handleArchivepartner = async () => {
+    await archivePartner(id, true);
+    profileStore.fetchProfilePartners();
+  };
+
+  useEffect(() => {
+    avatar && fetchAvatarUrl();
+  }, [avatar]);
 
   return (
     <div
@@ -107,7 +113,7 @@ export const PartnerCard = observer((props) => {
     >
       {avatarUrl ? (
         <div className="partner__artwork">
-          <img src={avatarUrl} />
+          <img src={avatarUrl} style={{ objectFit: "cover" }} />
         </div>
       ) : (
         <div className="partner__artworkLoading">
@@ -138,7 +144,7 @@ export const PartnerCard = observer((props) => {
               <Popconfirm
                 title={`Archive this partner?`}
                 style={{ marginRight: 8 }}
-              // TODO1: onConfirm={handleArchivepartner}
+                onConfirm={handleArchivepartner}
               >
                 <DeleteOutlined className="partner__deleteLogo" />
               </Popconfirm>

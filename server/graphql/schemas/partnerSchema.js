@@ -66,5 +66,6 @@ export const PartnerMutations = `
     updatePartner(partnerId: ID!, partnerInput: PartnerInputData!): Partner!
     updatePartnerAsAdmin(partnerId: ID!, partnerInput: PartnerInputDataAdmin!): Partner!
     updatePendingPartner(partnerId: ID!): Partner!
+    archivePartner(partnerId: ID!, archived: Boolean): Boolean!
     deletePartnerAsAdmin(partnerId: ID!): Boolean!
 `;

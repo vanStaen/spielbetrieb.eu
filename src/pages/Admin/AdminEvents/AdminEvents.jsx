@@ -287,7 +287,7 @@ export const AdminEvents = () => {
       },
     },
     {
-      title: ' ',
+      title: " ",
       dataIndex: "action",
       align: "center",
       width: "100px",

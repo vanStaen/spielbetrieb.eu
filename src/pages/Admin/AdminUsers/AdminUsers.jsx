@@ -192,7 +192,7 @@ export const AdminUsers = () => {
       },
     },
     {
-      title: ' ',
+      title: " ",
       dataIndex: "edit",
       align: "center",
       width: "80px",

@@ -12,6 +12,7 @@ import { getPictureUrl } from "../../../helpers/picture/getPictureUrl";
 import { pageStore } from "../../../store/pageStore/pageStore";
 import { nameParser } from "../../../helpers/dev/nameParser";
 import { getUserNames } from "../AdminEvents/getUserNames";
+import { archivePartner } from "./archivePartner";
 
 export const AdminPartners = () => {
   const [partners, setPartners] = useState([]);
@@ -65,6 +66,12 @@ export const AdminPartners = () => {
     await updatePartnerAsAdmin(parseInt(id), { suspended });
     fetchAllPartners();
   };
+
+  const toogleArchivedPartner = async (id, archived) => {
+    await archivePartner(parseInt(id), archived);
+    fetchAllPartners();
+  };
+
 
   const columns = [
     /* {
@@ -192,6 +199,26 @@ export const AdminPartners = () => {
         </Tooltip>
       ),
     },
+
+
+    {
+      title: "Archived",
+      dataIndex: "archived",
+      key: "archived",
+      align: "center",
+      width: "90px",
+      render: (_, { archived, id }) => (
+        <Tooltip title="Double click to toggle this value">
+          <div
+            style={{ cursor: "pointer" }}
+            onDoubleClick={() => toogleArchivedPartner(id, !archived)}
+          >
+            {archived ? "☠️" : <span style={{ filter: "grayscale(1)", opacity: 0.25 }}>☠️</span>}
+          </div>
+        </Tooltip>
+      ),
+    },
+
     {
       title: "Validated",
       dataIndex: "pending",
@@ -208,11 +235,11 @@ export const AdminPartners = () => {
             </div>
           </Tooltip>
         ) : (
-          <span style={{ filter: "grayscale(1)", opacity: 0.5 }}>✅</span>
+          <span style={{ filter: "grayscale(1)", opacity: 0.25 }}>✅</span>
         ),
     },
     {
-      title: ' ',
+      title: " ",
       dataIndex: "edit",
       width: "90px",
       align: "center",

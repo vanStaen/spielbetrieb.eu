@@ -147,11 +147,37 @@ export const partnerResolver = {
           plain: true,
         },
       );
+      notificationService.deleteNotificationForAdmin(92, parseInt(args.partnerId));
       return updatedPartner[1];
     } catch (err) {
       console.log(err);
     }
   },
+
+  // archivePartner(partnerId: ID!): Boolean!
+  async archivePartner(args, req) {
+    if (!req.isAuth) {
+      throw new Error("Unauthorized!");
+    }
+    try {
+      await Partner.update(
+        {
+          archived: args.archived,
+        },
+        {
+          where: {
+            id: args.partnerId,
+          },
+          returning: true,
+          plain: true,
+        },
+      );
+      return true;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
 
   // updatePartnerAsAdmin(partnerId: ID!, partnerInput: PartnerInputDataAdmin!): Partner!
   async updatePartnerAsAdmin(args, req) {
@@ -195,13 +221,6 @@ export const partnerResolver = {
       });
       // updatedPartner[0]: number or row udpated
       // updatedPartner[1]: rows updated
-      if (
-        updatedPartner[1]._previousDataValues.pending === true &&
-        updatedPartner[1].dataValues.pending === false
-      ) {
-        const partnerId = updatedPartner[1].dataValues.id;
-        notificationService.deleteNotificationForAdmin(92, partnerId);
-      }
       return updatedPartner[1];
     } catch (err) {
       console.log(err);
@@ -224,7 +243,17 @@ export const partnerResolver = {
         id: args.partnerId,
       },
     });
-    notificationService.deleteNotificationForAdmin(92, args.partnerId);
+    const foundPartner = await Partner.findOne({
+      where: { id: args.partnerId },
+    });
+    try {
+      const bucket = foundPartner.pending ? 'temp' : 'partners'
+      await deleteFileFromS3(foundPartner.avatar, bucket);
+      notificationService.deleteNotificationForAdmin(92, parseInt(args.partnerId));
+    }
+    catch (e) {
+      console.error(e);
+    }
     return true;
   },
 };

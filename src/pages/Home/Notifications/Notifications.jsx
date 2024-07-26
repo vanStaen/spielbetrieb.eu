@@ -26,7 +26,6 @@ export const Notifications = observer(() => {
     userStore.fetchUserData(false);
   }, []);
 
-
   // TODO1: Create a 'mark all as seen button in UI'
   const markedAllAsSeen = async () => {
     await postAllNotificationSeen();
@@ -35,6 +34,7 @@ export const Notifications = observer(() => {
 
   const notificationsFormated = userStore.notifications.map(
     (notification, index) => {
+      console.log('notification', notification);
       return (
         <Notification
           key={`notification${index}`}
@@ -63,10 +63,11 @@ export const Notifications = observer(() => {
         </div>
       ) : (
         <>
-          {!!pageStore.unseenNotificationsCount &&
-            (<Button onClick={markedAllAsSeen} >
-              {t('notification.markAllSeen')}
-            </Button>)}
+          {!!pageStore.unseenNotificationsCount && (
+            <Button onClick={markedAllAsSeen}>
+              {t("notification.markAllSeen")}
+            </Button>
+          )}
           {notificationsFormated}
         </>
       )}
