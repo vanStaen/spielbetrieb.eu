@@ -86,23 +86,25 @@ export const ProfileEvents = observer((props) => {
             <div>{eventCardsCleaned}</div>
             <div className="profileEvents__showMore">
               {events.length >= showEventCount && (
-                <span className="profileEvents__showMoreAction"
-                  onClick={() => setShowEventsCount(showEventCount + 3)}>
+                <span
+                  className="profileEvents__showMoreAction"
+                  onClick={() => setShowEventsCount(showEventCount + 3)}
+                >
                   [{t("profile.showMoreEvent")}]
                 </span>
               )}
               {events.length >= showEventCount && (
-                <span className="profileEvents__showMoreAction"
-                  onClick={() => setShowEventsCount(events.length)}>
+                <span
+                  className="profileEvents__showMoreAction"
+                  onClick={() => setShowEventsCount(events.length)}
+                >
                   [{t("profile.showAllEvent")}]
                 </span>
               )}
             </div>
           </>
         ) : (
-          <div className="profileEvents__empty">
-            {t("profile.nothingYet")}
-          </div>
+          <div className="profileEvents__empty">{t("profile.nothingYet")}</div>
         )}
       </div>
     </div>
