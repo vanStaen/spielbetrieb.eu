@@ -47,7 +47,7 @@ export const Menu = observer(() => {
         await isloaded;
         setAvatarIsLoading(false);
         setAvatarPic(url);
-        if (bucket === 'users') {
+        if (bucket === "users") {
           setUserAvatarPic(url);
         }
       }
@@ -72,10 +72,10 @@ export const Menu = observer(() => {
   useEffect(() => {
     setAvatarPic(null);
     if (userStore.partnerSelected) {
-      const bucket = userStore.partnerSelected.pending ? 'temp' : 'partners';
+      const bucket = userStore.partnerSelected.pending ? "temp" : "partners";
       getAvatarUrl(userStore.partnerSelected.avatar, bucket);
     } else {
-      getAvatarUrl(userStore.avatar, 'users');
+      getAvatarUrl(userStore.avatar, "users");
     }
   }, [userStore.avatar, userStore.partnerSelected]);
 
@@ -183,13 +183,10 @@ export const Menu = observer(() => {
       onClick={() => switchAccountHandler(null)}
       key={`partnerMenuElementUser`}
     >
-      <img
-        src={userAvatarPic}
-        className="menu__elementPartnerImg"
-      />
+      <img src={userAvatarPic} className="menu__elementPartnerImg" />
       <span className="menu__elementPartnerText">{userStore.userName}</span>
     </div>
-  )
+  );
 
   return (
     <>
@@ -202,10 +199,12 @@ export const Menu = observer(() => {
           <Avatar
             shape="square"
             src={
-              !avatarIsLoading ? avatarPic ? (
-                <img src={avatarPic} />
-              ) : (
-                <UserOutlined className="menu__icon" />
+              !avatarIsLoading ? (
+                avatarPic ? (
+                  <img src={avatarPic} />
+                ) : (
+                  <UserOutlined className="menu__icon" />
+                )
               ) : null
             }
             icon={
