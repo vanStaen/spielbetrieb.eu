@@ -33,6 +33,9 @@ export const Menu = observer(() => {
   const [avatarIsLoading, setAvatarIsLoading] = useState(false);
   const [partnersAvatarUPics, setPartnersAvatarPics] = useState([]);
 
+
+  // TODO1: settings and notifications for partner as user
+
   const getAvatarUrl = async (path, bucket) => {
     try {
       if (path) {
