@@ -33,7 +33,6 @@ export const Menu = observer(() => {
   const [avatarIsLoading, setAvatarIsLoading] = useState(false);
   const [partnersAvatarUPics, setPartnersAvatarPics] = useState([]);
 
-
   // TODO1: settings and notifications for partner as user
 
   const getAvatarUrl = async (path, bucket) => {
@@ -270,8 +269,8 @@ export const Menu = observer(() => {
             {userStore.partners?.length && (
               <>
                 <div className="menu__whiteline"></div>
-                {partnerMenuElements()}
                 {userStore.partnerSelected && userMenuElement}
+                {partnerMenuElements()}
               </>
             )}
 
