@@ -22,16 +22,22 @@ import { ConditionalWrapper } from "../../helpers/dev/ConditionalWrapper";
 
 import "./Menu.less";
 
+// TODO: translation
+
 export const Menu = observer(() => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [showOpenLock, setShowOpenLock] = useState(false);
   const [avatarPic, setAvatarPic] = useState(null);
+  const [userAvatarPic, setUserAvatarPic] = useState(null);
+  const [avatarIsLoading, setAvatarIsLoading] = useState(false);
+  const [partnersAvatarUPics, setPartnersAvatarPics] = useState([]);
 
-  const getAvatarUrl = async (path) => {
+  const getAvatarUrl = async (path, bucket) => {
     try {
       if (path) {
-        const url = await getPictureUrl(path, "users");
+        setAvatarIsLoading(true);
+        const url = await getPictureUrl(path, bucket);
         const isloaded = new Promise((resolve, reject) => {
           const loadImg = new Image();
           loadImg.src = url;
@@ -39,16 +45,47 @@ export const Menu = observer(() => {
           loadImg.onerror = (err) => reject(err);
         });
         await isloaded;
+        setAvatarIsLoading(false);
         setAvatarPic(url);
+        if (bucket === 'users') {
+          setUserAvatarPic(url);
+        }
       }
     } catch (e) {
       console.error(e);
     }
   };
 
+  const getPartnersAvatarUrls = async () => {
+    const urls = await Promise.all(
+      userStore.partners.map((partner) => {
+        if (!partner.avatar) {
+          return null;
+        }
+        const bucket = partner.pending ? "temp" : "partners";
+        return getPictureUrl(`${partner.avatar}_t`, bucket);
+      }),
+    );
+    setPartnersAvatarPics(urls);
+  };
+
   useEffect(() => {
-    getAvatarUrl(userStore.avatar);
-  }, [userStore.avatar]);
+    setAvatarPic(null);
+    if (userStore.partnerSelected) {
+      const bucket = userStore.partnerSelected.pending ? 'temp' : 'partners';
+      getAvatarUrl(userStore.partnerSelected.avatar, bucket);
+    } else {
+      getAvatarUrl(userStore.avatar, 'users');
+    }
+  }, [userStore.avatar, userStore.partnerSelected]);
+
+  useEffect(() => {
+    userStore.fetchUserPartners();
+  }, [userStore.id]);
+
+  useEffect(() => {
+    userStore.partners?.length && getPartnersAvatarUrls();
+  }, [userStore.partners]);
 
   useEffect(() => {
     if (pageStore.showMenu) {
@@ -102,6 +139,12 @@ export const Menu = observer(() => {
     navigate("/profile");
   };
 
+  const switchAccountHandler = (partner) => {
+    userStore.setIsLoading(true);
+    userStore.setPartnerSelected(partner);
+    navigate("/profile");
+  };
+
   const settingsClickHandler = () => {
     userStore.setIsLoading(true);
     handleHideMenu();
@@ -113,7 +156,40 @@ export const Menu = observer(() => {
     navigate("/notifications");
   };
 
-  // TODO: like insta with multi, can switch from user to partner account
+  const partnerMenuElements = () => {
+    return userStore.partners.map((partner, index) => {
+      if (userStore.partnerSelected === partner) {
+        return null;
+      }
+      return (
+        <div
+          className="link menu__element menu__elementPartner"
+          onClick={() => switchAccountHandler(partner)}
+          key={`partnerMenuElement${index}`}
+        >
+          <img
+            src={partnersAvatarUPics[index]}
+            className="menu__elementPartnerImg"
+          />
+          <span className="menu__elementPartnerText">{partner.name}</span>
+        </div>
+      );
+    });
+  };
+
+  const userMenuElement = (
+    <div
+      className="link menu__element menu__elementPartner"
+      onClick={() => switchAccountHandler(null)}
+      key={`partnerMenuElementUser`}
+    >
+      <img
+        src={userAvatarPic}
+        className="menu__elementPartnerImg"
+      />
+      <span className="menu__elementPartnerText">{userStore.userName}</span>
+    </div>
+  )
 
   return (
     <>
@@ -126,14 +202,14 @@ export const Menu = observer(() => {
           <Avatar
             shape="square"
             src={
-              avatarPic ? (
+              !avatarIsLoading ? avatarPic ? (
                 <img src={avatarPic} />
               ) : (
                 <UserOutlined className="menu__icon" />
-              )
+              ) : null
             }
             icon={
-              userStore.isLoading && (
+              (userStore.isLoading || avatarIsLoading) && (
                 <Spin className="menu__spinner" indicator={spinIcon} />
               )
             }
@@ -187,6 +263,16 @@ export const Menu = observer(() => {
               </ConditionalWrapper>
               &nbsp; Notifications
             </div>
+
+            {/* Partner management */}
+            {userStore.partners?.length && (
+              <>
+                <div className="menu__whiteline"></div>
+                {partnerMenuElements()}
+                {userStore.partnerSelected && userMenuElement}
+              </>
+            )}
+
             <div className="menu__whiteline"></div>
             <div key="addtohomescreen">
               <AddToHomeScreen />

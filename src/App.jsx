@@ -99,7 +99,7 @@ const App = observer(() => {
             <Route path="dark/" element={<Home page="dark" />} />
             <Route path="dark/:issue" element={<DarkSingle />} />
             <Route path="partner/:username" element={<Home page="partner" />} />
-            <Route path="user/:username" element={<Home page="profile" />} />
+            <Route path="user/:username" element={<Home page="user" />} />
             <Route path="profile/" element={<Home page="profile" />} />
             <Route path="settings/" element={<Home page="settings" />} />
             <Route path="shop/" element={<Home page="shop" />} />

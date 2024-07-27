@@ -3,13 +3,14 @@ import { action, makeObservable, observable } from "mobx";
 import { pageStore } from "../pageStore/pageStore.js";
 import { getUserInfo } from "./getUserInfo.js";
 import { updateSettings } from "./updateSettings.js";
+import { getProfilePartners } from "../profileStore/getProfilePartners.js";
 import defaultEmailSettings from "./defaultEmailSettings.json";
 import defaultProfilSettings from "./defaultProfilSettings.json";
 
 export class UserStore {
   isLoading = false;
   isAdmin = false;
-  isPartner = false;
+  partnerSelected = null;
   error = null;
   adminRoles = [];
   email = null;
@@ -36,6 +37,7 @@ export class UserStore {
   notifications = [];
   visitors = [];
   id = null;
+  partners = [];
 
   constructor() {
     makeObservable(this, {
@@ -43,8 +45,8 @@ export class UserStore {
       setIsLoading: action,
       isAdmin: observable,
       setIsAdmin: action,
-      isPartner: observable,
-      setIsPartner: action,
+      partnerSelected: observable,
+      setPartnerSelected: action,
       adminRoles: observable,
       setAdminRoles: action,
       email: observable,
@@ -97,6 +99,8 @@ export class UserStore {
       setid: action,
       error: observable,
       setError: action,
+      partners: observable,
+      setPartners: action,
     });
   }
 
@@ -116,8 +120,8 @@ export class UserStore {
     this.isAdmin = isAdmin;
   };
 
-  setIsPartner = (isPartner) => {
-    this.isPartner = isPartner;
+  setPartnerSelected = (partnerSelected) => {
+    this.partnerSelected = partnerSelected;
   };
 
   setAdminRoles = (adminRoles) => {
@@ -220,6 +224,10 @@ export class UserStore {
     this.messages = messages;
   };
 
+  setPartners = (partners) => {
+    this.partners = partners;
+  };
+
   fetchUserData = async (loader = true) => {
     if (loader) {
       this.setIsLoading(true);
@@ -278,6 +286,11 @@ export class UserStore {
       this.setError(error);
       console.log("userStore: error", error);
     }
+  };
+
+  fetchUserPartners = async () => {
+    const partners = await getProfilePartners(this.id);
+    this.setPartners(partners);
   };
 }
 

@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
 import { Tag, Popconfirm } from "antd";
 import { useTranslation } from "react-i18next";
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { DeleteOutlined } from "@ant-design/icons";
 
 import { pageStore } from "../../../../../../store/pageStore/pageStore";
 import { userStore } from "../../../../../../store/userStore/userStore";

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 import { Tag } from "antd";

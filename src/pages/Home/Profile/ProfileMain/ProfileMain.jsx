@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { observer } from "mobx-react";
 
 import { ProfileEvents } from "./ProfileEvents/ProfileEvents";
@@ -33,7 +33,7 @@ export const ProfileMain = observer((props) => {
     }
   };
 
-  const [numberOfTags, setNumberOfTags] = useState(calcNumberOfTags());
+  const numberOfTags = calcNumberOfTags();
 
   return isPartner ? (
     <div className="profil__mainContainer">

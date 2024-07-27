@@ -32,12 +32,18 @@ export const ProfilePartner = observer(() => {
       }
     }
   };
+
   useEffect(() => {
-    const username = params.username.toLowerCase();
-    !username && redirectIfNotLoggedIn();
+    let username;
+    if (params.username) {
+      username = params.username.toLowerCase();
+    } else if (userStore.partnerSelected) {
+      username = userStore.partnerSelected.userName.toLowerCase();
+    }
     username && partnerStore.fetchPartnerData(username, true);
     // TODO1 : Partner doesnt exist
-  }, []);
+    // TODO1 : Partner can decide if profile can be seen by loggedout users
+  }, [params.username, userStore.partnerSelected]);
 
   const thisIsMine = partnerStore.admin.includes(userStore.id);
 
