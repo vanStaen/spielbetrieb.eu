@@ -57,7 +57,7 @@ export const ProfilePartner = observer(() => {
       {partnerStore.suspended ? (
         <Banner
           title="This profile is suspended"
-          desc="This partner account is suspended. Other won't be able to see your profile anymore. Please contact us to resove this issue."
+          desc="This partner account is suspended. This profile can't be accessed anymore.. Please contact us to resove this issue."
           id={"suspendedPartnerBanner"}
           color="red"
         />
@@ -65,7 +65,7 @@ export const ProfilePartner = observer(() => {
         partnerStore.pending && (
           <Banner
             title="This profile is pending validation"
-            desc="This partner account is being reviewed by our team. We will either validate it and/or contact you ASAP."
+            desc="This partner account is being reviewed by our team."
             id={"pendingPartnerBanner"}
             color="lightRed"
           />
@@ -74,11 +74,19 @@ export const ProfilePartner = observer(() => {
       <div className="profil__main">
         {partnerStore.error || userStore.error ? (
           <div className="profil__spinner">
-            <CustomError text={t("main.pleaseReload")} sizw="large" />
+            <CustomError text={t("main.pleaseReload")} size="large" />
           </div>
         ) : partnerStore.isLoading ? (
           <div className="profil__spinner">
             <CustomSpinner text={`${t("general.loading")} (Partner profile)`} />
+          </div>
+        ) : partnerStore.suspended && !thisIsMine ? (
+          <div className="profil__spinner">
+            <CustomError text={t("main.partnerSuspended")} size="large" />
+          </div>
+        ) : partnerStore.pending && !thisIsMine ? (
+          <div className="profil__spinner">
+            <CustomError text={t("main.partnerPending")} size="large" />
           </div>
         ) : (
           <>

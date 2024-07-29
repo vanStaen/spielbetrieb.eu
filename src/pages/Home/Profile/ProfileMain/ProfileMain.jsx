@@ -35,9 +35,13 @@ export const ProfileMain = observer((props) => {
 
   const calcNumberOfEvents = () => {
     if (thisIsMine) {
-      return isPartner ? partnerStore.events?.length : profileStore.events?.length;
+      return isPartner
+        ? partnerStore.events?.length
+        : profileStore.events?.length;
     } else {
-      const eventsToVerify = isPartner ? partnerStore.events : profileStore.events;
+      const eventsToVerify = isPartner
+        ? partnerStore.events
+        : profileStore.events;
       return eventsToVerify.filter((events) => events.validated)?.length;
     }
   };
@@ -48,7 +52,9 @@ export const ProfileMain = observer((props) => {
     } else if (thisIsMine && !isPartner) {
       return profileStore.partners?.length;
     } else {
-      return profileStore.partners?.filter((partner) => partner.pending === false)?.length;
+      return profileStore.partners?.filter(
+        (partner) => partner.pending === false,
+      )?.length;
     }
   };
 
@@ -66,7 +72,11 @@ export const ProfileMain = observer((props) => {
         <ProfilePhotos isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
       {(numberOfEvents || thisIsMine) && (
-        <ProfileEvents isPartner={isPartner} thisIsMine={thisIsMine} numberOfEvents={numberOfEvents} />
+        <ProfileEvents
+          isPartner={isPartner}
+          thisIsMine={thisIsMine}
+          numberOfEvents={numberOfEvents}
+        />
       )}
       {(numberOfTags || thisIsMine) && (
         <ProfileTags
@@ -97,7 +107,11 @@ export const ProfileMain = observer((props) => {
         <ProfilePhotos isPartner={isPartner} thisIsMine={thisIsMine} />
       )}
       {(numberOfEvents || thisIsMine) && (
-        <ProfileEvents isPartner={isPartner} thisIsMine={thisIsMine} numberOfEvents={numberOfEvents} />
+        <ProfileEvents
+          isPartner={isPartner}
+          thisIsMine={thisIsMine}
+          numberOfEvents={numberOfEvents}
+        />
       )}
       {(numberOfTags || thisIsMine) && (
         <ProfileTags
@@ -107,7 +121,11 @@ export const ProfileMain = observer((props) => {
         />
       )}
       {(numberOfPartners || thisIsMine) && (
-        <ProfilePartners isPartner={isPartner} thisIsMine={thisIsMine} numberOfPartners={numberOfPartners} />
+        <ProfilePartners
+          isPartner={isPartner}
+          thisIsMine={thisIsMine}
+          numberOfPartners={numberOfPartners}
+        />
       )}
       {(profileStore.links?.length || thisIsMine) && (
         <ProfileLinks isPartner={isPartner} thisIsMine={thisIsMine} />

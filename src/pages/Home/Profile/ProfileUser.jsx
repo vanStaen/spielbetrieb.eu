@@ -50,27 +50,29 @@ export const ProfileUser = observer(() => {
 
   return (
     <>
+      {profileStore.suspended && (
+        <Banner
+          title="This profile is suspended"
+          desc="This account is suspended. This profile can't be accessed anymore. Please contact us to resove this issue."
+          id={"suspendedProfileBanner"}
+          color="red"
+        />
+      )}
       <div className="profil__main">
         {profileStore.error || userStore.error ? (
           <div className="profil__spinner">
-            <CustomError text={t("main.pleaseReload")} sizw="large" />
+            <CustomError text={t("main.pleaseReload")} size="large" />
           </div>
         ) : profileStore.isLoading ? (
           <div className="profil__spinner">
             <CustomSpinner text={`${t("general.loading")} (User profile)`} />
           </div>
-        ) : (profileStore.suspended && !thisIsMine) ? <div className="profil__spinner">
-          <CustomError text={t("main.profileSuspended")} sizw="large" />
-        </div> : (
+        ) : profileStore.suspended && !thisIsMine ? (
+          <div className="profil__spinner">
+            <CustomError text={t("main.profileSuspended")} size="large" />
+          </div>
+        ) : (
           <>
-            {profileStore.suspended && (
-              <Banner
-                title="This profile is suspended"
-                desc="This account is suspended. Other won't be able to see your profile anymore. Please contact us to resove this issue."
-                id={"suspendedProfileBanner"}
-                color="red"
-              />
-            )}
             <div className="profil__containerLeft">
               <Avatar thisIsMine={thisIsMine} isPartner={false} />
               <ProfileDetails isPartner={false} />
