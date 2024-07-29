@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from "mobx-react";
 import { useTranslation } from "react-i18next";
 
-import { profileStore } from "../../../../../store/profileStore/profileStore";
+import { partnerStore } from "../../../../../store/partnerStore/partnerStore";
 import { ProfileMainTitle } from "../profileComponents/ProfileMainTitle/ProfileMainTitle";
 
 import "./ProfileReviews.less";
@@ -15,12 +15,12 @@ export const ProfileReviews = observer((props) => {
     <div className="profileReviews__container">
       <ProfileMainTitle
         title={t("profile.reviews")}
-        value={profileStore.reviews?.length}
+        value={partnerStore.reviews?.length}
         editable={false}
         thisIsMine={thisIsMine}
       />
       <div className="profileReviews__main">
-        {!profileStore.reviews && (
+        {!partnerStore.reviews?.length && (
           <div className="profileReviews__empty">{t("profile.nothingYet")}</div>
         )}
       </div>

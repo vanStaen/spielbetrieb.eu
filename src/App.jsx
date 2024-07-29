@@ -133,7 +133,7 @@ const App = observer(() => {
               element={<TicketValidation />}
             />
             <Route path="beta/" element={<Home page="home" />} />
-            <Route path="/" element={<LandingPage />} />
+            <Route path="/" element={<Home page="spielplan" />} />
             <Route path="*" element={<FourOfour />} />
           </Routes>
         </div>
