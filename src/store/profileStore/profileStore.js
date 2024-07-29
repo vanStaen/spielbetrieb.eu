@@ -32,6 +32,7 @@ export class ProfileStore {
   links = [];
   description = null;
   partners = [];
+  suspended = null;
 
   constructor() {
     makeObservable(this, {
@@ -62,6 +63,7 @@ export class ProfileStore {
       description: observable,
       links: observable,
       partners: observable,
+      suspended: observable,
       setPartners: action,
       setIsLoading: action,
       setError: action,
@@ -91,6 +93,7 @@ export class ProfileStore {
       setWishes: action,
       setDescription: action,
       setLinks: action,
+      setSuspended: action,
     });
   }
 
@@ -202,6 +205,10 @@ export class ProfileStore {
     this.partners = partners;
   };
 
+  setSuspended = (suspended) => {
+    this.suspended = suspended;
+  };
+
   fetchProfileData = async (userName, loader = true) => {
     try {
       if (loader) {
@@ -233,6 +240,7 @@ export class ProfileStore {
           this.setWishes(profileData.wishes);
           this.setDescription(profileData.description);
           this.setLinks(profileData.links);
+          this.setSuspended(profileData.suspended);
           const [events, partners] = await Promise.all([
             getProfileEvents(profileData.id),
             getProfilePartners(profileData.id),

@@ -14,8 +14,11 @@ import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
 import { ProfileFriends } from "./ProfileLeftSide/ProfileFriends/ProfileFriends";
 import { ProfileDetails } from "./ProfileLeftSide/ProfileDetails/ProfileDetails";
 import { ProfileActions } from "./ProfileLeftSide/ProfileActions/ProfileActions";
+import { Banner } from "../../../components/Banner/Banner";
 
 import "./Profile.less";
+
+// TODO : Translation
 
 export const ProfileUser = observer(() => {
   const params = useParams();
@@ -56,8 +59,18 @@ export const ProfileUser = observer(() => {
           <div className="profil__spinner">
             <CustomSpinner text={`${t("general.loading")} (User profile)`} />
           </div>
-        ) : (
+        ) : (profileStore.suspended && !thisIsMine) ? <div className="profil__spinner">
+          <CustomError text={t("main.profileSuspended")} sizw="large" />
+        </div> : (
           <>
+            {profileStore.suspended && (
+              <Banner
+                title="This profile is suspended"
+                desc="This account is suspended. Other won't be able to see your profile anymore. Please contact us to resove this issue."
+                id={"suspendedProfileBanner"}
+                color="red"
+              />
+            )}
             <div className="profil__containerLeft">
               <Avatar thisIsMine={thisIsMine} isPartner={false} />
               <ProfileDetails isPartner={false} />

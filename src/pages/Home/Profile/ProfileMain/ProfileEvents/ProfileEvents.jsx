@@ -17,7 +17,7 @@ import "./ProfileEvents.less";
 
 export const ProfileEvents = observer((props) => {
   const { t } = useTranslation();
-  const { thisIsMine, isPartner } = props;
+  const { thisIsMine, isPartner, numberOfEvents } = props;
   const events = isPartner ? partnerStore.events : profileStore.events;
   const [showEventCount, setShowEventsCount] = useState(3);
 
@@ -76,12 +76,12 @@ export const ProfileEvents = observer((props) => {
     <div className="profileEvents__container">
       <ProfileMainTitle
         title={t("profile.events")}
-        value={events?.length}
+        value={numberOfEvents}
         addEvent={true}
         thisIsMine={thisIsMine}
       />
       <div className="profileEvents__main">
-        {events?.length ? (
+        {numberOfEvents ? (
           <>
             <div>{eventCardsCleaned}</div>
             <div className="profileEvents__showMore">

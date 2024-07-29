@@ -15,7 +15,7 @@ import "./ProfilePartners.less";
 export const ProfilePartners = observer((props) => {
   const [showPartnersModal, setShowPartnersModal] = useState(false);
   const { t } = useTranslation();
-  const { thisIsMine } = props;
+  const { thisIsMine, numberOfPartners } = props;
 
   const partnerCards = profileStore.partners.map((partner) => {
     if (!partner.pending || thisIsMine || userStore.isAdmin) {
@@ -42,9 +42,10 @@ export const ProfilePartners = observer((props) => {
             showEdit={showPartnersModal}
             setShowEdit={setShowPartnersModal}
             thisIsMine={thisIsMine}
+            value={numberOfPartners}
           />
           <div className="profilePartners__main">
-            {profileStore.partners?.length ? (
+            {numberOfPartners ? (
               partnerCardsCleaned
             ) : (
               <div className="profilePartners__empty">

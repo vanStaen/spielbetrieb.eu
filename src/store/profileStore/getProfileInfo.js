@@ -54,6 +54,7 @@ export const getProfileInfo = async (username) => {
                 },
                 lastActive,
                 archived,
+                suspended,
                 usernameChange,
                 comments {
                     id,

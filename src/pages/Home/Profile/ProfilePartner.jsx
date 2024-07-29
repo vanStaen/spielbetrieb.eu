@@ -19,6 +19,7 @@ import { Banner } from "../../../components/Banner/Banner";
 import "./Profile.less";
 
 // TODO2: add a coverphoto (title bild)
+// TODO : Translation
 
 export const ProfilePartner = observer(() => {
   const params = useParams();
