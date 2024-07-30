@@ -84,22 +84,14 @@ export class SpielplanStore {
       fromUnixDateStartOf = this.filterDateFrom.startOf("day").valueOf();
       untilUnixDateEndOf = this.filterDateFrom.endOf("year").valueOf();
     } else if (this.timeSpan === "week") {
-      const firstDayOfWeek = new Intl.Locale(navigator.language).weekInfo
-        .firstDay;
-      console.log("first day of week", firstDayOfWeek);
-      if (firstDayOfWeek === 1) {
-        fromUnixDateStartOf = this.filterDateFrom
-          .startOf("week")
-          .add(1, "day")
-          .valueOf();
-        untilUnixDateEndOf = this.filterDateFrom
-          .endOf("week")
-          .add(1, "day")
-          .valueOf();
-      } else {
-        fromUnixDateStartOf = this.filterDateFrom.startOf("week").valueOf();
-        untilUnixDateEndOf = this.filterDateFrom.endOf("week").valueOf();
-      }
+      fromUnixDateStartOf = this.filterDateFrom
+        .startOf("week")
+        .add(1, "day")
+        .valueOf();
+      untilUnixDateEndOf = this.filterDateFrom
+        .endOf("week")
+        .add(1, "day")
+        .valueOf();
     } else if (this.timeSpan === "day") {
       if (dayjs(spielplanStore.filterDateFrom).valueOf() < dayjs().valueOf()) {
         fromUnixDateStartOf = dayjs().startOf("day").valueOf();
