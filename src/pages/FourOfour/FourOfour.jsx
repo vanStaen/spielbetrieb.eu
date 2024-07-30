@@ -16,7 +16,7 @@ export const FourOfour = () => {
   return (
     <>
       <HelpButtons />
-      <div className="fourofour invertColorTheme">
+      <div className="fourofour">
         <div className="fourofour__overBackground"></div>
         <Link to="../" relative="path">
           <Tooltip title="Back to main page" placement="left">

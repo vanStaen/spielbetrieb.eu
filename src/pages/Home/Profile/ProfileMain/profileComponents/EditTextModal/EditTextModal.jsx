@@ -51,7 +51,7 @@ export const EditTextModal = observer((props) => {
         </div>
       }
       centered={true}
-      className={`form__modal ${pageStore.selectedTheme === "light" ? "modal__backgroundLight" : "modal__backgroundDark"}`}
+      className={`form__modal ${pageStore.selectedTheme === "light" ? "backgroundLight" : "backgroundDark"}`}
     >
       <div className="modal__select">
         <TextArea

@@ -109,7 +109,7 @@ export const Home = observer((props) => {
           color="brown"
         />
       )}
-      <div className="background invertColorTheme" id="background"></div>
+      <div className={`backgroundHome ${pageStore.selectedTheme == 'dark' ? 'backgroundDark' : 'backgroundLight'}`} ></div >
       <div className="home__container">
         <div
           className="home__subContainer"

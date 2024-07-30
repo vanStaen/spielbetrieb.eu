@@ -8,7 +8,7 @@ export const Legal = observer((props) => {
 
   return (
     <>
-      <div className="background invertColorTheme" id="background"></div>
+      <div className={`backgroundLegal ${pageStore.selectedTheme == 'dark' ? 'backgroundDark' : 'backgroundLight'}`} ></div >
       <div className="overBackground"></div>
       <div className="legal__container">{page}</div>
     </>

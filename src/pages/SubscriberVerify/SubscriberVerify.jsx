@@ -34,7 +34,7 @@ export const SubscriberVerify = observer(() => {
 
   return (
     <>
-      <div className="background invertColorTheme" id="background"></div>
+      <div className={`backgroundSubscriber ${pageStore.selectedTheme == 'dark' ? 'backgroundDark' : 'backgroundLight'}`} ></div >
       <div className="overBackground"></div>
       <div className="subscriberVerifyEmail__container">
         {isLoading ? (

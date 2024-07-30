@@ -150,7 +150,7 @@ export const EventFormDraftModal = observer((props) => {
         </div>
       }
       centered={true}
-      className={`eventform__draftModal ${pageStore.selectedTheme === "light" ? "draftmodal__backgroundLight" : "draftmodal__backgroundDark"}`}
+      className={`eventform__draftModal ${pageStore.selectedTheme === "light" ? "backgroundLight" : "backgroundDark"}`}
     >
       {isLoading ? (
         <div className="draftmodal__loading">

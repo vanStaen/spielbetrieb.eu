@@ -40,11 +40,11 @@ export const LandingPage = () => {
   return (
     <>
       <div
-        className="landingPage__background invertColorTheme"
+        className="landingPage__background"
         id="background"
       ></div>
       <div className="landingPage__overBackground"></div>
-      <div className="landingPage__doublearrow invertColorTheme" id="arrow">
+      <div className="landingPage__doublearrow" id="arrow">
         <DoubleLeftOutlined
           onClick={arrowClickHandler}
           style={{ cursor: "pointer" }}
@@ -53,7 +53,7 @@ export const LandingPage = () => {
       <div className="landingPage__container">
         <div className="spielbetrieb__container">
           <div
-            className="spielbetrieb__logoAndText invertColorTheme"
+            className="spielbetrieb__logoAndText"
             id="spielbetrieb"
           >
             <img
@@ -114,7 +114,7 @@ export const LandingPage = () => {
             <Phone
               color="white"
               content={
-                <div className="merrier__container invertColorTheme">
+                <div className="merrier__container">
                   <div className="merrier__background"></div>
                   <img src={SpielbetriebLogo} className="merrier__biglogo" />
                   <div className="merrier__title">Merrier</div>
@@ -128,7 +128,7 @@ export const LandingPage = () => {
           <Phone
             color="white"
             content={
-              <div className="merrier__container invertColorTheme">
+              <div className="merrier__container">
                 <div className="merrier__background"></div>
                 <img src={SpielbetriebLogo} className="merrier__biglogo" />
                 <div className="merrier__title">Merrier</div>

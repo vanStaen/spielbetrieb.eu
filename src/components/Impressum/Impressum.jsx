@@ -111,7 +111,7 @@ export const Impressum = observer(() => {
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
-        className={`impressum__modal ${pageStore.selectedTheme === "light" ? "impressum__backgroundLight" : "impressum__backgroundDark"}`}
+        className={`impressum__modal ${pageStore.selectedTheme === "light" ? "backgroundLight" : "backgroundDark"}`}
         footer={null}
         centered={true}
       >

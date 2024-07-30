@@ -21,7 +21,7 @@ export const Newsletter = observer(() => {
         </Link>
       </div>
       <div
-        className="newsletter__background invertColorTheme"
+        className="newsletter__background"
         id="background"
       ></div>
       <div className="newsletter__overBackground"></div>

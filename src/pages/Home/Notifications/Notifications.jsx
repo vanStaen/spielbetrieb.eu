@@ -57,7 +57,7 @@ export const Notifications = observer(() => {
           <img
             src={errorLogo}
             width="50px"
-            className="notification__nothingImg invertColorTheme"
+            className="notification__nothingImg"
           />
           {t("notifications.noNotification")}
         </div>

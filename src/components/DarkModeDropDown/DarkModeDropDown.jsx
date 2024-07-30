@@ -22,10 +22,6 @@ export const DarkModeDropDown = observer(() => {
   const [showThemeMenu, setShowThemeMenu] = useState(false);
 
   useEffect(() => {
-    const selectedClasses = document.getElementsByClassName("invertColorTheme");
-    for (let i = 0, il = selectedClasses.length; i < il; i++) {
-      selectedClasses[i].style.filter = `invert(${theme === "dark" ? 0 : 1})`;
-    }
     if (theme === "dark") {
       document.documentElement.style.setProperty(
         "--themeFontColor",

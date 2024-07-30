@@ -25,7 +25,7 @@ export const ProfileDetailsPartner = observer(() => {
   useEffect(() => {
     setPartnerTypeText(
       nameParser(
-        pageStore.partnertypes.find(
+        pageStore.partnertypes?.find(
           (partnertype) =>
             parseInt(partnertype.id) === partnerStore.partnertypeId,
         )?.name,

@@ -7,8 +7,8 @@ import { observer } from "mobx-react";
 
 import { postEmailVerified } from "./postEmailVerified";
 import { CustomSpinner } from "../../components/CustomSpinner/CustomSpinner";
-import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { pageStore } from "../../store/pageStore/pageStore";
+import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 
 import "./EmailVerified.less";
 
@@ -63,7 +63,7 @@ export const EmailVerified = observer(() => {
 
   return (
     <>
-      <div className="background invertColorTheme" id="background"></div>
+      <div className={`backgroundVerifyEmail ${pageStore.selectedTheme == 'dark' ? 'backgroundDark' : 'backgroundLight'}`} ></div >
       <div className="overBackground"></div>
       <div className="verifyEmail__container">
         {isLoading ? (

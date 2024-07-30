@@ -23,11 +23,11 @@ export const Header = observer((props) => {
         <img
           src={SpielbetriebLogo}
           id="spielbetriebLogo"
-          className="header__logo invertColorTheme"
+          className="header__logo"
         />
       </Link>
       <div
-        className="header__menuMobile invertColorTheme"
+        className="header__menuMobile"
         onClick={() => {
           pageStore.setShowMenuMobile(!pageStore.showMenuMobile);
           pageStore.setShowMenu(false);

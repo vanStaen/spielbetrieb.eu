@@ -161,7 +161,7 @@ export const Admin = observer(() => {
   return (
     <>
       {pageStore.showOverlayGallery && <GalleryOverlay />}
-      <div className="background"></div>
+      <div className="backgroundAdmin"></div>
       <div className="admin__container">
         {!isMobile && (
           <Link to="../" relative="path">

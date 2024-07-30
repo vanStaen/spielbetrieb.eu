@@ -12,7 +12,7 @@ export const EventPageInValidation = observer(() => {
       className={`eventpagevalidated__container ${pageStore.selectedTheme === "light" ? "lightColorTheme__Text" : "darkColorTheme__Text"}`}
     >
       <div className="eventpagevalidated__text">
-        <img src={waitLogo} width="50px" className="logo invertColorTheme" />
+        <img src={waitLogo} width="50px" className="logo" />
         <div className="text">Event pending review</div>
         <div className="subText">
           This will be available after it has been reviewed by our team.

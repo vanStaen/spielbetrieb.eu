@@ -71,7 +71,7 @@ export const EditLinksModal = observer((props) => {
       onCancel={() => setShowLinksModal(false)}
       footer={null}
       centered={true}
-      className={`eventform__modal ${pageStore.selectedTheme === "light" ? "modal__backgroundLight" : "modal__backgroundDark"}`}
+      className={`eventform__modal ${pageStore.selectedTheme === "light" ? "backgroundLight" : "backgroundDark"}`}
     >
       <div className="modal__select">
         <Form

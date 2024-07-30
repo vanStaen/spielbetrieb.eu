@@ -21,7 +21,7 @@ export const LoginPage = () => {
   return (
     <>
       <AlreadyMember showLogin={showLogin} setShowLogin={setShowLogin} />
-      <div className="background invertColorTheme" id="background"></div>
+      <div className={`backgroundLogin ${pageStore.selectedTheme == 'dark' ? 'backgroundDark' : 'backgroundLight'}`} ></div >
       <div className="overBackground"></div>
       {showLogin ? (
         <div className="login__container">

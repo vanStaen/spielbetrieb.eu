@@ -100,7 +100,7 @@ export const ReportBugModal = (props) => {
       open={showReportBugModal}
       onOk={ReportBugClick}
       onCancel={cancelClickHandler}
-      className={`reportbug__modal ${pageStore.selectedTheme === "light" ? "reportbug__backgroundLight" : "reportbug__backgroundDark"}`}
+      className={`reportbug__modal ${pageStore.selectedTheme === "light" ? "backgroundLight" : "backgroundDark"}`}
       centered={true}
       data-html2canvas-ignore={true}
       footer={null}
