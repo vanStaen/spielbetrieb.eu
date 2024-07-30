@@ -10,7 +10,6 @@ import { spielplanStore } from "../../../../../store/spielplanStore/spielplanSto
 import "./TagsFilter.less";
 
 export const TagsFilter = observer(() => {
-
   const tagOptions = () => {
     const tagOptionsRow = spielplanStore.tags.map((tag) => {
       if (!tag.isEventTag) {
@@ -22,8 +21,8 @@ export const TagsFilter = observer(() => {
       };
     });
 
-    return tagOptionsRow.filter(x => x != null);
-  }
+    return tagOptionsRow.filter((x) => x != null);
+  };
 
   const selectChangehandler = (e) => {
     spielplanStore.setFilterTags(e);

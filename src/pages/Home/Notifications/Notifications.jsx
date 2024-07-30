@@ -68,8 +68,9 @@ export const Notifications = observer(() => {
             {!!pageStore.unseenNotificationsCount && (
               <Button
                 type="primary"
-                className={`notification__markAllSeen ${pageStore.selectedTheme === 'dark' ? "darkColorTheme__Button" : "lightColorTheme__Button"}`}
-                onClick={markedAllAsSeen}>
+                className={`notification__markAllSeen ${pageStore.selectedTheme === "dark" ? "darkColorTheme__Button" : "lightColorTheme__Button"}`}
+                onClick={markedAllAsSeen}
+              >
                 {t("notifications.markAllSeen")}
               </Button>
             )}
