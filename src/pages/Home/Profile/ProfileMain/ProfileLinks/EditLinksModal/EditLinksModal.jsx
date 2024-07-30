@@ -66,6 +66,7 @@ export const EditLinksModal = observer((props) => {
 
   return (
     <Modal
+      forceRender
       title={<div className="modal__title">Edit user links</div>}
       open={showLinksModal}
       onCancel={() => setShowLinksModal(false)}
