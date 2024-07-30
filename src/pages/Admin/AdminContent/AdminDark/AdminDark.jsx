@@ -225,7 +225,7 @@ export const AdminDark = () => {
     <div>
       {isLoading ? (
         <div className="admin__centered">
-          <AdminCustomSpinner text="Loading Data" />
+          <AdminCustomSpinner text="Loading Dark-data" />
         </div>
       ) : (
         <>

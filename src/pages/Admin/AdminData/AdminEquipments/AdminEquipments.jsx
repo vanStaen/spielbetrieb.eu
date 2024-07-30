@@ -193,7 +193,7 @@ export const AdminEquipments = () => {
     <div>
       {equipments.length === 0 ? (
         <div className="admin__centered">
-          <AdminCustomSpinner text="Loading Data" />
+          <AdminCustomSpinner text="Loading Equipments" />
         </div>
       ) : (
         <>

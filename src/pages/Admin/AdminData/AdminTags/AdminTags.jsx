@@ -281,10 +281,10 @@ export const AdminTags = () => {
         record,
         inputType:
           col.dataIndex === "validated" ||
-          col.dataIndex === "isPictureTag" ||
-          col.dataIndex === "isEventTag" ||
-          col.dataIndex === "isPartnerTag" ||
-          col.dataIndex === "isUserTag"
+            col.dataIndex === "isPictureTag" ||
+            col.dataIndex === "isEventTag" ||
+            col.dataIndex === "isPartnerTag" ||
+            col.dataIndex === "isUserTag"
             ? "boolean"
             : "text",
         dataIndex: col.dataIndex,
@@ -313,7 +313,7 @@ export const AdminTags = () => {
     <div>
       {tags.length === 0 ? (
         <div className="admin__centered">
-          <AdminCustomSpinner text="Loading Data" />
+          <AdminCustomSpinner text="Loading Tags" />
         </div>
       ) : (
         <>

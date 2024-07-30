@@ -18,12 +18,14 @@ import { pageStore } from "../../../store/pageStore/pageStore";
 export const AdminBugs = () => {
   const [form] = Form.useForm();
   const [bugs, setBugs] = useState([]);
+  const [isLoading, setIsloading] = useState(true);
   const [bugsUrls, setBugsUrls] = useState([]);
   const [editingId, setEditingId] = useState("");
   const [isNewRow, setIsNewRow] = useState(false);
 
   const fetchBugs = async () => {
     const results = await getBugs();
+    setIsloading(false);
     setBugs(results);
   };
 
@@ -227,9 +229,11 @@ export const AdminBugs = () => {
 
   return (
     <div>
-      {bugs.length === 0 ? (
+      {isLoading ? <div className="admin__centered">
+        <AdminCustomSpinner text="Loading Bugs" />
+      </div> : bugs.length === 0 ? (
         <div className="admin__centered">
-          <AdminCustomSpinner text="Loading Data" />
+          <AdminCustomSpinner text="No Bugs" />
         </div>
       ) : (
         <>
@@ -249,6 +253,6 @@ export const AdminBugs = () => {
           </Form>
         </>
       )}
-    </div>
+    </div >
   );
 };

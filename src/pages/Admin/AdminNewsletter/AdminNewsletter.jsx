@@ -81,7 +81,7 @@ export const AdminNewsletter = () => {
     <div>
       {subscribers.length === 0 ? (
         <div className="admin__centered">
-          <AdminCustomSpinner text="Loading subscribers" />
+          <AdminCustomSpinner text="Loading Subscribers" />
         </div>
       ) : (
         <Table

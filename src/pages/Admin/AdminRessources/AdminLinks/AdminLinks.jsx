@@ -232,7 +232,7 @@ export const AdminLinks = () => {
     <div>
       {links.length === 0 ? (
         <div className="admin__centered">
-          <AdminCustomSpinner text="Loading Data" />
+          <AdminCustomSpinner text="Loading Links" />
         </div>
       ) : (
         <>

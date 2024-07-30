@@ -177,9 +177,9 @@ export const AdminArtists = () => {
         record,
         inputType:
           col.dataIndex === "validated" ||
-          col.dataIndex === "isPictureArtist" ||
-          col.dataIndex === "isEventArtist" ||
-          col.dataIndex === "isUserArtist"
+            col.dataIndex === "isPictureArtist" ||
+            col.dataIndex === "isEventArtist" ||
+            col.dataIndex === "isUserArtist"
             ? "boolean"
             : "text",
         dataIndex: col.dataIndex,
@@ -208,7 +208,7 @@ export const AdminArtists = () => {
     <div>
       {artists.length === 0 ? (
         <div className="admin__centered">
-          <AdminCustomSpinner text="Loading Data" />
+          <AdminCustomSpinner text="Loading Artists" />
         </div>
       ) : (
         <>

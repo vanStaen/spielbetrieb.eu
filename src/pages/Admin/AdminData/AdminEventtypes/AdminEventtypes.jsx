@@ -203,7 +203,7 @@ export const AdminEventtypes = () => {
     <div>
       {eventtypes.length === 0 ? (
         <div className="admin__centered">
-          <AdminCustomSpinner text="Loading Data" />
+          <AdminCustomSpinner text="Loading Eventtypes" />
         </div>
       ) : (
         <>

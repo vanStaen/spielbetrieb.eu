@@ -237,7 +237,7 @@ export const AdminTranslations = () => {
     <div>
       {translations.length === 0 ? (
         <div className="admin__centered">
-          <AdminCustomSpinner text="Loading Data" />
+          <AdminCustomSpinner text="Loading Translations" />
         </div>
       ) : (
         <>

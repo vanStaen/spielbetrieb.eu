@@ -223,7 +223,7 @@ export const AdminContacts = () => {
     <div>
       {contacts.length === 0 ? (
         <div className="admin__centered">
-          <AdminCustomSpinner text="Loading Data" />
+          <AdminCustomSpinner text="Loading Contacts" />
         </div>
       ) : (
         <>

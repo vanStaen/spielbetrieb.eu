@@ -229,7 +229,7 @@ export const AdminUsers = () => {
     <div>
       {users.length === 0 ? (
         <div className="admin__centered">
-          <AdminCustomSpinner text="Loading users" />
+          <AdminCustomSpinner text="Loading Users" />
         </div>
       ) : (
         <>
