@@ -10,12 +10,20 @@ import { spielplanStore } from "../../../../../store/spielplanStore/spielplanSto
 import "./TagsFilter.less";
 
 export const TagsFilter = observer(() => {
-  const tagOptions = spielplanStore.tags.map((tag) => {
-    return {
-      value: tag.id,
-      label: nameParser(tag.name, pageStore.selectedLanguage),
-    };
-  });
+
+  const tagOptions = () => {
+    const tagOptionsRow = spielplanStore.tags.map((tag) => {
+      if (!tag.isEventTag) {
+        return null;
+      }
+      return {
+        value: tag.id,
+        label: nameParser(tag.name, pageStore.selectedLanguage),
+      };
+    });
+
+    return tagOptionsRow.filter(x => x != null);
+  }
 
   const selectChangehandler = (e) => {
     spielplanStore.setFilterTags(e);
@@ -36,7 +44,7 @@ export const TagsFilter = observer(() => {
           <TagsOutlined /> Tags
         </>
       }
-      options={tagOptions}
+      options={tagOptions()}
     />
   );
 });

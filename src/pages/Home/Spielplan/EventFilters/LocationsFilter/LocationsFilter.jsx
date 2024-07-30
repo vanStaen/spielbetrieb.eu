@@ -7,6 +7,8 @@ import { spielplanStore } from "../../../../../store/spielplanStore/spielplanSto
 
 import "./LocationsFilter.less";
 
+// TODO: only show location for which we have an event
+
 export const LocationsFilter = observer(() => {
   const locationOptions = spielplanStore.locations.map((location) => {
     return { value: location.id, label: location.name };
