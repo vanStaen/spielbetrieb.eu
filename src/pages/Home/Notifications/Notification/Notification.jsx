@@ -220,10 +220,11 @@ export const Notification = observer((props) => {
     }
     if (type === 1 || type === 2 || type === 61) {
       navigate(`/user/${data}`);
-    } else if (type === 91 || type === 92 || type === 93) {
+    } else if (type === 91 || type === 92 || type === 93 || type === 99) {
       type === 91 && adminStore.setSelectedPage("events");
       type === 92 && adminStore.setSelectedPage("partners");
       type === 93 && adminStore.setSelectedPage("data");
+      type === 99 && adminStore.setSelectedPage("bugs");
       navigate(`/admin/`);
     }
   };
