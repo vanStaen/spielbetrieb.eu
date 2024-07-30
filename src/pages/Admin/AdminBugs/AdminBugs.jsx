@@ -229,9 +229,11 @@ export const AdminBugs = () => {
 
   return (
     <div>
-      {isLoading ? <div className="admin__centered">
-        <AdminCustomSpinner text="Loading Bugs" />
-      </div> : bugs.length === 0 ? (
+      {isLoading ? (
+        <div className="admin__centered">
+          <AdminCustomSpinner text="Loading Bugs" />
+        </div>
+      ) : bugs.length === 0 ? (
         <div className="admin__centered">
           <AdminCustomSpinner text="No Bugs" />
         </div>
@@ -253,6 +255,6 @@ export const AdminBugs = () => {
           </Form>
         </>
       )}
-    </div >
+    </div>
   );
 };
