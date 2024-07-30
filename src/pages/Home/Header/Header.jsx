@@ -8,7 +8,9 @@ import { Menu } from "../../../components/Menu/Menu";
 import { QuickActions } from "../../../components/QuickActions/QuickActions";
 import { HeaderElement } from "./HeaderElement/HeaderElement";
 import { HeaderMenuMobile } from "./HeaderMenuMobile/HeaderMenuMobile";
-import SpielbetriebLogo from "../../../img/logos/spielbetriebLogoInverted.png";
+
+import SpielbetriebLogo from "../../../img/logos/spielbetriebLogo.png";
+import SpielbetriebLogoInverted from "../../../img/logos/spielbetriebLogoInverted.png";
 
 import "./Header.less";
 
@@ -21,7 +23,7 @@ export const Header = observer((props) => {
     >
       <Link to="/">
         <img
-          src={SpielbetriebLogo}
+          src={pageStore.selectedTheme === "light" ? SpielbetriebLogo : SpielbetriebLogoInverted}
           id="spielbetriebLogo"
           className="header__logo"
         />
