@@ -266,7 +266,7 @@ export const Menu = observer(() => {
             </div>
 
             {/* Partner management */}
-            {userStore.partners?.length && (
+            {!!userStore.partners?.length && (
               <>
                 <div className="menu__whiteline"></div>
                 {userStore.partnerSelected && userMenuElement}
