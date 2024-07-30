@@ -34,16 +34,18 @@ export const CreatePartnerForm = observer((props) => {
   };
 
   const createPartnerTypesOptions = async () => {
-    const res = await pageStore.partnertypes?.map((type) => {
-      if (type.validated === false) {
-        return null;
-      }
-      return {
-        value: parseInt(type.id),
-        label: nameParser(type.name, pageStore.selectedLanguage.toLowerCase()),
-      };
-    });
-    setPartnerTypesOptions(res);
+    if (pageStore.partnertypes) {
+      const res = await pageStore.partnertypes?.map((type) => {
+        if (type.validated === false) {
+          return null;
+        }
+        return {
+          value: parseInt(type.id),
+          label: nameParser(type.name, pageStore.selectedLanguage.toLowerCase()),
+        };
+      });
+      setPartnerTypesOptions(res);
+    }
   };
 
   useEffect(() => {
