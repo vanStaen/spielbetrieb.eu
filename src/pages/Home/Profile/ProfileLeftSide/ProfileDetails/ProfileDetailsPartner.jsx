@@ -23,15 +23,16 @@ export const ProfileDetailsPartner = observer(() => {
   const [partnerTypeText, setPartnerTypeText] = useState(null);
 
   useEffect(() => {
-    setPartnerTypeText(
-      nameParser(
-        pageStore.partnertypes?.find(
-          (partnertype) =>
-            parseInt(partnertype.id) === partnerStore.partnertypeId,
-        )?.name,
-        pageStore.selectedLanguage,
-      ),
-    );
+    pageStore.partnertypes &&
+      setPartnerTypeText(
+        nameParser(
+          pageStore.partnertypes.find(
+            (partnertype) =>
+              parseInt(partnertype.id) === partnerStore.partnertypeId,
+          )?.name,
+          pageStore.selectedLanguage,
+        ),
+      );
   }, [partnerStore.partnertypeId, pageStore.partnertypes]);
 
   useEffect(() => {
