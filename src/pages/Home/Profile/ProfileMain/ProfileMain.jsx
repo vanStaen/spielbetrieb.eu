@@ -29,7 +29,11 @@ export const ProfileMain = observer((props) => {
       const allFoundTags = pageStore.tags.filter((tag) =>
         tagsToVerify.includes(parseInt(tag.id)),
       );
-      return allFoundTags.filter((tag) => tag.validated)?.length;
+      if (allFoundTags) {
+        return allFoundTags.filter((tag) => tag.validated)?.length;
+      } else {
+        return 0;
+      }
     }
   };
 
@@ -42,7 +46,11 @@ export const ProfileMain = observer((props) => {
       const eventsToVerify = isPartner
         ? partnerStore.events
         : profileStore.events;
-      return eventsToVerify.filter((events) => events.validated)?.length;
+      if (eventsToVerify) {
+        return eventsToVerify.filter((events) => events.validated)?.length;
+      } else {
+        return 0;
+      }
     }
   };
 
