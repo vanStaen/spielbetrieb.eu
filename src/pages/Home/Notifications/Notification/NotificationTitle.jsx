@@ -72,6 +72,12 @@ export const NotificationTitle = (props) => {
           </span>
         </div>
       );
+    case 99:
+      return (
+        <div className="notification__title">
+          {linkToUserPage} {t("notifications.reportedBug")}
+        </div>
+      );
     default:
       console.log("Notification Type unknown!");
   }

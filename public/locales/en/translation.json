@@ -330,8 +330,10 @@
 		"addedNewProfilePicture": "added a new profile picture",
 		"uploadedNewPicture": "uploaded a new picture",
 		"startedFollowingYou": "started following you",
-		"newTagPending": "New tag is pending moderation",
-		"newPartnerPending": "New partner is pending moderation ",
-		"newEventPending": "New event is pending moderation"
+		"newTagPending": "New tag pending moderation",
+		"newPartnerPending": "New partner pending moderation ",
+		"newEventPending": "New event pending moderation",
+		"reportedBug": "reported a new Bug",
+		"markAllSeen": "mark all notifications as seen"
 	}
 }

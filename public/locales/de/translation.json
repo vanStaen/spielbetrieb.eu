@@ -332,6 +332,8 @@
 		"startedFollowingYou": "folgt dir jetzt",
 		"newTagPending": "Neuer Tag wartet auf Moderation",
 		"newPartnerPending": "Neuer Partner wartet auf Moderation",
-		"newEventPending": "Neuer Event wartet auf Moderation"
+		"newEventPending": "Neuer Event wartet auf Moderation",
+		"reportedBug": "hat einen neuen Bug gemeldet",
+		"markAllSeen": "Alle Benachrichtigungen als gesehen markieren"
 	}
 }

@@ -11,6 +11,7 @@ import { CustomSpinner } from "../../../components/CustomSpinner/CustomSpinner";
 import { postAllNotificationSeen } from "./postAllNotificationSeen";
 
 import "./Notifications.less";
+import { HelpButtons } from "../../../components/HelpButtons/HelpButtons";
 
 export const Notifications = observer(() => {
   const { t } = useTranslation();
@@ -34,7 +35,6 @@ export const Notifications = observer(() => {
 
   const notificationsFormated = userStore.notifications.map(
     (notification, index) => {
-      console.log("notification", notification);
       return (
         <Notification
           key={`notification${index}`}
@@ -47,30 +47,36 @@ export const Notifications = observer(() => {
   );
 
   return (
-    <div className="notifications__container">
-      {userStore.isLoading ? (
-        <div className="notification__center">
-          <CustomSpinner text={`${t("general.loading")} (Notifications)`} />
-        </div>
-      ) : notificationsCount === 0 ? (
-        <div className="notification__center">
-          <img
-            src={errorLogo}
-            width="50px"
-            className="notification__nothingImg"
-          />
-          {t("notifications.noNotification")}
-        </div>
-      ) : (
-        <>
-          {!!pageStore.unseenNotificationsCount && (
-            <Button onClick={markedAllAsSeen}>
-              {t("notification.markAllSeen")}
-            </Button>
-          )}
-          {notificationsFormated}
-        </>
-      )}
-    </div>
+    <>
+      <HelpButtons />
+      <div className="notifications__container">
+        {userStore.isLoading ? (
+          <div className="notification__center">
+            <CustomSpinner text={`${t("general.loading")} (Notifications)`} />
+          </div>
+        ) : notificationsCount === 0 ? (
+          <div className="notification__center">
+            <img
+              src={errorLogo}
+              width="50px"
+              className="notification__nothingImg"
+            />
+            {t("notifications.noNotification")}
+          </div>
+        ) : (
+          <>
+            {!!pageStore.unseenNotificationsCount && (
+              <Button
+                type="primary"
+                className={`notification__markAllSeen ${pageStore.selectedTheme === 'dark' ? "darkColorTheme__Button" : "lightColorTheme__Button"}`}
+                onClick={markedAllAsSeen}>
+                {t("notifications.markAllSeen")}
+              </Button>
+            )}
+            {notificationsFormated}
+          </>
+        )}
+      </div>
+    </>
   );
 });

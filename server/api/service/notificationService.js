@@ -119,8 +119,8 @@ export const notificationService = {
   async createNotificationForAdmin(
     adminRole,
     notificationType,
-    integerData,
     stringData,
+    integerData,
     mediaUrl,
   ) {
     try {
@@ -130,13 +130,12 @@ export const notificationService = {
           isAdmin: true,
         },
       });
-      console.log(integerData);
       for (const admin of admins) {
         const newNotification = new Notification({
           userId: admin.id,
           type: notificationType,
-          data: integerData,
-          actionData: stringData,
+          data: stringData,
+          actionData: integerData,
           mediaUrl,
         });
         await newNotification.save();

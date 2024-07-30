@@ -10,6 +10,7 @@ import {
   TagOutlined,
   CalendarOutlined,
   ShopOutlined,
+  BugOutlined,
 } from "@ant-design/icons";
 import * as dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -63,7 +64,7 @@ export const Notification = observer((props) => {
   );
 
   const getPicture = async () => {
-    const bucket = type === 92 ? "temp" : "users";
+    const bucket = type === 92 ? "temp" : type === 99 ? "bugs" : "users";
     const pictureUrl = await getPictureUrl(mediaUrl, bucket);
     setPicture(pictureUrl);
     const isloaded = new Promise((resolve, reject) => {
@@ -269,6 +270,9 @@ export const Notification = observer((props) => {
             )}
             {!mediaUrl && type === 93 && (
               <TagOutlined className="notifications__placeholder" />
+            )}
+            {!mediaUrl && type === 99 && (
+              <BugOutlined className="notifications__placeholder" />
             )}
           </div>
         )}

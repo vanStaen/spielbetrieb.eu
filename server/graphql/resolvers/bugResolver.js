@@ -1,6 +1,7 @@
 import { Bug } from "../../models/Bug.js";
 import { User } from "../../models/User.js";
 import { deleteFileFromS3 } from "../../lib/S3/deleteFileFromS3.js";
+import { notificationService } from "../../api/service/notificationService.js";
 
 export const bugResolver = {
   // getBugs: [Bug]
@@ -18,9 +19,6 @@ export const bugResolver = {
     const foundUser = await User.findOne({
       where: { id: req.userId },
     });
-    if (!foundUser.isAdmin) {
-      throw new Error("Unauthorized!");
-    }
     try {
       const bug = new Bug({
         userId: req.userId,
@@ -30,7 +28,15 @@ export const bugResolver = {
         isUrgent: args.bugInput.isUrgent,
         isResolved: args.bugInput.isResolved,
       });
-      return await bug.save();
+      const newBug = await bug.save();
+      notificationService.createNotificationForAdmin(
+        "bugs",
+        99,
+        foundUser.userName,
+        foundUser.id,
+        args.bugInput.screenshot,
+      );
+      return newBug;
     } catch (err) {
       console.log(err);
     }

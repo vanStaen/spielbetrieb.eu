@@ -107,7 +107,11 @@ export class PageStore {
   };
 
   setUnseenNotificationsCount = (unseenNotificationsCount) => {
-    this.unseenNotificationsCount = unseenNotificationsCount;
+    if (unseenNotificationsCount > 0) {
+      this.unseenNotificationsCount = unseenNotificationsCount;
+    } else {
+      this.unseenNotificationsCount = 0;
+    }
   };
 
   fetchData = async () => {
