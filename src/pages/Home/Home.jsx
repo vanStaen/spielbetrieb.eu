@@ -1,6 +1,6 @@
 import React from "react";
 import { Tooltip } from "antd";
-import { MailOutlined, NotificationOutlined } from "@ant-design/icons";
+import { MailOutlined, NotificationOutline, QuestionCircleFilled } from "@ant-design/icons";
 import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
 
@@ -103,7 +103,7 @@ export const Home = observer((props) => {
       {process.env.PROD && (
         <Banner
           title="BETA VERSION"
-          desc="This is a beta version. Thank you for helping us making this better, and use the bug report function if needed."
+          desc={<>Spielbetrieb.eu is avaiable as a beta version. Thank you for helping us making this better: <br /> Please use the bug report function if needed (see <QuestionCircleFilled style={{ fontSize: '18px' }} /> in the bottom right corner).</>}
           id={"betaBanner"}
           closable={true}
           color="brown"
