@@ -26,7 +26,7 @@ export const Banner = observer((props) => {
     banner.style.fontSize = 0;
     setTimeout(() => {
       banner.style.visibility = "visible";
-      banner.style.maxHeight = "100px";
+      banner.style.maxHeight = "500px";
       banner.style.fontSize = "14px";
     }, 1000);
   }, [id]);
