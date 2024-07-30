@@ -20,10 +20,7 @@ export const Newsletter = observer(() => {
           <ArrowLeftOutlined />
         </Link>
       </div>
-      <div
-        className="newsletter__background"
-        id="background"
-      ></div>
+      <div className="newsletter__background" id="background"></div>
       <div className="newsletter__overBackground"></div>
       <div className="newsletter__container">
         <div className="newsletter__formContainer">

@@ -5,6 +5,7 @@ import { LoginForm } from "../../components/LoginForm/LoginForm";
 import { SignUpForm } from "../../components/SignUpForm/SignUpForm";
 import { AlreadyMember } from "./AlreadyMember";
 import { authStore } from "../../store/authStore/authStore";
+import { pageStore } from "../../store/pageStore/pageStore";
 
 import "./LoginPage.less";
 
@@ -21,7 +22,9 @@ export const LoginPage = () => {
   return (
     <>
       <AlreadyMember showLogin={showLogin} setShowLogin={setShowLogin} />
-      <div className={`backgroundLogin ${pageStore.selectedTheme == 'dark' ? 'backgroundDark' : 'backgroundLight'}`} ></div >
+      <div
+        className={`backgroundLogin ${pageStore.selectedTheme === "dark" ? "backgroundDark" : "backgroundLight"}`}
+      ></div>
       <div className="overBackground"></div>
       {showLogin ? (
         <div className="login__container">

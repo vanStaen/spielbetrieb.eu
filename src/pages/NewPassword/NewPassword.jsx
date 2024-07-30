@@ -86,7 +86,9 @@ export const NewPassword = observer(() => {
 
   return (
     <>
-      <div className={`backgroundNewPassword ${pageStore.selectedTheme == 'dark' ? 'backgroundDark' : 'backgroundLight'}`} ></div >
+      <div
+        className={`backgroundNewPassword ${pageStore.selectedTheme === "dark" ? "backgroundDark" : "backgroundLight"}`}
+      ></div>
       <div className="overBackground"></div>
       <div className="verifyEmail__container">
         {isLoading ? (

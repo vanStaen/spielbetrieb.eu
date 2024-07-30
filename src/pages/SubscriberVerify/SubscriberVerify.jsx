@@ -6,8 +6,8 @@ import { observer } from "mobx-react";
 
 import { postSubscriberVerified } from "./postSubscriberVerified";
 import { CustomSpinner } from "../../components/CustomSpinner/CustomSpinner";
-import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 import { pageStore } from "../../store/pageStore/pageStore";
+import SpielbetriebLogo from "../../img/logos/spielbetriebLogo.png";
 
 import "./SubscriberVerify.less";
 
@@ -34,7 +34,9 @@ export const SubscriberVerify = observer(() => {
 
   return (
     <>
-      <div className={`backgroundSubscriber ${pageStore.selectedTheme == 'dark' ? 'backgroundDark' : 'backgroundLight'}`} ></div >
+      <div
+        className={`backgroundSubscriber ${pageStore.selectedTheme === "dark" ? "backgroundDark" : "backgroundLight"}`}
+      ></div>
       <div className="overBackground"></div>
       <div className="subscriberVerifyEmail__container">
         {isLoading ? (

@@ -1,6 +1,5 @@
 import { S3Client, CopyObjectCommand } from "@aws-sdk/client-s3";
 import { getBucketId } from "./getBuketId.js";
-import { deleteFileFromS3 } from "../../lib/S3/deleteFileFromS3.js";
 
 const s3 = new S3Client({
   region: "eu-central-1",

@@ -63,7 +63,9 @@ export const EmailVerified = observer(() => {
 
   return (
     <>
-      <div className={`backgroundVerifyEmail ${pageStore.selectedTheme == 'dark' ? 'backgroundDark' : 'backgroundLight'}`} ></div >
+      <div
+        className={`backgroundVerifyEmail ${pageStore.selectedTheme === "dark" ? "backgroundDark" : "backgroundLight"}`}
+      ></div>
       <div className="overBackground"></div>
       <div className="verifyEmail__container">
         {isLoading ? (

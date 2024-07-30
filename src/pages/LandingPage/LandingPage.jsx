@@ -39,10 +39,7 @@ export const LandingPage = () => {
 
   return (
     <>
-      <div
-        className="landingPage__background"
-        id="background"
-      ></div>
+      <div className="landingPage__background" id="background"></div>
       <div className="landingPage__overBackground"></div>
       <div className="landingPage__doublearrow" id="arrow">
         <DoubleLeftOutlined
@@ -52,10 +49,7 @@ export const LandingPage = () => {
       </div>
       <div className="landingPage__container">
         <div className="spielbetrieb__container">
-          <div
-            className="spielbetrieb__logoAndText"
-            id="spielbetrieb"
-          >
+          <div className="spielbetrieb__logoAndText" id="spielbetrieb">
             <img
               src={SpielbetriebLogo}
               id="spielbetriebLogo"

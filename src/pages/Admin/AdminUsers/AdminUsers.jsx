@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Popconfirm, Table, Tag, Tooltip } from "antd";
 import { UserOutlined, DeleteOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 import { getUsersAsAdmin } from "./getUsersAsAdmin";
 import { updateUserAsAdmin } from "./updateUserAsAdmin";
@@ -15,6 +16,7 @@ import { getPictureUrl } from "../../../helpers/picture/getPictureUrl";
 export const AdminUsers = () => {
   const [users, setUsers] = useState([]);
   const [usersAvatarUrls, setUsersAvatarUrls] = useState([]);
+  const navigate = useNavigate();
 
   const fetchAllUsers = async () => {
     const results = await getUsersAsAdmin();
