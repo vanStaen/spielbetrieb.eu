@@ -31,7 +31,8 @@ export const Menu = observer(() => {
   const [avatarPic, setAvatarPic] = useState(null);
   const [userAvatarPic, setUserAvatarPic] = useState(null);
   const [avatarIsLoading, setAvatarIsLoading] = useState(false);
-  const [partnersAvatarUPics, setPartnersAvatarPics] = useState([]);
+  const [partnersAvatarPics, setPartnersAvatarPics] = useState([]);
+  const [partnersAvatarLoading, setPartnersAvatarLoading] = useState([]);
 
   // TODO1: settings and notifications for partner as user
 
@@ -69,6 +70,23 @@ export const Menu = observer(() => {
       }),
     );
     setPartnersAvatarPics(urls);
+    let index = 0;
+    for (const url of urls) {
+      try {
+        const isloaded = new Promise((resolve, reject) => {
+          const loadImg = new Image();
+          loadImg.src = urls;
+          loadImg.onload = () => resolve(url);
+          loadImg.onerror = (err) => reject(err);
+        });
+        await isloaded;
+        partnersAvatarLoading[index] = true;
+        setPartnersAvatarLoading(partnersAvatarLoading);
+      } catch (e) {
+        console.error(e);
+      }
+      index = index++;
+    }
   };
 
   useEffect(() => {
@@ -97,13 +115,6 @@ export const Menu = observer(() => {
       elementContainer.style.opacity = 1;
     }
   });
-
-  const spinIcon = (
-    <LoadingOutlined
-      style={{ fontSize: 24, color: "#e1cfbb", top: "-4px" }}
-      spin
-    />
-  );
 
   const handleClickLogOut = () => {
     authStore.logout();
@@ -169,10 +180,23 @@ export const Menu = observer(() => {
           onClick={() => switchAccountHandler(partner)}
           key={`partnerMenuElement${index}`}
         >
-          <img
-            src={partnersAvatarUPics[index]}
-            className="menu__elementPartnerImg"
-          />
+          {partnersAvatarLoading[index] ? (
+            <Spin
+              className="menu__spinner"
+              indicator={
+                <LoadingOutlined
+                  style={{ fontSize: 16, color: "#e1cfbb", top: "-4px" }}
+                  spin
+                />
+              }
+            />
+          ) : (
+            <img
+              src={partnersAvatarPics[index]}
+              className="menu__elementPartnerImg"
+            />
+          )}
+
           <span className="menu__elementPartnerText">{partner.name}</span>
         </div>
       );
@@ -211,7 +235,15 @@ export const Menu = observer(() => {
             }
             icon={
               (userStore.isLoading || avatarIsLoading) && (
-                <Spin className="menu__spinner" indicator={spinIcon} />
+                <Spin
+                  className="menu__spinner"
+                  indicator={
+                    <LoadingOutlined
+                      style={{ fontSize: 24, color: "#e1cfbb", top: "-4px" }}
+                      spin
+                    />
+                  }
+                />
               )
             }
             className="menu__avatar"
