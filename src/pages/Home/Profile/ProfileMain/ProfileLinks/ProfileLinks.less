@@ -2,6 +2,7 @@
     width: 100%;
     color: rgba(var(--themeFontColor), 1);
     margin-bottom: 16px;
+    padding-bottom: 8px;
 
     .profileLinks__main {
         padding-top: 3px;
@@ -37,6 +38,7 @@
             display: inline-block;
             font-size: 14px;
             color: rgba(var(--themeBlackOrWhiteColor), 1);
+            vertical-align: top;
 
             .profileLinks__action {
                 display: inline-block;
@@ -52,3 +54,25 @@
         
     }
 }
+
+
+@media (max-width: 800px) {
+    .profileLinks__container {
+        .profileLinks__main {
+            padding-top: 3px;
+            font-size: 22px;
+            .profileLinks__link {
+                width: calc(100vw - 120px);
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                padding-bottom: 0px;
+            }
+        }
+        .profileLinks__logo {
+            img {
+                width: 22px !important;
+            }
+        }
+    }
+  }

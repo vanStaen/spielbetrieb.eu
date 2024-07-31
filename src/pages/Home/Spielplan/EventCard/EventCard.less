@@ -243,7 +243,7 @@
     }
 
     .event__Container {
-        width: calc(100% - 40px);
+        width: calc(100vw - 40px);
         padding: 0;
 
         .event__date {
@@ -304,12 +304,15 @@
             }
 
             .event__tags {
-                padding-bottom: 8px;
                 display: none;
             }
         }
 
-        .event__artwork {
+        .event__mainProfile {
+            padding: 8px !important;
+        }
+
+        .event__artwork, .event__artworkProfile {
             width: 100%;
             height: 200px;
 
@@ -320,7 +323,7 @@
             }
         }
 
-        .event__artworkLoading {
+        .event__artworkLoading, .event__artworkLoadingProfile {
             width: 100%;
         }
     }

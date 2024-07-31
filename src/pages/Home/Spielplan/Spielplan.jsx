@@ -141,7 +141,7 @@ export const Spielplan = observer(() => {
     );
   });
 
-  const eventsFormattedAndCleaned = eventsFormatted.filter((events) => events);
+  const eventsFormattedAndCleaned = eventsFormatted?.filter((events) => events);
 
   const spielplanTourSteps = [
     {
@@ -188,6 +188,7 @@ export const Spielplan = observer(() => {
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={() => onTouchEnd()}
+          key="spielplanContainer"
         >
           <HelpButtons missingEvent={true} setStartTour={setStartTour} />
           <EventFilters ref1={ref1} ref2={ref2} />

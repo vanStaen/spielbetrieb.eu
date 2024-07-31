@@ -200,7 +200,7 @@ export const EventCard = observer((props) => {
             <CustomSpinner />
           </div>
         )}
-        <div className="event__main">
+        <div className={`event__main ${profileCard && "event__mainProfile"}`}>
           <div className="event__titleLocation">
             <div className="event__location">{event.locationName}</div>
             <div
