@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react";
 import { message } from "antd";
-import { UserOutlined, EditOutlined, LoadingOutlined } from "@ant-design/icons";
+import { UserOutlined, EditOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 
 import { userStore } from "../../../../../store/userStore/userStore";
@@ -12,6 +12,7 @@ import { postPicture } from "../../../../../helpers/picture/postPicture";
 import { getPictureUrl } from "../../../../../helpers/picture/getPictureUrl";
 import { updateAvatar } from "./updateAvatar";
 import { updatePartnerAvatar } from "./updatePartnerAvatar";
+import { CustomSpinner } from "../../../../../components/CustomSpinner/CustomSpinner";
 
 import "./Avatar.less";
 
@@ -84,11 +85,10 @@ export const Avatar = observer((props) => {
     <div className="avatar__container">
       {isLoading ? (
         <div className="avatar__avatar">
-          <div className="avatar__avatarLoading">
-            <LoadingOutlined
-              style={{ fontSize: 50, color: "#e1cfbb", top: "-4px" }}
-              spin
-            />
+          <div
+            className={`avatar__avatarLoading ${pageStore.selectedTheme === "light" ? "avatar__light" : "avatar__dark"}`}
+          >
+            <CustomSpinner size="large" />
           </div>
         </div>
       ) : (
